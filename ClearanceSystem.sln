@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearanceSystem", "ClearanceSystem\ClearanceSystem.csproj", "{BCAF9C85-6077-4A5E-BADB-5C1CD1A05E74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+		x64|x64 = x64|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCAF9C85-6077-4A5E-BADB-5C1CD1A05E74}.Debug|x64.ActiveCfg = Debug|x64
+		{BCAF9C85-6077-4A5E-BADB-5C1CD1A05E74}.Debug|x64.Build.0 = Debug|x64
+		{BCAF9C85-6077-4A5E-BADB-5C1CD1A05E74}.Release|x64.ActiveCfg = Release|x64
+		{BCAF9C85-6077-4A5E-BADB-5C1CD1A05E74}.Release|x64.Build.0 = Release|x64
+		{BCAF9C85-6077-4A5E-BADB-5C1CD1A05E74}.x64|x64.ActiveCfg = x64|x64
+		{BCAF9C85-6077-4A5E-BADB-5C1CD1A05E74}.x64|x64.Build.0 = x64|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BFC304D-EDA9-4E32-8BC5-34DA1C7991C4}
+	EndGlobalSection
+EndGlobal
