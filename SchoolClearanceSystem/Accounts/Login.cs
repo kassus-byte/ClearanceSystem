@@ -16,48 +16,50 @@ namespace SchoolClearanceSystem
             string id = txtUserID.Text.Trim();
             string pass = txtPassword.Text;
 
-            // 1. Basic check
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
                 XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Check the Database
             DatabaseManager db = new DatabaseManager();
             bool isValid = db.ValidateLogin(id, pass);
 
             if (isValid)
             {
-                // SUCCESS: 
-                // A. Fetch full user details and save them to our global Session
                 Session.CurrentUser = db.GetUserDetails(id);
 
-                // B. Verify we actually got data back before proceeding
                 if (Session.CurrentUser != null)
                 {
-                    // C. Open the Student Portal
-                    StudentPortal studentPortal = new StudentPortal();
+                    Form nextForm = null;
 
-                    // This ensures that when the Portal is closed, the hidden Login form also closes (cleaning up memory)
-                    studentPortal.FormClosed += (s, args) => this.Close();
+                    // REDIRECTION LOGIC BASED ON ROLE
+                    switch (Session.CurrentUser.Role)
+                    {
+                        case "Student":
+                            nextForm = new StudentPortal();
+                            break;
 
-                    studentPortal.Show();
+                        case "Treasurer":
+                            // Ensure you have added: using SchoolClearanceSystem.Dashboard;
+                            nextForm = new SchoolClearanceSystem.Dashboard.TreasurerDashboard();
+                            break;
+
+                        default:
+                            XtraMessageBox.Show("Your role is not recognized. Contact Admin.", "Access Denied");
+                            return;
+                    }
+
+                    // Standardize form closing and showing
+                    nextForm.FormClosed += (s, args) => this.Close();
+                    nextForm.Show();
                     this.Hide();
-                }
-                else
-                {
-                    XtraMessageBox.Show("User details could not be loaded. Please contact admin.", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                // FAIL: Warn the user
-                XtraMessageBox.Show("Invalid UserID or Password. Please try again.",
-                                "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPassword.Text = "";
-                txtPassword.Focus();
+                XtraMessageBox.Show("Invalid UserID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
-}
+    }

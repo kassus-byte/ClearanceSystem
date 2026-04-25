@@ -93,31 +93,41 @@ namespace SchoolClearanceSystem
 
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
-            // 1. DEFENSIVE VALIDATION 
-            // This prevents the "silent fail" you experienced earlier
-            if (string.IsNullOrWhiteSpace(cmbSemester.Text) ||
-                string.IsNullOrWhiteSpace(cmbAcademicYear.Text))
+            // 1. VALIDATION FIRST
+            if (string.IsNullOrWhiteSpace(cmbSemester.Text) || string.IsNullOrWhiteSpace(cmbAcademicYear.Text))
             {
-                MessageBox.Show("Please fill in all required fields and select items from the dropdowns.",
-                                "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please select both Semester and Academic Year before submitting.",
+                                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            else
+            // 2. PREPARE DATA
+            DatabaseManager db = new DatabaseManager();
+            string sID = Session.CurrentUser.UserID;
+            string sem = cmbSemester.Text;
+            string ay = cmbAcademicYear.Text;
+
+            try
             {
-                MessageBox.Show("Request Submitted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // 3. EXECUTE DATABASE CALLS
+                bool successTreasurer = db.SubmitClearanceRequest(sID, "Treasurer", sem, ay);
+                bool successTech = db.SubmitClearanceRequest(sID, "Technical Office", sem, ay);
+
+                if (successTreasurer && successTech)
+                {
+                    XtraMessageBox.Show("Requests successfully sent to Treasurer and Technical Office.",
+                                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Optional: Switch to "My Requests" page so they can see it pending
+                    ShowPage(pnlMyRequest);
+                }
             }
-
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void pnlRequirements_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void gridControl2_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

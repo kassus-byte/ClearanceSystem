@@ -47,6 +47,36 @@
             this.pnlHeader = new DevExpress.XtraEditors.PanelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.pnlDashboard = new DevExpress.XtraEditors.PanelControl();
+            this.groupRecentActivity = new DevExpress.XtraEditors.GroupControl();
+            this.gridRecentActivity = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupDeptStatus = new DevExpress.XtraEditors.GroupControl();
+            this.gridDeptStatus = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grpProgress = new DevExpress.XtraEditors.GroupControl();
+            this.labelProgress = new DevExpress.XtraEditors.LabelControl();
+            this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
+            this.pnlStatRow = new DevExpress.XtraEditors.PanelControl();
+            this.pnlCard3 = new DevExpress.XtraEditors.PanelControl();
+            this.labelCard3Value = new DevExpress.XtraEditors.LabelControl();
+            this.labelCard3Title = new DevExpress.XtraEditors.LabelControl();
+            this.pnlSpacer2 = new DevExpress.XtraEditors.PanelControl();
+            this.pnlCard2 = new DevExpress.XtraEditors.PanelControl();
+            this.labelCard2Value = new DevExpress.XtraEditors.LabelControl();
+            this.labelCard2Title = new DevExpress.XtraEditors.LabelControl();
+            this.pnlSpacer1 = new DevExpress.XtraEditors.PanelControl();
+            this.pnlCard1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelCard1Value = new DevExpress.XtraEditors.LabelControl();
+            this.labelCard1Title = new DevExpress.XtraEditors.LabelControl();
+            this.pnlPageHeader = new DevExpress.XtraEditors.PanelControl();
+            this.lblFullNameWelcome = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pnlRequestClearance = new DevExpress.XtraEditors.PanelControl();
             this.pnlRow1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -124,36 +154,6 @@
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
-            this.pnlDashboard = new DevExpress.XtraEditors.PanelControl();
-            this.groupRecentActivity = new DevExpress.XtraEditors.GroupControl();
-            this.gridRecentActivity = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupDeptStatus = new DevExpress.XtraEditors.GroupControl();
-            this.gridDeptStatus = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grpProgress = new DevExpress.XtraEditors.GroupControl();
-            this.labelProgress = new DevExpress.XtraEditors.LabelControl();
-            this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
-            this.pnlStatRow = new DevExpress.XtraEditors.PanelControl();
-            this.pnlCard3 = new DevExpress.XtraEditors.PanelControl();
-            this.labelCard3Value = new DevExpress.XtraEditors.LabelControl();
-            this.labelCard3Title = new DevExpress.XtraEditors.LabelControl();
-            this.pnlSpacer2 = new DevExpress.XtraEditors.PanelControl();
-            this.pnlCard2 = new DevExpress.XtraEditors.PanelControl();
-            this.labelCard2Value = new DevExpress.XtraEditors.LabelControl();
-            this.labelCard2Title = new DevExpress.XtraEditors.LabelControl();
-            this.pnlSpacer1 = new DevExpress.XtraEditors.PanelControl();
-            this.pnlCard1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelCard1Value = new DevExpress.XtraEditors.LabelControl();
-            this.labelCard1Title = new DevExpress.XtraEditors.LabelControl();
-            this.pnlPageHeader = new DevExpress.XtraEditors.PanelControl();
-            this.lblFullNameWelcome = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelWelcome = new DevExpress.XtraEditors.LabelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
@@ -173,6 +173,31 @@
             this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDashboard)).BeginInit();
+            this.pnlDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupRecentActivity)).BeginInit();
+            this.groupRecentActivity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRecentActivity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDeptStatus)).BeginInit();
+            this.groupDeptStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeptStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpProgress)).BeginInit();
+            this.grpProgress.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlStatRow)).BeginInit();
+            this.pnlStatRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlCard3)).BeginInit();
+            this.pnlCard3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlCard2)).BeginInit();
+            this.pnlCard2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlCard1)).BeginInit();
+            this.pnlCard1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlPageHeader)).BeginInit();
+            this.pnlPageHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRequestClearance)).BeginInit();
             this.pnlRequestClearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRow1)).BeginInit();
@@ -221,31 +246,6 @@
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
             this.panelControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlDashboard)).BeginInit();
-            this.pnlDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupRecentActivity)).BeginInit();
-            this.groupRecentActivity.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridRecentActivity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupDeptStatus)).BeginInit();
-            this.groupDeptStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDeptStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grpProgress)).BeginInit();
-            this.grpProgress.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlStatRow)).BeginInit();
-            this.pnlStatRow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlCard3)).BeginInit();
-            this.pnlCard3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlCard2)).BeginInit();
-            this.pnlCard2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlCard1)).BeginInit();
-            this.pnlCard1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlPageHeader)).BeginInit();
-            this.pnlPageHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -277,12 +277,12 @@
             // 
             this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.White;
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
+            this.splitContainerControl1.Panel2.Controls.Add(this.pnlMyRequest);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlDashboard);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlRequestClearance);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlNotifications);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlRequirements);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlMyClearance);
-            this.splitContainerControl1.Panel2.Controls.Add(this.pnlMyRequest);
             this.splitContainerControl1.Panel2.Padding = new System.Windows.Forms.Padding(15);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1920, 1080);
@@ -523,6 +523,385 @@
             this.labelControl1.Size = new System.Drawing.Size(218, 21);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "College of Computer Studies";
+            // 
+            // pnlDashboard
+            // 
+            this.pnlDashboard.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlDashboard.Appearance.Options.UseBackColor = true;
+            this.pnlDashboard.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlDashboard.Controls.Add(this.groupRecentActivity);
+            this.pnlDashboard.Controls.Add(this.groupDeptStatus);
+            this.pnlDashboard.Controls.Add(this.grpProgress);
+            this.pnlDashboard.Controls.Add(this.pnlStatRow);
+            this.pnlDashboard.Controls.Add(this.pnlPageHeader);
+            this.pnlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDashboard.Location = new System.Drawing.Point(15, 15);
+            this.pnlDashboard.Name = "pnlDashboard";
+            this.pnlDashboard.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlDashboard.TabIndex = 5;
+            // 
+            // groupRecentActivity
+            // 
+            this.groupRecentActivity.Appearance.BackColor = System.Drawing.Color.White;
+            this.groupRecentActivity.Appearance.BorderColor = System.Drawing.Color.White;
+            this.groupRecentActivity.Appearance.Options.UseBackColor = true;
+            this.groupRecentActivity.Appearance.Options.UseBorderColor = true;
+            this.groupRecentActivity.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.groupRecentActivity.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.groupRecentActivity.AppearanceCaption.Options.UseFont = true;
+            this.groupRecentActivity.AppearanceCaption.Options.UseForeColor = true;
+            this.groupRecentActivity.Controls.Add(this.gridRecentActivity);
+            this.groupRecentActivity.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.groupRecentActivity.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupRecentActivity.Location = new System.Drawing.Point(0, 750);
+            this.groupRecentActivity.Name = "groupRecentActivity";
+            this.groupRecentActivity.Size = new System.Drawing.Size(1574, 253);
+            this.groupRecentActivity.TabIndex = 4;
+            this.groupRecentActivity.Text = "Recent Activity";
+            // 
+            // gridRecentActivity
+            // 
+            this.gridRecentActivity.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridRecentActivity.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.gridRecentActivity.Location = new System.Drawing.Point(2, 29);
+            this.gridRecentActivity.MainView = this.gridView2;
+            this.gridRecentActivity.Name = "gridRecentActivity";
+            this.gridRecentActivity.Size = new System.Drawing.Size(1570, 224);
+            this.gridRecentActivity.TabIndex = 0;
+            this.gridRecentActivity.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5});
+            this.gridView2.GridControl = this.gridRecentActivity;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Activity";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Date/Time";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            // 
+            // groupDeptStatus
+            // 
+            this.groupDeptStatus.Appearance.BackColor = System.Drawing.Color.White;
+            this.groupDeptStatus.Appearance.BorderColor = System.Drawing.Color.White;
+            this.groupDeptStatus.Appearance.Options.UseBackColor = true;
+            this.groupDeptStatus.Appearance.Options.UseBorderColor = true;
+            this.groupDeptStatus.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.groupDeptStatus.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.groupDeptStatus.AppearanceCaption.Options.UseFont = true;
+            this.groupDeptStatus.AppearanceCaption.Options.UseForeColor = true;
+            this.groupDeptStatus.Controls.Add(this.gridDeptStatus);
+            this.groupDeptStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupDeptStatus.Location = new System.Drawing.Point(0, 383);
+            this.groupDeptStatus.Name = "groupDeptStatus";
+            this.groupDeptStatus.Size = new System.Drawing.Size(1574, 367);
+            this.groupDeptStatus.TabIndex = 3;
+            this.groupDeptStatus.Text = "Department Status";
+            // 
+            // gridDeptStatus
+            // 
+            this.gridDeptStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridDeptStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.gridDeptStatus.Location = new System.Drawing.Point(2, 29);
+            this.gridDeptStatus.MainView = this.gridView1;
+            this.gridDeptStatus.Name = "gridDeptStatus";
+            this.gridDeptStatus.Size = new System.Drawing.Size(1570, 336);
+            this.gridDeptStatus.TabIndex = 0;
+            this.gridDeptStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn3});
+            this.gridView1.GridControl = this.gridDeptStatus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Department";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Status";
+            this.gridColumn3.ColumnEdit = this.repositoryItemTextEdit1;
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            // 
+            // grpProgress
+            // 
+            this.grpProgress.Appearance.BackColor = System.Drawing.Color.White;
+            this.grpProgress.Appearance.BorderColor = System.Drawing.Color.White;
+            this.grpProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpProgress.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.grpProgress.Appearance.Options.UseBackColor = true;
+            this.grpProgress.Appearance.Options.UseBorderColor = true;
+            this.grpProgress.Appearance.Options.UseFont = true;
+            this.grpProgress.Appearance.Options.UseForeColor = true;
+            this.grpProgress.Appearance.Options.UseTextOptions = true;
+            this.grpProgress.AppearanceCaption.BackColor = System.Drawing.Color.White;
+            this.grpProgress.AppearanceCaption.BorderColor = System.Drawing.Color.White;
+            this.grpProgress.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.grpProgress.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.grpProgress.AppearanceCaption.Options.UseBackColor = true;
+            this.grpProgress.AppearanceCaption.Options.UseBorderColor = true;
+            this.grpProgress.AppearanceCaption.Options.UseFont = true;
+            this.grpProgress.AppearanceCaption.Options.UseForeColor = true;
+            this.grpProgress.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.grpProgress.CaptionLocation = DevExpress.Utils.Locations.Top;
+            this.grpProgress.Controls.Add(this.labelProgress);
+            this.grpProgress.Controls.Add(this.progressBar);
+            this.grpProgress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpProgress.Location = new System.Drawing.Point(0, 242);
+            this.grpProgress.Name = "grpProgress";
+            this.grpProgress.Size = new System.Drawing.Size(1574, 141);
+            this.grpProgress.TabIndex = 2;
+            this.grpProgress.Text = "Overall Progress";
+            // 
+            // labelProgress
+            // 
+            this.labelProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.labelProgress.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelProgress.Appearance.Options.UseFont = true;
+            this.labelProgress.Appearance.Options.UseForeColor = true;
+            this.labelProgress.Location = new System.Drawing.Point(20, 96);
+            this.labelProgress.Name = "labelProgress";
+            this.labelProgress.Size = new System.Drawing.Size(182, 17);
+            this.labelProgress.TabIndex = 1;
+            this.labelProgress.Text = "0 out of 8 departments cleared";
+            // 
+            // progressBar
+            // 
+            this.progressBar.EditValue = 5;
+            this.progressBar.Location = new System.Drawing.Point(20, 64);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1545, 26);
+            this.progressBar.TabIndex = 0;
+            // 
+            // pnlStatRow
+            // 
+            this.pnlStatRow.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlStatRow.Appearance.Options.UseBackColor = true;
+            this.pnlStatRow.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlStatRow.Controls.Add(this.pnlCard3);
+            this.pnlStatRow.Controls.Add(this.pnlSpacer2);
+            this.pnlStatRow.Controls.Add(this.pnlCard2);
+            this.pnlStatRow.Controls.Add(this.pnlSpacer1);
+            this.pnlStatRow.Controls.Add(this.pnlCard1);
+            this.pnlStatRow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlStatRow.Location = new System.Drawing.Point(0, 100);
+            this.pnlStatRow.Name = "pnlStatRow";
+            this.pnlStatRow.Padding = new System.Windows.Forms.Padding(10);
+            this.pnlStatRow.Size = new System.Drawing.Size(1574, 142);
+            this.pnlStatRow.TabIndex = 1;
+            // 
+            // pnlCard3
+            // 
+            this.pnlCard3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
+            this.pnlCard3.Appearance.Options.UseBackColor = true;
+            this.pnlCard3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlCard3.Controls.Add(this.labelCard3Value);
+            this.pnlCard3.Controls.Add(this.labelCard3Title);
+            this.pnlCard3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCard3.Location = new System.Drawing.Point(964, 10);
+            this.pnlCard3.Name = "pnlCard3";
+            this.pnlCard3.Size = new System.Drawing.Size(600, 122);
+            this.pnlCard3.TabIndex = 5;
+            // 
+            // labelCard3Value
+            // 
+            this.labelCard3Value.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.labelCard3Value.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelCard3Value.Appearance.Options.UseFont = true;
+            this.labelCard3Value.Appearance.Options.UseForeColor = true;
+            this.labelCard3Value.Location = new System.Drawing.Point(17, 44);
+            this.labelCard3Value.Name = "labelCard3Value";
+            this.labelCard3Value.Size = new System.Drawing.Size(117, 32);
+            this.labelCard3Value.TabIndex = 2;
+            this.labelCard3Value.Text = "In Progress";
+            // 
+            // labelCard3Title
+            // 
+            this.labelCard3Title.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.labelCard3Title.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.labelCard3Title.Appearance.Options.UseFont = true;
+            this.labelCard3Title.Appearance.Options.UseForeColor = true;
+            this.labelCard3Title.Location = new System.Drawing.Point(17, 13);
+            this.labelCard3Title.Name = "labelCard3Title";
+            this.labelCard3Title.Size = new System.Drawing.Size(51, 25);
+            this.labelCard3Title.TabIndex = 2;
+            this.labelCard3Title.Text = "Status";
+            // 
+            // pnlSpacer2
+            // 
+            this.pnlSpacer2.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlSpacer2.Appearance.Options.UseBackColor = true;
+            this.pnlSpacer2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlSpacer2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlSpacer2.Location = new System.Drawing.Point(944, 10);
+            this.pnlSpacer2.Name = "pnlSpacer2";
+            this.pnlSpacer2.Size = new System.Drawing.Size(20, 122);
+            this.pnlSpacer2.TabIndex = 4;
+            // 
+            // pnlCard2
+            // 
+            this.pnlCard2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
+            this.pnlCard2.Appearance.Options.UseBackColor = true;
+            this.pnlCard2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlCard2.Controls.Add(this.labelCard2Value);
+            this.pnlCard2.Controls.Add(this.labelCard2Title);
+            this.pnlCard2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlCard2.Location = new System.Drawing.Point(487, 10);
+            this.pnlCard2.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.pnlCard2.Name = "pnlCard2";
+            this.pnlCard2.Size = new System.Drawing.Size(457, 122);
+            this.pnlCard2.TabIndex = 2;
+            // 
+            // labelCard2Value
+            // 
+            this.labelCard2Value.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.labelCard2Value.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelCard2Value.Appearance.Options.UseFont = true;
+            this.labelCard2Value.Appearance.Options.UseForeColor = true;
+            this.labelCard2Value.Location = new System.Drawing.Point(17, 48);
+            this.labelCard2Value.Name = "labelCard2Value";
+            this.labelCard2Value.Size = new System.Drawing.Size(33, 32);
+            this.labelCard2Value.TabIndex = 1;
+            this.labelCard2Value.Text = "0%";
+            // 
+            // labelCard2Title
+            // 
+            this.labelCard2Title.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.labelCard2Title.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.labelCard2Title.Appearance.Options.UseFont = true;
+            this.labelCard2Title.Appearance.Options.UseForeColor = true;
+            this.labelCard2Title.Location = new System.Drawing.Point(17, 17);
+            this.labelCard2Title.Name = "labelCard2Title";
+            this.labelCard2Title.Size = new System.Drawing.Size(73, 25);
+            this.labelCard2Title.TabIndex = 0;
+            this.labelCard2Title.Text = "Progress";
+            // 
+            // pnlSpacer1
+            // 
+            this.pnlSpacer1.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlSpacer1.Appearance.Options.UseBackColor = true;
+            this.pnlSpacer1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlSpacer1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlSpacer1.Location = new System.Drawing.Point(467, 10);
+            this.pnlSpacer1.Name = "pnlSpacer1";
+            this.pnlSpacer1.Size = new System.Drawing.Size(20, 122);
+            this.pnlSpacer1.TabIndex = 3;
+            // 
+            // pnlCard1
+            // 
+            this.pnlCard1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
+            this.pnlCard1.Appearance.Options.UseBackColor = true;
+            this.pnlCard1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlCard1.Controls.Add(this.labelCard1Value);
+            this.pnlCard1.Controls.Add(this.labelCard1Title);
+            this.pnlCard1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlCard1.Location = new System.Drawing.Point(10, 10);
+            this.pnlCard1.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.pnlCard1.Name = "pnlCard1";
+            this.pnlCard1.Size = new System.Drawing.Size(457, 122);
+            this.pnlCard1.TabIndex = 0;
+            // 
+            // labelCard1Value
+            // 
+            this.labelCard1Value.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.labelCard1Value.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelCard1Value.Appearance.Options.UseFont = true;
+            this.labelCard1Value.Appearance.Options.UseForeColor = true;
+            this.labelCard1Value.Location = new System.Drawing.Point(24, 48);
+            this.labelCard1Value.Name = "labelCard1Value";
+            this.labelCard1Value.Size = new System.Drawing.Size(49, 32);
+            this.labelCard1Value.TabIndex = 3;
+            this.labelCard1Value.Text = "0 / 8";
+            // 
+            // labelCard1Title
+            // 
+            this.labelCard1Title.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.labelCard1Title.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.labelCard1Title.Appearance.Options.UseFont = true;
+            this.labelCard1Title.Appearance.Options.UseForeColor = true;
+            this.labelCard1Title.Location = new System.Drawing.Point(23, 17);
+            this.labelCard1Title.Name = "labelCard1Title";
+            this.labelCard1Title.Size = new System.Drawing.Size(178, 25);
+            this.labelCard1Title.TabIndex = 2;
+            this.labelCard1Title.Text = "Departments Cleared";
+            // 
+            // pnlPageHeader
+            // 
+            this.pnlPageHeader.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlPageHeader.Appearance.Options.UseBackColor = true;
+            this.pnlPageHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlPageHeader.Controls.Add(this.lblFullNameWelcome);
+            this.pnlPageHeader.Controls.Add(this.labelControl4);
+            this.pnlPageHeader.Controls.Add(this.labelWelcome);
+            this.pnlPageHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPageHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlPageHeader.Name = "pnlPageHeader";
+            this.pnlPageHeader.Size = new System.Drawing.Size(1574, 100);
+            this.pnlPageHeader.TabIndex = 0;
+            // 
+            // lblFullNameWelcome
+            // 
+            this.lblFullNameWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblFullNameWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblFullNameWelcome.Appearance.Options.UseFont = true;
+            this.lblFullNameWelcome.Appearance.Options.UseForeColor = true;
+            this.lblFullNameWelcome.Location = new System.Drawing.Point(220, 14);
+            this.lblFullNameWelcome.Name = "lblFullNameWelcome";
+            this.lblFullNameWelcome.Size = new System.Drawing.Size(54, 37);
+            this.lblFullNameWelcome.TabIndex = 4;
+            this.lblFullNameWelcome.Text = "Aiks";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(20, 50);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(297, 17);
+            this.labelControl4.TabIndex = 3;
+            this.labelControl4.Text = "Here\'s your clearance overview for this semester.";
+            // 
+            // labelWelcome
+            // 
+            this.labelWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.labelWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelWelcome.Appearance.Options.UseFont = true;
+            this.labelWelcome.Appearance.Options.UseForeColor = true;
+            this.labelWelcome.Location = new System.Drawing.Point(20, 14);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(194, 37);
+            this.labelWelcome.TabIndex = 0;
+            this.labelWelcome.Text = "Welcome back,";
             // 
             // pnlRequestClearance
             // 
@@ -781,7 +1160,7 @@
             this.pnlRequirements.Name = "pnlRequirements";
             this.pnlRequirements.Size = new System.Drawing.Size(1574, 1050);
             this.pnlRequirements.TabIndex = 9;
-            this.pnlRequirements.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRequirements_Paint);
+           
             // 
             // panelControl9
             // 
@@ -1013,6 +1392,7 @@
             this.pnlMyClearance.Name = "pnlMyClearance";
             this.pnlMyClearance.Size = new System.Drawing.Size(1574, 1050);
             this.pnlMyClearance.TabIndex = 8;
+         
             // 
             // groupControl3
             // 
@@ -1038,7 +1418,7 @@
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
-            this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
+          
             // 
             // gridView4
             // 
@@ -1434,385 +1814,6 @@
             this.labelControl27.TabIndex = 0;
             this.labelControl27.Text = "My Requests";
             // 
-            // pnlDashboard
-            // 
-            this.pnlDashboard.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlDashboard.Appearance.Options.UseBackColor = true;
-            this.pnlDashboard.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlDashboard.Controls.Add(this.groupRecentActivity);
-            this.pnlDashboard.Controls.Add(this.groupDeptStatus);
-            this.pnlDashboard.Controls.Add(this.grpProgress);
-            this.pnlDashboard.Controls.Add(this.pnlStatRow);
-            this.pnlDashboard.Controls.Add(this.pnlPageHeader);
-            this.pnlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDashboard.Location = new System.Drawing.Point(15, 15);
-            this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1574, 1050);
-            this.pnlDashboard.TabIndex = 5;
-            // 
-            // groupRecentActivity
-            // 
-            this.groupRecentActivity.Appearance.BackColor = System.Drawing.Color.White;
-            this.groupRecentActivity.Appearance.BorderColor = System.Drawing.Color.White;
-            this.groupRecentActivity.Appearance.Options.UseBackColor = true;
-            this.groupRecentActivity.Appearance.Options.UseBorderColor = true;
-            this.groupRecentActivity.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.groupRecentActivity.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.groupRecentActivity.AppearanceCaption.Options.UseFont = true;
-            this.groupRecentActivity.AppearanceCaption.Options.UseForeColor = true;
-            this.groupRecentActivity.Controls.Add(this.gridRecentActivity);
-            this.groupRecentActivity.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.groupRecentActivity.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupRecentActivity.Location = new System.Drawing.Point(0, 750);
-            this.groupRecentActivity.Name = "groupRecentActivity";
-            this.groupRecentActivity.Size = new System.Drawing.Size(1574, 253);
-            this.groupRecentActivity.TabIndex = 4;
-            this.groupRecentActivity.Text = "Recent Activity";
-            // 
-            // gridRecentActivity
-            // 
-            this.gridRecentActivity.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridRecentActivity.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.gridRecentActivity.Location = new System.Drawing.Point(2, 29);
-            this.gridRecentActivity.MainView = this.gridView2;
-            this.gridRecentActivity.Name = "gridRecentActivity";
-            this.gridRecentActivity.Size = new System.Drawing.Size(1570, 224);
-            this.gridRecentActivity.TabIndex = 0;
-            this.gridRecentActivity.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn4,
-            this.gridColumn5});
-            this.gridView2.GridControl = this.gridRecentActivity;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Activity";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 0;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Date/Time";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 1;
-            // 
-            // groupDeptStatus
-            // 
-            this.groupDeptStatus.Appearance.BackColor = System.Drawing.Color.White;
-            this.groupDeptStatus.Appearance.BorderColor = System.Drawing.Color.White;
-            this.groupDeptStatus.Appearance.Options.UseBackColor = true;
-            this.groupDeptStatus.Appearance.Options.UseBorderColor = true;
-            this.groupDeptStatus.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.groupDeptStatus.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.groupDeptStatus.AppearanceCaption.Options.UseFont = true;
-            this.groupDeptStatus.AppearanceCaption.Options.UseForeColor = true;
-            this.groupDeptStatus.Controls.Add(this.gridDeptStatus);
-            this.groupDeptStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupDeptStatus.Location = new System.Drawing.Point(0, 383);
-            this.groupDeptStatus.Name = "groupDeptStatus";
-            this.groupDeptStatus.Size = new System.Drawing.Size(1574, 367);
-            this.groupDeptStatus.TabIndex = 3;
-            this.groupDeptStatus.Text = "Department Status";
-            // 
-            // gridDeptStatus
-            // 
-            this.gridDeptStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridDeptStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.gridDeptStatus.Location = new System.Drawing.Point(2, 29);
-            this.gridDeptStatus.MainView = this.gridView1;
-            this.gridDeptStatus.Name = "gridDeptStatus";
-            this.gridDeptStatus.Size = new System.Drawing.Size(1570, 336);
-            this.gridDeptStatus.TabIndex = 0;
-            this.gridDeptStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn3});
-            this.gridView1.GridControl = this.gridDeptStatus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Department";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Status";
-            this.gridColumn3.ColumnEdit = this.repositoryItemTextEdit1;
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            // 
-            // grpProgress
-            // 
-            this.grpProgress.Appearance.BackColor = System.Drawing.Color.White;
-            this.grpProgress.Appearance.BorderColor = System.Drawing.Color.White;
-            this.grpProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpProgress.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.grpProgress.Appearance.Options.UseBackColor = true;
-            this.grpProgress.Appearance.Options.UseBorderColor = true;
-            this.grpProgress.Appearance.Options.UseFont = true;
-            this.grpProgress.Appearance.Options.UseForeColor = true;
-            this.grpProgress.Appearance.Options.UseTextOptions = true;
-            this.grpProgress.AppearanceCaption.BackColor = System.Drawing.Color.White;
-            this.grpProgress.AppearanceCaption.BorderColor = System.Drawing.Color.White;
-            this.grpProgress.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.grpProgress.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.grpProgress.AppearanceCaption.Options.UseBackColor = true;
-            this.grpProgress.AppearanceCaption.Options.UseBorderColor = true;
-            this.grpProgress.AppearanceCaption.Options.UseFont = true;
-            this.grpProgress.AppearanceCaption.Options.UseForeColor = true;
-            this.grpProgress.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.grpProgress.CaptionLocation = DevExpress.Utils.Locations.Top;
-            this.grpProgress.Controls.Add(this.labelProgress);
-            this.grpProgress.Controls.Add(this.progressBar);
-            this.grpProgress.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpProgress.Location = new System.Drawing.Point(0, 242);
-            this.grpProgress.Name = "grpProgress";
-            this.grpProgress.Size = new System.Drawing.Size(1574, 141);
-            this.grpProgress.TabIndex = 2;
-            this.grpProgress.Text = "Overall Progress";
-            // 
-            // labelProgress
-            // 
-            this.labelProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.labelProgress.Appearance.ForeColor = System.Drawing.Color.Silver;
-            this.labelProgress.Appearance.Options.UseFont = true;
-            this.labelProgress.Appearance.Options.UseForeColor = true;
-            this.labelProgress.Location = new System.Drawing.Point(20, 96);
-            this.labelProgress.Name = "labelProgress";
-            this.labelProgress.Size = new System.Drawing.Size(182, 17);
-            this.labelProgress.TabIndex = 1;
-            this.labelProgress.Text = "0 out of 8 departments cleared";
-            // 
-            // progressBar
-            // 
-            this.progressBar.EditValue = 5;
-            this.progressBar.Location = new System.Drawing.Point(20, 64);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1545, 26);
-            this.progressBar.TabIndex = 0;
-            // 
-            // pnlStatRow
-            // 
-            this.pnlStatRow.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlStatRow.Appearance.Options.UseBackColor = true;
-            this.pnlStatRow.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlStatRow.Controls.Add(this.pnlCard3);
-            this.pnlStatRow.Controls.Add(this.pnlSpacer2);
-            this.pnlStatRow.Controls.Add(this.pnlCard2);
-            this.pnlStatRow.Controls.Add(this.pnlSpacer1);
-            this.pnlStatRow.Controls.Add(this.pnlCard1);
-            this.pnlStatRow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlStatRow.Location = new System.Drawing.Point(0, 100);
-            this.pnlStatRow.Name = "pnlStatRow";
-            this.pnlStatRow.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlStatRow.Size = new System.Drawing.Size(1574, 142);
-            this.pnlStatRow.TabIndex = 1;
-            // 
-            // pnlCard3
-            // 
-            this.pnlCard3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
-            this.pnlCard3.Appearance.Options.UseBackColor = true;
-            this.pnlCard3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlCard3.Controls.Add(this.labelCard3Value);
-            this.pnlCard3.Controls.Add(this.labelCard3Title);
-            this.pnlCard3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCard3.Location = new System.Drawing.Point(964, 10);
-            this.pnlCard3.Name = "pnlCard3";
-            this.pnlCard3.Size = new System.Drawing.Size(600, 122);
-            this.pnlCard3.TabIndex = 5;
-            // 
-            // labelCard3Value
-            // 
-            this.labelCard3Value.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.labelCard3Value.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelCard3Value.Appearance.Options.UseFont = true;
-            this.labelCard3Value.Appearance.Options.UseForeColor = true;
-            this.labelCard3Value.Location = new System.Drawing.Point(17, 44);
-            this.labelCard3Value.Name = "labelCard3Value";
-            this.labelCard3Value.Size = new System.Drawing.Size(117, 32);
-            this.labelCard3Value.TabIndex = 2;
-            this.labelCard3Value.Text = "In Progress";
-            // 
-            // labelCard3Title
-            // 
-            this.labelCard3Title.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.labelCard3Title.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.labelCard3Title.Appearance.Options.UseFont = true;
-            this.labelCard3Title.Appearance.Options.UseForeColor = true;
-            this.labelCard3Title.Location = new System.Drawing.Point(17, 13);
-            this.labelCard3Title.Name = "labelCard3Title";
-            this.labelCard3Title.Size = new System.Drawing.Size(51, 25);
-            this.labelCard3Title.TabIndex = 2;
-            this.labelCard3Title.Text = "Status";
-            // 
-            // pnlSpacer2
-            // 
-            this.pnlSpacer2.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlSpacer2.Appearance.Options.UseBackColor = true;
-            this.pnlSpacer2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlSpacer2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSpacer2.Location = new System.Drawing.Point(944, 10);
-            this.pnlSpacer2.Name = "pnlSpacer2";
-            this.pnlSpacer2.Size = new System.Drawing.Size(20, 122);
-            this.pnlSpacer2.TabIndex = 4;
-            // 
-            // pnlCard2
-            // 
-            this.pnlCard2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
-            this.pnlCard2.Appearance.Options.UseBackColor = true;
-            this.pnlCard2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlCard2.Controls.Add(this.labelCard2Value);
-            this.pnlCard2.Controls.Add(this.labelCard2Title);
-            this.pnlCard2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCard2.Location = new System.Drawing.Point(487, 10);
-            this.pnlCard2.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.pnlCard2.Name = "pnlCard2";
-            this.pnlCard2.Size = new System.Drawing.Size(457, 122);
-            this.pnlCard2.TabIndex = 2;
-            // 
-            // labelCard2Value
-            // 
-            this.labelCard2Value.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.labelCard2Value.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelCard2Value.Appearance.Options.UseFont = true;
-            this.labelCard2Value.Appearance.Options.UseForeColor = true;
-            this.labelCard2Value.Location = new System.Drawing.Point(17, 48);
-            this.labelCard2Value.Name = "labelCard2Value";
-            this.labelCard2Value.Size = new System.Drawing.Size(33, 32);
-            this.labelCard2Value.TabIndex = 1;
-            this.labelCard2Value.Text = "0%";
-            // 
-            // labelCard2Title
-            // 
-            this.labelCard2Title.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.labelCard2Title.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.labelCard2Title.Appearance.Options.UseFont = true;
-            this.labelCard2Title.Appearance.Options.UseForeColor = true;
-            this.labelCard2Title.Location = new System.Drawing.Point(17, 17);
-            this.labelCard2Title.Name = "labelCard2Title";
-            this.labelCard2Title.Size = new System.Drawing.Size(73, 25);
-            this.labelCard2Title.TabIndex = 0;
-            this.labelCard2Title.Text = "Progress";
-            // 
-            // pnlSpacer1
-            // 
-            this.pnlSpacer1.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlSpacer1.Appearance.Options.UseBackColor = true;
-            this.pnlSpacer1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlSpacer1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSpacer1.Location = new System.Drawing.Point(467, 10);
-            this.pnlSpacer1.Name = "pnlSpacer1";
-            this.pnlSpacer1.Size = new System.Drawing.Size(20, 122);
-            this.pnlSpacer1.TabIndex = 3;
-            // 
-            // pnlCard1
-            // 
-            this.pnlCard1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
-            this.pnlCard1.Appearance.Options.UseBackColor = true;
-            this.pnlCard1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlCard1.Controls.Add(this.labelCard1Value);
-            this.pnlCard1.Controls.Add(this.labelCard1Title);
-            this.pnlCard1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCard1.Location = new System.Drawing.Point(10, 10);
-            this.pnlCard1.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.pnlCard1.Name = "pnlCard1";
-            this.pnlCard1.Size = new System.Drawing.Size(457, 122);
-            this.pnlCard1.TabIndex = 0;
-            // 
-            // labelCard1Value
-            // 
-            this.labelCard1Value.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.labelCard1Value.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelCard1Value.Appearance.Options.UseFont = true;
-            this.labelCard1Value.Appearance.Options.UseForeColor = true;
-            this.labelCard1Value.Location = new System.Drawing.Point(24, 48);
-            this.labelCard1Value.Name = "labelCard1Value";
-            this.labelCard1Value.Size = new System.Drawing.Size(49, 32);
-            this.labelCard1Value.TabIndex = 3;
-            this.labelCard1Value.Text = "0 / 8";
-            // 
-            // labelCard1Title
-            // 
-            this.labelCard1Title.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.labelCard1Title.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.labelCard1Title.Appearance.Options.UseFont = true;
-            this.labelCard1Title.Appearance.Options.UseForeColor = true;
-            this.labelCard1Title.Location = new System.Drawing.Point(23, 17);
-            this.labelCard1Title.Name = "labelCard1Title";
-            this.labelCard1Title.Size = new System.Drawing.Size(178, 25);
-            this.labelCard1Title.TabIndex = 2;
-            this.labelCard1Title.Text = "Departments Cleared";
-            // 
-            // pnlPageHeader
-            // 
-            this.pnlPageHeader.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlPageHeader.Appearance.Options.UseBackColor = true;
-            this.pnlPageHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlPageHeader.Controls.Add(this.lblFullNameWelcome);
-            this.pnlPageHeader.Controls.Add(this.labelControl4);
-            this.pnlPageHeader.Controls.Add(this.labelWelcome);
-            this.pnlPageHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlPageHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlPageHeader.Name = "pnlPageHeader";
-            this.pnlPageHeader.Size = new System.Drawing.Size(1574, 100);
-            this.pnlPageHeader.TabIndex = 0;
-            // 
-            // lblFullNameWelcome
-            // 
-            this.lblFullNameWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblFullNameWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.lblFullNameWelcome.Appearance.Options.UseFont = true;
-            this.lblFullNameWelcome.Appearance.Options.UseForeColor = true;
-            this.lblFullNameWelcome.Location = new System.Drawing.Point(220, 14);
-            this.lblFullNameWelcome.Name = "lblFullNameWelcome";
-            this.lblFullNameWelcome.Size = new System.Drawing.Size(54, 37);
-            this.lblFullNameWelcome.TabIndex = 4;
-            this.lblFullNameWelcome.Text = "Aiks";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Silver;
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(20, 50);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(297, 17);
-            this.labelControl4.TabIndex = 3;
-            this.labelControl4.Text = "Here\'s your clearance overview for this semester.";
-            // 
-            // labelWelcome
-            // 
-            this.labelWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.labelWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelWelcome.Appearance.Options.UseFont = true;
-            this.labelWelcome.Appearance.Options.UseForeColor = true;
-            this.labelWelcome.Location = new System.Drawing.Point(20, 14);
-            this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(194, 37);
-            this.labelWelcome.TabIndex = 0;
-            this.labelWelcome.Text = "Welcome back,";
-            // 
             // navBarControl1
             // 
             this.navBarControl1.Appearance.Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
@@ -1905,6 +1906,36 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDashboard)).EndInit();
+            this.pnlDashboard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupRecentActivity)).EndInit();
+            this.groupRecentActivity.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridRecentActivity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDeptStatus)).EndInit();
+            this.groupDeptStatus.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeptStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpProgress)).EndInit();
+            this.grpProgress.ResumeLayout(false);
+            this.grpProgress.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlStatRow)).EndInit();
+            this.pnlStatRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlCard3)).EndInit();
+            this.pnlCard3.ResumeLayout(false);
+            this.pnlCard3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlCard2)).EndInit();
+            this.pnlCard2.ResumeLayout(false);
+            this.pnlCard2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlCard1)).EndInit();
+            this.pnlCard1.ResumeLayout(false);
+            this.pnlCard1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlPageHeader)).EndInit();
+            this.pnlPageHeader.ResumeLayout(false);
+            this.pnlPageHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRequestClearance)).EndInit();
             this.pnlRequestClearance.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlRow1)).EndInit();
@@ -1963,36 +1994,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
             this.panelControl7.ResumeLayout(false);
             this.panelControl7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlDashboard)).EndInit();
-            this.pnlDashboard.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupRecentActivity)).EndInit();
-            this.groupRecentActivity.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridRecentActivity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupDeptStatus)).EndInit();
-            this.groupDeptStatus.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridDeptStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grpProgress)).EndInit();
-            this.grpProgress.ResumeLayout(false);
-            this.grpProgress.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlStatRow)).EndInit();
-            this.pnlStatRow.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pnlCard3)).EndInit();
-            this.pnlCard3.ResumeLayout(false);
-            this.pnlCard3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlCard2)).EndInit();
-            this.pnlCard2.ResumeLayout(false);
-            this.pnlCard2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlSpacer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlCard1)).EndInit();
-            this.pnlCard1.ResumeLayout(false);
-            this.pnlCard1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlPageHeader)).EndInit();
-            this.pnlPageHeader.ResumeLayout(false);
-            this.pnlPageHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.ResumeLayout(false);
 
