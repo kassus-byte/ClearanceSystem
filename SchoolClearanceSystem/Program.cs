@@ -4,7 +4,9 @@ using DevExpress.UserSkins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Data.Sqlite;
 using System.Windows.Forms;
+
 
 namespace SchoolClearanceSystem
 {
@@ -16,9 +18,10 @@ namespace SchoolClearanceSystem
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StudentPortal());
+            Application.Run(new Registration());
         }
     }
 }
