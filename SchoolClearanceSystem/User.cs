@@ -16,7 +16,14 @@ namespace SchoolClearanceSystem
         public string Role { get; set; }
         public string Password { get; set; }
 
-        // Constructor to easily create a user
+        // 1. ADDED: Empty Constructor
+        // This allows you to use the "return new User { ... }" syntax in DatabaseManager
+        public User()
+        {
+        }
+
+        // 2. Existing Constructor
+        // This allows you to create a user with all data in one line
         public User(string id, string name, string prog, string year, string role, string pass)
         {
             UserID = id;

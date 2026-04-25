@@ -159,10 +159,10 @@
             this.cmbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbYear.Properties.Items.AddRange(new object[] {
-            "First Year",
-            "Second Year",
-            "Third Year",
-            "Fourth Year"});
+            "I",
+            "II",
+            "III",
+            "IV"});
             this.cmbYear.Size = new System.Drawing.Size(262, 40);
             this.cmbYear.TabIndex = 11;
             // 

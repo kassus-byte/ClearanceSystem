@@ -50,5 +50,35 @@ namespace SchoolClearanceSystem
                 }
             }
         }
+
+        public User GetUserDetails(string userId)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT FullName, UserID, Program, Year, Role FROM Users WHERE UserID = @id";
+
+                using (var command = new SqliteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@id", userId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new User
+                            {
+                                FullName = reader["FullName"].ToString(),
+                                UserID = reader["UserID"].ToString(),
+                                Program = reader["Program"].ToString(),
+                                Year = reader["Year"].ToString(),
+                                Role = reader["Role"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+            return null; // If no user found
+        }
     }
 }

@@ -39,12 +39,33 @@
             this.navBarItem7 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem8 = new DevExpress.XtraNavBar.NavBarItem();
             this.pnlUser = new DevExpress.XtraEditors.PanelControl();
-            this.labelProgram = new DevExpress.XtraEditors.LabelControl();
-            this.labelSchoolID = new DevExpress.XtraEditors.LabelControl();
-            this.labelName = new DevExpress.XtraEditors.LabelControl();
+            this.lblRole = new DevExpress.XtraEditors.LabelControl();
+            this.lblYear = new DevExpress.XtraEditors.LabelControl();
+            this.lblProgram = new DevExpress.XtraEditors.LabelControl();
+            this.lblUserID = new DevExpress.XtraEditors.LabelControl();
+            this.lblFullName = new DevExpress.XtraEditors.LabelControl();
             this.pnlHeader = new DevExpress.XtraEditors.PanelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.pnlRequestClearance = new DevExpress.XtraEditors.PanelControl();
+            this.pnlRow1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.btnSubmitRequest = new DevExpress.XtraEditors.SimpleButton();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbAcademicYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbSemester = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.pnlRCHeader = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.pnlNotifications = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
             this.pnlRequirements = new DevExpress.XtraEditors.PanelControl();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
             this.gridRequirements = new DevExpress.XtraGrid.GridControl();
@@ -130,26 +151,9 @@
             this.labelCard1Value = new DevExpress.XtraEditors.LabelControl();
             this.labelCard1Title = new DevExpress.XtraEditors.LabelControl();
             this.pnlPageHeader = new DevExpress.XtraEditors.PanelControl();
+            this.lblFullNameWelcome = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelWelcome = new DevExpress.XtraEditors.LabelControl();
-            this.pnlRequestClearance = new DevExpress.XtraEditors.PanelControl();
-            this.pnlRow1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.pnlRCHeader = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.pnlNotifications = new DevExpress.XtraEditors.PanelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
@@ -157,7 +161,6 @@
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -170,6 +173,20 @@
             this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRequestClearance)).BeginInit();
+            this.pnlRequestClearance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRow1)).BeginInit();
+            this.pnlRow1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAcademicYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbSemester.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRCHeader)).BeginInit();
+            this.pnlRCHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlNotifications)).BeginInit();
+            this.pnlNotifications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRequirements)).BeginInit();
             this.pnlRequirements.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).BeginInit();
@@ -229,20 +246,6 @@
             this.pnlCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlPageHeader)).BeginInit();
             this.pnlPageHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlRequestClearance)).BeginInit();
-            this.pnlRequestClearance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlRow1)).BeginInit();
-            this.pnlRow1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlRCHeader)).BeginInit();
-            this.pnlRCHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlNotifications)).BeginInit();
-            this.pnlNotifications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -403,9 +406,11 @@
             this.pnlUser.Appearance.Options.UseBackColor = true;
             this.pnlUser.Appearance.Options.UseBorderColor = true;
             this.pnlUser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlUser.Controls.Add(this.labelProgram);
-            this.pnlUser.Controls.Add(this.labelSchoolID);
-            this.pnlUser.Controls.Add(this.labelName);
+            this.pnlUser.Controls.Add(this.lblRole);
+            this.pnlUser.Controls.Add(this.lblYear);
+            this.pnlUser.Controls.Add(this.lblProgram);
+            this.pnlUser.Controls.Add(this.lblUserID);
+            this.pnlUser.Controls.Add(this.lblFullName);
             this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUser.Location = new System.Drawing.Point(0, 80);
             this.pnlUser.LookAndFeel.SkinMaskColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
@@ -414,41 +419,65 @@
             this.pnlUser.Size = new System.Drawing.Size(300, 85);
             this.pnlUser.TabIndex = 1;
             // 
-            // labelProgram
+            // lblRole
             // 
-            this.labelProgram.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
-            this.labelProgram.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelProgram.Appearance.Options.UseFont = true;
-            this.labelProgram.Appearance.Options.UseForeColor = true;
-            this.labelProgram.Location = new System.Drawing.Point(175, 40);
-            this.labelProgram.Name = "labelProgram";
-            this.labelProgram.Size = new System.Drawing.Size(34, 13);
-            this.labelProgram.TabIndex = 2;
-            this.labelProgram.Text = "BSIT III";
+            this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblRole.Appearance.Options.UseFont = true;
+            this.lblRole.Appearance.Options.UseForeColor = true;
+            this.lblRole.Location = new System.Drawing.Point(94, 59);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(39, 13);
+            this.lblRole.TabIndex = 4;
+            this.lblRole.Text = "Student";
             // 
-            // labelSchoolID
+            // lblYear
             // 
-            this.labelSchoolID.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
-            this.labelSchoolID.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelSchoolID.Appearance.Options.UseFont = true;
-            this.labelSchoolID.Appearance.Options.UseForeColor = true;
-            this.labelSchoolID.Location = new System.Drawing.Point(94, 40);
-            this.labelSchoolID.Name = "labelSchoolID";
-            this.labelSchoolID.Size = new System.Drawing.Size(48, 13);
-            this.labelSchoolID.TabIndex = 1;
-            this.labelSchoolID.Text = "2014-1234";
+            this.lblYear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblYear.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblYear.Appearance.Options.UseFont = true;
+            this.lblYear.Appearance.Options.UseForeColor = true;
+            this.lblYear.Location = new System.Drawing.Point(207, 40);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(6, 13);
+            this.lblYear.TabIndex = 3;
+            this.lblYear.Text = "II";
             // 
-            // labelName
+            // lblProgram
             // 
-            this.labelName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelName.Appearance.Options.UseFont = true;
-            this.labelName.Appearance.Options.UseForeColor = true;
-            this.labelName.Location = new System.Drawing.Point(94, 17);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(140, 17);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "Charlotte P. Forrosuelo";
+            this.lblProgram.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblProgram.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblProgram.Appearance.Options.UseFont = true;
+            this.lblProgram.Appearance.Options.UseForeColor = true;
+            this.lblProgram.Location = new System.Drawing.Point(179, 40);
+            this.lblProgram.Name = "lblProgram";
+            this.lblProgram.Size = new System.Drawing.Size(22, 13);
+            this.lblProgram.TabIndex = 2;
+            this.lblProgram.Text = "BSIT";
+            // 
+            // lblUserID
+            // 
+            this.lblUserID.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblUserID.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblUserID.Appearance.Options.UseFont = true;
+            this.lblUserID.Appearance.Options.UseForeColor = true;
+            this.lblUserID.Location = new System.Drawing.Point(94, 40);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(52, 13);
+            this.lblUserID.TabIndex = 1;
+            this.lblUserID.Text = "2024-0704";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblFullName.Appearance.Options.UseFont = true;
+            this.lblFullName.Appearance.Options.UseForeColor = true;
+            this.lblFullName.Location = new System.Drawing.Point(94, 17);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(140, 17);
+            this.lblFullName.TabIndex = 0;
+            this.lblFullName.Text = "Charlotte P. Forrosuelo";
             // 
             // pnlHeader
             // 
@@ -495,6 +524,249 @@
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "College of Computer Studies";
             // 
+            // pnlRequestClearance
+            // 
+            this.pnlRequestClearance.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlRequestClearance.Controls.Add(this.pnlRow1);
+            this.pnlRequestClearance.Controls.Add(this.panelControl1);
+            this.pnlRequestClearance.Controls.Add(this.pnlRCHeader);
+            this.pnlRequestClearance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRequestClearance.Location = new System.Drawing.Point(15, 15);
+            this.pnlRequestClearance.Name = "pnlRequestClearance";
+            this.pnlRequestClearance.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlRequestClearance.TabIndex = 6;
+            // 
+            // pnlRow1
+            // 
+            this.pnlRow1.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlRow1.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pnlRow1.Appearance.Options.UseBackColor = true;
+            this.pnlRow1.Appearance.Options.UseBorderColor = true;
+            this.pnlRow1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlRow1.Controls.Add(this.labelControl10);
+            this.pnlRow1.Controls.Add(this.btnSubmitRequest);
+            this.pnlRow1.Controls.Add(this.memoEdit1);
+            this.pnlRow1.Controls.Add(this.labelControl9);
+            this.pnlRow1.Controls.Add(this.cmbAcademicYear);
+            this.pnlRow1.Controls.Add(this.cmbSemester);
+            this.pnlRow1.Controls.Add(this.comboBoxEdit3);
+            this.pnlRow1.Controls.Add(this.labelControl8);
+            this.pnlRow1.Controls.Add(this.labelControl7);
+            this.pnlRow1.Controls.Add(this.labelControl6);
+            this.pnlRow1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRow1.Location = new System.Drawing.Point(0, 154);
+            this.pnlRow1.Name = "pnlRow1";
+            this.pnlRow1.Size = new System.Drawing.Size(1574, 485);
+            this.pnlRow1.TabIndex = 2;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(269, 413);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(295, 17);
+            this.labelControl10.TabIndex = 4;
+            this.labelControl10.Text = "You will be notified for each department update.";
+            // 
+            // btnSubmitRequest
+            // 
+            this.btnSubmitRequest.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.btnSubmitRequest.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.btnSubmitRequest.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitRequest.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnSubmitRequest.Appearance.Options.UseBackColor = true;
+            this.btnSubmitRequest.Appearance.Options.UseBorderColor = true;
+            this.btnSubmitRequest.Appearance.Options.UseFont = true;
+            this.btnSubmitRequest.Appearance.Options.UseForeColor = true;
+            this.btnSubmitRequest.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnSubmitRequest.AppearanceHovered.Options.UseBackColor = true;
+            this.btnSubmitRequest.Location = new System.Drawing.Point(23, 395);
+            this.btnSubmitRequest.Name = "btnSubmitRequest";
+            this.btnSubmitRequest.Size = new System.Drawing.Size(225, 49);
+            this.btnSubmitRequest.TabIndex = 3;
+            this.btnSubmitRequest.Text = "Submit Request";
+            this.btnSubmitRequest.Click += new System.EventHandler(this.btnSubmitRequest_Click);
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Location = new System.Drawing.Point(23, 240);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(1523, 130);
+            this.memoEdit1.TabIndex = 7;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
+            this.labelControl9.Location = new System.Drawing.Point(21, 205);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(210, 21);
+            this.labelControl9.TabIndex = 6;
+            this.labelControl9.Text = "Remarks / Additional Notes";
+            // 
+            // cmbAcademicYear
+            // 
+            this.cmbAcademicYear.Location = new System.Drawing.Point(810, 61);
+            this.cmbAcademicYear.Name = "cmbAcademicYear";
+            this.cmbAcademicYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbAcademicYear.Properties.Appearance.Options.UseFont = true;
+            this.cmbAcademicYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbAcademicYear.Properties.Items.AddRange(new object[] {
+            "2025-2026",
+            "2026-2027",
+            "2027-2028",
+            "2028-2029",
+            "2029-2030"});
+            this.cmbAcademicYear.Size = new System.Drawing.Size(749, 32);
+            this.cmbAcademicYear.TabIndex = 3;
+            // 
+            // cmbSemester
+            // 
+            this.cmbSemester.Location = new System.Drawing.Point(22, 61);
+            this.cmbSemester.Name = "cmbSemester";
+            this.cmbSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSemester.Properties.Appearance.Options.UseFont = true;
+            this.cmbSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbSemester.Properties.Items.AddRange(new object[] {
+            "1st Semester",
+            "2nd Semester"});
+            this.cmbSemester.Size = new System.Drawing.Size(683, 32);
+            this.cmbSemester.TabIndex = 2;
+            // 
+            // comboBoxEdit3
+            // 
+            this.comboBoxEdit3.Location = new System.Drawing.Point(23, 150);
+            this.comboBoxEdit3.Name = "comboBoxEdit3";
+            this.comboBoxEdit3.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.comboBoxEdit3.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit3.Size = new System.Drawing.Size(1537, 32);
+            this.comboBoxEdit3.TabIndex = 5;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.labelControl8.Appearance.Options.UseFont = true;
+            this.labelControl8.Appearance.Options.UseForeColor = true;
+            this.labelControl8.Location = new System.Drawing.Point(21, 109);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(62, 21);
+            this.labelControl8.TabIndex = 4;
+            this.labelControl8.Text = "Purpose";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(810, 33);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(113, 21);
+            this.labelControl7.TabIndex = 1;
+            this.labelControl7.Text = "Academic Year";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Location = new System.Drawing.Point(22, 25);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(70, 21);
+            this.labelControl6.TabIndex = 0;
+            this.labelControl6.Text = "Semester";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Linen;
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.labelControl11);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 100);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1574, 54);
+            this.panelControl1.TabIndex = 3;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
+            this.labelControl11.Appearance.Options.UseFont = true;
+            this.labelControl11.Appearance.Options.UseForeColor = true;
+            this.labelControl11.Location = new System.Drawing.Point(23, 16);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(320, 15);
+            this.labelControl11.TabIndex = 0;
+            this.labelControl11.Text = "Oyy! Naa pakay balance sa last sem. Bayadi sa to. hahahhaha";
+            // 
+            // pnlRCHeader
+            // 
+            this.pnlRCHeader.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlRCHeader.Appearance.Options.UseBackColor = true;
+            this.pnlRCHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlRCHeader.Controls.Add(this.labelControl5);
+            this.pnlRCHeader.Controls.Add(this.labelControl3);
+            this.pnlRCHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRCHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlRCHeader.Name = "pnlRCHeader";
+            this.pnlRCHeader.Size = new System.Drawing.Size(1574, 100);
+            this.pnlRCHeader.TabIndex = 0;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Appearance.Options.UseForeColor = true;
+            this.labelControl5.Location = new System.Drawing.Point(22, 59);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(359, 17);
+            this.labelControl5.TabIndex = 3;
+            this.labelControl5.Text = "Submit a new clearance request for the selected semester...";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(22, 16);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(236, 37);
+            this.labelControl3.TabIndex = 0;
+            this.labelControl3.Text = "Request Clearance";
+            // 
+            // pnlNotifications
+            // 
+            this.pnlNotifications.Controls.Add(this.labelControl28);
+            this.pnlNotifications.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlNotifications.Location = new System.Drawing.Point(15, 15);
+            this.pnlNotifications.Name = "pnlNotifications";
+            this.pnlNotifications.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlNotifications.TabIndex = 10;
+            // 
+            // labelControl28
+            // 
+            this.labelControl28.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
+            this.labelControl28.Appearance.Options.UseFont = true;
+            this.labelControl28.Location = new System.Drawing.Point(230, 263);
+            this.labelControl28.Name = "labelControl28";
+            this.labelControl28.Size = new System.Drawing.Size(191, 33);
+            this.labelControl28.TabIndex = 0;
+            this.labelControl28.Text = "notificationsssss";
+            // 
             // pnlRequirements
             // 
             this.pnlRequirements.Appearance.BackColor = System.Drawing.Color.White;
@@ -509,6 +781,7 @@
             this.pnlRequirements.Name = "pnlRequirements";
             this.pnlRequirements.Size = new System.Drawing.Size(1574, 1050);
             this.pnlRequirements.TabIndex = 9;
+            this.pnlRequirements.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRequirements_Paint);
             // 
             // panelControl9
             // 
@@ -765,6 +1038,7 @@
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
+            this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
             // 
             // gridView4
             // 
@@ -1014,9 +1288,9 @@
             this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.groupControl4.Controls.Add(this.gridControl3);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl4.Location = new System.Drawing.Point(2, 327);
+            this.groupControl4.Location = new System.Drawing.Point(0, 325);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1570, 328);
+            this.groupControl4.Size = new System.Drawing.Size(1574, 328);
             this.groupControl4.TabIndex = 9;
             this.groupControl4.Text = "Request History";
             // 
@@ -1026,7 +1300,7 @@
             this.gridControl3.Location = new System.Drawing.Point(2, 29);
             this.gridControl3.MainView = this.gridView5;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1566, 297);
+            this.gridControl3.Size = new System.Drawing.Size(1570, 297);
             this.gridControl3.TabIndex = 5;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1093,9 +1367,9 @@
             this.groupControl5.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl5.Controls.Add(this.panelControl6);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl5.Location = new System.Drawing.Point(2, 102);
+            this.groupControl5.Location = new System.Drawing.Point(0, 100);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(1570, 225);
+            this.groupControl5.Size = new System.Drawing.Size(1574, 225);
             this.groupControl5.TabIndex = 10;
             this.groupControl5.Text = "Active Request — 1st Sem, 2025–2026";
             // 
@@ -1108,7 +1382,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl6.Location = new System.Drawing.Point(2, 179);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(1566, 44);
+            this.panelControl6.Size = new System.Drawing.Size(1570, 44);
             this.panelControl6.TabIndex = 0;
             // 
             // labelControl25
@@ -1131,9 +1405,9 @@
             this.panelControl7.Controls.Add(this.labelControl26);
             this.panelControl7.Controls.Add(this.labelControl27);
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl7.Location = new System.Drawing.Point(2, 2);
+            this.panelControl7.Location = new System.Drawing.Point(0, 0);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1570, 100);
+            this.panelControl7.Size = new System.Drawing.Size(1574, 100);
             this.panelControl7.TabIndex = 8;
             // 
             // labelControl26
@@ -1189,9 +1463,9 @@
             this.groupRecentActivity.Controls.Add(this.gridRecentActivity);
             this.groupRecentActivity.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupRecentActivity.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupRecentActivity.Location = new System.Drawing.Point(2, 752);
+            this.groupRecentActivity.Location = new System.Drawing.Point(0, 750);
             this.groupRecentActivity.Name = "groupRecentActivity";
-            this.groupRecentActivity.Size = new System.Drawing.Size(1570, 253);
+            this.groupRecentActivity.Size = new System.Drawing.Size(1574, 253);
             this.groupRecentActivity.TabIndex = 4;
             this.groupRecentActivity.Text = "Recent Activity";
             // 
@@ -1202,7 +1476,7 @@
             this.gridRecentActivity.Location = new System.Drawing.Point(2, 29);
             this.gridRecentActivity.MainView = this.gridView2;
             this.gridRecentActivity.Name = "gridRecentActivity";
-            this.gridRecentActivity.Size = new System.Drawing.Size(1566, 224);
+            this.gridRecentActivity.Size = new System.Drawing.Size(1570, 224);
             this.gridRecentActivity.TabIndex = 0;
             this.gridRecentActivity.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -1243,9 +1517,9 @@
             this.groupDeptStatus.AppearanceCaption.Options.UseForeColor = true;
             this.groupDeptStatus.Controls.Add(this.gridDeptStatus);
             this.groupDeptStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupDeptStatus.Location = new System.Drawing.Point(2, 385);
+            this.groupDeptStatus.Location = new System.Drawing.Point(0, 383);
             this.groupDeptStatus.Name = "groupDeptStatus";
-            this.groupDeptStatus.Size = new System.Drawing.Size(1570, 367);
+            this.groupDeptStatus.Size = new System.Drawing.Size(1574, 367);
             this.groupDeptStatus.TabIndex = 3;
             this.groupDeptStatus.Text = "Department Status";
             // 
@@ -1256,7 +1530,7 @@
             this.gridDeptStatus.Location = new System.Drawing.Point(2, 29);
             this.gridDeptStatus.MainView = this.gridView1;
             this.gridDeptStatus.Name = "gridDeptStatus";
-            this.gridDeptStatus.Size = new System.Drawing.Size(1566, 336);
+            this.gridDeptStatus.Size = new System.Drawing.Size(1570, 336);
             this.gridDeptStatus.TabIndex = 0;
             this.gridDeptStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1311,9 +1585,9 @@
             this.grpProgress.Controls.Add(this.labelProgress);
             this.grpProgress.Controls.Add(this.progressBar);
             this.grpProgress.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpProgress.Location = new System.Drawing.Point(2, 244);
+            this.grpProgress.Location = new System.Drawing.Point(0, 242);
             this.grpProgress.Name = "grpProgress";
-            this.grpProgress.Size = new System.Drawing.Size(1570, 141);
+            this.grpProgress.Size = new System.Drawing.Size(1574, 141);
             this.grpProgress.TabIndex = 2;
             this.grpProgress.Text = "Overall Progress";
             // 
@@ -1348,10 +1622,10 @@
             this.pnlStatRow.Controls.Add(this.pnlSpacer1);
             this.pnlStatRow.Controls.Add(this.pnlCard1);
             this.pnlStatRow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlStatRow.Location = new System.Drawing.Point(2, 102);
+            this.pnlStatRow.Location = new System.Drawing.Point(0, 100);
             this.pnlStatRow.Name = "pnlStatRow";
             this.pnlStatRow.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlStatRow.Size = new System.Drawing.Size(1570, 142);
+            this.pnlStatRow.Size = new System.Drawing.Size(1574, 142);
             this.pnlStatRow.TabIndex = 1;
             // 
             // pnlCard3
@@ -1364,7 +1638,7 @@
             this.pnlCard3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCard3.Location = new System.Drawing.Point(964, 10);
             this.pnlCard3.Name = "pnlCard3";
-            this.pnlCard3.Size = new System.Drawing.Size(596, 122);
+            this.pnlCard3.Size = new System.Drawing.Size(600, 122);
             this.pnlCard3.TabIndex = 5;
             // 
             // labelCard3Value
@@ -1494,13 +1768,26 @@
             this.pnlPageHeader.Appearance.BackColor = System.Drawing.Color.White;
             this.pnlPageHeader.Appearance.Options.UseBackColor = true;
             this.pnlPageHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlPageHeader.Controls.Add(this.lblFullNameWelcome);
             this.pnlPageHeader.Controls.Add(this.labelControl4);
             this.pnlPageHeader.Controls.Add(this.labelWelcome);
             this.pnlPageHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlPageHeader.Location = new System.Drawing.Point(2, 2);
+            this.pnlPageHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlPageHeader.Name = "pnlPageHeader";
-            this.pnlPageHeader.Size = new System.Drawing.Size(1570, 100);
+            this.pnlPageHeader.Size = new System.Drawing.Size(1574, 100);
             this.pnlPageHeader.TabIndex = 0;
+            // 
+            // lblFullNameWelcome
+            // 
+            this.lblFullNameWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblFullNameWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblFullNameWelcome.Appearance.Options.UseFont = true;
+            this.lblFullNameWelcome.Appearance.Options.UseForeColor = true;
+            this.lblFullNameWelcome.Location = new System.Drawing.Point(220, 14);
+            this.lblFullNameWelcome.Name = "lblFullNameWelcome";
+            this.lblFullNameWelcome.Size = new System.Drawing.Size(54, 37);
+            this.lblFullNameWelcome.TabIndex = 4;
+            this.lblFullNameWelcome.Text = "Aiks";
             // 
             // labelControl4
             // 
@@ -1522,232 +1809,9 @@
             this.labelWelcome.Appearance.Options.UseForeColor = true;
             this.labelWelcome.Location = new System.Drawing.Point(20, 14);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(267, 37);
+            this.labelWelcome.Size = new System.Drawing.Size(194, 37);
             this.labelWelcome.TabIndex = 0;
-            this.labelWelcome.Text = "Welcome back, Kass!";
-            // 
-            // pnlRequestClearance
-            // 
-            this.pnlRequestClearance.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlRequestClearance.Controls.Add(this.pnlRow1);
-            this.pnlRequestClearance.Controls.Add(this.panelControl1);
-            this.pnlRequestClearance.Controls.Add(this.pnlRCHeader);
-            this.pnlRequestClearance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRequestClearance.Location = new System.Drawing.Point(15, 15);
-            this.pnlRequestClearance.Name = "pnlRequestClearance";
-            this.pnlRequestClearance.Size = new System.Drawing.Size(1574, 1050);
-            this.pnlRequestClearance.TabIndex = 6;
-            // 
-            // pnlRow1
-            // 
-            this.pnlRow1.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlRow1.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pnlRow1.Appearance.Options.UseBackColor = true;
-            this.pnlRow1.Appearance.Options.UseBorderColor = true;
-            this.pnlRow1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlRow1.Controls.Add(this.labelControl10);
-            this.pnlRow1.Controls.Add(this.simpleButton1);
-            this.pnlRow1.Controls.Add(this.memoEdit1);
-            this.pnlRow1.Controls.Add(this.labelControl9);
-            this.pnlRow1.Controls.Add(this.comboBoxEdit2);
-            this.pnlRow1.Controls.Add(this.comboBoxEdit1);
-            this.pnlRow1.Controls.Add(this.comboBoxEdit3);
-            this.pnlRow1.Controls.Add(this.labelControl8);
-            this.pnlRow1.Controls.Add(this.labelControl7);
-            this.pnlRow1.Controls.Add(this.labelControl6);
-            this.pnlRow1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlRow1.Location = new System.Drawing.Point(0, 154);
-            this.pnlRow1.Name = "pnlRow1";
-            this.pnlRow1.Size = new System.Drawing.Size(1574, 485);
-            this.pnlRow1.TabIndex = 2;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.Silver;
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(269, 413);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(295, 17);
-            this.labelControl10.TabIndex = 4;
-            this.labelControl10.Text = "You will be notified for each department update.";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.simpleButton1.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseBorderColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton1.AppearanceHovered.Options.UseBackColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(23, 395);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(225, 49);
-            this.simpleButton1.TabIndex = 3;
-            this.simpleButton1.Text = "Submit Request";
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Location = new System.Drawing.Point(23, 240);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(1523, 130);
-            this.memoEdit1.TabIndex = 7;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(21, 205);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(210, 21);
-            this.labelControl9.TabIndex = 6;
-            this.labelControl9.Text = "Remarks / Additional Notes";
-            // 
-            // comboBoxEdit2
-            // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(810, 61);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboBoxEdit2.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(749, 32);
-            this.comboBoxEdit2.TabIndex = 3;
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(22, 61);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(683, 32);
-            this.comboBoxEdit1.TabIndex = 2;
-            // 
-            // comboBoxEdit3
-            // 
-            this.comboBoxEdit3.Location = new System.Drawing.Point(23, 150);
-            this.comboBoxEdit3.Name = "comboBoxEdit3";
-            this.comboBoxEdit3.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboBoxEdit3.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit3.Size = new System.Drawing.Size(1537, 32);
-            this.comboBoxEdit3.TabIndex = 5;
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Appearance.Options.UseForeColor = true;
-            this.labelControl8.Location = new System.Drawing.Point(21, 109);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(62, 21);
-            this.labelControl8.TabIndex = 4;
-            this.labelControl8.Text = "Purpose";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(810, 33);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(113, 21);
-            this.labelControl7.TabIndex = 1;
-            this.labelControl7.Text = "Academic Year";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(22, 25);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(70, 21);
-            this.labelControl6.TabIndex = 0;
-            this.labelControl6.Text = "Semester";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Linen;
-            this.panelControl1.Appearance.Options.UseBackColor = true;
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.labelControl11);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 100);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1574, 54);
-            this.panelControl1.TabIndex = 3;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
-            this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(23, 16);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(320, 15);
-            this.labelControl11.TabIndex = 0;
-            this.labelControl11.Text = "Oyy! Naa pakay balance sa last sem. Bayadi sa to. hahahhaha";
-            // 
-            // pnlRCHeader
-            // 
-            this.pnlRCHeader.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlRCHeader.Appearance.Options.UseBackColor = true;
-            this.pnlRCHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlRCHeader.Controls.Add(this.labelControl5);
-            this.pnlRCHeader.Controls.Add(this.labelControl3);
-            this.pnlRCHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlRCHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlRCHeader.Name = "pnlRCHeader";
-            this.pnlRCHeader.Size = new System.Drawing.Size(1574, 100);
-            this.pnlRCHeader.TabIndex = 0;
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Silver;
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(22, 59);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(359, 17);
-            this.labelControl5.TabIndex = 3;
-            this.labelControl5.Text = "Submit a new clearance request for the selected semester...";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(22, 16);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(236, 37);
-            this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "Request Clearance";
-            // 
-            // pnlNotifications
-            // 
-            this.pnlNotifications.Controls.Add(this.labelControl28);
-            this.pnlNotifications.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlNotifications.Location = new System.Drawing.Point(15, 15);
-            this.pnlNotifications.Name = "pnlNotifications";
-            this.pnlNotifications.Size = new System.Drawing.Size(1574, 1050);
-            this.pnlNotifications.TabIndex = 10;
+            this.labelWelcome.Text = "Welcome back,";
             // 
             // navBarControl1
             // 
@@ -1814,16 +1878,6 @@
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // labelControl28
-            // 
-            this.labelControl28.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.labelControl28.Appearance.Options.UseFont = true;
-            this.labelControl28.Location = new System.Drawing.Point(230, 263);
-            this.labelControl28.Name = "labelControl28";
-            this.labelControl28.Size = new System.Drawing.Size(191, 33);
-            this.labelControl28.TabIndex = 0;
-            this.labelControl28.Text = "notificationsssss";
-            // 
             // StudentPortal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1836,6 +1890,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Clearance Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.StudentPortal_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
@@ -1850,6 +1905,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRequestClearance)).EndInit();
+            this.pnlRequestClearance.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRow1)).EndInit();
+            this.pnlRow1.ResumeLayout(false);
+            this.pnlRow1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAcademicYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbSemester.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRCHeader)).EndInit();
+            this.pnlRCHeader.ResumeLayout(false);
+            this.pnlRCHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlNotifications)).EndInit();
+            this.pnlNotifications.ResumeLayout(false);
+            this.pnlNotifications.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRequirements)).EndInit();
             this.pnlRequirements.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).EndInit();
@@ -1920,24 +1993,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlPageHeader)).EndInit();
             this.pnlPageHeader.ResumeLayout(false);
             this.pnlPageHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlRequestClearance)).EndInit();
-            this.pnlRequestClearance.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pnlRow1)).EndInit();
-            this.pnlRow1.ResumeLayout(false);
-            this.pnlRow1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlRCHeader)).EndInit();
-            this.pnlRCHeader.ResumeLayout(false);
-            this.pnlRCHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlNotifications)).EndInit();
-            this.pnlNotifications.ResumeLayout(false);
-            this.pnlNotifications.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1949,9 +2004,9 @@
         private DevExpress.XtraEditors.PanelControl pnlHeader;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.PanelControl pnlUser;
-        private DevExpress.XtraEditors.LabelControl labelProgram;
-        private DevExpress.XtraEditors.LabelControl labelSchoolID;
-        private DevExpress.XtraEditors.LabelControl labelName;
+        private DevExpress.XtraEditors.LabelControl lblProgram;
+        private DevExpress.XtraEditors.LabelControl lblUserID;
+        private DevExpress.XtraEditors.LabelControl lblFullName;
         private DevExpress.XtraNavBar.NavBarControl navBarControl2;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup6;
@@ -2008,11 +2063,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.PanelControl pnlRow1;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnSubmitRequest;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbAcademicYear;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbSemester;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl7;
@@ -2075,6 +2130,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.LabelControl labelControl28;
+        private DevExpress.XtraEditors.LabelControl lblYear;
+        private DevExpress.XtraEditors.LabelControl lblRole;
+        private DevExpress.XtraEditors.LabelControl lblFullNameWelcome;
     }
 }
 
