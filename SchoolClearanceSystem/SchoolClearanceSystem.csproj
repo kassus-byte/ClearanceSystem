@@ -165,9 +165,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Content Include="ClearanceSystem.db">
+    <None Include="ClearanceSystem.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="Dashboard\App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
