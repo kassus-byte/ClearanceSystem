@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace SchoolClearanceSystem
 {
@@ -9,13 +10,11 @@ namespace SchoolClearanceSystem
     {
         private string connectionString = "Data Source=ClearanceSystem.db";
 
-        // --- FIXED: CLEARANCE SEASON CONTROL WITH SAFETY ---
+        // --- 1. CLEARANCE SEASON CONTROL (With Safety Catch) ---
         public bool IsClearanceActive()
         {
             try
             {
-                // We use a direct check here to avoid the global try-catch in GetDataTable 
-                // if we just want a quiet true/false check.
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
@@ -23,111 +22,60 @@ namespace SchoolClearanceSystem
                     using (var command = new SqliteCommand(sql, connection))
                     {
                         var result = command.ExecuteScalar();
-                        if (result != null)
-                        {
-                            return result.ToString() == "1";
-                        }
+                        return result != null && result.ToString() == "1";
                     }
                 }
             }
-            catch (SqliteException ex) when (ex.SqliteErrorCode == 1) // Table not found
+            catch (SqliteException ex) when (ex.SqliteErrorCode == 1)
             {
-                // Table doesn't exist yet? Don't crash, just say clearance is inactive.
+                // Table doesn't exist? Assume inactive and don't crash.
                 return false;
             }
-            catch (Exception)
-            {
-                return false;
-            }
-            return false;
+            catch { return false; }
         }
 
         public void ToggleClearanceSeason(bool isActive)
         {
             int value = isActive ? 1 : 0;
-            // Using parameterized query for safety
             string sql = "UPDATE SystemSettings SET ClearanceIsActive = @val";
             var param = new SqliteParameter("@val", value);
             ExecuteNonQuery(sql, new[] { param });
         }
 
-        // --- GENERIC DATA FETCHER ---
-        public DataTable GetDataTable(string sql, SqliteParameter[] parameters = null)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                using (var connection = new SqliteConnection(connectionString))
-                {
-                    connection.Open();
-                    using (var command = new SqliteCommand(sql, connection))
-                    {
-                        if (parameters != null)
-                            command.Parameters.AddRange(parameters);
-
-                        using (var reader = command.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Only show message box for unexpected errors, not missing tables during startup
-                MessageBox.Show("Database Error: " + ex.Message);
-            }
-            return dt;
-        }
-
-        // --- DELETE USER LOGIC ---
-        public bool DeleteUser(string userId)
-        {
-            string sql = "DELETE FROM Users WHERE UserID = @id";
-            var param = new SqliteParameter("@id", userId);
-            return ExecuteNonQuery(sql, new[] { param }) > 0;
-        }
-
-        // Helper method to reduce code repetition
-        private int ExecuteNonQuery(string sql, SqliteParameter[] parameters = null)
+        // --- 2. REGISTRATION LOGIC (Fixed to return bool) ---
+        public bool SaveUser(User user)
         {
             try
             {
-                using (var connection = new SqliteConnection(connectionString))
-                {
-                    connection.Open();
-                    using (var command = new SqliteCommand(sql, connection))
-                    {
-                        if (parameters != null) command.Parameters.AddRange(parameters);
-                        return command.ExecuteNonQuery();
-                    }
-                }
+                string sql = "INSERT INTO Users (UserID, FullName, Program, Year, Role, Password) " +
+                             "VALUES (@id, @name, @prog, @year, @role, @pass)";
+
+                SqliteParameter[] ps = {
+                    new SqliteParameter("@id", user.UserID),
+                    new SqliteParameter("@name", user.FullName),
+                    new SqliteParameter("@prog", user.Program ?? "N/A"),
+                    new SqliteParameter("@year", user.Year ?? "N/A"),
+                    new SqliteParameter("@role", user.Role ?? "Student"),
+                    new SqliteParameter("@pass", user.Password)
+                };
+
+                return ExecuteNonQuery(sql, ps) > 0;
+            }
+            catch (SqliteException ex) when (ex.SqliteErrorCode == 19) // UNIQUE constraint failed
+            {
+                XtraMessageBox.Show("This User ID is already registered. Please use a different one.",
+                                    "Duplicate ID", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Execution Error: " + ex.Message);
-                return -1;
+                XtraMessageBox.Show("Database Error: " + ex.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
-        // --- REMAINING METHODS (SaveUser, ValidateLogin, GetUserDetails, etc.) ---
-        // Keep your existing implementations for these below...
-        public void SaveUser(User user)
-        {
-            string sql = "INSERT INTO Users (UserID, FullName, Program, Year, Role, Password) " +
-                         "VALUES (@id, @name, @prog, @year, @role, @pass)";
-
-            SqliteParameter[] ps = {
-                new SqliteParameter("@id", user.UserID),
-                new SqliteParameter("@name", user.FullName),
-                new SqliteParameter("@prog", user.Program ?? "N/A"),
-                new SqliteParameter("@year", user.Year ?? "N/A"),
-                new SqliteParameter("@role", user.Role ?? "Student"),
-                new SqliteParameter("@pass", user.Password)
-            };
-            ExecuteNonQuery(sql, ps);
-        }
-
+        // --- 3. LOGIN & USER DETAILS ---
         public bool ValidateLogin(string userId, string password)
         {
             string sql = "SELECT COUNT(*) FROM Users WHERE UserID = @id AND Password = @pass";
@@ -141,19 +89,6 @@ namespace SchoolClearanceSystem
                     return Convert.ToInt64(command.ExecuteScalar()) > 0;
                 }
             }
-        }
-
-        // --- ADD THIS BACK TO DATABASEMANAGER.CS ---
-        public DataTable GetDepartmentRequests(string departmentName)
-        {
-            string sql = @"SELECT r.StudentID, u.FullName, u.Program, u.Year, 
-                          r.Semester, r.AcademicYear, r.Status 
-                   FROM ClearanceRequests r
-                   INNER JOIN Users u ON r.StudentID = u.UserID
-                   WHERE r.Department = @dept";
-
-            var param = new SqliteParameter("@dept", departmentName);
-            return GetDataTable(sql, new[] { param });
         }
 
         public User GetUserDetails(string userId)
@@ -176,6 +111,7 @@ namespace SchoolClearanceSystem
             return null;
         }
 
+        // --- 4. CLEARANCE REQUESTS ---
         public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear)
         {
             string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear) 
@@ -189,6 +125,58 @@ namespace SchoolClearanceSystem
                 new SqliteParameter("@ay", acadYear)
             };
             return ExecuteNonQuery(sql, ps) > 0;
+        }
+
+        public DataTable GetDepartmentRequests(string departmentName)
+        {
+            string sql = @"SELECT r.StudentID, u.FullName, u.Program, u.Year, 
+                                  r.Semester, r.AcademicYear, r.Status 
+                           FROM ClearanceRequests r
+                           INNER JOIN Users u ON r.StudentID = u.UserID
+                           WHERE r.Department = @dept";
+
+            var param = new SqliteParameter("@dept", departmentName);
+            return GetDataTable(sql, new[] { param });
+        }
+
+        // --- 5. CORE DATABASE HELPERS ---
+        public DataTable GetDataTable(string sql, SqliteParameter[] parameters = null)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new SqliteCommand(sql, connection))
+                    {
+                        if (parameters != null) command.Parameters.AddRange(parameters);
+                        using (var reader = command.ExecuteReader()) { dt.Load(reader); }
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Data Load Error: " + ex.Message); }
+            return dt;
+        }
+
+        private int ExecuteNonQuery(string sql, SqliteParameter[] parameters = null)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(sql, connection))
+                {
+                    if (parameters != null) command.Parameters.AddRange(parameters);
+                    return command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool DeleteUser(string userId)
+        {
+            string sql = "DELETE FROM Users WHERE UserID = @id";
+            var param = new SqliteParameter("@id", userId);
+            return ExecuteNonQuery(sql, new[] { param }) > 0;
         }
     }
 }
