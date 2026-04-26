@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevExpress.XtraEditors; // Added to use XtraMessageBox for a consistent UI
 
 namespace SchoolClearanceSystem
 {
@@ -9,20 +10,18 @@ namespace SchoolClearanceSystem
         {
             SQLitePCL.Batteries.Init();
             InitializeComponent();
-           
         }
 
-      
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
             // 1. DEFENSIVE VALIDATION 
-            // This prevents the "silent fail" you experienced earlier
+            // Removed cmbRole check since students no longer select their role
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
                 string.IsNullOrWhiteSpace(txtFullName.Text) ||
-                cmbProgram.SelectedItem == null ||
-                cmbRole.SelectedItem == null)
+                string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                cmbProgram.SelectedItem == null)
             {
-                MessageBox.Show("Please fill in all required fields and select items from the dropdowns.",
+                XtraMessageBox.Show("Please fill in all required fields and select your program.",
                                 "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -30,12 +29,13 @@ namespace SchoolClearanceSystem
             try
             {
                 // 2. CREATE THE OBJECT
+                // We hardcode "Student" as the 5th parameter (Role)
                 User newUser = new User(
                     txtUserID.Text.Trim(),
                     txtFullName.Text.Trim(),
                     cmbProgram.SelectedItem.ToString(),
-                    cmbYear.SelectedItem?.ToString() ?? "N/A", // Handles potential null year
-                    cmbRole.SelectedItem.ToString(),
+                    cmbYear.SelectedItem?.ToString() ?? "N/A",
+                    "Student", // <--- ROLE IS HARDCODED HERE
                     txtPassword.Text
                 );
 
@@ -44,15 +44,15 @@ namespace SchoolClearanceSystem
                 db.SaveUser(newUser);
 
                 // 4. SUCCESS FEEDBACK
-                MessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Clear the form for the next entry
                 ClearFields();
             }
             catch (Exception ex)
             {
-                // 5. ERROR FEEDBACK (In case of duplicate IDs or DB connection issues)
-                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // 5. ERROR FEEDBACK
+                XtraMessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -63,26 +63,18 @@ namespace SchoolClearanceSystem
             txtPassword.Text = "";
             cmbProgram.SelectedIndex = -1;
             cmbYear.SelectedIndex = -1;
-            cmbRole.SelectedIndex = -1;
+            // cmbRole is no longer here to clear
         }
-
-        
 
         private void lblctrLogin_Click_1(object sender, EventArgs e)
         {
-            // 1. Create the form
             Login loginForm = new Login();
 
-            // 2. IMPORTANT: Tell the app to keep running even if this form closes
+            // This ensures the application closes properly when navigating back and forth
             loginForm.FormClosed += (s, args) => this.Close();
 
-            // 3. Show Login
             loginForm.Show();
-
-            // 4. Hide Registration instead of Closing it
             this.Hide();
         }
     }
-    }
-    
-
+}

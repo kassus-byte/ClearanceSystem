@@ -43,14 +43,11 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.lblctrLogin = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.cmbRole = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbYear.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +69,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(1217, 894);
+            this.btnRegister.Location = new System.Drawing.Point(1217, 783);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(262, 47);
             this.btnRegister.TabIndex = 2;
@@ -123,7 +120,7 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(1364, 842);
+            this.labelControl5.Location = new System.Drawing.Point(1367, 740);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(115, 18);
             this.labelControl5.TabIndex = 7;
@@ -180,7 +177,7 @@
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(1221, 772);
+            this.labelControl8.Location = new System.Drawing.Point(1220, 670);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(61, 18);
             this.labelControl8.TabIndex = 13;
@@ -190,7 +187,7 @@
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(1229, 964);
+            this.labelControl9.Location = new System.Drawing.Point(1229, 853);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(169, 18);
             this.labelControl9.TabIndex = 14;
@@ -200,49 +197,16 @@
             // 
             this.lblctrLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblctrLogin.Appearance.Options.UseFont = true;
-            this.lblctrLogin.Location = new System.Drawing.Point(1404, 964);
+            this.lblctrLogin.Location = new System.Drawing.Point(1404, 853);
             this.lblctrLogin.Name = "lblctrLogin";
             this.lblctrLogin.Size = new System.Drawing.Size(44, 18);
             this.lblctrLogin.TabIndex = 15;
             this.lblctrLogin.Text = "LOGIN";
             this.lblctrLogin.Click += new System.EventHandler(this.lblctrLogin_Click_1);
             // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(1221, 679);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(27, 18);
-            this.labelControl10.TabIndex = 17;
-            this.labelControl10.Text = "Role";
-            // 
-            // cmbRole
-            // 
-            this.cmbRole.Location = new System.Drawing.Point(1217, 703);
-            this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Properties.AutoHeight = false;
-            this.cmbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbRole.Properties.Items.AddRange(new object[] {
-            "Student",
-            "Treasurer",
-            "Technical Office",
-            "SSG Office",
-            "SAO Office",
-            "Quality Assurance",
-            "Library",
-            "Registrar",
-            "Business Office",
-            "Coordinator",
-            "Dean",
-            ""});
-            this.cmbRole.Size = new System.Drawing.Size(262, 40);
-            this.cmbRole.TabIndex = 18;
-            // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(1217, 796);
+            this.txtPassword.Location = new System.Drawing.Point(1220, 694);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.AutoHeight = false;
             this.txtPassword.Size = new System.Drawing.Size(262, 40);
@@ -253,8 +217,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1918, 1046);
-            this.Controls.Add(this.cmbRole);
-            this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.lblctrLogin);
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.labelControl8);
@@ -277,7 +239,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbYear.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -301,8 +262,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.HyperlinkLabelControl lblctrLogin;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbRole;
         private DevExpress.XtraEditors.TextEdit txtPassword;
     }
 }

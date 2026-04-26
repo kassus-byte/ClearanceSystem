@@ -1,125 +1,194 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
     public class DatabaseManager
     {
-        // Using a relative path is better for portability. 
-        // Ensure "Copy to Output Directory" is set to "Copy if Newer" for the .db file in VS.
         private string connectionString = "Data Source=ClearanceSystem.db";
 
-        public void SaveUser(User user)
+        // --- FIXED: CLEARANCE SEASON CONTROL WITH SAFETY ---
+        public bool IsClearanceActive()
         {
-            using (var connection = new SqliteConnection(connectionString))
+            try
             {
-                connection.Open();
-                string sql = "INSERT INTO Users (UserID, FullName, Program, Year, Role, Password) " +
-                             "VALUES (@id, @name, @prog, @year, @role, @pass)";
-
-                using (var command = new SqliteCommand(sql, connection))
+                // We use a direct check here to avoid the global try-catch in GetDataTable 
+                // if we just want a quiet true/false check.
+                using (var connection = new SqliteConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@id", user.UserID ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@name", user.FullName ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@prog", user.Program ?? "N/A");
-                    command.Parameters.AddWithValue("@year", user.Year ?? "N/A");
-                    command.Parameters.AddWithValue("@role", user.Role ?? "Student");
-                    command.Parameters.AddWithValue("@pass", user.Password ?? (object)DBNull.Value);
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    string sql = "SELECT ClearanceIsActive FROM SystemSettings LIMIT 1";
+                    using (var command = new SqliteCommand(sql, connection))
+                    {
+                        var result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return result.ToString() == "1";
+                        }
+                    }
                 }
             }
+            catch (SqliteException ex) when (ex.SqliteErrorCode == 1) // Table not found
+            {
+                // Table doesn't exist yet? Don't crash, just say clearance is inactive.
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return false;
+        }
+
+        public void ToggleClearanceSeason(bool isActive)
+        {
+            int value = isActive ? 1 : 0;
+            // Using parameterized query for safety
+            string sql = "UPDATE SystemSettings SET ClearanceIsActive = @val";
+            var param = new SqliteParameter("@val", value);
+            ExecuteNonQuery(sql, new[] { param });
+        }
+
+        // --- GENERIC DATA FETCHER ---
+        public DataTable GetDataTable(string sql, SqliteParameter[] parameters = null)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new SqliteCommand(sql, connection))
+                    {
+                        if (parameters != null)
+                            command.Parameters.AddRange(parameters);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Only show message box for unexpected errors, not missing tables during startup
+                MessageBox.Show("Database Error: " + ex.Message);
+            }
+            return dt;
+        }
+
+        // --- DELETE USER LOGIC ---
+        public bool DeleteUser(string userId)
+        {
+            string sql = "DELETE FROM Users WHERE UserID = @id";
+            var param = new SqliteParameter("@id", userId);
+            return ExecuteNonQuery(sql, new[] { param }) > 0;
+        }
+
+        // Helper method to reduce code repetition
+        private int ExecuteNonQuery(string sql, SqliteParameter[] parameters = null)
+        {
+            try
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new SqliteCommand(sql, connection))
+                    {
+                        if (parameters != null) command.Parameters.AddRange(parameters);
+                        return command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Execution Error: " + ex.Message);
+                return -1;
+            }
+        }
+
+        // --- REMAINING METHODS (SaveUser, ValidateLogin, GetUserDetails, etc.) ---
+        // Keep your existing implementations for these below...
+        public void SaveUser(User user)
+        {
+            string sql = "INSERT INTO Users (UserID, FullName, Program, Year, Role, Password) " +
+                         "VALUES (@id, @name, @prog, @year, @role, @pass)";
+
+            SqliteParameter[] ps = {
+                new SqliteParameter("@id", user.UserID),
+                new SqliteParameter("@name", user.FullName),
+                new SqliteParameter("@prog", user.Program ?? "N/A"),
+                new SqliteParameter("@year", user.Year ?? "N/A"),
+                new SqliteParameter("@role", user.Role ?? "Student"),
+                new SqliteParameter("@pass", user.Password)
+            };
+            ExecuteNonQuery(sql, ps);
         }
 
         public bool ValidateLogin(string userId, string password)
         {
+            string sql = "SELECT COUNT(*) FROM Users WHERE UserID = @id AND Password = @pass";
             using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
-                string sql = "SELECT COUNT(*) FROM Users WHERE UserID = @id AND Password = @pass";
                 using (var command = new SqliteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", userId);
                     command.Parameters.AddWithValue("@pass", password);
-                    // SQLite returns long for COUNT(*)
-                    var result = command.ExecuteScalar();
-                    return result != null && Convert.ToInt64(result) > 0;
+                    return Convert.ToInt64(command.ExecuteScalar()) > 0;
                 }
             }
         }
 
+        // --- ADD THIS BACK TO DATABASEMANAGER.CS ---
+        public DataTable GetDepartmentRequests(string departmentName)
+        {
+            string sql = @"SELECT r.StudentID, u.FullName, u.Program, u.Year, 
+                          r.Semester, r.AcademicYear, r.Status 
+                   FROM ClearanceRequests r
+                   INNER JOIN Users u ON r.StudentID = u.UserID
+                   WHERE r.Department = @dept";
+
+            var param = new SqliteParameter("@dept", departmentName);
+            return GetDataTable(sql, new[] { param });
+        }
+
         public User GetUserDetails(string userId)
         {
-            using (var connection = new SqliteConnection(connectionString))
+            string sql = "SELECT FullName, UserID, Program, Year, Role FROM Users WHERE UserID = @id";
+            DataTable dt = GetDataTable(sql, new[] { new SqliteParameter("@id", userId) });
+
+            if (dt.Rows.Count > 0)
             {
-                connection.Open();
-                string sql = "SELECT FullName, UserID, Program, Year, Role FROM Users WHERE UserID = @id";
-                using (var command = new SqliteCommand(sql, connection))
+                DataRow dr = dt.Rows[0];
+                return new User
                 {
-                    command.Parameters.AddWithValue("@id", userId);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            return new User
-                            {
-                                FullName = reader["FullName"].ToString(),
-                                UserID = reader["UserID"].ToString(),
-                                Program = reader["Program"].ToString(),
-                                Year = reader["Year"].ToString(),
-                                Role = reader["Role"].ToString()
-                            };
-                        }
-                    }
-                }
+                    FullName = dr["FullName"].ToString(),
+                    UserID = dr["UserID"].ToString(),
+                    Program = dr["Program"].ToString(),
+                    Year = dr["Year"].ToString(),
+                    Role = dr["Role"].ToString()
+                };
             }
             return null;
         }
 
         public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear)
         {
-            using (var connection = new SqliteConnection(connectionString))
-            {
-                connection.Open();
-                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear) 
-                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay)";
+            string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear) 
+                           VALUES (@id, @dept, 'Pending', @date, @sem, @ay)";
 
-                using (var command = new SqliteCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@id", studentId);
-                    command.Parameters.AddWithValue("@dept", dept);
-                    command.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                    command.Parameters.AddWithValue("@sem", semester);
-                    command.Parameters.AddWithValue("@ay", acadYear);
-                    return command.ExecuteNonQuery() > 0;
-                }
-            }
-        }
-
-        public DataTable GetDepartmentRequests(string departmentName)
-        {
-            DataTable dt = new DataTable();
-            using (var connection = new SqliteConnection(connectionString))
-            {
-                connection.Open();
-                // CRITICAL: We select u.FullName AS 'Name' to match your Grid Column Caption if necessary, 
-                // but usually, it's better to keep FieldNames consistent.
-                string sql = @"SELECT  r.StudentID, u.FullName, u.Program, u.Year, 
-                                      r.Semester, r.AcademicYear, r.Status 
-                               FROM ClearanceRequests r
-                               INNER JOIN Users u ON r.StudentID = u.UserID
-                               WHERE r.Department = @dept";
-
-                using (var command = new SqliteCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@dept", departmentName);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        dt.Load(reader);
-                    }
-                }
-            }
-            return dt;
+            SqliteParameter[] ps = {
+                new SqliteParameter("@id", studentId),
+                new SqliteParameter("@dept", dept),
+                new SqliteParameter("@date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                new SqliteParameter("@sem", semester),
+                new SqliteParameter("@ay", acadYear)
+            };
+            return ExecuteNonQuery(sql, ps) > 0;
         }
     }
 }

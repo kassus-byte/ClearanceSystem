@@ -47,6 +47,22 @@
             this.pnlHeader = new DevExpress.XtraEditors.PanelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.pnlMyRequest = new DevExpress.XtraEditors.PanelControl();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.pnlDashboard = new DevExpress.XtraEditors.PanelControl();
             this.groupRecentActivity = new DevExpress.XtraEditors.GroupControl();
             this.gridRecentActivity = new DevExpress.XtraGrid.GridControl();
@@ -138,22 +154,6 @@
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.pnlMyRequest = new DevExpress.XtraEditors.PanelControl();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
@@ -173,6 +173,18 @@
             this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlMyRequest)).BeginInit();
+            this.pnlMyRequest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
+            this.panelControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
+            this.panelControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDashboard)).BeginInit();
             this.pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupRecentActivity)).BeginInit();
@@ -234,18 +246,6 @@
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlMyRequest)).BeginInit();
-            this.pnlMyRequest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
-            this.groupControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
-            this.panelControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
-            this.panelControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -277,12 +277,12 @@
             // 
             this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.White;
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
-            this.splitContainerControl1.Panel2.Controls.Add(this.pnlMyRequest);
-            this.splitContainerControl1.Panel2.Controls.Add(this.pnlDashboard);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlRequestClearance);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlNotifications);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlRequirements);
             this.splitContainerControl1.Panel2.Controls.Add(this.pnlMyClearance);
+            this.splitContainerControl1.Panel2.Controls.Add(this.pnlMyRequest);
+            this.splitContainerControl1.Panel2.Controls.Add(this.pnlDashboard);
             this.splitContainerControl1.Panel2.Padding = new System.Windows.Forms.Padding(15);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1920, 1080);
@@ -524,6 +524,179 @@
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "College of Computer Studies";
             // 
+            // pnlMyRequest
+            // 
+            this.pnlMyRequest.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlMyRequest.Appearance.Options.UseBackColor = true;
+            this.pnlMyRequest.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlMyRequest.Controls.Add(this.groupControl4);
+            this.pnlMyRequest.Controls.Add(this.groupControl5);
+            this.pnlMyRequest.Controls.Add(this.panelControl7);
+            this.pnlMyRequest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMyRequest.Location = new System.Drawing.Point(15, 15);
+            this.pnlMyRequest.Name = "pnlMyRequest";
+            this.pnlMyRequest.Size = new System.Drawing.Size(1580, 1050);
+            this.pnlMyRequest.TabIndex = 7;
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Appearance.BackColor = System.Drawing.Color.White;
+            this.groupControl4.Appearance.Options.UseBackColor = true;
+            this.groupControl4.AppearanceCaption.BackColor = System.Drawing.Color.Transparent;
+            this.groupControl4.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl4.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.groupControl4.AppearanceCaption.Options.UseBackColor = true;
+            this.groupControl4.AppearanceCaption.Options.UseFont = true;
+            this.groupControl4.AppearanceCaption.Options.UseForeColor = true;
+            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.groupControl4.Controls.Add(this.gridControl3);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl4.Location = new System.Drawing.Point(0, 325);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(1580, 328);
+            this.groupControl4.TabIndex = 9;
+            this.groupControl4.Text = "Request History";
+            // 
+            // gridControl3
+            // 
+            this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl3.Location = new System.Drawing.Point(2, 23);
+            this.gridControl3.MainView = this.gridView5;
+            this.gridControl3.Name = "gridControl3";
+            this.gridControl3.Size = new System.Drawing.Size(1576, 303);
+            this.gridControl3.TabIndex = 5;
+            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView5});
+            // 
+            // gridView5
+            // 
+            this.gridView5.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn17,
+            this.gridColumn18,
+            this.gridColumn19,
+            this.gridColumn20,
+            this.gridColumn21,
+            this.gridColumn22});
+            this.gridView5.GridControl = this.gridControl3;
+            this.gridView5.Name = "gridView5";
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Ref no.";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 0;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Semester";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 1;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Year";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 2;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "Purpose";
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 3;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "Submitted";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 4;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "Status";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 5;
+            // 
+            // groupControl5
+            // 
+            this.groupControl5.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.groupControl5.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.groupControl5.AppearanceCaption.Options.UseFont = true;
+            this.groupControl5.AppearanceCaption.Options.UseForeColor = true;
+            this.groupControl5.Controls.Add(this.panelControl6);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl5.Location = new System.Drawing.Point(0, 100);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Size = new System.Drawing.Size(1580, 225);
+            this.groupControl5.TabIndex = 10;
+            this.groupControl5.Text = "Active Request — 1st Sem, 2025–2026";
+            // 
+            // panelControl6
+            // 
+            this.panelControl6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
+            this.panelControl6.Appearance.Options.UseBackColor = true;
+            this.panelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl6.Controls.Add(this.labelControl25);
+            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl6.Location = new System.Drawing.Point(2, 179);
+            this.panelControl6.Name = "panelControl6";
+            this.panelControl6.Size = new System.Drawing.Size(1576, 44);
+            this.panelControl6.TabIndex = 0;
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl25.Appearance.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.labelControl25.Appearance.Options.UseFont = true;
+            this.labelControl25.Appearance.Options.UseForeColor = true;
+            this.labelControl25.Location = new System.Drawing.Point(21, 14);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(486, 17);
+            this.labelControl25.TabIndex = 2;
+            this.labelControl25.Text = "Your request is currently under department review. 3 departments still pending.";
+            // 
+            // panelControl7
+            // 
+            this.panelControl7.Appearance.BackColor = System.Drawing.Color.White;
+            this.panelControl7.Appearance.Options.UseBackColor = true;
+            this.panelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl7.Controls.Add(this.labelControl26);
+            this.panelControl7.Controls.Add(this.labelControl27);
+            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl7.Location = new System.Drawing.Point(0, 0);
+            this.panelControl7.Name = "panelControl7";
+            this.panelControl7.Size = new System.Drawing.Size(1580, 100);
+            this.panelControl7.TabIndex = 8;
+            // 
+            // labelControl26
+            // 
+            this.labelControl26.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl26.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl26.Appearance.Options.UseFont = true;
+            this.labelControl26.Appearance.Options.UseForeColor = true;
+            this.labelControl26.Location = new System.Drawing.Point(21, 60);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(294, 17);
+            this.labelControl26.TabIndex = 1;
+            this.labelControl26.Text = "Track all clearance requests you have submitted.";
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl27.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl27.Appearance.Options.UseFont = true;
+            this.labelControl27.Appearance.Options.UseForeColor = true;
+            this.labelControl27.Location = new System.Drawing.Point(23, 16);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(164, 37);
+            this.labelControl27.TabIndex = 0;
+            this.labelControl27.Text = "My Requests";
+            // 
             // pnlDashboard
             // 
             this.pnlDashboard.Appearance.BackColor = System.Drawing.Color.White;
@@ -537,7 +710,7 @@
             this.pnlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDashboard.Location = new System.Drawing.Point(15, 15);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlDashboard.Size = new System.Drawing.Size(1580, 1050);
             this.pnlDashboard.TabIndex = 5;
             // 
             // groupRecentActivity
@@ -555,7 +728,7 @@
             this.groupRecentActivity.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupRecentActivity.Location = new System.Drawing.Point(0, 750);
             this.groupRecentActivity.Name = "groupRecentActivity";
-            this.groupRecentActivity.Size = new System.Drawing.Size(1574, 253);
+            this.groupRecentActivity.Size = new System.Drawing.Size(1580, 253);
             this.groupRecentActivity.TabIndex = 4;
             this.groupRecentActivity.Text = "Recent Activity";
             // 
@@ -563,10 +736,10 @@
             // 
             this.gridRecentActivity.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridRecentActivity.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.gridRecentActivity.Location = new System.Drawing.Point(2, 29);
+            this.gridRecentActivity.Location = new System.Drawing.Point(2, 23);
             this.gridRecentActivity.MainView = this.gridView2;
             this.gridRecentActivity.Name = "gridRecentActivity";
-            this.gridRecentActivity.Size = new System.Drawing.Size(1570, 224);
+            this.gridRecentActivity.Size = new System.Drawing.Size(1576, 224);
             this.gridRecentActivity.TabIndex = 0;
             this.gridRecentActivity.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -609,7 +782,7 @@
             this.groupDeptStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupDeptStatus.Location = new System.Drawing.Point(0, 383);
             this.groupDeptStatus.Name = "groupDeptStatus";
-            this.groupDeptStatus.Size = new System.Drawing.Size(1574, 367);
+            this.groupDeptStatus.Size = new System.Drawing.Size(1580, 367);
             this.groupDeptStatus.TabIndex = 3;
             this.groupDeptStatus.Text = "Department Status";
             // 
@@ -617,10 +790,10 @@
             // 
             this.gridDeptStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDeptStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.gridDeptStatus.Location = new System.Drawing.Point(2, 29);
+            this.gridDeptStatus.Location = new System.Drawing.Point(2, 23);
             this.gridDeptStatus.MainView = this.gridView1;
             this.gridDeptStatus.Name = "gridDeptStatus";
-            this.gridDeptStatus.Size = new System.Drawing.Size(1570, 336);
+            this.gridDeptStatus.Size = new System.Drawing.Size(1576, 342);
             this.gridDeptStatus.TabIndex = 0;
             this.gridDeptStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -677,7 +850,7 @@
             this.grpProgress.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpProgress.Location = new System.Drawing.Point(0, 242);
             this.grpProgress.Name = "grpProgress";
-            this.grpProgress.Size = new System.Drawing.Size(1574, 141);
+            this.grpProgress.Size = new System.Drawing.Size(1580, 141);
             this.grpProgress.TabIndex = 2;
             this.grpProgress.Text = "Overall Progress";
             // 
@@ -715,7 +888,7 @@
             this.pnlStatRow.Location = new System.Drawing.Point(0, 100);
             this.pnlStatRow.Name = "pnlStatRow";
             this.pnlStatRow.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlStatRow.Size = new System.Drawing.Size(1574, 142);
+            this.pnlStatRow.Size = new System.Drawing.Size(1580, 142);
             this.pnlStatRow.TabIndex = 1;
             // 
             // pnlCard3
@@ -728,7 +901,7 @@
             this.pnlCard3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCard3.Location = new System.Drawing.Point(964, 10);
             this.pnlCard3.Name = "pnlCard3";
-            this.pnlCard3.Size = new System.Drawing.Size(600, 122);
+            this.pnlCard3.Size = new System.Drawing.Size(606, 122);
             this.pnlCard3.TabIndex = 5;
             // 
             // labelCard3Value
@@ -864,7 +1037,7 @@
             this.pnlPageHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPageHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlPageHeader.Name = "pnlPageHeader";
-            this.pnlPageHeader.Size = new System.Drawing.Size(1574, 100);
+            this.pnlPageHeader.Size = new System.Drawing.Size(1580, 100);
             this.pnlPageHeader.TabIndex = 0;
             // 
             // lblFullNameWelcome
@@ -912,7 +1085,7 @@
             this.pnlRequestClearance.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRequestClearance.Location = new System.Drawing.Point(15, 15);
             this.pnlRequestClearance.Name = "pnlRequestClearance";
-            this.pnlRequestClearance.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlRequestClearance.Size = new System.Drawing.Size(1580, 1050);
             this.pnlRequestClearance.TabIndex = 6;
             // 
             // pnlRow1
@@ -935,7 +1108,7 @@
             this.pnlRow1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRow1.Location = new System.Drawing.Point(0, 154);
             this.pnlRow1.Name = "pnlRow1";
-            this.pnlRow1.Size = new System.Drawing.Size(1574, 485);
+            this.pnlRow1.Size = new System.Drawing.Size(1580, 485);
             this.pnlRow1.TabIndex = 2;
             // 
             // labelControl10
@@ -1002,7 +1175,7 @@
             "2027-2028",
             "2028-2029",
             "2029-2030"});
-            this.cmbAcademicYear.Size = new System.Drawing.Size(749, 32);
+            this.cmbAcademicYear.Size = new System.Drawing.Size(749, 24);
             this.cmbAcademicYear.TabIndex = 3;
             // 
             // cmbSemester
@@ -1016,7 +1189,7 @@
             this.cmbSemester.Properties.Items.AddRange(new object[] {
             "1st Semester",
             "2nd Semester"});
-            this.cmbSemester.Size = new System.Drawing.Size(683, 32);
+            this.cmbSemester.Size = new System.Drawing.Size(683, 24);
             this.cmbSemester.TabIndex = 2;
             // 
             // comboBoxEdit3
@@ -1027,7 +1200,7 @@
             this.comboBoxEdit3.Properties.Appearance.Options.UseFont = true;
             this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit3.Size = new System.Drawing.Size(1537, 32);
+            this.comboBoxEdit3.Size = new System.Drawing.Size(1537, 24);
             this.comboBoxEdit3.TabIndex = 5;
             // 
             // labelControl8
@@ -1075,7 +1248,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 100);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1574, 54);
+            this.panelControl1.Size = new System.Drawing.Size(1580, 54);
             this.panelControl1.TabIndex = 3;
             // 
             // labelControl11
@@ -1100,7 +1273,7 @@
             this.pnlRCHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRCHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlRCHeader.Name = "pnlRCHeader";
-            this.pnlRCHeader.Size = new System.Drawing.Size(1574, 100);
+            this.pnlRCHeader.Size = new System.Drawing.Size(1580, 100);
             this.pnlRCHeader.TabIndex = 0;
             // 
             // labelControl5
@@ -1133,7 +1306,7 @@
             this.pnlNotifications.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNotifications.Location = new System.Drawing.Point(15, 15);
             this.pnlNotifications.Name = "pnlNotifications";
-            this.pnlNotifications.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlNotifications.Size = new System.Drawing.Size(1580, 1050);
             this.pnlNotifications.TabIndex = 10;
             // 
             // labelControl28
@@ -1158,9 +1331,8 @@
             this.pnlRequirements.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRequirements.Location = new System.Drawing.Point(15, 15);
             this.pnlRequirements.Name = "pnlRequirements";
-            this.pnlRequirements.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlRequirements.Size = new System.Drawing.Size(1580, 1050);
             this.pnlRequirements.TabIndex = 9;
-           
             // 
             // panelControl9
             // 
@@ -1171,7 +1343,7 @@
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl9.Location = new System.Drawing.Point(0, 238);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(1574, 683);
+            this.panelControl9.Size = new System.Drawing.Size(1580, 683);
             this.panelControl9.TabIndex = 5;
             // 
             // gridRequirements
@@ -1180,7 +1352,7 @@
             this.gridRequirements.Location = new System.Drawing.Point(0, 0);
             this.gridRequirements.MainView = this.gridView3;
             this.gridRequirements.Name = "gridRequirements";
-            this.gridRequirements.Size = new System.Drawing.Size(1574, 683);
+            this.gridRequirements.Size = new System.Drawing.Size(1580, 683);
             this.gridRequirements.TabIndex = 0;
             this.gridRequirements.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1247,7 +1419,7 @@
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl8.Location = new System.Drawing.Point(0, 154);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(1574, 84);
+            this.panelControl8.Size = new System.Drawing.Size(1580, 84);
             this.panelControl8.TabIndex = 4;
             // 
             // btnFilterCleared
@@ -1325,7 +1497,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl3.Location = new System.Drawing.Point(0, 100);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1574, 54);
+            this.panelControl3.Size = new System.Drawing.Size(1580, 54);
             this.panelControl3.TabIndex = 3;
             // 
             // labelControl15
@@ -1351,7 +1523,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1574, 100);
+            this.panelControl2.Size = new System.Drawing.Size(1580, 100);
             this.panelControl2.TabIndex = 0;
             // 
             // labelControl13
@@ -1390,9 +1562,8 @@
             this.pnlMyClearance.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMyClearance.Location = new System.Drawing.Point(15, 15);
             this.pnlMyClearance.Name = "pnlMyClearance";
-            this.pnlMyClearance.Size = new System.Drawing.Size(1574, 1050);
+            this.pnlMyClearance.Size = new System.Drawing.Size(1580, 1050);
             this.pnlMyClearance.TabIndex = 8;
-         
             // 
             // groupControl3
             // 
@@ -1404,21 +1575,20 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(0, 419);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1574, 402);
+            this.groupControl3.Size = new System.Drawing.Size(1580, 402);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "Clearance Record";
             // 
             // gridControl2
             // 
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(2, 29);
+            this.gridControl2.Location = new System.Drawing.Point(2, 23);
             this.gridControl2.MainView = this.gridView4;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1570, 371);
+            this.gridControl2.Size = new System.Drawing.Size(1576, 377);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
-          
             // 
             // gridView4
             // 
@@ -1491,7 +1661,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 100);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1574, 319);
+            this.panelControl5.Size = new System.Drawing.Size(1580, 319);
             this.panelControl5.TabIndex = 1;
             // 
             // labelControl24
@@ -1614,7 +1784,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1574, 100);
+            this.panelControl4.Size = new System.Drawing.Size(1580, 100);
             this.panelControl4.TabIndex = 0;
             // 
             // labelControl16
@@ -1640,179 +1810,6 @@
             this.labelControl14.Size = new System.Drawing.Size(173, 37);
             this.labelControl14.TabIndex = 0;
             this.labelControl14.Text = "My Clearance";
-            // 
-            // pnlMyRequest
-            // 
-            this.pnlMyRequest.Appearance.BackColor = System.Drawing.Color.White;
-            this.pnlMyRequest.Appearance.Options.UseBackColor = true;
-            this.pnlMyRequest.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlMyRequest.Controls.Add(this.groupControl4);
-            this.pnlMyRequest.Controls.Add(this.groupControl5);
-            this.pnlMyRequest.Controls.Add(this.panelControl7);
-            this.pnlMyRequest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMyRequest.Location = new System.Drawing.Point(15, 15);
-            this.pnlMyRequest.Name = "pnlMyRequest";
-            this.pnlMyRequest.Size = new System.Drawing.Size(1574, 1050);
-            this.pnlMyRequest.TabIndex = 7;
-            // 
-            // groupControl4
-            // 
-            this.groupControl4.Appearance.BackColor = System.Drawing.Color.White;
-            this.groupControl4.Appearance.Options.UseBackColor = true;
-            this.groupControl4.AppearanceCaption.BackColor = System.Drawing.Color.Transparent;
-            this.groupControl4.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupControl4.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.groupControl4.AppearanceCaption.Options.UseBackColor = true;
-            this.groupControl4.AppearanceCaption.Options.UseFont = true;
-            this.groupControl4.AppearanceCaption.Options.UseForeColor = true;
-            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.groupControl4.Controls.Add(this.gridControl3);
-            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl4.Location = new System.Drawing.Point(0, 325);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1574, 328);
-            this.groupControl4.TabIndex = 9;
-            this.groupControl4.Text = "Request History";
-            // 
-            // gridControl3
-            // 
-            this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl3.Location = new System.Drawing.Point(2, 29);
-            this.gridControl3.MainView = this.gridView5;
-            this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1570, 297);
-            this.gridControl3.TabIndex = 5;
-            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView5});
-            // 
-            // gridView5
-            // 
-            this.gridView5.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn17,
-            this.gridColumn18,
-            this.gridColumn19,
-            this.gridColumn20,
-            this.gridColumn21,
-            this.gridColumn22});
-            this.gridView5.GridControl = this.gridControl3;
-            this.gridView5.Name = "gridView5";
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.Caption = "Ref no.";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 0;
-            // 
-            // gridColumn18
-            // 
-            this.gridColumn18.Caption = "Semester";
-            this.gridColumn18.Name = "gridColumn18";
-            this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 1;
-            // 
-            // gridColumn19
-            // 
-            this.gridColumn19.Caption = "Year";
-            this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 2;
-            // 
-            // gridColumn20
-            // 
-            this.gridColumn20.Caption = "Purpose";
-            this.gridColumn20.Name = "gridColumn20";
-            this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 3;
-            // 
-            // gridColumn21
-            // 
-            this.gridColumn21.Caption = "Submitted";
-            this.gridColumn21.Name = "gridColumn21";
-            this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 4;
-            // 
-            // gridColumn22
-            // 
-            this.gridColumn22.Caption = "Status";
-            this.gridColumn22.Name = "gridColumn22";
-            this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 5;
-            // 
-            // groupControl5
-            // 
-            this.groupControl5.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.groupControl5.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.groupControl5.AppearanceCaption.Options.UseFont = true;
-            this.groupControl5.AppearanceCaption.Options.UseForeColor = true;
-            this.groupControl5.Controls.Add(this.panelControl6);
-            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl5.Location = new System.Drawing.Point(0, 100);
-            this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(1574, 225);
-            this.groupControl5.TabIndex = 10;
-            this.groupControl5.Text = "Active Request — 1st Sem, 2025–2026";
-            // 
-            // panelControl6
-            // 
-            this.panelControl6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
-            this.panelControl6.Appearance.Options.UseBackColor = true;
-            this.panelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl6.Controls.Add(this.labelControl25);
-            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl6.Location = new System.Drawing.Point(2, 179);
-            this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(1570, 44);
-            this.panelControl6.TabIndex = 0;
-            // 
-            // labelControl25
-            // 
-            this.labelControl25.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl25.Appearance.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.labelControl25.Appearance.Options.UseFont = true;
-            this.labelControl25.Appearance.Options.UseForeColor = true;
-            this.labelControl25.Location = new System.Drawing.Point(21, 14);
-            this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(486, 17);
-            this.labelControl25.TabIndex = 2;
-            this.labelControl25.Text = "Your request is currently under department review. 3 departments still pending.";
-            // 
-            // panelControl7
-            // 
-            this.panelControl7.Appearance.BackColor = System.Drawing.Color.White;
-            this.panelControl7.Appearance.Options.UseBackColor = true;
-            this.panelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl7.Controls.Add(this.labelControl26);
-            this.panelControl7.Controls.Add(this.labelControl27);
-            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl7.Location = new System.Drawing.Point(0, 0);
-            this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1574, 100);
-            this.panelControl7.TabIndex = 8;
-            // 
-            // labelControl26
-            // 
-            this.labelControl26.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl26.Appearance.ForeColor = System.Drawing.Color.Silver;
-            this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Appearance.Options.UseForeColor = true;
-            this.labelControl26.Location = new System.Drawing.Point(21, 60);
-            this.labelControl26.Name = "labelControl26";
-            this.labelControl26.Size = new System.Drawing.Size(294, 17);
-            this.labelControl26.TabIndex = 1;
-            this.labelControl26.Text = "Track all clearance requests you have submitted.";
-            // 
-            // labelControl27
-            // 
-            this.labelControl27.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl27.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl27.Appearance.Options.UseFont = true;
-            this.labelControl27.Appearance.Options.UseForeColor = true;
-            this.labelControl27.Location = new System.Drawing.Point(23, 16);
-            this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(164, 37);
-            this.labelControl27.TabIndex = 0;
-            this.labelControl27.Text = "My Requests";
             // 
             // navBarControl1
             // 
@@ -1906,6 +1903,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlMyRequest)).EndInit();
+            this.pnlMyRequest.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
+            this.panelControl6.ResumeLayout(false);
+            this.panelControl6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
+            this.panelControl7.ResumeLayout(false);
+            this.panelControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDashboard)).EndInit();
             this.pnlDashboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupRecentActivity)).EndInit();
@@ -1980,20 +1991,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlMyRequest)).EndInit();
-            this.pnlMyRequest.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            this.groupControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
-            this.groupControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
-            this.panelControl6.ResumeLayout(false);
-            this.panelControl6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
-            this.panelControl7.ResumeLayout(false);
-            this.panelControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.ResumeLayout(false);
 

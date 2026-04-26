@@ -10,6 +10,8 @@ namespace SchoolClearanceSystem
     {
         // List to manage all pages for easier hiding/showing
         private List<PanelControl> allPages;
+        // Instance of DatabaseManager to be used throughout the form
+        DatabaseManager db = new DatabaseManager();
 
         public StudentPortal()
         {
@@ -24,28 +26,35 @@ namespace SchoolClearanceSystem
 
         private void StudentPortal_Load_1(object sender, EventArgs e)
         {
-
             // 1. Display Student Information from Session
             if (Session.CurrentUser != null)
             {
-
-                //sidebar details
                 lblFullName.Text = Session.CurrentUser.FullName;
                 lblUserID.Text = Session.CurrentUser.UserID;
                 lblProgram.Text = Session.CurrentUser.Program;
                 lblYear.Text = Session.CurrentUser.Year;
                 lblRole.Text = Session.CurrentUser.Role;
 
-                //topbar welcome
                 lblFullNameWelcome.Text = Session.CurrentUser.FullName;
             }
 
-            // 2. Default View
+            // 2. CHECK IF CLEARANCE SEASON IS ACTIVE
+            if (!db.IsClearanceActive())
+            {
+                btnSubmitRequest.Enabled = false;
+                btnSubmitRequest.Text = "Submissions Closed";
+                // Note: lblStatusNote was removed as it doesn't exist in your Designer
+            }
+
+            // 3. Default View
             ShowPage(pnlDashboard);
         }
 
+        // This method must be inside the class for the Load event and NavBars to see it
         private void ShowPage(PanelControl pageToShow)
         {
+            if (allPages == null) return;
+
             // Hide all pages in one loop
             allPages.ForEach(p => p.Visible = false);
 
@@ -55,22 +64,22 @@ namespace SchoolClearanceSystem
             pageToShow.BringToFront();
         }
 
-        // Optimized Navigation (Assign these to your NavBarItem Click events)
+        #region Navigation
         private void navBarItem3_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlDashboard);
         private void navBarItem4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlRequestClearance);
         private void navBarItem5_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlMyRequest);
         private void navBarItem6_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlMyClearance);
         private void navBarItem7_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlRequirements);
         private void navBarItem8_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlNotifications);
+        #endregion
 
-        // Grid Styling
+        #region Grid Styling
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             if (e.Column.FieldName == "Status" && e.CellValue != null)
             {
                 string status = e.CellValue.ToString();
 
-                // Define colors based on status
                 switch (status)
                 {
                     case "Cleared": SetCellColor(e, "#EAF3DE", "#27500A"); break;
@@ -84,16 +93,15 @@ namespace SchoolClearanceSystem
             }
         }
 
-        // Helper to keep the grid logic short
         private void SetCellColor(DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e, string backHtml, string foreHtml)
         {
             e.Appearance.BackColor = ColorTranslator.FromHtml(backHtml);
             e.Appearance.ForeColor = ColorTranslator.FromHtml(foreHtml);
         }
+        #endregion
 
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
-            // 1. VALIDATION FIRST
             if (string.IsNullOrWhiteSpace(cmbSemester.Text) || string.IsNullOrWhiteSpace(cmbAcademicYear.Text))
             {
                 XtraMessageBox.Show("Please select both Semester and Academic Year before submitting.",
@@ -101,15 +109,12 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // 2. PREPARE DATA
-            DatabaseManager db = new DatabaseManager();
             string sID = Session.CurrentUser.UserID;
             string sem = cmbSemester.Text;
             string ay = cmbAcademicYear.Text;
 
             try
             {
-                // 3. EXECUTE DATABASE CALLS
                 bool successTreasurer = db.SubmitClearanceRequest(sID, "Treasurer", sem, ay);
                 bool successTech = db.SubmitClearanceRequest(sID, "Technical Office", sem, ay);
 
@@ -118,7 +123,6 @@ namespace SchoolClearanceSystem
                     XtraMessageBox.Show("Requests successfully sent to Treasurer and Technical Office.",
                                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Optional: Switch to "My Requests" page so they can see it pending
                     ShowPage(pnlMyRequest);
                 }
             }
@@ -127,7 +131,5 @@ namespace SchoolClearanceSystem
                 XtraMessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-      
     }
 }
