@@ -26,20 +26,23 @@ namespace SchoolClearanceSystem
             }
 
             // 2. Prepare User Object
+            // 2. Prepare User Object
             User newUser = new User(
                 txtUserID.Text.Trim(),
                 txtFullName.Text.Trim(),
                 cmbProgram.SelectedItem.ToString(),
                 cmbYear.SelectedItem?.ToString() ?? "N/A",
                 "Student",
-                txtPassword.Text
+                txtPassword.Text.Trim(), // Added .Trim() and a comma
+                txtUploadPath.Text.Trim() // This is now the 7th parameter
+            
             );
 
             // 3. Save and Verify
             // We check the result of the function. If it's false, the code inside {} is skipped.
             if (db.SaveUser(newUser))
             {
-                XtraMessageBox.Show("Registration Successful!",  "Success",
+                XtraMessageBox.Show("Registration Successful!", "Success",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
@@ -60,6 +63,27 @@ namespace SchoolClearanceSystem
             loginForm.FormClosed += (s, args) => this.Close();
             loginForm.Show();
             this.Hide();
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+
+            // This line creates the "dialog" manually so the error CS0103 goes away
+            using (DevExpress.XtraEditors.XtraOpenFileDialog ofdFilePicker = new DevExpress.XtraEditors.XtraOpenFileDialog())
+            {
+                ofdFilePicker.Title = "Select Student Photo";
+                ofdFilePicker.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+
+                if (ofdFilePicker.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedPath = ofdFilePicker.FileName;
+
+                    // Assuming you have a TextBox to show the path to the user
+                    txtUploadPath.Text = selectedPath;
+
+                    XtraMessageBox.Show("File selected: " + selectedPath);
+                }
+            }
         }
     }
 }

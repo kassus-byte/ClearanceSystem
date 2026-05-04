@@ -48,10 +48,6 @@ namespace SchoolClearanceSystem.Dashboard
 
         }
 
-        private void labelControl3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnClearanceSeason_Click(object sender, EventArgs e)
         {
@@ -60,8 +56,13 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void tsClearanceSeason_Toggled(object sender, EventArgs e)
         {
-            
-           
+
+            // Updates the table we just created
+            db.ToggleClearanceSeason(tsClearanceSeason.IsOn);
+
+            string status = tsClearanceSeason.IsOn ? "OPEN" : "CLOSED";
+            XtraMessageBox.Show($"Clearance is now {status}.");
+
         }
     }
     }

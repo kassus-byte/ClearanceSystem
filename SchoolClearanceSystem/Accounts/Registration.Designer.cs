@@ -44,11 +44,15 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.lblctrLogin = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnUpload = new DevExpress.XtraEditors.SimpleButton();
+            this.txtUploadPath = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUploadPath.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUserID
@@ -69,7 +73,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(1217, 783);
+            this.btnRegister.Location = new System.Drawing.Point(1217, 884);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(262, 47);
             this.btnRegister.TabIndex = 2;
@@ -120,7 +124,7 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(1367, 740);
+            this.labelControl5.Location = new System.Drawing.Point(1367, 841);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(115, 18);
             this.labelControl5.TabIndex = 7;
@@ -187,7 +191,7 @@
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(1229, 853);
+            this.labelControl9.Location = new System.Drawing.Point(1229, 954);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(169, 18);
             this.labelControl9.TabIndex = 14;
@@ -197,7 +201,7 @@
             // 
             this.lblctrLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblctrLogin.Appearance.Options.UseFont = true;
-            this.lblctrLogin.Location = new System.Drawing.Point(1404, 853);
+            this.lblctrLogin.Location = new System.Drawing.Point(1404, 954);
             this.lblctrLogin.Name = "lblctrLogin";
             this.lblctrLogin.Size = new System.Drawing.Size(44, 18);
             this.lblctrLogin.TabIndex = 15;
@@ -212,11 +216,33 @@
             this.txtPassword.Size = new System.Drawing.Size(262, 40);
             this.txtPassword.TabIndex = 8;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(1217, 770);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(262, 39);
+            this.btnUpload.TabIndex = 16;
+            this.btnUpload.Text = "Upload Verified ID";
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // txtUploadPath
+            // 
+            this.txtUploadPath.Location = new System.Drawing.Point(1485, 776);
+            this.txtUploadPath.Name = "txtUploadPath";
+            this.txtUploadPath.Size = new System.Drawing.Size(100, 28);
+            this.txtUploadPath.TabIndex = 17;
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1918, 1046);
+            this.Controls.Add(this.txtUploadPath);
+            this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.lblctrLogin);
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.labelControl8);
@@ -240,6 +266,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUploadPath.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,6 +290,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.HyperlinkLabelControl lblctrLogin;
         private DevExpress.XtraEditors.TextEdit txtPassword;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private DevExpress.XtraEditors.SimpleButton btnUpload;
+        private DevExpress.XtraEditors.TextEdit txtUploadPath;
     }
 }
 
