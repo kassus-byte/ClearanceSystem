@@ -39,7 +39,7 @@ namespace SchoolClearanceSystem
             // We check the result of the function. If it's false, the code inside {} is skipped.
             if (db.SaveUser(newUser))
             {
-                XtraMessageBox.Show("Registration Successful!", "Success",
+                XtraMessageBox.Show("Registration Successful!",  "Success",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
