@@ -22,7 +22,7 @@ namespace SchoolClearanceSystem
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TreasurerDashboard());
+            Application.Run(new Registration());
         }
     }
 }

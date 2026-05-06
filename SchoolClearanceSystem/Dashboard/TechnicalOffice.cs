@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
-    public partial class TechnicalOffice : BaseOfficeForm
+    public partial class TechnicalOffice : BaseOfficeForm //inheritance for code reusability
     {
         public TechnicalOffice()
         {

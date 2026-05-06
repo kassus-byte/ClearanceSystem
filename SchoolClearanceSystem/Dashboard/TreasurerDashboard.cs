@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
-    public partial class TreasurerDashboard : BaseOfficeForm
+    public partial class TreasurerDashboard : BaseOfficeForm //inheritance for code reusability
     {
         public TreasurerDashboard()
         {
