@@ -259,8 +259,10 @@
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.txtUserID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Registration";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).EndInit();

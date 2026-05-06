@@ -36,13 +36,18 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.btnAccountManagement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.gcTreasurer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // gcTreasurer
             // 
-            this.gcTreasurer.Location = new System.Drawing.Point(352, 240);
+            this.gcTreasurer.Location = new System.Drawing.Point(311, 277);
             this.gcTreasurer.MainView = this.gridView1;
             this.gcTreasurer.Name = "gcTreasurer";
             this.gcTreasurer.Size = new System.Drawing.Size(1528, 459);
@@ -110,11 +115,45 @@
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
             // 
+            // accordionControl1
+            // 
+            this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.accordionControl1.Appearance.AccordionControl.ForeColor = System.Drawing.Color.White;
+            this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.accordionControl1.Appearance.AccordionControl.Options.UseForeColor = true;
+            this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accordionControlElement1,
+            this.accordionControlSeparator1});
+            this.accordionControl1.Location = new System.Drawing.Point(0, 0);
+            this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.Size = new System.Drawing.Size(271, 1080);
+            this.accordionControl1.TabIndex = 1;
+            // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.btnAccountManagement});
+            this.accordionControlElement1.Expanded = true;
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Text = "MAIN";
+            // 
+            // btnAccountManagement
+            // 
+            this.btnAccountManagement.Name = "btnAccountManagement";
+            this.btnAccountManagement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.btnAccountManagement.Text = "Student Clearance Management";
+            // 
+            // accordionControlSeparator1
+            // 
+            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
+            // 
             // TreasurerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.gcTreasurer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TreasurerDashboard";
@@ -122,6 +161,7 @@
             this.Load += new System.EventHandler(this.TreasurerDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcTreasurer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -136,5 +176,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement btnAccountManagement;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
     }
 }
