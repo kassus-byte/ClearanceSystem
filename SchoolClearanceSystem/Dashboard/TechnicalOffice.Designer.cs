@@ -1,6 +1,6 @@
 ﻿namespace SchoolClearanceSystem.Dashboard
 {
-    partial class TreasurerDashboard
+    partial class TechnicalOffice
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // TreasurerDashboard
+            // TechnicalOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "TreasurerDashboard";
-            this.Text = "TreasurerDashboard";
-            this.Load += new System.EventHandler(this.TreasurerDashboard_Load);
+            this.ClientSize = new System.Drawing.Size(1918, 1046);
+            this.Name = "TechnicalOffice";
+            this.Text = "TechnicalOffice";
+            this.Load += new System.EventHandler(this.TechnicalOffice_Load);
             this.ResumeLayout(false);
 
         }

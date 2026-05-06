@@ -117,11 +117,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClearanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseClearanceForm.Designer.cs">
+      <DependentUpon>BaseClearanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClearanceRequest.cs" />
     <Compile Include="Dashboard\AdminDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard\AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\TechnicalOffice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard\TechnicalOffice.Designer.cs">
+      <DependentUpon>TechnicalOffice.cs</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\TreasurerDashboard.cs">
       <SubType>Form</SubType>
@@ -155,8 +168,14 @@
     <EmbeddedResource Include="Accounts\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaseClearanceForm.resx">
+      <DependentUpon>BaseClearanceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard\TechnicalOffice.resx">
+      <DependentUpon>TechnicalOffice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard\TreasurerDashboard.resx">
       <DependentUpon>TreasurerDashboard.cs</DependentUpon>

@@ -150,13 +150,14 @@ namespace SchoolClearanceSystem
         // --- ADD THIS BACK TO DATABASEMANAGER.CS ---
         public DataTable GetDepartmentRequests(string departmentName)
         {
+            // We join ClearanceRequests with Users to get FullName, Program, and Year
             string sql = @"SELECT r.StudentID, u.FullName, u.Program, u.Year, 
-                          r.Semester, r.AcademicYear, r.Status 
+                          r.Semester, r.AcademicYear, r.Status, r.Remarks
                    FROM ClearanceRequests r
                    INNER JOIN Users u ON r.StudentID = u.UserID
                    WHERE r.Department = @dept";
 
-            var param = new SqliteParameter("@dept", departmentName);
+            var param = new Microsoft.Data.Sqlite.SqliteParameter("@dept", departmentName);
             return GetDataTable(sql, new[] { param });
         }
 
@@ -180,6 +181,27 @@ namespace SchoolClearanceSystem
                 };
             }
             return null;
+        }
+
+        
+
+        public bool UpdateRequestStatus(string studentId, string department, string newStatus, string remarks)
+        {
+            string sql = @"UPDATE ClearanceRequests 
+                   SET Status = @status, 
+                       Remarks = @remarks, 
+                       DateProcessed = @date
+                   WHERE StudentID = @id AND Department = @dept";
+
+            Microsoft.Data.Sqlite.SqliteParameter[] ps = {
+        new Microsoft.Data.Sqlite.SqliteParameter("@status", newStatus),
+        new Microsoft.Data.Sqlite.SqliteParameter("@remarks", remarks),
+        new Microsoft.Data.Sqlite.SqliteParameter("@date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+        new Microsoft.Data.Sqlite.SqliteParameter("@id", studentId),
+        new Microsoft.Data.Sqlite.SqliteParameter("@dept", department)
+    };
+
+            return ExecuteNonQuery(sql, ps) > 0;
         }
 
         public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear)
