@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
-    public partial class TreasurerDashboard : BaseClearanceForm
+    public partial class TreasurerDashboard : BaseOfficeForm
     {
         public TreasurerDashboard()
         {

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
-    public partial class TechnicalOffice : BaseClearanceForm
+    public partial class TechnicalOffice : BaseOfficeForm
     {
         public TechnicalOffice()
         {

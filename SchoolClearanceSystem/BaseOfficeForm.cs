@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
-    public partial class BaseClearanceForm : XtraForm
+    public partial class BaseOfficeForm : XtraForm
     {
         // Set this in the child form (e.g., "Treasurer")
         public string CurrentOffice { get; set; }
         protected DatabaseManager db = new DatabaseManager();
 
-        public BaseClearanceForm()
+        public BaseOfficeForm()
         {
             InitializeComponent();
         }

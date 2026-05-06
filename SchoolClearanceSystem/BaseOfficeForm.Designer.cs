@@ -1,6 +1,6 @@
 ﻿namespace SchoolClearanceSystem
 {
-    partial class BaseClearanceForm
+    partial class BaseOfficeForm
     {
         /// <summary>
         /// Required designer variable.
