@@ -142,16 +142,7 @@
     <Compile Include="Dashboard\TreasurerDashboard.Designer.cs">
       <DependentUpon>TreasurerDashboard.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
-    <Compile Include="Dashboard\TreasurerPortal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dashboard\TreasurerPortal.Designer.cs">
-      <DependentUpon>TreasurerPortal.cs</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseManager.cs" />
->>>>>>> MainBranch
     <Compile Include="Accounts\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,9 +181,6 @@
     <EmbeddedResource Include="Dashboard\TreasurerDashboard.resx">
       <DependentUpon>TreasurerDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dashboard\TreasurerPortal.resx">
-      <DependentUpon>TreasurerPortal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Accounts\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
@@ -210,13 +198,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
-<<<<<<< HEAD
-    <None Include="ClearanceSystem.db" />
-=======
     <None Include="ClearanceSystem.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
->>>>>>> MainBranch
     <None Include="Dashboard\App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
