@@ -1,11 +1,5 @@
 ﻿using DevExpress.XtraEditors;
-using SchoolClearanceSystem.Dashboard;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Net.NetworkInformation;
-using System.Windows.Forms;
-
 namespace SchoolClearanceSystem.Dashboard
 {
     public partial class TreasurerDashboard : BaseOfficeForm //inheritance for code reusability
