@@ -47,6 +47,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnUpload = new DevExpress.XtraEditors.SimpleButton();
             this.txtUploadPath = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).BeginInit();
@@ -236,11 +237,20 @@
             this.txtUploadPath.Size = new System.Drawing.Size(100, 28);
             this.txtUploadPath.TabIndex = 17;
             // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(80, 144);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(33, 13);
+            this.labelControl10.TabIndex = 18;
+            this.labelControl10.Text = "testing";
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1918, 1046);
+            this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.txtUploadPath);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.lblctrLogin);
@@ -295,6 +305,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevExpress.XtraEditors.SimpleButton btnUpload;
         private DevExpress.XtraEditors.TextEdit txtUploadPath;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }
 
