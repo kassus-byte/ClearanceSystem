@@ -31,6 +31,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.sidebar = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.accordionContentContainer1 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
             this.sbDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbRequestClearance = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbMyClearance = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -146,7 +147,6 @@
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionContentContainer1 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -300,6 +300,12 @@
             this.sidebar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.sidebar.Size = new System.Drawing.Size(350, 903);
             this.sidebar.TabIndex = 3;
+            // 
+            // accordionContentContainer1
+            // 
+            this.accordionContentContainer1.Name = "accordionContentContainer1";
+            this.accordionContentContainer1.Size = new System.Drawing.Size(301, 76);
+            this.accordionContentContainer1.TabIndex = 1;
             // 
             // sbDashboard
             // 
@@ -1729,12 +1735,6 @@
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "My Requests";
-            // 
-            // accordionContentContainer1
-            // 
-            this.accordionContentContainer1.Name = "accordionContentContainer1";
-            this.accordionContentContainer1.Size = new System.Drawing.Size(301, 76);
-            this.accordionContentContainer1.TabIndex = 1;
             // 
             // StudentPortal
             // 
