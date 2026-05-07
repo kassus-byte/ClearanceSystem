@@ -15,9 +15,11 @@ namespace SchoolClearanceSystem.Dashboard
         public AdminDashboard()
         {
             InitializeComponent();
-            RefreshData();
-           
 
+            // --- NEW: Sync Toggle Switch with Database state on load ---
+            tsClearanceSeason.IsOn = db.IsClearanceActive();
+
+            RefreshData();
         }
 
         private void RefreshData()
@@ -26,28 +28,24 @@ namespace SchoolClearanceSystem.Dashboard
             string studentQuery = "SELECT UserID, FullName, Program, Year FROM Users WHERE Role = 'Student' ORDER BY FullName ASC";
             gcStudents.DataSource = db.GetDataTable(studentQuery);
 
-            // 2. Load Office Accounts (Now using the variable!)
+            // 2. Load Office Accounts
             string officeQuery = "SELECT UserID, FullName, Role as 'Designation', Program as 'Department' " +
                                  "FROM Users WHERE Role NOT IN ('Student', 'Admin') ORDER BY Role ASC";
 
-            // Assign the data to your new office grid
+            // Assign the data to your office grid
             gcOffice.DataSource = db.GetDataTable(officeQuery);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             // pgDashboard is your Navigation Frame
-            // The syntax is: [FrameName].SelectedPage = [PageName];
             mainNavigationFrame.SelectedPage = pageDashboard;
         }
 
         private void btnAccountManagement_Click(object sender, EventArgs e)
         {
             mainNavigationFrame.SelectedPage = pageAccountManagement;
-
-
         }
-
 
         private void btnClearanceSeason_Click(object sender, EventArgs e)
         {
@@ -56,14 +54,11 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void tsClearanceSeason_Toggled(object sender, EventArgs e)
         {
-
-            // Updates the table we just created
+            // Updates the SystemSettings table
             db.ToggleClearanceSeason(tsClearanceSeason.IsOn);
 
             string status = tsClearanceSeason.IsOn ? "OPEN" : "CLOSED";
-            XtraMessageBox.Show($"Clearance is now {status}.");
-
+            XtraMessageBox.Show($"Clearance is now {status}.", "System Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
-    }
-
+}
