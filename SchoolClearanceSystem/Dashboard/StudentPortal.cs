@@ -1,7 +1,9 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
@@ -17,8 +19,8 @@ namespace SchoolClearanceSystem
 
             // Initialize the list with your panels
             allPages = new List<PanelControl> {
-                pnlDashboard, pnlRequestClearance, pnlMyRequest,
-                pnlMyClearance, pnlRequirements, pnlNotifications
+                pnlDashboard, pnlRequestClearance, 
+                pnlMyClearance, pnlMyRequests, pnlNotifications
             };
         }
 
@@ -56,12 +58,11 @@ namespace SchoolClearanceSystem
         }
 
         // Optimized Navigation (Assign these to your NavBarItem Click events)
-        private void navBarItem3_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlDashboard);
-        private void navBarItem4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlRequestClearance);
-        private void navBarItem5_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlMyRequest);
-        private void navBarItem6_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlMyClearance);
-        private void navBarItem7_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlRequirements);
-        private void navBarItem8_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) => ShowPage(pnlNotifications);
+        private void sbDashboard_Click(object sender, EventArgs e) => ShowPage(pnlDashboard);
+        private void sbRequestClearance_Click(object sender, EventArgs e) => ShowPage(pnlRequestClearance);
+        private void sbMyClearance_Click(object sender, EventArgs e) => ShowPage(pnlMyClearance);
+        private void sbMyRequest_Click(object sender, EventArgs e) => ShowPage(pnlMyRequests);
+        private void sbNotifications_Click(object sender, EventArgs e) => ShowPage(pnlNotifications);
 
         // Grid Styling
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -119,7 +120,7 @@ namespace SchoolClearanceSystem
                                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Optional: Switch to "My Requests" page so they can see it pending
-                    ShowPage(pnlMyRequest);
+                  //  ShowPage(pnlMyRequest);
                 }
             }
             catch (Exception ex)
@@ -127,7 +128,5 @@ namespace SchoolClearanceSystem
                 XtraMessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-      
     }
 }

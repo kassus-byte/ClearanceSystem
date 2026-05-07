@@ -13,7 +13,7 @@ namespace SchoolClearanceSystem
         }
 
       
-        private void btnRegister_Click_1(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
             // 1. DEFENSIVE VALIDATION 
             // This prevents the "silent fail" you experienced earlier
@@ -82,6 +82,8 @@ namespace SchoolClearanceSystem
             // 4. Hide Registration instead of Closing it
             this.Hide();
         }
+
+       
     }
     }
     

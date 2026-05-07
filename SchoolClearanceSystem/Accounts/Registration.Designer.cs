@@ -30,130 +30,91 @@
         {
             this.txtUserID = new DevExpress.XtraEditors.TextEdit();
             this.txtFullName = new DevExpress.XtraEditors.TextEdit();
-            this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.cmbProgram = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.lblctrLogin = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.cmbRole = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(1217, 368);
+            this.txtUserID.Location = new System.Drawing.Point(165, 117);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Properties.AutoHeight = false;
-            this.txtUserID.Size = new System.Drawing.Size(262, 40);
+            this.txtUserID.Size = new System.Drawing.Size(342, 40);
             this.txtUserID.TabIndex = 0;
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(1217, 451);
+            this.txtFullName.Location = new System.Drawing.Point(165, 200);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Properties.AutoHeight = false;
-            this.txtFullName.Size = new System.Drawing.Size(262, 40);
+            this.txtFullName.Size = new System.Drawing.Size(342, 40);
             this.txtFullName.TabIndex = 1;
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.Location = new System.Drawing.Point(1217, 894);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(262, 47);
-            this.btnRegister.TabIndex = 2;
-            this.btnRegister.Text = "REGISTER";
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click_1);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(1166, 193);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(398, 50);
-            this.labelControl1.TabIndex = 3;
-            this.labelControl1.Text = "DMC COLLEGE FOUNDATION, INC.\r\n\r\n";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(1280, 249);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(118, 25);
-            this.labelControl2.TabIndex = 4;
-            this.labelControl2.Text = "REGISTER";
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(1217, 344);
+            this.labelControl3.Location = new System.Drawing.Point(165, 93);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(51, 18);
+            this.labelControl3.Size = new System.Drawing.Size(45, 17);
             this.labelControl3.TabIndex = 5;
             this.labelControl3.Text = "User ID";
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(1217, 427);
+            this.labelControl4.Location = new System.Drawing.Point(172, 176);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(64, 18);
+            this.labelControl4.Size = new System.Drawing.Size(63, 17);
             this.labelControl4.TabIndex = 6;
             this.labelControl4.Text = "Full Name";
             // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(1364, 842);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(115, 18);
-            this.labelControl5.TabIndex = 7;
-            this.labelControl5.Text = "Forgot Password?";
-            // 
             // labelControl6
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(1217, 509);
+            this.labelControl6.Location = new System.Drawing.Point(172, 258);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(55, 18);
+            this.labelControl6.Size = new System.Drawing.Size(53, 17);
             this.labelControl6.TabIndex = 9;
             this.labelControl6.Text = "Program";
             // 
             // cmbProgram
             // 
-            this.cmbProgram.Location = new System.Drawing.Point(1217, 533);
+            this.cmbProgram.Location = new System.Drawing.Point(165, 282);
             this.cmbProgram.Name = "cmbProgram";
             this.cmbProgram.Properties.AutoHeight = false;
             this.cmbProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbProgram.Properties.Items.AddRange(new object[] {
             "BSIT"});
-            this.cmbProgram.Size = new System.Drawing.Size(262, 40);
+            this.cmbProgram.Size = new System.Drawing.Size(342, 40);
             this.cmbProgram.TabIndex = 10;
             // 
             // cmbYear
             // 
-            this.cmbYear.Location = new System.Drawing.Point(1217, 615);
+            this.cmbYear.Location = new System.Drawing.Point(165, 364);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Properties.AutoHeight = false;
             this.cmbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -163,63 +124,42 @@
             "II",
             "III",
             "IV"});
-            this.cmbYear.Size = new System.Drawing.Size(262, 40);
+            this.cmbYear.Size = new System.Drawing.Size(342, 40);
             this.cmbYear.TabIndex = 11;
             // 
             // labelControl7
             // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(1217, 591);
+            this.labelControl7.Location = new System.Drawing.Point(172, 340);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(31, 18);
+            this.labelControl7.Size = new System.Drawing.Size(27, 17);
             this.labelControl7.TabIndex = 12;
             this.labelControl7.Text = "Year";
             // 
             // labelControl8
             // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(1221, 772);
+            this.labelControl8.Location = new System.Drawing.Point(172, 521);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(61, 18);
+            this.labelControl8.Size = new System.Drawing.Size(58, 17);
             this.labelControl8.TabIndex = 13;
             this.labelControl8.Text = "Password";
             // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(1229, 964);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(169, 18);
-            this.labelControl9.TabIndex = 14;
-            this.labelControl9.Text = "Already have an account?";
-            // 
-            // lblctrLogin
-            // 
-            this.lblctrLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblctrLogin.Appearance.Options.UseFont = true;
-            this.lblctrLogin.Location = new System.Drawing.Point(1404, 964);
-            this.lblctrLogin.Name = "lblctrLogin";
-            this.lblctrLogin.Size = new System.Drawing.Size(44, 18);
-            this.lblctrLogin.TabIndex = 15;
-            this.lblctrLogin.Text = "LOGIN";
-            this.lblctrLogin.Click += new System.EventHandler(this.lblctrLogin_Click_1);
-            // 
             // labelControl10
             // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(1221, 679);
+            this.labelControl10.Location = new System.Drawing.Point(172, 423);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(27, 18);
+            this.labelControl10.Size = new System.Drawing.Size(27, 17);
             this.labelControl10.TabIndex = 17;
             this.labelControl10.Text = "Role";
             // 
             // cmbRole
             // 
-            this.cmbRole.Location = new System.Drawing.Point(1217, 703);
+            this.cmbRole.Location = new System.Drawing.Point(165, 447);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Properties.AutoHeight = false;
             this.cmbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -237,40 +177,87 @@
             "Coordinator",
             "Dean",
             ""});
-            this.cmbRole.Size = new System.Drawing.Size(262, 40);
+            this.cmbRole.Size = new System.Drawing.Size(342, 40);
             this.cmbRole.TabIndex = 18;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(1217, 796);
+            this.txtPassword.Location = new System.Drawing.Point(165, 545);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.AutoHeight = false;
-            this.txtPassword.Size = new System.Drawing.Size(262, 40);
+            this.txtPassword.Size = new System.Drawing.Size(342, 40);
             this.txtPassword.TabIndex = 8;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Appearance.BackColor = System.Drawing.Color.White;
+            this.panelControl2.Appearance.Options.UseBackColor = true;
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.cmbRole);
+            this.panelControl2.Controls.Add(this.labelControl10);
+            this.panelControl2.Controls.Add(this.labelControl7);
+            this.panelControl2.Controls.Add(this.labelControl11);
+            this.panelControl2.Controls.Add(this.labelControl8);
+            this.panelControl2.Controls.Add(this.labelControl14);
+            this.panelControl2.Controls.Add(this.cmbYear);
+            this.panelControl2.Controls.Add(this.btnRegister);
+            this.panelControl2.Controls.Add(this.cmbProgram);
+            this.panelControl2.Controls.Add(this.txtUserID);
+            this.panelControl2.Controls.Add(this.labelControl6);
+            this.panelControl2.Controls.Add(this.txtFullName);
+            this.panelControl2.Controls.Add(this.txtPassword);
+            this.panelControl2.Controls.Add(this.labelControl3);
+            this.panelControl2.Controls.Add(this.labelControl4);
+            this.panelControl2.Location = new System.Drawing.Point(1100, 98);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(675, 825);
+            this.panelControl2.TabIndex = 40;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl11.Appearance.Options.UseFont = true;
+            this.labelControl11.Appearance.Options.UseForeColor = true;
+            this.labelControl11.Location = new System.Drawing.Point(31, 23);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(123, 45);
+            this.labelControl11.TabIndex = 44;
+            this.labelControl11.Text = "Register";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.labelControl14.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl14.Appearance.Options.UseFont = true;
+            this.labelControl14.Appearance.Options.UseForeColor = true;
+            this.labelControl14.Location = new System.Drawing.Point(219, 723);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(247, 13);
+            this.labelControl14.TabIndex = 41;
+            this.labelControl14.Text = "© 2026 ClearEase - College of Computer Studies";
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnRegister.Appearance.Options.UseFont = true;
+            this.btnRegister.Appearance.Options.UseForeColor = true;
+            this.btnRegister.Location = new System.Drawing.Point(165, 620);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(342, 52);
+            this.btnRegister.TabIndex = 40;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // Registration
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1918, 1046);
-            this.Controls.Add(this.cmbRole);
-            this.Controls.Add(this.labelControl10);
-            this.Controls.Add(this.lblctrLogin);
-            this.Controls.Add(this.labelControl9);
-            this.Controls.Add(this.labelControl8);
-            this.Controls.Add(this.labelControl7);
-            this.Controls.Add(this.cmbYear);
-            this.Controls.Add(this.cmbProgram);
-            this.Controls.Add(this.labelControl6);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.txtFullName);
-            this.Controls.Add(this.txtUserID);
+            this.Controls.Add(this.panelControl2);
             this.Name = "Registration";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).EndInit();
@@ -279,8 +266,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -288,22 +277,20 @@
 
         private DevExpress.XtraEditors.TextEdit txtUserID;
         private DevExpress.XtraEditors.TextEdit txtFullName;
-        private DevExpress.XtraEditors.SimpleButton btnRegister;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.ComboBoxEdit cmbProgram;
         private DevExpress.XtraEditors.ComboBoxEdit cmbYear;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.HyperlinkLabelControl lblctrLogin;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.ComboBoxEdit cmbRole;
         private DevExpress.XtraEditors.TextEdit txtPassword;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.SimpleButton btnRegister;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
     }
 }
 
