@@ -29,19 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.sbClearanceSeason = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.btnClearanceSeason = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.sbDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.sbAccountManagement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.btnDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.btnAccountManagement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.lblRole = new DevExpress.XtraEditors.LabelControl();
+            this.lblFullName = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
-            this.pageAdminDashboard = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.mainNavigationFrame = new DevExpress.XtraBars.Navigation.NavigationFrame();
+            this.pageDashboard = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.panelControl13 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
@@ -58,24 +68,26 @@
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.pageAccountManagement = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.pageAdminClearanceSeason = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.panelControl13 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.lblFullName = new DevExpress.XtraEditors.LabelControl();
-            this.lblRole = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.gcStudents = new DevExpress.XtraGrid.GridControl();
+            this.gvStudents = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.UserID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.FullName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Program = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Year = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DateCreated = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.IdPhoto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
-            this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.gcOffice = new DevExpress.XtraGrid.GridControl();
+            this.gvOffice = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.pageClearanceSeason = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.tsClearanceSeason = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -88,9 +100,10 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
-            this.navigationFrame1.SuspendLayout();
-            this.pageAdminDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainNavigationFrame)).BeginInit();
+            this.mainNavigationFrame.SuspendLayout();
+            this.pageDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
@@ -110,17 +123,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             this.pageAccountManagement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
-            this.panelControl14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
-            this.panelControl15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            this.tabNavigationPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcOffice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOffice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
+            this.panelControl14.SuspendLayout();
+            this.pageClearanceSeason.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsClearanceSeason.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -134,20 +149,21 @@
             this.accordionControlElement2.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement2.Appearance.Normal.Options.UseForeColor = true;
             this.accordionControlElement2.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.sbClearanceSeason});
+            this.btnClearanceSeason});
             this.accordionControlElement2.Expanded = true;
             this.accordionControlElement2.Name = "accordionControlElement2";
             this.accordionControlElement2.Text = "SYSTEM ";
             // 
-            // sbClearanceSeason
+            // btnClearanceSeason
             // 
-            this.sbClearanceSeason.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.sbClearanceSeason.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.sbClearanceSeason.Appearance.Normal.Options.UseFont = true;
-            this.sbClearanceSeason.Appearance.Normal.Options.UseForeColor = true;
-            this.sbClearanceSeason.Name = "sbClearanceSeason";
-            this.sbClearanceSeason.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbClearanceSeason.Text = "Clearance Season";
+            this.btnClearanceSeason.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnClearanceSeason.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnClearanceSeason.Appearance.Normal.Options.UseFont = true;
+            this.btnClearanceSeason.Appearance.Normal.Options.UseForeColor = true;
+            this.btnClearanceSeason.Name = "btnClearanceSeason";
+            this.btnClearanceSeason.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.btnClearanceSeason.Text = "Clearance Season";
+            this.btnClearanceSeason.Click += new System.EventHandler(this.btnClearanceSeason_Click_1);
             // 
             // accordionControlSeparator1
             // 
@@ -160,31 +176,33 @@
             this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
             this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.sbDashboard,
-            this.sbAccountManagement});
+            this.btnDashboard,
+            this.btnAccountManagement});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "MAIN";
             // 
-            // sbDashboard
+            // btnDashboard
             // 
-            this.sbDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.sbDashboard.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.sbDashboard.Appearance.Normal.Options.UseFont = true;
-            this.sbDashboard.Appearance.Normal.Options.UseForeColor = true;
-            this.sbDashboard.Name = "sbDashboard";
-            this.sbDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbDashboard.Text = "Dashboard";
+            this.btnDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnDashboard.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDashboard.Appearance.Normal.Options.UseFont = true;
+            this.btnDashboard.Appearance.Normal.Options.UseForeColor = true;
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click_1);
             // 
-            // sbAccountManagement
+            // btnAccountManagement
             // 
-            this.sbAccountManagement.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.sbAccountManagement.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.sbAccountManagement.Appearance.Normal.Options.UseFont = true;
-            this.sbAccountManagement.Appearance.Normal.Options.UseForeColor = true;
-            this.sbAccountManagement.Name = "sbAccountManagement";
-            this.sbAccountManagement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbAccountManagement.Text = "Account Management";
+            this.btnAccountManagement.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAccountManagement.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAccountManagement.Appearance.Normal.Options.UseFont = true;
+            this.btnAccountManagement.Appearance.Normal.Options.UseForeColor = true;
+            this.btnAccountManagement.Name = "btnAccountManagement";
+            this.btnAccountManagement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.btnAccountManagement.Text = "Account Management";
+            this.btnAccountManagement.Click += new System.EventHandler(this.btnAccountManagement_Click_1);
             // 
             // accordionControl1
             // 
@@ -219,7 +237,7 @@
             // 
             // splitContainerControl1.Panel2
             // 
-            this.splitContainerControl1.Panel2.Controls.Add(this.navigationFrame1);
+            this.splitContainerControl1.Panel2.Controls.Add(this.mainNavigationFrame);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1920, 1080);
             this.splitContainerControl1.SplitterPosition = 300;
@@ -236,6 +254,30 @@
             this.panelControl2.Size = new System.Drawing.Size(300, 85);
             this.panelControl2.TabIndex = 1;
             // 
+            // lblRole
+            // 
+            this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblRole.Appearance.Options.UseFont = true;
+            this.lblRole.Appearance.Options.UseForeColor = true;
+            this.lblRole.Location = new System.Drawing.Point(94, 40);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(33, 13);
+            this.lblRole.TabIndex = 6;
+            this.lblRole.Text = "Admin";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblFullName.Appearance.Options.UseFont = true;
+            this.lblFullName.Appearance.Options.UseForeColor = true;
+            this.lblFullName.Location = new System.Drawing.Point(94, 17);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(97, 17);
+            this.lblFullName.TabIndex = 2;
+            this.lblFullName.Text = "Anne Hathaway";
+            // 
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -247,31 +289,69 @@
             this.panelControl1.Size = new System.Drawing.Size(300, 80);
             this.panelControl1.TabIndex = 0;
             // 
-            // navigationFrame1
+            // labelControl2
             // 
-            this.navigationFrame1.Controls.Add(this.pageAdminDashboard);
-            this.navigationFrame1.Controls.Add(this.pageAccountManagement);
-            this.navigationFrame1.Controls.Add(this.pageAdminClearanceSeason);
-            this.navigationFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navigationFrame1.Location = new System.Drawing.Point(0, 0);
-            this.navigationFrame1.Name = "navigationFrame1";
-            this.navigationFrame1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.pageAdminDashboard,
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(33, 39);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(158, 17);
+            this.labelControl2.TabIndex = 4;
+            this.labelControl2.Text = "Student Clearance System";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(33, 12);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(218, 21);
+            this.labelControl1.TabIndex = 3;
+            this.labelControl1.Text = "College of Computer Studies";
+            // 
+            // mainNavigationFrame
+            // 
+            this.mainNavigationFrame.AllowTransitionAnimation = DevExpress.Utils.DefaultBoolean.False;
+            this.mainNavigationFrame.Controls.Add(this.pageDashboard);
+            this.mainNavigationFrame.Controls.Add(this.pageAccountManagement);
+            this.mainNavigationFrame.Controls.Add(this.pageClearanceSeason);
+            this.mainNavigationFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainNavigationFrame.Location = new System.Drawing.Point(0, 0);
+            this.mainNavigationFrame.Name = "mainNavigationFrame";
+            this.mainNavigationFrame.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.pageDashboard,
             this.pageAccountManagement,
-            this.pageAdminClearanceSeason});
-            this.navigationFrame1.SelectedPage = this.pageAdminDashboard;
-            this.navigationFrame1.Size = new System.Drawing.Size(1604, 1080);
-            this.navigationFrame1.TabIndex = 0;
-            this.navigationFrame1.Text = "navigationFrame1";
+            this.pageClearanceSeason});
+            this.mainNavigationFrame.SelectedPage = this.pageDashboard;
+            this.mainNavigationFrame.Size = new System.Drawing.Size(1604, 1080);
+            this.mainNavigationFrame.TabIndex = 0;
+            this.mainNavigationFrame.Text = "navigationFrame1";
             // 
-            // pageAdminDashboard
+            // pageDashboard
             // 
-            this.pageAdminDashboard.Controls.Add(this.panelControl13);
-            this.pageAdminDashboard.Controls.Add(this.panelControl6);
-            this.pageAdminDashboard.Controls.Add(this.panelControl4);
-            this.pageAdminDashboard.Controls.Add(this.panelControl3);
-            this.pageAdminDashboard.Name = "pageAdminDashboard";
-            this.pageAdminDashboard.Size = new System.Drawing.Size(1604, 1080);
+            this.pageDashboard.Controls.Add(this.panelControl13);
+            this.pageDashboard.Controls.Add(this.panelControl6);
+            this.pageDashboard.Controls.Add(this.panelControl4);
+            this.pageDashboard.Controls.Add(this.panelControl3);
+            this.pageDashboard.Name = "pageDashboard";
+            this.pageDashboard.Size = new System.Drawing.Size(1604, 1080);
+            // 
+            // panelControl13
+            // 
+            this.panelControl13.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl13.Appearance.Options.UseBackColor = true;
+            this.panelControl13.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl13.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl13.ContentImage")));
+            this.panelControl13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl13.Location = new System.Drawing.Point(0, 355);
+            this.panelControl13.Name = "panelControl13";
+            this.panelControl13.Padding = new System.Windows.Forms.Padding(10);
+            this.panelControl13.Size = new System.Drawing.Size(1604, 561);
+            this.panelControl13.TabIndex = 3;
             // 
             // panelControl6
             // 
@@ -448,78 +528,142 @@
             // 
             // pageAccountManagement
             // 
+            this.pageAccountManagement.Caption = "pageAccountManagement";
             this.pageAccountManagement.Controls.Add(this.tabPane1);
             this.pageAccountManagement.Controls.Add(this.panelControl14);
             this.pageAccountManagement.Name = "pageAccountManagement";
             this.pageAccountManagement.Padding = new System.Windows.Forms.Padding(10);
             this.pageAccountManagement.Size = new System.Drawing.Size(1604, 1080);
-            this.pageAccountManagement.Paint += new System.Windows.Forms.PaintEventHandler(this.pageAccountManagement_Paint);
             // 
-            // pageAdminClearanceSeason
+            // tabPane1
             // 
-            this.pageAdminClearanceSeason.Name = "pageAdminClearanceSeason";
-            this.pageAdminClearanceSeason.Size = new System.Drawing.Size(1604, 1080);
+            this.tabPane1.Controls.Add(this.tabNavigationPage1);
+            this.tabPane1.Controls.Add(this.tabNavigationPage2);
+            this.tabPane1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabPane1.Location = new System.Drawing.Point(10, 110);
+            this.tabPane1.Name = "tabPane1";
+            this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.tabNavigationPage1,
+            this.tabNavigationPage2});
+            this.tabPane1.RegularSize = new System.Drawing.Size(1584, 470);
+            this.tabPane1.SelectedPage = this.tabNavigationPage1;
+            this.tabPane1.Size = new System.Drawing.Size(1584, 470);
+            this.tabPane1.TabIndex = 1;
+            this.tabPane1.Text = " Students";
             // 
-            // panelControl13
+            // tabNavigationPage1
             // 
-            this.panelControl13.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelControl13.Appearance.Options.UseBackColor = true;
-            this.panelControl13.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl13.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl13.ContentImage")));
-            this.panelControl13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl13.Location = new System.Drawing.Point(0, 355);
-            this.panelControl13.Name = "panelControl13";
-            this.panelControl13.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl13.Size = new System.Drawing.Size(1604, 561);
-            this.panelControl13.TabIndex = 3;
+            this.tabNavigationPage1.Caption = "Students";
+            this.tabNavigationPage1.Controls.Add(this.gcStudents);
+            this.tabNavigationPage1.Name = "tabNavigationPage1";
+            this.tabNavigationPage1.Size = new System.Drawing.Size(1584, 429);
             // 
-            // labelControl1
+            // gcStudents
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(33, 12);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(218, 21);
-            this.labelControl1.TabIndex = 3;
-            this.labelControl1.Text = "College of Computer Studies";
+            this.gcStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcStudents.Location = new System.Drawing.Point(0, 0);
+            this.gcStudents.MainView = this.gvStudents;
+            this.gcStudents.Name = "gcStudents";
+            this.gcStudents.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit1});
+            this.gcStudents.Size = new System.Drawing.Size(1584, 429);
+            this.gcStudents.TabIndex = 2;
+            this.gcStudents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvStudents});
             // 
-            // labelControl2
+            // gvStudents
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(33, 39);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(158, 17);
-            this.labelControl2.TabIndex = 4;
-            this.labelControl2.Text = "Student Clearance System";
+            this.gvStudents.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.UserID,
+            this.FullName,
+            this.Program,
+            this.Year,
+            this.DateCreated,
+            this.IdPhoto});
+            this.gvStudents.GridControl = this.gcStudents;
+            this.gvStudents.Name = "gvStudents";
             // 
-            // lblFullName
+            // UserID
             // 
-            this.lblFullName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblFullName.Appearance.Options.UseFont = true;
-            this.lblFullName.Appearance.Options.UseForeColor = true;
-            this.lblFullName.Location = new System.Drawing.Point(94, 17);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(97, 17);
-            this.lblFullName.TabIndex = 2;
-            this.lblFullName.Text = "Anne Hathaway";
+            this.UserID.Caption = "USER ID";
+            this.UserID.FieldName = "UserID";
+            this.UserID.Name = "UserID";
+            this.UserID.Visible = true;
+            this.UserID.VisibleIndex = 0;
             // 
-            // lblRole
+            // FullName
             // 
-            this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
-            this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblRole.Appearance.Options.UseFont = true;
-            this.lblRole.Appearance.Options.UseForeColor = true;
-            this.lblRole.Location = new System.Drawing.Point(94, 40);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(33, 13);
-            this.lblRole.TabIndex = 6;
-            this.lblRole.Text = "Admin";
+            this.FullName.Caption = "NAME";
+            this.FullName.FieldName = "FullName";
+            this.FullName.Name = "FullName";
+            this.FullName.Visible = true;
+            this.FullName.VisibleIndex = 1;
+            // 
+            // Program
+            // 
+            this.Program.Caption = "PROGRAM";
+            this.Program.FieldName = "Program";
+            this.Program.Name = "Program";
+            this.Program.Visible = true;
+            this.Program.VisibleIndex = 2;
+            // 
+            // Year
+            // 
+            this.Year.Caption = "YEAR";
+            this.Year.FieldName = "Year";
+            this.Year.Name = "Year";
+            this.Year.Visible = true;
+            this.Year.VisibleIndex = 3;
+            // 
+            // DateCreated
+            // 
+            this.DateCreated.Caption = "DATE CREATED";
+            this.DateCreated.FieldName = "DateCreated";
+            this.DateCreated.Name = "DateCreated";
+            this.DateCreated.Visible = true;
+            this.DateCreated.VisibleIndex = 4;
+            // 
+            // IdPhoto
+            // 
+            this.IdPhoto.Caption = "PHOTO";
+            this.IdPhoto.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.IdPhoto.FieldName = "UploadPhoto";
+            this.IdPhoto.Name = "IdPhoto";
+            this.IdPhoto.Visible = true;
+            this.IdPhoto.VisibleIndex = 5;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "View Photo", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit1.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
+            // 
+            // tabNavigationPage2
+            // 
+            this.tabNavigationPage2.Caption = "Offices";
+            this.tabNavigationPage2.Controls.Add(this.gcOffice);
+            this.tabNavigationPage2.Name = "tabNavigationPage2";
+            this.tabNavigationPage2.Size = new System.Drawing.Size(1584, 429);
+            // 
+            // gcOffice
+            // 
+            this.gcOffice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcOffice.Location = new System.Drawing.Point(0, 0);
+            this.gcOffice.MainView = this.gvOffice;
+            this.gcOffice.Name = "gcOffice";
+            this.gcOffice.Size = new System.Drawing.Size(1584, 429);
+            this.gcOffice.TabIndex = 3;
+            this.gcOffice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvOffice});
+            // 
+            // gvOffice
+            // 
+            this.gvOffice.GridControl = this.gcOffice;
+            this.gvOffice.Name = "gvOffice";
             // 
             // panelControl14
             // 
@@ -535,93 +679,17 @@
             this.panelControl14.Size = new System.Drawing.Size(1584, 100);
             this.panelControl14.TabIndex = 0;
             // 
-            // tabPane1
+            // labelControl13
             // 
-            this.tabPane1.Controls.Add(this.tabNavigationPage1);
-            this.tabPane1.Controls.Add(this.tabNavigationPage2);
-            this.tabPane1.Controls.Add(this.tabNavigationPage3);
-            this.tabPane1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabPane1.Location = new System.Drawing.Point(10, 110);
-            this.tabPane1.Name = "tabPane1";
-            this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.tabNavigationPage1,
-            this.tabNavigationPage2,
-            this.tabNavigationPage3});
-            this.tabPane1.RegularSize = new System.Drawing.Size(1584, 470);
-            this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(1584, 470);
-            this.tabPane1.TabIndex = 1;
-            this.tabPane1.Text = " Students";
-            // 
-            // tabNavigationPage1
-            // 
-            this.tabNavigationPage1.Caption = "tabNavigationPage1";
-            this.tabNavigationPage1.Controls.Add(this.gridControl1);
-            this.tabNavigationPage1.Controls.Add(this.panelControl15);
-            this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(1584, 429);
-            // 
-            // tabNavigationPage2
-            // 
-            this.tabNavigationPage2.Caption = "tabNavigationPage2";
-            this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Size = new System.Drawing.Size(1604, 429);
-            // 
-            // tabNavigationPage3
-            // 
-            this.tabNavigationPage3.Caption = "tabNavigationPage3";
-            this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(1604, 429);
-            // 
-            // searchControl1
-            // 
-            this.searchControl1.Location = new System.Drawing.Point(19, 17);
-            this.searchControl1.Name = "searchControl1";
-            this.searchControl1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Repository.ClearButton(),
-            new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.searchControl1.Size = new System.Drawing.Size(1531, 28);
-            this.searchControl1.TabIndex = 0;
-            // 
-            // panelControl15
-            // 
-            this.panelControl15.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelControl15.Appearance.Options.UseBackColor = true;
-            this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl15.Controls.Add(this.searchControl1);
-            this.panelControl15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl15.Location = new System.Drawing.Point(0, 0);
-            this.panelControl15.Name = "panelControl15";
-            this.panelControl15.Size = new System.Drawing.Size(1584, 57);
-            this.panelControl15.TabIndex = 1;
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 57);
-            this.gridControl1.MainView = this.gridView2;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1584, 372);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.gridControl1;
-            this.gridView2.Name = "gridView2";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(1387, 58);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(163, 36);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Register Account";
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Appearance.Options.UseForeColor = true;
+            this.labelControl13.Location = new System.Drawing.Point(36, 63);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(261, 17);
+            this.labelControl13.TabIndex = 3;
+            this.labelControl13.Text = "Register, edit, and manage all user accounts.";
             // 
             // labelControl12
             // 
@@ -635,17 +703,33 @@
             this.labelControl12.TabIndex = 2;
             this.labelControl12.Text = "Account Management";
             // 
-            // labelControl13
+            // simpleButton1
             // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.Location = new System.Drawing.Point(36, 63);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(261, 17);
-            this.labelControl13.TabIndex = 3;
-            this.labelControl13.Text = "Register, edit, and manage all user accounts.";
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(1387, 58);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(163, 36);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "Register Account";
+            // 
+            // pageClearanceSeason
+            // 
+            this.pageClearanceSeason.Caption = "pageClearanceSeason";
+            this.pageClearanceSeason.Controls.Add(this.tsClearanceSeason);
+            this.pageClearanceSeason.Name = "pageClearanceSeason";
+            this.pageClearanceSeason.Size = new System.Drawing.Size(1604, 1080);
+            // 
+            // tsClearanceSeason
+            // 
+            this.tsClearanceSeason.Location = new System.Drawing.Point(755, 528);
+            this.tsClearanceSeason.Name = "tsClearanceSeason";
+            this.tsClearanceSeason.Properties.OffText = "Off";
+            this.tsClearanceSeason.Properties.OnText = "On";
+            this.tsClearanceSeason.Size = new System.Drawing.Size(95, 24);
+            this.tsClearanceSeason.TabIndex = 1;
             // 
             // AdminDashboard
             // 
@@ -670,9 +754,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).EndInit();
-            this.navigationFrame1.ResumeLayout(false);
-            this.pageAdminDashboard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainNavigationFrame)).EndInit();
+            this.mainNavigationFrame.ResumeLayout(false);
+            this.pageDashboard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
@@ -693,18 +778,20 @@
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             this.pageAccountManagement.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
-            this.panelControl14.ResumeLayout(false);
-            this.panelControl14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
             this.tabNavigationPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
-            this.panelControl15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            this.tabNavigationPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcOffice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOffice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
+            this.panelControl14.ResumeLayout(false);
+            this.panelControl14.PerformLayout();
+            this.pageClearanceSeason.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsClearanceSeason.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -713,19 +800,19 @@
 
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbClearanceSeason;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement btnClearanceSeason;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbDashboard;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbAccountManagement;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement btnDashboard;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement btnAccountManagement;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame1;
-        private DevExpress.XtraBars.Navigation.NavigationPage pageAdminDashboard;
+        private DevExpress.XtraBars.Navigation.NavigationFrame mainNavigationFrame;
+        private DevExpress.XtraBars.Navigation.NavigationPage pageDashboard;
         private DevExpress.XtraBars.Navigation.NavigationPage pageAccountManagement;
-        private DevExpress.XtraBars.Navigation.NavigationPage pageAdminClearanceSeason;
+        private DevExpress.XtraBars.Navigation.NavigationPage pageClearanceSeason;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
@@ -749,14 +836,21 @@
         private DevExpress.XtraEditors.PanelControl panelControl14;
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage3;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraEditors.PanelControl panelControl15;
-        private DevExpress.XtraEditors.SearchControl searchControl1;
+        private DevExpress.XtraGrid.GridControl gcStudents;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvStudents;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.ToggleSwitch tsClearanceSeason;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
+        private DevExpress.XtraGrid.GridControl gcOffice;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvOffice;
+        private DevExpress.XtraGrid.Columns.GridColumn UserID;
+        private DevExpress.XtraGrid.Columns.GridColumn FullName;
+        private DevExpress.XtraGrid.Columns.GridColumn Program;
+        private DevExpress.XtraGrid.Columns.GridColumn Year;
+        private DevExpress.XtraGrid.Columns.GridColumn DateCreated;
+        private DevExpress.XtraGrid.Columns.GridColumn IdPhoto;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }
