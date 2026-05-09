@@ -59,14 +59,6 @@ namespace SchoolClearanceSystem
             cmbYear.SelectedIndex = -1;
         }
 
-        private void lblctrLogin_Click_1(object sender, EventArgs e)
-        {
-            Login loginForm = new Login();
-            loginForm.FormClosed += (s, args) => this.Close();
-            loginForm.Show();
-            this.Hide();
-        }
-
         private void btnUpload_Click(object sender, EventArgs e)
         {
             using (DevExpress.XtraEditors.XtraOpenFileDialog ofdFilePicker = new DevExpress.XtraEditors.XtraOpenFileDialog())
@@ -79,6 +71,14 @@ namespace SchoolClearanceSystem
                     txtUploadPath.Text = ofdFilePicker.FileName;
                 }
             }
+        }
+
+        private void lblctrLogin_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.FormClosed += (s, args) => this.Close();
+            loginForm.Show();
+            this.Hide();
         }
     }
 }
