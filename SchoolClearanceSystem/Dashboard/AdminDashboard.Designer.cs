@@ -29,15 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.btnClearanceSeason = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnAccountManagement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -63,7 +60,7 @@
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.toggleSwitch1 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsStatus = new DevExpress.XtraEditors.ToggleSwitch();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -83,6 +80,8 @@
             this.gcOffice = new DevExpress.XtraGrid.GridControl();
             this.gvOffice = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -119,7 +118,7 @@
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             this.pageAccountManagement.SuspendLayout();
@@ -141,33 +140,6 @@
             // gridView1
             // 
             this.gridView1.Name = "gridView1";
-            // 
-            // accordionControlElement2
-            // 
-            this.accordionControlElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.accordionControlElement2.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.accordionControlElement2.Appearance.Normal.Options.UseFont = true;
-            this.accordionControlElement2.Appearance.Normal.Options.UseForeColor = true;
-            this.accordionControlElement2.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.btnClearanceSeason});
-            this.accordionControlElement2.Expanded = true;
-            this.accordionControlElement2.Name = "accordionControlElement2";
-            this.accordionControlElement2.Text = "SYSTEM ";
-            // 
-            // btnClearanceSeason
-            // 
-            this.btnClearanceSeason.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnClearanceSeason.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnClearanceSeason.Appearance.Normal.Options.UseFont = true;
-            this.btnClearanceSeason.Appearance.Normal.Options.UseForeColor = true;
-            this.btnClearanceSeason.Name = "btnClearanceSeason";
-            this.btnClearanceSeason.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.btnClearanceSeason.Text = "Clearance Season";
-            this.btnClearanceSeason.Click += new System.EventHandler(this.btnClearanceSeason_Click_1);
-            // 
-            // accordionControlSeparator1
-            // 
-            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
             // 
             // accordionControlElement1
             // 
@@ -212,9 +184,7 @@
             this.accordionControl1.Appearance.AccordionControl.Options.UseForeColor = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1,
-            this.accordionControlSeparator1,
-            this.accordionControlElement2});
+            this.accordionControlElement1});
             this.accordionControl1.Location = new System.Drawing.Point(0, 165);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.Size = new System.Drawing.Size(318, 915);
@@ -333,6 +303,7 @@
             // 
             // pageDashboard
             // 
+            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl13);
             this.pageDashboard.Controls.Add(this.panelControl6);
             this.pageDashboard.Controls.Add(this.panelControl4);
@@ -473,21 +444,22 @@
             this.panelControl5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
             this.panelControl5.Appearance.Options.UseBackColor = true;
             this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl5.Controls.Add(this.toggleSwitch1);
+            this.panelControl5.Controls.Add(this.tsStatus);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(5, 5);
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(1594, 96);
             this.panelControl5.TabIndex = 0;
             // 
-            // toggleSwitch1
+            // tsStatus
             // 
-            this.toggleSwitch1.Location = new System.Drawing.Point(1469, 36);
-            this.toggleSwitch1.Name = "toggleSwitch1";
-            this.toggleSwitch1.Properties.OffText = "Off";
-            this.toggleSwitch1.Properties.OnText = "On";
-            this.toggleSwitch1.Size = new System.Drawing.Size(95, 24);
-            this.toggleSwitch1.TabIndex = 0;
+            this.tsStatus.Location = new System.Drawing.Point(1469, 36);
+            this.tsStatus.Name = "tsStatus";
+            this.tsStatus.Properties.OffText = "Off";
+            this.tsStatus.Properties.OnText = "On";
+            this.tsStatus.Size = new System.Drawing.Size(95, 24);
+            this.tsStatus.TabIndex = 0;
+            this.tsStatus.Toggled += new System.EventHandler(this.tsStatus_Toggled);
             // 
             // panelControl3
             // 
@@ -636,7 +608,7 @@
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "View Photo", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "View Photo", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -670,6 +642,8 @@
             this.panelControl14.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panelControl14.Appearance.Options.UseBackColor = true;
             this.panelControl14.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl14.Controls.Add(this.simpleButton3);
+            this.panelControl14.Controls.Add(this.simpleButton2);
             this.panelControl14.Controls.Add(this.labelControl13);
             this.panelControl14.Controls.Add(this.labelControl12);
             this.panelControl14.Controls.Add(this.simpleButton1);
@@ -678,6 +652,32 @@
             this.panelControl14.Name = "panelControl14";
             this.panelControl14.Size = new System.Drawing.Size(1584, 100);
             this.panelControl14.TabIndex = 0;
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.simpleButton3.Appearance.Options.UseBackColor = true;
+            this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.Appearance.Options.UseForeColor = true;
+            this.simpleButton3.Location = new System.Drawing.Point(1049, 58);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(163, 36);
+            this.simpleButton3.TabIndex = 5;
+            this.simpleButton3.Text = "Register Account";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.DarkCyan;
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton2.Appearance.Options.UseBackColor = true;
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Location = new System.Drawing.Point(1218, 58);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(163, 36);
+            this.simpleButton2.TabIndex = 4;
+            this.simpleButton2.Text = "Edit Info";
             // 
             // labelControl13
             // 
@@ -705,7 +705,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.Crimson;
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton1.Appearance.Options.UseBackColor = true;
             this.simpleButton1.Appearance.Options.UseFont = true;
@@ -713,7 +713,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(163, 36);
             this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Register Account";
+            this.simpleButton1.Text = "Delete Account";
             // 
             // pageClearanceSeason
             // 
@@ -773,7 +773,7 @@
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -799,9 +799,6 @@
         #endregion
 
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement btnClearanceSeason;
-        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement btnDashboard;
         private DevExpress.XtraBars.Navigation.AccordionControlElement btnAccountManagement;
@@ -820,7 +817,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private DevExpress.XtraEditors.PanelControl panelControl7;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch1;
+        private DevExpress.XtraEditors.ToggleSwitch tsStatus;
         private DevExpress.XtraEditors.PanelControl panelControl8;
         private DevExpress.XtraEditors.PanelControl panelControl9;
         private DevExpress.XtraEditors.PanelControl pnlSpace1;
@@ -852,5 +849,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn DateCreated;
         private DevExpress.XtraGrid.Columns.GridColumn IdPhoto;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

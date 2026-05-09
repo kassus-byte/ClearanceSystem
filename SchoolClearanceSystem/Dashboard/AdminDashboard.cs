@@ -65,12 +65,7 @@ namespace SchoolClearanceSystem.Dashboard
             }
         }
 
-        private void tsClearanceSeason_Toggled(object sender, EventArgs e)
-        {
-            db.ToggleClearanceSeason(tsClearanceSeason.IsOn);
-            string status = tsClearanceSeason.IsOn ? "OPEN" : "CLOSED";
-            XtraMessageBox.Show($"Clearance is now {status}.");
-        }
+       
 
         private void btnDashboard_Click_1(object sender, EventArgs e)
         {
@@ -82,9 +77,12 @@ namespace SchoolClearanceSystem.Dashboard
             mainNavigationFrame.SelectedPage = pageAccountManagement;
         }
 
-        private void btnClearanceSeason_Click_1(object sender, EventArgs e)
+        private void tsStatus_Toggled(object sender, EventArgs e)
         {
-            mainNavigationFrame.SelectedPage = pageClearanceSeason;
+
+            db.ToggleClearanceSeason(tsStatus.IsOn);
+            string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
+            XtraMessageBox.Show($"Clearance is now {status}.");
         }
     }
 }
