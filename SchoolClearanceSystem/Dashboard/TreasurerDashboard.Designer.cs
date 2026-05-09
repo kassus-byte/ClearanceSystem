@@ -38,7 +38,7 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "TreasurerDashboard";
             this.Text = "TreasurerDashboard";
-            this.Load += new System.EventHandler(this.TreasurerDashboard_Load);
+         
             this.ResumeLayout(false);
 
         }

@@ -16,12 +16,12 @@ namespace SchoolClearanceSystem.Dashboard
         public TechnicalOffice()
         {
             InitializeComponent();
-            this.CurrentOffice = "Technical Office";
+
         }
 
-        private void TechnicalOffice_Load(object sender, EventArgs e) => LoadGridData();
+        //  private void TechnicalOffice_Load(object sender, EventArgs e) => LoadGridData();
     }
-        
 
-        }
+}
+        
     

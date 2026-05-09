@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(1918, 1046);
             this.Name = "TechnicalOffice";
             this.Text = "TechnicalOffice";
-            this.Load += new System.EventHandler(this.TechnicalOffice_Load);
+            
             this.ResumeLayout(false);
 
         }
