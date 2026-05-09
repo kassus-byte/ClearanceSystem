@@ -19,7 +19,7 @@ namespace SchoolClearanceSystem.Dashboard
 
         }
 
-        //  private void TechnicalOffice_Load(object sender, EventArgs e) => LoadGridData();
+        private void TechnicalOffice_Load(object sender, EventArgs e) => LoadGridData();
     }
 
 }
