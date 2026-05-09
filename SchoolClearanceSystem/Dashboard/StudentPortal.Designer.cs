@@ -229,14 +229,12 @@
             this.accordionControl1.AnimationType = DevExpress.XtraBars.Navigation.AnimationType.None;
             this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.accordionControl1.DistanceBetweenRootGroups = 4;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.ElementPositionOnExpanding = DevExpress.XtraBars.Navigation.ElementPositionOnExpanding.Fixed;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1,
-            this.sbDashboard,
-            this.sbRequestClearance,
-            this.sbMyRequest,
-            this.sbMyClearance});
+            this.accordionControlElement1});
+            this.accordionControl1.ItemHeight = 2;
             this.accordionControl1.Location = new System.Drawing.Point(0, 165);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.Size = new System.Drawing.Size(325, 915);
@@ -248,13 +246,18 @@
             this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.sbDashboard,
+            this.sbRequestClearance,
+            this.sbMyRequest,
+            this.sbMyClearance});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Main";
             // 
             // sbDashboard
             // 
-            this.sbDashboard.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbDashboard.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbDashboard.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbDashboard.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbDashboard.Appearance.Hovered.Options.UseBackColor = true;
@@ -270,15 +273,15 @@
             this.sbDashboard.Appearance.Pressed.Options.UseBackColor = true;
             this.sbDashboard.Appearance.Pressed.Options.UseFont = true;
             this.sbDashboard.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbDashboard.ImageOptions.SvgImage")));
+            this.sbDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement2.ImageOptions.SvgImage")));
             this.sbDashboard.Name = "sbDashboard";
             this.sbDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbDashboard.Text = "Dashboard";
-            this.sbDashboard.Click += new System.EventHandler(this.sbDashboard_Click);
+            this.sbDashboard.Click += new System.EventHandler(this.sbDashboard_Click_1);
             // 
             // sbRequestClearance
             // 
-            this.sbRequestClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbRequestClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbRequestClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbRequestClearance.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbRequestClearance.Appearance.Hovered.Options.UseBackColor = true;
@@ -294,15 +297,15 @@
             this.sbRequestClearance.Appearance.Pressed.Options.UseBackColor = true;
             this.sbRequestClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbRequestClearance.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbRequestClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbRequestClearance.ImageOptions.SvgImage")));
+            this.sbRequestClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement3.ImageOptions.SvgImage")));
             this.sbRequestClearance.Name = "sbRequestClearance";
             this.sbRequestClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbRequestClearance.Text = "Request Clearance";
-            this.sbRequestClearance.Click += new System.EventHandler(this.sbRequestClearance_Click);
+            this.sbRequestClearance.Click += new System.EventHandler(this.sbRequestClearance_Click_1);
             // 
             // sbMyRequest
             // 
-            this.sbMyRequest.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbMyRequest.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbMyRequest.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbMyRequest.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyRequest.Appearance.Hovered.Options.UseBackColor = true;
@@ -318,15 +321,15 @@
             this.sbMyRequest.Appearance.Pressed.Options.UseBackColor = true;
             this.sbMyRequest.Appearance.Pressed.Options.UseFont = true;
             this.sbMyRequest.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbMyRequest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyRequest.ImageOptions.SvgImage")));
+            this.sbMyRequest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement4.ImageOptions.SvgImage")));
             this.sbMyRequest.Name = "sbMyRequest";
             this.sbMyRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyRequest.Text = "My Request";
-            this.sbMyRequest.Click += new System.EventHandler(this.sbMyRequest_Click);
+            this.sbMyRequest.Click += new System.EventHandler(this.sbMyRequest_Click_1);
             // 
             // sbMyClearance
             // 
-            this.sbMyClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbMyClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbMyClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbMyClearance.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyClearance.Appearance.Hovered.Options.UseBackColor = true;
@@ -342,11 +345,11 @@
             this.sbMyClearance.Appearance.Pressed.Options.UseBackColor = true;
             this.sbMyClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbMyClearance.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbMyClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyClearance.ImageOptions.SvgImage")));
+            this.sbMyClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
             this.sbMyClearance.Name = "sbMyClearance";
             this.sbMyClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyClearance.Text = "My Clearance";
-            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click);
+            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click_1);
             // 
             // pnlUser
             // 
@@ -1494,10 +1497,6 @@
         private DevExpress.XtraBars.Navigation.NavigationPage pageRequestClearance;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbDashboard;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbRequestClearance;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyRequest;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyClearance;
         private DevExpress.XtraEditors.PanelControl pnlWelcome;
         private DevExpress.XtraEditors.LabelControl txtWelcome;
         private DevExpress.XtraEditors.PanelControl pnlStatusCards;
@@ -1563,6 +1562,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl27;
         private DevExpress.XtraEditors.LabelControl labelControl26;
         private DevExpress.XtraEditors.LabelControl labelControl25;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbDashboard;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbRequestClearance;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyRequest;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyClearance;
     }
 }
 

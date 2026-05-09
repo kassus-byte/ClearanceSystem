@@ -16,26 +16,25 @@ namespace SchoolClearanceSystem
 
         }
 
-        private void sbDashboard_Click(object sender, EventArgs e)
+       
+        private void sbDashboard_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageDashboard;
         }
 
-        private void sbRequestClearance_Click(object sender, EventArgs e)
+        private void sbRequestClearance_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageRequestClearance;
         }
 
-        private void sbMyRequest_Click(object sender, EventArgs e)
+        private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyRequest;
         }
 
-        private void sbMyClearance_Click(object sender, EventArgs e)
+        private void sbMyClearance_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyClearance;
         }
-
-       
     }
 }
