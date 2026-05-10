@@ -1,10 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using SchoolClearanceSystem.Dashboard;
 using System;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
@@ -22,51 +18,30 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void RefreshData()
         {
-            // GRID 1: Only show Students
-            string studentQuery = "SELECT UserID, FullName, Role, Program, Year, DateCreated " +
-                                  "FROM Users WHERE Role = 'Student' ORDER BY FullName ASC";
-            gcStudents.DataSource = db.GetDataTable(studentQuery);
-
-            // GRID 2: Show EVERYTHING ELSE (except the Admin itself)
-            // This will include Library, Finance, Registrar, etc.
-            string officeQuery = "SELECT UserID, FullName, Role, Program, DateCreated " +
-                                 "FROM Users WHERE Role != 'Student' AND Role != 'Admin' " +
-                                 "ORDER BY Role ASC";
-
-            gcOffice.DataSource = db.GetDataTable(officeQuery);
+            // OOP: Assigning Lists of User objects directly to the GridControls
+            // The DatabaseManager now handles the SQL logic internally
+            gcStudents.DataSource = db.GetUsersByRole("Student", true);
+            gcOffice.DataSource = db.GetUsersByRole("", false);
         }
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            object cellValue = gvStudents.GetFocusedRowCellValue("UploadPath");
-
-            if (cellValue != null && cellValue != DBNull.Value)
+            // 1. Get the User object from the row (using 'as' for safety)
+            if (gvStudents.GetFocusedRow() is User selectedUser)
             {
-                string filePath = cellValue.ToString();
-
-                if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+                try
                 {
-                    try
-                    {
-                        Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show($"Could not open image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    // 2. Call the DocumentService to handle the file opening
+                    // This is 'Encapsulation' - the Dashboard doesn't need to know HOW to open a file
+                    DocumentService.ViewDocument(selectedUser.UploadPath);
                 }
-                else
+                catch (Exception ex)
                 {
-                    XtraMessageBox.Show("The file does not exist at path: " + filePath, "File Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // Catch the error thrown by DocumentService if the file is missing
+                    XtraMessageBox.Show(ex.Message, "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                XtraMessageBox.Show("No image path found for this student.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-       
 
         private void btnDashboard_Click_1(object sender, EventArgs e)
         {
@@ -80,47 +55,49 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void tsStatus_Toggled(object sender, EventArgs e)
         {
-
+            // Update the system setting in the database
             db.ToggleClearanceSeason(tsStatus.IsOn);
+
             string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
-            XtraMessageBox.Show($"Clearance is now {status}.");
+            XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnRegisterAccount_Click(object sender, EventArgs e)
         {
-            // Create form in Register mode with no data
-            UserInfoForm frm = new UserInfoForm(FormMode.Register, null);
-
-            // Set pop-up properties
-            frm.StartPosition = FormStartPosition.CenterParent;
-
-            // ShowDialog pauses this code. If the user clicks "Save", it returns OK.
-            if (frm.ShowDialog(this) == DialogResult.OK)
+            // Open the form in Register mode. Passing 'null' because there is no existing user data yet.
+            using (UserInfoForm frm = new UserInfoForm(FormMode.Register, null))
             {
-                RefreshData(); // Reload the grids to show the new student
+                frm.StartPosition = FormStartPosition.CenterParent;
+
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    RefreshData(); // Reload the grids to show the new account
+                }
             }
         }
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
-            // Get the selected row from the GridView (gvStudents)
-            DataRowView selectedRow = gvStudents.GetFocusedRow() as DataRowView;
+            // OOP Trick: Check which GridView is currently being looked at by the user
+            var activeView = gvStudents.IsFocusedView ? gvStudents : gvOffice;
 
-            if (selectedRow != null)
+            // Cast the focused row directly to our User object
+            if (activeView.GetFocusedRow() is User selectedUser)
             {
-                // Create form in Edit mode and pass the selected row data
-                UserInfoForm frm = new UserInfoForm(FormMode.Edit, selectedRow);
-
-                frm.StartPosition = FormStartPosition.CenterParent;
-
-                if (frm.ShowDialog(this) == DialogResult.OK)
+                using (UserInfoForm frm = new UserInfoForm(FormMode.Edit, selectedUser))
                 {
-                    RefreshData(); // Reload the grids to show updated info
+                    frm.StartPosition = FormStartPosition.CenterParent;
+
+                    if (frm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        RefreshData(); // Reload grids to reflect changes
+                    }
                 }
             }
             else
             {
-                XtraMessageBox.Show("Please select a student from the list first.", "Selection Required",
+                XtraMessageBox.Show("Please select an account from the list to edit.", "Selection Required",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }

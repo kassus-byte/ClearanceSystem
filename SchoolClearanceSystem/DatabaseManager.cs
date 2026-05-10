@@ -1,230 +1,180 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
+using Dapper;
 
 namespace SchoolClearanceSystem
 {
     public class DatabaseManager
     {
-        // Update this line at the top of DatabaseManager.cs
-        private string connectionString = $"Data Source={AppDomain.CurrentDomain.BaseDirectory}ClearanceSystem.db";
+        private readonly string connectionString = $"Data Source={AppDomain.CurrentDomain.BaseDirectory}ClearanceSystem.db";
 
-        // --- CLEARANCE SEASON CONTROL ---
+        // Helper to get an open connection
+        private IDbConnection GetConnection()
+        {
+            var conn = new SqliteConnection(connectionString);
+            conn.Open();
+            return conn;
+        }
+
+        // --- SYSTEM SETTINGS ---
         public bool IsClearanceActive()
         {
-            try
+            using (var db = GetConnection())
             {
-                using (var connection = new SqliteConnection(connectionString))
-                {
-                    connection.Open();
-                    string sql = "SELECT ClearanceIsActive FROM SystemSettings LIMIT 1";
-                    using (var command = new SqliteCommand(sql, connection))
-                    {
-                        var result = command.ExecuteScalar();
-                        return result != null && result.ToString() == "1";
-                    }
-                }
+                return db.ExecuteScalar<int>("SELECT ClearanceIsActive FROM SystemSettings LIMIT 1") == 1;
             }
-            catch (SqliteException ex) when (ex.SqliteErrorCode == 1)
-            {
-                return false; // Table doesn't exist
-            }
-            catch { return false; }
         }
 
         public void ToggleClearanceSeason(bool isActive)
         {
-            string sql = "UPDATE SystemSettings SET ClearanceIsActive = @val";
-            var param = new SqliteParameter("@val", isActive ? 1 : 0);
-            ExecuteNonQuery(sql, new[] { param });
-        }
-
-        // --- GENERIC DATA TOOLS ---
-        public DataTable GetDataTable(string sql, SqliteParameter[] parameters = null)
-        {
-            DataTable dt = new DataTable();
-            try
+            using (var db = GetConnection())
             {
-                using (var connection = new SqliteConnection(connectionString))
-                {
-                    connection.Open();
-                    using (var command = new SqliteCommand(sql, connection))
-                    {
-                        if (parameters != null) command.Parameters.AddRange(parameters);
-                        using (var reader = command.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Query Error: " + ex.Message);
-            }
-            return dt;
-        }
-
-        public int ExecuteNonQuery(string sql, SqliteParameter[] parameters = null)
-        {
-            try
-            {
-                using (var connection = new SqliteConnection(connectionString))
-                {
-                    connection.Open();
-                    using (var command = new SqliteCommand(sql, connection))
-                    {
-                        if (parameters != null) command.Parameters.AddRange(parameters);
-                        return command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Execution Error: " + ex.Message);
-                return -1;
+                db.Execute("UPDATE SystemSettings SET ClearanceIsActive = @val", new { val = isActive ? 1 : 0 });
             }
         }
 
         // --- USER MANAGEMENT ---
-        public bool SaveUser(User user)
+
+        /// <summary>
+        /// Retrieves users based on their role using Dapper for automatic OOP mapping.
+        /// </summary>
+        public List<User> GetUsersByRole(string role, bool isStudent = true)
         {
-            // 1. Generate the current timestamp
-            string dateNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-            // 2. The SQL string (ensure DateCreated matches your database column name)
-            string sql = "INSERT INTO Users (UserID, FullName, Program, Year, Role, Password, UploadPath, DateCreated) " +
-                         "VALUES (@id, @name, @prog, @year, @role, @pass, @path, @date)";
-
-            // 3. Add all parameters, including the missing @date
-            SqliteParameter[] ps = {
-        new SqliteParameter("@id", user.UserID),
-        new SqliteParameter("@name", user.FullName),
-        new SqliteParameter("@prog", user.Program ?? "N/A"),
-        new SqliteParameter("@year", user.Year ?? "N/A"),
-        new SqliteParameter("@role", user.Role ?? "Student"),
-        new SqliteParameter("@pass", user.Password),
-        new SqliteParameter("@path", user.UploadPath ?? ""),
-        // FIX: Add the date parameter here
-        new SqliteParameter("@date", dateNow)
-    };
-
-            return ExecuteNonQuery(sql, ps) > 0;
-        }
-
-        public bool ValidateLogin(string userId, string password)
-        {
-            try
+            using (var db = GetConnection())
             {
-                // Added COLLATE NOCASE for case-insensitive UserID check
-                string sql = "SELECT COUNT(*) FROM Users WHERE UserID = @id COLLATE NOCASE AND Password = @pass";
-                using (var connection = new SqliteConnection(connectionString))
-                {
-                    connection.Open();
-                    using (var command = new SqliteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@id", userId.Trim());
-                        command.Parameters.AddWithValue("@pass", password.Trim());
+                // Fixed the "CORM" typo to "FROM"
+                string sql = isStudent
+                    ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY FullName ASC"
+                    : "SELECT * FROM Users WHERE Role != 'Student' AND Role != 'Admin' ORDER BY Role ASC";
 
-                        var result = command.ExecuteScalar();
-                        return result != null && Convert.ToInt64(result) > 0;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Login Validation Error: " + ex.Message);
-                return false;
+                return db.Query<User>(sql).ToList() ?? new List<User>();
             }
         }
 
         public User GetUserDetails(string userId)
         {
-            string sql = "SELECT FullName, UserID, Program, Year, Role, UploadPath FROM Users WHERE UserID = @id";
-            DataTable dt = GetDataTable(sql, new[] { new SqliteParameter("@id", userId) });
-
-            if (dt.Rows.Count > 0)
+            using (var db = GetConnection())
             {
-                DataRow dr = dt.Rows[0];
-                return new User
-                {
-                    FullName = dr["FullName"].ToString(),
-                    UserID = dr["UserID"].ToString(),
-                    Program = dr["Program"].ToString(),
-                    Year = dr["Year"].ToString(),
-                    Role = dr["Role"].ToString(),
-                    UploadPath = dr["UploadPath"].ToString()
-                };
+                return db.QueryFirstOrDefault<User>("SELECT * FROM Users WHERE UserID = @id", new { id = userId });
             }
-            return null;
+        }
+
+        public bool SaveUser(User user)
+        {
+            try
+            {
+                user.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string sql = @"INSERT INTO Users (UserID, FullName, Program, Year, Role, Password, UploadPath, DateCreated) 
+                               VALUES (@UserID, @FullName, @Program, @Year, @Role, @Password, @UploadPath, @DateCreated)";
+
+                using (var db = GetConnection())
+                {
+                    return db.Execute(sql, user) > 0;
+                }
+            }
+            catch (SqliteException ex) when (ex.SqliteErrorCode == 19)
+            {
+                MessageBox.Show($"The User ID '{user.UserID}' is already registered!", "Duplicate ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database Error: " + ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// OOP Refactor: Passes the User object instead of multiple strings.
+        /// </summary>
+        public bool UpdateUser(User user)
+        {
+            using (var db = GetConnection())
+            {
+                string sql = @"UPDATE Users 
+                               SET FullName = @FullName, Program = @Program, Year = @Year, Role = @Role 
+                               WHERE UserID = @UserID";
+
+                return db.Execute(sql, user) > 0;
+            }
+        }
+
+        public bool ValidateLogin(string userId, string password)
+        {
+            using (var db = GetConnection())
+            {
+                string sql = "SELECT COUNT(*) FROM Users WHERE UserID = @id COLLATE NOCASE AND Password = @pass";
+                return db.ExecuteScalar<int>(sql, new { id = userId.Trim(), pass = password.Trim() }) > 0;
+            }
         }
 
         public bool DeleteUser(string userId)
         {
-            string sql = "DELETE FROM Users WHERE UserID = @id";
-            return ExecuteNonQuery(sql, new[] { new SqliteParameter("@id", userId) }) > 0;
+            using (var db = GetConnection())
+            {
+                return db.Execute("DELETE FROM Users WHERE UserID = @id", new { id = userId }) > 0;
+            }
         }
 
         // --- CLEARANCE REQUESTS ---
-        public DataTable GetDepartmentRequests(string departmentName)
-        {
-            string sql = @"SELECT r.StudentID, u.FullName, u.Program, u.Year, 
-                                  r.Semester, r.AcademicYear, r.Status, r.Remarks
-                           FROM ClearanceRequests r
-                           INNER JOIN Users u ON r.StudentID = u.UserID
-                           WHERE r.Department = @dept";
 
-            return GetDataTable(sql, new[] { new SqliteParameter("@dept", departmentName) });
+        public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear)
+        {
+            using (var db = GetConnection())
+            {
+                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear) 
+                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay)";
+
+                return db.Execute(sql, new
+                {
+                    id = studentId,
+                    dept,
+                    date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    sem = semester,
+                    ay = acadYear
+                }) > 0;
+            }
         }
 
         public bool UpdateRequestStatus(string studentId, string department, string newStatus, string remarks)
         {
-            string sql = @"UPDATE ClearanceRequests 
-                           SET Status = @status, Remarks = @remarks, DateProcessed = @date
-                           WHERE StudentID = @id AND Department = @dept";
+            using (var db = GetConnection())
+            {
+                string sql = @"UPDATE ClearanceRequests 
+                               SET Status = @status, Remarks = @remarks, DateProcessed = @date 
+                               WHERE StudentID = @id AND Department = @dept";
 
-            SqliteParameter[] ps = {
-                new SqliteParameter("@status", newStatus),
-                new SqliteParameter("@remarks", remarks),
-                new SqliteParameter("@date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                new SqliteParameter("@id", studentId),
-                new SqliteParameter("@dept", department)
-            };
-
-            return ExecuteNonQuery(sql, ps) > 0;
+                return db.Execute(sql, new
+                {
+                    status = newStatus,
+                    remarks,
+                    date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    id = studentId,
+                    dept = department
+                }) > 0;
+            }
         }
 
-        public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear)
+        // --- LEGACY SUPPORT ---
+        // Keep this if you still have old code using DataTables, 
+        // but try to migrate to the List<User> methods above!
+        public DataTable GetDataTable(string sql, object parameters = null)
         {
-            string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear) 
-                           VALUES (@id, @dept, 'Pending', @date, @sem, @ay)";
-
-            SqliteParameter[] ps = {
-                new SqliteParameter("@id", studentId),
-                new SqliteParameter("@dept", dept),
-                new SqliteParameter("@date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                new SqliteParameter("@sem", semester),
-                new SqliteParameter("@ay", acadYear)
-            };
-            return ExecuteNonQuery(sql, ps) > 0;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (var db = GetConnection())
+                {
+                    var reader = db.ExecuteReader(sql, parameters);
+                    dt.Load(reader);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Query Error: " + ex.Message); }
+            return dt;
         }
-
-        // 2. ADD THIS METHOD in the USER MANAGEMENT section
-        public bool UpdateUser(string id, string name, string prog, string year)
-        {
-            string sql = "UPDATE Users SET FullName = @name, Program = @prog, Year = @year WHERE UserID = @id";
-
-            SqliteParameter[] ps = {
-        new SqliteParameter("@name", name),
-        new SqliteParameter("@prog", prog),
-        new SqliteParameter("@year", year),
-        new SqliteParameter("@id", id)
-    };
-
-            return ExecuteNonQuery(sql, ps) > 0;
-        }
-
-
     }
 }

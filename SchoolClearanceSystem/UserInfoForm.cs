@@ -1,26 +1,27 @@
 ﻿using DevExpress.XtraEditors;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Linq;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 
 namespace SchoolClearanceSystem
 {
+    // Mode switcher for the form
     public enum FormMode { Register, Edit }
 
     public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
     {
         private FormMode _mode;
-        private dynamic _selectedData;
-        DatabaseManager db = new DatabaseManager();
+        private User _selectedUser; // OOP: Use the User class, not 'dynamic'
+        private DatabaseManager db = new DatabaseManager();
 
-        // Constructor
-        public UserInfoForm(FormMode mode, dynamic data = null)
+        // Constructor: Now accepts a strongly-typed User object
+        public UserInfoForm(FormMode mode, User user = null)
         {
             InitializeComponent();
             _mode = mode;
-            _selectedData = data;
-           
+
+            // If editing, use the passed user. If registering, start with a fresh object.
+            _selectedUser = user ?? new User();
         }
 
         private void UserInfoForm_Load(object sender, EventArgs e)
@@ -30,54 +31,50 @@ namespace SchoolClearanceSystem
 
         private void SetupForm()
         {
-            if (_mode == FormMode.Edit && _selectedData != null)
+            if (_mode == FormMode.Edit)
             {
-                // --- EDIT MODE ONLY ---
-                this.Text = "Edit Student Information";
+                // --- EDIT MODE SETUP ---
+                this.Text = "Edit Account Information";
                 btnSave.Text = "Update Changes";
 
-                txtUserID.Text = _selectedData["UserID"].ToString();
-                txtUserID.ReadOnly = true;
-                txtFullName.Text = _selectedData["FullName"].ToString();
-                cbProgram.Text = _selectedData["Program"].ToString();
-                cbYear.Text = _selectedData["Year"].ToString();
+                // Load data from the User object into the TextBoxes
+                txtUserID.Text = _selectedUser.UserID;
+                txtUserID.ReadOnly = true; // Cannot change ID during edit
+                txtFullName.Text = _selectedUser.FullName;
+                cbProgram.Text = _selectedUser.Program;
+                cbYear.Text = _selectedUser.Year;
+                cbRole.Text = _selectedUser.Role;
 
-                // Display the Date (Hidden or Read-Only)
-                txtDateCreated.Text = _selectedData["DateCreated"]?.ToString() ?? "N/A";
+                // Show the creation date
+                txtDateCreated.Text = _selectedUser.DateCreated ?? "N/A";
                 txtDateCreated.ReadOnly = true;
-                txtDateCreated.Visible = true; // Show it so admin can see when it was made
+                txtDateCreated.Visible = true;
             }
             else
             {
-                // --- REGISTER MODE ONLY ---
+                // --- REGISTER MODE SETUP ---
                 this.Text = "Register New Account";
                 btnSave.Text = "Save Account";
 
                 txtUserID.ReadOnly = false;
                 txtUserID.Text = "";
                 txtFullName.Text = "";
-
-                // Hide the Date field or set to "Auto"
                 txtDateCreated.Text = "Automatically Generated";
-                txtDateCreated.ReadOnly = true;
-                // Optional: txtDateCreated.Visible = false; 
             }
         }
+
         private void PerformRegister()
         {
-            User newUser = new User
-            {
-                UserID = txtUserID.Text,
-                FullName = txtFullName.Text,
-                // USE .Text TO GET THE ACTUAL SELECTED STRING (e.g., "Treasurer")
-                Role = cbRolee.Text,
-                Program = cbProgram.Text,
-                Year = cbYear.Text,
-                Password = "123",
-                DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-            };
+            // Map the UI values to the User object properties
+            _selectedUser.UserID = txtUserID.Text;
+            _selectedUser.FullName = txtFullName.Text;
+            _selectedUser.Role = cbRole.Text;
+            _selectedUser.Program = cbProgram.Text;
+            _selectedUser.Year = cbYear.Text;
+            _selectedUser.Password = "123"; // Default initial password
 
-            if (db.SaveUser(newUser))
+            // DatabaseManager handles the DateCreated inside SaveUser
+            if (db.SaveUser(_selectedUser))
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -86,15 +83,14 @@ namespace SchoolClearanceSystem
 
         private void PerformUpdate()
         {
-            // Use the new UpdateUser method we added to DatabaseManager
-            bool success = db.UpdateUser(
-                txtUserID.Text,
-                txtFullName.Text,
-                cbProgram.Text,
-                cbYear.Text
-            );
+            // 1. Update the object with the current text from the boxes
+            _selectedUser.FullName = txtFullName.Text;
+            _selectedUser.Program = cbProgram.Text;
+            _selectedUser.Year = cbYear.Text;
+            _selectedUser.Role = cbRole.Text;
 
-            if (success)
+            // 2. Pass the WHOLE object to the database
+            if (db.UpdateUser(_selectedUser))
             {
                 XtraMessageBox.Show("Information successfully updated!", "Success");
                 this.DialogResult = DialogResult.OK;
@@ -102,17 +98,24 @@ namespace SchoolClearanceSystem
             }
         }
 
-
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            // 1. Perform common validation here (e.g., check if name is empty)
-            if (string.IsNullOrEmpty(txtFullName.Text))
+            // Basic Validation
+            if (string.IsNullOrWhiteSpace(txtFullName.Text))
             {
-                XtraMessageBox.Show("Please enter a name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please enter a full name.", "Validation Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Branch logic based on the mode
+            if (string.IsNullOrWhiteSpace(txtUserID.Text))
+            {
+                XtraMessageBox.Show("Please enter a User ID.", "Validation Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Decide which database action to take
             if (_mode == FormMode.Register)
             {
                 PerformRegister();

@@ -45,8 +45,8 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtDateCreated = new DevExpress.XtraEditors.TextEdit();
-            this.cbRole = new DevExpress.XtraEditors.LabelControl();
-            this.cbRolee = new System.Windows.Forms.ComboBox();
+            this.lbl = new DevExpress.XtraEditors.LabelControl();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pePhoto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
@@ -252,40 +252,40 @@
             this.txtDateCreated.Size = new System.Drawing.Size(448, 30);
             this.txtDateCreated.TabIndex = 33;
             // 
+            // lbl
+            // 
+            this.lbl.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lbl.Appearance.Options.UseFont = true;
+            this.lbl.Appearance.Options.UseForeColor = true;
+            this.lbl.Location = new System.Drawing.Point(26, 249);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(26, 17);
+            this.lbl.TabIndex = 34;
+            this.lbl.Text = "Role";
+            // 
             // cbRole
             // 
-            this.cbRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbRole.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.cbRole.Appearance.Options.UseFont = true;
-            this.cbRole.Appearance.Options.UseForeColor = true;
-            this.cbRole.Location = new System.Drawing.Point(26, 249);
-            this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(26, 17);
-            this.cbRole.TabIndex = 34;
-            this.cbRole.Text = "Role";
-            // 
-            // cbRolee
-            // 
-            this.cbRolee.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.cbRolee.FormattingEnabled = true;
-            this.cbRolee.Items.AddRange(new object[] {
+            this.cbRole.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Items.AddRange(new object[] {
             "Student",
             "Treasurer",
             "Technical Office",
             "Dean",
             "Admin"});
-            this.cbRolee.Location = new System.Drawing.Point(26, 276);
-            this.cbRolee.Name = "cbRolee";
-            this.cbRolee.Size = new System.Drawing.Size(464, 23);
-            this.cbRolee.TabIndex = 35;
+            this.cbRole.Location = new System.Drawing.Point(26, 276);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(464, 23);
+            this.cbRole.TabIndex = 35;
             // 
             // UserInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 603);
-            this.Controls.Add(this.cbRolee);
             this.Controls.Add(this.cbRole);
+            this.Controls.Add(this.lbl);
             this.Controls.Add(this.txtDateCreated);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.panelControl15);
@@ -337,7 +337,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtDateCreated;
-        private DevExpress.XtraEditors.LabelControl cbRole;
-        private System.Windows.Forms.ComboBox cbRolee;
+        private DevExpress.XtraEditors.LabelControl lbl;
+        private System.Windows.Forms.ComboBox cbRole;
     }
 }

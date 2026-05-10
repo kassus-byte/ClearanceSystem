@@ -20,56 +20,53 @@ namespace SchoolClearanceSystem
             // 1. Basic Validation
             if (string.IsNullOrWhiteSpace(txtUserID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text))
             {
-                XtraMessageBox.Show("Fields cannot be empty.");
+                XtraMessageBox.Show("Fields cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. File Validation - Define the 'path' variable here
+            // 2. File Validation
             string path = txtUploadPath.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path))
+            if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
             {
-                XtraMessageBox.Show("Please select a valid photo file before registering.", "Validation Error");
+                XtraMessageBox.Show("Please select a valid photo file before registering.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 3. Prepare the automatic date
-            string dateStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            // 3. Create the User object using Object Initializer (Correct OOP Way)
+            // This avoids the "Constructor does not take 8 arguments" error
+            User newUser = new User
+            {
+                UserID = txtUserID.Text.Trim(),
+                FullName = txtFullName.Text.Trim(),
+                Program = cmbProgram.SelectedItem?.ToString() ?? "N/A",
+                Year = cmbYear.SelectedItem?.ToString() ?? "N/A",
+                Role = "Student",
+                Password = txtPassword.Text.Trim(),
+                UploadPath = path
+                // Note: DateCreated is handled automatically inside db.SaveUser
+            };
 
-            // 4. Create the User object
-            // Ensure the number of items matches your User constructor:
-            // (id, name, prog, year, role, pass, path, date)
-            User newUser = new User(
-                txtUserID.Text.Trim(),
-                txtFullName.Text.Trim(),
-                cmbProgram.SelectedItem?.ToString() ?? "N/A",
-                cmbYear.SelectedItem?.ToString() ?? "N/A",
-                "Student",
-                txtPassword.Text.Trim(),
-                path,        // This variable is now recognized
-                dateStamp    // This handles the automatic @date
-            );
-
-            // 5. Save to Database
+            // 4. Save to Database
             if (db.SaveUser(newUser))
             {
                 XtraMessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
         }
+
         private void ClearFields()
         {
             txtUserID.Text = "";
             txtFullName.Text = "";
             txtPassword.Text = "";
-            txtUploadPath.Text = ""; // Added this to clear path too
+            txtUploadPath.Text = "";
             cmbProgram.SelectedIndex = -1;
             cmbYear.SelectedIndex = -1;
         }
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            using (DevExpress.XtraEditors.XtraOpenFileDialog ofdFilePicker = new DevExpress.XtraEditors.XtraOpenFileDialog())
+            using (XtraOpenFileDialog ofdFilePicker = new XtraOpenFileDialog())
             {
                 ofdFilePicker.Title = "Select Student Photo";
                 ofdFilePicker.Filter = "Image Files|*.jpg;*.jpeg;*.png";
