@@ -24,15 +24,21 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // 2. File Validation - Use System.IO.File to be explicit
+            // 2. File Validation - Define the 'path' variable here
             string path = txtUploadPath.Text.Trim();
+
             if (string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path))
             {
                 XtraMessageBox.Show("Please select a valid photo file before registering.", "Validation Error");
                 return;
             }
 
-            // 3. Prepare and Save
+            // 3. Prepare the automatic date
+            string dateStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            // 4. Create the User object
+            // Ensure the number of items matches your User constructor:
+            // (id, name, prog, year, role, pass, path, date)
             User newUser = new User(
                 txtUserID.Text.Trim(),
                 txtFullName.Text.Trim(),
@@ -40,12 +46,14 @@ namespace SchoolClearanceSystem
                 cmbYear.SelectedItem?.ToString() ?? "N/A",
                 "Student",
                 txtPassword.Text.Trim(),
-                path
+                path,        // This variable is now recognized
+                dateStamp    // This handles the automatic @date
             );
 
+            // 5. Save to Database
             if (db.SaveUser(newUser))
             {
-                XtraMessageBox.Show("Registration Successful!");
+                XtraMessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
         }

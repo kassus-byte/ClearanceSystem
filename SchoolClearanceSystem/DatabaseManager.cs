@@ -66,7 +66,7 @@ namespace SchoolClearanceSystem
             return dt;
         }
 
-        private int ExecuteNonQuery(string sql, SqliteParameter[] parameters = null)
+        public int ExecuteNonQuery(string sql, SqliteParameter[] parameters = null)
         {
             try
             {
@@ -90,18 +90,25 @@ namespace SchoolClearanceSystem
         // --- USER MANAGEMENT ---
         public bool SaveUser(User user)
         {
-            string sql = "INSERT INTO Users (UserID, FullName, Program, Year, Role, Password, UploadPath) " +
-                         "VALUES (@id, @name, @prog, @year, @role, @pass, @path)";
+            // 1. Generate the current timestamp
+            string dateNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
+            // 2. The SQL string (ensure DateCreated matches your database column name)
+            string sql = "INSERT INTO Users (UserID, FullName, Program, Year, Role, Password, UploadPath, DateCreated) " +
+                         "VALUES (@id, @name, @prog, @year, @role, @pass, @path, @date)";
+
+            // 3. Add all parameters, including the missing @date
             SqliteParameter[] ps = {
-                new SqliteParameter("@id", user.UserID),
-                new SqliteParameter("@name", user.FullName),
-                new SqliteParameter("@prog", user.Program ?? "N/A"),
-                new SqliteParameter("@year", user.Year ?? "N/A"),
-                new SqliteParameter("@role", user.Role ?? "Student"),
-                new SqliteParameter("@pass", user.Password),
-                new SqliteParameter("@path", user.UploadPath ?? "")
-            };
+        new SqliteParameter("@id", user.UserID),
+        new SqliteParameter("@name", user.FullName),
+        new SqliteParameter("@prog", user.Program ?? "N/A"),
+        new SqliteParameter("@year", user.Year ?? "N/A"),
+        new SqliteParameter("@role", user.Role ?? "Student"),
+        new SqliteParameter("@pass", user.Password),
+        new SqliteParameter("@path", user.UploadPath ?? ""),
+        // FIX: Add the date parameter here
+        new SqliteParameter("@date", dateNow)
+    };
 
             return ExecuteNonQuery(sql, ps) > 0;
         }
@@ -202,5 +209,22 @@ namespace SchoolClearanceSystem
             };
             return ExecuteNonQuery(sql, ps) > 0;
         }
+
+        // 2. ADD THIS METHOD in the USER MANAGEMENT section
+        public bool UpdateUser(string id, string name, string prog, string year)
+        {
+            string sql = "UPDATE Users SET FullName = @name, Program = @prog, Year = @year WHERE UserID = @id";
+
+            SqliteParameter[] ps = {
+        new SqliteParameter("@name", name),
+        new SqliteParameter("@prog", prog),
+        new SqliteParameter("@year", year),
+        new SqliteParameter("@id", id)
+    };
+
+            return ExecuteNonQuery(sql, ps) > 0;
+        }
+
+
     }
 }

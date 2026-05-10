@@ -22,15 +22,16 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void RefreshData()
         {
-            // 1. Load Students 
-            // UPDATED: Added DateCreated to the SELECT statement
-            string studentQuery = "SELECT UserID, FullName, Program, Year, UploadPath, DateCreated FROM Users WHERE Role = 'Student' ORDER BY FullName ASC";
+            // GRID 1: Only show Students
+            string studentQuery = "SELECT UserID, FullName, Role, Program, Year, DateCreated " +
+                                  "FROM Users WHERE Role = 'Student' ORDER BY FullName ASC";
             gcStudents.DataSource = db.GetDataTable(studentQuery);
 
-            // 2. Load Office Accounts
-            // UPDATED: Added DateCreated here as well
-            string officeQuery = "SELECT UserID, FullName, Role as 'Designation', Program as 'Department', DateCreated " +
-                                 "FROM Users WHERE Role NOT IN ('Student', 'Admin') ORDER BY Role ASC";
+            // GRID 2: Show EVERYTHING ELSE (except the Admin itself)
+            // This will include Library, Finance, Registrar, etc.
+            string officeQuery = "SELECT UserID, FullName, Role, Program, DateCreated " +
+                                 "FROM Users WHERE Role != 'Student' AND Role != 'Admin' " +
+                                 "ORDER BY Role ASC";
 
             gcOffice.DataSource = db.GetDataTable(officeQuery);
         }
@@ -83,6 +84,45 @@ namespace SchoolClearanceSystem.Dashboard
             db.ToggleClearanceSeason(tsStatus.IsOn);
             string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
             XtraMessageBox.Show($"Clearance is now {status}.");
+        }
+
+        private void btnRegisterAccount_Click(object sender, EventArgs e)
+        {
+            // Create form in Register mode with no data
+            UserInfoForm frm = new UserInfoForm(FormMode.Register, null);
+
+            // Set pop-up properties
+            frm.StartPosition = FormStartPosition.CenterParent;
+
+            // ShowDialog pauses this code. If the user clicks "Save", it returns OK.
+            if (frm.ShowDialog(this) == DialogResult.OK)
+            {
+                RefreshData(); // Reload the grids to show the new student
+            }
+        }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            // Get the selected row from the GridView (gvStudents)
+            DataRowView selectedRow = gvStudents.GetFocusedRow() as DataRowView;
+
+            if (selectedRow != null)
+            {
+                // Create form in Edit mode and pass the selected row data
+                UserInfoForm frm = new UserInfoForm(FormMode.Edit, selectedRow);
+
+                frm.StartPosition = FormStartPosition.CenterParent;
+
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    RefreshData(); // Reload the grids to show updated info
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Please select a student from the list first.", "Selection Required",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
