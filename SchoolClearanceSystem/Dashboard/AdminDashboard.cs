@@ -1,76 +1,124 @@
 ﻿using DevExpress.XtraEditors;
-using SchoolClearanceSystem.Dashboard;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraBars.Navigation;
+using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Repository;
 using System;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
     public partial class AdminDashboard : DevExpress.XtraEditors.XtraForm
     {
-        // Global instance of your Database Manager
-       // DatabaseManager db = new DatabaseManager();
+        private readonly UserRepository _userRepo = new UserRepository();
+        private readonly SystemRepository _sysRepo = new SystemRepository();
 
         public AdminDashboard()
         {
             InitializeComponent();
-       //     RefreshData();
-           
+            RefreshData();
 
+            
+            tsStatus.IsOn = _sysRepo.IsClearanceActive();
+            SetupGridBehaviors();
         }
 
-        private void pageAccountManagement_Paint(object sender, PaintEventArgs e)
+        private void btnDashboard_Click_1(object sender, EventArgs e) => mainNavigationFrame.SelectedPage = pageDashboard;
+
+        private void btnAccountManagement_Click_1(object sender, EventArgs e)
         {
-
+            mainNavigationFrame.SelectedPage = pageAccountManagement;
+            RefreshData();
         }
 
-        //private void RefreshData()
-        //{
-        //    // 1. Load Students
-        //    string studentQuery = "SELECT UserID, FullName, Program, Year FROM Users WHERE Role = 'Student' ORDER BY FullName ASC";
-        //    gcStudents.DataSource = db.GetDataTable(studentQuery);
+        private void RefreshData()
+        {
+            gcStudents.DataSource = _userRepo.GetUsersByRole("Student", true);
+            gcOffice.DataSource = _userRepo.GetUsersByRole("", false);
+        }
 
-        //    // 2. Load Office Accounts (Now using the variable!)
-        //    string officeQuery = "SELECT UserID, FullName, Role as 'Designation', Program as 'Department' " +
-        //                         "FROM Users WHERE Role NOT IN ('Student', 'Admin') ORDER BY Role ASC";
+        private void SetupGridBehaviors()
+        {
+                gcStudents.MouseDown += (s, e) => {
+                var hitInfo = gvStudents.CalcHitInfo(e.Location);
+                if (!hitInfo.InRow) ClearAllSelections();
+            };
 
-        //    // Assign the data to your new office grid
-        //    gcOffice.DataSource = db.GetDataTable(officeQuery);
-        //}
+            gcOffice.MouseDown += (s, e) => {
+                var hitInfo = gvOffice.CalcHitInfo(e.Location);
+                if (!hitInfo.InRow) ClearAllSelections();
+            };
+        }
 
-        // private void btnDashboard_Click(object sender, EventArgs e)
-        //{
-        //    // pgDashboard is your Navigation Frame
-        //    // The syntax is: [FrameName].SelectedPage = [PageName];
-        //    mainNavigationFrame.SelectedPage = pageDashboard;
-        //}
+        private void ClearAllSelections()
+        {
+            gvStudents.ClearSelection();
+            gvStudents.FocusedRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
 
-        //private void btnAccountManagement_Click(object sender, EventArgs e)
-        //{
-        //    mainNavigationFrame.SelectedPage = pageAccountManagement;
+            gvOffice.ClearSelection();
+            gvOffice.FocusedRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
+        }
 
+        private void tabPane1_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
+        {
+            ClearAllSelections();
+        }
 
-        //}
+        private void btnRegisterAccount_Click(object sender, EventArgs e)
+        {
+            using (UserInfoForm frm = new UserInfoForm(FormMode.Register, null))
+            {
+                frm.StartPosition = FormStartPosition.CenterParent;
+                if (frm.ShowDialog(this) == DialogResult.OK) RefreshData();
+            }
+        }
 
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+        
+            var activeView = (tabPane1.SelectedPage.Caption == "Students") ? gvStudents : gvOffice;
 
-        //private void btnClearanceSeason_Click(object sender, EventArgs e)
-        //{
-        //    mainNavigationFrame.SelectedPage = pageClearanceSeason;
-        //}
+            if (activeView.FocusedRowHandle >= 0 && activeView.GetFocusedRow() is User selectedUser)
+            {
+                using (UserInfoForm frm = new UserInfoForm(FormMode.Edit, selectedUser))
+                {
+                    frm.StartPosition = FormStartPosition.CenterParent;
+                    if (frm.ShowDialog(this) == DialogResult.OK) RefreshData();
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Please select an account from the current list to edit.", "Selection Required",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
-        //private void tsClearanceSeason_Toggled(object sender, EventArgs e)
-        //{
+        private void tsStatus_Toggled(object sender, EventArgs e)
+        {
+            _sysRepo.ToggleClearanceSeason(tsStatus.IsOn);
+            string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
+            XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-        //    // Updates the table we just created
-        //    db.ToggleClearanceSeason(tsClearanceSeason.IsOn);
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (gvStudents.GetFocusedRow() is User selectedUser)
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(selectedUser.UploadPath))
+                        DocumentService.ViewDocument(selectedUser.UploadPath);
+                    else
+                        XtraMessageBox.Show("No document found.", "Error");
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
-        //    string status = tsClearanceSeason.IsOn ? "OPEN" : "CLOSED";
-        //    XtraMessageBox.Show($"Clearance is now {status}.");
-
-        //}
-
-
+       
     }
-    }
-
+}
