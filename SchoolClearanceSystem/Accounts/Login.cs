@@ -1,14 +1,13 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using SchoolClearanceSystem.Models;       // To recognize User class
-using SchoolClearanceSystem.Repository;   // To use UserRepository
-
+using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Repository;
+using SchoolClearanceSystem.Dashboard; 
 namespace SchoolClearanceSystem
 {
     public partial class Login : DevExpress.XtraEditors.XtraForm
     {
-        // OOP: Encapsulation - The Login form uses the Repository to handle data
         private readonly UserRepository _userRepo = new UserRepository();
 
         public Login()
@@ -21,7 +20,6 @@ namespace SchoolClearanceSystem
             string id = txtUserID.Text.Trim();
             string pass = txtPassword.Text;
 
-            // 1. Validation
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
                 XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
@@ -29,44 +27,39 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // 2. Authenticate using the Repository
-            bool isValid = _userRepo.ValidateLogin(id, pass);
-
-            if (isValid)
+            if (_userRepo.ValidateLogin(id, pass))
             {
-                // 3. Save User to Session (Short-term memory)
                 Session.CurrentUser = _userRepo.GetUserDetails(id);
+                var user = Session.CurrentUser;
 
-                if (Session.CurrentUser != null)
+                if (user != null)
                 {
                     Form nextForm = null;
 
-                    // 4. Redirection logic based on role
-                    switch (Session.CurrentUser.Role)
+                    if (user.Role == "Admin")
                     {
-                        case "Admin":
-                            nextForm = new SchoolClearanceSystem.Dashboard.AdminDashboard();
-                            break;
-
-                        case "Student":
-                            // nextForm = new StudentPortal(); // Uncomment when ready
-                            break;
-
-                        case "Treasurer":
-                        case "Library":
-                        case "Registrar":
-                            // You can create a generic OfficeDashboard or specific ones
-                            nextForm = new SchoolClearanceSystem.Dashboard.AdminDashboard();
-                            break;
-
-                        default:
-                            XtraMessageBox.Show("Your role is not recognized. Contact Admin.", "Access Denied");
-                            return;
+                        nextForm = new AdminDashboard();
+                    }
+                    else if (user.Role == "Treasurer")
+                    {
+                        nextForm = new TreasurerDashboard();
+                    }
+                    else if (user.Role == "Technical")
+                    {
+                        nextForm = new TechnicalOffice();
+                    }
+                    else if (user.Role == "Student")
+                    {
+                    XtraMessageBox.Show("Student Dashboard is under maintenance.", "Notice");
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Your role is not recognized. Contact Admin.", "Access Denied");
+                        return;
                     }
 
                     if (nextForm != null)
                     {
-                        // Clean up: Close login when the dashboard is closed
                         nextForm.FormClosed += (s, args) => this.Close();
                         nextForm.Show();
                         this.Hide();

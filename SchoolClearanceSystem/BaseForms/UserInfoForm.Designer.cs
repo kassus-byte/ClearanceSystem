@@ -68,6 +68,7 @@
             this.btnUploadPhoto.Size = new System.Drawing.Size(83, 26);
             this.btnUploadPhoto.TabIndex = 29;
             this.btnUploadPhoto.Text = "Upload";
+            this.btnUploadPhoto.Click += new System.EventHandler(this.btnUploadPhoto_Click);
             // 
             // pePhoto
             // 
@@ -153,7 +154,7 @@
             this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
-            this.labelControl8.Location = new System.Drawing.Point(567, 396);
+            this.labelControl8.Location = new System.Drawing.Point(566, 399);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(37, 17);
             this.labelControl8.TabIndex = 20;

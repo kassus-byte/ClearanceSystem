@@ -16,8 +16,7 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                // Fixed the "CORM" typo to "FROM"
-                string sql = isStudent
+                    string sql = isStudent
                     ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY FullName ASC"
                     : "SELECT * FROM Users WHERE Role != 'Student' AND Role != 'Admin' ORDER BY Role ASC";
 
@@ -33,7 +32,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public bool SaveUser(User user)
+        public bool AddUser(User user)
         {
             try
             {
@@ -58,10 +57,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        /// <summary>
-        /// OOP Refactor: Passes the User object instead of multiple strings.
-        /// </summary>
-        public bool UpdateUser(User user)
+        public bool EditUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {

@@ -8,8 +8,6 @@ namespace SchoolClearanceSystem
         public string Semester { get; set; }
         public string AcademicYear { get; set; }
         public string DateSubmitted { get; set; }
-
-        // Calls the empty constructor in User.cs
         public ClearanceRequest() : base() { } 
     }
 }

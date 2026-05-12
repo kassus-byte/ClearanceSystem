@@ -2,14 +2,14 @@
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
-using SchoolClearanceSystem.Models;      // For User model
-using SchoolClearanceSystem.Repository;  // For UserRepository
+using SchoolClearanceSystem.Models;      
+using SchoolClearanceSystem.Repository;  
 
 namespace SchoolClearanceSystem
 {
     public partial class Registration : DevExpress.XtraEditors.XtraForm
     {
-        // REFACTORED: Use the UserRepository instead of DatabaseManager
+        
         private readonly UserRepository _userRepo = new UserRepository();
 
         public Registration()
@@ -20,7 +20,7 @@ namespace SchoolClearanceSystem
 
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
-            // 1. Basic Validation
+            
             if (string.IsNullOrWhiteSpace(txtUserID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text))
             {
                 XtraMessageBox.Show("Fields cannot be empty.", "Validation Error",
@@ -28,7 +28,7 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // 2. File Validation
+          
             string path = txtUploadPath.Text.Trim();
             if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
             {
@@ -37,7 +37,7 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // 3. Create the User object (OOP: Encapsulation)
+            
             User newUser = new User
             {
                 UserID = txtUserID.Text.Trim(),
@@ -49,9 +49,8 @@ namespace SchoolClearanceSystem
                 UploadPath = path
             };
 
-            // 4. Save to Database using the Repository
-            // We call _userRepo.SaveUser instead of db.SaveUser
-            if (_userRepo.SaveUser(newUser))
+           
+            if (_userRepo.AddUser(newUser))
             {
                 XtraMessageBox.Show("Registration Successful!", "Success",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);

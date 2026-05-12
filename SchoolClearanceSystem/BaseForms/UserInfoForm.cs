@@ -1,20 +1,18 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using SchoolClearanceSystem.Models;       // Added: Namespace for User class
-using SchoolClearanceSystem.Repository;   // Added: Namespace for UserRepository
+using SchoolClearanceSystem.Models;       
+using SchoolClearanceSystem.Repository;  
 
 namespace SchoolClearanceSystem
 {
     public enum FormMode { Register, Edit }
 
-    // OOP Inheritance: If you created a BaseForm, change XtraForm to BaseOfficeForm
-    public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
+       public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
     {
         private FormMode _mode;
         private User _selectedUser;
 
-        // REFACTORED: Use the Repository instead of the DatabaseManager
         private UserRepository _userRepo = new UserRepository();
 
         public UserInfoForm(FormMode mode, User user = null)
@@ -31,48 +29,65 @@ namespace SchoolClearanceSystem
 
         private void SetupForm()
         {
+           //Populating data
+            txtUserID.Text = _selectedUser.UserID;
+            txtFullName.Text = _selectedUser.FullName;
+            cbProgram.Text = _selectedUser.Program;
+            cbYear.Text = _selectedUser.Year;
+            cbRole.Text = _selectedUser.Role;
+            txtDateCreated.Text = _mode == FormMode.Edit ? "Generated on " + DateTime.Now.ToShortDateString() : "Automatically Generated";
+
+            if (!string.IsNullOrEmpty(_selectedUser.UploadPath))
+            {
+                try
+                {
+                    if (System.IO.File.Exists(_selectedUser.UploadPath))
+                    {
+                        pePhoto.Image = System.Drawing.Image.FromFile(_selectedUser.UploadPath);
+                    }
+                }
+                catch (Exception)
+                {
+                    pePhoto.Image = null;
+                }
+            }
+            //One form with two faces
             if (_mode == FormMode.Edit)
             {
-                // --- POLYMORPHIC BEHAVIOR: EDIT MODE ---
                 this.Text = "Edit Account Information";
-                lblTitle.Text = "Edit Information"; // Change the big label at the top
+                lblTitle.Text = "Edit Information";
                 btnSave.Text = "Update Changes";
-
-                // Fill data
-                txtUserID.Text = _selectedUser.UserID;
-                txtFullName.Text = _selectedUser.FullName;
-                cbProgram.Text = _selectedUser.Program;
-                cbYear.Text = _selectedUser.Year;
-                cbRole.Text = _selectedUser.Role;
-
-                // --- REQUIREMENT: Disable Year and Program during Edit ---
                 txtUserID.ReadOnly = true;
-
-                // Standard WinForms ComboBox uses .Enabled instead of .ReadOnly
-                cbProgram.Enabled = false;
-                cbYear.Enabled = false;
-
-                // To make it look "greyed out" but readable for standard controls:
-                cbProgram.BackColor = System.Drawing.Color.LightGray;
-                cbYear.BackColor = System.Drawing.Color.LightGray;
+                cbRole.Enabled = false;
             }
             else
             {
-                // --- POLYMORPHIC BEHAVIOR: REGISTER MODE ---
                 this.Text = "Register New Account";
-                lblTitle.Text = "Register Account";
+                lblTitle.Text = "Register Account"; 
                 btnSave.Text = "Save Account";
-
-                // Enable everything for a new student
                 txtUserID.ReadOnly = false;
+                cbRole.Enabled = true;
+            }
+            
+            bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
+
+            if (!isStudent)
+            {
+                cbProgram.Enabled = false;
+                cbYear.Enabled = false;
+                cbProgram.BackColor = System.Drawing.Color.LightGray;
+                cbYear.BackColor = System.Drawing.Color.LightGray;
+                cbProgram.Text = "N/A";
+                cbYear.Text = "N/A";
+            }
+            else
+            {
                 cbProgram.Enabled = true;
                 cbYear.Enabled = true;
-                txtDateCreated.Text = "Automatically Generated";
-
-
+                cbProgram.BackColor = System.Drawing.Color.White;
+                cbYear.BackColor = System.Drawing.Color.White;
             }
         }
-
         private void PerformRegister()
         {
             _selectedUser.UserID = txtUserID.Text;
@@ -82,8 +97,7 @@ namespace SchoolClearanceSystem
             _selectedUser.Year = cbYear.Text;
             _selectedUser.Password = "123";
 
-            // REFACTORED: Call the Repository
-            if (_userRepo.SaveUser(_selectedUser))
+            if (_userRepo.AddUser(_selectedUser))
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -97,8 +111,7 @@ namespace SchoolClearanceSystem
             _selectedUser.Year = cbYear.Text;
             _selectedUser.Role = cbRole.Text;
 
-            // REFACTORED: Call the Repository
-            if (_userRepo.UpdateUser(_selectedUser))
+            if (_userRepo.EditUser(_selectedUser))
             {
                 XtraMessageBox.Show("Information successfully updated!", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -109,11 +122,9 @@ namespace SchoolClearanceSystem
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            // 1. DYNAMIC VALIDATION
             if (_mode == FormMode.Register)
             {
-                // Check ALL fields for Registration
-                if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                    if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
                     string.IsNullOrWhiteSpace(txtFullName.Text) ||
                     string.IsNullOrWhiteSpace(cbProgram.Text) ||
                     string.IsNullOrWhiteSpace(cbYear.Text) ||
@@ -126,7 +137,6 @@ namespace SchoolClearanceSystem
             }
             else
             {
-                // Only check name for Edit (since others are disabled/read-only)
                 if (string.IsNullOrWhiteSpace(txtFullName.Text))
                 {
                     XtraMessageBox.Show("Name cannot be empty.", "Validation Error");
@@ -134,7 +144,6 @@ namespace SchoolClearanceSystem
                 }
             }
 
-            // 2. PROCEED TO REPOSITORY
             if (_mode == FormMode.Register) PerformRegister();
             else PerformUpdate();
         }
@@ -143,6 +152,29 @@ namespace SchoolClearanceSystem
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void btnUploadPhoto_Click(object sender, EventArgs e)
+        {
+            using (XtraOpenFileDialog ofdFilePicker = new XtraOpenFileDialog())
+            {
+                ofdFilePicker.Title = "Select Student Photo";
+                ofdFilePicker.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+                if (ofdFilePicker.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                    pePhoto.Image = System.Drawing.Image.FromFile(ofdFilePicker.FileName);
+
+                     _selectedUser.UploadPath = ofdFilePicker.FileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("Could not load image: " + ex.Message, "Error",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

@@ -349,6 +349,7 @@
             // 
             // pageDashboard
             // 
+            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl13);
             this.pageDashboard.Controls.Add(this.panelControl6);
             this.pageDashboard.Controls.Add(this.panelControl4);
@@ -545,7 +546,6 @@
             // 
             // pageAccountManagement
             // 
-            this.pageAccountManagement.Caption = "pageAccountManagement";
             this.pageAccountManagement.Controls.Add(this.tabPane1);
             this.pageAccountManagement.Controls.Add(this.panelControl14);
             this.pageAccountManagement.Name = "pageAccountManagement";
@@ -567,6 +567,7 @@
             this.tabPane1.Size = new System.Drawing.Size(1586, 470);
             this.tabPane1.TabIndex = 1;
             this.tabPane1.Text = " Students";
+            this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
             // 
             // tabNavigationPage1
             // 
