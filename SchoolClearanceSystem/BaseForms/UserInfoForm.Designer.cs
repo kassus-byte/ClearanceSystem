@@ -42,7 +42,7 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtDateCreated = new DevExpress.XtraEditors.TextEdit();
             this.lbl = new DevExpress.XtraEditors.LabelControl();
@@ -212,24 +212,24 @@
             this.panelControl15.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panelControl15.Appearance.Options.UseBackColor = true;
             this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl15.Controls.Add(this.labelControl9);
+            this.panelControl15.Controls.Add(this.lblTitle);
             this.panelControl15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl15.Location = new System.Drawing.Point(0, 0);
             this.panelControl15.Name = "panelControl15";
             this.panelControl15.Size = new System.Drawing.Size(1114, 78);
             this.panelControl15.TabIndex = 30;
             // 
-            // labelControl9
+            // lblTitle
             // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(36, 19);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(212, 37);
-            this.labelControl9.TabIndex = 3;
-            this.labelControl9.Text = "Edit Information";
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblTitle.Appearance.Options.UseFont = true;
+            this.lblTitle.Appearance.Options.UseForeColor = true;
+            this.lblTitle.Location = new System.Drawing.Point(36, 19);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(212, 37);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.Text = "Edit Information";
             // 
             // labelControl1
             // 
@@ -334,7 +334,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl15;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl lblTitle;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtDateCreated;
         private DevExpress.XtraEditors.LabelControl lbl;

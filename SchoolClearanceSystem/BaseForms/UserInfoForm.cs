@@ -33,28 +33,43 @@ namespace SchoolClearanceSystem
         {
             if (_mode == FormMode.Edit)
             {
+                // --- POLYMORPHIC BEHAVIOR: EDIT MODE ---
                 this.Text = "Edit Account Information";
+                lblTitle.Text = "Edit Information"; // Change the big label at the top
                 btnSave.Text = "Update Changes";
 
+                // Fill data
                 txtUserID.Text = _selectedUser.UserID;
-                txtUserID.ReadOnly = true;
                 txtFullName.Text = _selectedUser.FullName;
                 cbProgram.Text = _selectedUser.Program;
                 cbYear.Text = _selectedUser.Year;
                 cbRole.Text = _selectedUser.Role;
 
-                // Improved null check for DateCreated
-                txtDateCreated.Text = !string.IsNullOrEmpty(_selectedUser.DateCreated)
-                                      ? _selectedUser.DateCreated
-                                      : "N/A";
-                txtDateCreated.Visible = true;
+                // --- REQUIREMENT: Disable Year and Program during Edit ---
+                txtUserID.ReadOnly = true;
+
+                // Standard WinForms ComboBox uses .Enabled instead of .ReadOnly
+                cbProgram.Enabled = false;
+                cbYear.Enabled = false;
+
+                // To make it look "greyed out" but readable for standard controls:
+                cbProgram.BackColor = System.Drawing.Color.LightGray;
+                cbYear.BackColor = System.Drawing.Color.LightGray;
             }
             else
             {
+                // --- POLYMORPHIC BEHAVIOR: REGISTER MODE ---
                 this.Text = "Register New Account";
+                lblTitle.Text = "Register Account";
                 btnSave.Text = "Save Account";
+
+                // Enable everything for a new student
                 txtUserID.ReadOnly = false;
+                cbProgram.Enabled = true;
+                cbYear.Enabled = true;
                 txtDateCreated.Text = "Automatically Generated";
+
+
             }
         }
 
@@ -94,13 +109,32 @@ namespace SchoolClearanceSystem
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(txtUserID.Text))
+            // 1. DYNAMIC VALIDATION
+            if (_mode == FormMode.Register)
             {
-                XtraMessageBox.Show("Please fill in all required fields.", "Validation Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Check ALL fields for Registration
+                if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                    string.IsNullOrWhiteSpace(txtFullName.Text) ||
+                    string.IsNullOrWhiteSpace(cbProgram.Text) ||
+                    string.IsNullOrWhiteSpace(cbYear.Text) ||
+                    string.IsNullOrWhiteSpace(cbRole.Text))
+                {
+                    XtraMessageBox.Show("All fields must be filled for registration.", "Validation Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else
+            {
+                // Only check name for Edit (since others are disabled/read-only)
+                if (string.IsNullOrWhiteSpace(txtFullName.Text))
+                {
+                    XtraMessageBox.Show("Name cannot be empty.", "Validation Error");
+                    return;
+                }
             }
 
+            // 2. PROCEED TO REPOSITORY
             if (_mode == FormMode.Register) PerformRegister();
             else PerformUpdate();
         }
