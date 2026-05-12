@@ -1,26 +1,26 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using static DevExpress.XtraEditors.Mask.MaskSettings;
+using SchoolClearanceSystem.Models;       // Added: Namespace for User class
+using SchoolClearanceSystem.Repository;   // Added: Namespace for UserRepository
 
 namespace SchoolClearanceSystem
 {
-    // Mode switcher for the form
     public enum FormMode { Register, Edit }
 
+    // OOP Inheritance: If you created a BaseForm, change XtraForm to BaseOfficeForm
     public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
     {
         private FormMode _mode;
-        private User _selectedUser; // OOP: Use the User class, not 'dynamic'
-        private DatabaseManager db = new DatabaseManager();
+        private User _selectedUser;
 
-        // Constructor: Now accepts a strongly-typed User object
+        // REFACTORED: Use the Repository instead of the DatabaseManager
+        private UserRepository _userRepo = new UserRepository();
+
         public UserInfoForm(FormMode mode, User user = null)
         {
             InitializeComponent();
             _mode = mode;
-
-            // If editing, use the passed user. If registering, start with a fresh object.
             _selectedUser = user ?? new User();
         }
 
@@ -33,48 +33,42 @@ namespace SchoolClearanceSystem
         {
             if (_mode == FormMode.Edit)
             {
-                // --- EDIT MODE SETUP ---
                 this.Text = "Edit Account Information";
                 btnSave.Text = "Update Changes";
 
-                // Load data from the User object into the TextBoxes
                 txtUserID.Text = _selectedUser.UserID;
-                txtUserID.ReadOnly = true; // Cannot change ID during edit
+                txtUserID.ReadOnly = true;
                 txtFullName.Text = _selectedUser.FullName;
                 cbProgram.Text = _selectedUser.Program;
                 cbYear.Text = _selectedUser.Year;
                 cbRole.Text = _selectedUser.Role;
 
-                // Show the creation date
-                txtDateCreated.Text = _selectedUser.DateCreated ?? "N/A";
-                txtDateCreated.ReadOnly = true;
+                // Improved null check for DateCreated
+                txtDateCreated.Text = !string.IsNullOrEmpty(_selectedUser.DateCreated)
+                                      ? _selectedUser.DateCreated
+                                      : "N/A";
                 txtDateCreated.Visible = true;
             }
             else
             {
-                // --- REGISTER MODE SETUP ---
                 this.Text = "Register New Account";
                 btnSave.Text = "Save Account";
-
                 txtUserID.ReadOnly = false;
-                txtUserID.Text = "";
-                txtFullName.Text = "";
                 txtDateCreated.Text = "Automatically Generated";
             }
         }
 
         private void PerformRegister()
         {
-            // Map the UI values to the User object properties
             _selectedUser.UserID = txtUserID.Text;
             _selectedUser.FullName = txtFullName.Text;
             _selectedUser.Role = cbRole.Text;
             _selectedUser.Program = cbProgram.Text;
             _selectedUser.Year = cbYear.Text;
-            _selectedUser.Password = "123"; // Default initial password
+            _selectedUser.Password = "123";
 
-            // DatabaseManager handles the DateCreated inside SaveUser
-            if (db.SaveUser(_selectedUser))
+            // REFACTORED: Call the Repository
+            if (_userRepo.SaveUser(_selectedUser))
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -83,16 +77,16 @@ namespace SchoolClearanceSystem
 
         private void PerformUpdate()
         {
-            // 1. Update the object with the current text from the boxes
             _selectedUser.FullName = txtFullName.Text;
             _selectedUser.Program = cbProgram.Text;
             _selectedUser.Year = cbYear.Text;
             _selectedUser.Role = cbRole.Text;
 
-            // 2. Pass the WHOLE object to the database
-            if (db.UpdateUser(_selectedUser))
+            // REFACTORED: Call the Repository
+            if (_userRepo.UpdateUser(_selectedUser))
             {
-                XtraMessageBox.Show("Information successfully updated!", "Success");
+                XtraMessageBox.Show("Information successfully updated!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -100,30 +94,15 @@ namespace SchoolClearanceSystem
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            // Basic Validation
-            if (string.IsNullOrWhiteSpace(txtFullName.Text))
+            if (string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(txtUserID.Text))
             {
-                XtraMessageBox.Show("Please enter a full name.", "Validation Error",
+                XtraMessageBox.Show("Please fill in all required fields.", "Validation Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtUserID.Text))
-            {
-                XtraMessageBox.Show("Please enter a User ID.", "Validation Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Decide which database action to take
-            if (_mode == FormMode.Register)
-            {
-                PerformRegister();
-            }
-            else
-            {
-                PerformUpdate();
-            }
+            if (_mode == FormMode.Register) PerformRegister();
+            else PerformUpdate();
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)

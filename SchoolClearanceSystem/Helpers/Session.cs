@@ -1,4 +1,4 @@
-﻿
+﻿using SchoolClearanceSystem.Models;
 namespace SchoolClearanceSystem
 {
     public class Session

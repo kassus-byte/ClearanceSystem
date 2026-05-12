@@ -1,4 +1,5 @@
-﻿namespace SchoolClearanceSystem
+﻿using SchoolClearanceSystem.Models;
+namespace SchoolClearanceSystem
 {
     public class ClearanceRequest : User
     {

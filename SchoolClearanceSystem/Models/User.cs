@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace SchoolClearanceSystem
+namespace SchoolClearanceSystem.Models
 {
     /// <summary>
     /// Represents a User in the School Clearance System.

@@ -2,12 +2,15 @@
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
+using SchoolClearanceSystem.Models;      // For User model
+using SchoolClearanceSystem.Repository;  // For UserRepository
 
 namespace SchoolClearanceSystem
 {
     public partial class Registration : DevExpress.XtraEditors.XtraForm
     {
-        DatabaseManager db = new DatabaseManager();
+        // REFACTORED: Use the UserRepository instead of DatabaseManager
+        private readonly UserRepository _userRepo = new UserRepository();
 
         public Registration()
         {
@@ -20,7 +23,8 @@ namespace SchoolClearanceSystem
             // 1. Basic Validation
             if (string.IsNullOrWhiteSpace(txtUserID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text))
             {
-                XtraMessageBox.Show("Fields cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Fields cannot be empty.", "Validation Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -28,12 +32,12 @@ namespace SchoolClearanceSystem
             string path = txtUploadPath.Text.Trim();
             if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
             {
-                XtraMessageBox.Show("Please select a valid photo file before registering.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please select a valid photo file before registering.",
+                                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 3. Create the User object using Object Initializer (Correct OOP Way)
-            // This avoids the "Constructor does not take 8 arguments" error
+            // 3. Create the User object (OOP: Encapsulation)
             User newUser = new User
             {
                 UserID = txtUserID.Text.Trim(),
@@ -43,13 +47,14 @@ namespace SchoolClearanceSystem
                 Role = "Student",
                 Password = txtPassword.Text.Trim(),
                 UploadPath = path
-                // Note: DateCreated is handled automatically inside db.SaveUser
             };
 
-            // 4. Save to Database
-            if (db.SaveUser(newUser))
+            // 4. Save to Database using the Repository
+            // We call _userRepo.SaveUser instead of db.SaveUser
+            if (_userRepo.SaveUser(newUser))
             {
-                XtraMessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Registration Successful!", "Success",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
             }
         }
