@@ -13,13 +13,14 @@ namespace SchoolClearanceSystem
         public StudentPortal()
         {
             InitializeComponent();
-
+            UpdateDashboard();
         }
 
        
         private void sbDashboard_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageDashboard;
+            UpdateDashboard();
         }
 
         private void sbRequestClearance_Click_1(object sender, EventArgs e)
@@ -35,6 +36,20 @@ namespace SchoolClearanceSystem
         private void sbMyClearance_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyClearance;
+        }
+
+        private void UpdateDashboard()
+        {
+            DatabaseManager db = new DatabaseManager();
+            int cleared = db.GetClearedCount(Session.CurrentUser.UserID);
+
+            lblOfficeCleared.Text = $"Offices Cleared: {cleared}/3";
+            int percentage = (cleared * 100) / 3;
+            lblPercentage.Text = $"{percentage}%";
+
+            pbOverallProgress.Position = percentage;
+            lblStatus.Text = (cleared == 3)? "Cleared" : "In Progress";
+            lblProgress.Text = $"{cleared} out of 3 offices cleared"; 
         }
     }
 }

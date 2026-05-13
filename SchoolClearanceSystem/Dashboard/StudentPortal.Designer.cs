@@ -52,20 +52,20 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl10 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.lblProgress = new DevExpress.XtraEditors.LabelControl();
             this.pbOverallProgress = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.pnlStatusCards = new DevExpress.XtraEditors.PanelControl();
             this.pnlCard3 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.pnlSpace2 = new DevExpress.XtraEditors.PanelControl();
             this.pnlCard2 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.lblPercentage = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.pnlSpace1 = new DevExpress.XtraEditors.PanelControl();
             this.pnlCard1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.lblOfficeCleared = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.pnlWelcome = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -273,7 +273,7 @@
             this.sbDashboard.Appearance.Pressed.Options.UseBackColor = true;
             this.sbDashboard.Appearance.Pressed.Options.UseFont = true;
             this.sbDashboard.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement2.ImageOptions.SvgImage")));
+            this.sbDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbDashboard.ImageOptions.SvgImage")));
             this.sbDashboard.Name = "sbDashboard";
             this.sbDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbDashboard.Text = "Dashboard";
@@ -297,7 +297,7 @@
             this.sbRequestClearance.Appearance.Pressed.Options.UseBackColor = true;
             this.sbRequestClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbRequestClearance.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbRequestClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement3.ImageOptions.SvgImage")));
+            this.sbRequestClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbRequestClearance.ImageOptions.SvgImage")));
             this.sbRequestClearance.Name = "sbRequestClearance";
             this.sbRequestClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbRequestClearance.Text = "Request Clearance";
@@ -321,7 +321,7 @@
             this.sbMyRequest.Appearance.Pressed.Options.UseBackColor = true;
             this.sbMyRequest.Appearance.Pressed.Options.UseFont = true;
             this.sbMyRequest.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbMyRequest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement4.ImageOptions.SvgImage")));
+            this.sbMyRequest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyRequest.ImageOptions.SvgImage")));
             this.sbMyRequest.Name = "sbMyRequest";
             this.sbMyRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyRequest.Text = "My Request";
@@ -345,7 +345,7 @@
             this.sbMyClearance.Appearance.Pressed.Options.UseBackColor = true;
             this.sbMyClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbMyClearance.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbMyClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
+            this.sbMyClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyClearance.ImageOptions.SvgImage")));
             this.sbMyClearance.Name = "sbMyClearance";
             this.sbMyClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyClearance.Text = "My Clearance";
@@ -552,7 +552,7 @@
             // 
             this.panelControl10.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl10.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl10.ContentImage")));
-            this.panelControl10.Controls.Add(this.labelControl5);
+            this.panelControl10.Controls.Add(this.lblProgress);
             this.panelControl10.Controls.Add(this.pbOverallProgress);
             this.panelControl10.Controls.Add(this.labelControl4);
             this.panelControl10.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -561,17 +561,17 @@
             this.panelControl10.Size = new System.Drawing.Size(1554, 120);
             this.panelControl10.TabIndex = 0;
             // 
-            // labelControl5
+            // lblProgress
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(25, 78);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(153, 17);
-            this.labelControl5.TabIndex = 2;
-            this.labelControl5.Text = "0 out of 10 offices cleared";
+            this.lblProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgress.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblProgress.Appearance.Options.UseFont = true;
+            this.lblProgress.Appearance.Options.UseForeColor = true;
+            this.lblProgress.Location = new System.Drawing.Point(25, 78);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(153, 17);
+            this.lblProgress.TabIndex = 2;
+            this.lblProgress.Text = "0 out of 10 offices cleared";
             // 
             // pbOverallProgress
             // 
@@ -615,7 +615,7 @@
             this.pnlCard3.Appearance.Options.UseBackColor = true;
             this.pnlCard3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlCard3.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlCard3.ContentImage")));
-            this.pnlCard3.Controls.Add(this.labelControl27);
+            this.pnlCard3.Controls.Add(this.lblStatus);
             this.pnlCard3.Controls.Add(this.labelControl8);
             this.pnlCard3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCard3.Location = new System.Drawing.Point(1058, 10);
@@ -623,17 +623,17 @@
             this.pnlCard3.Size = new System.Drawing.Size(504, 129);
             this.pnlCard3.TabIndex = 4;
             // 
-            // labelControl27
+            // lblStatus
             // 
-            this.labelControl27.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.labelControl27.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl27.Appearance.Options.UseFont = true;
-            this.labelControl27.Appearance.Options.UseForeColor = true;
-            this.labelControl27.Location = new System.Drawing.Point(58, 53);
-            this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(150, 31);
-            this.labelControl27.TabIndex = 5;
-            this.labelControl27.Text = "In Progress";
+            this.lblStatus.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblStatus.Appearance.Options.UseFont = true;
+            this.lblStatus.Appearance.Options.UseForeColor = true;
+            this.lblStatus.Location = new System.Drawing.Point(58, 53);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(150, 31);
+            this.lblStatus.TabIndex = 5;
+            this.lblStatus.Text = "In Progress";
             // 
             // labelControl8
             // 
@@ -664,7 +664,7 @@
             this.pnlCard2.Appearance.Options.UseBackColor = true;
             this.pnlCard2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlCard2.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlCard2.ContentImage")));
-            this.pnlCard2.Controls.Add(this.labelControl26);
+            this.pnlCard2.Controls.Add(this.lblPercentage);
             this.pnlCard2.Controls.Add(this.labelControl7);
             this.pnlCard2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCard2.Location = new System.Drawing.Point(534, 10);
@@ -672,17 +672,17 @@
             this.pnlCard2.Size = new System.Drawing.Size(504, 129);
             this.pnlCard2.TabIndex = 2;
             // 
-            // labelControl26
+            // lblPercentage
             // 
-            this.labelControl26.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.labelControl26.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Appearance.Options.UseForeColor = true;
-            this.labelControl26.Location = new System.Drawing.Point(58, 53);
-            this.labelControl26.Name = "labelControl26";
-            this.labelControl26.Size = new System.Drawing.Size(41, 31);
-            this.labelControl26.TabIndex = 4;
-            this.labelControl26.Text = "0%";
+            this.lblPercentage.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lblPercentage.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblPercentage.Appearance.Options.UseFont = true;
+            this.lblPercentage.Appearance.Options.UseForeColor = true;
+            this.lblPercentage.Location = new System.Drawing.Point(58, 53);
+            this.lblPercentage.Name = "lblPercentage";
+            this.lblPercentage.Size = new System.Drawing.Size(41, 31);
+            this.lblPercentage.TabIndex = 4;
+            this.lblPercentage.Text = "0%";
             // 
             // labelControl7
             // 
@@ -711,7 +711,7 @@
             // 
             this.pnlCard1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlCard1.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlCard1.ContentImage")));
-            this.pnlCard1.Controls.Add(this.labelControl25);
+            this.pnlCard1.Controls.Add(this.lblOfficeCleared);
             this.pnlCard1.Controls.Add(this.labelControl6);
             this.pnlCard1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCard1.Location = new System.Drawing.Point(10, 10);
@@ -719,17 +719,17 @@
             this.pnlCard1.Size = new System.Drawing.Size(504, 129);
             this.pnlCard1.TabIndex = 0;
             // 
-            // labelControl25
+            // lblOfficeCleared
             // 
-            this.labelControl25.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.labelControl25.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl25.Appearance.Options.UseFont = true;
-            this.labelControl25.Appearance.Options.UseForeColor = true;
-            this.labelControl25.Location = new System.Drawing.Point(55, 53);
-            this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(57, 31);
-            this.labelControl25.TabIndex = 3;
-            this.labelControl25.Text = "0/10";
+            this.lblOfficeCleared.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lblOfficeCleared.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblOfficeCleared.Appearance.Options.UseFont = true;
+            this.lblOfficeCleared.Appearance.Options.UseForeColor = true;
+            this.lblOfficeCleared.Location = new System.Drawing.Point(55, 53);
+            this.lblOfficeCleared.Name = "lblOfficeCleared";
+            this.lblOfficeCleared.Size = new System.Drawing.Size(57, 31);
+            this.lblOfficeCleared.TabIndex = 3;
+            this.lblOfficeCleared.Text = "0/10";
             // 
             // labelControl6
             // 
@@ -1510,7 +1510,7 @@
         private DevExpress.XtraEditors.ProgressBarControl pbOverallProgress;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl lblProgress;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl8;
@@ -1559,9 +1559,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.PanelControl panelControl10;
         private DevExpress.XtraEditors.PanelControl pnlClearanceForm;
-        private DevExpress.XtraEditors.LabelControl labelControl27;
-        private DevExpress.XtraEditors.LabelControl labelControl26;
-        private DevExpress.XtraEditors.LabelControl labelControl25;
+        private DevExpress.XtraEditors.LabelControl lblStatus;
+        private DevExpress.XtraEditors.LabelControl lblPercentage;
+        private DevExpress.XtraEditors.LabelControl lblOfficeCleared;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbDashboard;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbRequestClearance;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyRequest;
