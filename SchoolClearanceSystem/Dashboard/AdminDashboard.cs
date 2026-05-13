@@ -1,117 +1,124 @@
 ﻿using DevExpress.XtraEditors;
-using SchoolClearanceSystem.Dashboard;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraBars.Navigation;
+using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Repository;
 using System;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
     public partial class AdminDashboard : DevExpress.XtraEditors.XtraForm
     {
-        // Global instance of your Database Manager
-        DatabaseManager db = new DatabaseManager();
+        private readonly UserRepository _userRepo = new UserRepository();
+        private readonly SystemRepository _sysRepo = new SystemRepository();
 
         public AdminDashboard()
         {
             InitializeComponent();
+            RefreshData();
 
-            // 1. Setup Tab Titles
-            tabNavigationPage1.Caption = "Students";
-            tabNavigationPage2.Caption = "Office Accounts";
+            
+            tsStatus.IsOn = _sysRepo.IsClearanceActive();
+            SetupGridBehaviors();
+        }
 
-            // 2. IMPORTANT: Subscribe to the Image Loading event
-            // This connects the "UploadPath" text to the "IdPhoto" column
-            gvStudents.CustomUnboundColumnData += gvStudents_CustomUnboundColumnData;
+        private void btnDashboard_Click_1(object sender, EventArgs e) => mainNavigationFrame.SelectedPage = pageDashboard;
 
-            // 3. Load the data into the grids
+        private void btnAccountManagement_Click_1(object sender, EventArgs e)
+        {
+            mainNavigationFrame.SelectedPage = pageAccountManagement;
             RefreshData();
         }
 
         private void RefreshData()
         {
-            try
+            gcStudents.DataSource = _userRepo.GetUsersByRole("Student", true);
+            gcOffice.DataSource = _userRepo.GetUsersByRole("", false);
+        }
+
+        private void SetupGridBehaviors()
+        {
+                gcStudents.MouseDown += (s, e) => {
+                var hitInfo = gvStudents.CalcHitInfo(e.Location);
+                if (!hitInfo.InRow) ClearAllSelections();
+            };
+
+            gcOffice.MouseDown += (s, e) => {
+                var hitInfo = gvOffice.CalcHitInfo(e.Location);
+                if (!hitInfo.InRow) ClearAllSelections();
+            };
+        }
+
+        private void ClearAllSelections()
+        {
+            gvStudents.ClearSelection();
+            gvStudents.FocusedRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
+
+            gvOffice.ClearSelection();
+            gvOffice.FocusedRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
+        }
+
+        private void tabPane1_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
+        {
+            ClearAllSelections();
+        }
+
+        private void btnRegisterAccount_Click(object sender, EventArgs e)
+        {
+            using (UserInfoForm frm = new UserInfoForm(FormMode.Register, null))
             {
-                // Load Students - Fetching all relevant columns
-                string studentQuery = @"SELECT UserID, FullName, Program, Year, DateCreated, UploadPath 
-                                        FROM Users 
-                                        WHERE Role = 'Student' 
-                                        ORDER BY FullName ASC";
-
-                gcStudents.DataSource = db.GetDataTable(studentQuery);
-
-                // Load Office Accounts - Using aliases for cleaner Grid Mapping
-                string officeQuery = @"SELECT UserID, FullName, Role as 'Designation', Program as 'Department', DateCreated 
-                                       FROM Users 
-                                       WHERE Role NOT IN ('Student', 'Admin') 
-                                       ORDER BY Role ASC";
-
-                gcOffice.DataSource = db.GetDataTable(officeQuery);
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"Error refreshing data: {ex.Message}", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm.StartPosition = FormStartPosition.CenterParent;
+                if (frm.ShowDialog(this) == DialogResult.OK) RefreshData();
             }
         }
 
-        /// <summary>
-        /// Converts the text file path in 'UploadPath' into a viewable Image for the Grid
-        /// </summary>
-        private void gvStudents_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        private void btnEditInfo_Click(object sender, EventArgs e)
         {
-            // Must match the 'FieldName' you set in the Grid Designer for the Photo column
-            if (e.Column.FieldName == "IdPhoto" && e.IsGetData)
-            {
-                DataRowView row = e.Row as DataRowView;
-                if (row != null && row["UploadPath"] != DBNull.Value)
-                {
-                    string filePath = row["UploadPath"].ToString();
+        
+            var activeView = (tabPane1.SelectedPage.Caption == "Students") ? gvStudents : gvOffice;
 
-                    if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
-                    {
-                        try
-                        {
-                            // Load image from the local path
-                            e.Value = Image.FromFile(filePath);
-                        }
-                        catch
-                        {
-                            e.Value = null; // Handle corrupt images gracefully
-                        }
-                    }
+            if (activeView.FocusedRowHandle >= 0 && activeView.GetFocusedRow() is User selectedUser)
+            {
+                using (UserInfoForm frm = new UserInfoForm(FormMode.Edit, selectedUser))
+                {
+                    frm.StartPosition = FormStartPosition.CenterParent;
+                    if (frm.ShowDialog(this) == DialogResult.OK) RefreshData();
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Please select an account from the current list to edit.", "Selection Required",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void tsStatus_Toggled(object sender, EventArgs e)
+        {
+            _sysRepo.ToggleClearanceSeason(tsStatus.IsOn);
+            string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
+            XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (gvStudents.GetFocusedRow() is User selectedUser)
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(selectedUser.UploadPath))
+                        DocumentService.ViewDocument(selectedUser.UploadPath);
+                    else
+                        XtraMessageBox.Show("No document found.", "Error");
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void tsClearanceSeason_Toggled(object sender, EventArgs e)
-        {
-            db.ToggleClearanceSeason(tsClearanceSeason.IsOn);
-
-            string status = tsClearanceSeason.IsOn ? "OPEN" : "CLOSED";
-            XtraMessageBox.Show($"Clearance is now {status}.");
-        }
-
-        #region Navigation Logic
-        private void btnDashboard_Click_1(object sender, EventArgs e)
-        {
-            mainNavigationFrame.SelectedPage = pageDashboard;
-        }
-
-        private void btnAccountManagement_Click_1(object sender, EventArgs e)
-        {
-            mainNavigationFrame.SelectedPage = pageAccountManagement;
-        }
-
-        private void btnClearanceSeason_Click_1(object sender, EventArgs e)
-        {
-            mainNavigationFrame.SelectedPage = pageClearanceSeason;
-        }
-        #endregion
-
-        private void gcStudents_Click(object sender, EventArgs e)
-        {
-            // Use this for row selection logic later
-        }
+       
     }
 }
