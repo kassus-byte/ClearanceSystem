@@ -43,10 +43,10 @@
             this.btnUpload = new DevExpress.XtraEditors.SimpleButton();
             this.txtUploadPath = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.lblctrLogin = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).BeginInit();
@@ -205,7 +205,7 @@
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl8);
-            this.panelControl1.Controls.Add(this.simpleButton1);
+            this.panelControl1.Controls.Add(this.lblctrLogin);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.txtUploadPath);
@@ -224,29 +224,17 @@
             this.panelControl1.Size = new System.Drawing.Size(1918, 1046);
             this.panelControl1.TabIndex = 18;
             // 
-            // simpleButton1
+            // labelControl5
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(1315, 775);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(342, 47);
-            this.simpleButton1.TabIndex = 18;
-            this.simpleButton1.Text = "GO BACK TO LOGIN";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(1342, 874);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(288, 17);
-            this.labelControl2.TabIndex = 39;
-            this.labelControl2.Text = "© 2026 ClearEase . College of Computer Studies ";
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Appearance.Options.UseForeColor = true;
+            this.labelControl5.Location = new System.Drawing.Point(1315, 164);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(208, 17);
+            this.labelControl5.TabIndex = 42;
+            this.labelControl5.Text = "Please enter your details to register";
             // 
             // labelControl1
             // 
@@ -260,17 +248,30 @@
             this.labelControl1.TabIndex = 40;
             this.labelControl1.Text = "REGISTER";
             // 
-            // labelControl5
+            // labelControl2
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(1315, 164);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(208, 17);
-            this.labelControl5.TabIndex = 42;
-            this.labelControl5.Text = "Please enter your details to register";
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(1342, 874);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(288, 17);
+            this.labelControl2.TabIndex = 39;
+            this.labelControl2.Text = "© 2026 ClearEase . College of Computer Studies ";
+            // 
+            // lblctrLogin
+            // 
+            this.lblctrLogin.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblctrLogin.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblctrLogin.Appearance.Options.UseFont = true;
+            this.lblctrLogin.Appearance.Options.UseForeColor = true;
+            this.lblctrLogin.Location = new System.Drawing.Point(1315, 775);
+            this.lblctrLogin.Name = "lblctrLogin";
+            this.lblctrLogin.Size = new System.Drawing.Size(342, 47);
+            this.lblctrLogin.TabIndex = 18;
+            this.lblctrLogin.Text = "GO BACK TO LOGIN";
+            this.lblctrLogin.Click += new System.EventHandler(this.lblctrLogin_Click);
             // 
             // Registration
             // 
@@ -311,7 +312,7 @@
         private DevExpress.XtraEditors.SimpleButton btnUpload;
         private DevExpress.XtraEditors.TextEdit txtUploadPath;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton lblctrLogin;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl5;

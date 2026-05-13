@@ -1,11 +1,15 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-
+using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Repository;
+using SchoolClearanceSystem.Dashboard; 
 namespace SchoolClearanceSystem
 {
     public partial class Login : DevExpress.XtraEditors.XtraForm
     {
+        private readonly UserRepository _userRepo = new UserRepository();
+
         public Login()
         {
             InitializeComponent();
@@ -18,48 +22,55 @@ namespace SchoolClearanceSystem
 
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
-                XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DatabaseManager db = new DatabaseManager();
-            bool isValid = db.ValidateLogin(id, pass);
-
-            if (isValid)
+            if (_userRepo.ValidateLogin(id, pass))
             {
-                Session.CurrentUser = db.GetUserDetails(id);
+                Session.CurrentUser = _userRepo.GetUserDetails(id);
+                var user = Session.CurrentUser;
 
-                if (Session.CurrentUser != null)
+                if (user != null)
                 {
                     Form nextForm = null;
 
-                    // REDIRECTION LOGIC BASED ON ROLE
-                    switch (Session.CurrentUser.Role)
+                    if (user.Role == "Admin")
                     {
-                        case "Student":
-                            nextForm = new StudentPortal();
-                            break;
-
-                        case "Treasurer":
-                            // Ensure you have added: using SchoolClearanceSystem.Dashboard;
-                            nextForm = new SchoolClearanceSystem.Dashboard.TreasurerDashboard();
-                            break;
-
-                        default:
-                            XtraMessageBox.Show("Your role is not recognized. Contact Admin.", "Access Denied");
-                            return;
+                        nextForm = new AdminDashboard();
+                    }
+                    else if (user.Role == "Treasurer")
+                    {
+                        nextForm = new TreasurerDashboard();
+                    }
+                    else if (user.Role == "Technical")
+                    {
+                        nextForm = new TechnicalOffice();
+                    }
+                    else if (user.Role == "Student")
+                    {
+                    XtraMessageBox.Show("Student Dashboard is under maintenance.", "Notice");
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Your role is not recognized. Contact Admin.", "Access Denied");
+                        return;
                     }
 
-                    // Standardize form closing and showing
-                    nextForm.FormClosed += (s, args) => this.Close();
-                    nextForm.Show();
-                    this.Hide();
+                    if (nextForm != null)
+                    {
+                        nextForm.FormClosed += (s, args) => this.Close();
+                        nextForm.Show();
+                        this.Hide();
+                    }
                 }
             }
             else
             {
-                XtraMessageBox.Show("Invalid UserID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Invalid UserID or Password.", "Login Failed",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
-    }
+}
