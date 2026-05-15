@@ -52,6 +52,7 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl10 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -75,14 +76,9 @@
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
-            this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl13 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
             this.pageOfficeRequirements = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl18 = new DevExpress.XtraEditors.PanelControl();
@@ -113,7 +109,9 @@
             this.panelControl19 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
+            this.gcOfficeApprovalTable = new DevExpress.XtraGrid.GridControl();
+            this.gvOfficeApprovalTable = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -152,13 +150,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             this.pageOfficeClearanceRequest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
-            this.panelControl15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).BeginInit();
+            this.panelControl14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
             this.pageOfficeRequirements.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl18)).BeginInit();
@@ -179,6 +172,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).BeginInit();
             this.panelControl19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
+            this.panelControl15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcOfficeApprovalTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOfficeApprovalTable)).BeginInit();
             this.SuspendLayout();
             // 
             // accordionControl1
@@ -254,7 +251,7 @@
             this.sbOfficeClearanceRequest.Appearance.Pressed.Options.UseForeColor = true;
             this.sbOfficeClearanceRequest.Name = "sbOfficeClearanceRequest";
             this.sbOfficeClearanceRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbOfficeClearanceRequest.Text = "Clearanace Request";
+            this.sbOfficeClearanceRequest.Text = "Clearance Request";
             this.sbOfficeClearanceRequest.Click += new System.EventHandler(this.sbOfficeClearanceRequest_Click_1);
             // 
             // sbOfficeRequirements
@@ -451,7 +448,6 @@
             // 
             // pageOfficeDashboard
             // 
-            this.pageOfficeDashboard.Caption = "pageOfficeDashboard";
             this.pageOfficeDashboard.Controls.Add(this.panelControl11);
             this.pageOfficeDashboard.Controls.Add(this.panelControl9);
             this.pageOfficeDashboard.Controls.Add(this.panelControl5);
@@ -475,6 +471,7 @@
             this.panelControl11.Padding = new System.Windows.Forms.Padding(60);
             this.panelControl11.Size = new System.Drawing.Size(1604, 704);
             this.panelControl11.TabIndex = 6;
+            this.panelControl11.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl11_Paint);
             // 
             // simpleButton1
             // 
@@ -522,6 +519,13 @@
             this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // panelControl9
             // 
@@ -727,18 +731,11 @@
             // 
             // pageOfficeClearanceRequest
             // 
-            this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton5);
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton4);
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton3);
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton2);
             this.pageOfficeClearanceRequest.Controls.Add(this.btnSearch);
-            this.pageOfficeClearanceRequest.Controls.Add(this.searchControl1);
             this.pageOfficeClearanceRequest.Controls.Add(this.labelControl11);
             this.pageOfficeClearanceRequest.Controls.Add(this.labelControl10);
             this.pageOfficeClearanceRequest.Controls.Add(this.panelControl15);
             this.pageOfficeClearanceRequest.Controls.Add(this.panelControl14);
-            this.pageOfficeClearanceRequest.Controls.Add(this.panelControl13);
             this.pageOfficeClearanceRequest.Controls.Add(this.panelControl12);
             this.pageOfficeClearanceRequest.Name = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Size = new System.Drawing.Size(1604, 1080);
@@ -749,7 +746,7 @@
             this.simpleButton5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.simpleButton5.Appearance.Options.UseBackColor = true;
             this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(486, 193);
+            this.simpleButton5.Location = new System.Drawing.Point(533, 9);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(125, 33);
             this.simpleButton5.TabIndex = 9;
@@ -761,7 +758,7 @@
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.simpleButton4.Appearance.Options.UseBackColor = true;
             this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(332, 193);
+            this.simpleButton4.Location = new System.Drawing.Point(375, 9);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(125, 33);
             this.simpleButton4.TabIndex = 8;
@@ -773,7 +770,7 @@
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.simpleButton3.Appearance.Options.UseBackColor = true;
             this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(179, 193);
+            this.simpleButton3.Location = new System.Drawing.Point(213, 9);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(125, 33);
             this.simpleButton3.TabIndex = 7;
@@ -785,7 +782,7 @@
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.simpleButton2.Appearance.Options.UseBackColor = true;
             this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(27, 193);
+            this.simpleButton2.Location = new System.Drawing.Point(55, 9);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(125, 33);
             this.simpleButton2.TabIndex = 6;
@@ -804,21 +801,6 @@
             this.btnSearch.Size = new System.Drawing.Size(120, 32);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
-            // 
-            // searchControl1
-            // 
-            this.searchControl1.EditValue = "Search by name, ID, or course..";
-            this.searchControl1.Location = new System.Drawing.Point(27, 123);
-            this.searchControl1.Name = "searchControl1";
-            this.searchControl1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.searchControl1.Properties.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.searchControl1.Properties.Appearance.Options.UseFont = true;
-            this.searchControl1.Properties.Appearance.Options.UseForeColor = true;
-            this.searchControl1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Repository.ClearButton(),
-            new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.searchControl1.Size = new System.Drawing.Size(1380, 32);
-            this.searchControl1.TabIndex = 4;
             // 
             // labelControl11
             // 
@@ -844,57 +826,20 @@
             this.labelControl10.TabIndex = 1;
             this.labelControl10.Text = "Clearance Requests";
             // 
-            // panelControl15
-            // 
-            this.panelControl15.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelControl15.Appearance.Options.UseBackColor = true;
-            this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl15.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl15.ContentImage")));
-            this.panelControl15.Controls.Add(this.gridControl2);
-            this.panelControl15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl15.Location = new System.Drawing.Point(0, 238);
-            this.panelControl15.Name = "panelControl15";
-            this.panelControl15.Padding = new System.Windows.Forms.Padding(55);
-            this.panelControl15.Size = new System.Drawing.Size(1604, 842);
-            this.panelControl15.TabIndex = 3;
-            // 
-            // gridControl2
-            // 
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(55, 55);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1494, 732);
-            this.gridControl2.TabIndex = 0;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            // 
             // panelControl14
             // 
             this.panelControl14.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panelControl14.Appearance.Options.UseBackColor = true;
             this.panelControl14.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl14.Controls.Add(this.simpleButton5);
+            this.panelControl14.Controls.Add(this.simpleButton2);
+            this.panelControl14.Controls.Add(this.simpleButton4);
+            this.panelControl14.Controls.Add(this.simpleButton3);
             this.panelControl14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl14.Location = new System.Drawing.Point(0, 180);
+            this.panelControl14.Location = new System.Drawing.Point(0, 100);
             this.panelControl14.Name = "panelControl14";
             this.panelControl14.Size = new System.Drawing.Size(1604, 58);
             this.panelControl14.TabIndex = 2;
-            // 
-            // panelControl13
-            // 
-            this.panelControl13.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelControl13.Appearance.Options.UseBackColor = true;
-            this.panelControl13.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl13.Location = new System.Drawing.Point(0, 100);
-            this.panelControl13.Name = "panelControl13";
-            this.panelControl13.Size = new System.Drawing.Size(1604, 80);
-            this.panelControl13.TabIndex = 1;
             // 
             // panelControl12
             // 
@@ -909,7 +854,6 @@
             // 
             // pageOfficeRequirements
             // 
-            this.pageOfficeRequirements.Caption = "pageOfficeRequirements";
             this.pageOfficeRequirements.Controls.Add(this.panelControl18);
             this.pageOfficeRequirements.Controls.Add(this.panelControl16);
             this.pageOfficeRequirements.Name = "pageOfficeRequirements";
@@ -1222,12 +1166,35 @@
             this.labelControl19.TabIndex = 2;
             this.labelControl19.Text = "Report";
             // 
-            // gridColumn1
+            // panelControl15
             // 
-            this.gridColumn1.Caption = "gridColumn1";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.panelControl15.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl15.Appearance.Options.UseBackColor = true;
+            this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl15.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl15.ContentImage")));
+            this.panelControl15.Controls.Add(this.gcOfficeApprovalTable);
+            this.panelControl15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl15.Location = new System.Drawing.Point(0, 158);
+            this.panelControl15.Name = "panelControl15";
+            this.panelControl15.Padding = new System.Windows.Forms.Padding(55);
+            this.panelControl15.Size = new System.Drawing.Size(1604, 922);
+            this.panelControl15.TabIndex = 3;
+            // 
+            // gcOfficeApprovalTable
+            // 
+            this.gcOfficeApprovalTable.Location = new System.Drawing.Point(55, 115);
+            this.gcOfficeApprovalTable.MainView = this.gvOfficeApprovalTable;
+            this.gcOfficeApprovalTable.Name = "gcOfficeApprovalTable";
+            this.gcOfficeApprovalTable.Size = new System.Drawing.Size(1472, 702);
+            this.gcOfficeApprovalTable.TabIndex = 0;
+            this.gcOfficeApprovalTable.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvOfficeApprovalTable});
+            this.gcOfficeApprovalTable.Click += new System.EventHandler(this.gcOfficeApprovalTable_Click);
+            // 
+            // gvOfficeApprovalTable
+            // 
+            this.gvOfficeApprovalTable.GridControl = this.gcOfficeApprovalTable;
+            this.gvOfficeApprovalTable.Name = "gvOfficeApprovalTable";
             // 
             // BaseOfficeForm
             // 
@@ -1286,13 +1253,8 @@
             this.panelControl4.PerformLayout();
             this.pageOfficeClearanceRequest.ResumeLayout(false);
             this.pageOfficeClearanceRequest.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
-            this.panelControl15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).EndInit();
+            this.panelControl14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
             this.pageOfficeRequirements.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl18)).EndInit();
@@ -1317,6 +1279,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).EndInit();
             this.panelControl19.ResumeLayout(false);
             this.panelControl19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
+            this.panelControl15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcOfficeApprovalTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOfficeApprovalTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1364,20 +1330,15 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraBars.Navigation.NavigationPage pageOfficeRequirements;
         private DevExpress.XtraBars.Navigation.NavigationPage pageOfficeReports;
-        private DevExpress.XtraEditors.PanelControl panelControl15;
         private DevExpress.XtraEditors.PanelControl panelControl14;
-        private DevExpress.XtraEditors.PanelControl panelControl13;
         private DevExpress.XtraEditors.PanelControl panelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
-        private DevExpress.XtraEditors.SearchControl searchControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.PanelControl panelControl18;
         private DevExpress.XtraEditors.PanelControl panelControl16;
         private DevExpress.XtraGrid.GridControl gridControl3;
@@ -1408,5 +1369,8 @@
         private DevExpress.XtraEditors.LabelControl lblFullName;
         private DevExpress.XtraEditors.LabelControl lblRole;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.PanelControl panelControl15;
+        private DevExpress.XtraGrid.GridControl gcOfficeApprovalTable;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvOfficeApprovalTable;
     }
 }

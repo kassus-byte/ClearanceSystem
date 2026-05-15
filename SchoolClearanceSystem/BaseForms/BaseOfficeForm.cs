@@ -80,5 +80,20 @@ namespace SchoolClearanceSystem
                 this.Close();
             }
         }
+
+        private void panelControl11_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void gridControl2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gcOfficeApprovalTable_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

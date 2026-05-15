@@ -113,8 +113,11 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT Department, Status, Remarks FROM ClearanceRequests 
-                           WHERE Department = @dept AND STATUS = 'Pending' ";
+                // JOIN allows us to see who the student is by connecting the StudentID to the UserID
+                string sql = @"SELECT r.StudentID, u.FullName, r.Status, r.DateSubmitted, r.Remarks 
+                       FROM ClearanceRequests r
+                       JOIN Users u ON r.StudentID = u.UserID
+                       WHERE r.Department = @dept AND r.Status = 'Pending'";
 
                 return db.Query(sql, new { dept = department });
             }

@@ -7,10 +7,11 @@ namespace SchoolClearanceSystem.Dashboard
         public TreasurerDashboard()
         {
             InitializeComponent();
-           // this.CurrentOffice = "Treasurer"; // The Key for the Database
+            this.OfficeName = "Treasurer";
+            LoadRequest(); // Now it knows to fetch 'Treasurer' requests
         }
 
-      //  private void TreasurerDashboard_Load(object sender, EventArgs e) => LoadGridData();
+      // private void TreasurerDashboard_Load(object sender, EventArgs e) => LoadGridData();
 
 
     }
