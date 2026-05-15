@@ -50,7 +50,7 @@ namespace SchoolClearanceSystem
                     }
                     else if (user.Role == "Student")
                     {
-                    XtraMessageBox.Show("Student Dashboard is under maintenance.", "Notice");
+                        nextForm = new StudentPortal();
                     }
                     else
                     {

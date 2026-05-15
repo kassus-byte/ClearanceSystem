@@ -50,6 +50,11 @@
             this.pageDashboard = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.gridControlOfficeStatus = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl10 = new DevExpress.XtraEditors.PanelControl();
             this.lblProgress = new DevExpress.XtraEditors.LabelControl();
@@ -139,6 +144,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlOfficeStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).BeginInit();
@@ -528,12 +536,63 @@
             this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
+            this.groupControl1.Controls.Add(this.gridControlOfficeStatus);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(1574, 598);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Office Status";
+            // 
+            // gridControlOfficeStatus
+            // 
+            this.gridControlOfficeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlOfficeStatus.Location = new System.Drawing.Point(2, 29);
+            this.gridControlOfficeStatus.MainView = this.gridView2;
+            this.gridControlOfficeStatus.Name = "gridControlOfficeStatus";
+            this.gridControlOfficeStatus.Size = new System.Drawing.Size(1570, 567);
+            this.gridControlOfficeStatus.TabIndex = 0;
+            this.gridControlOfficeStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gridView2.GridControl = this.gridControlOfficeStatus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView2_RowCellStyle);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Department";
+            this.gridColumn1.FieldName = "Department";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 476;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Status";
+            this.gridColumn2.FieldName = "Status";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 542;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Remarks";
+            this.gridColumn3.FieldName = "Remarks";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 522;
             // 
             // panelControl1
             // 
@@ -577,7 +636,7 @@
             // 
             this.pbOverallProgress.Location = new System.Drawing.Point(25, 43);
             this.pbOverallProgress.Name = "pbOverallProgress";
-            this.pbOverallProgress.Size = new System.Drawing.Size(1542, 29);
+            this.pbOverallProgress.Size = new System.Drawing.Size(1508, 29);
             this.pbOverallProgress.TabIndex = 0;
             // 
             // labelControl4
@@ -1409,6 +1468,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlOfficeStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).EndInit();
@@ -1566,6 +1628,11 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbRequestClearance;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyRequest;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyClearance;
+        private DevExpress.XtraGrid.GridControl gridControlOfficeStatus;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }
 

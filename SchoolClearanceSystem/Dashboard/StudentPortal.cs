@@ -43,7 +43,12 @@ namespace SchoolClearanceSystem
 
         private void UpdateDashboard()
         {
-            DatabaseManager db = new DatabaseManager();
+            if(Session.CurrentUser == null)
+            {
+                return;
+            }
+
+            UserRepository db = new UserRepository();
             int cleared = db.GetClearedCount(Session.CurrentUser.UserID);
 
             lblOfficeCleared.Text = $"Offices Cleared: {cleared}/3";
@@ -53,6 +58,41 @@ namespace SchoolClearanceSystem
             pbOverallProgress.Position = percentage;
             lblStatus.Text = (cleared == 3)? "Cleared" : "In Progress";
             lblProgress.Text = $"{cleared} out of 3 offices cleared"; 
+
+            RefreshOfficeStatus();
+        }
+
+        private void RefreshOfficeStatus()
+        {
+            if (Session.CurrentUser == null) return;
+            
+            UserRepository repo = new UserRepository();
+
+            var statusList = repo.GetStudentStatus(Session.CurrentUser.UserID);
+
+            XtraMessageBox.Show($"Rows found: {System.Linq.Enumerable.Count(statusList)}");
+
+            gridControlOfficeStatus.DataSource = statusList;
+        }
+
+        private void gridView2_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if (e.Column.FieldName == "Status" && e.CellValue !=null)
+            {
+                string status = e.CellValue?.ToString();
+                if (status == "Approved")
+                {
+                    e.Appearance.ForeColor = Color.ForestGreen;
+                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Bold);
+
+                }
+                else if (status == "Pending")
+                {
+                    e.Appearance.ForeColor = Color.Gray;
+                    
+                }
+               
+            }
         }
     }
 }
