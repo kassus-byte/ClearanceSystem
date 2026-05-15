@@ -7,18 +7,19 @@ using SchoolClearanceSystem.Models;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
+using System.Data;
 
 namespace SchoolClearanceSystem.Repository
 {
-    public class UserRepository: BaseRepository
+    public class UserRepository : BaseRepository
     {
         public List<User> GetUsersByRole(string role, bool isStudent = true)
         {
             using (var db = dbManager.GetConnection())
             {
-                    string sql = isStudent
-                    ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY FullName ASC"
-                    : "SELECT * FROM Users WHERE Role != 'Student' AND Role != 'Admin' ORDER BY Role ASC";
+                string sql = isStudent
+                ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY FullName ASC"
+                : "SELECT * FROM Users WHERE Role != 'Student' AND Role != 'Admin' ORDER BY Role ASC";
 
                 return db.Query<User>(sql).ToList() ?? new List<User>();
             }
@@ -83,6 +84,50 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 return db.Execute("DELETE FROM Users WHERE UserID = @id", new { id = userId }) > 0;
+            }
+        }
+
+        public int GetClearedCount(string studentId)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT COUNT(*) FROM ClearanceRequests 
+                               WHERE StudentID = @id AND Status = 'Approved'";
+                return db.ExecuteScalar<int>(sql, new { id = studentId });
+            }
+
+        }
+
+        public IEnumerable<dynamic> GetStudentStatus(string studentId)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT Department, Status, Remarks FROM ClearanceRequests 
+                           WHERE StudentID = @studentId";
+
+                return db.Query(sql, new {studentId = studentId });
+            }
+        }
+
+        public IEnumerable<dynamic> GetDepartmentRequests(string department)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT Department, Status, Remarks FROM ClearanceRequests 
+                           WHERE Department = @dept AND STATUS = 'Pending' ";
+
+                return db.Query(sql, new { dept = department });
+            }
+        }
+
+        public bool UpdateRequestStatus(string studentId, string department, string status, string remarks)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"UPDATE ClearanceRequests 
+                               SET Status = @status, Remarks = @remarks 
+                               WHERE StudentID = @id AND Department = @dept";
+                return db.Execute(sql, new { id = studentId, dept = department, status = status, remarks = remarks }) > 0;
             }
         }
     }
