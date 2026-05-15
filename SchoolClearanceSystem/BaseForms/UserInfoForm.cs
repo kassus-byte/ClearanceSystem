@@ -1,18 +1,18 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using SchoolClearanceSystem.Models;       
-using SchoolClearanceSystem.Repository;  
+using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Repository;
+using System.Drawing;
 
 namespace SchoolClearanceSystem
 {
     public enum FormMode { Register, Edit }
 
-       public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
+    public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
     {
         private FormMode _mode;
         private User _selectedUser;
-
         private UserRepository _userRepo = new UserRepository();
 
         public UserInfoForm(FormMode mode, User user = null)
@@ -20,6 +20,9 @@ namespace SchoolClearanceSystem
             InitializeComponent();
             _mode = mode;
             _selectedUser = user ?? new User();
+
+            // This links the event: "When selection changes, run the toggle logic"
+            cbRole.SelectedIndexChanged += cbRole_SelectedIndexChanged;
         }
 
         private void UserInfoForm_Load(object sender, EventArgs e)
@@ -29,7 +32,6 @@ namespace SchoolClearanceSystem
 
         private void SetupForm()
         {
-           //Populating data
             txtUserID.Text = _selectedUser.UserID;
             txtFullName.Text = _selectedUser.FullName;
             cbProgram.Text = _selectedUser.Program;
@@ -43,15 +45,12 @@ namespace SchoolClearanceSystem
                 {
                     if (System.IO.File.Exists(_selectedUser.UploadPath))
                     {
-                        pePhoto.Image = System.Drawing.Image.FromFile(_selectedUser.UploadPath);
+                        pePhoto.Image = Image.FromFile(_selectedUser.UploadPath);
                     }
                 }
-                catch (Exception)
-                {
-                    pePhoto.Image = null;
-                }
+                catch (Exception) { pePhoto.Image = null; }
             }
-            //One form with two faces
+
             if (_mode == FormMode.Edit)
             {
                 this.Text = "Edit Account Information";
@@ -63,31 +62,89 @@ namespace SchoolClearanceSystem
             else
             {
                 this.Text = "Register New Account";
-                lblTitle.Text = "Register Account"; 
+                lblTitle.Text = "Register Account";
                 btnSave.Text = "Save Account";
                 txtUserID.ReadOnly = false;
                 cbRole.Enabled = true;
             }
-            
+
+            // Run this once on load to handle pre-filled data (like in Edit mode)
+            ToggleFieldsBasedOnRole();
+        }
+
+        // This triggers EVERY TIME a user picks a different role in the dropdown
+        private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToggleFieldsBasedOnRole();
+        }
+
+        private void ToggleFieldsBasedOnRole()
+        {
+            // Logic: If NOTHING is selected yet, keep them enabled.
+            // If "Student" is selected, keep them enabled.
+            // If ANYTHING ELSE (Admin, Treasurer, Dean, Technical Office) is selected, disable them.
+
+            if (string.IsNullOrWhiteSpace(cbRole.Text))
+            {
+                return; // Do nothing if the role is blank
+            }
+
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
 
-            if (!isStudent)
-            {
-                cbProgram.Enabled = false;
-                cbYear.Enabled = false;
-                cbProgram.BackColor = System.Drawing.Color.LightGray;
-                cbYear.BackColor = System.Drawing.Color.LightGray;
-                cbProgram.Text = "N/A";
-                cbYear.Text = "N/A";
-            }
-            else
+            if (isStudent)
             {
                 cbProgram.Enabled = true;
                 cbYear.Enabled = true;
-                cbProgram.BackColor = System.Drawing.Color.White;
-                cbYear.BackColor = System.Drawing.Color.White;
+                cbProgram.BackColor = Color.White;
+                cbYear.BackColor = Color.White;
+
+                if (cbProgram.Text == "N/A") cbProgram.Text = "";
+                if (cbYear.Text == "N/A") cbYear.Text = "";
+            }
+            else
+            {
+                cbProgram.Enabled = false;
+                cbYear.Enabled = false;
+                cbProgram.BackColor = Color.LightGray;
+                cbYear.BackColor = Color.LightGray;
+                cbProgram.Text = "N/A";
+                cbYear.Text = "N/A";
             }
         }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                if (_mode == FormMode.Register) PerformRegister();
+                else PerformUpdate();
+            }
+        }
+
+        private bool ValidateForm()
+        {
+            if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                string.IsNullOrWhiteSpace(txtFullName.Text) ||
+                string.IsNullOrWhiteSpace(cbRole.Text))
+            {
+                XtraMessageBox.Show("Please fill in ID, Name, and Role.", "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
+            if (isStudent)
+            {
+                if (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" ||
+                    string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A")
+                {
+                    XtraMessageBox.Show("Student requires a Program and Year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void PerformRegister()
         {
             _selectedUser.UserID = txtUserID.Text;
@@ -107,45 +164,16 @@ namespace SchoolClearanceSystem
         private void PerformUpdate()
         {
             _selectedUser.FullName = txtFullName.Text;
+            _selectedUser.Role = cbRole.Text;
             _selectedUser.Program = cbProgram.Text;
             _selectedUser.Year = cbYear.Text;
-            _selectedUser.Role = cbRole.Text;
 
             if (_userRepo.EditUser(_selectedUser))
             {
-                XtraMessageBox.Show("Information successfully updated!", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Account updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-        }
-
-        private void btnSave_Click_1(object sender, EventArgs e)
-        {
-            if (_mode == FormMode.Register)
-            {
-                    if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
-                    string.IsNullOrWhiteSpace(txtFullName.Text) ||
-                    string.IsNullOrWhiteSpace(cbProgram.Text) ||
-                    string.IsNullOrWhiteSpace(cbYear.Text) ||
-                    string.IsNullOrWhiteSpace(cbRole.Text))
-                {
-                    XtraMessageBox.Show("All fields must be filled for registration.", "Validation Error",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(txtFullName.Text))
-                {
-                    XtraMessageBox.Show("Name cannot be empty.", "Validation Error");
-                    return;
-                }
-            }
-
-            if (_mode == FormMode.Register) PerformRegister();
-            else PerformUpdate();
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
@@ -156,23 +184,18 @@ namespace SchoolClearanceSystem
 
         private void btnUploadPhoto_Click(object sender, EventArgs e)
         {
-            using (XtraOpenFileDialog ofdFilePicker = new XtraOpenFileDialog())
+            using (XtraOpenFileDialog ofd = new XtraOpenFileDialog())
             {
-                ofdFilePicker.Title = "Select Student Photo";
-                ofdFilePicker.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-                if (ofdFilePicker.ShowDialog() == DialogResult.OK)
+                ofd.Title = "Select Photo";
+                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                    pePhoto.Image = System.Drawing.Image.FromFile(ofdFilePicker.FileName);
-
-                     _selectedUser.UploadPath = ofdFilePicker.FileName;
+                        pePhoto.Image = Image.FromFile(ofd.FileName);
+                        _selectedUser.UploadPath = ofd.FileName;
                     }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Could not load image: " + ex.Message, "Error",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    catch (Exception ex) { XtraMessageBox.Show("Error: " + ex.Message); }
                 }
             }
         }
