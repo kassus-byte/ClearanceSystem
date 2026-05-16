@@ -148,6 +148,11 @@
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl36 = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -226,6 +231,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelForm)).BeginInit();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -1229,7 +1236,6 @@
             // 
             // pageMyRequest
             // 
-            this.pageMyRequest.Caption = "pageMyRequest";
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl7);
@@ -1239,11 +1245,12 @@
             // 
             // panelControl9
             // 
+            this.panelControl9.Controls.Add(this.gridControl1);
             this.panelControl9.Controls.Add(this.labelControl24);
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl9.Location = new System.Drawing.Point(0, 199);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Padding = new System.Windows.Forms.Padding(10);
+            this.panelControl9.Padding = new System.Windows.Forms.Padding(20, 70, 20, 10);
             this.panelControl9.Size = new System.Drawing.Size(1574, 627);
             this.panelControl9.TabIndex = 3;
             // 
@@ -1253,7 +1260,7 @@
             this.labelControl24.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl24.Appearance.Options.UseFont = true;
             this.labelControl24.Appearance.Options.UseForeColor = true;
-            this.labelControl24.Location = new System.Drawing.Point(37, 26);
+            this.labelControl24.Location = new System.Drawing.Point(27, 30);
             this.labelControl24.Name = "labelControl24";
             this.labelControl24.Size = new System.Drawing.Size(106, 21);
             this.labelControl24.TabIndex = 4;
@@ -1751,6 +1758,47 @@
             this.labelControl36.TabIndex = 7;
             this.labelControl36.Text = "Adto ramos opisina dawg.";
             // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridControl1.Location = new System.Drawing.Point(22, 72);
+            this.gridControl1.MainView = this.gridView3;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1530, 200);
+            this.gridControl1.TabIndex = 5;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6});
+            this.gridView3.GridControl = this.gridControl1;
+            this.gridView3.Name = "gridView3";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Office";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Status";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Remarks";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 2;
+            // 
             // StudentPortal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1861,6 +1909,8 @@
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1986,6 +2036,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl32;
         private DevExpress.XtraEditors.LabelControl labelControl30;
         private DevExpress.XtraEditors.LabelControl labelControl36;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }
 
