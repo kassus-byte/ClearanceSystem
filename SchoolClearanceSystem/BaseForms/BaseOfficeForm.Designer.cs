@@ -33,7 +33,6 @@
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeClearanceRequest = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.sbOfficeRequirements = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeReports = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -71,14 +70,17 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeClearanceRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
+            this.gcOfficeApprovalTable = new DevExpress.XtraGrid.GridControl();
+            this.gvOfficeApprovalTable = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
             this.pageOfficeRequirements = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl18 = new DevExpress.XtraEditors.PanelControl();
@@ -109,9 +111,6 @@
             this.panelControl19 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
-            this.gcOfficeApprovalTable = new DevExpress.XtraGrid.GridControl();
-            this.gvOfficeApprovalTable = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -150,6 +149,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             this.pageOfficeClearanceRequest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
+            this.panelControl15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcOfficeApprovalTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOfficeApprovalTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
             this.panelControl14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
@@ -172,10 +175,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).BeginInit();
             this.panelControl19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
-            this.panelControl15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcOfficeApprovalTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOfficeApprovalTable)).BeginInit();
             this.SuspendLayout();
             // 
             // accordionControl1
@@ -202,8 +201,7 @@
             this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
             this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.sbOfficeDashboard,
-            this.sbOfficeClearanceRequest,
-            this.sbOfficeRequirements});
+            this.sbOfficeClearanceRequest});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "MAIN";
@@ -253,29 +251,6 @@
             this.sbOfficeClearanceRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbOfficeClearanceRequest.Text = "Clearance Request";
             this.sbOfficeClearanceRequest.Click += new System.EventHandler(this.sbOfficeClearanceRequest_Click_1);
-            // 
-            // sbOfficeRequirements
-            // 
-            this.sbOfficeRequirements.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbOfficeRequirements.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.sbOfficeRequirements.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.sbOfficeRequirements.Appearance.Hovered.Options.UseBackColor = true;
-            this.sbOfficeRequirements.Appearance.Hovered.Options.UseFont = true;
-            this.sbOfficeRequirements.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbOfficeRequirements.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.sbOfficeRequirements.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.sbOfficeRequirements.Appearance.Normal.Options.UseFont = true;
-            this.sbOfficeRequirements.Appearance.Normal.Options.UseForeColor = true;
-            this.sbOfficeRequirements.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbOfficeRequirements.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.sbOfficeRequirements.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.sbOfficeRequirements.Appearance.Pressed.Options.UseBackColor = true;
-            this.sbOfficeRequirements.Appearance.Pressed.Options.UseFont = true;
-            this.sbOfficeRequirements.Appearance.Pressed.Options.UseForeColor = true;
-            this.sbOfficeRequirements.Name = "sbOfficeRequirements";
-            this.sbOfficeRequirements.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbOfficeRequirements.Text = "Requirements";
-            this.sbOfficeRequirements.Click += new System.EventHandler(this.sbOfficeRequirements_Click_1);
             // 
             // accordionControlSeparator1
             // 
@@ -471,7 +446,7 @@
             this.panelControl11.Padding = new System.Windows.Forms.Padding(60);
             this.panelControl11.Size = new System.Drawing.Size(1604, 704);
             this.panelControl11.TabIndex = 6;
-            this.panelControl11.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl11_Paint);
+            
             // 
             // simpleButton1
             // 
@@ -731,6 +706,7 @@
             // 
             // pageOfficeClearanceRequest
             // 
+            this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Controls.Add(this.btnSearch);
             this.pageOfficeClearanceRequest.Controls.Add(this.labelControl11);
             this.pageOfficeClearanceRequest.Controls.Add(this.labelControl10);
@@ -739,54 +715,6 @@
             this.pageOfficeClearanceRequest.Controls.Add(this.panelControl12);
             this.pageOfficeClearanceRequest.Name = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Size = new System.Drawing.Size(1604, 1080);
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton5.Appearance.Options.UseBackColor = true;
-            this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(533, 9);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton5.TabIndex = 9;
-            this.simpleButton5.Text = "On Hold";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton4.Appearance.Options.UseBackColor = true;
-            this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(375, 9);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton4.TabIndex = 8;
-            this.simpleButton4.Text = "Approved";
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton3.Appearance.Options.UseBackColor = true;
-            this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(213, 9);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton3.TabIndex = 7;
-            this.simpleButton3.Text = "Pending";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton2.Appearance.Options.UseBackColor = true;
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(55, 9);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton2.TabIndex = 6;
-            this.simpleButton2.Text = "All";
             // 
             // btnSearch
             // 
@@ -826,6 +754,36 @@
             this.labelControl10.TabIndex = 1;
             this.labelControl10.Text = "Clearance Requests";
             // 
+            // panelControl15
+            // 
+            this.panelControl15.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl15.Appearance.Options.UseBackColor = true;
+            this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl15.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl15.ContentImage")));
+            this.panelControl15.Controls.Add(this.gcOfficeApprovalTable);
+            this.panelControl15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl15.Location = new System.Drawing.Point(0, 158);
+            this.panelControl15.Name = "panelControl15";
+            this.panelControl15.Padding = new System.Windows.Forms.Padding(55);
+            this.panelControl15.Size = new System.Drawing.Size(1604, 922);
+            this.panelControl15.TabIndex = 3;
+            // 
+            // gcOfficeApprovalTable
+            // 
+            this.gcOfficeApprovalTable.Location = new System.Drawing.Point(55, 115);
+            this.gcOfficeApprovalTable.MainView = this.gvOfficeApprovalTable;
+            this.gcOfficeApprovalTable.Name = "gcOfficeApprovalTable";
+            this.gcOfficeApprovalTable.Size = new System.Drawing.Size(1472, 702);
+            this.gcOfficeApprovalTable.TabIndex = 0;
+            this.gcOfficeApprovalTable.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvOfficeApprovalTable});
+           
+            // 
+            // gvOfficeApprovalTable
+            // 
+            this.gvOfficeApprovalTable.GridControl = this.gcOfficeApprovalTable;
+            this.gvOfficeApprovalTable.Name = "gvOfficeApprovalTable";
+            // 
             // panelControl14
             // 
             this.panelControl14.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -841,6 +799,54 @@
             this.panelControl14.Size = new System.Drawing.Size(1604, 58);
             this.panelControl14.TabIndex = 2;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.simpleButton5.Appearance.Options.UseBackColor = true;
+            this.simpleButton5.Appearance.Options.UseFont = true;
+            this.simpleButton5.Location = new System.Drawing.Point(533, 9);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton5.TabIndex = 9;
+            this.simpleButton5.Text = "On Hold";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.simpleButton2.Appearance.Options.UseBackColor = true;
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Location = new System.Drawing.Point(55, 9);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton2.TabIndex = 6;
+            this.simpleButton2.Text = "All";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.simpleButton4.Appearance.Options.UseBackColor = true;
+            this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.Location = new System.Drawing.Point(375, 9);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton4.TabIndex = 8;
+            this.simpleButton4.Text = "Approved";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.simpleButton3.Appearance.Options.UseBackColor = true;
+            this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.Location = new System.Drawing.Point(213, 9);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton3.TabIndex = 7;
+            this.simpleButton3.Text = "Pending";
+            // 
             // panelControl12
             // 
             this.panelControl12.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -854,6 +860,7 @@
             // 
             // pageOfficeRequirements
             // 
+            this.pageOfficeRequirements.Caption = "pageOfficeRequirements";
             this.pageOfficeRequirements.Controls.Add(this.panelControl18);
             this.pageOfficeRequirements.Controls.Add(this.panelControl16);
             this.pageOfficeRequirements.Name = "pageOfficeRequirements";
@@ -1166,36 +1173,6 @@
             this.labelControl19.TabIndex = 2;
             this.labelControl19.Text = "Report";
             // 
-            // panelControl15
-            // 
-            this.panelControl15.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelControl15.Appearance.Options.UseBackColor = true;
-            this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl15.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl15.ContentImage")));
-            this.panelControl15.Controls.Add(this.gcOfficeApprovalTable);
-            this.panelControl15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl15.Location = new System.Drawing.Point(0, 158);
-            this.panelControl15.Name = "panelControl15";
-            this.panelControl15.Padding = new System.Windows.Forms.Padding(55);
-            this.panelControl15.Size = new System.Drawing.Size(1604, 922);
-            this.panelControl15.TabIndex = 3;
-            // 
-            // gcOfficeApprovalTable
-            // 
-            this.gcOfficeApprovalTable.Location = new System.Drawing.Point(55, 115);
-            this.gcOfficeApprovalTable.MainView = this.gvOfficeApprovalTable;
-            this.gcOfficeApprovalTable.Name = "gcOfficeApprovalTable";
-            this.gcOfficeApprovalTable.Size = new System.Drawing.Size(1472, 702);
-            this.gcOfficeApprovalTable.TabIndex = 0;
-            this.gcOfficeApprovalTable.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvOfficeApprovalTable});
-            this.gcOfficeApprovalTable.Click += new System.EventHandler(this.gcOfficeApprovalTable_Click);
-            // 
-            // gvOfficeApprovalTable
-            // 
-            this.gvOfficeApprovalTable.GridControl = this.gcOfficeApprovalTable;
-            this.gvOfficeApprovalTable.Name = "gvOfficeApprovalTable";
-            // 
             // BaseOfficeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1253,6 +1230,10 @@
             this.panelControl4.PerformLayout();
             this.pageOfficeClearanceRequest.ResumeLayout(false);
             this.pageOfficeClearanceRequest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
+            this.panelControl15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcOfficeApprovalTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOfficeApprovalTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
             this.panelControl14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
@@ -1279,10 +1260,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).EndInit();
             this.panelControl19.ResumeLayout(false);
             this.panelControl19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
-            this.panelControl15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcOfficeApprovalTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOfficeApprovalTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1301,7 +1278,6 @@
         private DevExpress.XtraBars.Navigation.NavigationPage pageOfficeDashboard;
         private DevExpress.XtraBars.Navigation.NavigationPage pageOfficeClearanceRequest;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbOfficeClearanceRequest;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbOfficeRequirements;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
