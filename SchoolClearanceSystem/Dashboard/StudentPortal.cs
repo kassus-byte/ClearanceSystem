@@ -19,7 +19,7 @@ namespace SchoolClearanceSystem
             UpdateDashboard();
         }
 
-       
+
         private void sbDashboard_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageDashboard;
@@ -43,7 +43,7 @@ namespace SchoolClearanceSystem
 
         private void UpdateDashboard()
         {
-            if(Session.CurrentUser == null)
+            if (Session.CurrentUser == null)
             {
                 return;
             }
@@ -56,8 +56,8 @@ namespace SchoolClearanceSystem
             lblPercentage.Text = $"{percentage}%";
 
             pbOverallProgress.Position = percentage;
-            lblStatus.Text = (cleared == 3)? "Cleared" : "In Progress";
-            lblProgress.Text = $"{cleared} out of 3 offices cleared"; 
+            lblStatus.Text = (cleared == 3) ? "Cleared" : "In Progress";
+            lblProgress.Text = $"{cleared} out of 3 offices cleared";
 
             RefreshOfficeStatus();
         }
@@ -65,7 +65,7 @@ namespace SchoolClearanceSystem
         private void RefreshOfficeStatus()
         {
             if (Session.CurrentUser == null) return;
-            
+
             UserRepository repo = new UserRepository();
 
             var statusList = repo.GetStudentStatus(Session.CurrentUser.UserID);
@@ -77,7 +77,7 @@ namespace SchoolClearanceSystem
 
         private void gridView2_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
-            if (e.Column.FieldName == "Status" && e.CellValue !=null)
+            if (e.Column.FieldName == "Status" && e.CellValue != null)
             {
                 string status = e.CellValue?.ToString();
                 if (status == "Approved")
@@ -89,14 +89,51 @@ namespace SchoolClearanceSystem
                 else if (status == "Pending")
                 {
                     e.Appearance.ForeColor = Color.Gray;
-                    
+
                 }
-               
+
             }
         }
 
-     
 
-        
+
+        private void panelUpload1_Paint(object sender, PaintEventArgs e)
+        {
+            // Set the color and dash pattern
+            Color dashedColor = Color.FromArgb(100, 180, 150); // Muted green
+            float[] dashValues = { 5, 3 }; // 5 pixels line, 3 pixels space
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (Pen pen = new Pen(dashedColor, 1))
+            {
+                pen.DashPattern = dashValues;
+
+                // Draw a rounded rectangle or standard rectangle
+                // Subtract 1 from width/height to ensure the border isn't clipped
+                e.Graphics.DrawRectangle(pen, 0, 0, panelUpload1.Width - 1, panelUpload1.Height - 1);
+            }
+        }
+
+
+        private void panelUpload1_MouseClick(object sender, MouseEventArgs e)
+        {
+            using (XtraOpenFileDialog fileDialog = new XtraOpenFileDialog())
+            {
+                fileDialog.Filter = "Image Files|*.jpg;*.png|PDF Files|*.pdf";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Logic to handle the file
+                    MessageBox.Show("File selected: " + fileDialog.FileName);
+                }
+            }
+        }
+
+        private void panelUpload1_MouseEnter(object sender, EventArgs e)
+        {
+            panelUpload1.Cursor = Cursors.Hand;
+            // Optional: Change BackColor slightly to show hover effect
+            panelUpload1.BackColor = Color.FromArgb(250, 255, 250);
+        }
     }
 }
