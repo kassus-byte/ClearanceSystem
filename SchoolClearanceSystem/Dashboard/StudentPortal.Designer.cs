@@ -50,35 +50,56 @@
             this.pageDashboard = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.gridControlOfficeStatus = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl10 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.lblProgress = new DevExpress.XtraEditors.LabelControl();
             this.pbOverallProgress = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.pnlStatusCards = new DevExpress.XtraEditors.PanelControl();
             this.pnlCard3 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.pnlSpace2 = new DevExpress.XtraEditors.PanelControl();
             this.pnlCard2 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.lblPercentage = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.pnlSpace1 = new DevExpress.XtraEditors.PanelControl();
             this.pnlCard1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.lblOfficeCleared = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.pnlWelcome = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pageRequestClearance = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.panelUpload3 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl36 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
+            this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
+            this.panelUpload2 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
+            this.btnView = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUpload = new DevExpress.XtraEditors.SimpleButton();
+            this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
+            this.panelrequirements = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.pnlClearanceForm = new DevExpress.XtraEditors.PanelControl();
-            this.comboPurpose = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.comboAY = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.btnSubmitRequest = new DevExpress.XtraEditors.SimpleButton();
             this.comboSemester = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.pnlReminder = new DevExpress.XtraEditors.PanelControl();
@@ -86,8 +107,15 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.btnSubmitRequest = new DevExpress.XtraEditors.SimpleButton();
             this.pageMyRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -113,7 +141,11 @@
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.pageNotification = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.pageClearancePaper = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.panelForm = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
@@ -139,6 +171,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlOfficeStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).BeginInit();
@@ -157,10 +192,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlWelcome)).BeginInit();
             this.pnlWelcome.SuspendLayout();
             this.pageRequestClearance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelUpload3)).BeginInit();
+            this.panelUpload3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelUpload2)).BeginInit();
+            this.panelUpload2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelrequirements)).BeginInit();
+            this.panelrequirements.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboPurpose.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboAY.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlReminder)).BeginInit();
             this.pnlReminder.SuspendLayout();
@@ -169,6 +212,8 @@
             this.pageMyRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).BeginInit();
             this.panelControl9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
@@ -184,6 +229,9 @@
             this.pnlClearanceCopy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
+            this.pageClearancePaper.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelForm)).BeginInit();
+            this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -229,14 +277,12 @@
             this.accordionControl1.AnimationType = DevExpress.XtraBars.Navigation.AnimationType.None;
             this.accordionControl1.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.accordionControl1.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.accordionControl1.DistanceBetweenRootGroups = 4;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.ElementPositionOnExpanding = DevExpress.XtraBars.Navigation.ElementPositionOnExpanding.Fixed;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1,
-            this.sbDashboard,
-            this.sbRequestClearance,
-            this.sbMyRequest,
-            this.sbMyClearance});
+            this.accordionControlElement1});
+            this.accordionControl1.ItemHeight = 2;
             this.accordionControl1.Location = new System.Drawing.Point(0, 165);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.Size = new System.Drawing.Size(325, 915);
@@ -248,13 +294,18 @@
             this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.sbDashboard,
+            this.sbRequestClearance,
+            this.sbMyRequest,
+            this.sbMyClearance});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Main";
             // 
             // sbDashboard
             // 
-            this.sbDashboard.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbDashboard.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbDashboard.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbDashboard.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbDashboard.Appearance.Hovered.Options.UseBackColor = true;
@@ -274,11 +325,11 @@
             this.sbDashboard.Name = "sbDashboard";
             this.sbDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbDashboard.Text = "Dashboard";
-            this.sbDashboard.Click += new System.EventHandler(this.sbDashboard_Click);
+            this.sbDashboard.Click += new System.EventHandler(this.sbDashboard_Click_1);
             // 
             // sbRequestClearance
             // 
-            this.sbRequestClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbRequestClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbRequestClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbRequestClearance.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbRequestClearance.Appearance.Hovered.Options.UseBackColor = true;
@@ -298,11 +349,11 @@
             this.sbRequestClearance.Name = "sbRequestClearance";
             this.sbRequestClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbRequestClearance.Text = "Request Clearance";
-            this.sbRequestClearance.Click += new System.EventHandler(this.sbRequestClearance_Click);
+            this.sbRequestClearance.Click += new System.EventHandler(this.sbRequestClearance_Click_1);
             // 
             // sbMyRequest
             // 
-            this.sbMyRequest.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbMyRequest.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbMyRequest.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbMyRequest.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyRequest.Appearance.Hovered.Options.UseBackColor = true;
@@ -322,11 +373,11 @@
             this.sbMyRequest.Name = "sbMyRequest";
             this.sbMyRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyRequest.Text = "My Request";
-            this.sbMyRequest.Click += new System.EventHandler(this.sbMyRequest_Click);
+            this.sbMyRequest.Click += new System.EventHandler(this.sbMyRequest_Click_1);
             // 
             // sbMyClearance
             // 
-            this.sbMyClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.sbMyClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.sbMyClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.sbMyClearance.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyClearance.Appearance.Hovered.Options.UseBackColor = true;
@@ -346,7 +397,7 @@
             this.sbMyClearance.Name = "sbMyClearance";
             this.sbMyClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyClearance.Text = "My Clearance";
-            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click);
+            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click_1);
             // 
             // pnlUser
             // 
@@ -480,7 +531,7 @@
             this.naviframeStudent.Controls.Add(this.pageRequestClearance);
             this.naviframeStudent.Controls.Add(this.pageMyRequest);
             this.naviframeStudent.Controls.Add(this.pageMyClearance);
-            this.naviframeStudent.Controls.Add(this.pageNotification);
+            this.naviframeStudent.Controls.Add(this.pageClearancePaper);
             this.naviframeStudent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.naviframeStudent.Location = new System.Drawing.Point(15, 15);
             this.naviframeStudent.Name = "naviframeStudent";
@@ -489,7 +540,7 @@
             this.pageRequestClearance,
             this.pageMyRequest,
             this.pageMyClearance,
-            this.pageNotification});
+            this.pageClearancePaper});
             this.naviframeStudent.SelectedPage = this.pageDashboard;
             this.naviframeStudent.Size = new System.Drawing.Size(1574, 1050);
             this.naviframeStudent.TabIndex = 0;
@@ -513,10 +564,10 @@
             this.panelControl2.Appearance.Options.UseBackColor = true;
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.groupControl1);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 376);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1574, 674);
+            this.panelControl2.Size = new System.Drawing.Size(1574, 599);
             this.panelControl2.TabIndex = 3;
             // 
             // groupControl1
@@ -525,12 +576,63 @@
             this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
+            this.groupControl1.Controls.Add(this.gridControlOfficeStatus);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(1574, 598);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Office Status";
+            // 
+            // gridControlOfficeStatus
+            // 
+            this.gridControlOfficeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlOfficeStatus.Location = new System.Drawing.Point(2, 29);
+            this.gridControlOfficeStatus.MainView = this.gridView2;
+            this.gridControlOfficeStatus.Name = "gridControlOfficeStatus";
+            this.gridControlOfficeStatus.Size = new System.Drawing.Size(1570, 567);
+            this.gridControlOfficeStatus.TabIndex = 0;
+            this.gridControlOfficeStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gridView2.GridControl = this.gridControlOfficeStatus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView2_RowCellStyle);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Department";
+            this.gridColumn1.FieldName = "Department";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 476;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Status";
+            this.gridColumn2.FieldName = "Status";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 542;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Remarks";
+            this.gridColumn3.FieldName = "Remarks";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 522;
             // 
             // panelControl1
             // 
@@ -549,7 +651,7 @@
             // 
             this.panelControl10.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl10.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl10.ContentImage")));
-            this.panelControl10.Controls.Add(this.labelControl5);
+            this.panelControl10.Controls.Add(this.lblProgress);
             this.panelControl10.Controls.Add(this.pbOverallProgress);
             this.panelControl10.Controls.Add(this.labelControl4);
             this.panelControl10.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -558,23 +660,23 @@
             this.panelControl10.Size = new System.Drawing.Size(1554, 120);
             this.panelControl10.TabIndex = 0;
             // 
-            // labelControl5
+            // lblProgress
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(25, 78);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(153, 17);
-            this.labelControl5.TabIndex = 2;
-            this.labelControl5.Text = "0 out of 10 offices cleared";
+            this.lblProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgress.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblProgress.Appearance.Options.UseFont = true;
+            this.lblProgress.Appearance.Options.UseForeColor = true;
+            this.lblProgress.Location = new System.Drawing.Point(25, 78);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(153, 17);
+            this.lblProgress.TabIndex = 2;
+            this.lblProgress.Text = "0 out of 10 offices cleared";
             // 
             // pbOverallProgress
             // 
             this.pbOverallProgress.Location = new System.Drawing.Point(25, 43);
             this.pbOverallProgress.Name = "pbOverallProgress";
-            this.pbOverallProgress.Size = new System.Drawing.Size(1542, 29);
+            this.pbOverallProgress.Size = new System.Drawing.Size(1508, 29);
             this.pbOverallProgress.TabIndex = 0;
             // 
             // labelControl4
@@ -612,7 +714,7 @@
             this.pnlCard3.Appearance.Options.UseBackColor = true;
             this.pnlCard3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlCard3.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlCard3.ContentImage")));
-            this.pnlCard3.Controls.Add(this.labelControl27);
+            this.pnlCard3.Controls.Add(this.lblStatus);
             this.pnlCard3.Controls.Add(this.labelControl8);
             this.pnlCard3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCard3.Location = new System.Drawing.Point(1058, 10);
@@ -620,17 +722,17 @@
             this.pnlCard3.Size = new System.Drawing.Size(504, 129);
             this.pnlCard3.TabIndex = 4;
             // 
-            // labelControl27
+            // lblStatus
             // 
-            this.labelControl27.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.labelControl27.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl27.Appearance.Options.UseFont = true;
-            this.labelControl27.Appearance.Options.UseForeColor = true;
-            this.labelControl27.Location = new System.Drawing.Point(58, 53);
-            this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(150, 31);
-            this.labelControl27.TabIndex = 5;
-            this.labelControl27.Text = "In Progress";
+            this.lblStatus.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblStatus.Appearance.Options.UseFont = true;
+            this.lblStatus.Appearance.Options.UseForeColor = true;
+            this.lblStatus.Location = new System.Drawing.Point(58, 53);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(150, 31);
+            this.lblStatus.TabIndex = 5;
+            this.lblStatus.Text = "In Progress";
             // 
             // labelControl8
             // 
@@ -661,7 +763,7 @@
             this.pnlCard2.Appearance.Options.UseBackColor = true;
             this.pnlCard2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlCard2.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlCard2.ContentImage")));
-            this.pnlCard2.Controls.Add(this.labelControl26);
+            this.pnlCard2.Controls.Add(this.lblPercentage);
             this.pnlCard2.Controls.Add(this.labelControl7);
             this.pnlCard2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCard2.Location = new System.Drawing.Point(534, 10);
@@ -669,17 +771,17 @@
             this.pnlCard2.Size = new System.Drawing.Size(504, 129);
             this.pnlCard2.TabIndex = 2;
             // 
-            // labelControl26
+            // lblPercentage
             // 
-            this.labelControl26.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.labelControl26.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Appearance.Options.UseForeColor = true;
-            this.labelControl26.Location = new System.Drawing.Point(58, 53);
-            this.labelControl26.Name = "labelControl26";
-            this.labelControl26.Size = new System.Drawing.Size(41, 31);
-            this.labelControl26.TabIndex = 4;
-            this.labelControl26.Text = "0%";
+            this.lblPercentage.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lblPercentage.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblPercentage.Appearance.Options.UseFont = true;
+            this.lblPercentage.Appearance.Options.UseForeColor = true;
+            this.lblPercentage.Location = new System.Drawing.Point(58, 53);
+            this.lblPercentage.Name = "lblPercentage";
+            this.lblPercentage.Size = new System.Drawing.Size(41, 31);
+            this.lblPercentage.TabIndex = 4;
+            this.lblPercentage.Text = "0%";
             // 
             // labelControl7
             // 
@@ -708,7 +810,7 @@
             // 
             this.pnlCard1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlCard1.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlCard1.ContentImage")));
-            this.pnlCard1.Controls.Add(this.labelControl25);
+            this.pnlCard1.Controls.Add(this.lblOfficeCleared);
             this.pnlCard1.Controls.Add(this.labelControl6);
             this.pnlCard1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCard1.Location = new System.Drawing.Point(10, 10);
@@ -716,17 +818,17 @@
             this.pnlCard1.Size = new System.Drawing.Size(504, 129);
             this.pnlCard1.TabIndex = 0;
             // 
-            // labelControl25
+            // lblOfficeCleared
             // 
-            this.labelControl25.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.labelControl25.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl25.Appearance.Options.UseFont = true;
-            this.labelControl25.Appearance.Options.UseForeColor = true;
-            this.labelControl25.Location = new System.Drawing.Point(55, 53);
-            this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(57, 31);
-            this.labelControl25.TabIndex = 3;
-            this.labelControl25.Text = "0/10";
+            this.lblOfficeCleared.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.lblOfficeCleared.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblOfficeCleared.Appearance.Options.UseFont = true;
+            this.lblOfficeCleared.Appearance.Options.UseForeColor = true;
+            this.lblOfficeCleared.Location = new System.Drawing.Point(55, 53);
+            this.lblOfficeCleared.Name = "lblOfficeCleared";
+            this.lblOfficeCleared.Size = new System.Drawing.Size(57, 31);
+            this.lblOfficeCleared.TabIndex = 3;
+            this.lblOfficeCleared.Text = "0/10";
             // 
             // labelControl6
             // 
@@ -782,42 +884,304 @@
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
             this.pageRequestClearance.Caption = "pageRequestClearance";
+            this.pageRequestClearance.Controls.Add(this.panelUpload3);
+            this.pageRequestClearance.Controls.Add(this.panelUpload2);
+            this.pageRequestClearance.Controls.Add(this.panelrequirements);
             this.pageRequestClearance.Controls.Add(this.pnlClearanceForm);
             this.pageRequestClearance.Controls.Add(this.pnlReminder);
             this.pageRequestClearance.Controls.Add(this.panelControl3);
+            this.pageRequestClearance.Controls.Add(this.labelControl12);
+            this.pageRequestClearance.Controls.Add(this.btnSubmitRequest);
             this.pageRequestClearance.Name = "pageRequestClearance";
             this.pageRequestClearance.Size = new System.Drawing.Size(1574, 1050);
             // 
+            // panelUpload3
+            // 
+            this.panelUpload3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelUpload3.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelUpload3.ContentImage")));
+            this.panelUpload3.Controls.Add(this.labelControl36);
+            this.panelUpload3.Controls.Add(this.labelControl34);
+            this.panelUpload3.Controls.Add(this.labelControl31);
+            this.panelUpload3.Controls.Add(this.pictureEdit3);
+            this.panelUpload3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelUpload3.Location = new System.Drawing.Point(0, 720);
+            this.panelUpload3.Name = "panelUpload3";
+            this.panelUpload3.Size = new System.Drawing.Size(1574, 131);
+            this.panelUpload3.TabIndex = 14;
+            // 
+            // labelControl36
+            // 
+            this.labelControl36.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl36.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl36.Appearance.Options.UseFont = true;
+            this.labelControl36.Appearance.Options.UseForeColor = true;
+            this.labelControl36.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.labelControl36.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelControl36.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl36.ImageOptions.SvgImage")));
+            this.labelControl36.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
+            this.labelControl36.Location = new System.Drawing.Point(41, 80);
+            this.labelControl36.Name = "labelControl36";
+            this.labelControl36.Size = new System.Drawing.Size(187, 27);
+            this.labelControl36.TabIndex = 7;
+            this.labelControl36.Text = "Adto ramos opisina dawg.";
+            // 
+            // labelControl34
+            // 
+            this.labelControl34.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl34.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl34.Appearance.Options.UseFont = true;
+            this.labelControl34.Appearance.Options.UseForeColor = true;
+            this.labelControl34.Location = new System.Drawing.Point(109, 39);
+            this.labelControl34.Name = "labelControl34";
+            this.labelControl34.Size = new System.Drawing.Size(104, 17);
+            this.labelControl34.TabIndex = 4;
+            this.labelControl34.Text = "System Accounts";
+            // 
+            // labelControl31
+            // 
+            this.labelControl31.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl31.Appearance.Options.UseFont = true;
+            this.labelControl31.Location = new System.Drawing.Point(109, 21);
+            this.labelControl31.Name = "labelControl31";
+            this.labelControl31.Size = new System.Drawing.Size(132, 21);
+            this.labelControl31.TabIndex = 5;
+            this.labelControl31.Text = "Technical Support";
+            // 
+            // pictureEdit3
+            // 
+            this.pictureEdit3.EditValue = ((object)(resources.GetObject("pictureEdit3.EditValue")));
+            this.pictureEdit3.Location = new System.Drawing.Point(32, 6);
+            this.pictureEdit3.Name = "pictureEdit3";
+            this.pictureEdit3.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.pictureEdit3.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit3.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit3.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit3.Size = new System.Drawing.Size(72, 57);
+            this.pictureEdit3.TabIndex = 4;
+            // 
+            // panelUpload2
+            // 
+            this.panelUpload2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelUpload2.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelUpload2.ContentImage")));
+            this.panelUpload2.Controls.Add(this.labelControl32);
+            this.panelUpload2.Controls.Add(this.labelControl35);
+            this.panelUpload2.Controls.Add(this.labelControl29);
+            this.panelUpload2.Controls.Add(this.btnView);
+            this.panelUpload2.Controls.Add(this.btnUpload);
+            this.panelUpload2.Controls.Add(this.pictureEdit2);
+            this.panelUpload2.Controls.Add(this.labelControl28);
+            this.panelUpload2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelUpload2.Location = new System.Drawing.Point(0, 532);
+            this.panelUpload2.Name = "panelUpload2";
+            this.panelUpload2.Padding = new System.Windows.Forms.Padding(11, 75, 0, 0);
+            this.panelUpload2.Size = new System.Drawing.Size(1574, 188);
+            this.panelUpload2.TabIndex = 13;
+            // 
+            // labelControl32
+            // 
+            this.labelControl32.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl32.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl32.Appearance.Options.UseFont = true;
+            this.labelControl32.Appearance.Options.UseForeColor = true;
+            this.labelControl32.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.labelControl32.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelControl32.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl32.ImageOptions.SvgImage")));
+            this.labelControl32.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
+            this.labelControl32.Location = new System.Drawing.Point(41, 78);
+            this.labelControl32.Name = "labelControl32";
+            this.labelControl32.Size = new System.Drawing.Size(471, 27);
+            this.labelControl32.TabIndex = 6;
+            this.labelControl32.Text = " Pay your balance at the cashier and upload your official receipt as proof.";
+            // 
+            // labelControl35
+            // 
+            this.labelControl35.Location = new System.Drawing.Point(359, 137);
+            this.labelControl35.Name = "labelControl35";
+            this.labelControl35.Size = new System.Drawing.Size(223, 13);
+            this.labelControl35.TabIndex = 4;
+            this.labelControl35.Text = "working naning buttons ssg. treasurer moy wa";
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl29.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl29.Appearance.Options.UseFont = true;
+            this.labelControl29.Appearance.Options.UseForeColor = true;
+            this.labelControl29.Location = new System.Drawing.Point(110, 38);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(116, 17);
+            this.labelControl29.TabIndex = 3;
+            this.labelControl29.Text = "Activities and Fines";
+            // 
+            // btnView
+            // 
+            this.btnView.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.btnView.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnView.Appearance.Options.UseBackColor = true;
+            this.btnView.Appearance.Options.UseFont = true;
+            this.btnView.Location = new System.Drawing.Point(180, 127);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(122, 30);
+            this.btnView.TabIndex = 3;
+            this.btnView.Text = "View";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnUpload.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUpload.Appearance.Options.UseBackColor = true;
+            this.btnUpload.Appearance.Options.UseFont = true;
+            this.btnUpload.Location = new System.Drawing.Point(40, 127);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(122, 30);
+            this.btnUpload.TabIndex = 2;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // pictureEdit2
+            // 
+            this.pictureEdit2.EditValue = ((object)(resources.GetObject("pictureEdit2.EditValue")));
+            this.pictureEdit2.Location = new System.Drawing.Point(31, 20);
+            this.pictureEdit2.Name = "pictureEdit2";
+            this.pictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.pictureEdit2.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit2.Size = new System.Drawing.Size(72, 49);
+            this.pictureEdit2.TabIndex = 3;
+            // 
+            // labelControl28
+            // 
+            this.labelControl28.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl28.Appearance.Options.UseFont = true;
+            this.labelControl28.Location = new System.Drawing.Point(110, 20);
+            this.labelControl28.Name = "labelControl28";
+            this.labelControl28.Size = new System.Drawing.Size(29, 21);
+            this.labelControl28.TabIndex = 3;
+            this.labelControl28.Text = "SSG";
+            // 
+            // panelrequirements
+            // 
+            this.panelrequirements.Appearance.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelrequirements.Appearance.Options.UseBackColor = true;
+            this.panelrequirements.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelrequirements.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelrequirements.ContentImage")));
+            this.panelrequirements.Controls.Add(this.simpleButton7);
+            this.panelrequirements.Controls.Add(this.simpleButton6);
+            this.panelrequirements.Controls.Add(this.labelControl30);
+            this.panelrequirements.Controls.Add(this.pictureEdit1);
+            this.panelrequirements.Controls.Add(this.labelControl27);
+            this.panelrequirements.Controls.Add(this.labelControl11);
+            this.panelrequirements.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelrequirements.Location = new System.Drawing.Point(0, 344);
+            this.panelrequirements.Name = "panelrequirements";
+            this.panelrequirements.Padding = new System.Windows.Forms.Padding(14, 75, 21, 0);
+            this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
+            this.panelrequirements.TabIndex = 12;
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.simpleButton7.Appearance.Options.UseBackColor = true;
+            this.simpleButton7.Appearance.Options.UseFont = true;
+            this.simpleButton7.Location = new System.Drawing.Point(180, 128);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(122, 30);
+            this.simpleButton7.TabIndex = 5;
+            this.simpleButton7.Text = "View";
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.simpleButton6.Appearance.Options.UseBackColor = true;
+            this.simpleButton6.Appearance.Options.UseFont = true;
+            this.simpleButton6.Location = new System.Drawing.Point(41, 128);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(122, 30);
+            this.simpleButton6.TabIndex = 5;
+            this.simpleButton6.Text = "Upload";
+            // 
+            // labelControl30
+            // 
+            this.labelControl30.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl30.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl30.Appearance.Options.UseFont = true;
+            this.labelControl30.Appearance.Options.UseForeColor = true;
+            this.labelControl30.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.labelControl30.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelControl30.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl30.ImageOptions.SvgImage")));
+            this.labelControl30.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
+            this.labelControl30.Location = new System.Drawing.Point(39, 79);
+            this.labelControl30.Name = "labelControl30";
+            this.labelControl30.Size = new System.Drawing.Size(471, 27);
+            this.labelControl30.TabIndex = 5;
+            this.labelControl30.Text = " Pay your balance at the cashier and upload your official receipt as proof.";
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
+            this.pictureEdit1.Location = new System.Drawing.Point(31, 16);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Size = new System.Drawing.Size(72, 57);
+            this.pictureEdit1.TabIndex = 0;
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl27.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.labelControl27.Appearance.Options.UseFont = true;
+            this.labelControl27.Appearance.Options.UseForeColor = true;
+            this.labelControl27.Location = new System.Drawing.Point(112, 42);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(60, 17);
+            this.labelControl27.TabIndex = 2;
+            this.labelControl27.Text = "Payments";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl11.Appearance.Options.UseFont = true;
+            this.labelControl11.Location = new System.Drawing.Point(112, 25);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(69, 21);
+            this.labelControl11.TabIndex = 1;
+            this.labelControl11.Text = "Treasurer";
+            // 
             // pnlClearanceForm
             // 
+            this.pnlClearanceForm.Appearance.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnlClearanceForm.Appearance.Options.UseBackColor = true;
             this.pnlClearanceForm.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlClearanceForm.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlClearanceForm.ContentImage")));
-            this.pnlClearanceForm.Controls.Add(this.comboPurpose);
+            this.pnlClearanceForm.Controls.Add(this.comboBoxEdit1);
             this.pnlClearanceForm.Controls.Add(this.labelControl13);
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
-            this.pnlClearanceForm.Controls.Add(this.labelControl11);
-            this.pnlClearanceForm.Controls.Add(this.comboAY);
-            this.pnlClearanceForm.Controls.Add(this.labelControl12);
-            this.pnlClearanceForm.Controls.Add(this.btnSubmitRequest);
             this.pnlClearanceForm.Controls.Add(this.comboSemester);
             this.pnlClearanceForm.Controls.Add(this.labelControl10);
             this.pnlClearanceForm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 137);
+            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 131);
             this.pnlClearanceForm.Name = "pnlClearanceForm";
             this.pnlClearanceForm.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 420);
+            this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
             this.pnlClearanceForm.TabIndex = 11;
             // 
-            // comboPurpose
+            // comboBoxEdit1
             // 
-            this.comboPurpose.Location = new System.Drawing.Point(43, 216);
-            this.comboPurpose.Name = "comboPurpose";
-            this.comboPurpose.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboPurpose.Properties.Appearance.Options.UseFont = true;
-            this.comboPurpose.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit1.Location = new System.Drawing.Point(797, 109);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboPurpose.Size = new System.Drawing.Size(1488, 32);
-            this.comboPurpose.TabIndex = 8;
+            this.comboBoxEdit1.Size = new System.Drawing.Size(721, 32);
+            this.comboBoxEdit1.TabIndex = 7;
             // 
             // labelControl13
             // 
@@ -825,7 +1189,7 @@
             this.labelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl13.Appearance.Options.UseFont = true;
             this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.Location = new System.Drawing.Point(41, 44);
+            this.labelControl13.Location = new System.Drawing.Point(30, 34);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(183, 21);
             this.labelControl13.TabIndex = 3;
@@ -837,62 +1201,15 @@
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(41, 100);
+            this.labelControl9.Location = new System.Drawing.Point(30, 84);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(56, 17);
             this.labelControl9.TabIndex = 3;
             this.labelControl9.Text = "Semester";
             // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(41, 191);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(50, 17);
-            this.labelControl11.TabIndex = 5;
-            this.labelControl11.Text = "Purpose";
-            // 
-            // comboAY
-            // 
-            this.comboAY.Location = new System.Drawing.Point(810, 125);
-            this.comboAY.Name = "comboAY";
-            this.comboAY.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboAY.Properties.Appearance.Options.UseFont = true;
-            this.comboAY.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboAY.Size = new System.Drawing.Size(721, 32);
-            this.comboAY.TabIndex = 7;
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(215, 304);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(283, 17);
-            this.labelControl12.TabIndex = 10;
-            this.labelControl12.Text = "You will be notified for each department update.";
-            // 
-            // btnSubmitRequest
-            // 
-            this.btnSubmitRequest.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnSubmitRequest.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSubmitRequest.Appearance.Options.UseBackColor = true;
-            this.btnSubmitRequest.Appearance.Options.UseFont = true;
-            this.btnSubmitRequest.Location = new System.Drawing.Point(43, 294);
-            this.btnSubmitRequest.Name = "btnSubmitRequest";
-            this.btnSubmitRequest.Size = new System.Drawing.Size(156, 40);
-            this.btnSubmitRequest.TabIndex = 9;
-            this.btnSubmitRequest.Text = "Submit Request";
-            // 
             // comboSemester
             // 
-            this.comboSemester.Location = new System.Drawing.Point(43, 125);
+            this.comboSemester.Location = new System.Drawing.Point(32, 109);
             this.comboSemester.Name = "comboSemester";
             this.comboSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboSemester.Properties.Appearance.Options.UseFont = true;
@@ -907,7 +1224,7 @@
             this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl10.Appearance.Options.UseFont = true;
             this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(808, 100);
+            this.labelControl10.Location = new System.Drawing.Point(797, 84);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(89, 17);
             this.labelControl10.TabIndex = 4;
@@ -922,7 +1239,7 @@
             this.pnlReminder.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlReminder.Location = new System.Drawing.Point(0, 87);
             this.pnlReminder.Name = "pnlReminder";
-            this.pnlReminder.Size = new System.Drawing.Size(1574, 50);
+            this.pnlReminder.Size = new System.Drawing.Size(1574, 44);
             this.pnlReminder.TabIndex = 1;
             // 
             // txtReminder
@@ -931,7 +1248,7 @@
             this.txtReminder.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
             this.txtReminder.Appearance.Options.UseFont = true;
             this.txtReminder.Appearance.Options.UseForeColor = true;
-            this.txtReminder.Location = new System.Drawing.Point(22, 18);
+            this.txtReminder.Location = new System.Drawing.Point(22, 14);
             this.txtReminder.Name = "txtReminder";
             this.txtReminder.Size = new System.Drawing.Size(326, 17);
             this.txtReminder.TabIndex = 0;
@@ -974,6 +1291,30 @@
             this.txtHeaderRC.TabIndex = 1;
             this.txtHeaderRC.Text = "Request Clearance";
             // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(220, 909);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(283, 17);
+            this.labelControl12.TabIndex = 10;
+            this.labelControl12.Text = "You will be notified for each department update.";
+            // 
+            // btnSubmitRequest
+            // 
+            this.btnSubmitRequest.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnSubmitRequest.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSubmitRequest.Appearance.Options.UseBackColor = true;
+            this.btnSubmitRequest.Appearance.Options.UseFont = true;
+            this.btnSubmitRequest.Location = new System.Drawing.Point(39, 897);
+            this.btnSubmitRequest.Name = "btnSubmitRequest";
+            this.btnSubmitRequest.Size = new System.Drawing.Size(156, 40);
+            this.btnSubmitRequest.TabIndex = 9;
+            this.btnSubmitRequest.Text = "Submit Request";
+            // 
             // pageMyRequest
             // 
             this.pageMyRequest.Caption = "pageMyRequest";
@@ -986,13 +1327,55 @@
             // 
             // panelControl9
             // 
+            this.panelControl9.Controls.Add(this.gridControl1);
             this.panelControl9.Controls.Add(this.labelControl24);
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl9.Location = new System.Drawing.Point(0, 199);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Padding = new System.Windows.Forms.Padding(10);
+            this.panelControl9.Padding = new System.Windows.Forms.Padding(20, 70, 20, 10);
             this.panelControl9.Size = new System.Drawing.Size(1574, 627);
             this.panelControl9.TabIndex = 3;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridControl1.Location = new System.Drawing.Point(22, 72);
+            this.gridControl1.MainView = this.gridView3;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1530, 200);
+            this.gridControl1.TabIndex = 5;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6});
+            this.gridView3.GridControl = this.gridControl1;
+            this.gridView3.Name = "gridView3";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Office";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Status";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Remarks";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 2;
             // 
             // labelControl24
             // 
@@ -1000,7 +1383,7 @@
             this.labelControl24.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl24.Appearance.Options.UseFont = true;
             this.labelControl24.Appearance.Options.UseForeColor = true;
-            this.labelControl24.Location = new System.Drawing.Point(37, 26);
+            this.labelControl24.Location = new System.Drawing.Point(27, 30);
             this.labelControl24.Name = "labelControl24";
             this.labelControl24.Size = new System.Drawing.Size(106, 21);
             this.labelControl24.TabIndex = 4;
@@ -1089,10 +1472,10 @@
             this.labelControl23.Appearance.Options.UseForeColor = true;
             this.labelControl23.Location = new System.Drawing.Point(27, 18);
             this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(732, 17);
+            this.labelControl23.Size = new System.Drawing.Size(471, 17);
             this.labelControl23.TabIndex = 1;
-            this.labelControl23.Text = "Requirements are approved by offices only. You can submit proof of compliance, bu" +
-    "t only the office can mark you as cleared.";
+            this.labelControl23.Text = "Pending *yellow circle          Approved *green circle         On Hold *orange ci" +
+    "rcle\r\n";
             // 
             // panelControl6
             // 
@@ -1115,10 +1498,9 @@
             this.labelControl22.Appearance.Options.UseForeColor = true;
             this.labelControl22.Location = new System.Drawing.Point(27, 51);
             this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(583, 17);
+            this.labelControl22.Size = new System.Drawing.Size(412, 17);
             this.labelControl22.TabIndex = 3;
-            this.labelControl22.Text = "View what each department requires. Submit your proof — the department will revie" +
-    "w and approve.";
+            this.labelControl22.Text = "See recent updates from the offices reviewing your Clearance Request.";
             // 
             // labelControl21
             // 
@@ -1303,11 +1685,55 @@
             this.labelControl14.TabIndex = 2;
             this.labelControl14.Text = "My Clearance";
             // 
-            // pageNotification
+            // pageClearancePaper
             // 
-            this.pageNotification.Caption = "pageNotification";
-            this.pageNotification.Name = "pageNotification";
-            this.pageNotification.Size = new System.Drawing.Size(1574, 1050);
+            this.pageClearancePaper.Caption = "pageClearancePaper";
+            this.pageClearancePaper.Controls.Add(this.panelForm);
+            this.pageClearancePaper.Name = "pageClearancePaper";
+            this.pageClearancePaper.Size = new System.Drawing.Size(1574, 1050);
+            // 
+            // panelForm
+            // 
+            this.panelForm.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelForm.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelForm.ContentImage")));
+            this.panelForm.Controls.Add(this.labelControl26);
+            this.panelForm.Controls.Add(this.labelControl25);
+            this.panelForm.Controls.Add(this.labelControl5);
+            this.panelForm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelForm.Location = new System.Drawing.Point(0, 0);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(1574, 548);
+            this.panelForm.TabIndex = 0;
+            // 
+            // labelControl26
+            // 
+            this.labelControl26.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl26.Appearance.Options.UseFont = true;
+            this.labelControl26.Location = new System.Drawing.Point(1220, 348);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(180, 37);
+            this.labelControl26.TabIndex = 2;
+            this.labelControl26.Text = "NOT CLEARED";
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl25.Appearance.Options.UseFont = true;
+            this.labelControl25.Location = new System.Drawing.Point(704, 348);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(180, 37);
+            this.labelControl25.TabIndex = 1;
+            this.labelControl25.Text = "NOT CLEARED";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(203, 348);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(180, 37);
+            this.labelControl5.TabIndex = 0;
+            this.labelControl5.Text = "NOT CLEARED";
             // 
             // navBarControl1
             // 
@@ -1406,6 +1832,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlOfficeStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).EndInit();
@@ -1429,11 +1858,23 @@
             this.pnlWelcome.ResumeLayout(false);
             this.pnlWelcome.PerformLayout();
             this.pageRequestClearance.ResumeLayout(false);
+            this.pageRequestClearance.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelUpload3)).EndInit();
+            this.panelUpload3.ResumeLayout(false);
+            this.panelUpload3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelUpload2)).EndInit();
+            this.panelUpload2.ResumeLayout(false);
+            this.panelUpload2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelrequirements)).EndInit();
+            this.panelrequirements.ResumeLayout(false);
+            this.panelrequirements.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
             this.pnlClearanceForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboPurpose.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboAY.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlReminder)).EndInit();
             this.pnlReminder.ResumeLayout(false);
@@ -1445,6 +1886,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).EndInit();
             this.panelControl9.ResumeLayout(false);
             this.panelControl9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
@@ -1464,6 +1907,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();
+            this.pageClearancePaper.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelForm)).EndInit();
+            this.panelForm.ResumeLayout(false);
+            this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1494,10 +1941,6 @@
         private DevExpress.XtraBars.Navigation.NavigationPage pageRequestClearance;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbDashboard;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbRequestClearance;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyRequest;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyClearance;
         private DevExpress.XtraEditors.PanelControl pnlWelcome;
         private DevExpress.XtraEditors.LabelControl txtWelcome;
         private DevExpress.XtraEditors.PanelControl pnlStatusCards;
@@ -1511,25 +1954,22 @@
         private DevExpress.XtraEditors.ProgressBarControl pbOverallProgress;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl lblProgress;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraBars.Navigation.NavigationPage pageMyRequest;
         private DevExpress.XtraBars.Navigation.NavigationPage pageMyClearance;
-        private DevExpress.XtraBars.Navigation.NavigationPage pageNotification;
+        private DevExpress.XtraBars.Navigation.NavigationPage pageClearancePaper;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl pnlReminder;
         private DevExpress.XtraEditors.LabelControl txtReminder;
         private DevExpress.XtraEditors.LabelControl txtSubHeaderRC;
         private DevExpress.XtraEditors.LabelControl txtHeaderRC;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.SimpleButton btnSubmitRequest;
-        private DevExpress.XtraEditors.ComboBoxEdit comboPurpose;
-        private DevExpress.XtraEditors.ComboBoxEdit comboAY;
         private DevExpress.XtraEditors.ComboBoxEdit comboSemester;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
@@ -1560,9 +2000,48 @@
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.PanelControl panelControl10;
         private DevExpress.XtraEditors.PanelControl pnlClearanceForm;
-        private DevExpress.XtraEditors.LabelControl labelControl27;
+        private DevExpress.XtraEditors.LabelControl lblStatus;
+        private DevExpress.XtraEditors.LabelControl lblPercentage;
+        private DevExpress.XtraEditors.LabelControl lblOfficeCleared;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbDashboard;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbRequestClearance;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyRequest;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement sbMyClearance;
+        private DevExpress.XtraGrid.GridControl gridControlOfficeStatus;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.PanelControl panelForm;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl26;
         private DevExpress.XtraEditors.LabelControl labelControl25;
+        private DevExpress.XtraEditors.PanelControl panelrequirements;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl27;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.PanelControl panelUpload2;
+        private DevExpress.XtraEditors.LabelControl labelControl29;
+        private DevExpress.XtraEditors.LabelControl labelControl28;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit2;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.PanelControl panelUpload3;
+        private DevExpress.XtraEditors.LabelControl labelControl31;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit3;
+        private DevExpress.XtraEditors.SimpleButton btnView;
+        private DevExpress.XtraEditors.SimpleButton btnUpload;
+        private DevExpress.XtraEditors.LabelControl labelControl34;
+        private DevExpress.XtraEditors.LabelControl labelControl35;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private DevExpress.XtraEditors.LabelControl labelControl32;
+        private DevExpress.XtraEditors.LabelControl labelControl30;
+        private DevExpress.XtraEditors.LabelControl labelControl36;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }
 

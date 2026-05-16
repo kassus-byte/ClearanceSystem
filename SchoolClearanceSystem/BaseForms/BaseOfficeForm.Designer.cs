@@ -39,6 +39,8 @@
             this.sbOfficeReports = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.lblRole = new DevExpress.XtraEditors.LabelControl();
+            this.lblFullName = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -84,15 +86,20 @@
             this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
             this.pageOfficeRequirements = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl18 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl16 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeReports = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl20 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl22 = new DevExpress.XtraEditors.PanelControl();
+            this.tileControl1 = new DevExpress.XtraEditors.TileControl();
+            this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
+            this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
+            this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
+            this.tileGroup5 = new DevExpress.XtraEditors.TileGroup();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl21 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
@@ -104,15 +111,9 @@
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl19 = new DevExpress.XtraEditors.PanelControl();
-            this.tileControl1 = new DevExpress.XtraEditors.TileControl();
-            this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup5 = new DevExpress.XtraEditors.TileGroup();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.lblFullName = new DevExpress.XtraEditors.LabelControl();
-            this.lblRole = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -354,6 +355,30 @@
             this.panelControl3.Size = new System.Drawing.Size(300, 85);
             this.panelControl3.TabIndex = 1;
             // 
+            // lblRole
+            // 
+            this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblRole.Appearance.Options.UseFont = true;
+            this.lblRole.Appearance.Options.UseForeColor = true;
+            this.lblRole.Location = new System.Drawing.Point(94, 40);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(46, 13);
+            this.lblRole.TabIndex = 5;
+            this.lblRole.Text = "Registrar";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblFullName.Appearance.Options.UseFont = true;
+            this.lblFullName.Appearance.Options.UseForeColor = true;
+            this.lblFullName.Location = new System.Drawing.Point(94, 17);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(97, 17);
+            this.lblFullName.TabIndex = 1;
+            this.lblFullName.Text = "Anne Hathaway";
+            // 
             // panelControl1
             // 
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
@@ -426,6 +451,7 @@
             // 
             // pageOfficeDashboard
             // 
+            this.pageOfficeDashboard.Caption = "pageOfficeDashboard";
             this.pageOfficeDashboard.Controls.Add(this.panelControl11);
             this.pageOfficeDashboard.Controls.Add(this.panelControl9);
             this.pageOfficeDashboard.Controls.Add(this.panelControl5);
@@ -492,6 +518,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
@@ -699,6 +727,7 @@
             // 
             // pageOfficeClearanceRequest
             // 
+            this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton5);
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton4);
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton3);
@@ -880,6 +909,7 @@
             // 
             // pageOfficeRequirements
             // 
+            this.pageOfficeRequirements.Caption = "pageOfficeRequirements";
             this.pageOfficeRequirements.Controls.Add(this.panelControl18);
             this.pageOfficeRequirements.Controls.Add(this.panelControl16);
             this.pageOfficeRequirements.Name = "pageOfficeRequirements";
@@ -900,6 +930,18 @@
             this.panelControl18.Size = new System.Drawing.Size(1604, 986);
             this.panelControl18.TabIndex = 2;
             // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton6.Appearance.Options.UseBackColor = true;
+            this.simpleButton6.Appearance.Options.UseFont = true;
+            this.simpleButton6.Location = new System.Drawing.Point(1368, 26);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(163, 36);
+            this.simpleButton6.TabIndex = 0;
+            this.simpleButton6.Text = "Add Requirement";
+            // 
             // gridControl3
             // 
             this.gridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -915,18 +957,6 @@
             // 
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton6.Appearance.Options.UseBackColor = true;
-            this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Location = new System.Drawing.Point(1368, 26);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(163, 36);
-            this.simpleButton6.TabIndex = 0;
-            this.simpleButton6.Text = "Add Requirement";
             // 
             // panelControl16
             // 
@@ -967,6 +997,7 @@
             // 
             // pageOfficeReports
             // 
+            this.pageOfficeReports.Caption = "pageOfficeReports";
             this.pageOfficeReports.Controls.Add(this.panelControl20);
             this.pageOfficeReports.Controls.Add(this.panelControl19);
             this.pageOfficeReports.Name = "pageOfficeReports";
@@ -998,6 +1029,34 @@
             this.panelControl22.Name = "panelControl22";
             this.panelControl22.Size = new System.Drawing.Size(802, 454);
             this.panelControl22.TabIndex = 1;
+            // 
+            // tileControl1
+            // 
+            this.tileControl1.Groups.Add(this.tileGroup2);
+            this.tileControl1.Groups.Add(this.tileGroup3);
+            this.tileControl1.Groups.Add(this.tileGroup4);
+            this.tileControl1.Groups.Add(this.tileGroup5);
+            this.tileControl1.Location = new System.Drawing.Point(48, 95);
+            this.tileControl1.Name = "tileControl1";
+            this.tileControl1.Size = new System.Drawing.Size(714, 300);
+            this.tileControl1.TabIndex = 2;
+            this.tileControl1.Text = "tileControl1";
+            // 
+            // tileGroup2
+            // 
+            this.tileGroup2.Name = "tileGroup2";
+            // 
+            // tileGroup3
+            // 
+            this.tileGroup3.Name = "tileGroup3";
+            // 
+            // tileGroup4
+            // 
+            this.tileGroup4.Name = "tileGroup4";
+            // 
+            // tileGroup5
+            // 
+            this.tileGroup5.Name = "tileGroup5";
             // 
             // labelControl15
             // 
@@ -1139,33 +1198,17 @@
             this.panelControl19.Size = new System.Drawing.Size(1604, 100);
             this.panelControl19.TabIndex = 0;
             // 
-            // tileControl1
+            // labelControl20
             // 
-            this.tileControl1.Groups.Add(this.tileGroup2);
-            this.tileControl1.Groups.Add(this.tileGroup3);
-            this.tileControl1.Groups.Add(this.tileGroup4);
-            this.tileControl1.Groups.Add(this.tileGroup5);
-            this.tileControl1.Location = new System.Drawing.Point(48, 95);
-            this.tileControl1.Name = "tileControl1";
-            this.tileControl1.Size = new System.Drawing.Size(714, 300);
-            this.tileControl1.TabIndex = 2;
-            this.tileControl1.Text = "tileControl1";
-            // 
-            // tileGroup2
-            // 
-            this.tileGroup2.Name = "tileGroup2";
-            // 
-            // tileGroup3
-            // 
-            this.tileGroup3.Name = "tileGroup3";
-            // 
-            // tileGroup4
-            // 
-            this.tileGroup4.Name = "tileGroup4";
-            // 
-            // tileGroup5
-            // 
-            this.tileGroup5.Name = "tileGroup5";
+            this.labelControl20.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl20.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl20.Appearance.Options.UseFont = true;
+            this.labelControl20.Appearance.Options.UseForeColor = true;
+            this.labelControl20.Location = new System.Drawing.Point(36, 63);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(201, 17);
+            this.labelControl20.TabIndex = 3;
+            this.labelControl20.Text = "Generate clearance status reports ";
             // 
             // labelControl19
             // 
@@ -1179,41 +1222,12 @@
             this.labelControl19.TabIndex = 2;
             this.labelControl19.Text = "Report";
             // 
-            // labelControl20
+            // gridColumn1
             // 
-            this.labelControl20.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl20.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl20.Appearance.Options.UseFont = true;
-            this.labelControl20.Appearance.Options.UseForeColor = true;
-            this.labelControl20.Location = new System.Drawing.Point(36, 63);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(201, 17);
-            this.labelControl20.TabIndex = 3;
-            this.labelControl20.Text = "Generate clearance status reports ";
-            // 
-            // lblFullName
-            // 
-            this.lblFullName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblFullName.Appearance.Options.UseFont = true;
-            this.lblFullName.Appearance.Options.UseForeColor = true;
-            this.lblFullName.Location = new System.Drawing.Point(94, 17);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(97, 17);
-            this.lblFullName.TabIndex = 1;
-            this.lblFullName.Text = "Anne Hathaway";
-            // 
-            // lblRole
-            // 
-            this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
-            this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblRole.Appearance.Options.UseFont = true;
-            this.lblRole.Appearance.Options.UseForeColor = true;
-            this.lblRole.Location = new System.Drawing.Point(94, 40);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(46, 13);
-            this.lblRole.TabIndex = 5;
-            this.lblRole.Text = "Registrar";
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // BaseOfficeForm
             // 
@@ -1393,5 +1407,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl19;
         private DevExpress.XtraEditors.LabelControl lblFullName;
         private DevExpress.XtraEditors.LabelControl lblRole;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
