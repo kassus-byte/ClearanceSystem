@@ -39,11 +39,13 @@ namespace SchoolClearanceSystem
         private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyRequest;
+            RefreshNotifications();
         }
 
         private void sbMyClearance_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyClearance;
+            RefreshNotifications();
         }
 
         private void UpdateDashboard()
@@ -159,6 +161,35 @@ namespace SchoolClearanceSystem
                 this.Hide(); 
             }
         }
-    }
-    
-}
+
+
+
+     
+        public void RefreshNotifications()
+        {
+            if (Session.CurrentUser == null) return;
+
+            UserRepository repo = new UserRepository();
+
+           
+            var statusList = repo.GetStudentStatus(Session.CurrentUser.UserID);
+
+            
+            gridControlOfficeStatus.DataSource = statusList;
+            gridControlOfficeStatus.RefreshDataSource();
+
+  
+            UpdateDashboard();
+        }
+
+        
+        
+
+        // 3. Automated Time-Interval Sync (Fallback Safety)
+        private void notificationTimer_Tick(object sender, EventArgs e)
+        {
+            
+            RefreshNotifications();
+        }
+    } 
+} 
