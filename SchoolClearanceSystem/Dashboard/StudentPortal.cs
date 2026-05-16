@@ -1,22 +1,27 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms;
+using System.IO;
 
 
 namespace SchoolClearanceSystem
 {
     public partial class StudentPortal : DevExpress.XtraEditors.XtraForm
     {
-
+        private string uploadedFilePath = string.Empty;
 
         public StudentPortal()
         {
             InitializeComponent();
             UpdateDashboard();
+
+            btnUpload.Click += btnUpload_Click;
+            btnView.Click += btnView_Click;
         }
 
 
@@ -95,45 +100,48 @@ namespace SchoolClearanceSystem
             }
         }
 
-
-
-        private void panelUpload1_Paint(object sender, PaintEventArgs e)
+      
+        private void btnUpload_Click(object sender, EventArgs e)
         {
-            // Set the color and dash pattern
-            Color dashedColor = Color.FromArgb(100, 180, 150); // Muted green
-            float[] dashValues = { 5, 3 }; // 5 pixels line, 3 pixels space
-
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            using (Pen pen = new Pen(dashedColor, 1))
+            using (XtraOpenFileDialog openFileDialog = new XtraOpenFileDialog())
             {
-                pen.DashPattern = dashValues;
+                openFileDialog.Title = "Select a File to Upload";
+               
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
 
-                // Draw a rounded rectangle or standard rectangle
-                // Subtract 1 from width/height to ensure the border isn't clipped
-                e.Graphics.DrawRectangle(pen, 0, 0, panelUpload1.Width - 1, panelUpload1.Height - 1);
-            }
-        }
-
-
-        private void panelUpload1_MouseClick(object sender, MouseEventArgs e)
-        {
-            using (XtraOpenFileDialog fileDialog = new XtraOpenFileDialog())
-            {
-                fileDialog.Filter = "Image Files|*.jpg;*.png|PDF Files|*.pdf";
-                if (fileDialog.ShowDialog() == DialogResult.OK)
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Logic to handle the file
-                    MessageBox.Show("File selected: " + fileDialog.FileName);
+                  
+                    uploadedFilePath = openFileDialog.FileName;
+
+                    XtraMessageBox.Show("File successfully uploaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
 
-        private void panelUpload1_MouseEnter(object sender, EventArgs e)
+        private void btnView_Click(object sender, EventArgs e)
         {
-            panelUpload1.Cursor = Cursors.Hand;
-            // Optional: Change BackColor slightly to show hover effect
-            panelUpload1.BackColor = Color.FromArgb(250, 255, 250);
+            if (string.IsNullOrEmpty(uploadedFilePath) || !File.Exists(uploadedFilePath))
+            {
+                XtraMessageBox.Show("No file uploaded yet, or the file no longer exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+               
+                ProcessStartInfo startInfo = new ProcessStartInfo(uploadedFilePath)
+                {
+                    UseShellExecute = true // Required in .NET Core / .NET 5+ to open files via shell
+                };
+                Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Could not open the file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
+    
 }
