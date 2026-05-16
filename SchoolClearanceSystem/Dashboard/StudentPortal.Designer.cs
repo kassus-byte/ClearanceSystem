@@ -153,6 +153,8 @@
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.btnLogout = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -233,6 +235,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelForm)).BeginInit();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -254,6 +258,7 @@
             // 
             this.splitContainerControl1.Panel1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.splitContainerControl1.Panel1.Appearance.Options.UseBackColor = true;
+            this.splitContainerControl1.Panel1.Controls.Add(this.panelControl4);
             this.splitContainerControl1.Panel1.Controls.Add(this.accordionControl1);
             this.splitContainerControl1.Panel1.Controls.Add(this.pnlUser);
             this.splitContainerControl1.Panel1.Controls.Add(this.pnlHeader);
@@ -1472,10 +1477,10 @@
             this.labelControl23.Appearance.Options.UseForeColor = true;
             this.labelControl23.Location = new System.Drawing.Point(27, 18);
             this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(471, 17);
+            this.labelControl23.Size = new System.Drawing.Size(732, 17);
             this.labelControl23.TabIndex = 1;
-            this.labelControl23.Text = "Pending *yellow circle          Approved *green circle         On Hold *orange ci" +
-    "rcle\r\n";
+            this.labelControl23.Text = "Requirements are approved by offices only. You can submit proof of compliance, bu" +
+    "t only the office can mark you as cleared.";
             // 
             // panelControl6
             // 
@@ -1498,9 +1503,10 @@
             this.labelControl22.Appearance.Options.UseForeColor = true;
             this.labelControl22.Location = new System.Drawing.Point(27, 51);
             this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(412, 17);
+            this.labelControl22.Size = new System.Drawing.Size(583, 17);
             this.labelControl22.TabIndex = 3;
-            this.labelControl22.Text = "See recent updates from the offices reviewing your Clearance Request.";
+            this.labelControl22.Text = "View what each department requires. Submit your proof — the department will revie" +
+    "w and approve.";
             // 
             // labelControl21
             // 
@@ -1800,6 +1806,43 @@
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.Name = "navBarGroup1";
             // 
+            // panelControl4
+            // 
+            this.panelControl4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.panelControl4.Appearance.Options.UseBackColor = true;
+            this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl4.Controls.Add(this.btnLogout);
+            this.panelControl4.Location = new System.Drawing.Point(0, 944);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(300, 136);
+            this.panelControl4.TabIndex = 3;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnLogout.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.Appearance.Options.UseBackColor = true;
+            this.btnLogout.Appearance.Options.UseFont = true;
+            this.btnLogout.Appearance.Options.UseForeColor = true;
+            this.btnLogout.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnLogout.AppearanceHovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearanceHovered.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.AppearanceHovered.Options.UseBackColor = true;
+            this.btnLogout.AppearanceHovered.Options.UseFont = true;
+            this.btnLogout.AppearanceHovered.Options.UseForeColor = true;
+            this.btnLogout.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.btnLogout.AppearancePressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearancePressed.Options.UseBackColor = true;
+            this.btnLogout.AppearancePressed.Options.UseFont = true;
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLogout.Location = new System.Drawing.Point(0, 76);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(300, 60);
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // StudentPortal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1912,6 +1955,8 @@
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2042,6 +2087,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.SimpleButton btnLogout;
     }
 }
 
