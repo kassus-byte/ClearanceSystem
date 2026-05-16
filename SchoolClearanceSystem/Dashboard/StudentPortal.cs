@@ -142,6 +142,23 @@ namespace SchoolClearanceSystem
                 XtraMessageBox.Show($"Could not open the file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = DevExpress.XtraEditors.XtraMessageBox.Show(
+           "Are you sure you want to logout?",
+           "Logout",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Login login = new Login();
+                login.Show();
+
+                this.Hide(); 
+            }
+        }
     }
     
 }

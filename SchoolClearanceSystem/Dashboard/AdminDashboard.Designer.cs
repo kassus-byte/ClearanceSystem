@@ -130,6 +130,8 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.pageClearanceSeason = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tsClearanceSeason = new DevExpress.XtraEditors.ToggleSwitch();
+            this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
+            this.btnLogout = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -181,6 +183,8 @@
             this.panelControl14.SuspendLayout();
             this.pageClearanceSeason.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsClearanceSeason.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
+            this.panelControl15.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridView1
@@ -246,6 +250,7 @@
             // 
             this.splitContainerControl1.Panel1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.splitContainerControl1.Panel1.Appearance.Options.UseBackColor = true;
+            this.splitContainerControl1.Panel1.Controls.Add(this.panelControl15);
             this.splitContainerControl1.Panel1.Controls.Add(this.accordionControl1);
             this.splitContainerControl1.Panel1.Controls.Add(this.panelControl2);
             this.splitContainerControl1.Panel1.Controls.Add(this.panelControl1);
@@ -546,6 +551,7 @@
             // 
             // pageAccountManagement
             // 
+            this.pageAccountManagement.Caption = "pageAccountManagement";
             this.pageAccountManagement.Controls.Add(this.tabPane1);
             this.pageAccountManagement.Controls.Add(this.panelControl14);
             this.pageAccountManagement.Name = "pageAccountManagement";
@@ -866,6 +872,42 @@
             this.tsClearanceSeason.Size = new System.Drawing.Size(95, 24);
             this.tsClearanceSeason.TabIndex = 1;
             // 
+            // panelControl15
+            // 
+            this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl15.Controls.Add(this.btnLogout);
+            this.panelControl15.Location = new System.Drawing.Point(0, 904);
+            this.panelControl15.Name = "panelControl15";
+            this.panelControl15.Size = new System.Drawing.Size(298, 176);
+            this.panelControl15.TabIndex = 2;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnLogout.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.Appearance.Options.UseBackColor = true;
+            this.btnLogout.Appearance.Options.UseFont = true;
+            this.btnLogout.Appearance.Options.UseForeColor = true;
+            this.btnLogout.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnLogout.AppearanceHovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearanceHovered.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.AppearanceHovered.Options.UseBackColor = true;
+            this.btnLogout.AppearanceHovered.Options.UseFont = true;
+            this.btnLogout.AppearanceHovered.Options.UseForeColor = true;
+            this.btnLogout.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.btnLogout.AppearancePressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearancePressed.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.AppearancePressed.Options.UseBackColor = true;
+            this.btnLogout.AppearancePressed.Options.UseFont = true;
+            this.btnLogout.AppearancePressed.Options.UseForeColor = true;
+            this.btnLogout.Location = new System.Drawing.Point(0, 116);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(300, 60);
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -930,6 +972,8 @@
             this.panelControl14.PerformLayout();
             this.pageClearanceSeason.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tsClearanceSeason.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
+            this.panelControl15.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -997,5 +1041,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit4;
+        private DevExpress.XtraEditors.PanelControl panelControl15;
+        private DevExpress.XtraEditors.SimpleButton btnLogout;
     }
 }
