@@ -19,7 +19,7 @@ namespace SchoolClearanceSystem.Dashboard
             RefreshData();
 
             
-            tsStatus.IsOn = _sysRepo.IsClearanceActive();
+            //tsStatus.IsOn = _sysRepo.IsClearanceActive();
             SetupGridBehaviors();
         }
 
@@ -93,13 +93,13 @@ namespace SchoolClearanceSystem.Dashboard
             }
         }
 
-        private void tsStatus_Toggled(object sender, EventArgs e)
-        {
-            _sysRepo.ToggleClearanceSeason(tsStatus.IsOn);
-            string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
-            XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        //private void tsStatus_Toggled(object sender, EventArgs e)
+        //{
+        //    _sysRepo.ToggleClearanceSeason(tsStatus.IsOn);
+        //    string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
+        //    XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
+        //                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //}
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
@@ -134,6 +134,11 @@ namespace SchoolClearanceSystem.Dashboard
 
                 this.Hide();
             }  
+        }
+
+        private void btnClearanceSeason_Click(object sender, EventArgs e)
+        {
+            mainNavigationFrame.SelectedPage = pageClearanceSeason;
         }
     }
 }
