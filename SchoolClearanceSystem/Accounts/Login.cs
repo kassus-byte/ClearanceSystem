@@ -1,9 +1,12 @@
-﻿using DevExpress.XtraEditors;
-using System;
-using System.Windows.Forms;
+﻿// Login.cs
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using SchoolClearanceSystem.Dashboard;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
-using SchoolClearanceSystem.Dashboard; 
+using System;
+using System.Windows.Forms;
+
 namespace SchoolClearanceSystem
 {
     public partial class Login : DevExpress.XtraEditors.XtraForm
@@ -13,8 +16,22 @@ namespace SchoolClearanceSystem
         public Login()
         {
             InitializeComponent();
+
+            // Hide password on startup
+            txtPassword.Properties.UseSystemPasswordChar = true;
+
+            // Wire CheckEdit using Properties event — works for ALL DevExpress CheckEdit
+            // Replace "chkShowPassword" below with whatever your CheckEdit (Name) is
+            chkShowPassword.Properties.Caption = "Show Password";
+            chkShowPassword.CheckedChanged += (s, e) =>
+            {
+                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
+                txtPassword.Focus();
+                txtPassword.SelectionStart = txtPassword.Text.Length;
+            };
         }
 
+        // ── Login button ─────────────────────────────────────────────────
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string id = txtUserID.Text.Trim();
@@ -23,54 +40,62 @@ namespace SchoolClearanceSystem
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
                 XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (_userRepo.ValidateLogin(id, pass))
             {
                 Session.CurrentUser = _userRepo.GetUserDetails(id);
-                var user = Session.CurrentUser;
+                User user = Session.CurrentUser;
 
-                if (user != null)
+                if (user == null) return;
+
+                Form nextForm = null;
+
+                switch (user.Role)
                 {
-                    Form nextForm = null;
-
-                    if (user.Role == "Admin")
-                    {
+                    case "Admin":
                         nextForm = new AdminDashboard();
-                    }
-                    else if (user.Role == "Treasurer")
-                    {
+                        break;
+                    case "Treasurer":
                         nextForm = new TreasurerDashboard();
-                    }
-                    else if (user.Role == "Technical")
-                    {
+                        break;
+                    case "Technical":
                         nextForm = new TechnicalOffice();
-                    }
-                    else if (user.Role == "Student")
-                    {
+                        break;
+                    case "Student":
                         nextForm = new StudentPortal();
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Your role is not recognized. Contact Admin.", "Access Denied");
+                        break;
+                    default:
+                        XtraMessageBox.Show("Role not recognized. Contact Admin.",
+                            "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-                    }
-
-                    if (nextForm != null)
-                    {
-                        nextForm.FormClosed += (s, args) => this.Close();
-                        nextForm.Show();
-                        this.Hide();
-                    }
                 }
+
+                nextForm.FormClosed += (s, args) => this.Close();
+                nextForm.Show();
+                this.Hide();
             }
             else
             {
                 XtraMessageBox.Show("Invalid UserID or Password.", "Login Failed",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Clear();
+                txtPassword.Focus();
             }
+        }
+
+        // ── Register link ─────────────────────────────────────────────────
+       
+        private void panelControl1_Paint(object sender, PaintEventArgs e) { }
+
+        private void lnkRegister_Click(object sender, EventArgs e)
+        {
+            Registration reg = new Registration();
+            reg.FormClosed += (s, args) => this.Show();
+            reg.Show();
+            this.Hide();
         }
     }
 }
