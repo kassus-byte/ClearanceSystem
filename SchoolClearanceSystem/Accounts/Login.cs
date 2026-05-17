@@ -1,5 +1,4 @@
-﻿// Login.cs
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using SchoolClearanceSystem.Dashboard;
 using SchoolClearanceSystem.Models;
@@ -20,12 +19,26 @@ namespace SchoolClearanceSystem
             // Hide password on startup
             txtPassword.Properties.UseSystemPasswordChar = true;
 
-            // Wire CheckEdit using Properties event — works for ALL DevExpress CheckEdit
-            // Replace "chkShowPassword" below with whatever your CheckEdit (Name) is
+            // Set initial label text on startup
             chkShowPassword.Properties.Caption = "Show Password";
+
+            // Wire CheckEdit event to change both password visibility and the label text
             chkShowPassword.CheckedChanged += (s, e) =>
             {
+                // 1. Toggle password visibility
                 txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
+
+                // 2. Dynamically change the text based on checked state
+                if (chkShowPassword.Checked)
+                {
+                    chkShowPassword.Properties.Caption = "Hide Password";
+                }
+                else
+                {
+                    chkShowPassword.Properties.Caption = "Show Password";
+                }
+
+                // Keep focus and put cursor at the end of the text
                 txtPassword.Focus();
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
@@ -87,7 +100,6 @@ namespace SchoolClearanceSystem
         }
 
         // ── Register link ─────────────────────────────────────────────────
-       
         private void panelControl1_Paint(object sender, PaintEventArgs e) { }
 
         private void lnkRegister_Click(object sender, EventArgs e)
