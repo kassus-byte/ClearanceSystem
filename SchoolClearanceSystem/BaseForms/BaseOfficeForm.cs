@@ -59,8 +59,7 @@ namespace SchoolClearanceSystem
         {
             UserRepository repo = new UserRepository();
 
-            // Dapper returns an IEnumerable (list) of objects. 
-            // DevExpress GridControl handles this much better than a DataTable!
+           
             var requests = repo.GetDepartmentRequests(this.OfficeName);
 
             gridControl1.DataSource = requests;
@@ -87,15 +86,38 @@ namespace SchoolClearanceSystem
         "Are you sure you want to logout?",
         "Logout",
         MessageBoxButtons.YesNo,
-        MessageBoxIcon.Question );
+        MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 Login login = new Login();
                 login.Show();
 
-                this.Hide(); 
+                this.Hide();
             }
         }
+
+        private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            var view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+           
+            if (view.IsDataRow(e.FocusedRowHandle))
+            {
+               
+                string department = view.GetRowCellValue(e.FocusedRowHandle, "Department")?.ToString();
+                string status = view.GetRowCellValue(e.FocusedRowHandle, "Status")?.ToString();
+                string remarks = view.GetRowCellValue(e.FocusedRowHandle, "Remarks")?.ToString();
+
+                XtraMessageBox.Show($"Selected Department: {department}\nStatus: {status}\nRemarks: {remarks}",
+                                     "Row Details",
+                                     MessageBoxButtons.OK,
+                                     MessageBoxIcon.Information);
+
+              
+            }
+        }
+       
+        }
     }
-}

@@ -2,13 +2,13 @@
 using System;
 using System.Windows.Forms;
 using SchoolClearanceSystem.Models;       
-using SchoolClearanceSystem.Repository;  
+using SchoolClearanceSystem.Repository;
 
 namespace SchoolClearanceSystem
 {
     public enum FormMode { Register, Edit }
 
-       public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
+    public partial class UserInfoForm : DevExpress.XtraEditors.XtraForm
     {
         private FormMode _mode;
         private User _selectedUser;
@@ -29,7 +29,7 @@ namespace SchoolClearanceSystem
 
         private void SetupForm()
         {
-           //Populating data
+            //Populating data
             txtUserID.Text = _selectedUser.UserID;
             txtFullName.Text = _selectedUser.FullName;
             cbProgram.Text = _selectedUser.Program;
@@ -63,12 +63,12 @@ namespace SchoolClearanceSystem
             else
             {
                 this.Text = "Register New Account";
-                lblTitle.Text = "Register Account"; 
+                lblTitle.Text = "Register Account";
                 btnSave.Text = "Save Account";
                 txtUserID.ReadOnly = false;
                 cbRole.Enabled = true;
             }
-            
+
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
 
             if (!isStudent)
@@ -124,11 +124,11 @@ namespace SchoolClearanceSystem
         {
             if (_mode == FormMode.Register)
             {
-                    if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
-                    string.IsNullOrWhiteSpace(txtFullName.Text) ||
-                    string.IsNullOrWhiteSpace(cbProgram.Text) ||
-                    string.IsNullOrWhiteSpace(cbYear.Text) ||
-                    string.IsNullOrWhiteSpace(cbRole.Text))
+                if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                string.IsNullOrWhiteSpace(txtFullName.Text) ||
+                string.IsNullOrWhiteSpace(cbProgram.Text) ||
+                string.IsNullOrWhiteSpace(cbYear.Text) ||
+                string.IsNullOrWhiteSpace(cbRole.Text))
                 {
                     XtraMessageBox.Show("All fields must be filled for registration.", "Validation Error",
                                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -164,9 +164,9 @@ namespace SchoolClearanceSystem
                 {
                     try
                     {
-                    pePhoto.Image = System.Drawing.Image.FromFile(ofdFilePicker.FileName);
+                        pePhoto.Image = System.Drawing.Image.FromFile(ofdFilePicker.FileName);
 
-                     _selectedUser.UploadPath = ofdFilePicker.FileName;
+                        _selectedUser.UploadPath = ofdFilePicker.FileName;
                     }
                     catch (Exception ex)
                     {
@@ -176,5 +176,32 @@ namespace SchoolClearanceSystem
                 }
             }
         }
+
+        private void pePhoto_EditValueChanged(object sender, EventArgs e)
+        {
+            var pictureEdit = sender as DevExpress.XtraEditors.PictureEdit;
+            if (pictureEdit == null) return;
+
+            if (pictureEdit.EditValue != null)
+            {
+                if (pictureEdit.EditValue is System.Drawing.Image img)
+                {
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        byte[] photoBytes = ms.ToArray();
+                    }
+                }
+                else if (pictureEdit.EditValue is byte[] rawBytes)
+                {
+                    byte[] photoBytes = rawBytes;
+                }
+            }
+            else
+            {
+                byte[] photoBytes = null;
+            }
+        }
+    
     }
 }
