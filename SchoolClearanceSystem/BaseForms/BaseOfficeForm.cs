@@ -3,13 +3,17 @@ using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
     public partial class BaseOfficeForm : XtraForm
     {
+        private readonly UserRepository repo = new UserRepository();
+
         public string OfficeName { get; set; }
+
         public BaseOfficeForm()
         {
             InitializeComponent();
@@ -18,26 +22,52 @@ namespace SchoolClearanceSystem
         private void BaseOfficeForm_Load(object sender, EventArgs e)
         {
             SetupIdentity();
+            LoadDashboardData();
         }
 
         private void SetupIdentity()
         {
             if (Session.CurrentUser != null)
             {
+             lblFullName.Text = Session.CurrentUser.FullName;
+             lblRole.Text = Session.CurrentUser.Role;
 
-                lblFullName.Text = Session.CurrentUser.FullName;
-                lblRole.Text = Session.CurrentUser.Role;
+              this.OfficeName = Session.CurrentUser.Role;
 
-
-                this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
+              this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
             }
         }
 
+        private void LoadDashboardData()
+        {
+            if (string.IsNullOrEmpty(this.OfficeName)) return;
+
+            var requests = repo.GetDepartmentRequests(this.OfficeName);
+            gridControl1.DataSource = requests;
+
+            if (requests != null)
+            {
+             var requestList = requests.ToList();
+             int totalRequests = requestList.Count;
+
+             int clearedCount = requestList.Count(r => r.Status != null && r.Status.Equals("Cleared", StringComparison.OrdinalIgnoreCase));
+             int pendingCount = requestList.Count(r => r.Status != null && r.Status.Equals("Pending", StringComparison.OrdinalIgnoreCase));
+
+                
+            labelControl7.Text = clearedCount.ToString();
+            labelControl8.Text = pendingCount.ToString();
+
+             progressBarControl1.Position = totalRequests > 0 ? (clearedCount * 100) / totalRequests : 0;
+             labelControl5.Text = $"{clearedCount} out of {totalRequests} students cleared";
+
+
+            }
+        }
 
         private void sbOfficeDashboard_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
-            LoadRequest();
+            LoadDashboardData();
         }
 
         private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e)
@@ -55,44 +85,18 @@ namespace SchoolClearanceSystem
             naviframeOffices.SelectedPage = pageOfficeReports;
         }
 
-        protected void LoadRequest()
-        {
-            UserRepository repo = new UserRepository();
-
-           
-            var requests = repo.GetDepartmentRequests(this.OfficeName);
-
-            gridControl1.DataSource = requests;
-        }
-
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            if (XtraMessageBox.Show("Are you sure you want to sign out?", "Logout",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Session.CurrentUser = null;
-                this.Hide();
-
-
-
-                this.Close();
-            }
-        }
-
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
-            DialogResult result = DevExpress.XtraEditors.XtraMessageBox.Show(
-        "Are you sure you want to logout?",
-        "Logout",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Question);
+            DialogResult result = XtraMessageBox.Show(
+                "Are you sure you want to logout?",
+                "Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 Login login = new Login();
                 login.Show();
-
                 this.Hide();
             }
         }
@@ -100,24 +104,16 @@ namespace SchoolClearanceSystem
         private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             var view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
+            if (view == null || !view.IsDataRow(e.FocusedRowHandle)) return;
 
-           
-            if (view.IsDataRow(e.FocusedRowHandle))
-            {
-               
-                string department = view.GetRowCellValue(e.FocusedRowHandle, "Department")?.ToString();
-                string status = view.GetRowCellValue(e.FocusedRowHandle, "Status")?.ToString();
-                string remarks = view.GetRowCellValue(e.FocusedRowHandle, "Remarks")?.ToString();
+            string department = view.GetRowCellValue(e.FocusedRowHandle, "Department")?.ToString();
+            string status = view.GetRowCellValue(e.FocusedRowHandle, "Status")?.ToString();
+            string remarks = view.GetRowCellValue(e.FocusedRowHandle, "Remarks")?.ToString();
 
-                XtraMessageBox.Show($"Selected Department: {department}\nStatus: {status}\nRemarks: {remarks}",
-                                     "Row Details",
-                                     MessageBoxButtons.OK,
-                                     MessageBoxIcon.Information);
-
-              
-            }
-        }
-       
+            XtraMessageBox.Show($"Selected Department: {department}\nStatus: {status}\nRemarks: {remarks}",
+                                 "Row Details",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Information);
         }
     }
+}
