@@ -14,15 +14,12 @@ namespace SchoolClearanceSystem.Dashboard
     {
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly SystemRepository _sysRepo = new SystemRepository();
-       
 
         public AdminDashboard()
         {
             InitializeComponent();
             RefreshData();
             SetupGridBehaviors();
-
-           
         }
 
         private void btnDashboard_Click_1(object sender, EventArgs e) => mainNavigationFrame.SelectedPage = pageDashboard;
@@ -33,15 +30,21 @@ namespace SchoolClearanceSystem.Dashboard
             RefreshData();
         }
 
+        /// <summary>
+        /// Feeds correct criteria filters to fill both grid views accurately.
+        /// </summary>
         private void RefreshData()
         {
-            gcStudents.DataSource = _userRepo.GetUsersByRole("Student", true);
-            gcOffice.DataSource = _userRepo.GetUsersByRole("", false);
+            // Binds data source to Student collections
+            gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
+
+            // Binds data source to all administrative staff roles (Admin, Treasurer, Technical Office, etc.)
+            gcOffice.DataSource = _userRepo.GetUsersByRole("Staff");
         }
 
         private void SetupGridBehaviors()
         {
-                gcStudents.MouseDown += (s, e) => {
+            gcStudents.MouseDown += (s, e) => {
                 var hitInfo = gvStudents.CalcHitInfo(e.Location);
                 if (!hitInfo.InRow) ClearAllSelections();
             };
@@ -77,7 +80,6 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
-        
             var activeView = (tabPane1.SelectedPage.Caption == "Students") ? gvStudents : gvOffice;
 
             if (activeView.FocusedRowHandle >= 0 && activeView.GetFocusedRow() is User selectedUser)
@@ -94,8 +96,6 @@ namespace SchoolClearanceSystem.Dashboard
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-      
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
@@ -118,8 +118,8 @@ namespace SchoolClearanceSystem.Dashboard
         private void btnLogout_Click(object sender, EventArgs e)
         {
             DialogResult result = DevExpress.XtraEditors.XtraMessageBox.Show(
-           "Are you sure you want to logout?",
-           "Logout",
+               "Are you sure you want to logout?",
+               "Logout",
                MessageBoxButtons.YesNo,
                MessageBoxIcon.Question);
 
@@ -127,9 +127,8 @@ namespace SchoolClearanceSystem.Dashboard
             {
                 Login login = new Login();
                 login.Show();
-
                 this.Hide();
-            }  
+            }
         }
     }
 }
