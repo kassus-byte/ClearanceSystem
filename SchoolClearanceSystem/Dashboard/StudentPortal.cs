@@ -68,6 +68,7 @@ namespace SchoolClearanceSystem
             naviframeStudent.SelectedPage = pageMyClearance;
         }
 
+
         #endregion
 
         #region Business Logic and Data Processing

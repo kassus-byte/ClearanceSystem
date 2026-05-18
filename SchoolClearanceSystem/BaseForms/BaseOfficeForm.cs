@@ -125,5 +125,21 @@ namespace SchoolClearanceSystem
         }
 
         #endregion
+
+        private void btnLogout_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = XtraMessageBox.Show(
+                "Are you sure you want to logout?", "Logout",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Session.CurrentUser = null;
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+                this.Close();
+            }
+        }
     }
 }

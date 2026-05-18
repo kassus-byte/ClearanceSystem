@@ -29,6 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseOfficeForm));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -90,7 +105,8 @@
             this.Year = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Semester = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Action = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Actions = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Remarks = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl13 = new DevExpress.XtraEditors.PanelControl();
@@ -169,6 +185,7 @@
             this.panelControl15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBaseOfficeForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
@@ -389,6 +406,7 @@
             this.btnLogout.Size = new System.Drawing.Size(300, 60);
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Logout";
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
             // 
             // panelControl3
             // 
@@ -783,6 +801,7 @@
             // 
             // pageOfficeClearanceRequest
             // 
+            this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton5);
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton4);
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton3);
@@ -862,7 +881,7 @@
             // 
             // searchControl1
             // 
-            this.searchControl1.EditValue = "Search by name, ID, or course..";
+            this.searchControl1.EditValue = "Search by Name, ID, or Course..";
             this.searchControl1.Location = new System.Drawing.Point(27, 123);
             this.searchControl1.Name = "searchControl1";
             this.searchControl1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -919,6 +938,8 @@
             this.gcBaseOfficeForm.Location = new System.Drawing.Point(55, 55);
             this.gcBaseOfficeForm.MainView = this.gvBaseOfficeForm;
             this.gcBaseOfficeForm.Name = "gcBaseOfficeForm";
+            this.gcBaseOfficeForm.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit1});
             this.gcBaseOfficeForm.Size = new System.Drawing.Size(1494, 732);
             this.gcBaseOfficeForm.TabIndex = 0;
             this.gcBaseOfficeForm.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -933,7 +954,7 @@
             this.Year,
             this.Semester,
             this.Status,
-            this.Action,
+            this.Actions,
             this.Remarks});
             this.gvBaseOfficeForm.GridControl = this.gcBaseOfficeForm;
             this.gvBaseOfficeForm.Name = "gvBaseOfficeForm";
@@ -986,13 +1007,23 @@
             this.Status.Visible = true;
             this.Status.VisibleIndex = 5;
             // 
-            // Action
+            // Actions
             // 
-            this.Action.Caption = "Action";
-            this.Action.FieldName = "Action";
-            this.Action.Name = "Action";
-            this.Action.Visible = true;
-            this.Action.VisibleIndex = 6;
+            this.Actions.Caption = "Action";
+            this.Actions.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.Actions.FieldName = "Action";
+            this.Actions.Name = "Actions";
+            this.Actions.Visible = true;
+            this.Actions.VisibleIndex = 6;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Approve", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Pending", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "On Hold", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
             // Remarks
             // 
@@ -1414,6 +1445,7 @@
             this.panelControl15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBaseOfficeForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
@@ -1538,8 +1570,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn Program;
         private DevExpress.XtraGrid.Columns.GridColumn Year;
         private DevExpress.XtraGrid.Columns.GridColumn Semester;
-        private DevExpress.XtraGrid.Columns.GridColumn Action;
+        private DevExpress.XtraGrid.Columns.GridColumn Actions;
         private DevExpress.XtraGrid.Columns.GridColumn Remarks;
         private DevExpress.XtraGrid.Columns.GridColumn Status;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }

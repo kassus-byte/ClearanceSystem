@@ -85,7 +85,6 @@
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.panelUpload2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.btnViewSSGPhoto = new DevExpress.XtraEditors.SimpleButton();
             this.btnUploadSSGRequirement = new DevExpress.XtraEditors.SimpleButton();
@@ -592,6 +591,7 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
+            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -709,9 +709,9 @@
             this.lblProgress.Appearance.Options.UseForeColor = true;
             this.lblProgress.Location = new System.Drawing.Point(25, 78);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(153, 17);
+            this.lblProgress.Size = new System.Drawing.Size(146, 17);
             this.lblProgress.TabIndex = 2;
-            this.lblProgress.Text = "0 out of 10 offices cleared";
+            this.lblProgress.Text = "0 out of 3 offices cleared";
             // 
             // pbOverallProgress
             // 
@@ -867,9 +867,9 @@
             this.lblOfficeCleared.Appearance.Options.UseForeColor = true;
             this.lblOfficeCleared.Location = new System.Drawing.Point(55, 53);
             this.lblOfficeCleared.Name = "lblOfficeCleared";
-            this.lblOfficeCleared.Size = new System.Drawing.Size(60, 37);
+            this.lblOfficeCleared.Size = new System.Drawing.Size(44, 37);
             this.lblOfficeCleared.TabIndex = 3;
-            this.lblOfficeCleared.Text = "0/10";
+            this.lblOfficeCleared.Text = "0/3";
             // 
             // labelControl6
             // 
@@ -924,7 +924,6 @@
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
-            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
@@ -961,9 +960,9 @@
             this.labelControl36.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl36.Location = new System.Drawing.Point(41, 80);
             this.labelControl36.Name = "labelControl36";
-            this.labelControl36.Size = new System.Drawing.Size(187, 27);
+            this.labelControl36.Size = new System.Drawing.Size(183, 27);
             this.labelControl36.TabIndex = 7;
-            this.labelControl36.Text = "Adto ramos opisina dawg.";
+            this.labelControl36.Text = "No requirements needed.";
             // 
             // labelControl34
             // 
@@ -1004,7 +1003,6 @@
             this.panelUpload2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelUpload2.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelUpload2.ContentImage")));
             this.panelUpload2.Controls.Add(this.labelControl32);
-            this.panelUpload2.Controls.Add(this.labelControl35);
             this.panelUpload2.Controls.Add(this.labelControl29);
             this.panelUpload2.Controls.Add(this.btnViewSSGPhoto);
             this.panelUpload2.Controls.Add(this.btnUploadSSGRequirement);
@@ -1029,17 +1027,9 @@
             this.labelControl32.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl32.Location = new System.Drawing.Point(41, 78);
             this.labelControl32.Name = "labelControl32";
-            this.labelControl32.Size = new System.Drawing.Size(471, 27);
+            this.labelControl32.Size = new System.Drawing.Size(354, 27);
             this.labelControl32.TabIndex = 6;
-            this.labelControl32.Text = " Pay your balance at the cashier and upload your official receipt as proof.";
-            // 
-            // labelControl35
-            // 
-            this.labelControl35.Location = new System.Drawing.Point(359, 137);
-            this.labelControl35.Name = "labelControl35";
-            this.labelControl35.Size = new System.Drawing.Size(223, 13);
-            this.labelControl35.TabIndex = 4;
-            this.labelControl35.Text = "working naning buttons ssg. treasurer moy wa";
+            this.labelControl32.Text = "Answer the evaluation form and submit a screenshot.";
             // 
             // labelControl29
             // 
@@ -1154,9 +1144,9 @@
             this.labelControl30.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl30.Location = new System.Drawing.Point(39, 79);
             this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(471, 27);
+            this.labelControl30.Size = new System.Drawing.Size(385, 27);
             this.labelControl30.TabIndex = 5;
-            this.labelControl30.Text = " Pay your balance at the cashier and upload your official receipt as proof.";
+            this.labelControl30.Text = " Pay your balance and upload your official receipt as proof.";
             // 
             // pictureEdit1
             // 
@@ -2051,7 +2041,6 @@
         private DevExpress.XtraEditors.SimpleButton btnViewSSGPhoto;
         private DevExpress.XtraEditors.SimpleButton btnUploadSSGRequirement;
         private DevExpress.XtraEditors.LabelControl labelControl34;
-        private DevExpress.XtraEditors.LabelControl labelControl35;
         private DevExpress.XtraEditors.SimpleButton btnViewTreasurerPhoto;
         private DevExpress.XtraEditors.SimpleButton btnUploadTreasurerRequirement;
         private DevExpress.XtraEditors.LabelControl labelControl32;
