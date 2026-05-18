@@ -31,7 +31,7 @@ namespace SchoolClearanceSystem.Dashboard
             RefreshData(); // Automatically populates data grids upon initialization
 
             // CONNECTS TO DATABASE PATH VIA: SystemRepository -> BaseRepository -> DatabaseManager
-            tsStatus.IsOn = _sysRepo.IsClearanceActive();
+            //tsStatus.IsOn = _sysRepo.IsClearanceActive();
             SetupGridBehaviors();
         }
 
@@ -124,11 +124,11 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void tsStatus_Toggled(object sender, EventArgs e)
         {
-            // CONNECTS TO DATABASE MANAGER: Fires an execution command down to change system boolean status flags
-            _sysRepo.ToggleClearanceSeason(tsStatus.IsOn);
-            string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
-            XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //// CONNECTS TO DATABASE MANAGER: Fires an execution command down to change system boolean status flags
+            //_sysRepo.ToggleClearanceSeason(tsStatus.IsOn);
+            //string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
+            //XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
+            //                    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)

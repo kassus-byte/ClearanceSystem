@@ -364,7 +364,7 @@
             this.btnClearanceSeason.Name = "btnClearanceSeason";
             this.btnClearanceSeason.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.btnClearanceSeason.Text = "Clearance Season";
-            this.btnClearanceSeason.Click += new System.EventHandler(this.btnClearanceSeason_Click);
+          //  this.btnClearanceSeason.Click += new System.EventHandler(this.btnClearanceSeason_Click);
             // 
             // splitContainerControl1
             // 
