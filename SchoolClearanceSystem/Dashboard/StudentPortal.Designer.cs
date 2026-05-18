@@ -87,23 +87,23 @@
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
-            this.btnViewSSGPhoto = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUploadSSGRequirement = new DevExpress.XtraEditors.SimpleButton();
+            this.btnView = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUpload = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
             this.panelrequirements = new DevExpress.XtraEditors.PanelControl();
-            this.btnViewTreasurerPhoto = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUploadTreasurerRequirement = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.pnlClearanceForm = new DevExpress.XtraEditors.PanelControl();
-            this.comboAcademicYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboSchoolYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.comboSemester = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.txtSchoolYear = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
@@ -205,7 +205,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboAcademicYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboSchoolYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -360,9 +360,10 @@
             this.sbDashboard.Appearance.Pressed.Options.UseFont = true;
             this.sbDashboard.Appearance.Pressed.Options.UseForeColor = true;
             this.sbDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbDashboard.ImageOptions.SvgImage")));
+            this.sbDashboard.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbDashboard.Name = "sbDashboard";
             this.sbDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbDashboard.Text = "Dashboard";
+            this.sbDashboard.Text = "   Dashboard";
             this.sbDashboard.Click += new System.EventHandler(this.sbDashboard_Click_1);
             // 
             // sbRequestClearance
@@ -384,9 +385,10 @@
             this.sbRequestClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbRequestClearance.Appearance.Pressed.Options.UseForeColor = true;
             this.sbRequestClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbRequestClearance.ImageOptions.SvgImage")));
+            this.sbRequestClearance.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbRequestClearance.Name = "sbRequestClearance";
             this.sbRequestClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbRequestClearance.Text = "Request Clearance";
+            this.sbRequestClearance.Text = "   Request Clearance";
             this.sbRequestClearance.Click += new System.EventHandler(this.sbRequestClearance_Click_1);
             // 
             // sbMyRequest
@@ -408,9 +410,10 @@
             this.sbMyRequest.Appearance.Pressed.Options.UseFont = true;
             this.sbMyRequest.Appearance.Pressed.Options.UseForeColor = true;
             this.sbMyRequest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyRequest.ImageOptions.SvgImage")));
+            this.sbMyRequest.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbMyRequest.Name = "sbMyRequest";
             this.sbMyRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbMyRequest.Text = "My Request";
+            this.sbMyRequest.Text = "   My Request";
             this.sbMyRequest.Click += new System.EventHandler(this.sbMyRequest_Click_1);
             // 
             // sbMyClearance
@@ -432,9 +435,10 @@
             this.sbMyClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbMyClearance.Appearance.Pressed.Options.UseForeColor = true;
             this.sbMyClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyClearance.ImageOptions.SvgImage")));
+            this.sbMyClearance.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbMyClearance.Name = "sbMyClearance";
             this.sbMyClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbMyClearance.Text = "My Clearance";
+            this.sbMyClearance.Text = "   My Clearance";
             this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click_1);
             // 
             // pnlUser
@@ -463,7 +467,7 @@
             this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblRole.Appearance.Options.UseFont = true;
             this.lblRole.Appearance.Options.UseForeColor = true;
-            this.lblRole.Location = new System.Drawing.Point(94, 59);
+            this.lblRole.Location = new System.Drawing.Point(83, 64);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(39, 13);
             this.lblRole.TabIndex = 4;
@@ -475,7 +479,7 @@
             this.lblYear.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblYear.Appearance.Options.UseFont = true;
             this.lblYear.Appearance.Options.UseForeColor = true;
-            this.lblYear.Location = new System.Drawing.Point(207, 40);
+            this.lblYear.Location = new System.Drawing.Point(196, 45);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(6, 13);
             this.lblYear.TabIndex = 3;
@@ -487,7 +491,7 @@
             this.lblProgram.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblProgram.Appearance.Options.UseFont = true;
             this.lblProgram.Appearance.Options.UseForeColor = true;
-            this.lblProgram.Location = new System.Drawing.Point(179, 40);
+            this.lblProgram.Location = new System.Drawing.Point(168, 45);
             this.lblProgram.Name = "lblProgram";
             this.lblProgram.Size = new System.Drawing.Size(22, 13);
             this.lblProgram.TabIndex = 2;
@@ -499,7 +503,7 @@
             this.lblUserID.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserID.Appearance.Options.UseFont = true;
             this.lblUserID.Appearance.Options.UseForeColor = true;
-            this.lblUserID.Location = new System.Drawing.Point(94, 40);
+            this.lblUserID.Location = new System.Drawing.Point(83, 45);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(52, 13);
             this.lblUserID.TabIndex = 1;
@@ -511,7 +515,7 @@
             this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblFullName.Appearance.Options.UseFont = true;
             this.lblFullName.Appearance.Options.UseForeColor = true;
-            this.lblFullName.Location = new System.Drawing.Point(94, 17);
+            this.lblFullName.Location = new System.Drawing.Point(83, 22);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(140, 17);
             this.lblFullName.TabIndex = 0;
@@ -705,9 +709,9 @@
             this.lblProgress.Appearance.Options.UseForeColor = true;
             this.lblProgress.Location = new System.Drawing.Point(25, 78);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(146, 17);
+            this.lblProgress.Size = new System.Drawing.Size(153, 17);
             this.lblProgress.TabIndex = 2;
-            this.lblProgress.Text = "0 out of 3 offices cleared";
+            this.lblProgress.Text = "0 out of 10 offices cleared";
             // 
             // pbOverallProgress
             // 
@@ -863,9 +867,9 @@
             this.lblOfficeCleared.Appearance.Options.UseForeColor = true;
             this.lblOfficeCleared.Location = new System.Drawing.Point(55, 53);
             this.lblOfficeCleared.Name = "lblOfficeCleared";
-            this.lblOfficeCleared.Size = new System.Drawing.Size(44, 37);
+            this.lblOfficeCleared.Size = new System.Drawing.Size(60, 37);
             this.lblOfficeCleared.TabIndex = 3;
-            this.lblOfficeCleared.Text = "0/3";
+            this.lblOfficeCleared.Text = "0/10";
             // 
             // labelControl6
             // 
@@ -920,7 +924,6 @@
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
-            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
@@ -957,9 +960,9 @@
             this.labelControl36.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl36.Location = new System.Drawing.Point(41, 80);
             this.labelControl36.Name = "labelControl36";
-            this.labelControl36.Size = new System.Drawing.Size(183, 27);
+            this.labelControl36.Size = new System.Drawing.Size(187, 27);
             this.labelControl36.TabIndex = 7;
-            this.labelControl36.Text = "No requirements needed.";
+            this.labelControl36.Text = "Adto ramos opisina dawg.";
             // 
             // labelControl34
             // 
@@ -1002,8 +1005,8 @@
             this.panelUpload2.Controls.Add(this.labelControl32);
             this.panelUpload2.Controls.Add(this.labelControl35);
             this.panelUpload2.Controls.Add(this.labelControl29);
-            this.panelUpload2.Controls.Add(this.btnViewSSGPhoto);
-            this.panelUpload2.Controls.Add(this.btnUploadSSGRequirement);
+            this.panelUpload2.Controls.Add(this.btnView);
+            this.panelUpload2.Controls.Add(this.btnUpload);
             this.panelUpload2.Controls.Add(this.pictureEdit2);
             this.panelUpload2.Controls.Add(this.labelControl28);
             this.panelUpload2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1025,9 +1028,9 @@
             this.labelControl32.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl32.Location = new System.Drawing.Point(41, 78);
             this.labelControl32.Name = "labelControl32";
-            this.labelControl32.Size = new System.Drawing.Size(354, 27);
+            this.labelControl32.Size = new System.Drawing.Size(471, 27);
             this.labelControl32.TabIndex = 6;
-            this.labelControl32.Text = "Answer the evaluation form and submit a screenshot.";
+            this.labelControl32.Text = " Pay your balance at the cashier and upload your official receipt as proof.";
             // 
             // labelControl35
             // 
@@ -1049,29 +1052,31 @@
             this.labelControl29.TabIndex = 3;
             this.labelControl29.Text = "Activities and Fines";
             // 
-            // btnViewSSGPhoto
+            // btnView
             // 
-            this.btnViewSSGPhoto.Appearance.BackColor = System.Drawing.Color.Navy;
-            this.btnViewSSGPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnViewSSGPhoto.Appearance.Options.UseBackColor = true;
-            this.btnViewSSGPhoto.Appearance.Options.UseFont = true;
-            this.btnViewSSGPhoto.Location = new System.Drawing.Point(180, 127);
-            this.btnViewSSGPhoto.Name = "btnViewSSGPhoto";
-            this.btnViewSSGPhoto.Size = new System.Drawing.Size(122, 30);
-            this.btnViewSSGPhoto.TabIndex = 3;
-            this.btnViewSSGPhoto.Text = "View";
+            this.btnView.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.btnView.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnView.Appearance.Options.UseBackColor = true;
+            this.btnView.Appearance.Options.UseFont = true;
+            this.btnView.Location = new System.Drawing.Point(180, 127);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(122, 30);
+            this.btnView.TabIndex = 3;
+            this.btnView.Text = "View";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
-            // btnUploadSSGRequirement
+            // btnUpload
             // 
-            this.btnUploadSSGRequirement.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnUploadSSGRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnUploadSSGRequirement.Appearance.Options.UseBackColor = true;
-            this.btnUploadSSGRequirement.Appearance.Options.UseFont = true;
-            this.btnUploadSSGRequirement.Location = new System.Drawing.Point(40, 127);
-            this.btnUploadSSGRequirement.Name = "btnUploadSSGRequirement";
-            this.btnUploadSSGRequirement.Size = new System.Drawing.Size(122, 30);
-            this.btnUploadSSGRequirement.TabIndex = 2;
-            this.btnUploadSSGRequirement.Text = "Upload";
+            this.btnUpload.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnUpload.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUpload.Appearance.Options.UseBackColor = true;
+            this.btnUpload.Appearance.Options.UseFont = true;
+            this.btnUpload.Location = new System.Drawing.Point(40, 127);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(122, 30);
+            this.btnUpload.TabIndex = 2;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // pictureEdit2
             // 
@@ -1101,8 +1106,8 @@
             this.panelrequirements.Appearance.Options.UseBackColor = true;
             this.panelrequirements.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelrequirements.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelrequirements.ContentImage")));
-            this.panelrequirements.Controls.Add(this.btnViewTreasurerPhoto);
-            this.panelrequirements.Controls.Add(this.btnUploadTreasurerRequirement);
+            this.panelrequirements.Controls.Add(this.simpleButton7);
+            this.panelrequirements.Controls.Add(this.simpleButton6);
             this.panelrequirements.Controls.Add(this.labelControl30);
             this.panelrequirements.Controls.Add(this.pictureEdit1);
             this.panelrequirements.Controls.Add(this.labelControl27);
@@ -1114,30 +1119,29 @@
             this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
             this.panelrequirements.TabIndex = 12;
             // 
-            // btnViewTreasurerPhoto
+            // simpleButton7
             // 
-            this.btnViewTreasurerPhoto.Appearance.BackColor = System.Drawing.Color.Navy;
-            this.btnViewTreasurerPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnViewTreasurerPhoto.Appearance.Options.UseBackColor = true;
-            this.btnViewTreasurerPhoto.Appearance.Options.UseFont = true;
-            this.btnViewTreasurerPhoto.Location = new System.Drawing.Point(180, 128);
-            this.btnViewTreasurerPhoto.Name = "btnViewTreasurerPhoto";
-            this.btnViewTreasurerPhoto.Size = new System.Drawing.Size(122, 30);
-            this.btnViewTreasurerPhoto.TabIndex = 5;
-            this.btnViewTreasurerPhoto.Text = "View";
+            this.simpleButton7.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.simpleButton7.Appearance.Options.UseBackColor = true;
+            this.simpleButton7.Appearance.Options.UseFont = true;
+            this.simpleButton7.Location = new System.Drawing.Point(180, 128);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(122, 30);
+            this.simpleButton7.TabIndex = 5;
+            this.simpleButton7.Text = "View";
             // 
-            // btnUploadTreasurerRequirement
+            // simpleButton6
             // 
-            this.btnUploadTreasurerRequirement.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnUploadTreasurerRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnUploadTreasurerRequirement.Appearance.Options.UseBackColor = true;
-            this.btnUploadTreasurerRequirement.Appearance.Options.UseFont = true;
-            this.btnUploadTreasurerRequirement.Location = new System.Drawing.Point(41, 128);
-            this.btnUploadTreasurerRequirement.Name = "btnUploadTreasurerRequirement";
-            this.btnUploadTreasurerRequirement.Size = new System.Drawing.Size(122, 30);
-            this.btnUploadTreasurerRequirement.TabIndex = 5;
-            this.btnUploadTreasurerRequirement.Text = "Upload";
-            this.btnUploadTreasurerRequirement.Click += new System.EventHandler(this.btnUploadTreasurerRequirement_Click);
+            this.simpleButton6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.simpleButton6.Appearance.Options.UseBackColor = true;
+            this.simpleButton6.Appearance.Options.UseFont = true;
+            this.simpleButton6.Location = new System.Drawing.Point(41, 128);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(122, 30);
+            this.simpleButton6.TabIndex = 5;
+            this.simpleButton6.Text = "Upload";
             // 
             // labelControl30
             // 
@@ -1151,9 +1155,9 @@
             this.labelControl30.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl30.Location = new System.Drawing.Point(39, 79);
             this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(381, 27);
+            this.labelControl30.Size = new System.Drawing.Size(471, 27);
             this.labelControl30.TabIndex = 5;
-            this.labelControl30.Text = "Pay your balance and upload your official receipt as proof.";
+            this.labelControl30.Text = " Pay your balance at the cashier and upload your official receipt as proof.";
             // 
             // pictureEdit1
             // 
@@ -1195,11 +1199,11 @@
             this.pnlClearanceForm.Appearance.Options.UseBackColor = true;
             this.pnlClearanceForm.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlClearanceForm.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlClearanceForm.ContentImage")));
-            this.pnlClearanceForm.Controls.Add(this.comboAcademicYear);
+            this.pnlClearanceForm.Controls.Add(this.comboSchoolYear);
             this.pnlClearanceForm.Controls.Add(this.labelControl13);
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
             this.pnlClearanceForm.Controls.Add(this.comboSemester);
-            this.pnlClearanceForm.Controls.Add(this.labelControl10);
+            this.pnlClearanceForm.Controls.Add(this.txtSchoolYear);
             this.pnlClearanceForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlClearanceForm.Location = new System.Drawing.Point(0, 87);
             this.pnlClearanceForm.Name = "pnlClearanceForm";
@@ -1207,20 +1211,16 @@
             this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
             this.pnlClearanceForm.TabIndex = 11;
             // 
-            // comboAcademicYear
+            // comboSchoolYear
             // 
-            this.comboAcademicYear.Location = new System.Drawing.Point(797, 109);
-            this.comboAcademicYear.Name = "comboAcademicYear";
-            this.comboAcademicYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboAcademicYear.Properties.Appearance.Options.UseFont = true;
-            this.comboAcademicYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboSchoolYear.Location = new System.Drawing.Point(797, 109);
+            this.comboSchoolYear.Name = "comboSchoolYear";
+            this.comboSchoolYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSchoolYear.Properties.Appearance.Options.UseFont = true;
+            this.comboSchoolYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboAcademicYear.Properties.Items.AddRange(new object[] {
-            "2025-2026",
-            "2024-2025",
-            "2023-2024"});
-            this.comboAcademicYear.Size = new System.Drawing.Size(721, 32);
-            this.comboAcademicYear.TabIndex = 7;
+            this.comboSchoolYear.Size = new System.Drawing.Size(721, 32);
+            this.comboSchoolYear.TabIndex = 7;
             // 
             // labelControl13
             // 
@@ -1254,23 +1254,20 @@
             this.comboSemester.Properties.Appearance.Options.UseFont = true;
             this.comboSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboSemester.Properties.Items.AddRange(new object[] {
-            "1st Semester",
-            "2nd Semester"});
             this.comboSemester.Size = new System.Drawing.Size(721, 32);
             this.comboSemester.TabIndex = 6;
             // 
-            // labelControl10
+            // txtSchoolYear
             // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(797, 84);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(89, 17);
-            this.labelControl10.TabIndex = 4;
-            this.labelControl10.Text = "Academic Year";
+            this.txtSchoolYear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSchoolYear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.txtSchoolYear.Appearance.Options.UseFont = true;
+            this.txtSchoolYear.Appearance.Options.UseForeColor = true;
+            this.txtSchoolYear.Location = new System.Drawing.Point(797, 84);
+            this.txtSchoolYear.Name = "txtSchoolYear";
+            this.txtSchoolYear.Size = new System.Drawing.Size(71, 17);
+            this.txtSchoolYear.TabIndex = 4;
+            this.txtSchoolYear.Text = "School Year";
             // 
             // panelControl3
             // 
@@ -1332,11 +1329,9 @@
             this.btnSubmitRequest.Size = new System.Drawing.Size(156, 40);
             this.btnSubmitRequest.TabIndex = 9;
             this.btnSubmitRequest.Text = "Submit Request";
-            this.btnSubmitRequest.Click += new System.EventHandler(this.btnSubmitRequest_Click);
             // 
             // pageMyRequest
             // 
-            this.pageMyRequest.Caption = "pageMyRequest";
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl7);
@@ -1552,20 +1547,20 @@
             this.gcRecords.AppearanceCaption.Options.UseFont = true;
             this.gcRecords.AppearanceCaption.Options.UseForeColor = true;
             this.gcRecords.Controls.Add(this.gridcontrolClearanceRecords);
-            this.gcRecords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcRecords.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcRecords.Location = new System.Drawing.Point(0, 398);
             this.gcRecords.Name = "gcRecords";
-            this.gcRecords.Size = new System.Drawing.Size(1574, 652);
+            this.gcRecords.Size = new System.Drawing.Size(1574, 463);
             this.gcRecords.TabIndex = 2;
             this.gcRecords.Text = "Clearance Records";
             // 
             // gridcontrolClearanceRecords
             // 
-            this.gridcontrolClearanceRecords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridcontrolClearanceRecords.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridcontrolClearanceRecords.Location = new System.Drawing.Point(2, 29);
             this.gridcontrolClearanceRecords.MainView = this.gridView1;
             this.gridcontrolClearanceRecords.Name = "gridcontrolClearanceRecords";
-            this.gridcontrolClearanceRecords.Size = new System.Drawing.Size(1570, 621);
+            this.gridcontrolClearanceRecords.Size = new System.Drawing.Size(1570, 430);
             this.gridcontrolClearanceRecords.TabIndex = 0;
             this.gridcontrolClearanceRecords.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1896,7 +1891,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
             this.pnlClearanceForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboAcademicYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboSchoolYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -1984,7 +1979,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.LabelControl txtSubHeaderRC;
         private DevExpress.XtraEditors.LabelControl txtHeaderRC;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl txtSchoolYear;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.SimpleButton btnSubmitRequest;
         private DevExpress.XtraEditors.ComboBoxEdit comboSemester;
@@ -2041,16 +2036,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.LabelControl labelControl28;
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboAcademicYear;
+        private DevExpress.XtraEditors.ComboBoxEdit comboSchoolYear;
         private DevExpress.XtraEditors.PanelControl panelUpload3;
         private DevExpress.XtraEditors.LabelControl labelControl31;
         private DevExpress.XtraEditors.PictureEdit pictureEdit3;
-        private DevExpress.XtraEditors.SimpleButton btnViewSSGPhoto;
-        private DevExpress.XtraEditors.SimpleButton btnUploadSSGRequirement;
+        private DevExpress.XtraEditors.SimpleButton btnView;
+        private DevExpress.XtraEditors.SimpleButton btnUpload;
         private DevExpress.XtraEditors.LabelControl labelControl34;
         private DevExpress.XtraEditors.LabelControl labelControl35;
-        private DevExpress.XtraEditors.SimpleButton btnViewTreasurerPhoto;
-        private DevExpress.XtraEditors.SimpleButton btnUploadTreasurerRequirement;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.LabelControl labelControl32;
         private DevExpress.XtraEditors.LabelControl labelControl30;
         private DevExpress.XtraEditors.LabelControl labelControl36;

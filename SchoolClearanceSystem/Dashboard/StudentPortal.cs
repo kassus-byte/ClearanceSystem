@@ -5,8 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
@@ -24,6 +25,9 @@ namespace SchoolClearanceSystem
         public StudentPortal()
         {
             InitializeComponent();
+
+            gridControlOfficeStatus.MainView = gridView2;
+
             UpdateDashboard();
 
             // Event-Driven Architecture: Wiring event triggers to localized handler methods
@@ -98,6 +102,8 @@ namespace SchoolClearanceSystem
 
             UserRepository repo = new UserRepository();
             var statusList = repo.GetStudentStatus(Session.CurrentUser.UserID);
+
+            
 
             gridControlOfficeStatus.DataSource = statusList;
         }
