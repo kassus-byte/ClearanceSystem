@@ -31,21 +31,20 @@ namespace SchoolClearanceSystem.Repository
         /// </summary>
         public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear, string filePath)
         {
-            using (var db = dbManager.GetConnection()) // Automatic scoping: Closes database connection when leaving this block
+            using (var db = dbManager.GetConnection())
             {
+                // Added FilePath into the SQL columns and parameters list
                 string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
-                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
+                       VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
-                // db.Execute returns an integer representing rows modified in storage. 
-                // If the return count is greater than 0, the operation was a true success.
                 return db.Execute(sql, new
                 {
                     id = studentId,
-                    dept, // In StudentPortal, this passes "Technical", "SSG", or "Treasurer"
-                    date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), // Generates localized persistent timestamps
+                    dept,
+                    date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     sem = semester,
                     ay = acadYear,
-                    path = filePath // Passes the string location pointer to the DB engine safely
+                    path = filePath // Maps directly to your new TEXT column!
                 }) > 0;
             }
         }
