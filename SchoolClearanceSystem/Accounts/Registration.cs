@@ -167,5 +167,20 @@ namespace SchoolClearanceSystem
                 imagePopup.ShowDialog(); // Opens window as a modal block context
             }
         }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelControl7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

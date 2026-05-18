@@ -22,6 +22,15 @@ namespace SchoolClearanceSystem
 
             btnUpload.Click += btnUpload_Click;
             btnView.Click += btnView_Click;
+
+            if (Session.CurrentUser != null)
+            {
+                txtWelcome.Text = $"Welcome, {Session.CurrentUser.FullName}!";
+            }
+
+            lblFullName.Text = Session.CurrentUser.FullName;
+            lblUserID.Text = Session.CurrentUser.UserID.ToString();
+            lblProgram.Text = Session.CurrentUser.Program;
         }
 
 
@@ -158,6 +167,11 @@ namespace SchoolClearanceSystem
 
                 this.Hide(); 
             }
+        }
+
+        private void txtWelcome_Click(object sender, EventArgs e)
+        {
+
         }
     }
     
