@@ -130,5 +130,53 @@ namespace SchoolClearanceSystem.Dashboard
                 this.Hide();
             }
         }
+
+        /// <summary>
+        /// FIXED: Evaluates the focused row on the active grid tab, confirms with the user, and drops the record.
+        /// </summary>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Determine which grid layout page is actively chosen
+            var activeView = (tabPane1.SelectedPage.Caption == "Students") ? gvStudents : gvOffice;
+
+            // Validate that a clean row entry reference is selected
+            if (activeView.FocusedRowHandle >= 0 && activeView.GetFocusedRow() is User selectedUser)
+            {
+                // Confirmation prompt layer protecting against accidental data drops
+                DialogResult confirm = XtraMessageBox.Show(
+                    $"Are you sure you want to permanently delete the account for {selectedUser.FullName} ({selectedUser.UserID})?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirm == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // Fire statement down to repository data layer
+                        // NOTE: Ensure your UserRepository class has an implementation matching .DeleteUser(string id)
+                        if (_userRepo.DeleteUser(selectedUser.UserID))
+                        {
+                            XtraMessageBox.Show("Account successfully deleted.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            RefreshData();
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Failed to delete the account. Please check database limits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show($"Database tracking dependency error: {ex.Message}", "Execution Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Please select an active row record from the list before attempting deletion.", "Selection Required",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

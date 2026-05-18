@@ -69,6 +69,7 @@ namespace SchoolClearanceSystem
 
                 Form nextForm = null;
 
+                // FIXED: Changed "Technical" case to match "Technical Office" string value stored in database
                 switch (user.Role)
                 {
                     case "Admin":
@@ -77,7 +78,7 @@ namespace SchoolClearanceSystem
                     case "Treasurer":
                         nextForm = new TreasurerDashboard();
                         break;
-                    case "Technical":
+                    case "Technical Office":
                         nextForm = new TechnicalOffice();
                         break;
                     case "Student":

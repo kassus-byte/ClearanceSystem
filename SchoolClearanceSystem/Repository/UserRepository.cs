@@ -76,6 +76,18 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
+        /// <summary>
+        /// ADDED: Deletes a user completely from the database using their unique UserID.
+        /// </summary>
+        public bool DeleteUser(string userId)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = "DELETE FROM Users WHERE UserID = @id";
+                return db.Execute(sql, new { id = userId }) > 0;
+            }
+        }
+
         public IEnumerable<dynamic> GetStudentStatus(string userId)
         {
             using (var db = dbManager.GetConnection())
