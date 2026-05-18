@@ -11,17 +11,24 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
-    public partial class TechnicalOffice : BaseOfficeForm //inheritance for code reusability
+    /// <summary>
+    /// OOP CONCEPT: INHERITANCE (Code Reusability)
+    /// 'TechnicalOffice' inherits directly from 'BaseOfficeForm'. 
+    /// It reuses the master data layout engine while injecting its unique department string identifier.
+    /// </summary>
+    public partial class TechnicalOffice : BaseOfficeForm
     {
         public TechnicalOffice()
         {
             InitializeComponent();
 
+            // FIX: Explicitly assign the identity token string.
+            // This MUST match the exact string injected into the database by the StudentPortal ("Technical")
+            this.OfficeName = "Technical";
+
+            // FIX: Invoke the centralized parent method to execute the Dapper query 
+            // and populate your DevExpress GridControl layout instantly.
+            LoadPendingClearanceRequests();
         }
-
-      //  private void TechnicalOffice_Load(object sender, EventArgs e) => LoadGridData();
     }
-
 }
-        
-    

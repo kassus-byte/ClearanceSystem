@@ -134,7 +134,8 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT Department, Status, Remarks FROM ClearanceRequests 
+                // Synchronized column reference pointer to dynamically pull from OfficeName schema mapping
+                string sql = @"SELECT OfficeName AS Department, Status, Remarks FROM ClearanceRequests 
                                WHERE StudentID = @studentId";
 
                 return db.Query(sql, new { studentId = studentId });
@@ -146,27 +147,39 @@ namespace SchoolClearanceSystem.Repository
         /// Uses an SQL 'JOIN' clause. This connects the data fields inside the 'ClearanceRequests' table
         /// to the 'Users' table based on matching ID keys, pulling the student's 'FullName' on the fly.
         /// </summary>
-        public IEnumerable<dynamic> GetDepartmentRequests(string department)
+        public IEnumerable<dynamic> GetDepartmentRequests(string officeName)
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT r.StudentID, u.FullName, r.Status, r.DateSubmitted, r.Remarks 
+                // FIX 1: Aliased r.StudentID AS UserID so Dapper maps seamlessly to your model.
+                // FIX 2: Added u.Program and u.Year to fill the remaining empty columns in your grid layout.
+                // FIX 3: Swapped 'r.Department' to 'r.OfficeName' to cleanly mirror structural system states.
+                string sql = @"SELECT 
+                                r.StudentID AS UserID, 
+                                u.FullName, 
+                                u.Program,
+                                u.Year,
+                                r.Semester,
+                                r.Status, 
+                                r.DateSubmitted, 
+                                r.Remarks 
                                FROM ClearanceRequests r
                                JOIN Users u ON r.StudentID = u.UserID
-                               WHERE r.Department = @dept AND r.Status = 'Pending'";
+                               WHERE r.OfficeName = @office AND r.Status = 'Pending'";
 
-                return db.Query(sql, new { dept = department });
+                return db.Query(sql, new { office = officeName });
             }
         }
 
-        public bool UpdateRequestStatus(string studentId, string department, string status, string remarks)
+        public bool UpdateRequestStatus(string studentId, string officeName, string status, string remarks)
         {
             using (var db = dbManager.GetConnection())
             {
+                // Synchronized filter target to match OfficeName configurations natively
                 string sql = @"UPDATE ClearanceRequests 
                                SET Status = @status, Remarks = @remarks 
-                               WHERE StudentID = @id AND Department = @dept";
-                return db.Execute(sql, new { id = studentId, dept = department, status = status, remarks = remarks }) > 0;
+                               WHERE StudentID = @id AND OfficeName = @office";
+                return db.Execute(sql, new { id = studentId, office = officeName, status = status, remarks = remarks }) > 0;
             }
         }
     }

@@ -38,6 +38,8 @@
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeReports = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.panelControl17 = new DevExpress.XtraEditors.PanelControl();
+            this.btnLogout = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.lblRole = new DevExpress.XtraEditors.LabelControl();
             this.lblFullName = new DevExpress.XtraEditors.LabelControl();
@@ -80,8 +82,16 @@
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcBaseOfficeForm = new DevExpress.XtraGrid.GridControl();
+            this.gvBaseOfficeForm = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.UserID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.FullName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Program = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Year = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Semester = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Action = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Remarks = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl13 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
@@ -114,8 +124,6 @@
             this.panelControl19 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl17 = new DevExpress.XtraEditors.PanelControl();
-            this.btnLogout = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -123,6 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
             this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).BeginInit();
+            this.panelControl17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -157,8 +167,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
             this.panelControl15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBaseOfficeForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
@@ -181,8 +191,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).BeginInit();
             this.panelControl19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).BeginInit();
-            this.panelControl17.SuspendLayout();
             this.SuspendLayout();
             // 
             // accordionControl1
@@ -346,6 +354,41 @@
             this.splitContainerControl1.Size = new System.Drawing.Size(1920, 1080);
             this.splitContainerControl1.SplitterPosition = 300;
             this.splitContainerControl1.TabIndex = 0;
+            // 
+            // panelControl17
+            // 
+            this.panelControl17.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl17.Controls.Add(this.btnLogout);
+            this.panelControl17.Location = new System.Drawing.Point(0, 933);
+            this.panelControl17.Name = "panelControl17";
+            this.panelControl17.Size = new System.Drawing.Size(300, 174);
+            this.panelControl17.TabIndex = 3;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnLogout.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.Appearance.Options.UseBackColor = true;
+            this.btnLogout.Appearance.Options.UseFont = true;
+            this.btnLogout.Appearance.Options.UseForeColor = true;
+            this.btnLogout.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnLogout.AppearanceHovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearanceHovered.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.AppearanceHovered.Options.UseBackColor = true;
+            this.btnLogout.AppearanceHovered.Options.UseFont = true;
+            this.btnLogout.AppearanceHovered.Options.UseForeColor = true;
+            this.btnLogout.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
+            this.btnLogout.AppearancePressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearancePressed.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.AppearancePressed.Options.UseBackColor = true;
+            this.btnLogout.AppearancePressed.Options.UseFont = true;
+            this.btnLogout.AppearancePressed.Options.UseForeColor = true;
+            this.btnLogout.Location = new System.Drawing.Point(0, 84);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(300, 60);
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.Text = "Logout";
             // 
             // panelControl3
             // 
@@ -740,7 +783,6 @@
             // 
             // pageOfficeClearanceRequest
             // 
-            this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton5);
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton4);
             this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton3);
@@ -863,7 +905,7 @@
             this.panelControl15.Appearance.Options.UseBackColor = true;
             this.panelControl15.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl15.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl15.ContentImage")));
-            this.panelControl15.Controls.Add(this.gridControl2);
+            this.panelControl15.Controls.Add(this.gcBaseOfficeForm);
             this.panelControl15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl15.Location = new System.Drawing.Point(0, 238);
             this.panelControl15.Name = "panelControl15";
@@ -871,21 +913,94 @@
             this.panelControl15.Size = new System.Drawing.Size(1604, 842);
             this.panelControl15.TabIndex = 3;
             // 
-            // gridControl2
+            // gcBaseOfficeForm
             // 
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(55, 55);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1494, 732);
-            this.gridControl2.TabIndex = 0;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gcBaseOfficeForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcBaseOfficeForm.Location = new System.Drawing.Point(55, 55);
+            this.gcBaseOfficeForm.MainView = this.gvBaseOfficeForm;
+            this.gcBaseOfficeForm.Name = "gcBaseOfficeForm";
+            this.gcBaseOfficeForm.Size = new System.Drawing.Size(1494, 732);
+            this.gcBaseOfficeForm.TabIndex = 0;
+            this.gcBaseOfficeForm.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvBaseOfficeForm});
             // 
-            // gridView2
+            // gvBaseOfficeForm
             // 
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
+            this.gvBaseOfficeForm.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.UserID,
+            this.FullName,
+            this.Program,
+            this.Year,
+            this.Semester,
+            this.Status,
+            this.Action,
+            this.Remarks});
+            this.gvBaseOfficeForm.GridControl = this.gcBaseOfficeForm;
+            this.gvBaseOfficeForm.Name = "gvBaseOfficeForm";
+            // 
+            // UserID
+            // 
+            this.UserID.Caption = "User ID";
+            this.UserID.FieldName = "UserID";
+            this.UserID.Name = "UserID";
+            this.UserID.Visible = true;
+            this.UserID.VisibleIndex = 0;
+            // 
+            // FullName
+            // 
+            this.FullName.Caption = "NAME";
+            this.FullName.FieldName = "FullName";
+            this.FullName.Name = "FullName";
+            this.FullName.Visible = true;
+            this.FullName.VisibleIndex = 1;
+            // 
+            // Program
+            // 
+            this.Program.Caption = "Program";
+            this.Program.FieldName = "Program";
+            this.Program.Name = "Program";
+            this.Program.Visible = true;
+            this.Program.VisibleIndex = 2;
+            // 
+            // Year
+            // 
+            this.Year.Caption = "Year";
+            this.Year.FieldName = "Year";
+            this.Year.Name = "Year";
+            this.Year.Visible = true;
+            this.Year.VisibleIndex = 3;
+            // 
+            // Semester
+            // 
+            this.Semester.Caption = "Semester";
+            this.Semester.FieldName = "Semester";
+            this.Semester.Name = "Semester";
+            this.Semester.Visible = true;
+            this.Semester.VisibleIndex = 4;
+            // 
+            // Status
+            // 
+            this.Status.Caption = "Status";
+            this.Status.FieldName = "Status";
+            this.Status.Name = "Status";
+            this.Status.Visible = true;
+            this.Status.VisibleIndex = 5;
+            // 
+            // Action
+            // 
+            this.Action.Caption = "Action";
+            this.Action.FieldName = "Action";
+            this.Action.Name = "Action";
+            this.Action.Visible = true;
+            this.Action.VisibleIndex = 6;
+            // 
+            // Remarks
+            // 
+            this.Remarks.Caption = "Remarks";
+            this.Remarks.FieldName = "Remarks";
+            this.Remarks.Name = "Remarks";
+            this.Remarks.Visible = true;
+            this.Remarks.VisibleIndex = 7;
             // 
             // panelControl14
             // 
@@ -1235,42 +1350,6 @@
             this.labelControl19.TabIndex = 2;
             this.labelControl19.Text = "Report";
             // 
-            // panelControl17
-            // 
-            this.panelControl17.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl17.Controls.Add(this.btnLogout);
-            this.panelControl17.Location = new System.Drawing.Point(0, 933);
-            this.panelControl17.Name = "panelControl17";
-            this.panelControl17.Size = new System.Drawing.Size(300, 174);
-            this.panelControl17.TabIndex = 3;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnLogout.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogout.Appearance.Options.UseBackColor = true;
-            this.btnLogout.Appearance.Options.UseFont = true;
-            this.btnLogout.Appearance.Options.UseForeColor = true;
-            this.btnLogout.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnLogout.AppearanceHovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.AppearanceHovered.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogout.AppearanceHovered.Options.UseBackColor = true;
-            this.btnLogout.AppearanceHovered.Options.UseFont = true;
-            this.btnLogout.AppearanceHovered.Options.UseForeColor = true;
-            this.btnLogout.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.btnLogout.AppearancePressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.AppearancePressed.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogout.AppearancePressed.Options.UseBackColor = true;
-            this.btnLogout.AppearancePressed.Options.UseFont = true;
-            this.btnLogout.AppearancePressed.Options.UseForeColor = true;
-            this.btnLogout.Location = new System.Drawing.Point(0, 84);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(300, 60);
-            this.btnLogout.TabIndex = 0;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
-            // 
             // BaseOfficeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1288,6 +1367,8 @@
             this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).EndInit();
+            this.panelControl17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -1331,8 +1412,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
             this.panelControl15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBaseOfficeForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
@@ -1359,8 +1440,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).EndInit();
             this.panelControl19.ResumeLayout(false);
             this.panelControl19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).EndInit();
-            this.panelControl17.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1420,8 +1499,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.GridControl gcBaseOfficeForm;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvBaseOfficeForm;
         private DevExpress.XtraEditors.PanelControl panelControl18;
         private DevExpress.XtraEditors.PanelControl panelControl16;
         private DevExpress.XtraGrid.GridControl gridControl3;
@@ -1454,5 +1533,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.PanelControl panelControl17;
         private DevExpress.XtraEditors.SimpleButton btnLogout;
+        private DevExpress.XtraGrid.Columns.GridColumn UserID;
+        private DevExpress.XtraGrid.Columns.GridColumn FullName;
+        private DevExpress.XtraGrid.Columns.GridColumn Program;
+        private DevExpress.XtraGrid.Columns.GridColumn Year;
+        private DevExpress.XtraGrid.Columns.GridColumn Semester;
+        private DevExpress.XtraGrid.Columns.GridColumn Action;
+        private DevExpress.XtraGrid.Columns.GridColumn Remarks;
+        private DevExpress.XtraGrid.Columns.GridColumn Status;
     }
 }

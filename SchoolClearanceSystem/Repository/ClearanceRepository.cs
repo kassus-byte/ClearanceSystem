@@ -22,30 +22,58 @@ namespace SchoolClearanceSystem.Repository
         /// <summary>
         /// HOW IT WORKS & CONNECTS TO DATABASE MANAGER:
         /// 1. Taps into 'dbManager.GetConnection()' to acquire a live, open database connection channel.
-        /// 2. Defines a clean structural INSERT query string mapping data parameters safely.
+        /// 2. Defines a clean structural INSERT query string mapping data parameters safely including file paths.
         /// 3. OOP CONCEPT: POLYMORPHISM / DATA ENCAPSULATION (Anonymous Types)
         ///    'new { id = studentId, dept ... }' creates an anonymous object on the fly. 
         ///    Dapper reads this dynamic structure to pass parameters safely to the SQL statement,
         ///    completely eliminating SQL Injection threats.
         /// </summary>
-        public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear)
+        public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear, string filePath)
         {
             using (var db = dbManager.GetConnection()) // Automatic scoping: Closes database connection when leaving this block
             {
-                // Hardcoding 'Pending' status here enforces consistent structural application data rules
-                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear) 
-                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay)";
+                // Note: Ensure your insert targets 'Department' to match your database schema fields
+                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
+                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
                 // db.Execute returns an integer representing rows modified in storage. 
                 // If the return count is greater than 0, the operation was a true success.
                 return db.Execute(sql, new
                 {
                     id = studentId,
-                    dept, // Implicit naming shortcut: C# assigns property key matching variable title automatically
+                    dept, // In StudentPortal, this passes "Technical", "SSG", or "Treasurer"
                     date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), // Generates localized persistent timestamps
                     sem = semester,
-                    ay = acadYear
+                    ay = acadYear,
+                    path = filePath // Passes the string location pointer to the DB engine safely
                 }) > 0;
+            }
+        }
+
+        /// <summary>
+        /// NEW METHOD: Fetches and populates incoming student data records specific to an administrative office profile.
+        /// Performs a relational JOIN structure to map clear student profiles over to the DevExpress GridControl dashboard view.
+        /// </summary>
+        public IEnumerable<dynamic> GetRequestsForOffice(string officeDept)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                // FIX: c.Status now maps directly to Status, and Action is left unmapped (blank)
+                string sql = @"SELECT 
+                        c.StudentID AS UserID, 
+                        u.FullName AS FullName, 
+                        u.Program AS Program, 
+                        u.Year AS Year, 
+                        c.Semester AS Semester,
+                        c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
+                        '' AS Action,            -- Keeps the ACTION column completely empty for now
+                        c.Remarks AS Remarks,
+                        c.FilePath AS FilePath
+                       FROM ClearanceRequests c
+                       INNER JOIN Users u ON c.StudentID = u.UserID
+                       WHERE c.Department = @dept AND c.Status = 'Pending'";
+
+                return db.Query(sql, new { dept = officeDept }).ToList();
             }
         }
 

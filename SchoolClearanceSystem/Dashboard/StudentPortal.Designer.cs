@@ -87,19 +87,19 @@
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
-            this.btnView = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUpload = new DevExpress.XtraEditors.SimpleButton();
+            this.btnViewSSGPhoto = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUploadSSGRequirement = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
             this.panelrequirements = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnViewTreasurerPhoto = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUploadTreasurerRequirement = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.pnlClearanceForm = new DevExpress.XtraEditors.PanelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboAcademicYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.comboSemester = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -205,7 +205,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboAcademicYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -588,7 +588,6 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
-            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -916,7 +915,6 @@
             this.txtWelcome.Size = new System.Drawing.Size(264, 37);
             this.txtWelcome.TabIndex = 0;
             this.txtWelcome.Text = "Welcome, Charlotte!";
-            this.txtWelcome.Click += new System.EventHandler(this.txtWelcome_Click);
             // 
             // pageRequestClearance
             // 
@@ -1004,8 +1002,8 @@
             this.panelUpload2.Controls.Add(this.labelControl32);
             this.panelUpload2.Controls.Add(this.labelControl35);
             this.panelUpload2.Controls.Add(this.labelControl29);
-            this.panelUpload2.Controls.Add(this.btnView);
-            this.panelUpload2.Controls.Add(this.btnUpload);
+            this.panelUpload2.Controls.Add(this.btnViewSSGPhoto);
+            this.panelUpload2.Controls.Add(this.btnUploadSSGRequirement);
             this.panelUpload2.Controls.Add(this.pictureEdit2);
             this.panelUpload2.Controls.Add(this.labelControl28);
             this.panelUpload2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1051,31 +1049,29 @@
             this.labelControl29.TabIndex = 3;
             this.labelControl29.Text = "Activities and Fines";
             // 
-            // btnView
+            // btnViewSSGPhoto
             // 
-            this.btnView.Appearance.BackColor = System.Drawing.Color.Navy;
-            this.btnView.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnView.Appearance.Options.UseBackColor = true;
-            this.btnView.Appearance.Options.UseFont = true;
-            this.btnView.Location = new System.Drawing.Point(180, 127);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(122, 30);
-            this.btnView.TabIndex = 3;
-            this.btnView.Text = "View";
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            this.btnViewSSGPhoto.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.btnViewSSGPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnViewSSGPhoto.Appearance.Options.UseBackColor = true;
+            this.btnViewSSGPhoto.Appearance.Options.UseFont = true;
+            this.btnViewSSGPhoto.Location = new System.Drawing.Point(180, 127);
+            this.btnViewSSGPhoto.Name = "btnViewSSGPhoto";
+            this.btnViewSSGPhoto.Size = new System.Drawing.Size(122, 30);
+            this.btnViewSSGPhoto.TabIndex = 3;
+            this.btnViewSSGPhoto.Text = "View";
             // 
-            // btnUpload
+            // btnUploadSSGRequirement
             // 
-            this.btnUpload.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnUpload.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnUpload.Appearance.Options.UseBackColor = true;
-            this.btnUpload.Appearance.Options.UseFont = true;
-            this.btnUpload.Location = new System.Drawing.Point(40, 127);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(122, 30);
-            this.btnUpload.TabIndex = 2;
-            this.btnUpload.Text = "Upload";
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            this.btnUploadSSGRequirement.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnUploadSSGRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUploadSSGRequirement.Appearance.Options.UseBackColor = true;
+            this.btnUploadSSGRequirement.Appearance.Options.UseFont = true;
+            this.btnUploadSSGRequirement.Location = new System.Drawing.Point(40, 127);
+            this.btnUploadSSGRequirement.Name = "btnUploadSSGRequirement";
+            this.btnUploadSSGRequirement.Size = new System.Drawing.Size(122, 30);
+            this.btnUploadSSGRequirement.TabIndex = 2;
+            this.btnUploadSSGRequirement.Text = "Upload";
             // 
             // pictureEdit2
             // 
@@ -1105,8 +1101,8 @@
             this.panelrequirements.Appearance.Options.UseBackColor = true;
             this.panelrequirements.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelrequirements.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelrequirements.ContentImage")));
-            this.panelrequirements.Controls.Add(this.simpleButton7);
-            this.panelrequirements.Controls.Add(this.simpleButton6);
+            this.panelrequirements.Controls.Add(this.btnViewTreasurerPhoto);
+            this.panelrequirements.Controls.Add(this.btnUploadTreasurerRequirement);
             this.panelrequirements.Controls.Add(this.labelControl30);
             this.panelrequirements.Controls.Add(this.pictureEdit1);
             this.panelrequirements.Controls.Add(this.labelControl27);
@@ -1118,29 +1114,30 @@
             this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
             this.panelrequirements.TabIndex = 12;
             // 
-            // simpleButton7
+            // btnViewTreasurerPhoto
             // 
-            this.simpleButton7.Appearance.BackColor = System.Drawing.Color.Navy;
-            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.simpleButton7.Appearance.Options.UseBackColor = true;
-            this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Location = new System.Drawing.Point(180, 128);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(122, 30);
-            this.simpleButton7.TabIndex = 5;
-            this.simpleButton7.Text = "View";
+            this.btnViewTreasurerPhoto.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.btnViewTreasurerPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnViewTreasurerPhoto.Appearance.Options.UseBackColor = true;
+            this.btnViewTreasurerPhoto.Appearance.Options.UseFont = true;
+            this.btnViewTreasurerPhoto.Location = new System.Drawing.Point(180, 128);
+            this.btnViewTreasurerPhoto.Name = "btnViewTreasurerPhoto";
+            this.btnViewTreasurerPhoto.Size = new System.Drawing.Size(122, 30);
+            this.btnViewTreasurerPhoto.TabIndex = 5;
+            this.btnViewTreasurerPhoto.Text = "View";
             // 
-            // simpleButton6
+            // btnUploadTreasurerRequirement
             // 
-            this.simpleButton6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.simpleButton6.Appearance.Options.UseBackColor = true;
-            this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Location = new System.Drawing.Point(41, 128);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(122, 30);
-            this.simpleButton6.TabIndex = 5;
-            this.simpleButton6.Text = "Upload";
+            this.btnUploadTreasurerRequirement.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnUploadTreasurerRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUploadTreasurerRequirement.Appearance.Options.UseBackColor = true;
+            this.btnUploadTreasurerRequirement.Appearance.Options.UseFont = true;
+            this.btnUploadTreasurerRequirement.Location = new System.Drawing.Point(41, 128);
+            this.btnUploadTreasurerRequirement.Name = "btnUploadTreasurerRequirement";
+            this.btnUploadTreasurerRequirement.Size = new System.Drawing.Size(122, 30);
+            this.btnUploadTreasurerRequirement.TabIndex = 5;
+            this.btnUploadTreasurerRequirement.Text = "Upload";
+            this.btnUploadTreasurerRequirement.Click += new System.EventHandler(this.btnUploadTreasurerRequirement_Click);
             // 
             // labelControl30
             // 
@@ -1198,7 +1195,7 @@
             this.pnlClearanceForm.Appearance.Options.UseBackColor = true;
             this.pnlClearanceForm.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlClearanceForm.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlClearanceForm.ContentImage")));
-            this.pnlClearanceForm.Controls.Add(this.comboBoxEdit1);
+            this.pnlClearanceForm.Controls.Add(this.comboAcademicYear);
             this.pnlClearanceForm.Controls.Add(this.labelControl13);
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
             this.pnlClearanceForm.Controls.Add(this.comboSemester);
@@ -1210,20 +1207,20 @@
             this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
             this.pnlClearanceForm.TabIndex = 11;
             // 
-            // comboBoxEdit1
+            // comboAcademicYear
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(797, 109);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboAcademicYear.Location = new System.Drawing.Point(797, 109);
+            this.comboAcademicYear.Name = "comboAcademicYear";
+            this.comboAcademicYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboAcademicYear.Properties.Appearance.Options.UseFont = true;
+            this.comboAcademicYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            this.comboAcademicYear.Properties.Items.AddRange(new object[] {
             "2025-2026",
             "2024-2025",
             "2023-2024"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(721, 32);
-            this.comboBoxEdit1.TabIndex = 7;
+            this.comboAcademicYear.Size = new System.Drawing.Size(721, 32);
+            this.comboAcademicYear.TabIndex = 7;
             // 
             // labelControl13
             // 
@@ -1335,6 +1332,7 @@
             this.btnSubmitRequest.Size = new System.Drawing.Size(156, 40);
             this.btnSubmitRequest.TabIndex = 9;
             this.btnSubmitRequest.Text = "Submit Request";
+            this.btnSubmitRequest.Click += new System.EventHandler(this.btnSubmitRequest_Click);
             // 
             // pageMyRequest
             // 
@@ -1898,7 +1896,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
             this.pnlClearanceForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboAcademicYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -2043,16 +2041,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.LabelControl labelControl28;
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboAcademicYear;
         private DevExpress.XtraEditors.PanelControl panelUpload3;
         private DevExpress.XtraEditors.LabelControl labelControl31;
         private DevExpress.XtraEditors.PictureEdit pictureEdit3;
-        private DevExpress.XtraEditors.SimpleButton btnView;
-        private DevExpress.XtraEditors.SimpleButton btnUpload;
+        private DevExpress.XtraEditors.SimpleButton btnViewSSGPhoto;
+        private DevExpress.XtraEditors.SimpleButton btnUploadSSGRequirement;
         private DevExpress.XtraEditors.LabelControl labelControl34;
         private DevExpress.XtraEditors.LabelControl labelControl35;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private DevExpress.XtraEditors.SimpleButton btnViewTreasurerPhoto;
+        private DevExpress.XtraEditors.SimpleButton btnUploadTreasurerRequirement;
         private DevExpress.XtraEditors.LabelControl labelControl32;
         private DevExpress.XtraEditors.LabelControl labelControl30;
         private DevExpress.XtraEditors.LabelControl labelControl36;
