@@ -5,8 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 
 namespace SchoolClearanceSystem
@@ -18,6 +19,9 @@ namespace SchoolClearanceSystem
         public StudentPortal()
         {
             InitializeComponent();
+
+            gridControlOfficeStatus.MainView = gridView2;
+
             UpdateDashboard();
 
             btnUpload.Click += btnUpload_Click;
@@ -64,21 +68,19 @@ namespace SchoolClearanceSystem
             lblStatus.Text = (cleared == 3) ? "Cleared" : "In Progress";
             lblProgress.Text = $"{cleared} out of 3 offices cleared";
 
-            RefreshOfficeStatus();
+            try
+            {
+                var officeData = db.GetStudentStatus(Session.CurrentUser.UserID).ToList();
+                gridControlOfficeStatus.DataSource = officeData;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Could not load office status data: {ex.Message}");
+            }
+
         }
 
-        private void RefreshOfficeStatus()
-        {
-            if (Session.CurrentUser == null) return;
-
-            UserRepository repo = new UserRepository();
-
-            var statusList = repo.GetStudentStatus(Session.CurrentUser.UserID);
-
-            XtraMessageBox.Show($"Rows found: {System.Linq.Enumerable.Count(statusList)}");
-
-            gridControlOfficeStatus.DataSource = statusList;
-        }
+        
 
         private void gridView2_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {

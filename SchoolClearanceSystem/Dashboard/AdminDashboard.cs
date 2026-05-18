@@ -1,9 +1,11 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraBars.Navigation;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
@@ -12,15 +14,15 @@ namespace SchoolClearanceSystem.Dashboard
     {
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly SystemRepository _sysRepo = new SystemRepository();
+       
 
         public AdminDashboard()
         {
             InitializeComponent();
             RefreshData();
-
-            
-            //tsStatus.IsOn = _sysRepo.IsClearanceActive();
             SetupGridBehaviors();
+
+           
         }
 
         private void btnDashboard_Click_1(object sender, EventArgs e) => mainNavigationFrame.SelectedPage = pageDashboard;
@@ -93,13 +95,7 @@ namespace SchoolClearanceSystem.Dashboard
             }
         }
 
-        //private void tsStatus_Toggled(object sender, EventArgs e)
-        //{
-        //    _sysRepo.ToggleClearanceSeason(tsStatus.IsOn);
-        //    string status = tsStatus.IsOn ? "OPEN" : "CLOSED";
-        //    XtraMessageBox.Show($"Clearance season is now {status}.", "System Update",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //}
+      
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
@@ -134,11 +130,6 @@ namespace SchoolClearanceSystem.Dashboard
 
                 this.Hide();
             }  
-        }
-
-        private void btnClearanceSeason_Click(object sender, EventArgs e)
-        {
-            mainNavigationFrame.SelectedPage = pageClearanceSeason;
         }
     }
 }

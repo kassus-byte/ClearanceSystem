@@ -99,13 +99,11 @@
             this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.pnlClearanceForm = new DevExpress.XtraEditors.PanelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboSchoolYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.comboSemester = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.pnlReminder = new DevExpress.XtraEditors.PanelControl();
-            this.txtReminder = new DevExpress.XtraEditors.LabelControl();
+            this.txtSchoolYear = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
@@ -207,10 +205,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboSchoolYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlReminder)).BeginInit();
-            this.pnlReminder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             this.pageMyRequest.SuspendLayout();
@@ -364,9 +360,10 @@
             this.sbDashboard.Appearance.Pressed.Options.UseFont = true;
             this.sbDashboard.Appearance.Pressed.Options.UseForeColor = true;
             this.sbDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbDashboard.ImageOptions.SvgImage")));
+            this.sbDashboard.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbDashboard.Name = "sbDashboard";
             this.sbDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbDashboard.Text = "Dashboard";
+            this.sbDashboard.Text = "   Dashboard";
             this.sbDashboard.Click += new System.EventHandler(this.sbDashboard_Click_1);
             // 
             // sbRequestClearance
@@ -388,9 +385,10 @@
             this.sbRequestClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbRequestClearance.Appearance.Pressed.Options.UseForeColor = true;
             this.sbRequestClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbRequestClearance.ImageOptions.SvgImage")));
+            this.sbRequestClearance.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbRequestClearance.Name = "sbRequestClearance";
             this.sbRequestClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbRequestClearance.Text = "Request Clearance";
+            this.sbRequestClearance.Text = "   Request Clearance";
             this.sbRequestClearance.Click += new System.EventHandler(this.sbRequestClearance_Click_1);
             // 
             // sbMyRequest
@@ -412,9 +410,10 @@
             this.sbMyRequest.Appearance.Pressed.Options.UseFont = true;
             this.sbMyRequest.Appearance.Pressed.Options.UseForeColor = true;
             this.sbMyRequest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyRequest.ImageOptions.SvgImage")));
+            this.sbMyRequest.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbMyRequest.Name = "sbMyRequest";
             this.sbMyRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbMyRequest.Text = "My Request";
+            this.sbMyRequest.Text = "   My Request";
             this.sbMyRequest.Click += new System.EventHandler(this.sbMyRequest_Click_1);
             // 
             // sbMyClearance
@@ -436,9 +435,10 @@
             this.sbMyClearance.Appearance.Pressed.Options.UseFont = true;
             this.sbMyClearance.Appearance.Pressed.Options.UseForeColor = true;
             this.sbMyClearance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbMyClearance.ImageOptions.SvgImage")));
+            this.sbMyClearance.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbMyClearance.Name = "sbMyClearance";
             this.sbMyClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbMyClearance.Text = "My Clearance";
+            this.sbMyClearance.Text = "   My Clearance";
             this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click_1);
             // 
             // pnlUser
@@ -467,7 +467,7 @@
             this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblRole.Appearance.Options.UseFont = true;
             this.lblRole.Appearance.Options.UseForeColor = true;
-            this.lblRole.Location = new System.Drawing.Point(94, 59);
+            this.lblRole.Location = new System.Drawing.Point(83, 64);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(39, 13);
             this.lblRole.TabIndex = 4;
@@ -479,7 +479,7 @@
             this.lblYear.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblYear.Appearance.Options.UseFont = true;
             this.lblYear.Appearance.Options.UseForeColor = true;
-            this.lblYear.Location = new System.Drawing.Point(207, 40);
+            this.lblYear.Location = new System.Drawing.Point(196, 45);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(6, 13);
             this.lblYear.TabIndex = 3;
@@ -491,7 +491,7 @@
             this.lblProgram.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblProgram.Appearance.Options.UseFont = true;
             this.lblProgram.Appearance.Options.UseForeColor = true;
-            this.lblProgram.Location = new System.Drawing.Point(179, 40);
+            this.lblProgram.Location = new System.Drawing.Point(168, 45);
             this.lblProgram.Name = "lblProgram";
             this.lblProgram.Size = new System.Drawing.Size(22, 13);
             this.lblProgram.TabIndex = 2;
@@ -503,7 +503,7 @@
             this.lblUserID.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserID.Appearance.Options.UseFont = true;
             this.lblUserID.Appearance.Options.UseForeColor = true;
-            this.lblUserID.Location = new System.Drawing.Point(94, 40);
+            this.lblUserID.Location = new System.Drawing.Point(83, 45);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(52, 13);
             this.lblUserID.TabIndex = 1;
@@ -515,7 +515,7 @@
             this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblFullName.Appearance.Options.UseFont = true;
             this.lblFullName.Appearance.Options.UseForeColor = true;
-            this.lblFullName.Location = new System.Drawing.Point(94, 17);
+            this.lblFullName.Location = new System.Drawing.Point(83, 22);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(140, 17);
             this.lblFullName.TabIndex = 0;
@@ -592,7 +592,6 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
-            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -925,12 +924,10 @@
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
-            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
             this.pageRequestClearance.Controls.Add(this.pnlClearanceForm);
-            this.pageRequestClearance.Controls.Add(this.pnlReminder);
             this.pageRequestClearance.Controls.Add(this.panelControl3);
             this.pageRequestClearance.Controls.Add(this.labelControl12);
             this.pageRequestClearance.Controls.Add(this.btnSubmitRequest);
@@ -946,7 +943,7 @@
             this.panelUpload3.Controls.Add(this.labelControl31);
             this.panelUpload3.Controls.Add(this.pictureEdit3);
             this.panelUpload3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload3.Location = new System.Drawing.Point(0, 720);
+            this.panelUpload3.Location = new System.Drawing.Point(0, 676);
             this.panelUpload3.Name = "panelUpload3";
             this.panelUpload3.Size = new System.Drawing.Size(1574, 131);
             this.panelUpload3.TabIndex = 14;
@@ -1013,7 +1010,7 @@
             this.panelUpload2.Controls.Add(this.pictureEdit2);
             this.panelUpload2.Controls.Add(this.labelControl28);
             this.panelUpload2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload2.Location = new System.Drawing.Point(0, 532);
+            this.panelUpload2.Location = new System.Drawing.Point(0, 488);
             this.panelUpload2.Name = "panelUpload2";
             this.panelUpload2.Padding = new System.Windows.Forms.Padding(11, 75, 0, 0);
             this.panelUpload2.Size = new System.Drawing.Size(1574, 188);
@@ -1116,7 +1113,7 @@
             this.panelrequirements.Controls.Add(this.labelControl27);
             this.panelrequirements.Controls.Add(this.labelControl11);
             this.panelrequirements.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelrequirements.Location = new System.Drawing.Point(0, 344);
+            this.panelrequirements.Location = new System.Drawing.Point(0, 300);
             this.panelrequirements.Name = "panelrequirements";
             this.panelrequirements.Padding = new System.Windows.Forms.Padding(14, 75, 21, 0);
             this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
@@ -1202,28 +1199,28 @@
             this.pnlClearanceForm.Appearance.Options.UseBackColor = true;
             this.pnlClearanceForm.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlClearanceForm.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlClearanceForm.ContentImage")));
-            this.pnlClearanceForm.Controls.Add(this.comboBoxEdit1);
+            this.pnlClearanceForm.Controls.Add(this.comboSchoolYear);
             this.pnlClearanceForm.Controls.Add(this.labelControl13);
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
             this.pnlClearanceForm.Controls.Add(this.comboSemester);
-            this.pnlClearanceForm.Controls.Add(this.labelControl10);
+            this.pnlClearanceForm.Controls.Add(this.txtSchoolYear);
             this.pnlClearanceForm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 131);
+            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 87);
             this.pnlClearanceForm.Name = "pnlClearanceForm";
             this.pnlClearanceForm.Padding = new System.Windows.Forms.Padding(10);
             this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
             this.pnlClearanceForm.TabIndex = 11;
             // 
-            // comboBoxEdit1
+            // comboSchoolYear
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(797, 109);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboSchoolYear.Location = new System.Drawing.Point(797, 109);
+            this.comboSchoolYear.Name = "comboSchoolYear";
+            this.comboSchoolYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSchoolYear.Properties.Appearance.Options.UseFont = true;
+            this.comboSchoolYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(721, 32);
-            this.comboBoxEdit1.TabIndex = 7;
+            this.comboSchoolYear.Size = new System.Drawing.Size(721, 32);
+            this.comboSchoolYear.TabIndex = 7;
             // 
             // labelControl13
             // 
@@ -1260,41 +1257,17 @@
             this.comboSemester.Size = new System.Drawing.Size(721, 32);
             this.comboSemester.TabIndex = 6;
             // 
-            // labelControl10
+            // txtSchoolYear
             // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(797, 84);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(89, 17);
-            this.labelControl10.TabIndex = 4;
-            this.labelControl10.Text = "Academic Year";
-            // 
-            // pnlReminder
-            // 
-            this.pnlReminder.Appearance.BackColor = System.Drawing.Color.Linen;
-            this.pnlReminder.Appearance.Options.UseBackColor = true;
-            this.pnlReminder.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlReminder.Controls.Add(this.txtReminder);
-            this.pnlReminder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlReminder.Location = new System.Drawing.Point(0, 87);
-            this.pnlReminder.Name = "pnlReminder";
-            this.pnlReminder.Size = new System.Drawing.Size(1574, 44);
-            this.pnlReminder.TabIndex = 1;
-            // 
-            // txtReminder
-            // 
-            this.txtReminder.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtReminder.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
-            this.txtReminder.Appearance.Options.UseFont = true;
-            this.txtReminder.Appearance.Options.UseForeColor = true;
-            this.txtReminder.Location = new System.Drawing.Point(22, 14);
-            this.txtReminder.Name = "txtReminder";
-            this.txtReminder.Size = new System.Drawing.Size(326, 17);
-            this.txtReminder.TabIndex = 0;
-            this.txtReminder.Text = "Finance has an active hold. Resolve it before submitting.";
+            this.txtSchoolYear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSchoolYear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.txtSchoolYear.Appearance.Options.UseFont = true;
+            this.txtSchoolYear.Appearance.Options.UseForeColor = true;
+            this.txtSchoolYear.Location = new System.Drawing.Point(797, 84);
+            this.txtSchoolYear.Name = "txtSchoolYear";
+            this.txtSchoolYear.Size = new System.Drawing.Size(71, 17);
+            this.txtSchoolYear.TabIndex = 4;
+            this.txtSchoolYear.Text = "School Year";
             // 
             // panelControl3
             // 
@@ -1359,7 +1332,6 @@
             // 
             // pageMyRequest
             // 
-            this.pageMyRequest.Caption = "pageMyRequest";
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl7);
@@ -1575,20 +1547,20 @@
             this.gcRecords.AppearanceCaption.Options.UseFont = true;
             this.gcRecords.AppearanceCaption.Options.UseForeColor = true;
             this.gcRecords.Controls.Add(this.gridcontrolClearanceRecords);
-            this.gcRecords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcRecords.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcRecords.Location = new System.Drawing.Point(0, 398);
             this.gcRecords.Name = "gcRecords";
-            this.gcRecords.Size = new System.Drawing.Size(1574, 652);
+            this.gcRecords.Size = new System.Drawing.Size(1574, 463);
             this.gcRecords.TabIndex = 2;
             this.gcRecords.Text = "Clearance Records";
             // 
             // gridcontrolClearanceRecords
             // 
-            this.gridcontrolClearanceRecords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridcontrolClearanceRecords.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridcontrolClearanceRecords.Location = new System.Drawing.Point(2, 29);
             this.gridcontrolClearanceRecords.MainView = this.gridView1;
             this.gridcontrolClearanceRecords.Name = "gridcontrolClearanceRecords";
-            this.gridcontrolClearanceRecords.Size = new System.Drawing.Size(1570, 621);
+            this.gridcontrolClearanceRecords.Size = new System.Drawing.Size(1570, 430);
             this.gridcontrolClearanceRecords.TabIndex = 0;
             this.gridcontrolClearanceRecords.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1919,11 +1891,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
             this.pnlClearanceForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboSchoolYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlReminder)).EndInit();
-            this.pnlReminder.ResumeLayout(false);
-            this.pnlReminder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -2008,11 +1977,9 @@
         private DevExpress.XtraBars.Navigation.NavigationPage pageMyClearance;
         private DevExpress.XtraBars.Navigation.NavigationPage pageClearancePaper;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.PanelControl pnlReminder;
-        private DevExpress.XtraEditors.LabelControl txtReminder;
         private DevExpress.XtraEditors.LabelControl txtSubHeaderRC;
         private DevExpress.XtraEditors.LabelControl txtHeaderRC;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl txtSchoolYear;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.SimpleButton btnSubmitRequest;
         private DevExpress.XtraEditors.ComboBoxEdit comboSemester;
@@ -2069,7 +2036,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.LabelControl labelControl28;
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboSchoolYear;
         private DevExpress.XtraEditors.PanelControl panelUpload3;
         private DevExpress.XtraEditors.LabelControl labelControl31;
         private DevExpress.XtraEditors.PictureEdit pictureEdit3;
