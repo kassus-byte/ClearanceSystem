@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using SchoolClearanceSystem.Models; // 
 
 namespace SchoolClearanceSystem.Repository
 {
@@ -32,7 +33,6 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection()) // Automatic scoping: Closes database connection when leaving this block
             {
-                // Note: Ensure your insert targets 'Department' to match your database schema fields
                 string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
                                VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
@@ -58,20 +58,19 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                // FIX: c.Status now maps directly to Status, and Action is left unmapped (blank)
                 string sql = @"SELECT 
-                        c.StudentID AS UserID, 
-                        u.FullName AS FullName, 
-                        u.Program AS Program, 
-                        u.Year AS Year, 
-                        c.Semester AS Semester,
-                        c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
-                        '' AS Action,            -- Keeps the ACTION column completely empty for now
-                        c.Remarks AS Remarks,
-                        c.FilePath AS FilePath
-                       FROM ClearanceRequests c
-                       INNER JOIN Users u ON c.StudentID = u.UserID
-                       WHERE c.Department = @dept AND c.Status = 'Pending'";
+                                c.StudentID AS UserID, 
+                                u.FullName AS FullName, 
+                                u.Program AS Program, 
+                                u.Year AS Year, 
+                                c.Semester AS Semester,
+                                c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
+                                '' AS Action,            -- Keeps the ACTION column completely empty for now
+                                c.Remarks AS Remarks,
+                                c.FilePath AS FilePath
+                               FROM ClearanceRequests c
+                               INNER JOIN Users u ON c.StudentID = u.UserID
+                               WHERE c.Department = @dept AND c.Status = 'Pending'";
 
                 return db.Query(sql, new { dept = officeDept }).ToList();
             }

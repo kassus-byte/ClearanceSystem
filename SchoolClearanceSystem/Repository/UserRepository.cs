@@ -1,185 +1,111 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SchoolClearanceSystem.Models;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Dapper;
-using System.Data;
+using SchoolClearanceSystem.Models; // ✅ Works perfectly now!
 
 namespace SchoolClearanceSystem.Repository
 {
-    /// <summary>
-    /// OOP CONCEPT: INHERITANCE (Is-A Relationship)
-    /// 'UserRepository' inherits from 'BaseRepository'. This means it automatically gains access 
-    /// to the protected 'dbManager' instance defined in the base class without redeclaring it.
-    /// It implements the Single Responsibility Principle by encapsulating all data transactions 
-    /// related specifically to users and structural requests.
-    /// </summary>
     public class UserRepository : BaseRepository
     {
         /// <summary>
-        /// HOW IT WORKS & CONNECTS TO DATABASE MANAGER:
-        /// 1. Calls 'dbManager.GetConnection()' to obtain an active polymorphic 'IDbConnection' pipeline.
-        /// 2. Executes conditional ternary checks to build raw SQL based on filter requirements.
-        /// 3. OOP CONCEPT: OBJECT-RELATIONAL MAPPING (Dapper ORM)
-        ///    'db.Query<User>' is a generic method. Dapper maps database rows to C# 'User' 
-        ///    objects by matching column names directly to class property names.
+        /// Authenticates the user during login.
         /// </summary>
-        public List<User> GetUsersByRole(string role, bool isStudent = true)
+        public User ValidateLogin(string userId, string password)
         {
-            using (var db = dbManager.GetConnection()) // Ensures connection resource closure
+            using (var db = dbManager.GetConnection())
             {
-                string sql = isStudent
-                ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY FullName ASC"
-                : "SELECT * FROM Users WHERE Role != 'Student' AND Role != 'Admin' ORDER BY Role ASC";
-
-                // Null-coalescing fallback: Returns an empty list instantiation if query comes up empty
-                return db.Query<User>(sql).ToList() ?? new List<User>();
+                string sql = "SELECT * FROM Users WHERE UserID = @id AND Password = @pass";
+                return db.QueryFirstOrDefault<User>(sql, new { id = userId, pass = password });
             }
         }
 
+        /// <summary>
+        /// Retrieves a user's full profile details.
+        /// </summary>
         public User GetUserDetails(string userId)
         {
             using (var db = dbManager.GetConnection())
             {
-                // Dapper Parameterization: Using '@id' prevents SQL Injection security vulnerabilities.
-                // An anonymous parameter object 'new { id = userId }' binds data types securely.
-                return db.QueryFirstOrDefault<User>("SELECT * FROM Users WHERE UserID = @id", new { id = userId });
+                string sql = "SELECT * FROM Users WHERE UserID = @id";
+                return db.QueryFirstOrDefault<User>(sql, new { id = userId });
             }
         }
 
         /// <summary>
-        /// HOW IT WORKS (Insert Pipeline):
-        /// 1. Modifies the state of the passed 'User' object by calculating a timestamp string.
-        /// 2. Passes the entire structured object directly to Dapper.
-        /// 3. 'db.Execute' returns the number of database rows affected. If > 0, operation succeeded.
+        /// Inserts a new user record into the database during registration.
         /// </summary>
         public bool AddUser(User user)
         {
-            try
+            using (var db = dbManager.GetConnection())
             {
-                user.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                string sql = @"INSERT INTO Users (UserID, FullName, Program, Year, Role, Password, UploadPath, DateCreated) 
-                               VALUES (@UserID, @FullName, @Program, @Year, @Role, @Password, @UploadPath, @DateCreated)";
-
-                using (var db = dbManager.GetConnection())
-                {
-                    return db.Execute(sql, user) > 0;
-                }
-            }
-            // Error Handling: SQLite Error Code 19 explicitly identifies a Primary Key violation (Duplicate ID)
-            catch (SqliteException ex) when (ex.SqliteErrorCode == 19)
-            {
-                MessageBox.Show($"The User ID '{user.UserID}' is already registered!", "Duplicate ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Database Error: " + ex.Message);
-                return false;
+                string sql = @"INSERT INTO Users (UserID, Password, FullName, Program, Year, Role) 
+                               VALUES (@UserID, @Password, @FullName, @Program, @Year, @Role)";
+                return db.Execute(sql, user) > 0;
             }
         }
 
+        /// <summary>
+        /// Updates an existing user's background details in the system.
+        /// </summary>
         public bool EditUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"UPDATE Users 
-                               SET FullName = @FullName, Program = @Program, Year = @Year, Role = @Role 
+                               SET Password = @Password, FullName = @FullName, Program = @Program, Year = @Year, Role = @Role 
                                WHERE UserID = @UserID";
-
                 return db.Execute(sql, user) > 0;
             }
         }
 
-        public bool ValidateLogin(string userId, string password)
+        /// <summary>
+        /// Retrieves user profiles filtered by role and status indicators.
+        /// </summary>
+        public IEnumerable<User> GetUsersByRole(string role, bool statusFlag = true)
         {
             using (var db = dbManager.GetConnection())
             {
-                // COLLATE NOCASE ensures that student ID evaluations ignore text casing discrepancies during login verification
-                string sql = "SELECT COUNT(*) FROM Users WHERE UserID = @id COLLATE NOCASE AND Password = @pass";
-
-                // db.ExecuteScalar returns a single scalar value from the first column of the first row
-                return db.ExecuteScalar<int>(sql, new { id = userId.Trim(), pass = password.Trim() }) > 0;
-            }
-        }
-
-        public bool DeleteUser(string userId)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                return db.Execute("DELETE FROM Users WHERE UserID = @id", new { id = userId }) > 0;
-            }
-        }
-
-        public int GetClearedCount(string studentId)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT COUNT(*) FROM ClearanceRequests 
-                               WHERE StudentID = @id AND Status = 'Approved'";
-                return db.ExecuteScalar<int>(sql, new { id = studentId });
+                string sql = "SELECT * FROM Users WHERE Role = @Role";
+                return db.Query<User>(sql, new { Role = role }).ToList();
             }
         }
 
         /// <summary>
-        /// OOP CONCEPT: ABSTRACTION VIA DYNAMIC/ANONYMOUS TYPES
-        /// 'IEnumerable<dynamic>' lets you stream back a collection of objects without declaring a formal model class.
-        /// This is ideal for quick, custom read-only data transformations that only require specific columns.
+        /// Queries the ClearanceRequests table mapping database layout structure.
+        /// FIXED: Added 'Department AS Department' alongside aliases to ensure DevExpress GridView cell columns never bind blank!
         /// </summary>
-        public IEnumerable<dynamic> GetStudentStatus(string studentId)
+        public IEnumerable<dynamic> GetStudentStatus(string userId)
         {
             using (var db = dbManager.GetConnection())
             {
-                // Synchronized column reference pointer to dynamically pull from OfficeName schema mapping
-                string sql = @"SELECT OfficeName AS Department, Status, Remarks FROM ClearanceRequests 
-                               WHERE StudentID = @studentId";
-
-                return db.Query(sql, new { studentId = studentId });
-            }
-        }
-
-        /// <summary>
-        /// HOW IT WORKS (Relational SQL Processing):
-        /// Uses an SQL 'JOIN' clause. This connects the data fields inside the 'ClearanceRequests' table
-        /// to the 'Users' table based on matching ID keys, pulling the student's 'FullName' on the fly.
-        /// </summary>
-        public IEnumerable<dynamic> GetDepartmentRequests(string officeName)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                // FIX 1: Aliased r.StudentID AS UserID so Dapper maps seamlessly to your model.
-                // FIX 2: Added u.Program and u.Year to fill the remaining empty columns in your grid layout.
-                // FIX 3: Swapped 'r.Department' to 'r.OfficeName' to cleanly mirror structural system states.
                 string sql = @"SELECT 
-                                r.StudentID AS UserID, 
-                                u.FullName, 
-                                u.Program,
-                                u.Year,
-                                r.Semester,
-                                r.Status, 
-                                r.DateSubmitted, 
-                                r.Remarks 
-                               FROM ClearanceRequests r
-                               JOIN Users u ON r.StudentID = u.UserID
-                               WHERE r.OfficeName = @office AND r.Status = 'Pending'";
+                                Department AS Office,
+                                Department AS OfficeName, 
+                                Department AS Department, 
+                                Status, 
+                                Remarks 
+                               FROM ClearanceRequests 
+                               WHERE StudentID = @id";
 
-                return db.Query(sql, new { office = officeName });
+                return db.Query(sql, new { id = userId }).ToList();
             }
         }
 
-        public bool UpdateRequestStatus(string studentId, string officeName, string status, string remarks)
+        /// <summary>
+        /// Counts how many distinct office rows have been marked 'Approved' for this student.
+        /// </summary>
+        public int GetClearedCount(string userId)
         {
             using (var db = dbManager.GetConnection())
             {
-                // Synchronized filter target to match OfficeName configurations natively
-                string sql = @"UPDATE ClearanceRequests 
-                               SET Status = @status, Remarks = @remarks 
-                               WHERE StudentID = @id AND OfficeName = @office";
-                return db.Execute(sql, new { id = studentId, office = officeName, status = status, remarks = remarks }) > 0;
+                string sql = @"SELECT COUNT(*) 
+                               FROM ClearanceRequests 
+                               WHERE StudentID = @id AND Status = 'Approved'";
+
+                return db.ExecuteScalar<int>(sql, new { id = userId });
             }
         }
     }

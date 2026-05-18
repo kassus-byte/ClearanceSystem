@@ -52,15 +52,18 @@ namespace SchoolClearanceSystem
 
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
-                XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (_userRepo.ValidateLogin(id, pass))
+            // Since ValidateLogin returns a User instance or null, we can do a straightforward type assignment
+            var loggedInUser = _userRepo.ValidateLogin(id, pass);
+
+            if (loggedInUser != null)
             {
                 Session.CurrentUser = _userRepo.GetUserDetails(id);
-                User user = Session.CurrentUser;
+                var user = Session.CurrentUser;
 
                 if (user == null) return;
 
@@ -81,21 +84,19 @@ namespace SchoolClearanceSystem
                         nextForm = new StudentPortal();
                         break;
                     default:
-                        XtraMessageBox.Show("Role not recognized. Contact Admin.",
-                            "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Invalid User Role detected.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                 }
 
-                nextForm.FormClosed += (s, args) => this.Close();
-                nextForm.Show();
-                this.Hide();
+                if (nextForm != null)
+                {
+                    nextForm.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                XtraMessageBox.Show("Invalid UserID or Password.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPassword.Clear();
-                txtPassword.Focus();
+                DevExpress.XtraEditors.XtraMessageBox.Show("Invalid User ID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

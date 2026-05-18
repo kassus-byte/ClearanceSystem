@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Forms;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
@@ -25,9 +25,7 @@ namespace SchoolClearanceSystem
         public StudentPortal()
         {
             InitializeComponent();
-
             gridControlOfficeStatus.MainView = gridView2;
-
             UpdateDashboard();
 
             // Event-Driven Architecture: Wiring event triggers to localized handler methods
@@ -93,19 +91,16 @@ namespace SchoolClearanceSystem
             lblStatus.Text = (cleared == 3) ? "Cleared" : "In Progress";
             lblProgress.Text = $"{cleared} out of 3 offices cleared";
 
-            RefreshOfficeStatus();
-        }
-
-        private void RefreshOfficeStatus()
-        {
-            if (Session.CurrentUser == null) return;
-
-            UserRepository repo = new UserRepository();
-            var statusList = repo.GetStudentStatus(Session.CurrentUser.UserID);
-
-            
-
-            gridControlOfficeStatus.DataSource = statusList;
+            try
+            {
+                // Cleanly updates grid using unified database 'Department' layout fields
+                var officeData = db.GetStudentStatus(Session.CurrentUser.UserID).ToList();
+                gridControlOfficeStatus.DataSource = officeData;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Could not load office status data: {ex.Message}");
+            }
         }
 
         private void gridView2_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -131,8 +126,7 @@ namespace SchoolClearanceSystem
 
         /// <summary>
         /// OOP CONCEPT: POLYMORPHIC CODE REUSABILITY / FUNCTION ABSTRACTION
-        /// Instead of copying and pasting the dialog generation routine across multiple buttons, 
-        /// this unified, centralized utility abstracts the common routine away into a single point of control.
+        /// Centralizes the dialog generation routine into a single point of control.
         /// </summary>
         private string ExecuteFileSelection()
         {
@@ -167,7 +161,7 @@ namespace SchoolClearanceSystem
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo(targetPath)
                 {
-                    UseShellExecute = true // Required in standard modern .NET environments
+                    UseShellExecute = true
                 };
                 Process.Start(startInfo);
             }
@@ -217,7 +211,7 @@ namespace SchoolClearanceSystem
 
             if (result == DialogResult.Yes)
             {
-                Session.CurrentUser = null; // Clear static state reference pointers safely
+                Session.CurrentUser = null;
                 Login login = new Login();
                 login.Show();
                 this.Hide();
@@ -231,9 +225,9 @@ namespace SchoolClearanceSystem
         /// HOW IT WORKS (Data Transaction Routing Pipeline):
         /// 1. Enforces data entry logic validations to ensure all requirements are satisfied.
         /// 2. Instantiates data layer objects to pack parameter models securely.
-        /// 3. Commits transaction data records to SQLite, where BaseOfficeForm forms fetch it.
+        /// 3. Commits transaction data records to SQLite cleanly.
         /// </summary>
-        private void btnSubmitRequest_Click(object sender, EventArgs e)
+        private void btnSubmitRequest_Click_1(object sender, EventArgs e)
         {
             // 1. Validation Check: Ensure files are selected for SSG and Treasurer
             if (string.IsNullOrEmpty(ssgUploadedFilePath) || string.IsNullOrEmpty(treasurerUploadedFilePath))
@@ -274,7 +268,7 @@ namespace SchoolClearanceSystem
                     treasurerUploadedFilePath
                 );
 
-                // Technical Office requires no uploaded attachment files, passing an empty string or "N/A" reference pointer
+                // Technical Office requires no uploaded attachment files, passing empty string cleanly
                 bool technicalSubmitted = clearanceRepo.SubmitClearanceRequest(
                     studentId,
                     "Technical",
