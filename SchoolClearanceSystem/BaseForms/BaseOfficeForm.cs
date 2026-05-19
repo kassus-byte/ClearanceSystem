@@ -141,5 +141,79 @@ namespace SchoolClearanceSystem
                 this.Close();
             }
         }
+
+        private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+            dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
+            if (selectedRequest == null) return;
+
+            // Pull properties matching your SQL SELECT statement Aliases exactly: UserID & FullName
+            string studentId = selectedRequest.UserID?.ToString();
+            string targetOffice = this.OfficeName; // "SSG", "Treasurer", or "Technical"
+            string targetStatus = string.Empty;
+
+            string buttonTag = e.Button.Tag?.ToString();
+            switch (buttonTag)
+            {
+                case "btnApprove":
+                    targetStatus = "Approved";
+                    break;
+                case "btnPending":
+                    targetStatus = "Pending";
+                    break;
+                case "btnOnHold":
+                    targetStatus = "On Hold";
+                    break;
+                default:
+                    return;
+            }
+
+            // Call the REAL Dapper database wrapper execution pipeline
+            ClearanceRepository repo = new ClearanceRepository();
+            string defaultRemarks = $"Processed by {targetOffice} Office";
+
+            bool isSuccess = repo.UpdateRequestStatus(studentId, targetOffice, targetStatus, defaultRemarks);
+
+            if (isSuccess)
+            {
+                XtraMessageBox.Show($"Clearance status updated to '{targetStatus}' successfully!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadPendingClearanceRequests(); // Re-runs GetRequestsForOffice
+            }
+            else
+            {
+                XtraMessageBox.Show("Database update execution rejected. Check connection states.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void OpenTargetFile(string targetPath)
+        {
+            if (string.IsNullOrEmpty(targetPath) || !System.IO.File.Exists(targetPath))
+            {
+                XtraMessageBox.Show("No file uploaded yet, or the file no longer exists.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo(targetPath)
+                {
+                    UseShellExecute = true
+                };
+                System.Diagnostics.Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Could not open the file: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

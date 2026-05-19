@@ -44,6 +44,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -104,9 +109,11 @@
             this.Program = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Year = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Semester = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Proof = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnProof = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Actions = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.btnAction = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Remarks = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl13 = new DevExpress.XtraEditors.PanelControl();
@@ -185,7 +192,8 @@
             this.panelControl15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBaseOfficeForm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProof)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
@@ -530,7 +538,7 @@
             this.panelControl11.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panelControl11.Appearance.Options.UseBackColor = true;
             this.panelControl11.Appearance.Options.UseBorderColor = true;
-            this.panelControl11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.panelControl11.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl11.ContentImage")));
             this.panelControl11.Controls.Add(this.simpleButton1);
             this.panelControl11.Controls.Add(this.labelControl4);
@@ -575,10 +583,10 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControl1.Location = new System.Drawing.Point(60, 60);
+            this.gridControl1.Location = new System.Drawing.Point(62, 62);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1484, 478);
+            this.gridControl1.Size = new System.Drawing.Size(1480, 478);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -939,7 +947,8 @@
             this.gcBaseOfficeForm.MainView = this.gvBaseOfficeForm;
             this.gcBaseOfficeForm.Name = "gcBaseOfficeForm";
             this.gcBaseOfficeForm.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit1});
+            this.btnAction,
+            this.btnProof});
             this.gcBaseOfficeForm.Size = new System.Drawing.Size(1494, 732);
             this.gcBaseOfficeForm.TabIndex = 0;
             this.gcBaseOfficeForm.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -953,6 +962,7 @@
             this.Program,
             this.Year,
             this.Semester,
+            this.Proof,
             this.Status,
             this.Actions,
             this.Remarks});
@@ -999,31 +1009,56 @@
             this.Semester.Visible = true;
             this.Semester.VisibleIndex = 4;
             // 
+            // Proof
+            // 
+            this.Proof.Caption = "Proof";
+            this.Proof.ColumnEdit = this.btnProof;
+            this.Proof.Name = "Proof";
+            this.Proof.Visible = true;
+            this.Proof.VisibleIndex = 5;
+            // 
+            // btnProof
+            // 
+            this.btnProof.AutoHeight = false;
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            this.btnProof.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnProof.Name = "btnProof";
+            this.btnProof.Tag = "btnView";
+            this.btnProof.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+        
+            // 
             // Status
             // 
             this.Status.Caption = "Status";
             this.Status.FieldName = "Status";
             this.Status.Name = "Status";
             this.Status.Visible = true;
-            this.Status.VisibleIndex = 5;
+            this.Status.VisibleIndex = 6;
             // 
             // Actions
             // 
             this.Actions.Caption = "Action";
-            this.Actions.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.Actions.ColumnEdit = this.btnAction;
             this.Actions.FieldName = "Action";
             this.Actions.Name = "Actions";
             this.Actions.Visible = true;
-            this.Actions.VisibleIndex = 6;
+            this.Actions.VisibleIndex = 7;
             // 
-            // repositoryItemButtonEdit1
+            // btnAction
             // 
-            this.repositoryItemButtonEdit1.AutoHeight = false;
-            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Approve", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Pending", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "On Hold", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.btnAction.AutoHeight = false;
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
+            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
+            this.btnAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", "btnPending", null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnAction.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAction.ContextImageOptions.SvgImage")));
+            this.btnAction.Name = "btnAction";
+            this.btnAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnAction.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnAction_ButtonClick);
             // 
             // Remarks
             // 
@@ -1031,7 +1066,7 @@
             this.Remarks.FieldName = "Remarks";
             this.Remarks.Name = "Remarks";
             this.Remarks.Visible = true;
-            this.Remarks.VisibleIndex = 7;
+            this.Remarks.VisibleIndex = 8;
             // 
             // panelControl14
             // 
@@ -1156,7 +1191,6 @@
             // 
             // pageOfficeReports
             // 
-            this.pageOfficeReports.Caption = "pageOfficeReports";
             this.pageOfficeReports.Controls.Add(this.panelControl20);
             this.pageOfficeReports.Controls.Add(this.panelControl19);
             this.pageOfficeReports.Name = "pageOfficeReports";
@@ -1445,7 +1479,8 @@
             this.panelControl15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBaseOfficeForm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProof)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
@@ -1573,6 +1608,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn Actions;
         private DevExpress.XtraGrid.Columns.GridColumn Remarks;
         private DevExpress.XtraGrid.Columns.GridColumn Status;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnAction;
+        private DevExpress.XtraGrid.Columns.GridColumn Proof;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnProof;
     }
 }

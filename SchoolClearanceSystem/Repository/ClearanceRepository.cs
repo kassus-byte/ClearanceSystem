@@ -64,6 +64,7 @@ namespace SchoolClearanceSystem.Repository
                                 u.Year AS Year, 
                                 c.Semester AS Semester,
                                 c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
+                                c.Department AS Office,   -
                                 '' AS Action,            -- Keeps the ACTION column completely empty for now
                                 c.Remarks AS Remarks,
                                 c.FilePath AS FilePath
@@ -81,23 +82,45 @@ namespace SchoolClearanceSystem.Repository
         /// 2. Binds the dynamic variables parsed from the UI into a secure query map context.
         /// 3. Updates persistent records matching specific compound conditions (StudentID + Department).
         /// </summary>
-        public bool UpdateRequestStatus(string studentId, string department, string newStatus, string remarks)
+        public bool UpdateRequestStatus(string studentId, string department, string newStatus, string remarks = "")
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"UPDATE ClearanceRequests 
-                               SET Status = @status, Remarks = @remarks, DateProcessed = @date 
-                               WHERE StudentID = @id AND Department = @dept";
+                       SET Status = @status, Remarks = @remarks, DateProcessed = @date 
+                       WHERE StudentID = @id AND Department = @dept";
 
-                return db.Execute(sql, new
+                var parameters = new
                 {
                     status = newStatus,
-                    remarks,
-                    date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), // Automatically logs processing time
+                    remarks = remarks,
+                    date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     id = studentId,
                     dept = department
-                }) > 0;
+                };
+
+                try
+                {
+                    // 1. Attempt the standard update transaction query
+                    return db.Execute(sql, parameters) > 0;
+                }
+                catch (Microsoft.Data.Sqlite.SqliteException ex) when (ex.Message.Contains("no such column: DateProcessed"))
+                {
+                    // 2. OOP Concept: Fault-Tolerance & Self-Healing
+                    // The database column is missing. Let's create it dynamically on the fly!
+                    string alterSql = "ALTER TABLE ClearanceRequests ADD COLUMN DateProcessed TEXT;";
+                    db.Execute(alterSql);
+
+                    // 3. Re-execute the original transaction query now that the schema is fixed
+                    return db.Execute(sql, parameters) > 0;
+                }
+                catch (Exception)
+                {
+                    // Catch any other unexpected system errors (e.g., connection losses) safely
+                    throw;
+                }
             }
         }
     }
-}
+      
+  }

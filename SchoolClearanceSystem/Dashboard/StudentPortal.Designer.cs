@@ -110,11 +110,11 @@
             this.btnSubmitRequest = new DevExpress.XtraEditors.SimpleButton();
             this.pageMyRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridMyRequest = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Office = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Remarks = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -211,7 +211,7 @@
             this.pageMyRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).BeginInit();
             this.panelControl9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyRequest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
@@ -591,7 +591,6 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
-            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -924,6 +923,7 @@
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
+            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
@@ -1329,7 +1329,6 @@
             // 
             // pageMyRequest
             // 
-            this.pageMyRequest.Caption = "pageMyRequest";
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl7);
@@ -1339,7 +1338,7 @@
             // 
             // panelControl9
             // 
-            this.panelControl9.Controls.Add(this.gridControl1);
+            this.panelControl9.Controls.Add(this.gridMyRequest);
             this.panelControl9.Controls.Add(this.labelControl24);
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl9.Location = new System.Drawing.Point(0, 199);
@@ -1348,46 +1347,49 @@
             this.panelControl9.Size = new System.Drawing.Size(1574, 627);
             this.panelControl9.TabIndex = 3;
             // 
-            // gridControl1
+            // gridMyRequest
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControl1.Location = new System.Drawing.Point(22, 72);
-            this.gridControl1.MainView = this.gridView3;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1530, 200);
-            this.gridControl1.TabIndex = 5;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridMyRequest.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridMyRequest.Location = new System.Drawing.Point(22, 72);
+            this.gridMyRequest.MainView = this.gridView3;
+            this.gridMyRequest.Name = "gridMyRequest";
+            this.gridMyRequest.Size = new System.Drawing.Size(1530, 373);
+            this.gridMyRequest.TabIndex = 5;
+            this.gridMyRequest.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
             // 
             // gridView3
             // 
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn6});
-            this.gridView3.GridControl = this.gridControl1;
+            this.Office,
+            this.Status,
+            this.Remarks});
+            this.gridView3.GridControl = this.gridMyRequest;
             this.gridView3.Name = "gridView3";
             // 
-            // gridColumn4
+            // Office
             // 
-            this.gridColumn4.Caption = "Office";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 0;
+            this.Office.Caption = "Office";
+            this.Office.FieldName = "Office";
+            this.Office.Name = "Office";
+            this.Office.Visible = true;
+            this.Office.VisibleIndex = 0;
             // 
-            // gridColumn5
+            // Status
             // 
-            this.gridColumn5.Caption = "Status";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 1;
+            this.Status.Caption = "Status";
+            this.Status.FieldName = "Status";
+            this.Status.Name = "Status";
+            this.Status.Visible = true;
+            this.Status.VisibleIndex = 1;
             // 
-            // gridColumn6
+            // Remarks
             // 
-            this.gridColumn6.Caption = "Remarks";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 2;
+            this.Remarks.Caption = "Remarks";
+            this.Remarks.FieldName = "Remarks";
+            this.Remarks.Name = "Remarks";
+            this.Remarks.Visible = true;
+            this.Remarks.VisibleIndex = 2;
             // 
             // labelControl24
             // 
@@ -1898,7 +1900,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).EndInit();
             this.panelControl9.ResumeLayout(false);
             this.panelControl9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyRequest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
@@ -2046,11 +2048,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl32;
         private DevExpress.XtraEditors.LabelControl labelControl30;
         private DevExpress.XtraEditors.LabelControl labelControl36;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gridMyRequest;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn Office;
+        private DevExpress.XtraGrid.Columns.GridColumn Status;
+        private DevExpress.XtraGrid.Columns.GridColumn Remarks;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.SimpleButton btnLogout;
     }

@@ -61,6 +61,34 @@ namespace SchoolClearanceSystem
         private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyRequest;
+
+            if (Session.CurrentUser != null)
+            {
+                try
+                {
+                    UserRepository db = new UserRepository();
+
+                    // 1. Fetch the raw dynamic list from your database layer
+                    var dynamicDataList = db.GetStudentStatus(Session.CurrentUser.UserID).ToList();
+
+                    // 2. OOP Type Mapping: Explicitly convert dynamic items to ClearanceStatus
+                    List<ClearanceStatus> statusRecords = dynamicDataList.Select(d => new ClearanceStatus
+                    {
+                        // Make sure these property names match what your database/query outputs!
+                        Office = d.Office?.ToString(),
+                        Status = d.Status?.ToString(),
+                        Remarks = d.Remarks?.ToString()
+                    }).ToList();
+
+                    // 3. Bind the cleanly typed list to the grid control
+                    gridMyRequest.DataSource = statusRecords;
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show($"Could not synchronize request timeline history: {ex.Message}",
+                        "Sync Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void sbMyClearance_Click_1(object sender, EventArgs e)
