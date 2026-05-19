@@ -549,6 +549,7 @@
             this.panelControl11.Padding = new System.Windows.Forms.Padding(60);
             this.panelControl11.Size = new System.Drawing.Size(1604, 704);
             this.panelControl11.TabIndex = 6;
+            this.panelControl11.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl11_Paint);
             // 
             // simpleButton1
             // 
@@ -1026,7 +1027,6 @@
             this.btnProof.Name = "btnProof";
             this.btnProof.Tag = "btnView";
             this.btnProof.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-        
             // 
             // Status
             // 
@@ -1191,6 +1191,7 @@
             // 
             // pageOfficeReports
             // 
+            this.pageOfficeReports.Caption = "pageOfficeReports";
             this.pageOfficeReports.Controls.Add(this.panelControl20);
             this.pageOfficeReports.Controls.Add(this.panelControl19);
             this.pageOfficeReports.Name = "pageOfficeReports";

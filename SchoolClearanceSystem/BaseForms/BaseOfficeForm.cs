@@ -215,5 +215,10 @@ namespace SchoolClearanceSystem
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void panelControl11_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
