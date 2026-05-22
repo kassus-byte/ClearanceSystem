@@ -6,6 +6,7 @@ using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace SchoolClearanceSystem.Dashboard
 {
@@ -13,7 +14,6 @@ namespace SchoolClearanceSystem.Dashboard
     {
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly SystemRepository _sysRepo = new SystemRepository();
-        // Added the clearance repository instance to handle row dependencies safely
         private readonly ClearanceRepository _clearanceRepo = new ClearanceRepository();
 
         public AdminDashboard()
@@ -21,7 +21,7 @@ namespace SchoolClearanceSystem.Dashboard
             InitializeComponent();
             RefreshData();
             SetupGridBehaviors();
-            LoadCurrentSystemSettings(); // Dynamic Rendering: Build the history log on startup
+            LoadCurrentSystemSettings(); // Connects your visually designed ListBox data feed
         }
 
         private void btnDashboard_Click_1(object sender, EventArgs e) => mainNavigationFrame.SelectedPage = pageDashboard;
@@ -42,6 +42,9 @@ namespace SchoolClearanceSystem.Dashboard
         {
             gcStudents.MouseDown += (s, e) => HandleGridSelection(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => HandleGridSelection(gvOffice, e.Location);
+
+            // Wire up the visual designer row button click listener
+            listBoxAdminHistory.ContextButtonClick += listBoxAdminHistory_ContextButtonClick;
         }
 
         private void HandleGridSelection(GridView view, System.Drawing.Point location)
@@ -165,7 +168,6 @@ namespace SchoolClearanceSystem.Dashboard
         {
             try
             {
-                // Attempt direct removal first to let SQLite evaluate data constraints naturally
                 if (_userRepo.DeleteUser(userId))
                 {
                     XtraMessageBox.Show("Account successfully deleted.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -178,10 +180,8 @@ namespace SchoolClearanceSystem.Dashboard
             }
             catch (Exception ex)
             {
-                // Intercept the database engine's constraint exception gracefully
                 if (ex.Message.Contains("FOREIGN KEY constraint failed") || ex.Message.Contains("19"))
                 {
-                    // Present your personalized user warning and confirm choice window layout instead
                     DialogResult forceDeleteConfirm = XtraMessageBox.Show(
                         "This student has ongoing clearance requests or active files inside the system.\n\n" +
                         "Do you want to proceed with a force deletion? This will automatically clear all of their ongoing requests as well.",
@@ -193,10 +193,8 @@ namespace SchoolClearanceSystem.Dashboard
                     {
                         try
                         {
-                            // 1. Clear relational data row records from the child tracking table
                             _clearanceRepo.DeleteRequestsByStudent(userId);
 
-                            // 2. Retry parent user account identity row deletion safely
                             if (_userRepo.DeleteUser(userId))
                             {
                                 XtraMessageBox.Show("Account and all associated clearance records have been successfully purged.",
@@ -212,7 +210,6 @@ namespace SchoolClearanceSystem.Dashboard
                 }
                 else
                 {
-                    // Catch alternative untracked query runtime exceptions safely
                     XtraMessageBox.Show($"Database tracking dependency error: {ex.Message}", "Execution Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -224,29 +221,30 @@ namespace SchoolClearanceSystem.Dashboard
             RefreshData();
         }
 
-        // ── Chronological Clearance History Rendering Engine ─────────────────────────
+        // ── Chronological Clearance History UI Designer Binding Engine ─────────────────
 
         /// <summary>
-        /// Reads all historical configuration blocks from the database layer and builds UI cards dynamically.
+        /// Feeds database rows into the ListBoxControl layout template designed in the UI.
         /// </summary>
         private void LoadCurrentSystemSettings()
         {
             try
             {
-                // Clear any existing dynamically generated controls inside your layout panel container
-                flowPeriodHistory.Controls.Clear();
-
+                // Pull raw system settings blocks from repository layer
                 var historicalPeriods = _sysRepo.GetAllPeriods();
 
-                foreach (var period in historicalPeriods)
+                // Map database entries into your unified UI View Model data collection format
+                var viewData = historicalPeriods.Select(p => new ClearanceHistoryViewModel
                 {
-                    // Explicitly cast PeriodID to (int) to prevent type deduction crashes
-                    int safePeriodId = Convert.ToInt32(period.PeriodID);
+                    // Matches element1 data column assignment property bound via UI designer
+                    PeriodName = $"ℹ️  {p.AcademicYear} {p.Semester}",
 
-                    // Call our UI rendering engine factory method with matching argument structures
-                    var periodCard = CreatePeriodCardControl(safePeriodId, period.Semester?.ToString(), period.AcademicYear?.ToString(), period.IsActive == 1);
-                    flowPeriodHistory.Controls.Add(periodCard);
-                }
+                    // Matches element3 data column assignment property bound via UI designer
+                    StatusText = p.IsActive == 1 ? "Clearance Processing Active" : "Clearance Done"
+                }).ToList();
+
+                // Set DataSource. The ListBoxControl displays the UI designer layout instantly!
+                listBoxAdminHistory.DataSource = viewData;
             }
             catch (Exception ex)
             {
@@ -255,47 +253,22 @@ namespace SchoolClearanceSystem.Dashboard
         }
 
         /// <summary>
-        /// UI Control Builder Factory: Programmatically constructs custom, isolated display blocks matching your prototype image layout
+        /// Captures click choices made directly inside the dynamic list view template buttons.
         /// </summary>
-        private PanelControl CreatePeriodCardControl(int periodId, string semester, string schoolYear, bool isActive)
+        private void listBoxAdminHistory_ContextButtonClick(object sender, DevExpress.Utils.ContextItemClickEventArgs e)
         {
-            // 1. Setup Base Card Control Panel Box Container Frame
-            PanelControl card = new PanelControl();
-            card.Size = new System.Drawing.Size(940, 60);
-            card.Margin = new Padding(0, 5, 0, 5);
-            card.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            // FIX: Checked against e.Item.Name ("element2") and e.Item.Caption ("View")
+            if (e.Item.Name == "element2" || e.Item.Name == "View")
+            {
+                // Safely unbox the explicit data row bounded to the item template card layout container
+                if (e.DataItem is ClearanceHistoryViewModel boundCardData)
+                {
+                    XtraMessageBox.Show($"Loading transaction records and tracking dashboard items for sequence context: {boundCardData.PeriodName}",
+                        "Context Pipeline Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // 2. Add Informational context label
-            LabelControl lblInfo = new LabelControl();
-            lblInfo.Text = $"ℹ️  {schoolYear} {semester}";
-            lblInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
-            lblInfo.Location = new System.Drawing.Point(20, 20);
-
-            // 3. Setup Actions Trigger Button Controls
-            SimpleButton btnAction = new SimpleButton();
-            btnAction.Text = "View";
-            btnAction.Size = new System.Drawing.Size(90, 30);
-            btnAction.Location = new System.Drawing.Point(260, 15);
-            btnAction.StyleController = null;
-            btnAction.Appearance.BackColor = System.Drawing.Color.Navy;
-            btnAction.Appearance.ForeColor = System.Drawing.Color.White;
-            btnAction.Click += (s, e) => {
-                XtraMessageBox.Show($"Loading student transactional metrics for historical cycle registry ID: {periodId}", "Context Loaded");
-            };
-
-            // 4. State Message Flag badge
-            LabelControl lblStatusBadge = new LabelControl();
-            lblStatusBadge.Text = isActive ? "Clearance Processing Active" : "Clearance Done";
-            lblStatusBadge.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            lblStatusBadge.ForeColor = isActive ? System.Drawing.Color.OrangeRed : System.Drawing.Color.ForestGreen;
-            lblStatusBadge.Location = new System.Drawing.Point(550, 18);
-
-            // Assemble UI Component Tree safely
-            card.Controls.Add(lblInfo);
-            card.Controls.Add(btnAction);
-            card.Controls.Add(lblStatusBadge);
-
-            return card;
+                    // Your admin target management forms logic goes here
+                }
+            }
         }
 
         /// <summary>
@@ -311,7 +284,6 @@ namespace SchoolClearanceSystem.Dashboard
 
             try
             {
-                // Appends a brand new row entry tracking block into the database architecture
                 bool inserted = _sysRepo.CreateNewPeriod(comboSemester.Text, comboSchoolYear.Text);
 
                 if (inserted)
@@ -319,7 +291,7 @@ namespace SchoolClearanceSystem.Dashboard
                     XtraMessageBox.Show($"Successfully launched and archived a new processing target period context!",
                         "System State Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Re-render layout panels straight from the DB state record updates seamlessly
+                    // Re-sync template list values seamlessly from database record additions
                     LoadCurrentSystemSettings();
                 }
             }

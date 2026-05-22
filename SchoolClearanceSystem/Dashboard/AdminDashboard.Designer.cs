@@ -69,6 +69,16 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject62 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject63 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject64 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition5 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition6 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement5 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement6 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition5 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition6 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.btnDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -153,12 +163,7 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.pageClearanceSystem = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.panelrequirements = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
-            this.btnViewTreasurerPhoto = new DevExpress.XtraEditors.SimpleButton();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.listBoxAdminHistory = new DevExpress.XtraEditors.ListBoxControl();
             this.pnlClearanceForm = new DevExpress.XtraEditors.PanelControl();
             this.btnSaveSettings = new DevExpress.XtraEditors.SimpleButton();
             this.comboSchoolYear = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -167,10 +172,8 @@
             this.comboSemester = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtSchoolYear = new DevExpress.XtraEditors.LabelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.tsClearance = new DevExpress.XtraEditors.ToggleSwitch();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
-            this.flowPeriodHistory = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -229,16 +232,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
             this.panelControl14.SuspendLayout();
             this.pageClearanceSystem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelrequirements)).BeginInit();
-            this.panelrequirements.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxAdminHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboSchoolYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tsClearance.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -1193,91 +1193,57 @@
             // 
             // pageClearanceSystem
             // 
-            this.pageClearanceSystem.Controls.Add(this.flowPeriodHistory);
-            this.pageClearanceSystem.Controls.Add(this.panelrequirements);
+            this.pageClearanceSystem.Controls.Add(this.listBoxAdminHistory);
             this.pageClearanceSystem.Controls.Add(this.pnlClearanceForm);
             this.pageClearanceSystem.Controls.Add(this.panelControl4);
             this.pageClearanceSystem.Name = "pageClearanceSystem";
             this.pageClearanceSystem.Size = new System.Drawing.Size(1606, 1080);
             // 
-            // panelrequirements
+            // listBoxAdminHistory
             // 
-            this.panelrequirements.Appearance.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelrequirements.Appearance.Options.UseBackColor = true;
-            this.panelrequirements.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelrequirements.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelrequirements.ContentImage")));
-            this.panelrequirements.Controls.Add(this.labelControl24);
-            this.panelrequirements.Controls.Add(this.labelControl30);
-            this.panelrequirements.Controls.Add(this.btnViewTreasurerPhoto);
-            this.panelrequirements.Controls.Add(this.pictureEdit1);
-            this.panelrequirements.Controls.Add(this.labelControl22);
-            this.panelrequirements.Location = new System.Drawing.Point(23, 313);
-            this.panelrequirements.Name = "panelrequirements";
-            this.panelrequirements.Padding = new System.Windows.Forms.Padding(14, 75, 21, 0);
-            this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
-            this.panelrequirements.TabIndex = 13;
-            // 
-            // labelControl24
-            // 
-            this.labelControl24.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl24.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl24.Appearance.Options.UseFont = true;
-            this.labelControl24.Appearance.Options.UseForeColor = true;
-            this.labelControl24.Location = new System.Drawing.Point(651, 113);
-            this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(120, 21);
-            this.labelControl24.TabIndex = 8;
-            this.labelControl24.Text = "Clearance Done";
-            // 
-            // labelControl30
-            // 
-            this.labelControl30.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl30.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl30.Appearance.Options.UseFont = true;
-            this.labelControl30.Appearance.Options.UseForeColor = true;
-            this.labelControl30.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.labelControl30.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelControl30.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl30.ImageOptions.SvgImage")));
-            this.labelControl30.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
-            this.labelControl30.Location = new System.Drawing.Point(31, 108);
-            this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(180, 27);
-            this.labelControl30.TabIndex = 7;
-            this.labelControl30.Text = " 2024-2025 2nd Semester";
-            // 
-            // btnViewTreasurerPhoto
-            // 
-            this.btnViewTreasurerPhoto.Appearance.BackColor = System.Drawing.Color.Navy;
-            this.btnViewTreasurerPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnViewTreasurerPhoto.Appearance.Options.UseBackColor = true;
-            this.btnViewTreasurerPhoto.Appearance.Options.UseFont = true;
-            this.btnViewTreasurerPhoto.Location = new System.Drawing.Point(217, 106);
-            this.btnViewTreasurerPhoto.Name = "btnViewTreasurerPhoto";
-            this.btnViewTreasurerPhoto.Size = new System.Drawing.Size(122, 30);
-            this.btnViewTreasurerPhoto.TabIndex = 5;
-            this.btnViewTreasurerPhoto.Text = "View";
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(31, 16);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(72, 57);
-            this.pictureEdit1.TabIndex = 0;
-            // 
-            // labelControl22
-            // 
-            this.labelControl22.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl22.Appearance.Options.UseFont = true;
-            this.labelControl22.Location = new System.Drawing.Point(112, 25);
-            this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(128, 21);
-            this.labelControl22.TabIndex = 1;
-            this.labelControl22.Text = "Clearance System";
+            this.listBoxAdminHistory.ItemHeight = 120;
+            this.listBoxAdminHistory.Location = new System.Drawing.Point(23, 334);
+            this.listBoxAdminHistory.Name = "listBoxAdminHistory";
+            this.listBoxAdminHistory.Size = new System.Drawing.Size(1571, 460);
+            this.listBoxAdminHistory.TabIndex = 14;
+            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
+            itemTemplateBase2.Columns.Add(tableColumnDefinition5);
+            itemTemplateBase2.Columns.Add(tableColumnDefinition6);
+            templatedItemElement4.FieldName = "PeriodName";
+            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement4.RowIndex = 1;
+            templatedItemElement4.Text = "PeriodName";
+            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.Appearance.Pressed.BackColor = System.Drawing.Color.Teal;
+            templatedItemElement5.Appearance.Pressed.ForeColor = System.Drawing.Color.White;
+            templatedItemElement5.Appearance.Pressed.Options.UseBackColor = true;
+            templatedItemElement5.Appearance.Pressed.Options.UseForeColor = true;
+            templatedItemElement5.ColumnIndex = 1;
+            templatedItemElement5.FieldName = null;
+            templatedItemElement5.Height = 28;
+            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement5.Name = "View";
+            templatedItemElement5.RowIndex = 1;
+            templatedItemElement5.Text = "View";
+            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement5.Width = 80;
+            templatedItemElement6.ColumnIndex = 2;
+            templatedItemElement6.FieldName = "StatusText";
+            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement6.RowIndex = 1;
+            templatedItemElement6.Text = "StatusText";
+            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
+            itemTemplateBase2.Elements.Add(templatedItemElement4);
+            itemTemplateBase2.Elements.Add(templatedItemElement5);
+            itemTemplateBase2.Elements.Add(templatedItemElement6);
+            itemTemplateBase2.Name = "AdminHistoryCardTemplate";
+            itemTemplateBase2.Rows.Add(tableRowDefinition4);
+            itemTemplateBase2.Rows.Add(tableRowDefinition5);
+            itemTemplateBase2.Rows.Add(tableRowDefinition6);
+            this.listBoxAdminHistory.Templates.Add(itemTemplateBase2);
             // 
             // pnlClearanceForm
             // 
@@ -1382,24 +1348,12 @@
             this.panelControl4.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panelControl4.Appearance.Options.UseBackColor = true;
             this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl4.Controls.Add(this.tsClearance);
             this.panelControl4.Controls.Add(this.txtSubHeaderRC);
             this.panelControl4.Controls.Add(this.txtHeaderRC);
             this.panelControl4.Location = new System.Drawing.Point(23, 0);
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(1571, 87);
             this.panelControl4.TabIndex = 1;
-            // 
-            // tsClearance
-            // 
-            this.tsClearance.Location = new System.Drawing.Point(535, 32);
-            this.tsClearance.Name = "tsClearance";
-            this.tsClearance.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.tsClearance.Properties.Appearance.Options.UseFont = true;
-            this.tsClearance.Properties.OffText = "Off";
-            this.tsClearance.Properties.OnText = "On";
-            this.tsClearance.Size = new System.Drawing.Size(193, 24);
-            this.tsClearance.TabIndex = 6;
             // 
             // txtSubHeaderRC
             // 
@@ -1424,14 +1378,6 @@
             this.txtHeaderRC.Size = new System.Drawing.Size(237, 37);
             this.txtHeaderRC.TabIndex = 1;
             this.txtHeaderRC.Text = "Clearance Settings";
-            // 
-            // flowPeriodHistory
-            // 
-            this.flowPeriodHistory.Location = new System.Drawing.Point(23, 521);
-            this.flowPeriodHistory.Name = "flowPeriodHistory";
-            this.flowPeriodHistory.Size = new System.Drawing.Size(1571, 350);
-            this.flowPeriodHistory.TabIndex = 9;
-            
             // 
             // AdminDashboard
             // 
@@ -1510,10 +1456,7 @@
             this.panelControl14.ResumeLayout(false);
             this.panelControl14.PerformLayout();
             this.pageClearanceSystem.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelrequirements)).EndInit();
-            this.panelrequirements.ResumeLayout(false);
-            this.panelrequirements.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxAdminHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
             this.pnlClearanceForm.PerformLayout();
@@ -1522,7 +1465,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tsClearance.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1622,14 +1564,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl21;
         private DevExpress.XtraEditors.ComboBoxEdit comboSemester;
         private DevExpress.XtraEditors.LabelControl txtSchoolYear;
-        private DevExpress.XtraEditors.PanelControl panelrequirements;
-        private DevExpress.XtraEditors.SimpleButton btnViewTreasurerPhoto;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl22;
-        private DevExpress.XtraEditors.LabelControl labelControl30;
-        private DevExpress.XtraEditors.LabelControl labelControl24;
-        private DevExpress.XtraEditors.ToggleSwitch tsClearance;
         private DevExpress.XtraEditors.SimpleButton btnSaveSettings;
-        private System.Windows.Forms.FlowLayoutPanel flowPeriodHistory;
+        private DevExpress.XtraEditors.ListBoxControl listBoxAdminHistory;
     }
 }
