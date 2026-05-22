@@ -55,9 +55,6 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        /// <summary>
-        /// FIXED: Separates Student records from Administrative Staff roles cleanly.
-        /// </summary>
         public IEnumerable<User> GetUsersByRole(string role, bool statusFlag = true)
         {
             using (var db = dbManager.GetConnection())
@@ -69,16 +66,12 @@ namespace SchoolClearanceSystem.Repository
                 }
                 else
                 {
-                    // FIXED: Returns all users who are NOT students (Admin, Treasurer, Technical Office, etc.)
                     string sql = "SELECT * FROM Users WHERE Role != 'Student'";
                     return db.Query<User>(sql).ToList();
                 }
             }
         }
 
-        /// <summary>
-        /// ADDED: Deletes a user completely from the database using their unique UserID.
-        /// </summary>
         public bool DeleteUser(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -88,6 +81,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
+        // RESTORED: Standard parameter fallback match signatures
         public IEnumerable<dynamic> GetStudentStatus(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -105,6 +99,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
+        // RESTORED: Standard parameter fallback match signatures
         public int GetClearedCount(string userId)
         {
             using (var db = dbManager.GetConnection())

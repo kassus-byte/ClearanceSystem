@@ -98,10 +98,10 @@
             this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.pnlClearanceForm = new DevExpress.XtraEditors.PanelControl();
-            this.comboSchoolYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtCurrentSchoolYear = new DevExpress.XtraEditors.TextEdit();
+            this.txtSemester = new DevExpress.XtraEditors.TextEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.comboSemester = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtSchoolYear = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
@@ -204,8 +204,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboSchoolYear.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentSchoolYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             this.pageMyRequest.SuspendLayout();
@@ -1188,10 +1188,10 @@
             this.pnlClearanceForm.Appearance.Options.UseBackColor = true;
             this.pnlClearanceForm.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlClearanceForm.ContentImage = ((System.Drawing.Image)(resources.GetObject("pnlClearanceForm.ContentImage")));
-            this.pnlClearanceForm.Controls.Add(this.comboSchoolYear);
+            this.pnlClearanceForm.Controls.Add(this.txtCurrentSchoolYear);
+            this.pnlClearanceForm.Controls.Add(this.txtSemester);
             this.pnlClearanceForm.Controls.Add(this.labelControl13);
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
-            this.pnlClearanceForm.Controls.Add(this.comboSemester);
             this.pnlClearanceForm.Controls.Add(this.txtSchoolYear);
             this.pnlClearanceForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlClearanceForm.Location = new System.Drawing.Point(0, 87);
@@ -1200,20 +1200,19 @@
             this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
             this.pnlClearanceForm.TabIndex = 11;
             // 
-            // comboSchoolYear
+            // txtCurrentSchoolYear
             // 
-            this.comboSchoolYear.Location = new System.Drawing.Point(797, 109);
-            this.comboSchoolYear.Name = "comboSchoolYear";
-            this.comboSchoolYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboSchoolYear.Properties.Appearance.Options.UseFont = true;
-            this.comboSchoolYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboSchoolYear.Properties.Items.AddRange(new object[] {
-            "2024-2025",
-            "2025-2026",
-            "2026-2027"});
-            this.comboSchoolYear.Size = new System.Drawing.Size(721, 32);
-            this.comboSchoolYear.TabIndex = 7;
+            this.txtCurrentSchoolYear.Location = new System.Drawing.Point(797, 107);
+            this.txtCurrentSchoolYear.Name = "txtCurrentSchoolYear";
+            this.txtCurrentSchoolYear.Size = new System.Drawing.Size(721, 28);
+            this.txtCurrentSchoolYear.TabIndex = 9;
+            // 
+            // txtSemester
+            // 
+            this.txtSemester.Location = new System.Drawing.Point(30, 109);
+            this.txtSemester.Name = "txtSemester";
+            this.txtSemester.Size = new System.Drawing.Size(721, 28);
+            this.txtSemester.TabIndex = 8;
             // 
             // labelControl13
             // 
@@ -1238,20 +1237,6 @@
             this.labelControl9.Size = new System.Drawing.Size(56, 17);
             this.labelControl9.TabIndex = 3;
             this.labelControl9.Text = "Semester";
-            // 
-            // comboSemester
-            // 
-            this.comboSemester.Location = new System.Drawing.Point(32, 109);
-            this.comboSemester.Name = "comboSemester";
-            this.comboSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboSemester.Properties.Appearance.Options.UseFont = true;
-            this.comboSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboSemester.Properties.Items.AddRange(new object[] {
-            "1st Semester",
-            "2nd Semester"});
-            this.comboSemester.Size = new System.Drawing.Size(721, 32);
-            this.comboSemester.TabIndex = 6;
             // 
             // txtSchoolYear
             // 
@@ -1329,6 +1314,7 @@
             // 
             // pageMyRequest
             // 
+            this.pageMyRequest.Caption = "pageMyRequest";
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl7);
@@ -1891,8 +1877,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
             this.pnlClearanceForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboSchoolYear.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentSchoolYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSemester.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -1982,7 +1968,6 @@
         private DevExpress.XtraEditors.LabelControl txtSchoolYear;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.SimpleButton btnSubmitRequest;
-        private DevExpress.XtraEditors.ComboBoxEdit comboSemester;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.PanelControl panelControl5;
@@ -2036,7 +2021,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.LabelControl labelControl28;
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboSchoolYear;
         private DevExpress.XtraEditors.PanelControl panelUpload3;
         private DevExpress.XtraEditors.LabelControl labelControl31;
         private DevExpress.XtraEditors.PictureEdit pictureEdit3;
@@ -2055,6 +2039,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn Remarks;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.SimpleButton btnLogout;
+        private DevExpress.XtraEditors.TextEdit txtSemester;
+        private DevExpress.XtraEditors.TextEdit txtCurrentSchoolYear;
     }
 }
 
