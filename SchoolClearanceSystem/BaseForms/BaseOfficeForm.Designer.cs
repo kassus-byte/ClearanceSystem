@@ -29,26 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseOfficeForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -93,12 +88,12 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeClearanceRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOnHoldFilter = new DevExpress.XtraEditors.SimpleButton();
+            this.btnApprovedFilter = new DevExpress.XtraEditors.SimpleButton();
+            this.btnPendingFilter = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAllFilter = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
-            this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
+            this.txtSearch = new DevExpress.XtraEditors.SearchControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
@@ -187,7 +182,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             this.pageOfficeClearanceRequest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
             this.panelControl15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).BeginInit();
@@ -525,7 +520,6 @@
             // 
             // pageOfficeDashboard
             // 
-            this.pageOfficeDashboard.Caption = "pageOfficeDashboard";
             this.pageOfficeDashboard.Controls.Add(this.panelControl11);
             this.pageOfficeDashboard.Controls.Add(this.panelControl9);
             this.pageOfficeDashboard.Controls.Add(this.panelControl5);
@@ -543,11 +537,11 @@
             this.panelControl11.Controls.Add(this.simpleButton1);
             this.panelControl11.Controls.Add(this.labelControl4);
             this.panelControl11.Controls.Add(this.gridControl1);
-            this.panelControl11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl11.Location = new System.Drawing.Point(0, 376);
             this.panelControl11.Name = "panelControl11";
             this.panelControl11.Padding = new System.Windows.Forms.Padding(60);
-            this.panelControl11.Size = new System.Drawing.Size(1604, 704);
+            this.panelControl11.Size = new System.Drawing.Size(1604, 636);
             this.panelControl11.TabIndex = 6;
             this.panelControl11.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl11_Paint);
             // 
@@ -811,12 +805,12 @@
             // pageOfficeClearanceRequest
             // 
             this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton5);
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton4);
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton3);
-            this.pageOfficeClearanceRequest.Controls.Add(this.simpleButton2);
+            this.pageOfficeClearanceRequest.Controls.Add(this.btnOnHoldFilter);
+            this.pageOfficeClearanceRequest.Controls.Add(this.btnApprovedFilter);
+            this.pageOfficeClearanceRequest.Controls.Add(this.btnPendingFilter);
+            this.pageOfficeClearanceRequest.Controls.Add(this.btnAllFilter);
             this.pageOfficeClearanceRequest.Controls.Add(this.btnSearch);
-            this.pageOfficeClearanceRequest.Controls.Add(this.searchControl1);
+            this.pageOfficeClearanceRequest.Controls.Add(this.txtSearch);
             this.pageOfficeClearanceRequest.Controls.Add(this.labelControl11);
             this.pageOfficeClearanceRequest.Controls.Add(this.labelControl10);
             this.pageOfficeClearanceRequest.Controls.Add(this.panelControl15);
@@ -826,53 +820,53 @@
             this.pageOfficeClearanceRequest.Name = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Size = new System.Drawing.Size(1604, 1080);
             // 
-            // simpleButton5
+            // btnOnHoldFilter
             // 
-            this.simpleButton5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton5.Appearance.Options.UseBackColor = true;
-            this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(486, 193);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton5.TabIndex = 9;
-            this.simpleButton5.Text = "On Hold";
+            this.btnOnHoldFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnOnHoldFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnOnHoldFilter.Appearance.Options.UseBackColor = true;
+            this.btnOnHoldFilter.Appearance.Options.UseFont = true;
+            this.btnOnHoldFilter.Location = new System.Drawing.Point(486, 193);
+            this.btnOnHoldFilter.Name = "btnOnHoldFilter";
+            this.btnOnHoldFilter.Size = new System.Drawing.Size(125, 33);
+            this.btnOnHoldFilter.TabIndex = 9;
+            this.btnOnHoldFilter.Text = "On Hold";
             // 
-            // simpleButton4
+            // btnApprovedFilter
             // 
-            this.simpleButton4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton4.Appearance.Options.UseBackColor = true;
-            this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(332, 193);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton4.TabIndex = 8;
-            this.simpleButton4.Text = "Approved";
+            this.btnApprovedFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnApprovedFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnApprovedFilter.Appearance.Options.UseBackColor = true;
+            this.btnApprovedFilter.Appearance.Options.UseFont = true;
+            this.btnApprovedFilter.Location = new System.Drawing.Point(332, 193);
+            this.btnApprovedFilter.Name = "btnApprovedFilter";
+            this.btnApprovedFilter.Size = new System.Drawing.Size(125, 33);
+            this.btnApprovedFilter.TabIndex = 8;
+            this.btnApprovedFilter.Text = "Approved";
             // 
-            // simpleButton3
+            // btnPendingFilter
             // 
-            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton3.Appearance.Options.UseBackColor = true;
-            this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(179, 193);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton3.TabIndex = 7;
-            this.simpleButton3.Text = "Pending";
+            this.btnPendingFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnPendingFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnPendingFilter.Appearance.Options.UseBackColor = true;
+            this.btnPendingFilter.Appearance.Options.UseFont = true;
+            this.btnPendingFilter.Location = new System.Drawing.Point(179, 193);
+            this.btnPendingFilter.Name = "btnPendingFilter";
+            this.btnPendingFilter.Size = new System.Drawing.Size(125, 33);
+            this.btnPendingFilter.TabIndex = 7;
+            this.btnPendingFilter.Text = "Pending";
             // 
-            // simpleButton2
+            // btnAllFilter
             // 
-            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton2.Appearance.Options.UseBackColor = true;
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(27, 193);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(125, 33);
-            this.simpleButton2.TabIndex = 6;
-            this.simpleButton2.Text = "All";
+            this.btnAllFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnAllFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnAllFilter.Appearance.Options.UseBackColor = true;
+            this.btnAllFilter.Appearance.Options.UseFont = true;
+            this.btnAllFilter.Location = new System.Drawing.Point(27, 193);
+            this.btnAllFilter.Name = "btnAllFilter";
+            this.btnAllFilter.Size = new System.Drawing.Size(125, 33);
+            this.btnAllFilter.TabIndex = 6;
+            this.btnAllFilter.Text = "All";
             // 
             // btnSearch
             // 
@@ -888,20 +882,20 @@
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             // 
-            // searchControl1
+            // txtSearch
             // 
-            this.searchControl1.EditValue = "Search by Name, ID, or Course..";
-            this.searchControl1.Location = new System.Drawing.Point(27, 123);
-            this.searchControl1.Name = "searchControl1";
-            this.searchControl1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.searchControl1.Properties.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.searchControl1.Properties.Appearance.Options.UseFont = true;
-            this.searchControl1.Properties.Appearance.Options.UseForeColor = true;
-            this.searchControl1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtSearch.EditValue = "Search by Name, ID, or Course..";
+            this.txtSearch.Location = new System.Drawing.Point(27, 123);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtSearch.Properties.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Properties.Appearance.Options.UseFont = true;
+            this.txtSearch.Properties.Appearance.Options.UseForeColor = true;
+            this.txtSearch.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.searchControl1.Size = new System.Drawing.Size(1380, 32);
-            this.searchControl1.TabIndex = 4;
+            this.txtSearch.Size = new System.Drawing.Size(1380, 32);
+            this.txtSearch.TabIndex = 4;
             // 
             // labelControl11
             // 
@@ -1021,12 +1015,13 @@
             // btnProof
             // 
             this.btnProof.AutoHeight = false;
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
             this.btnProof.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnProof.Name = "btnProof";
             this.btnProof.Tag = "btnView";
             this.btnProof.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnProof.Click += new System.EventHandler(this.btnProof_Click);
             // 
             // Status
             // 
@@ -1048,13 +1043,11 @@
             // btnAction
             // 
             this.btnAction.AutoHeight = false;
-            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
-            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
-            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
+            editorButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions5.SvgImage")));
+            editorButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions6.SvgImage")));
             this.btnAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", "btnPending", null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnAction.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAction.ContextImageOptions.SvgImage")));
             this.btnAction.Name = "btnAction";
             this.btnAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1475,7 +1468,7 @@
             this.panelControl4.PerformLayout();
             this.pageOfficeClearanceRequest.ResumeLayout(false);
             this.pageOfficeClearanceRequest.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
             this.panelControl15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcBaseOfficeForm)).EndInit();
@@ -1562,11 +1555,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
-        private DevExpress.XtraEditors.SearchControl searchControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SearchControl txtSearch;
+        private DevExpress.XtraEditors.SimpleButton btnAllFilter;
+        private DevExpress.XtraEditors.SimpleButton btnApprovedFilter;
+        private DevExpress.XtraEditors.SimpleButton btnPendingFilter;
+        private DevExpress.XtraEditors.SimpleButton btnOnHoldFilter;
         private DevExpress.XtraGrid.GridControl gcBaseOfficeForm;
         private DevExpress.XtraGrid.Views.Grid.GridView gvBaseOfficeForm;
         private DevExpress.XtraEditors.PanelControl panelControl18;
