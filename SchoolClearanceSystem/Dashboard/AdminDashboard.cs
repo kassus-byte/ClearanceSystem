@@ -13,6 +13,8 @@ namespace SchoolClearanceSystem.Dashboard
     {
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly SystemRepository _sysRepo = new SystemRepository();
+        // Added the clearance repository instance to handle row dependencies safely
+        private readonly ClearanceRepository _clearanceRepo = new ClearanceRepository();
 
         public AdminDashboard()
         {
@@ -163,6 +165,7 @@ namespace SchoolClearanceSystem.Dashboard
         {
             try
             {
+                // Attempt direct removal first to let SQLite evaluate data constraints naturally
                 if (_userRepo.DeleteUser(userId))
                 {
                     XtraMessageBox.Show("Account successfully deleted.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -175,7 +178,43 @@ namespace SchoolClearanceSystem.Dashboard
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Database tracking dependency error: {ex.Message}", "Execution Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Intercept the database engine's constraint exception gracefully
+                if (ex.Message.Contains("FOREIGN KEY constraint failed") || ex.Message.Contains("19"))
+                {
+                    // Present your personalized user warning and confirm choice window layout instead
+                    DialogResult forceDeleteConfirm = XtraMessageBox.Show(
+                        "This student has ongoing clearance requests or active files inside the system.\n\n" +
+                        "Do you want to proceed with a force deletion? This will automatically clear all of their ongoing requests as well.",
+                        "Student Has Ongoing Requests",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (forceDeleteConfirm == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            // 1. Clear relational data row records from the child tracking table
+                            _clearanceRepo.DeleteRequestsByStudent(userId);
+
+                            // 2. Retry parent user account identity row deletion safely
+                            if (_userRepo.DeleteUser(userId))
+                            {
+                                XtraMessageBox.Show("Account and all associated clearance records have been successfully purged.",
+                                                    "Force Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                RefreshData();
+                            }
+                        }
+                        catch (Exception nestedEx)
+                        {
+                            XtraMessageBox.Show($"Force delete operation failed: {nestedEx.Message}", "Execution Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    // Catch alternative untracked query runtime exceptions safely
+                    XtraMessageBox.Show($"Database tracking dependency error: {ex.Message}", "Execution Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

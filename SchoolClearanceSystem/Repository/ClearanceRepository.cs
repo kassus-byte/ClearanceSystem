@@ -145,5 +145,19 @@ namespace SchoolClearanceSystem.Repository
                 }
             }
         }
+
+        /// <summary>
+        /// NEW DEPENDENCY MANAGEMENT ENGINE METHOD:
+        /// Drops all dependent records matching a specific target user constraint key from the transactional tracking sheet.
+        /// Prevents SQLite Foreign Key verification faults during profile deletion workflows.
+        /// </summary>
+        public bool DeleteRequestsByStudent(string studentId)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = "DELETE FROM ClearanceRequests WHERE StudentID = @id";
+                return db.Execute(sql, new { id = studentId }) >= 0;
+            }
+        }
     }
 }
