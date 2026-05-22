@@ -543,7 +543,7 @@
             this.panelControl11.Padding = new System.Windows.Forms.Padding(60);
             this.panelControl11.Size = new System.Drawing.Size(1604, 636);
             this.panelControl11.TabIndex = 6;
-            this.panelControl11.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl11_Paint);
+            
             // 
             // simpleButton1
             // 
