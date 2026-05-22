@@ -17,7 +17,6 @@ namespace SchoolClearanceSystem
         // OOP CONCEPT: ENCAPSULATION
         // Mapped runtime state container used as the primary lookup parameter for data filtering.
         // Inheriting child forms assign their department code to this property inside their constructors.
-
         private string currentStatusFilter = "All";
         public string OfficeName { get; set; } = "Unknown Office";
 
@@ -25,21 +24,39 @@ namespace SchoolClearanceSystem
         {
             InitializeComponent();
 
-            // Wire form lifecycle initializations securely
-            this.Load += BaseOfficeForm_Load;
-            btnAllFilter.Click += (s, e) => SetStatusFilter("All");
-            btnPendingFilter.Click += (s, e) => SetStatusFilter("Pending");
-            btnApprovedFilter.Click += (s, e) => SetStatusFilter("Approved");
-            btnOnHoldFilter.Click += (s, e) => SetStatusFilter("On Hold");
-
-            // Wire text change queries
+            // Wire text change queries immediately upon constructor registration
             txtSearch.TextChanged += TxtSearch_TextChanged;
         }
 
-        private void BaseOfficeForm_Load(object sender, EventArgs e)
+        /// <summary>
+        /// LIFECYCLE SAFE REFACTOR: Replacing the 'this.Load' event subscription with a native 
+        /// OnLoad override. This prevents race conditions where the database executes before 
+        /// the child forms finish injecting their initialization strings.
+        /// </summary>
+        protected override void OnLoad(EventArgs e)
         {
+            // 1. DESIGNER GUARD: Prevents the Visual Studio Form Designer from executing database query 
+            // logic during UI design workflows, completely resolving type initialization runtime failure exceptions.
+            if (this.DesignMode)
+            {
+                base.OnLoad(e);
+                return;
+            }
+
+            // 2. Wire up the functional filter state routines safely at runtime execution pass
+            btnAllFilter.Click += (s, ev) => SetStatusFilter("All");
+            btnPendingFilter.Click += (s, ev) => SetStatusFilter("Pending");
+            btnApprovedFilter.Click += (s, ev) => SetStatusFilter("Approved");
+            btnOnHoldFilter.Click += (s, ev) => SetStatusFilter("On Hold");
+
+            // 3. Populate session tracking parameters and update top window string titles
             SetupIdentity();
-            LoadPendingClearanceRequests(); // Populate grid view data immediately on initialization
+
+            // 4. Hydrate presentation components now that 'OfficeName' is guaranteed to be fully assigned
+            LoadPendingClearanceRequests();
+
+            // 5. Commit control handoff safely back to the parent component stack
+            base.OnLoad(e);
         }
 
         /// <summary>
@@ -110,11 +127,6 @@ namespace SchoolClearanceSystem
 
         #endregion
 
-        #region Session De-Authentication Logic
-
-
-        #endregion
-
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
             DialogResult result = XtraMessageBox.Show(
@@ -160,7 +172,7 @@ namespace SchoolClearanceSystem
             view.ActiveFilterString = filterCriteria;
         }
 
-            private void SetStatusFilter(string status)
+        private void SetStatusFilter(string status)
         {
             currentStatusFilter = status;
             ApplyUnifiedFilter();
@@ -170,7 +182,6 @@ namespace SchoolClearanceSystem
         {
             ApplyUnifiedFilter();
         }
-
 
         private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -203,7 +214,6 @@ namespace SchoolClearanceSystem
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // OOP REFACTOR: Keep tracking layout consistent by updating memory properties directly!
-                // This updates BOTH status strings and remarks cells instantly without hiding the active line row.
                 selectedRequest.Status = targetStatus;
                 selectedRequest.Remarks = defaultRemarks;
 
@@ -253,7 +263,6 @@ namespace SchoolClearanceSystem
             try
             {
                 // 3. Dynamic Property Extraction: Read the string holding the raw file path
-                // Note: If your database table field or query alias uses something like "ProofFilePath", change "Proof" to match it!
                 string proofPath = selectedRequest.Proof?.ToString();
 
                 // 4. Encapsulation / Delegation: Route the file location to your existing OS execution helper

@@ -128,8 +128,12 @@
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.pageMyClearance = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gcRecords = new DevExpress.XtraEditors.GroupControl();
-            this.gridcontrolClearanceRecords = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
+            this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.pnlClearanceCopy = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
@@ -222,8 +226,8 @@
             this.pageMyClearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).BeginInit();
             this.gcRecords.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridcontrolClearanceRecords)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).BeginInit();
             this.pnlClearanceCopy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -1517,7 +1521,6 @@
             // 
             // pageMyClearance
             // 
-            this.pageMyClearance.Caption = "pageMyClearance";
             this.pageMyClearance.Controls.Add(this.gcRecords);
             this.pageMyClearance.Controls.Add(this.pnlClearanceCopy);
             this.pageMyClearance.Controls.Add(this.panelControl5);
@@ -1532,29 +1535,65 @@
             this.gcRecords.AppearanceCaption.Options.UseBorderColor = true;
             this.gcRecords.AppearanceCaption.Options.UseFont = true;
             this.gcRecords.AppearanceCaption.Options.UseForeColor = true;
-            this.gcRecords.Controls.Add(this.gridcontrolClearanceRecords);
+            this.gcRecords.Controls.Add(this.gridMyClearance);
             this.gcRecords.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcRecords.Location = new System.Drawing.Point(0, 398);
             this.gcRecords.Name = "gcRecords";
-            this.gcRecords.Size = new System.Drawing.Size(1574, 463);
+            this.gcRecords.Size = new System.Drawing.Size(1574, 330);
             this.gcRecords.TabIndex = 2;
             this.gcRecords.Text = "Clearance Records";
             // 
-            // gridcontrolClearanceRecords
+            // gridMyClearance
             // 
-            this.gridcontrolClearanceRecords.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridcontrolClearanceRecords.Location = new System.Drawing.Point(2, 29);
-            this.gridcontrolClearanceRecords.MainView = this.gridView1;
-            this.gridcontrolClearanceRecords.Name = "gridcontrolClearanceRecords";
-            this.gridcontrolClearanceRecords.Size = new System.Drawing.Size(1570, 430);
-            this.gridcontrolClearanceRecords.TabIndex = 0;
-            this.gridcontrolClearanceRecords.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridMyClearance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridMyClearance.Location = new System.Drawing.Point(2, 29);
+            this.gridMyClearance.MainView = this.tileView1;
+            this.gridMyClearance.Name = "gridMyClearance";
+            this.gridMyClearance.Size = new System.Drawing.Size(1570, 297);
+            this.gridMyClearance.TabIndex = 0;
+            this.gridMyClearance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.tileView1});
             // 
-            // gridView1
+            // tileView1
             // 
-            this.gridView1.GridControl = this.gridcontrolClearanceRecords;
-            this.gridView1.Name = "gridView1";
+            this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7});
+            this.tileView1.GridControl = this.gridMyClearance;
+            this.tileView1.Name = "tileView1";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "PeriodName";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "gridColumn5";
+            this.gridColumn5.FieldName = "StatusText";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "gridColumn6";
+            this.gridColumn6.FieldName = "AcademicYear";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 2;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "gridColumn7";
+            this.gridColumn7.FieldName = "Semester";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 3;
             // 
             // pnlClearanceCopy
             // 
@@ -1899,8 +1938,8 @@
             this.pageMyClearance.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).EndInit();
             this.gcRecords.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridcontrolClearanceRecords)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).EndInit();
             this.pnlClearanceCopy.ResumeLayout(false);
             this.pnlClearanceCopy.PerformLayout();
@@ -1975,8 +2014,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.GroupControl gcRecords;
-        private DevExpress.XtraGrid.GridControl gridcontrolClearanceRecords;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridMyClearance;
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
@@ -2041,6 +2079,11 @@
         private DevExpress.XtraEditors.SimpleButton btnLogout;
         private DevExpress.XtraEditors.TextEdit txtSemester;
         private DevExpress.XtraEditors.TextEdit txtCurrentSchoolYear;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn7;
     }
 }
 

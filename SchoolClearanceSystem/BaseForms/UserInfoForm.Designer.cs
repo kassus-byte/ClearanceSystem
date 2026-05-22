@@ -273,7 +273,7 @@
             "Student",
             "Treasurer",
             "Technical Office",
-            "Dean",
+            "SSG",
             "Admin"});
             this.cbRole.Location = new System.Drawing.Point(26, 276);
             this.cbRole.Name = "cbRole";

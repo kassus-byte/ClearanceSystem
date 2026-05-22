@@ -81,6 +81,9 @@ namespace SchoolClearanceSystem
                     case "Technical Office":
                         nextForm = new TechnicalOffice();
                         break;
+                    case "SSG":
+                        nextForm = new SSGOffice();
+                        break;
                     case "Student":
                         nextForm = new StudentPortal();
                         break;
