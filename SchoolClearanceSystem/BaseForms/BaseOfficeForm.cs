@@ -17,6 +17,8 @@ namespace SchoolClearanceSystem
         // OOP CONCEPT: ENCAPSULATION
         // Mapped runtime state container used as the primary lookup parameter for data filtering.
         // Inheriting child forms assign their department code to this property inside their constructors.
+
+        private string currentStatusFilter = "All";
         public string OfficeName { get; set; } = "Unknown Office";
 
         public BaseOfficeForm()
@@ -25,6 +27,13 @@ namespace SchoolClearanceSystem
 
             // Wire form lifecycle initializations securely
             this.Load += BaseOfficeForm_Load;
+            btnAllFilter.Click += (s, e) => SetStatusFilter("All");
+            btnPendingFilter.Click += (s, e) => SetStatusFilter("Pending");
+            btnApprovedFilter.Click += (s, e) => SetStatusFilter("Approved");
+            btnOnHoldFilter.Click += (s, e) => SetStatusFilter("On Hold");
+
+            // Wire text change queries
+            txtSearch.TextChanged += TxtSearch_TextChanged;
         }
 
         private void BaseOfficeForm_Load(object sender, EventArgs e)
@@ -103,26 +112,6 @@ namespace SchoolClearanceSystem
 
         #region Session De-Authentication Logic
 
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = XtraMessageBox.Show(
-                "Are you sure you want to log out of the system?",
-                "Confirm Sign Out",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                Session.CurrentUser = null;
-
-                Login login = new Login();
-                login.Show();
-
-                this.Hide();
-                this.Close();
-            }
-        }
 
         #endregion
 
@@ -142,6 +131,47 @@ namespace SchoolClearanceSystem
             }
         }
 
+        private void ApplyUnifiedFilter()
+        {
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+            string filterCriteria = string.Empty;
+
+            // 1. Evaluate Row Status Criteria
+            if (currentStatusFilter != "All")
+            {
+                filterCriteria = $"[Status] = '{currentStatusFilter}'";
+            }
+
+            // 2. Evaluate Search Wildcard Values across structural layout indices
+            string searchText = txtSearch.Text.Trim().Replace("'", "''");
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                string searchCriteria = $"([UserID] LIKE '%{searchText}%' OR [FullName] LIKE '%{searchText}%' OR [Program] LIKE '%{searchText}%')";
+
+                if (string.IsNullOrEmpty(filterCriteria))
+                    filterCriteria = searchCriteria;
+                else
+                    filterCriteria += $" AND {searchCriteria}";
+            }
+
+            // 3. Post Filter Strings directly into the active layout engine
+            view.ActiveFilterString = filterCriteria;
+        }
+
+            private void SetStatusFilter(string status)
+        {
+            currentStatusFilter = status;
+            ApplyUnifiedFilter();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            ApplyUnifiedFilter();
+        }
+
+
         private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
@@ -150,28 +180,18 @@ namespace SchoolClearanceSystem
             dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
             if (selectedRequest == null) return;
 
-            // Pull properties matching your SQL SELECT statement Aliases exactly: UserID & FullName
             string studentId = selectedRequest.UserID?.ToString();
-            string targetOffice = this.OfficeName; // "SSG", "Treasurer", or "Technical"
+            string targetOffice = this.OfficeName;
             string targetStatus = string.Empty;
 
             string buttonTag = e.Button.Tag?.ToString();
             switch (buttonTag)
             {
-                case "btnApprove":
-                    targetStatus = "Approved";
-                    break;
-                case "btnPending":
-                    targetStatus = "Pending";
-                    break;
-                case "btnOnHold":
-                    targetStatus = "On Hold";
-                    break;
-                default:
-                    return;
+                case "btnApprove": targetStatus = "Approved"; break;
+                case "btnOnHold": targetStatus = "On Hold"; break;
+                default: return;
             }
 
-            // Call the REAL Dapper database wrapper execution pipeline
             ClearanceRepository repo = new ClearanceRepository();
             string defaultRemarks = $"Processed by {targetOffice} Office";
 
@@ -182,7 +202,12 @@ namespace SchoolClearanceSystem
                 XtraMessageBox.Show($"Clearance status updated to '{targetStatus}' successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LoadPendingClearanceRequests(); // Re-runs GetRequestsForOffice
+                // OOP REFACTOR: Keep tracking layout consistent by updating memory properties directly!
+                // This updates BOTH status strings and remarks cells instantly without hiding the active line row.
+                selectedRequest.Status = targetStatus;
+                selectedRequest.Remarks = defaultRemarks;
+
+                view.RefreshRow(view.FocusedRowHandle);
             }
             else
             {
@@ -190,7 +215,6 @@ namespace SchoolClearanceSystem
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void OpenTargetFile(string targetPath)
         {
@@ -213,6 +237,32 @@ namespace SchoolClearanceSystem
             {
                 XtraMessageBox.Show($"Could not open the file: {ex.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnProof_Click(object sender, EventArgs e)
+        {
+            // 1. Safe Interface Cast: Extract the current active DevExpress GridView view context
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+            // 2. Focused Row Access: Capture the dynamic backend data model for the highlighted row
+            dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
+            if (selectedRequest == null) return;
+
+            try
+            {
+                // 3. Dynamic Property Extraction: Read the string holding the raw file path
+                // Note: If your database table field or query alias uses something like "ProofFilePath", change "Proof" to match it!
+                string proofPath = selectedRequest.Proof?.ToString();
+
+                // 4. Encapsulation / Delegation: Route the file location to your existing OS execution helper
+                OpenTargetFile(proofPath);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"File System Sync Error: Unable to extract file tracking structure. {ex.Message}",
+                    "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
