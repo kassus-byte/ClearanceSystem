@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
-using SchoolClearanceSystem.Models; // 
+using SchoolClearanceSystem.Models;
 
 namespace SchoolClearanceSystem.Repository
 {
@@ -21,6 +21,30 @@ namespace SchoolClearanceSystem.Repository
     public class ClearanceRepository : BaseRepository
     {
         /// <summary>
+        /// NEW METHOD: Verifies if a student record exists matching specific term criteria constraints.
+        /// Prevents duplicate request transactions for the exact same Year and Semester.
+        /// </summary>
+        public bool HasExistingRequest(string studentId, string semester, string academicYear)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                // Queries the tracking table checking for overlapping record instances
+                string sql = @"SELECT COUNT(1) 
+                               FROM ClearanceRequests 
+                               WHERE StudentID = @id AND Semester = @sem AND AcademicYear = @ay";
+
+                int recordCount = db.ExecuteScalar<int>(sql, new
+                {
+                    id = studentId,
+                    sem = semester,
+                    ay = academicYear
+                });
+
+                return recordCount > 0;
+            }
+        }
+
+        /// <summary>
         /// HOW IT WORKS & CONNECTS TO DATABASE MANAGER:
         /// 1. Taps into 'dbManager.GetConnection()' to acquire a live, open database connection channel.
         /// 2. Defines a clean structural INSERT query string mapping data parameters safely including file paths.
@@ -35,7 +59,7 @@ namespace SchoolClearanceSystem.Repository
             {
                 // Added FilePath into the SQL columns and parameters list
                 string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
-                       VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
+                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
                 return db.Execute(sql, new
                 {
@@ -44,7 +68,7 @@ namespace SchoolClearanceSystem.Repository
                     date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     sem = semester,
                     ay = acadYear,
-                    path = filePath // Maps directly to your new TEXT column!
+                    path = filePath // Maps directly to your TEXT column!
                 }) > 0;
             }
         }
@@ -64,7 +88,7 @@ namespace SchoolClearanceSystem.Repository
                                 u.Year AS Year, 
                                 c.Semester AS Semester,
                                 c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
-                                c.Department AS Office,   -
+                                c.Department AS Office,  
                                 '' AS Action,            -- Keeps the ACTION column completely empty for now
                                 c.Remarks AS Remarks,
                                 c.FilePath AS FilePath
@@ -87,8 +111,8 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"UPDATE ClearanceRequests 
-                       SET Status = @status, Remarks = @remarks, DateProcessed = @date 
-                       WHERE StudentID = @id AND Department = @dept";
+                               SET Status = @status, Remarks = @remarks, DateProcessed = @date 
+                               WHERE StudentID = @id AND Department = @dept";
 
                 var parameters = new
                 {
@@ -122,5 +146,4 @@ namespace SchoolClearanceSystem.Repository
             }
         }
     }
-      
-  }
+}

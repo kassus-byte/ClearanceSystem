@@ -22,11 +22,14 @@ namespace SchoolClearanceSystem
         private string ssgUploadedFilePath = string.Empty;
         private string treasurerUploadedFilePath = string.Empty;
 
+        // System Configuration Constants representing explicit term boundaries
+        private const string CurrentSemester = "1st Semester";
+        private const string CurrentAcademicYear = "2025-2026";
+
         public StudentPortal()
         {
             InitializeComponent();
             gridControlOfficeStatus.MainView = gridView2;
-            UpdateDashboard();
 
             // Event-Driven Architecture: Wiring event triggers to localized handler methods
             btnUploadSSGRequirement.Click += btnUploadSSGRequirement_Click;
@@ -43,6 +46,49 @@ namespace SchoolClearanceSystem
             lblFullName.Text = Session.CurrentUser?.FullName ?? "Unknown User";
             lblUserID.Text = Session.CurrentUser?.UserID?.ToString() ?? "0000";
             lblProgram.Text = Session.CurrentUser?.Program ?? "N/A";
+
+            // Run initial UI state checks and verify submission eligibility
+            UpdateDashboard();
+            EvaluateSubmissionEligibility();
+        }
+
+        /// <summary>
+        /// Validates if the student has already submitted a clearance request for the active term.
+        /// If a record exists, permanently lock the submission controls for this term context.
+        /// </summary>
+        private void EvaluateSubmissionEligibility()
+        {
+            if (Session.CurrentUser == null) return;
+
+            try
+            {
+                ClearanceRepository clearanceRepo = new ClearanceRepository();
+                string studentId = Session.CurrentUser.UserID.ToString();
+
+                // Hit database layer to see if this specific student already occupied this Sem/Year slot
+                bool alreadySubmitted = clearanceRepo.HasExistingRequest(studentId, CurrentSemester, CurrentAcademicYear);
+
+                if (alreadySubmitted)
+                {
+                    btnSubmitRequest.Enabled = false;
+                    btnSubmitRequest.Text = "Submit Request";
+
+                    // Disabling file configuration controls prevents unnecessary file state modifications
+                    btnUploadSSGRequirement.Enabled = false;
+                    btnUploadTreasurerRequirement.Enabled = false;
+                }
+                else
+                {
+                    btnSubmitRequest.Enabled = true;
+                    btnSubmitRequest.Text = "Submit Request";
+                    btnUploadSSGRequirement.Enabled = true;
+                    btnUploadTreasurerRequirement.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Eligibility evaluation fallback failed: {ex.Message}");
+            }
         }
 
         #region Navigation and Layout Methods
@@ -74,7 +120,6 @@ namespace SchoolClearanceSystem
                     // 2. OOP Type Mapping: Explicitly convert dynamic items to ClearanceStatus
                     List<ClearanceStatus> statusRecords = dynamicDataList.Select(d => new ClearanceStatus
                     {
-                        // Make sure these property names match what your database/query outputs!
                         Office = d.Office?.ToString(),
                         Status = d.Status?.ToString(),
                         Remarks = d.Remarks?.ToString()
@@ -95,7 +140,6 @@ namespace SchoolClearanceSystem
         {
             naviframeStudent.SelectedPage = pageMyClearance;
         }
-
 
         #endregion
 
@@ -272,28 +316,37 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            string localSemester = "1st Semester";
-            string localAcademicYear = "2025-2026";
+            // Defensive UI: Disable button immediately to prevent rapid double-clicks
+            btnSubmitRequest.Enabled = false;
 
             try
             {
                 ClearanceRepository clearanceRepo = new ClearanceRepository();
                 string studentId = Session.CurrentUser.UserID.ToString();
 
+                // Double Check Eligibility right before hitting the database layer to handle edge race conditions
+                if (clearanceRepo.HasExistingRequest(studentId, CurrentSemester, CurrentAcademicYear))
+                {
+                    XtraMessageBox.Show("System records indicate a clearance request has already been submitted for this term.",
+                        "Duplicate Submission", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    EvaluateSubmissionEligibility();
+                    return;
+                }
+
                 // 2. Commit transaction rows for each office department securely.
                 bool ssgSubmitted = clearanceRepo.SubmitClearanceRequest(
                     studentId,
                     "SSG",
-                    localSemester,
-                    localAcademicYear,
+                    CurrentSemester,
+                    CurrentAcademicYear,
                     ssgUploadedFilePath
                 );
 
                 bool treasurerSubmitted = clearanceRepo.SubmitClearanceRequest(
                     studentId,
                     "Treasurer",
-                    localSemester,
-                    localAcademicYear,
+                    CurrentSemester,
+                    CurrentAcademicYear,
                     treasurerUploadedFilePath
                 );
 
@@ -301,8 +354,8 @@ namespace SchoolClearanceSystem
                 bool technicalSubmitted = clearanceRepo.SubmitClearanceRequest(
                     studentId,
                     "Technical",
-                    localSemester,
-                    localAcademicYear,
+                    CurrentSemester,
+                    CurrentAcademicYear,
                     string.Empty
                 );
 
@@ -317,15 +370,20 @@ namespace SchoolClearanceSystem
                     // Flush path memory tracks upon complete transaction execution
                     ssgUploadedFilePath = string.Empty;
                     treasurerUploadedFilePath = string.Empty;
+
+                    // Finalize UI state changes permanently locking down control inputs for this term
+                    EvaluateSubmissionEligibility();
                 }
                 else
                 {
                     XtraMessageBox.Show("An error occurred during submission. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnSubmitRequest.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show($"Database Submission Failure: {ex.Message}", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSubmitRequest.Enabled = true; // Fallback so they can try again if a connection drops mid-flight
             }
         }
     }
