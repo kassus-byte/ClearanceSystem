@@ -907,7 +907,7 @@
             this.tabPane1.Size = new System.Drawing.Size(1586, 470);
             this.tabPane1.TabIndex = 1;
             this.tabPane1.Text = " Students";
-            this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
+            
             // 
             // tabNavigationPage1
             // 

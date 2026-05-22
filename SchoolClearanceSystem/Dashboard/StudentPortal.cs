@@ -1,24 +1,21 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using System.IO;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
-    /// <summary>
-    /// OOP CONCEPT: INHERITANCE
-    /// StudentPortal inherits base graphical behavior and window control operations from DevExpress.XtraEditors.XtraForm.
-    /// </summary>
-    public partial class StudentPortal : DevExpress.XtraEditors.XtraForm
+    public partial class StudentPortal : XtraForm
     {
         // OOP CONCEPT: ENCAPSULATION
-        // Restricting fields to 'private' ensures external forms cannot alter sensitive session states directly.
         private string ssgUploadedFilePath = string.Empty;
         private string treasurerUploadedFilePath = string.Empty;
         private string currentSemester = "Not Set";
@@ -35,28 +32,19 @@ namespace SchoolClearanceSystem
 
         private void InitializeCustomComponents()
         {
-            // Grid Configuration
             gridControlOfficeStatus.MainView = gridView2;
             gridView2.RowCellStyle += ApplyStatusRowStyles;
 
-            // OOP CONCEPT: POLYMORPHISM (Safe Downcasting via 'is' operator)
-            if (gridMyRequest.MainView is DevExpress.XtraGrid.Views.Grid.GridView gvTimeline)
-            {
-                gvTimeline.RowCellStyle += ApplyStatusRowStyles;
-            }
+            // OOP CONCEPT: POLYMORPHISM (Dynamic casting interfaces across different Grid Controls)
+            if (gridMyRequest.MainView is GridView gvTimeline) gvTimeline.RowCellStyle += ApplyStatusRowStyles;
+            if (gridMyClearance.MainView is GridView gvHistory) gvHistory.RowCellStyle += ApplyStatusRowStyles;
 
-            if (gridMyClearance.MainView is DevExpress.XtraGrid.Views.Grid.GridView gvHistory)
-            {
-                gvHistory.RowCellStyle += ApplyStatusRowStyles;
-            }
-
-            // Wire UI Control Interaction Event Triggers
+            // Wire UI Interactions
             btnUploadSSGRequirement.Click += btnUploadSSGRequirement_Click;
             btnViewSSGPhoto.Click += btnViewSSGRequirement_Click;
             btnUploadTreasurerRequirement.Click += btnUploadTreasurerRequirement_Click;
             btnViewTreasurerPhoto.Click += btnViewTreasurerRequirement_Click;
 
-            // Load and Sync Runtime State Variables
             LoadActiveClearancePeriod();
             UpdateDashboard();
             LoadUserSessionContext();
@@ -64,13 +52,11 @@ namespace SchoolClearanceSystem
 
         private void LoadUserSessionContext()
         {
-            if (Session.CurrentUser != null)
-            {
-                txtWelcome.Text = $"Welcome, {Session.CurrentUser.FullName}!";
-                lblFullName.Text = Session.CurrentUser.FullName;
-                lblUserID.Text = Session.CurrentUser.UserID?.ToString() ?? "0000";
-                lblProgram.Text = Session.CurrentUser.Program ?? "N/A";
-            }
+            if (Session.CurrentUser == null) return;
+            txtWelcome.Text = "Welcome, " + Session.CurrentUser.FullName + "!";
+            lblFullName.Text = Session.CurrentUser.FullName;
+            lblUserID.Text = Session.CurrentUser.UserID?.ToString() ?? "0000";
+            lblProgram.Text = Session.CurrentUser.Program ?? "N/A";
         }
 
         private void LoadActiveClearancePeriod()
@@ -78,7 +64,6 @@ namespace SchoolClearanceSystem
             try
             {
                 var activePeriod = _sysRepo.GetAllPeriods().FirstOrDefault(p => p.IsActive == 1);
-
                 if (activePeriod != null)
                 {
                     currentSemester = activePeriod.Semester?.ToString() ?? "Not Set";
@@ -91,118 +76,112 @@ namespace SchoolClearanceSystem
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Database connection error: {ex.Message}", "Connection Error");
+                XtraMessageBox.Show("Database connection error: " + ex.Message, "Connection Error");
             }
 
-            // Enforce layout property values and style constraints
             txtSemester.Text = currentSemester;
             txtCurrentSchoolYear.Text = currentAcademicYear;
-            txtSemester.ReadOnly = true;
-            txtCurrentSchoolYear.ReadOnly = true;
 
-            txtSemester.Properties.Appearance.BackColor = Color.LightGray;
-            txtCurrentSchoolYear.Properties.Appearance.BackColor = Color.LightGray;
-            txtSemester.Properties.Appearance.ForeColor = Color.DimGray;
-            txtCurrentSchoolYear.Properties.Appearance.ForeColor = Color.DimGray;
+            // Abstracting visual control formatting setups
+            ConfigureReadOnlyTextBox(txtSemester);
+            ConfigureReadOnlyTextBox(txtCurrentSchoolYear);
+        }
+
+        private void ConfigureReadOnlyTextBox(TextEdit box)
+        {
+            box.ReadOnly = true;
+            box.Properties.Appearance.BackColor = Color.LightGray;
+            box.Properties.Appearance.ForeColor = Color.DimGray;
         }
 
         private void UpdateDashboard()
         {
             if (Session.CurrentUser == null) return;
 
-            // FIXED: Added period context variables to target ONLY the active admin configurations
             int cleared = _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear);
             int percentage = (cleared * 100) / 3;
 
-            lblOfficeCleared.Text = $"Offices Cleared: {cleared}/3";
-            lblPercentage.Text = $"{percentage}%";
+            lblOfficeCleared.Text = "Offices Cleared: " + cleared + "/3";
+            lblPercentage.Text = percentage + "%";
             pbOverallProgress.Position = percentage;
 
-            if (cleared == 3)
-            {
-                lblStatus.Text = "Cleared";
-                lblStatus.ForeColor = Color.ForestGreen;
-                lblProgress.Text = "All 3 offices cleared! Your clearance is complete.";
+            bool isFullyCleared = (cleared == 3);
+            lblStatus.Text = isFullyCleared ? "Cleared" : "In Progress";
+            lblStatus.ForeColor = isFullyCleared ? Color.ForestGreen : lblStatus.ForeColor;
+            lblProgress.Text = isFullyCleared ? "All 3 offices cleared! Your clearance is complete." : cleared + " out of 3 offices cleared";
 
-                btnSubmitRequest.Enabled = false;
+            btnSubmitRequest.Enabled = !isFullyCleared;
+            btnUploadSSGRequirement.Enabled = !isFullyCleared;
+            btnUploadTreasurerRequirement.Enabled = !isFullyCleared;
+
+            if (isFullyCleared)
+            {
                 btnSubmitRequest.Text = "Clearance Fully Approved";
                 btnSubmitRequest.Appearance.BackColor = Color.LightGray;
                 btnSubmitRequest.Appearance.ForeColor = Color.DimGray;
-
-                btnUploadSSGRequirement.Enabled = false;
-                btnUploadTreasurerRequirement.Enabled = false;
                 ssgUploadedFilePath = string.Empty;
                 treasurerUploadedFilePath = string.Empty;
             }
             else
             {
-                lblStatus.Text = "In Progress";
-                lblProgress.Text = $"{cleared} out of 3 offices cleared";
-
-                btnSubmitRequest.Enabled = true;
                 btnSubmitRequest.Text = "Submit Request";
-                btnUploadSSGRequirement.Enabled = true;
-                btnUploadTreasurerRequirement.Enabled = true;
             }
 
             try
             {
-                // FIXED: Filtered grid status data dynamically by passing period constraints
                 gridControlOfficeStatus.DataSource = _userRepo.GetStudentStatus(Session.CurrentUser.UserID, currentSemester, currentAcademicYear).ToList();
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Could not load office status data: {ex.Message}");
+                XtraMessageBox.Show("Could not load office status data: " + ex.Message);
             }
         }
 
-        // OOP CONCEPT: POLYMORPHISM
-        // This event handler dynamically formats cell visual text properties based on runtime row state arguments.
-        private void ApplyStatusRowStyles(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        // OOP CONCEPT: ABSTRACTION (Polymorphic style configuration engine based on key value dictionaries)
+        private void ApplyStatusRowStyles(object sender, RowCellStyleEventArgs e)
         {
-            if (e.Column.FieldName == "Status" && e.CellValue != null)
-            {
-                string status = e.CellValue.ToString().Trim().ToLower();
+            if (e.Column.FieldName != "Status" || e.CellValue == null) return;
+            string status = e.CellValue.ToString().Trim().ToLower();
 
-                if (status == "approved")
-                {
-                    e.Appearance.ForeColor = Color.ForestGreen;
-                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Bold);
-                }
-                else if (status == "pending")
-                {
-                    e.Appearance.ForeColor = Color.DarkOrange;
-                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Regular);
-                }
-                else if (status == "on hold" || status == "declined" || status == "rejected")
-                {
-                    e.Appearance.ForeColor = Color.Crimson;
-                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Bold);
-                }
-                else
-                {
-                    e.Appearance.ForeColor = Color.Gray;
-                }
+            if (status == "approved")
+            {
+                SetRowStyle(e, Color.ForestGreen, FontStyle.Bold);
+            }
+            else if (status == "pending")
+            {
+                SetRowStyle(e, Color.DarkOrange, FontStyle.Regular);
+            }
+            else if (status == "on hold" || status == "declined" || status == "rejected")
+            {
+                SetRowStyle(e, Color.Crimson, FontStyle.Bold);
+            }
+            else
+            {
+                SetRowStyle(e, Color.Gray, FontStyle.Regular);
             }
         }
 
-        private void gridView2_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e) => ApplyStatusRowStyles(sender, e);
+        private void SetRowStyle(RowCellStyleEventArgs e, Color color, FontStyle style)
+        {
+            e.Appearance.ForeColor = color;
+            e.Appearance.Font = new Font(e.Appearance.Font, style);
+        }
 
-        // OOP CONCEPT: ABSTRACTION
-        // Reusable internal file utility tools. They mask the complex structural operations of open dialog frameworks.
+        private void gridView2_RowCellStyle(object sender, RowCellStyleEventArgs e) => ApplyStatusRowStyles(sender, e);
+
+        // OOP CONCEPT: ABSTRACTION (Encapsulating structural Win32/I/O file processes from core logic)
         #region File Management Abstraction Engine
 
         private string ExecuteFileSelection()
         {
-            using (XtraOpenFileDialog openFileDialog = new XtraOpenFileDialog())
+            using (XtraOpenFileDialog dialog = new XtraOpenFileDialog())
             {
-                openFileDialog.Title = "Select a File to Upload";
-                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                dialog.Title = "Select a File to Upload";
+                dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     XtraMessageBox.Show("File successfully selected!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return openFileDialog.FileName;
+                    return dialog.FileName;
                 }
             }
             return string.Empty;
@@ -215,14 +194,13 @@ namespace SchoolClearanceSystem
                 XtraMessageBox.Show("No attachment file is currently associated with this request row context.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             try
             {
                 Process.Start(new ProcessStartInfo(targetPath) { UseShellExecute = true });
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Could not launch external file visualization container: {ex.Message}", "Error");
+                XtraMessageBox.Show("Could not launch external file visualization container: " + ex.Message, "Error");
             }
         }
 
@@ -238,7 +216,6 @@ namespace SchoolClearanceSystem
 
         private void sbRequestClearance_Click_1(object sender, EventArgs e)
         {
-            // FIXED: Enforce clearance period isolation inside submission click guards
             if (Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == 3)
             {
                 XtraMessageBox.Show("You are already completely cleared for this period! Action blocked.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -247,42 +224,30 @@ namespace SchoolClearanceSystem
             naviframeStudent.SelectedPage = pageRequestClearance;
         }
 
+        private void BindGridData(NavigationPage targetPage, DevExpress.XtraGrid.GridControl grid, bool forceNull)
+        {
+            naviframeStudent.SelectedPage = targetPage;
+            if (Session.CurrentUser == null || forceNull)
+            {
+                grid.DataSource = null;
+                return;
+            }
+
+            grid.DataSource = _userRepo.GetStudentStatus(Session.CurrentUser.UserID, currentSemester, currentAcademicYear)
+                .Select(d => new ClearanceStatus { Office = d.Office?.ToString(), Status = d.Status?.ToString(), Remarks = d.Remarks?.ToString() })
+                .ToList();
+        }
+
         private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
-            naviframeStudent.SelectedPage = pageMyRequest;
-
-            if (Session.CurrentUser != null)
-            {
-                // FIXED: Isolated current period counting constraints
-                int clearedCount = _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear);
-                if (clearedCount == 3)
-                {
-                    gridMyRequest.DataSource = null;
-                    return;
-                }
-
-                // FIXED: Isolated current timeline metrics using period matching arguments
-                gridMyRequest.DataSource = _userRepo.GetStudentStatus(Session.CurrentUser.UserID, currentSemester, currentAcademicYear)
-                    .Select(d => new ClearanceStatus { Office = d.Office?.ToString(), Status = d.Status?.ToString(), Remarks = d.Remarks?.ToString() })
-                    .ToList();
-            }
+            bool alreadyCleared = Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == 3;
+            BindGridData(pageMyRequest, gridMyRequest, alreadyCleared);
         }
 
         private void sbMyClearance_Click_1(object sender, EventArgs e)
         {
-            naviframeStudent.SelectedPage = pageMyClearance;
-
-            // FIXED: Isolated verification history routines using global period parameters
-            if (Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == 3)
-            {
-                gridMyClearance.DataSource = _userRepo.GetStudentStatus(Session.CurrentUser.UserID, currentSemester, currentAcademicYear)
-                    .Select(d => new ClearanceStatus { Office = d.Office?.ToString(), Status = d.Status?.ToString(), Remarks = d.Remarks?.ToString() })
-                    .ToList();
-            }
-            else
-            {
-                gridMyClearance.DataSource = null;
-            }
+            bool notClearedYet = Session.CurrentUser == null || _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) != 3;
+            BindGridData(pageMyClearance, gridMyClearance, notClearedYet);
         }
 
         private void btnUploadSSGRequirement_Click(object sender, EventArgs e) => ssgUploadedFilePath = ExecuteFileSelection();
@@ -300,29 +265,21 @@ namespace SchoolClearanceSystem
             }
         }
 
-       
-       private void btnSubmitRequest_Click_1(object sender, EventArgs e)
+        private void btnSubmitRequest_Click_1(object sender, EventArgs e)
         {
             if (Session.CurrentUser == null) return;
 
-            // 1. UI DEFENSE: Disable the button immediately to block fast double-clicks
             btnSubmitRequest.Enabled = false;
             this.Cursor = Cursors.WaitCursor;
 
             try
             {
                 string studentId = Session.CurrentUser.UserID.ToString();
-
-                // 2. DATA DEFENSE: Check if any records exist for this term (regardless of approval status)
-                // If GetStudentStatus returns rows, it means they already have pending or processed slots.
                 var existingRequests = _userRepo.GetStudentStatus(studentId, currentSemester, currentAcademicYear);
 
                 if (existingRequests != null && existingRequests.Any())
                 {
-                    XtraMessageBox.Show("Submission rejected. You have already filed a clearance request for this term.",
-                                        "Duplicate Submission Blocked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    // Re-enable UI adjustments based on standard rules
+                    XtraMessageBox.Show("Submission rejected. You have already filed a clearance request for this term.", "Duplicate Submission Blocked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     UpdateDashboard();
                     return;
                 }
@@ -330,12 +287,11 @@ namespace SchoolClearanceSystem
                 if (string.IsNullOrEmpty(ssgUploadedFilePath) || string.IsNullOrEmpty(treasurerUploadedFilePath))
                 {
                     XtraMessageBox.Show("Please upload all necessary file requirements before submitting.", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    btnSubmitRequest.Enabled = true; // Re-enable so they can try again after choosing files
+                    btnSubmitRequest.Enabled = true;
                     return;
                 }
 
                 ClearanceRepository clearanceRepo = new ClearanceRepository();
-
                 bool ssg = clearanceRepo.SubmitClearanceRequest(studentId, "SSG", currentSemester, currentAcademicYear, ssgUploadedFilePath);
                 bool treasurer = clearanceRepo.SubmitClearanceRequest(studentId, "Treasurer", currentSemester, currentAcademicYear, treasurerUploadedFilePath);
                 bool technical = clearanceRepo.SubmitClearanceRequest(studentId, "Technical", currentSemester, currentAcademicYear, string.Empty);
@@ -347,12 +303,11 @@ namespace SchoolClearanceSystem
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"System Error processing SQL context fields: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnSubmitRequest.Enabled = true; // Re-enable on failure so they aren't completely stuck
+                XtraMessageBox.Show("System Error processing SQL context fields: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSubmitRequest.Enabled = true;
             }
             finally
             {
-                // Restore mouse pointer look and sync element displays
                 this.Cursor = Cursors.Default;
                 UpdateDashboard();
             }
