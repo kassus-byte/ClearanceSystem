@@ -11,7 +11,6 @@ namespace SchoolClearanceSystem.Dashboard
 {
     public partial class AdminDashboard : XtraForm
     {
-        // FIX: C# 7.3 requires explicit type names for initialization (No target-typed new())
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly SystemRepository _sysRepo = new SystemRepository();
         private readonly ClearanceRepository _clearanceRepo = new ClearanceRepository();
@@ -21,7 +20,6 @@ namespace SchoolClearanceSystem.Dashboard
             InitializeComponent();
             RefreshData();
 
-            // Declarative event registrations
             gcStudents.MouseDown += (s, e) => EvaluateHitInfo(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
             tabPane1.SelectedPageChanged += (s, e) => ResetViews(gvStudents, gvOffice);
@@ -72,7 +70,6 @@ namespace SchoolClearanceSystem.Dashboard
         // ── Account Lifecycle (CRUD Management) ──────────────────────────────────────
         private void OpenUserLifecycleForm(FormMode mode, User entity = null)
         {
-            // FIX: Reverted 'using declaration' back to a standard C# 7.3 using block statement
             using (UserInfoForm frm = new UserInfoForm(mode, entity))
             {
                 frm.StartPosition = FormStartPosition.CenterParent;
@@ -94,10 +91,8 @@ namespace SchoolClearanceSystem.Dashboard
         {
             if (!TryGetFocusedData(ActiveView, out User user)) return;
 
-            string msg = "Permanently remove account: " + user.FullName + " (" + user.UserID + ")?";
-            if (Confirm(msg, "Confirm Deletion") != DialogResult.Yes) return;
-
-            ProcessUserPurgePipeline(user.UserID);
+            if (Confirm($"Permanently remove account: {user.FullName} ({user.UserID})?", "Confirm Deletion") == DialogResult.Yes)
+                ProcessUserPurgePipeline(user.UserID);
         }
 
         private void ProcessUserPurgePipeline(string userId)
@@ -108,15 +103,12 @@ namespace SchoolClearanceSystem.Dashboard
             }
             catch (Exception ex) when (ex.Message.Contains("FOREIGN KEY") || ex.Message.Contains("19"))
             {
-                string msg = "This student has active records. Force deletion will purge all tracking files. Proceed?";
-                if (Confirm(msg, "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
+                if (Confirm("This student has active records. Force deletion will purge all tracking files. Proceed?", "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
                     ExecutePurge(userId, true);
-                }
             }
             catch (Exception ex)
             {
-                Notify("Execution Error: " + ex.Message, "Pipeline Failure", MessageBoxIcon.Error);
+                Notify($"Execution Error: {ex.Message}", "Pipeline Failure", MessageBoxIcon.Error);
             }
         }
 
@@ -144,24 +136,21 @@ namespace SchoolClearanceSystem.Dashboard
         {
             listBoxAdminHistory.DataSource = _sysRepo.GetAllPeriods().Select(p => new ClearanceHistoryViewModel
             {
-                PeriodName = "ℹ️  " + p.AcademicYear + " " + p.Semester,
+                PeriodName = $"ℹ️  {p.AcademicYear} {p.Semester}",
                 StatusText = p.IsActive == 1 ? "Clearance Processing Active" : "Clearance Done"
             }).ToList();
         }
 
         private void OnHistoryContextClicked(object sender, DevExpress.Utils.ContextItemClickEventArgs e)
         {
-            if ((e.Item.Name == "View" || e.Item.Name == "View") && e.DataItem is ClearanceHistoryViewModel historicalContext)
-            {
-                Notify("Context loaded: " + historicalContext.PeriodName, "Pipeline Engine Active", MessageBoxIcon.Information);
-            }
+            if ((e.Item.Name == "View") && e.DataItem is ClearanceHistoryViewModel historicalContext)
+                Notify($"Context loaded: {historicalContext.PeriodName}", "Pipeline Engine Active", MessageBoxIcon.Information);
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(comboSemester.Text) || string.IsNullOrEmpty(comboSchoolYear.Text)) return;
-
-            if (_sysRepo.CreateNewPeriod(comboSemester.Text, comboSchoolYear.Text)) RefreshData();
+            if (!string.IsNullOrEmpty(comboSemester.Text) && !string.IsNullOrEmpty(comboSchoolYear.Text) && _sysRepo.CreateNewPeriod(comboSemester.Text, comboSchoolYear.Text))
+                RefreshData();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

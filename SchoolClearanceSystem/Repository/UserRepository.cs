@@ -87,8 +87,13 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = "DELETE FROM Users WHERE UserID = @id";
-                return db.Execute(sql, new { id = userId }) > 0;
+                // 1. Clear out all dependent clearance request records linked to this student first
+                string deleteRequestsSql = "DELETE FROM ClearanceRequests WHERE StudentID = @id;";
+                db.Execute(deleteRequestsSql, new { id = userId });
+
+                // 2. Now that the dependencies are gone, safely delete the user record
+                string deleteUserSql = "DELETE FROM Users WHERE UserID = @id;";
+                return db.Execute(deleteUserSql, new { id = userId }) > 0;
             }
         }
 
@@ -200,4 +205,4 @@ namespace SchoolClearanceSystem.Repository
             }
         }
     }
-}
+}   
