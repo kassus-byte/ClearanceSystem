@@ -10,6 +10,8 @@ namespace SchoolClearanceSystem.Repository
 {
     public class UserRepository : BaseRepository
     {
+
+        // called by Login.cs
         public User ValidateLogin(string userId, string password)
         {
             using (var db = dbManager.GetConnection())
@@ -18,7 +20,7 @@ namespace SchoolClearanceSystem.Repository
                 return db.QueryFirstOrDefault<User>(sql, new { id = userId, pass = password });
             }
         }
-
+        // called by Login.cs
         public User GetUserDetails(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -28,18 +30,17 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
+        // called by Registration.cs
         public bool AddUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
-                // DETENSIVE OOP CHECK: Guard clause against duplicate identity keys before running the command
+                // for duplicate UserID
                 string checkSql = "SELECT COUNT(1) FROM Users WHERE UserID = @UserID";
                 int exists = db.ExecuteScalar<int>(checkSql, new { UserID = user.UserID });
 
                 if (exists > 0)
                 {
-                    // Gracefully drops execution out of the pipeline without throwing a crash exception.
-                    // This naturally routes control right back to your custom form's friendly alert box.
                     return false;
                 }
 
@@ -54,7 +55,7 @@ namespace SchoolClearanceSystem.Repository
                 return db.Execute(sql, user) > 0;
             }
         }
-
+        // called by UserInfoForm (EditMode)
         public bool EditUser(User user)
         {
             using (var db = dbManager.GetConnection())
@@ -65,7 +66,7 @@ namespace SchoolClearanceSystem.Repository
                 return db.Execute(sql, user) > 0;
             }
         }
-
+        // called by AdminDashboard.cs (RefreshData)
         public IEnumerable<User> GetUsersByRole(string role, bool statusFlag = true)
         {
             using (var db = dbManager.GetConnection())
@@ -82,7 +83,7 @@ namespace SchoolClearanceSystem.Repository
                 }
             }
         }
-
+        // called by AdminDashboard.cs
         public bool DeleteUser(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -96,24 +97,8 @@ namespace SchoolClearanceSystem.Repository
                 return db.Execute(deleteUserSql, new { id = userId }) > 0;
             }
         }
-
-        public IEnumerable<dynamic> GetStudentStatus(string userId)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT 
-                                Department AS Office,
-                                Department AS OfficeName, 
-                                Department AS Department, 
-                                Status, 
-                                Remarks 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id";
-
-                return db.Query(sql, new { id = userId }).ToList();
-            }
-        }
-
+        
+        // called by StudentPortal.cs
         public IEnumerable<dynamic> GetStudentStatus(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
@@ -132,19 +117,7 @@ namespace SchoolClearanceSystem.Repository
                 return db.Query(sql, new { id = userId, semester = semester, academicYear = academicYear }).ToList();
             }
         }
-
-        public int GetClearedCount(string userId)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT COUNT(*) 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id AND Status = 'Approved'";
-
-                return db.ExecuteScalar<int>(sql, new { id = userId });
-            }
-        }
-
+        // called by StudentPortal (UpdateDashboard)
         public int GetClearedCount(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
@@ -160,49 +133,5 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public IEnumerable<ClearanceHistoryViewModel> GetStudentClearanceHistory(string userId, string currentSem, string currentYear)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT 
-                                AcademicYear, 
-                                Semester,
-                                SUM(CASE WHEN Status = 'Approved' THEN 1 ELSE 0 END) as ApprovedCount
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id
-                               GROUP BY AcademicYear, Semester
-                               ORDER BY AcademicYear DESC, Semester DESC";
-
-                var rawList = db.Query(sql, new { id = userId }).ToList();
-                var processedList = new List<ClearanceHistoryViewModel>();
-
-                foreach (var record in rawList)
-                {
-                    string year = record.AcademicYear?.ToString();
-                    string sem = record.Semester?.ToString();
-                    int approvedCount = record.ApprovedCount != null ? Convert.ToInt32(record.ApprovedCount) : 0;
-                    string calculatedStatus = "Incomplete";
-
-                    if (year == currentYear && sem == currentSem)
-                    {
-                        calculatedStatus = "Clearance Processing Active";
-                    }
-                    else if (approvedCount >= 3)
-                    {
-                        calculatedStatus = "Clearance Done";
-                    }
-
-                    processedList.Add(new ClearanceHistoryViewModel
-                    {
-                        AcademicYear = year,
-                        Semester = sem,
-                        PeriodName = $"{year} {sem}",
-                        StatusText = calculatedStatus
-                    });
-                }
-
-                return processedList;
-            }
-        }
     }
 }   
