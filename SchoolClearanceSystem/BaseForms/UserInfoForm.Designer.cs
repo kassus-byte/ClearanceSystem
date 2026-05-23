@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnUploadPhoto = new DevExpress.XtraEditors.SimpleButton();
-            this.pePhoto = new DevExpress.XtraEditors.PictureEdit();
             this.cbYear = new System.Windows.Forms.ComboBox();
             this.txtFullName = new DevExpress.XtraEditors.TextEdit();
             this.cbProgram = new System.Windows.Forms.ComboBox();
             this.txtUserID = new DevExpress.XtraEditors.TextEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -47,46 +44,27 @@
             this.txtDateCreated = new DevExpress.XtraEditors.TextEdit();
             this.lbl = new DevExpress.XtraEditors.LabelControl();
             this.cbRole = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pePhoto.Properties)).BeginInit();
+            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.chkShowPassword = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
             this.panelControl15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateCreated.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnUploadPhoto
-            // 
-            this.btnUploadPhoto.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnUploadPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadPhoto.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnUploadPhoto.Appearance.Options.UseBackColor = true;
-            this.btnUploadPhoto.Appearance.Options.UseFont = true;
-            this.btnUploadPhoto.Appearance.Options.UseForeColor = true;
-            this.btnUploadPhoto.Location = new System.Drawing.Point(610, 396);
-            this.btnUploadPhoto.Name = "btnUploadPhoto";
-            this.btnUploadPhoto.Size = new System.Drawing.Size(83, 26);
-            this.btnUploadPhoto.TabIndex = 29;
-            this.btnUploadPhoto.Text = "Upload";
-            this.btnUploadPhoto.Click += new System.EventHandler(this.btnUploadPhoto_Click);
-            // 
-            // pePhoto
-            // 
-            this.pePhoto.Location = new System.Drawing.Point(567, 428);
-            this.pePhoto.Name = "pePhoto";
-            this.pePhoto.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pePhoto.Size = new System.Drawing.Size(422, 147);
-            this.pePhoto.TabIndex = 28;
             // 
             // cbYear
             // 
             this.cbYear.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Items.AddRange(new object[] {
-            "I",
-            "II",
-            "III",
-            "IV",
+            "1st Year",
+            "2nd Year",
+            "3rd Year",
+            "4th Year",
             "Irregular"});
             this.cbYear.Location = new System.Drawing.Point(26, 343);
             this.cbYear.Name = "cbYear";
@@ -147,18 +125,6 @@
             this.btnCancel.TabIndex = 21;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Appearance.Options.UseForeColor = true;
-            this.labelControl8.Location = new System.Drawing.Point(566, 399);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(37, 17);
-            this.labelControl8.TabIndex = 20;
-            this.labelControl8.Text = "Photo";
             // 
             // labelControl7
             // 
@@ -238,7 +204,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(567, 316);
+            this.labelControl1.Location = new System.Drawing.Point(26, 398);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 32;
@@ -246,11 +212,11 @@
             // 
             // txtDateCreated
             // 
-            this.txtDateCreated.Location = new System.Drawing.Point(567, 339);
+            this.txtDateCreated.Location = new System.Drawing.Point(26, 421);
             this.txtDateCreated.Name = "txtDateCreated";
             this.txtDateCreated.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.txtDateCreated.Properties.Appearance.Options.UseFont = true;
-            this.txtDateCreated.Size = new System.Drawing.Size(448, 30);
+            this.txtDateCreated.Size = new System.Drawing.Size(464, 30);
             this.txtDateCreated.TabIndex = 33;
             // 
             // lbl
@@ -280,25 +246,55 @@
             this.cbRole.Size = new System.Drawing.Size(464, 23);
             this.cbRole.TabIndex = 35;
             // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(567, 339);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtPassword.Properties.Appearance.Options.UseFont = true;
+            this.txtPassword.Size = new System.Drawing.Size(448, 30);
+            this.txtPassword.TabIndex = 37;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(567, 316);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(58, 17);
+            this.labelControl2.TabIndex = 36;
+            this.labelControl2.Text = "Password";
+            // 
+            // chkShowPassword
+            // 
+            this.chkShowPassword.Location = new System.Drawing.Point(567, 374);
+            this.chkShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkShowPassword.Name = "chkShowPassword";
+            this.chkShowPassword.Properties.Caption = "Show Password";
+            this.chkShowPassword.Size = new System.Drawing.Size(134, 22);
+            this.chkShowPassword.TabIndex = 44;
+            // 
             // UserInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 603);
+            this.Controls.Add(this.chkShowPassword);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.txtDateCreated);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.panelControl15);
-            this.Controls.Add(this.btnUploadPhoto);
-            this.Controls.Add(this.pePhoto);
             this.Controls.Add(this.cbYear);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.cbProgram);
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
@@ -307,29 +303,26 @@
             this.Name = "UserInfoForm";
             this.Text = "UserInfoForm";
             this.Load += new System.EventHandler(this.UserInfoForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pePhoto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).EndInit();
             this.panelControl15.ResumeLayout(false);
             this.panelControl15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateCreated.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.SimpleButton btnUploadPhoto;
-        private DevExpress.XtraEditors.PictureEdit pePhoto;
         private System.Windows.Forms.ComboBox cbYear;
         private DevExpress.XtraEditors.TextEdit txtFullName;
         private System.Windows.Forms.ComboBox cbProgram;
         private DevExpress.XtraEditors.TextEdit txtUserID;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -340,5 +333,8 @@
         private DevExpress.XtraEditors.TextEdit txtDateCreated;
         private DevExpress.XtraEditors.LabelControl lbl;
         private System.Windows.Forms.ComboBox cbRole;
+        private DevExpress.XtraEditors.TextEdit txtPassword;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.CheckEdit chkShowPassword;
     }
 }

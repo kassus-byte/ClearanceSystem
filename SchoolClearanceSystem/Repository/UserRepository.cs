@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Dapper;
 using SchoolClearanceSystem.Models;
 
-
 namespace SchoolClearanceSystem.Repository
 {
     public class UserRepository : BaseRepository
@@ -33,6 +32,17 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
+                // DETENSIVE OOP CHECK: Guard clause against duplicate identity keys before running the command
+                string checkSql = "SELECT COUNT(1) FROM Users WHERE UserID = @UserID";
+                int exists = db.ExecuteScalar<int>(checkSql, new { UserID = user.UserID });
+
+                if (exists > 0)
+                {
+                    // Gracefully drops execution out of the pipeline without throwing a crash exception.
+                    // This naturally routes control right back to your custom form's friendly alert box.
+                    return false;
+                }
+
                 string sql = @"INSERT INTO Users (UserID, Password, FullName, Program, Year, Role, UploadPath, DateCreated) 
                                VALUES (@UserID, @Password, @FullName, @Program, @Year, @Role, @UploadPath, @DateCreated)";
 
@@ -82,7 +92,6 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        // RESTORED: Standard parameter fallback match signatures
         public IEnumerable<dynamic> GetStudentStatus(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -100,7 +109,6 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        // FIXED OVERLOAD: Pulls student status data isolated strictly to the current active clearance period
         public IEnumerable<dynamic> GetStudentStatus(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
@@ -120,7 +128,6 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        // RESTORED: Standard parameter fallback match signatures
         public int GetClearedCount(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -133,7 +140,6 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        // FIXED OVERLOAD: Counts approved offices ONLY within the context of the active term parameters
         public int GetClearedCount(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
@@ -149,16 +155,10 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        /// <summary>
-        /// HISTORICAL TIMELINE RETRIEVAL ENGINE
-        /// Queries the distinct historical semesters for a student and transforms them into 
-        /// bound view models that match your DevExpress ItemTemplate configurations.
-        /// </summary>
         public IEnumerable<ClearanceHistoryViewModel> GetStudentClearanceHistory(string userId, string currentSem, string currentYear)
         {
             using (var db = dbManager.GetConnection())
             {
-                // FIX: Changed COUNT(CASE) to SUM(CASE) to handle conditional arithmetic reliably across standard SQL databases
                 string sql = @"SELECT 
                                 AcademicYear, 
                                 Semester,
@@ -175,11 +175,7 @@ namespace SchoolClearanceSystem.Repository
                 {
                     string year = record.AcademicYear?.ToString();
                     string sem = record.Semester?.ToString();
-
-                    // Safe parsing engine mechanics to check null dynamic values
                     int approvedCount = record.ApprovedCount != null ? Convert.ToInt32(record.ApprovedCount) : 0;
-
-                    // Compute dynamic text status ruleset engine values
                     string calculatedStatus = "Incomplete";
 
                     if (year == currentYear && sem == currentSem)
@@ -196,7 +192,7 @@ namespace SchoolClearanceSystem.Repository
                         AcademicYear = year,
                         Semester = sem,
                         PeriodName = $"{year} {sem}",
-                        StatusText = calculatedStatus // Directly maps fields onto 'element2' text component from template designer
+                        StatusText = calculatedStatus
                     });
                 }
 

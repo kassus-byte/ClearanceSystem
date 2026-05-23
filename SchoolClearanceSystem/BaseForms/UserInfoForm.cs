@@ -1,10 +1,10 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Windows.Forms;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
@@ -12,156 +12,110 @@ namespace SchoolClearanceSystem
 
     public partial class UserInfoForm : XtraForm
     {
-        private FormMode _mode;
-        private User _selectedUser;
-        private UserRepository _userRepo = new UserRepository();
+        private readonly FormMode _mode;
+        private readonly User _selectedUser;
+        private readonly UserRepository _userRepo = new UserRepository();
+        private bool IsEdit => _mode == FormMode.Edit;
 
         public UserInfoForm(FormMode mode, User user = null)
         {
             InitializeComponent();
             _mode = mode;
             _selectedUser = user ?? new User();
-            cbRole.SelectedIndexChanged += cbRole_SelectedIndexChanged;
+
+            // Encapsulated Anonymous Toggle Action
+            txtPassword.Properties.UseSystemPasswordChar = true;
+            chkShowPassword.Properties.Caption = "Show Password";
+            chkShowPassword.CheckedChanged += (s, e) => {
+                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
+                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
+                txtPassword.Focus();
+                txtPassword.SelectionStart = txtPassword.Text.Length;
+            };
         }
 
-        private void UserInfoForm_Load(object sender, EventArgs e) => SetupForm();
-
-        private void SetupForm()
+        private void UserInfoForm_Load(object sender, EventArgs e)
         {
+            cbRole.SelectedIndexChanged -= ToggleFieldsBasedOnRole;
+            cbProgram.Items.Clear();
+            cbProgram.Items.Add("BSIT");
+
+            // Polymorphic UI Structuring Engine
+            this.Text = IsEdit ? "Edit Account Information" : "Register New Account";
+            lblTitle.Text = IsEdit ? "Edit Information" : "Register Account";
+            btnSave.Text = IsEdit ? "Update Changes" : "Save Account";
+            txtUserID.ReadOnly = IsEdit;
+            cbRole.Enabled = !IsEdit;
+
+            // Direct Model-to-View Property Extraction
             txtUserID.Text = _selectedUser.UserID;
             txtFullName.Text = _selectedUser.FullName;
-            cbProgram.Text = _selectedUser.Program;
-            cbYear.Text = _selectedUser.Year;
             cbRole.Text = _selectedUser.Role;
-            txtDateCreated.Text = _mode == FormMode.Edit ? "Generated on " + DateTime.Now.ToShortDateString() : "Automatically Generated";
+            cbProgram.Text = _selectedUser.Program?.Trim();
+            cbYear.Text = _selectedUser.Year?.Trim();
+            txtPassword.Text = IsEdit ? string.Empty : _selectedUser.Password;
+            txtDateCreated.Text = IsEdit ? $"Generated on {DateTime.Now.ToShortDateString()}" : "Automatically Generated";
 
-            // Abstracted Image Stream Loader
-            if (!string.IsNullOrEmpty(_selectedUser.UploadPath) && File.Exists(_selectedUser.UploadPath))
-            {
-                try { pePhoto.Image = Image.FromFile(_selectedUser.UploadPath); }
-                catch { pePhoto.Image = null; }
-            }
-
-            // OOP CONCEPT: MAPPING & DATA DRIVEN PROPERTY CONFIGURATION
-            // Condenses extensive structural if/else UI assignments into declarative mappings
-            bool isEdit = (_mode == FormMode.Edit);
-            this.Text = isEdit ? "Edit Account Information" : "Register New Account";
-            lblTitle.Text = isEdit ? "Edit Information" : "Register Account";
-            btnSave.Text = isEdit ? "Update Changes" : "Save Account";
-            txtUserID.ReadOnly = isEdit;
-            cbRole.Enabled = !isEdit;
-
-            ToggleFieldsBasedOnRole();
+            cbRole.SelectedIndexChanged += ToggleFieldsBasedOnRole;
+            ToggleFieldsBasedOnRole(null, null);
         }
 
-        private void cbRole_SelectedIndexChanged(object sender, EventArgs e) => ToggleFieldsBasedOnRole();
-
-        private void ToggleFieldsBasedOnRole()
+        private void ToggleFieldsBasedOnRole(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(cbRole.Text)) return;
 
+            // FIX: Evaluate against the active combo box selection text dynamically, not the underlying model state snapshot
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
 
-            // OOP CONCEPT: ENCAPSULATION & UNIFIED FIELD MUTATORS
-            cbProgram.Enabled = isStudent;
-            cbYear.Enabled = isStudent;
-            cbProgram.BackColor = isStudent ? Color.White : Color.LightGray;
-            cbYear.BackColor = isStudent ? Color.White : Color.LightGray;
+            cbProgram.DropDownStyle = cbYear.DropDownStyle = isStudent ? ComboBoxStyle.DropDownList : ComboBoxStyle.DropDown;
+            cbProgram.Enabled = cbYear.Enabled = isStudent;
+            cbProgram.BackColor = cbYear.BackColor = isStudent ? Color.White : Color.LightGray;
 
-            if (isStudent)
-            {
-                if (cbProgram.Text == "N/A") cbProgram.Text = "";
-                if (cbYear.Text == "N/A") cbYear.Text = "";
-            }
-            else
-            {
-                cbProgram.Text = "N/A";
-                cbYear.Text = "N/A";
-            }
+            cbProgram.Text = isStudent && cbProgram.Text == "N/A" ? "" : (!isStudent ? "N/A" : cbProgram.Text);
+            cbYear.Text = isStudent && cbYear.Text == "N/A" ? "" : (!isStudent ? "N/A" : cbYear.Text);
         }
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            if (!ValidateForm()) return;
-            
-            if (_mode == FormMode.Register) PerformRegister();
-            else PerformUpdate();
-        }
-
-        private bool ValidateForm()
-        {
-            if (string.IsNullOrWhiteSpace(txtUserID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(cbRole.Text))
+            if (string.IsNullOrWhiteSpace(txtUserID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(cbRole.Text) || (!IsEdit && string.IsNullOrWhiteSpace(txtPassword.Text)))
             {
-                XtraMessageBox.Show("Please fill in ID, Name, and Role.", "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                XtraMessageBox.Show($"Please fill in ID, Name, Role, and {(IsEdit ? "" : "Password.")}", "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            if (cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase))
+            if (cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase) && (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" || string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A"))
             {
-                if (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" || string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A")
-                {
-                    XtraMessageBox.Show("Student requires a Program and Year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
+                XtraMessageBox.Show("Student requires a valid Program and Year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            return true;
-        }
 
-        // OOP CONCEPT: STATE SYNC DATA CAPTURE
-        private void CaptureFormState()
-        {
+            // Capture Form State to Model State
+            if (!IsEdit) _selectedUser.UserID = txtUserID.Text.Trim();
             _selectedUser.FullName = txtFullName.Text.Trim();
             _selectedUser.Role = cbRole.Text;
             _selectedUser.Program = cbProgram.Text;
             _selectedUser.Year = cbYear.Text;
-        }
+            if (!IsEdit || !string.IsNullOrWhiteSpace(txtPassword.Text)) _selectedUser.Password = txtPassword.Text.Trim();
 
-        private void PerformRegister()
-        {
-            _selectedUser.UserID = txtUserID.Text.Trim();
-            _selectedUser.Password = "123";
-            CaptureFormState();
-
-            if (_userRepo.AddUser(_selectedUser)) CloseFormWithResult(DialogResult.OK);
-        }
-
-        private void PerformUpdate()
-        {
-            CaptureFormState();
-
-            if (_userRepo.EditUser(_selectedUser))
+            // Execute Business Pipeline
+            if (!IsEdit)
             {
-                XtraMessageBox.Show("Account updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CloseFormWithResult(DialogResult.OK);
+                if (_userRepo.AddUser(_selectedUser)) CloseWithResult(DialogResult.OK, "Registration Successful!");
+                else { XtraMessageBox.Show($"User ID '{_selectedUser.UserID}' is taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtUserID.Focus(); }
+            }
+            else if (_userRepo.EditUser(_selectedUser))
+            {
+                CloseWithResult(DialogResult.OK, "Account updated!");
             }
         }
 
-        private void btnCancel_Click_1(object sender, EventArgs e) => CloseFormWithResult(DialogResult.Cancel);
-
-        private void CloseFormWithResult(DialogResult result)
+        private void CloseWithResult(DialogResult res, string msg)
         {
-            this.DialogResult = result;
-            this.Close();
+            XtraMessageBox.Show(msg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.DialogResult = res;
+            Close();
         }
 
-        private void btnUploadPhoto_Click(object sender, EventArgs e)
-        {
-            using (XtraOpenFileDialog ofd = new XtraOpenFileDialog())
-            {
-                ofd.Title = "Select Photo";
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-                if (ofd.ShowDialog() != DialogResult.OK) return;
-
-                try
-                {
-                    pePhoto.Image = Image.FromFile(ofd.FileName);
-                    _selectedUser.UploadPath = ofd.FileName;
-                }
-                catch (Exception ex) 
-                { 
-                    XtraMessageBox.Show("Error: " + ex.Message); 
-                }
-            }
-        }
+        private void btnCancel_Click_1(object sender, EventArgs e) { this.DialogResult = DialogResult.Cancel; Close(); }
     }
 }
