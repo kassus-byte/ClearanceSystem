@@ -44,6 +44,22 @@ namespace SchoolClearanceSystem.Dashboard
             gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
             gcOffice.DataSource = _userRepo.GetUsersByRole("Staff");
             LoadCurrentSystemSettings();
+
+            // OOP Integration: Fetch and present real-time dashboard analytics metric cards
+            DashboardMetrics structuralMetrics = _sysRepo.GetLiveDashboardMetrics();
+            UpdateMetricTilesUI(structuralMetrics);
+        }
+
+        // OOP Polymorphic Helper separating Presentation Layer from Data Layer
+        private void UpdateMetricTilesUI(DashboardMetrics metrics)
+        {
+            if (metrics == null) return;
+
+            // Maps metrics fields onto DevExpress component labels based on design names
+            // Note: Verify and match these control names (e.g. lblTotalStudents) in your Form Designer property window
+            if (lblTotalStudents != null) lblTotalStudents.Text = metrics.TotalStudents.ToString();
+            if (lblOfficeAccounts != null) lblOfficeAccounts.Text = metrics.TotalOfficeAccounts.ToString();
+            if (lblNewRegistrations != null) lblNewRegistrations.Text = metrics.NewRegistrationsCount.ToString();
         }
 
         // ── Grid Controller Actions ──────────────────────────────────────────────────
@@ -76,7 +92,7 @@ namespace SchoolClearanceSystem.Dashboard
             using (UserInfoForm frm = new UserInfoForm(mode, entity))
             {
                 frm.StartPosition = FormStartPosition.CenterParent;
-                if (frm.ShowDialog(this) == DialogResult.OK) RefreshData();
+                if (frm.ShowDialog(this) == DialogResult.OK) RefreshData(); 
             }
         }
 
@@ -177,5 +193,10 @@ namespace SchoolClearanceSystem.Dashboard
 
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
+
+        private void panelControl8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
