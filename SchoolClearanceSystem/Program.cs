@@ -2,7 +2,7 @@
 using DevExpress.Skins;
 using DevExpress.UserSkins;
 using System;
-using System.Collections.Generic;   
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Data.Sqlite;
 using System.Windows.Forms;
@@ -22,7 +22,7 @@ namespace SchoolClearanceSystem
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new BaseOfficeForm());
         }
     }
 }

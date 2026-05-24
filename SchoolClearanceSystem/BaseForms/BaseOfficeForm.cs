@@ -7,79 +7,81 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
-    /// <summary>
-    /// OOP CONCEPT: POLYMORPHISM & FORM INHERITANCE (Base Blueprint Architecture)
-    /// This abstract base controller handles corporate layout styling, session identity parsing, 
-    /// and dynamic data-binding workflows for all department desks (SSG, Treasurer, Tech Office).
-    /// </summary>
     public partial class BaseOfficeForm : XtraForm
     {
-        // OOP CONCEPT: ENCAPSULATION
-        // Mapped runtime state container used as the primary lookup parameter for data filtering.
-        // Inheriting child forms assign their department code to this property inside their constructors.
         private string currentStatusFilter = "All";
         public string OfficeName { get; set; } = "Unknown Office";
 
         public BaseOfficeForm()
         {
             InitializeComponent();
-
-            // Wire text change queries immediately upon constructor registration
             txtSearch.TextChanged += TxtSearch_TextChanged;
         }
 
-        /// <summary>
-        /// LIFECYCLE SAFE REFACTOR: Replacing the 'this.Load' event subscription with a native 
-        /// OnLoad override. This prevents race conditions where the database executes before 
-        /// the child forms finish injecting their initialization strings.
-        /// </summary>
         protected override void OnLoad(EventArgs e)
         {
-            // 1. DESIGNER GUARD: Prevents the Visual Studio Form Designer from executing database query 
-            // logic during UI design workflows, completely resolving type initialization runtime failure exceptions.
             if (this.DesignMode)
             {
                 base.OnLoad(e);
                 return;
             }
 
-            // 2. Wire up the functional filter state routines safely at runtime execution pass
+            // FIX: Set OfficeName from session BEFORE loading any data
+            if (Session.CurrentUser != null)
+            {
+                // Map Role to exact Department value stored in DB
+                switch (Session.CurrentUser.Role)
+                {
+                    case "Registrar": this.OfficeName = "Registrar"; break;
+                    case "Treasurer": this.OfficeName = "Treasurer"; break;
+                    case "Technical Office": this.OfficeName = "Technical"; break;
+                    case "SSG": this.OfficeName = "SSG"; break;
+                    default: this.OfficeName = Session.CurrentUser.Role; break;
+                }
+            }
+
             btnAllFilter.Click += (s, ev) => SetStatusFilter("All");
             btnPendingFilter.Click += (s, ev) => SetStatusFilter("Pending");
             btnApprovedFilter.Click += (s, ev) => SetStatusFilter("Approved");
             btnOnHoldFilter.Click += (s, ev) => SetStatusFilter("On Hold");
 
-            // 3. Populate session tracking parameters and update top window string titles
             SetupIdentity();
-
-            // 4. Hydrate presentation components now that 'OfficeName' is guaranteed to be fully assigned
             LoadPendingClearanceRequests();
+            LoadDashboardSummary();
 
-            // 5. Commit control handoff safely back to the parent component stack
             base.OnLoad(e);
         }
-
-        /// <summary>
-        /// Reads operational session tokens to configure contextual branding labels at runtime.
-        /// </summary>
         private void SetupIdentity()
         {
             if (Session.CurrentUser != null)
             {
+                string firstName = Session.CurrentUser.FullName.Split(' ')[0];
+
+                // Sidebar
                 lblFullName.Text = Session.CurrentUser.FullName;
                 lblRole.Text = Session.CurrentUser.Role;
 
-                // Dynamic UI window caption mutation
+                // Top bar — merges role + firstname into the big title
+                // Shows: "Registrar Dashboard, Anne!"
+                txtWelcome.Text = $"{Session.CurrentUser.Role} Dashboard, {firstName}!";
+
+                // Hide labelControl5 since it has no assignment — it sits in progress section
+                lblFirstName.Text = "";
+
+                // Subtitle
+                labelControl3.Text = "Clearance Overview";
+
+                // Window caption
                 this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
             }
         }
-
         #region Navigation Control Flow Routine Managers
 
         private void sbOfficeDashboard_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
-            LoadPendingClearanceRequests(); // Refresh the table tracking view when returning home
+            LoadPendingClearanceRequests();
+            LoadDashboardSummary();
         }
 
         private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e)
@@ -101,26 +103,78 @@ namespace SchoolClearanceSystem
 
         #region Database Processing and Presentation Binding Pipeline
 
-        /// <summary>
-        /// HOW IT WORKS (Data Hydration Engine):
-        /// Pulls collections from ClearanceRepository filtered by the active office context,
-        /// then binds the memory structures directly into the DevExpress GridControl layout engine.
-        /// </summary>
         protected void LoadPendingClearanceRequests()
         {
             try
             {
                 ClearanceRepository repo = new ClearanceRepository();
 
-                // Fetch data items matching our workspace identity parameter context
+                // 1. Fetch data items matching our workspace identity parameter context
                 var pendingDataList = repo.GetRequestsForOffice(this.OfficeName);
 
-                // Assign data items directly to your layout table grid container
+                // 2. Assign data items directly to your layout table grid container
                 gcBaseOfficeForm.DataSource = pendingDataList;
+
+                // ── FILLED CODE: Call your newly added repository functions ───────
+                int cleared = repo.GetRequestCountByStatus(this.OfficeName, "Approved");
+                int pending = repo.GetRequestCountByStatus(this.OfficeName, "Pending");
+                int onHold = repo.GetRequestCountByStatus(this.OfficeName, "On Hold");
+
+                // 3. Update the UI text counters safely
+                if (lblClearedCount != null) lblClearedCount.Text = cleared.ToString();
+                if (lblPendingCount != null) lblPendingCount.Text = pending.ToString();
+                if (lblOnHoldCount != null) lblOnHoldCount.Text = onHold.ToString();
+
+                // 4. Update progress bar text dynamically
+                int totalRequests = cleared + pending + onHold;
+                if (lblClearanceProgress != null)
+                {
+                    lblClearanceProgress.Text = $"{cleared} out of {totalRequests} students cleared";
+                }
+                // ─────────────────────────────────────────────────────────────────
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show($"Could not bind office requests table rows: {ex.Message}",
+                    "Data Retrieval Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        protected void LoadDashboardSummary()
+        {
+            try
+            {
+                ClearanceRepository repo = new ClearanceRepository();
+
+                int clearedCount = repo.GetRequestCountByStatus(this.OfficeName, "Approved");
+                int pendingCount = repo.GetRequestCountByStatus(this.OfficeName, "Pending");
+                int onHoldCount = repo.GetRequestCountByStatus(this.OfficeName, "On Hold");
+
+                // Update summary cards — labelControl7=CLEARED, 8=PENDING, 9=ON HOLD
+                lblClearedCount.Text = clearedCount.ToString();
+                lblPendingCount.Text = pendingCount.ToString();
+                lblOnHoldCount.Text = onHoldCount.ToString();
+
+                lblClearedCount.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold);
+                lblPendingCount.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold);
+                lblOnHoldCount.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold);
+
+                // Progress bar
+                int totalRequests = clearedCount + pendingCount + onHoldCount;
+                int safeTotal = totalRequests > 0 ? totalRequests : 1;
+                int progressValue = (int)((clearedCount / (double)safeTotal) * 100);
+                progressValue = Math.Min(progressValue, 100);
+
+                progressBarControl1.Properties.Minimum = 0;
+                progressBarControl1.Properties.Maximum = 100;
+                progressBarControl1.EditValue = progressValue;
+
+                // labelControl6 = "0 out of X students cleared"
+                labelControl6.Text = $"{clearedCount} out of {totalRequests} students cleared";
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Dashboard summary could not be loaded: {ex.Message}",
                     "Data Retrieval Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -150,15 +204,17 @@ namespace SchoolClearanceSystem
 
             string filterCriteria = string.Empty;
 
-            // 1. Evaluate Row Status Criteria
+            // 1. Status filter
             if (currentStatusFilter != "All")
             {
                 filterCriteria = $"[Status] = '{currentStatusFilter}'";
             }
 
-            // 2. Evaluate Search Wildcard Values across structural layout indices
+            // 2. Search filter — skip placeholder, filter on bound properties only
             string searchText = txtSearch.Text.Trim().Replace("'", "''");
-            if (!string.IsNullOrEmpty(searchText))
+            bool isPlaceholder = searchText == "Search by Name, ID, or Course..";
+
+            if (!string.IsNullOrEmpty(searchText) && !isPlaceholder)
             {
                 string searchCriteria = $"([UserID] LIKE '%{searchText}%' OR [FullName] LIKE '%{searchText}%' OR [Program] LIKE '%{searchText}%')";
 
@@ -168,7 +224,7 @@ namespace SchoolClearanceSystem
                     filterCriteria += $" AND {searchCriteria}";
             }
 
-            // 3. Post Filter Strings directly into the active layout engine
+            // 3. Apply to grid
             view.ActiveFilterString = filterCriteria;
         }
 
@@ -205,7 +261,6 @@ namespace SchoolClearanceSystem
 
             ClearanceRepository repo = new ClearanceRepository();
             string defaultRemarks = $"Processed by {targetOffice} Office";
-
             bool isSuccess = repo.UpdateRequestStatus(studentId, targetOffice, targetStatus, defaultRemarks);
 
             if (isSuccess)
@@ -213,11 +268,13 @@ namespace SchoolClearanceSystem
                 XtraMessageBox.Show($"Clearance status updated to '{targetStatus}' successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // OOP REFACTOR: Keep tracking layout consistent by updating memory properties directly!
                 selectedRequest.Status = targetStatus;
                 selectedRequest.Remarks = defaultRemarks;
 
                 view.RefreshRow(view.FocusedRowHandle);
+
+                // Refresh dashboard counts after every action
+                LoadDashboardSummary();
             }
             else
             {
@@ -252,20 +309,16 @@ namespace SchoolClearanceSystem
 
         private void btnProof_Click(object sender, EventArgs e)
         {
-            // 1. Safe Interface Cast: Extract the current active DevExpress GridView view context
             var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
             if (view == null) return;
 
-            // 2. Focused Row Access: Capture the dynamic backend data model for the highlighted row
             dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
             if (selectedRequest == null) return;
 
             try
             {
-                // 3. Dynamic Property Extraction: Read the string holding the raw file path
-                string proofPath = selectedRequest.Proof?.ToString();
-
-                // 4. Encapsulation / Delegation: Route the file location to your existing OS execution helper
+                // Fixed line 230:
+                string proofPath = selectedRequest.FilePath?.ToString();
                 OpenTargetFile(proofPath);
             }
             catch (Exception ex)

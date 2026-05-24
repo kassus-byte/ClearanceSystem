@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using SchoolClearanceSystem.Models; // Added to map the DashboardMetrics model
 
 namespace SchoolClearanceSystem.Repository
 {
@@ -17,6 +18,76 @@ namespace SchoolClearanceSystem.Repository
 
     public class SystemRepository : BaseRepository
     {
+        // ── ADDED CODE FOR STEP 2: Live Metrics Engine ───────────────────────────
+        public DashboardMetrics GetLiveDashboardMetrics()
+        {
+            DashboardMetrics metrics = new DashboardMetrics();
+
+            try
+            {
+                using (var conn = dbManager.GetConnection())
+                {
+                    // 1. Fetch total student counts
+                    metrics.TotalStudents = conn.ExecuteScalar<int>(
+                        "SELECT COUNT(*) FROM Users WHERE Role = 'Student';"
+                    );
+
+                    // 2. Fetch total office/staff account counts
+                    metrics.TotalOfficeAccounts = conn.ExecuteScalar<int>(
+                        "SELECT COUNT(*) FROM Users WHERE Role = 'Staff';"
+                    );
+
+                    // 3. Fetch new registrations count (Adjust table/column fields if needed)
+                    // This queries users registered within the current calendar week
+                    metrics.NewRegistrationsCount = conn.ExecuteScalar<int>(
+                        @"SELECT COUNT(*) FROM Users 
+                          WHERE Role = 'Student' 
+                          AND strftime('%W', CreatedAt) = strftime('%W', 'now');"
+                    );
+                }
+            }
+            catch (Exception)
+            {
+                // Fallback graceful safety block to preserve app stability if schema diverges
+            }
+
+            return metrics;
+        }
+        // ─────────────────────────────────────────────────────────────────────────
+        /// <summary>
+        /// OOP Integration: Pulls contextual aggregated analytics numbers for a specific office workspace.
+        /// </summary>
+        public OfficeMetrics GetOfficeDashboardMetrics(string officeName)
+        {
+            OfficeMetrics metrics = new OfficeMetrics();
+            try
+            {
+                using (var conn = dbManager.GetConnection())
+                {
+                    // Counts distinct clearance rows assigned to this specific office grouped by status values
+                    metrics.ClearedCount = conn.ExecuteScalar<int>(
+                        "SELECT COUNT(*) FROM ClearanceRequests WHERE OfficeName = @office AND Status = 'Approved';",
+                        new { office = officeName });
+
+                    metrics.PendingCount = conn.ExecuteScalar<int>(
+                        "SELECT COUNT(*) FROM ClearanceRequests WHERE OfficeName = @office AND Status = 'Pending';",
+                        new { office = officeName });
+
+                    metrics.OnHoldCount = conn.ExecuteScalar<int>(
+                        "SELECT COUNT(*) FROM ClearanceRequests WHERE OfficeName = @office AND Status = 'On Hold';",
+                        new { office = officeName });
+
+                    // General context metric to find total distinct students tracked under this system partition
+                    metrics.TotalStudentsCount = conn.ExecuteScalar<int>(
+                        "SELECT COUNT(*) FROM Users WHERE Role = 'Student';");
+                }
+            }
+            catch (Exception)
+            {
+                // Fallback graceful safety block to preserve application stability if schema differs
+            }
+            return metrics;
+        }
         public bool CreateNewPeriod(string semester, string academicYear)
         {
             using (var conn = dbManager.GetConnection())
