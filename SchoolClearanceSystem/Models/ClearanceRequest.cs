@@ -13,8 +13,13 @@ namespace SchoolClearanceSystem
         public string Semester { get; set; }
         public string AcademicYear { get; set; }
         public string DateSubmitted { get; set; }
+        //=======
+        //A read-only property for fast identity access.
 
-     
+        public string UserID => Student?.UserID;
+        public string FullName => Student?.FullName;
+        public string Program => Student?.Program;
+        public string Year => Student?.Year;
         public ClearanceRequest() 
         {
         }
