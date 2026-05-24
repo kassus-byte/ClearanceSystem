@@ -83,7 +83,7 @@ namespace SchoolClearanceSystem
         private void btnSave_Click_1(object sender, EventArgs e)
         {
             if (!ValidateForm()) return;
-            
+
             if (_mode == FormMode.Register) PerformRegister();
             else PerformUpdate();
         }
@@ -157,11 +157,20 @@ namespace SchoolClearanceSystem
                     pePhoto.Image = Image.FromFile(ofd.FileName);
                     _selectedUser.UploadPath = ofd.FileName;
                 }
-                catch (Exception ex) 
-                { 
-                    XtraMessageBox.Show("Error: " + ex.Message); 
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Error: " + ex.Message);
                 }
             }
+        }
+        private void pePhoto_EditValueChanged(object sender, EventArgs e)
+        {
+            // Leaving blank for now
+        }
+
+        private void txtUserID_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

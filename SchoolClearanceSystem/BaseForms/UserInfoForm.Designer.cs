@@ -64,7 +64,7 @@
             this.btnUploadPhoto.Appearance.Options.UseFont = true;
             this.btnUploadPhoto.Appearance.Options.UseForeColor = true;
             this.btnUploadPhoto.Location = new System.Drawing.Point(712, 487);
-            this.btnUploadPhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUploadPhoto.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadPhoto.Name = "btnUploadPhoto";
             this.btnUploadPhoto.Size = new System.Drawing.Size(97, 32);
             this.btnUploadPhoto.TabIndex = 29;
@@ -74,7 +74,7 @@
             // pePhoto
             // 
             this.pePhoto.Location = new System.Drawing.Point(662, 527);
-            this.pePhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pePhoto.Margin = new System.Windows.Forms.Padding(4);
             this.pePhoto.Name = "pePhoto";
             this.pePhoto.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pePhoto.Size = new System.Drawing.Size(492, 181);
@@ -92,7 +92,7 @@
             "IV",
             "Irregular"});
             this.cbYear.Location = new System.Drawing.Point(30, 422);
-            this.cbYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbYear.Margin = new System.Windows.Forms.Padding(4);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(541, 28);
             this.cbYear.TabIndex = 26;
@@ -100,7 +100,7 @@
             // txtFullName
             // 
             this.txtFullName.Location = new System.Drawing.Point(662, 220);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.txtFullName.Properties.Appearance.Options.UseFont = true;
@@ -114,7 +114,7 @@
             this.cbProgram.Items.AddRange(new object[] {
             "BSIT"});
             this.cbProgram.Location = new System.Drawing.Point(662, 340);
-            this.cbProgram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbProgram.Margin = new System.Windows.Forms.Padding(4);
             this.cbProgram.Name = "cbProgram";
             this.cbProgram.Size = new System.Drawing.Size(522, 28);
             this.cbProgram.TabIndex = 24;
@@ -122,12 +122,13 @@
             // txtUserID
             // 
             this.txtUserID.Location = new System.Drawing.Point(30, 220);
-            this.txtUserID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserID.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.txtUserID.Properties.Appearance.Options.UseFont = true;
             this.txtUserID.Size = new System.Drawing.Size(541, 38);
             this.txtUserID.TabIndex = 23;
+            this.txtUserID.EditValueChanged += new System.EventHandler(this.txtUserID_EditValueChanged);
             // 
             // btnSave
             // 
@@ -136,7 +137,7 @@
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Location = new System.Drawing.Point(1070, 116);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(164, 53);
             this.btnSave.TabIndex = 22;
@@ -150,7 +151,7 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.Location = new System.Drawing.Point(884, 116);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(164, 53);
             this.btnCancel.TabIndex = 21;
@@ -164,7 +165,7 @@
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
             this.labelControl8.Location = new System.Drawing.Point(660, 491);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(44, 21);
             this.labelControl8.TabIndex = 20;
@@ -177,7 +178,7 @@
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Appearance.Options.UseForeColor = true;
             this.labelControl7.Location = new System.Drawing.Point(30, 394);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(32, 21);
             this.labelControl7.TabIndex = 19;
@@ -190,7 +191,7 @@
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
             this.labelControl5.Location = new System.Drawing.Point(662, 311);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(63, 21);
             this.labelControl5.TabIndex = 17;
@@ -203,7 +204,7 @@
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
             this.labelControl4.Location = new System.Drawing.Point(662, 192);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(43, 21);
             this.labelControl4.TabIndex = 16;
@@ -216,7 +217,7 @@
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(30, 192);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 21);
             this.labelControl3.TabIndex = 15;
@@ -230,7 +231,7 @@
             this.panelControl15.Controls.Add(this.lblTitle);
             this.panelControl15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl15.Location = new System.Drawing.Point(0, 0);
-            this.panelControl15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControl15.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl15.Name = "panelControl15";
             this.panelControl15.Size = new System.Drawing.Size(1300, 96);
             this.panelControl15.TabIndex = 30;
@@ -242,7 +243,7 @@
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(42, 23);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(265, 46);
             this.lblTitle.TabIndex = 3;
@@ -255,7 +256,7 @@
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
             this.labelControl1.Location = new System.Drawing.Point(662, 389);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(96, 21);
             this.labelControl1.TabIndex = 32;
@@ -264,7 +265,7 @@
             // txtDateCreated
             // 
             this.txtDateCreated.Location = new System.Drawing.Point(662, 417);
-            this.txtDateCreated.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDateCreated.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateCreated.Name = "txtDateCreated";
             this.txtDateCreated.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.txtDateCreated.Properties.Appearance.Options.UseFont = true;
@@ -278,7 +279,7 @@
             this.lbl.Appearance.Options.UseFont = true;
             this.lbl.Appearance.Options.UseForeColor = true;
             this.lbl.Location = new System.Drawing.Point(30, 306);
-            this.lbl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbl.Margin = new System.Windows.Forms.Padding(4);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(33, 21);
             this.lbl.TabIndex = 34;
@@ -295,7 +296,7 @@
             "SSG",
             "Admin"});
             this.cbRole.Location = new System.Drawing.Point(30, 340);
-            this.cbRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(4);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(541, 28);
             this.cbRole.TabIndex = 35;
@@ -324,7 +325,7 @@
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserInfoForm";
             this.Text = "UserInfoForm";
             this.Load += new System.EventHandler(this.UserInfoForm_Load);

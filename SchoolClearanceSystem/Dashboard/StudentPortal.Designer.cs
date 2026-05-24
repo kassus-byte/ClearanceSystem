@@ -128,6 +128,8 @@
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.pageMyClearance = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gcRecords = new DevExpress.XtraEditors.GroupControl();
+            this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pnlClearanceCopy = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
@@ -150,8 +152,6 @@
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -222,6 +222,8 @@
             this.pageMyClearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).BeginInit();
             this.gcRecords.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).BeginInit();
             this.pnlClearanceCopy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -230,8 +232,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelForm)).BeginInit();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -247,6 +247,7 @@
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.IsSplitterFixed = true;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainerControl1.Name = "splitContainerControl1";
             // 
             // splitContainerControl1.Panel1
@@ -264,10 +265,10 @@
             this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.White;
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
             this.splitContainerControl1.Panel2.Controls.Add(this.naviframeStudent);
-            this.splitContainerControl1.Panel2.Padding = new System.Windows.Forms.Padding(15);
+            this.splitContainerControl1.Panel2.Padding = new System.Windows.Forms.Padding(18, 18, 18, 18);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1920, 1080);
-            this.splitContainerControl1.SplitterPosition = 300;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1942, 1102);
+            this.splitContainerControl1.SplitterPosition = 350;
             this.splitContainerControl1.TabIndex = 0;
             // 
             // panelControl4
@@ -276,9 +277,10 @@
             this.panelControl4.Appearance.Options.UseBackColor = true;
             this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl4.Controls.Add(this.btnLogout);
-            this.panelControl4.Location = new System.Drawing.Point(0, 944);
+            this.panelControl4.Location = new System.Drawing.Point(0, 1162);
+            this.panelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(300, 136);
+            this.panelControl4.Size = new System.Drawing.Size(350, 167);
             this.panelControl4.TabIndex = 3;
             // 
             // btnLogout
@@ -300,9 +302,10 @@
             this.btnLogout.AppearancePressed.Options.UseBackColor = true;
             this.btnLogout.AppearancePressed.Options.UseFont = true;
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLogout.Location = new System.Drawing.Point(0, 76);
+            this.btnLogout.Location = new System.Drawing.Point(0, 93);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(300, 60);
+            this.btnLogout.Size = new System.Drawing.Size(350, 74);
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Logout";
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -320,9 +323,10 @@
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
             this.accordionControl1.ItemHeight = 2;
-            this.accordionControl1.Location = new System.Drawing.Point(0, 165);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 203);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.Size = new System.Drawing.Size(325, 915);
+            this.accordionControl1.Size = new System.Drawing.Size(379, 899);
             this.accordionControl1.TabIndex = 2;
             // 
             // accordionControlElement1
@@ -453,11 +457,12 @@
             this.pnlUser.Controls.Add(this.lblUserID);
             this.pnlUser.Controls.Add(this.lblFullName);
             this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlUser.Location = new System.Drawing.Point(0, 80);
+            this.pnlUser.Location = new System.Drawing.Point(0, 98);
             this.pnlUser.LookAndFeel.SkinMaskColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.pnlUser.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.pnlUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(300, 85);
+            this.pnlUser.Size = new System.Drawing.Size(350, 105);
             this.pnlUser.TabIndex = 1;
             // 
             // lblRole
@@ -466,9 +471,10 @@
             this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblRole.Appearance.Options.UseFont = true;
             this.lblRole.Appearance.Options.UseForeColor = true;
-            this.lblRole.Location = new System.Drawing.Point(83, 64);
+            this.lblRole.Location = new System.Drawing.Point(97, 79);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(39, 13);
+            this.lblRole.Size = new System.Drawing.Size(48, 17);
             this.lblRole.TabIndex = 4;
             this.lblRole.Text = "Student";
             // 
@@ -478,9 +484,10 @@
             this.lblYear.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblYear.Appearance.Options.UseFont = true;
             this.lblYear.Appearance.Options.UseForeColor = true;
-            this.lblYear.Location = new System.Drawing.Point(196, 45);
+            this.lblYear.Location = new System.Drawing.Point(229, 55);
+            this.lblYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(6, 13);
+            this.lblYear.Size = new System.Drawing.Size(8, 17);
             this.lblYear.TabIndex = 3;
             this.lblYear.Text = "II";
             // 
@@ -490,9 +497,10 @@
             this.lblProgram.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblProgram.Appearance.Options.UseFont = true;
             this.lblProgram.Appearance.Options.UseForeColor = true;
-            this.lblProgram.Location = new System.Drawing.Point(168, 45);
+            this.lblProgram.Location = new System.Drawing.Point(196, 55);
+            this.lblProgram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblProgram.Name = "lblProgram";
-            this.lblProgram.Size = new System.Drawing.Size(22, 13);
+            this.lblProgram.Size = new System.Drawing.Size(26, 17);
             this.lblProgram.TabIndex = 2;
             this.lblProgram.Text = "BSIT";
             // 
@@ -502,9 +510,10 @@
             this.lblUserID.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserID.Appearance.Options.UseFont = true;
             this.lblUserID.Appearance.Options.UseForeColor = true;
-            this.lblUserID.Location = new System.Drawing.Point(83, 45);
+            this.lblUserID.Location = new System.Drawing.Point(97, 55);
+            this.lblUserID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(52, 13);
+            this.lblUserID.Size = new System.Drawing.Size(61, 17);
             this.lblUserID.TabIndex = 1;
             this.lblUserID.Text = "2024-0704";
             // 
@@ -514,9 +523,10 @@
             this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblFullName.Appearance.Options.UseFont = true;
             this.lblFullName.Appearance.Options.UseForeColor = true;
-            this.lblFullName.Location = new System.Drawing.Point(83, 22);
+            this.lblFullName.Location = new System.Drawing.Point(97, 27);
+            this.lblFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(140, 17);
+            this.lblFullName.Size = new System.Drawing.Size(168, 21);
             this.lblFullName.TabIndex = 0;
             this.lblFullName.Text = "Charlotte P. Forrosuelo";
             // 
@@ -537,8 +547,9 @@
             this.pnlHeader.LookAndFeel.SkinMaskColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.pnlHeader.LookAndFeel.SkinMaskColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.pnlHeader.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(300, 80);
+            this.pnlHeader.Size = new System.Drawing.Size(350, 98);
             this.pnlHeader.TabIndex = 0;
             // 
             // labelControl2
@@ -547,9 +558,10 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(23, 39);
+            this.labelControl2.Location = new System.Drawing.Point(27, 48);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(158, 17);
+            this.labelControl2.Size = new System.Drawing.Size(190, 21);
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Student Clearance System";
             // 
@@ -559,9 +571,10 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(23, 14);
+            this.labelControl1.Location = new System.Drawing.Point(27, 17);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(218, 21);
+            this.labelControl1.Size = new System.Drawing.Size(270, 28);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "College of Computer Studies";
             // 
@@ -574,7 +587,8 @@
             this.naviframeStudent.Controls.Add(this.pageMyClearance);
             this.naviframeStudent.Controls.Add(this.pageClearancePaper);
             this.naviframeStudent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.naviframeStudent.Location = new System.Drawing.Point(15, 15);
+            this.naviframeStudent.Location = new System.Drawing.Point(18, 18);
+            this.naviframeStudent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.naviframeStudent.Name = "naviframeStudent";
             this.naviframeStudent.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.pageDashboard,
@@ -583,7 +597,7 @@
             this.pageMyClearance,
             this.pageClearancePaper});
             this.naviframeStudent.SelectedPage = this.pageDashboard;
-            this.naviframeStudent.Size = new System.Drawing.Size(1574, 1050);
+            this.naviframeStudent.Size = new System.Drawing.Size(1536, 1066);
             this.naviframeStudent.TabIndex = 0;
             this.naviframeStudent.TransitionType = DevExpress.Utils.Animation.Transitions.Fade;
             // 
@@ -591,12 +605,14 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
+            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
             this.pageDashboard.Controls.Add(this.pnlWelcome);
+            this.pageDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pageDashboard.Name = "pageDashboard";
-            this.pageDashboard.Size = new System.Drawing.Size(1574, 1050);
+            this.pageDashboard.Size = new System.Drawing.Size(1536, 1066);
             // 
             // panelControl2
             // 
@@ -605,9 +621,10 @@
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.groupControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(0, 376);
+            this.panelControl2.Location = new System.Drawing.Point(0, 462);
+            this.panelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1574, 599);
+            this.panelControl2.Size = new System.Drawing.Size(1536, 737);
             this.panelControl2.TabIndex = 3;
             // 
             // groupControl1
@@ -619,18 +636,21 @@
             this.groupControl1.Controls.Add(this.gridControlOfficeStatus);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1574, 598);
+            this.groupControl1.Size = new System.Drawing.Size(1536, 736);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Office Status";
             // 
             // gridControlOfficeStatus
             // 
             this.gridControlOfficeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlOfficeStatus.Location = new System.Drawing.Point(2, 29);
+            this.gridControlOfficeStatus.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridControlOfficeStatus.Location = new System.Drawing.Point(2, 36);
             this.gridControlOfficeStatus.MainView = this.gridView2;
+            this.gridControlOfficeStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridControlOfficeStatus.Name = "gridControlOfficeStatus";
-            this.gridControlOfficeStatus.Size = new System.Drawing.Size(1570, 567);
+            this.gridControlOfficeStatus.Size = new System.Drawing.Size(1532, 698);
             this.gridControlOfficeStatus.TabIndex = 0;
             this.gridControlOfficeStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -641,9 +661,11 @@
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3});
+            this.gridView2.DetailHeight = 431;
             this.gridView2.GridControl = this.gridControlOfficeStatus;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsEditForm.PopupEditFormWidth = 933;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             this.gridView2.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView2_RowCellStyle);
             // 
@@ -651,28 +673,31 @@
             // 
             this.gridColumn1.Caption = "Department";
             this.gridColumn1.FieldName = "Department";
+            this.gridColumn1.MinWidth = 23;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 476;
+            this.gridColumn1.Width = 555;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Status";
             this.gridColumn2.FieldName = "Status";
+            this.gridColumn2.MinWidth = 23;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 542;
+            this.gridColumn2.Width = 632;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Remarks";
             this.gridColumn3.FieldName = "Remarks";
+            this.gridColumn3.MinWidth = 23;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 522;
+            this.gridColumn3.Width = 609;
             // 
             // panelControl1
             // 
@@ -681,10 +706,11 @@
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.panelControl10);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 236);
+            this.panelControl1.Location = new System.Drawing.Point(0, 290);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Padding = new System.Windows.Forms.Padding(10);
-            this.panelControl1.Size = new System.Drawing.Size(1574, 140);
+            this.panelControl1.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.panelControl1.Size = new System.Drawing.Size(1536, 172);
             this.panelControl1.TabIndex = 2;
             // 
             // panelControl10
@@ -695,9 +721,10 @@
             this.panelControl10.Controls.Add(this.pbOverallProgress);
             this.panelControl10.Controls.Add(this.labelControl4);
             this.panelControl10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl10.Location = new System.Drawing.Point(10, 10);
+            this.panelControl10.Location = new System.Drawing.Point(12, 12);
+            this.panelControl10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl10.Name = "panelControl10";
-            this.panelControl10.Size = new System.Drawing.Size(1554, 120);
+            this.panelControl10.Size = new System.Drawing.Size(1512, 148);
             this.panelControl10.TabIndex = 0;
             // 
             // lblProgress
@@ -706,18 +733,21 @@
             this.lblProgress.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.lblProgress.Appearance.Options.UseFont = true;
             this.lblProgress.Appearance.Options.UseForeColor = true;
-            this.lblProgress.Location = new System.Drawing.Point(25, 78);
+            this.lblProgress.Location = new System.Drawing.Point(29, 96);
+            this.lblProgress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(146, 17);
+            this.lblProgress.Size = new System.Drawing.Size(170, 21);
             this.lblProgress.TabIndex = 2;
             this.lblProgress.Text = "0 out of 3 offices cleared";
             // 
             // pbOverallProgress
             // 
-            this.pbOverallProgress.Location = new System.Drawing.Point(25, 43);
+            this.pbOverallProgress.Location = new System.Drawing.Point(29, 53);
+            this.pbOverallProgress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbOverallProgress.Name = "pbOverallProgress";
-            this.pbOverallProgress.Size = new System.Drawing.Size(1508, 29);
+            this.pbOverallProgress.Size = new System.Drawing.Size(1759, 36);
             this.pbOverallProgress.TabIndex = 0;
+            this.pbOverallProgress.EditValueChanged += new System.EventHandler(this.pbOverallProgress_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -725,9 +755,10 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(25, 16);
+            this.labelControl4.Location = new System.Drawing.Point(29, 20);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(124, 21);
+            this.labelControl4.Size = new System.Drawing.Size(155, 28);
             this.labelControl4.TabIndex = 1;
             this.labelControl4.Text = "Overall Progress";
             // 
@@ -742,10 +773,11 @@
             this.pnlStatusCards.Controls.Add(this.pnlSpace1);
             this.pnlStatusCards.Controls.Add(this.pnlCard1);
             this.pnlStatusCards.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlStatusCards.Location = new System.Drawing.Point(0, 87);
+            this.pnlStatusCards.Location = new System.Drawing.Point(0, 107);
+            this.pnlStatusCards.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlStatusCards.Name = "pnlStatusCards";
-            this.pnlStatusCards.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlStatusCards.Size = new System.Drawing.Size(1574, 149);
+            this.pnlStatusCards.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.pnlStatusCards.Size = new System.Drawing.Size(1536, 183);
             this.pnlStatusCards.TabIndex = 1;
             // 
             // pnlCard3
@@ -757,9 +789,10 @@
             this.pnlCard3.Controls.Add(this.lblStatus);
             this.pnlCard3.Controls.Add(this.labelControl8);
             this.pnlCard3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCard3.Location = new System.Drawing.Point(1058, 10);
+            this.pnlCard3.Location = new System.Drawing.Point(1234, 12);
+            this.pnlCard3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlCard3.Name = "pnlCard3";
-            this.pnlCard3.Size = new System.Drawing.Size(504, 129);
+            this.pnlCard3.Size = new System.Drawing.Size(588, 159);
             this.pnlCard3.TabIndex = 4;
             // 
             // lblStatus
@@ -768,9 +801,10 @@
             this.lblStatus.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.lblStatus.Appearance.Options.UseFont = true;
             this.lblStatus.Appearance.Options.UseForeColor = true;
-            this.lblStatus.Location = new System.Drawing.Point(58, 53);
+            this.lblStatus.Location = new System.Drawing.Point(68, 65);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(144, 37);
+            this.lblStatus.Size = new System.Drawing.Size(180, 46);
             this.lblStatus.TabIndex = 5;
             this.lblStatus.Text = "In Progress";
             // 
@@ -780,9 +814,10 @@
             this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
-            this.labelControl8.Location = new System.Drawing.Point(53, 24);
+            this.labelControl8.Location = new System.Drawing.Point(62, 30);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(46, 17);
+            this.labelControl8.Size = new System.Drawing.Size(58, 21);
             this.labelControl8.TabIndex = 4;
             this.labelControl8.Text = "STATUS";
             // 
@@ -792,9 +827,10 @@
             this.pnlSpace2.Appearance.Options.UseBackColor = true;
             this.pnlSpace2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlSpace2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSpace2.Location = new System.Drawing.Point(1038, 10);
+            this.pnlSpace2.Location = new System.Drawing.Point(1211, 12);
+            this.pnlSpace2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlSpace2.Name = "pnlSpace2";
-            this.pnlSpace2.Size = new System.Drawing.Size(20, 129);
+            this.pnlSpace2.Size = new System.Drawing.Size(23, 159);
             this.pnlSpace2.TabIndex = 3;
             // 
             // pnlCard2
@@ -806,9 +842,10 @@
             this.pnlCard2.Controls.Add(this.lblPercentage);
             this.pnlCard2.Controls.Add(this.labelControl7);
             this.pnlCard2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCard2.Location = new System.Drawing.Point(534, 10);
+            this.pnlCard2.Location = new System.Drawing.Point(623, 12);
+            this.pnlCard2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlCard2.Name = "pnlCard2";
-            this.pnlCard2.Size = new System.Drawing.Size(504, 129);
+            this.pnlCard2.Size = new System.Drawing.Size(588, 159);
             this.pnlCard2.TabIndex = 2;
             // 
             // lblPercentage
@@ -817,9 +854,10 @@
             this.lblPercentage.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.lblPercentage.Appearance.Options.UseFont = true;
             this.lblPercentage.Appearance.Options.UseForeColor = true;
-            this.lblPercentage.Location = new System.Drawing.Point(58, 53);
+            this.lblPercentage.Location = new System.Drawing.Point(68, 65);
+            this.lblPercentage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblPercentage.Name = "lblPercentage";
-            this.lblPercentage.Size = new System.Drawing.Size(39, 37);
+            this.lblPercentage.Size = new System.Drawing.Size(49, 46);
             this.lblPercentage.TabIndex = 4;
             this.lblPercentage.Text = "0%";
             // 
@@ -829,9 +867,10 @@
             this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(58, 23);
+            this.labelControl7.Location = new System.Drawing.Point(68, 28);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(64, 17);
+            this.labelControl7.Size = new System.Drawing.Size(78, 21);
             this.labelControl7.TabIndex = 3;
             this.labelControl7.Text = "PROGRESS";
             // 
@@ -841,9 +880,10 @@
             this.pnlSpace1.Appearance.Options.UseBackColor = true;
             this.pnlSpace1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlSpace1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSpace1.Location = new System.Drawing.Point(514, 10);
+            this.pnlSpace1.Location = new System.Drawing.Point(600, 12);
+            this.pnlSpace1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlSpace1.Name = "pnlSpace1";
-            this.pnlSpace1.Size = new System.Drawing.Size(20, 129);
+            this.pnlSpace1.Size = new System.Drawing.Size(23, 159);
             this.pnlSpace1.TabIndex = 1;
             // 
             // pnlCard1
@@ -853,9 +893,10 @@
             this.pnlCard1.Controls.Add(this.lblOfficeCleared);
             this.pnlCard1.Controls.Add(this.labelControl6);
             this.pnlCard1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCard1.Location = new System.Drawing.Point(10, 10);
+            this.pnlCard1.Location = new System.Drawing.Point(12, 12);
+            this.pnlCard1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlCard1.Name = "pnlCard1";
-            this.pnlCard1.Size = new System.Drawing.Size(504, 129);
+            this.pnlCard1.Size = new System.Drawing.Size(588, 159);
             this.pnlCard1.TabIndex = 0;
             // 
             // lblOfficeCleared
@@ -864,9 +905,10 @@
             this.lblOfficeCleared.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.lblOfficeCleared.Appearance.Options.UseFont = true;
             this.lblOfficeCleared.Appearance.Options.UseForeColor = true;
-            this.lblOfficeCleared.Location = new System.Drawing.Point(55, 53);
+            this.lblOfficeCleared.Location = new System.Drawing.Point(64, 65);
+            this.lblOfficeCleared.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblOfficeCleared.Name = "lblOfficeCleared";
-            this.lblOfficeCleared.Size = new System.Drawing.Size(44, 37);
+            this.lblOfficeCleared.Size = new System.Drawing.Size(55, 46);
             this.lblOfficeCleared.TabIndex = 3;
             this.lblOfficeCleared.Text = "0/3";
             // 
@@ -876,9 +918,10 @@
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(55, 23);
+            this.labelControl6.Location = new System.Drawing.Point(64, 28);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(108, 17);
+            this.labelControl6.Size = new System.Drawing.Size(130, 21);
             this.labelControl6.TabIndex = 2;
             this.labelControl6.Text = "OFFICES CLEARED";
             // 
@@ -891,8 +934,9 @@
             this.pnlWelcome.Controls.Add(this.txtWelcome);
             this.pnlWelcome.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlWelcome.Location = new System.Drawing.Point(0, 0);
+            this.pnlWelcome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlWelcome.Name = "pnlWelcome";
-            this.pnlWelcome.Size = new System.Drawing.Size(1574, 87);
+            this.pnlWelcome.Size = new System.Drawing.Size(1536, 107);
             this.pnlWelcome.TabIndex = 0;
             // 
             // labelControl3
@@ -901,9 +945,10 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(20, 51);
+            this.labelControl3.Location = new System.Drawing.Point(23, 63);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(286, 17);
+            this.labelControl3.Size = new System.Drawing.Size(339, 21);
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Here\'s your clearance overview for this semester.";
             // 
@@ -913,9 +958,10 @@
             this.txtWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.txtWelcome.Appearance.Options.UseFont = true;
             this.txtWelcome.Appearance.Options.UseForeColor = true;
-            this.txtWelcome.Location = new System.Drawing.Point(20, 8);
+            this.txtWelcome.Location = new System.Drawing.Point(23, 10);
+            this.txtWelcome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtWelcome.Name = "txtWelcome";
-            this.txtWelcome.Size = new System.Drawing.Size(264, 37);
+            this.txtWelcome.Size = new System.Drawing.Size(325, 46);
             this.txtWelcome.TabIndex = 0;
             this.txtWelcome.Text = "Welcome, Charlotte!";
             // 
@@ -931,8 +977,9 @@
             this.pageRequestClearance.Controls.Add(this.panelControl3);
             this.pageRequestClearance.Controls.Add(this.labelControl12);
             this.pageRequestClearance.Controls.Add(this.btnSubmitRequest);
+            this.pageRequestClearance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pageRequestClearance.Name = "pageRequestClearance";
-            this.pageRequestClearance.Size = new System.Drawing.Size(1574, 1050);
+            this.pageRequestClearance.Size = new System.Drawing.Size(1536, 1066);
             // 
             // panelUpload3
             // 
@@ -943,9 +990,10 @@
             this.panelUpload3.Controls.Add(this.labelControl31);
             this.panelUpload3.Controls.Add(this.pictureEdit3);
             this.panelUpload3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload3.Location = new System.Drawing.Point(0, 676);
+            this.panelUpload3.Location = new System.Drawing.Point(0, 831);
+            this.panelUpload3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelUpload3.Name = "panelUpload3";
-            this.panelUpload3.Size = new System.Drawing.Size(1574, 131);
+            this.panelUpload3.Size = new System.Drawing.Size(1536, 161);
             this.panelUpload3.TabIndex = 14;
             // 
             // labelControl36
@@ -958,9 +1006,10 @@
             this.labelControl36.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelControl36.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl36.ImageOptions.SvgImage")));
             this.labelControl36.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
-            this.labelControl36.Location = new System.Drawing.Point(41, 80);
+            this.labelControl36.Location = new System.Drawing.Point(48, 98);
+            this.labelControl36.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl36.Name = "labelControl36";
-            this.labelControl36.Size = new System.Drawing.Size(183, 27);
+            this.labelControl36.Size = new System.Drawing.Size(223, 33);
             this.labelControl36.TabIndex = 7;
             this.labelControl36.Text = "No requirements needed.";
             // 
@@ -970,9 +1019,10 @@
             this.labelControl34.Appearance.ForeColor = System.Drawing.Color.Silver;
             this.labelControl34.Appearance.Options.UseFont = true;
             this.labelControl34.Appearance.Options.UseForeColor = true;
-            this.labelControl34.Location = new System.Drawing.Point(109, 39);
+            this.labelControl34.Location = new System.Drawing.Point(127, 48);
+            this.labelControl34.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl34.Name = "labelControl34";
-            this.labelControl34.Size = new System.Drawing.Size(104, 17);
+            this.labelControl34.Size = new System.Drawing.Size(125, 21);
             this.labelControl34.TabIndex = 4;
             this.labelControl34.Text = "System Accounts";
             // 
@@ -980,22 +1030,24 @@
             // 
             this.labelControl31.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl31.Appearance.Options.UseFont = true;
-            this.labelControl31.Location = new System.Drawing.Point(109, 21);
+            this.labelControl31.Location = new System.Drawing.Point(127, 26);
+            this.labelControl31.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl31.Name = "labelControl31";
-            this.labelControl31.Size = new System.Drawing.Size(132, 21);
+            this.labelControl31.Size = new System.Drawing.Size(163, 28);
             this.labelControl31.TabIndex = 5;
             this.labelControl31.Text = "Technical Support";
             // 
             // pictureEdit3
             // 
             this.pictureEdit3.EditValue = ((object)(resources.GetObject("pictureEdit3.EditValue")));
-            this.pictureEdit3.Location = new System.Drawing.Point(32, 6);
+            this.pictureEdit3.Location = new System.Drawing.Point(37, 7);
+            this.pictureEdit3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureEdit3.Name = "pictureEdit3";
             this.pictureEdit3.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.pictureEdit3.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit3.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit3.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit3.Size = new System.Drawing.Size(72, 57);
+            this.pictureEdit3.Size = new System.Drawing.Size(84, 70);
             this.pictureEdit3.TabIndex = 4;
             // 
             // panelUpload2
@@ -1009,10 +1061,11 @@
             this.panelUpload2.Controls.Add(this.pictureEdit2);
             this.panelUpload2.Controls.Add(this.labelControl28);
             this.panelUpload2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload2.Location = new System.Drawing.Point(0, 488);
+            this.panelUpload2.Location = new System.Drawing.Point(0, 600);
+            this.panelUpload2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelUpload2.Name = "panelUpload2";
-            this.panelUpload2.Padding = new System.Windows.Forms.Padding(11, 75, 0, 0);
-            this.panelUpload2.Size = new System.Drawing.Size(1574, 188);
+            this.panelUpload2.Padding = new System.Windows.Forms.Padding(13, 92, 0, 0);
+            this.panelUpload2.Size = new System.Drawing.Size(1536, 231);
             this.panelUpload2.TabIndex = 13;
             // 
             // labelControl32
@@ -1025,9 +1078,10 @@
             this.labelControl32.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelControl32.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl32.ImageOptions.SvgImage")));
             this.labelControl32.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
-            this.labelControl32.Location = new System.Drawing.Point(41, 78);
+            this.labelControl32.Location = new System.Drawing.Point(48, 96);
+            this.labelControl32.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl32.Name = "labelControl32";
-            this.labelControl32.Size = new System.Drawing.Size(354, 27);
+            this.labelControl32.Size = new System.Drawing.Size(421, 33);
             this.labelControl32.TabIndex = 6;
             this.labelControl32.Text = "Answer the evaluation form and submit a screenshot.";
             // 
@@ -1037,9 +1091,10 @@
             this.labelControl29.Appearance.ForeColor = System.Drawing.Color.Silver;
             this.labelControl29.Appearance.Options.UseFont = true;
             this.labelControl29.Appearance.Options.UseForeColor = true;
-            this.labelControl29.Location = new System.Drawing.Point(110, 38);
+            this.labelControl29.Location = new System.Drawing.Point(128, 47);
+            this.labelControl29.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl29.Name = "labelControl29";
-            this.labelControl29.Size = new System.Drawing.Size(116, 17);
+            this.labelControl29.Size = new System.Drawing.Size(139, 21);
             this.labelControl29.TabIndex = 3;
             this.labelControl29.Text = "Activities and Fines";
             // 
@@ -1049,9 +1104,10 @@
             this.btnViewSSGPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnViewSSGPhoto.Appearance.Options.UseBackColor = true;
             this.btnViewSSGPhoto.Appearance.Options.UseFont = true;
-            this.btnViewSSGPhoto.Location = new System.Drawing.Point(180, 127);
+            this.btnViewSSGPhoto.Location = new System.Drawing.Point(210, 156);
+            this.btnViewSSGPhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewSSGPhoto.Name = "btnViewSSGPhoto";
-            this.btnViewSSGPhoto.Size = new System.Drawing.Size(122, 30);
+            this.btnViewSSGPhoto.Size = new System.Drawing.Size(142, 37);
             this.btnViewSSGPhoto.TabIndex = 3;
             this.btnViewSSGPhoto.Text = "View";
             // 
@@ -1061,31 +1117,34 @@
             this.btnUploadSSGRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnUploadSSGRequirement.Appearance.Options.UseBackColor = true;
             this.btnUploadSSGRequirement.Appearance.Options.UseFont = true;
-            this.btnUploadSSGRequirement.Location = new System.Drawing.Point(40, 127);
+            this.btnUploadSSGRequirement.Location = new System.Drawing.Point(47, 156);
+            this.btnUploadSSGRequirement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUploadSSGRequirement.Name = "btnUploadSSGRequirement";
-            this.btnUploadSSGRequirement.Size = new System.Drawing.Size(122, 30);
+            this.btnUploadSSGRequirement.Size = new System.Drawing.Size(142, 37);
             this.btnUploadSSGRequirement.TabIndex = 2;
             this.btnUploadSSGRequirement.Text = "Upload";
             // 
             // pictureEdit2
             // 
             this.pictureEdit2.EditValue = ((object)(resources.GetObject("pictureEdit2.EditValue")));
-            this.pictureEdit2.Location = new System.Drawing.Point(31, 20);
+            this.pictureEdit2.Location = new System.Drawing.Point(36, 25);
+            this.pictureEdit2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.pictureEdit2.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit2.Size = new System.Drawing.Size(72, 49);
+            this.pictureEdit2.Size = new System.Drawing.Size(84, 60);
             this.pictureEdit2.TabIndex = 3;
             // 
             // labelControl28
             // 
             this.labelControl28.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl28.Appearance.Options.UseFont = true;
-            this.labelControl28.Location = new System.Drawing.Point(110, 20);
+            this.labelControl28.Location = new System.Drawing.Point(128, 25);
+            this.labelControl28.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl28.Name = "labelControl28";
-            this.labelControl28.Size = new System.Drawing.Size(29, 21);
+            this.labelControl28.Size = new System.Drawing.Size(36, 28);
             this.labelControl28.TabIndex = 3;
             this.labelControl28.Text = "SSG";
             // 
@@ -1102,10 +1161,11 @@
             this.panelrequirements.Controls.Add(this.labelControl27);
             this.panelrequirements.Controls.Add(this.labelControl11);
             this.panelrequirements.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelrequirements.Location = new System.Drawing.Point(0, 300);
+            this.panelrequirements.Location = new System.Drawing.Point(0, 369);
+            this.panelrequirements.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelrequirements.Name = "panelrequirements";
-            this.panelrequirements.Padding = new System.Windows.Forms.Padding(14, 75, 21, 0);
-            this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
+            this.panelrequirements.Padding = new System.Windows.Forms.Padding(16, 92, 24, 0);
+            this.panelrequirements.Size = new System.Drawing.Size(1536, 231);
             this.panelrequirements.TabIndex = 12;
             // 
             // btnViewTreasurerPhoto
@@ -1114,9 +1174,10 @@
             this.btnViewTreasurerPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnViewTreasurerPhoto.Appearance.Options.UseBackColor = true;
             this.btnViewTreasurerPhoto.Appearance.Options.UseFont = true;
-            this.btnViewTreasurerPhoto.Location = new System.Drawing.Point(180, 128);
+            this.btnViewTreasurerPhoto.Location = new System.Drawing.Point(210, 158);
+            this.btnViewTreasurerPhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewTreasurerPhoto.Name = "btnViewTreasurerPhoto";
-            this.btnViewTreasurerPhoto.Size = new System.Drawing.Size(122, 30);
+            this.btnViewTreasurerPhoto.Size = new System.Drawing.Size(142, 37);
             this.btnViewTreasurerPhoto.TabIndex = 5;
             this.btnViewTreasurerPhoto.Text = "View";
             // 
@@ -1126,9 +1187,10 @@
             this.btnUploadTreasurerRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnUploadTreasurerRequirement.Appearance.Options.UseBackColor = true;
             this.btnUploadTreasurerRequirement.Appearance.Options.UseFont = true;
-            this.btnUploadTreasurerRequirement.Location = new System.Drawing.Point(41, 128);
+            this.btnUploadTreasurerRequirement.Location = new System.Drawing.Point(48, 158);
+            this.btnUploadTreasurerRequirement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUploadTreasurerRequirement.Name = "btnUploadTreasurerRequirement";
-            this.btnUploadTreasurerRequirement.Size = new System.Drawing.Size(122, 30);
+            this.btnUploadTreasurerRequirement.Size = new System.Drawing.Size(142, 37);
             this.btnUploadTreasurerRequirement.TabIndex = 5;
             this.btnUploadTreasurerRequirement.Text = "Upload";
             // 
@@ -1142,22 +1204,24 @@
             this.labelControl30.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelControl30.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl30.ImageOptions.SvgImage")));
             this.labelControl30.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
-            this.labelControl30.Location = new System.Drawing.Point(39, 79);
+            this.labelControl30.Location = new System.Drawing.Point(46, 97);
+            this.labelControl30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(385, 27);
+            this.labelControl30.Size = new System.Drawing.Size(463, 33);
             this.labelControl30.TabIndex = 5;
             this.labelControl30.Text = " Pay your balance and upload your official receipt as proof.";
             // 
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(31, 16);
+            this.pictureEdit1.Location = new System.Drawing.Point(36, 20);
+            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(72, 57);
+            this.pictureEdit1.Size = new System.Drawing.Size(84, 70);
             this.pictureEdit1.TabIndex = 0;
             // 
             // labelControl27
@@ -1166,9 +1230,10 @@
             this.labelControl27.Appearance.ForeColor = System.Drawing.Color.Silver;
             this.labelControl27.Appearance.Options.UseFont = true;
             this.labelControl27.Appearance.Options.UseForeColor = true;
-            this.labelControl27.Location = new System.Drawing.Point(112, 42);
+            this.labelControl27.Location = new System.Drawing.Point(131, 52);
+            this.labelControl27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(60, 17);
+            this.labelControl27.Size = new System.Drawing.Size(70, 21);
             this.labelControl27.TabIndex = 2;
             this.labelControl27.Text = "Payments";
             // 
@@ -1176,9 +1241,10 @@
             // 
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(112, 25);
+            this.labelControl11.Location = new System.Drawing.Point(131, 31);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(69, 21);
+            this.labelControl11.Size = new System.Drawing.Size(85, 28);
             this.labelControl11.TabIndex = 1;
             this.labelControl11.Text = "Treasurer";
             // 
@@ -1194,24 +1260,27 @@
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
             this.pnlClearanceForm.Controls.Add(this.txtSchoolYear);
             this.pnlClearanceForm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 87);
+            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 107);
+            this.pnlClearanceForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlClearanceForm.Name = "pnlClearanceForm";
-            this.pnlClearanceForm.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
+            this.pnlClearanceForm.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.pnlClearanceForm.Size = new System.Drawing.Size(1536, 262);
             this.pnlClearanceForm.TabIndex = 11;
             // 
             // txtCurrentSchoolYear
             // 
-            this.txtCurrentSchoolYear.Location = new System.Drawing.Point(797, 107);
+            this.txtCurrentSchoolYear.Location = new System.Drawing.Point(930, 132);
+            this.txtCurrentSchoolYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCurrentSchoolYear.Name = "txtCurrentSchoolYear";
-            this.txtCurrentSchoolYear.Size = new System.Drawing.Size(721, 28);
+            this.txtCurrentSchoolYear.Size = new System.Drawing.Size(841, 34);
             this.txtCurrentSchoolYear.TabIndex = 9;
             // 
             // txtSemester
             // 
-            this.txtSemester.Location = new System.Drawing.Point(30, 109);
+            this.txtSemester.Location = new System.Drawing.Point(35, 134);
+            this.txtSemester.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSemester.Name = "txtSemester";
-            this.txtSemester.Size = new System.Drawing.Size(721, 28);
+            this.txtSemester.Size = new System.Drawing.Size(841, 34);
             this.txtSemester.TabIndex = 8;
             // 
             // labelControl13
@@ -1220,9 +1289,10 @@
             this.labelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl13.Appearance.Options.UseFont = true;
             this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.Location = new System.Drawing.Point(30, 34);
+            this.labelControl13.Location = new System.Drawing.Point(35, 42);
+            this.labelControl13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(183, 21);
+            this.labelControl13.Size = new System.Drawing.Size(228, 28);
             this.labelControl13.TabIndex = 3;
             this.labelControl13.Text = "Clearance Request Form";
             // 
@@ -1232,9 +1302,10 @@
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(30, 84);
+            this.labelControl9.Location = new System.Drawing.Point(35, 103);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(56, 17);
+            this.labelControl9.Size = new System.Drawing.Size(69, 21);
             this.labelControl9.TabIndex = 3;
             this.labelControl9.Text = "Semester";
             // 
@@ -1244,9 +1315,10 @@
             this.txtSchoolYear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.txtSchoolYear.Appearance.Options.UseFont = true;
             this.txtSchoolYear.Appearance.Options.UseForeColor = true;
-            this.txtSchoolYear.Location = new System.Drawing.Point(797, 84);
+            this.txtSchoolYear.Location = new System.Drawing.Point(930, 103);
+            this.txtSchoolYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSchoolYear.Name = "txtSchoolYear";
-            this.txtSchoolYear.Size = new System.Drawing.Size(71, 17);
+            this.txtSchoolYear.Size = new System.Drawing.Size(86, 21);
             this.txtSchoolYear.TabIndex = 4;
             this.txtSchoolYear.Text = "School Year";
             // 
@@ -1259,8 +1331,9 @@
             this.panelControl3.Controls.Add(this.txtHeaderRC);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
+            this.panelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1574, 87);
+            this.panelControl3.Size = new System.Drawing.Size(1536, 107);
             this.panelControl3.TabIndex = 0;
             // 
             // txtSubHeaderRC
@@ -1269,9 +1342,10 @@
             this.txtSubHeaderRC.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.txtSubHeaderRC.Appearance.Options.UseFont = true;
             this.txtSubHeaderRC.Appearance.Options.UseForeColor = true;
-            this.txtSubHeaderRC.Location = new System.Drawing.Point(22, 51);
+            this.txtSubHeaderRC.Location = new System.Drawing.Point(26, 63);
+            this.txtSubHeaderRC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSubHeaderRC.Name = "txtSubHeaderRC";
-            this.txtSubHeaderRC.Size = new System.Drawing.Size(290, 17);
+            this.txtSubHeaderRC.Size = new System.Drawing.Size(343, 21);
             this.txtSubHeaderRC.TabIndex = 2;
             this.txtSubHeaderRC.Text = "Submit a new clearance request for this semester.";
             // 
@@ -1281,9 +1355,10 @@
             this.txtHeaderRC.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.txtHeaderRC.Appearance.Options.UseFont = true;
             this.txtHeaderRC.Appearance.Options.UseForeColor = true;
-            this.txtHeaderRC.Location = new System.Drawing.Point(22, 8);
+            this.txtHeaderRC.Location = new System.Drawing.Point(26, 10);
+            this.txtHeaderRC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtHeaderRC.Name = "txtHeaderRC";
-            this.txtHeaderRC.Size = new System.Drawing.Size(236, 37);
+            this.txtHeaderRC.Size = new System.Drawing.Size(291, 46);
             this.txtHeaderRC.TabIndex = 1;
             this.txtHeaderRC.Text = "Request Clearance";
             // 
@@ -1293,9 +1368,10 @@
             this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl12.Appearance.Options.UseFont = true;
             this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(220, 909);
+            this.labelControl12.Location = new System.Drawing.Point(257, 1119);
+            this.labelControl12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(283, 17);
+            this.labelControl12.Size = new System.Drawing.Size(333, 21);
             this.labelControl12.TabIndex = 10;
             this.labelControl12.Text = "You will be notified for each department update.";
             // 
@@ -1305,9 +1381,10 @@
             this.btnSubmitRequest.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSubmitRequest.Appearance.Options.UseBackColor = true;
             this.btnSubmitRequest.Appearance.Options.UseFont = true;
-            this.btnSubmitRequest.Location = new System.Drawing.Point(39, 897);
+            this.btnSubmitRequest.Location = new System.Drawing.Point(46, 1104);
+            this.btnSubmitRequest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSubmitRequest.Name = "btnSubmitRequest";
-            this.btnSubmitRequest.Size = new System.Drawing.Size(156, 40);
+            this.btnSubmitRequest.Size = new System.Drawing.Size(182, 49);
             this.btnSubmitRequest.TabIndex = 9;
             this.btnSubmitRequest.Text = "Submit Request";
             this.btnSubmitRequest.Click += new System.EventHandler(this.btnSubmitRequest_Click_1);
@@ -1319,27 +1396,31 @@
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl7);
             this.pageMyRequest.Controls.Add(this.panelControl6);
+            this.pageMyRequest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pageMyRequest.Name = "pageMyRequest";
-            this.pageMyRequest.Size = new System.Drawing.Size(1574, 1050);
+            this.pageMyRequest.Size = new System.Drawing.Size(1536, 1066);
             // 
             // panelControl9
             // 
             this.panelControl9.Controls.Add(this.gridMyRequest);
             this.panelControl9.Controls.Add(this.labelControl24);
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl9.Location = new System.Drawing.Point(0, 199);
+            this.panelControl9.Location = new System.Drawing.Point(0, 245);
+            this.panelControl9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Padding = new System.Windows.Forms.Padding(20, 70, 20, 10);
-            this.panelControl9.Size = new System.Drawing.Size(1574, 627);
+            this.panelControl9.Padding = new System.Windows.Forms.Padding(23, 86, 23, 12);
+            this.panelControl9.Size = new System.Drawing.Size(1536, 772);
             this.panelControl9.TabIndex = 3;
             // 
             // gridMyRequest
             // 
             this.gridMyRequest.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridMyRequest.Location = new System.Drawing.Point(22, 72);
+            this.gridMyRequest.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridMyRequest.Location = new System.Drawing.Point(25, 88);
             this.gridMyRequest.MainView = this.gridView3;
+            this.gridMyRequest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridMyRequest.Name = "gridMyRequest";
-            this.gridMyRequest.Size = new System.Drawing.Size(1530, 373);
+            this.gridMyRequest.Size = new System.Drawing.Size(1486, 459);
             this.gridMyRequest.TabIndex = 5;
             this.gridMyRequest.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1350,32 +1431,40 @@
             this.Office,
             this.Status,
             this.Remarks});
+            this.gridView3.DetailHeight = 431;
             this.gridView3.GridControl = this.gridMyRequest;
             this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsEditForm.PopupEditFormWidth = 933;
             // 
             // Office
             // 
             this.Office.Caption = "Office";
             this.Office.FieldName = "Office";
+            this.Office.MinWidth = 23;
             this.Office.Name = "Office";
             this.Office.Visible = true;
             this.Office.VisibleIndex = 0;
+            this.Office.Width = 87;
             // 
             // Status
             // 
             this.Status.Caption = "Status";
             this.Status.FieldName = "Status";
+            this.Status.MinWidth = 23;
             this.Status.Name = "Status";
             this.Status.Visible = true;
             this.Status.VisibleIndex = 1;
+            this.Status.Width = 87;
             // 
             // Remarks
             // 
             this.Remarks.Caption = "Remarks";
             this.Remarks.FieldName = "Remarks";
+            this.Remarks.MinWidth = 23;
             this.Remarks.Name = "Remarks";
             this.Remarks.Visible = true;
             this.Remarks.VisibleIndex = 2;
+            this.Remarks.Width = 87;
             // 
             // labelControl24
             // 
@@ -1383,9 +1472,10 @@
             this.labelControl24.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl24.Appearance.Options.UseFont = true;
             this.labelControl24.Appearance.Options.UseForeColor = true;
-            this.labelControl24.Location = new System.Drawing.Point(27, 30);
+            this.labelControl24.Location = new System.Drawing.Point(31, 37);
+            this.labelControl24.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(106, 21);
+            this.labelControl24.Size = new System.Drawing.Size(131, 28);
             this.labelControl24.TabIndex = 4;
             this.labelControl24.Text = "Requirements";
             // 
@@ -1399,9 +1489,10 @@
             this.panelControl8.Controls.Add(this.simpleButton3);
             this.panelControl8.Controls.Add(this.simpleButton2);
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl8.Location = new System.Drawing.Point(0, 137);
+            this.panelControl8.Location = new System.Drawing.Point(0, 169);
+            this.panelControl8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(1574, 62);
+            this.panelControl8.Size = new System.Drawing.Size(1536, 76);
             this.panelControl8.TabIndex = 2;
             // 
             // simpleButton5
@@ -1410,9 +1501,10 @@
             this.simpleButton5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.simpleButton5.Appearance.Options.UseBackColor = true;
             this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(501, 13);
+            this.simpleButton5.Location = new System.Drawing.Point(584, 16);
+            this.simpleButton5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton5.Size = new System.Drawing.Size(146, 41);
             this.simpleButton5.TabIndex = 3;
             this.simpleButton5.Text = "Cleared";
             // 
@@ -1422,9 +1514,10 @@
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.simpleButton4.Appearance.Options.UseBackColor = true;
             this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(338, 13);
+            this.simpleButton4.Location = new System.Drawing.Point(394, 16);
+            this.simpleButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton4.Size = new System.Drawing.Size(146, 41);
             this.simpleButton4.TabIndex = 2;
             this.simpleButton4.Text = "Pending";
             // 
@@ -1434,9 +1527,10 @@
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.simpleButton3.Appearance.Options.UseBackColor = true;
             this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(181, 13);
+            this.simpleButton3.Location = new System.Drawing.Point(211, 16);
+            this.simpleButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton3.Size = new System.Drawing.Size(146, 41);
             this.simpleButton3.TabIndex = 1;
             this.simpleButton3.Text = "Has Hold";
             // 
@@ -1446,9 +1540,10 @@
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton2.Appearance.Options.UseBackColor = true;
             this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(27, 13);
+            this.simpleButton2.Location = new System.Drawing.Point(31, 16);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(125, 33);
+            this.simpleButton2.Size = new System.Drawing.Size(146, 41);
             this.simpleButton2.TabIndex = 0;
             this.simpleButton2.Text = "All";
             // 
@@ -1459,9 +1554,10 @@
             this.panelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl7.Controls.Add(this.labelControl23);
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl7.Location = new System.Drawing.Point(0, 87);
+            this.panelControl7.Location = new System.Drawing.Point(0, 107);
+            this.panelControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1574, 50);
+            this.panelControl7.Size = new System.Drawing.Size(1536, 62);
             this.panelControl7.TabIndex = 1;
             // 
             // labelControl23
@@ -1470,9 +1566,10 @@
             this.labelControl23.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
             this.labelControl23.Appearance.Options.UseFont = true;
             this.labelControl23.Appearance.Options.UseForeColor = true;
-            this.labelControl23.Location = new System.Drawing.Point(27, 18);
+            this.labelControl23.Location = new System.Drawing.Point(31, 22);
+            this.labelControl23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(732, 17);
+            this.labelControl23.Size = new System.Drawing.Size(860, 21);
             this.labelControl23.TabIndex = 1;
             this.labelControl23.Text = "Requirements are approved by offices only. You can submit proof of compliance, bu" +
     "t only the office can mark you as cleared.";
@@ -1486,8 +1583,9 @@
             this.panelControl6.Controls.Add(this.labelControl21);
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
+            this.panelControl6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(1574, 87);
+            this.panelControl6.Size = new System.Drawing.Size(1536, 107);
             this.panelControl6.TabIndex = 0;
             // 
             // labelControl22
@@ -1496,9 +1594,10 @@
             this.labelControl22.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl22.Appearance.Options.UseFont = true;
             this.labelControl22.Appearance.Options.UseForeColor = true;
-            this.labelControl22.Location = new System.Drawing.Point(27, 51);
+            this.labelControl22.Location = new System.Drawing.Point(31, 63);
+            this.labelControl22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(583, 17);
+            this.labelControl22.Size = new System.Drawing.Size(692, 21);
             this.labelControl22.TabIndex = 3;
             this.labelControl22.Text = "View what each department requires. Submit your proof — the department will revie" +
     "w and approve.";
@@ -1509,19 +1608,22 @@
             this.labelControl21.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl21.Appearance.Options.UseFont = true;
             this.labelControl21.Appearance.Options.UseForeColor = true;
-            this.labelControl21.Location = new System.Drawing.Point(27, 8);
+            this.labelControl21.Location = new System.Drawing.Point(31, 10);
+            this.labelControl21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(152, 37);
+            this.labelControl21.Size = new System.Drawing.Size(188, 46);
             this.labelControl21.TabIndex = 2;
             this.labelControl21.Text = "My Request";
             // 
             // pageMyClearance
             // 
+            this.pageMyClearance.Caption = "pageMyClearance";
             this.pageMyClearance.Controls.Add(this.gcRecords);
             this.pageMyClearance.Controls.Add(this.pnlClearanceCopy);
             this.pageMyClearance.Controls.Add(this.panelControl5);
+            this.pageMyClearance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pageMyClearance.Name = "pageMyClearance";
-            this.pageMyClearance.Size = new System.Drawing.Size(1574, 1050);
+            this.pageMyClearance.Size = new System.Drawing.Size(1536, 1066);
             // 
             // gcRecords
             // 
@@ -1533,11 +1635,32 @@
             this.gcRecords.AppearanceCaption.Options.UseForeColor = true;
             this.gcRecords.Controls.Add(this.gridMyClearance);
             this.gcRecords.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcRecords.Location = new System.Drawing.Point(0, 398);
+            this.gcRecords.Location = new System.Drawing.Point(0, 490);
+            this.gcRecords.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gcRecords.Name = "gcRecords";
-            this.gcRecords.Size = new System.Drawing.Size(1574, 330);
+            this.gcRecords.Size = new System.Drawing.Size(1536, 406);
             this.gcRecords.TabIndex = 2;
             this.gcRecords.Text = "Clearance Records";
+            // 
+            // gridMyClearance
+            // 
+            this.gridMyClearance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridMyClearance.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridMyClearance.Location = new System.Drawing.Point(2, 36);
+            this.gridMyClearance.MainView = this.gridView1;
+            this.gridMyClearance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridMyClearance.Name = "gridMyClearance";
+            this.gridMyClearance.Size = new System.Drawing.Size(1532, 366);
+            this.gridMyClearance.TabIndex = 0;
+            this.gridMyClearance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.DetailHeight = 431;
+            this.gridView1.GridControl = this.gridMyClearance;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsEditForm.PopupEditFormWidth = 933;
             // 
             // pnlClearanceCopy
             // 
@@ -1551,9 +1674,10 @@
             this.pnlClearanceCopy.Controls.Add(this.labelControl17);
             this.pnlClearanceCopy.Controls.Add(this.labelControl16);
             this.pnlClearanceCopy.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClearanceCopy.Location = new System.Drawing.Point(0, 87);
+            this.pnlClearanceCopy.Location = new System.Drawing.Point(0, 107);
+            this.pnlClearanceCopy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlClearanceCopy.Name = "pnlClearanceCopy";
-            this.pnlClearanceCopy.Size = new System.Drawing.Size(1574, 311);
+            this.pnlClearanceCopy.Size = new System.Drawing.Size(1536, 383);
             this.pnlClearanceCopy.TabIndex = 1;
             // 
             // simpleButton1
@@ -1566,9 +1690,10 @@
             this.simpleButton1.Appearance.Options.UseForeColor = true;
             this.simpleButton1.AppearancePressed.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.simpleButton1.AppearancePressed.Options.UseBackColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(780, 244);
+            this.simpleButton1.Location = new System.Drawing.Point(910, 300);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(149, 39);
+            this.simpleButton1.Size = new System.Drawing.Size(174, 48);
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "Download PDF";
             // 
@@ -1578,9 +1703,10 @@
             this.labelControl20.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl20.Appearance.Options.UseFont = true;
             this.labelControl20.Appearance.Options.UseForeColor = true;
-            this.labelControl20.Location = new System.Drawing.Point(797, 209);
+            this.labelControl20.Location = new System.Drawing.Point(930, 257);
+            this.labelControl20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(116, 17);
+            this.labelControl20.Size = new System.Drawing.Size(137, 21);
             this.labelControl20.TabIndex = 4;
             this.labelControl20.Text = "Issued: Dec 3, 2025 ";
             // 
@@ -1590,9 +1716,10 @@
             this.labelControl19.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl19.Appearance.Options.UseFont = true;
             this.labelControl19.Appearance.Options.UseForeColor = true;
-            this.labelControl19.Location = new System.Drawing.Point(749, 186);
+            this.labelControl19.Location = new System.Drawing.Point(874, 229);
+            this.labelControl19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(213, 17);
+            this.labelControl19.Size = new System.Drawing.Size(253, 21);
             this.labelControl19.TabIndex = 3;
             this.labelControl19.Text = "BSIT — College of Computer Studies";
             // 
@@ -1602,9 +1729,10 @@
             this.labelControl18.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl18.Appearance.Options.UseFont = true;
             this.labelControl18.Appearance.Options.UseForeColor = true;
-            this.labelControl18.Location = new System.Drawing.Point(749, 163);
+            this.labelControl18.Location = new System.Drawing.Point(874, 201);
+            this.labelControl18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(206, 17);
+            this.labelControl18.Size = new System.Drawing.Size(248, 21);
             this.labelControl18.TabIndex = 2;
             this.labelControl18.Text = "Charlotte P. Forrosuelo · 2014-1234";
             // 
@@ -1614,9 +1742,10 @@
             this.labelControl17.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl17.Appearance.Options.UseFont = true;
             this.labelControl17.Appearance.Options.UseForeColor = true;
-            this.labelControl17.Location = new System.Drawing.Point(736, 46);
+            this.labelControl17.Location = new System.Drawing.Point(859, 57);
+            this.labelControl17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(240, 17);
+            this.labelControl17.Size = new System.Drawing.Size(289, 21);
             this.labelControl17.TabIndex = 1;
             this.labelControl17.Text = "2nd Semester, Academic Year 2024–2025";
             // 
@@ -1626,9 +1755,10 @@
             this.labelControl16.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl16.Appearance.Options.UseFont = true;
             this.labelControl16.Appearance.Options.UseForeColor = true;
-            this.labelControl16.Location = new System.Drawing.Point(797, 18);
+            this.labelControl16.Location = new System.Drawing.Point(930, 22);
+            this.labelControl16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(108, 21);
+            this.labelControl16.Size = new System.Drawing.Size(133, 28);
             this.labelControl16.TabIndex = 0;
             this.labelControl16.Text = "Clearance Slip";
             // 
@@ -1641,8 +1771,9 @@
             this.panelControl5.Controls.Add(this.labelControl14);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
+            this.panelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1574, 87);
+            this.panelControl5.Size = new System.Drawing.Size(1536, 107);
             this.panelControl5.TabIndex = 0;
             // 
             // labelControl15
@@ -1651,9 +1782,10 @@
             this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl15.Appearance.Options.UseFont = true;
             this.labelControl15.Appearance.Options.UseForeColor = true;
-            this.labelControl15.Location = new System.Drawing.Point(22, 51);
+            this.labelControl15.Location = new System.Drawing.Point(26, 63);
+            this.labelControl15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(271, 17);
+            this.labelControl15.Size = new System.Drawing.Size(317, 21);
             this.labelControl15.TabIndex = 3;
             this.labelControl15.Text = "Your issued clearance certificates and records.";
             // 
@@ -1663,9 +1795,10 @@
             this.labelControl14.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl14.Appearance.Options.UseFont = true;
             this.labelControl14.Appearance.Options.UseForeColor = true;
-            this.labelControl14.Location = new System.Drawing.Point(22, 8);
+            this.labelControl14.Location = new System.Drawing.Point(26, 10);
+            this.labelControl14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(173, 37);
+            this.labelControl14.Size = new System.Drawing.Size(214, 46);
             this.labelControl14.TabIndex = 2;
             this.labelControl14.Text = "My Clearance";
             // 
@@ -1673,8 +1806,9 @@
             // 
             this.pageClearancePaper.Caption = "pageClearancePaper";
             this.pageClearancePaper.Controls.Add(this.panelForm);
+            this.pageClearancePaper.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pageClearancePaper.Name = "pageClearancePaper";
-            this.pageClearancePaper.Size = new System.Drawing.Size(1574, 1050);
+            this.pageClearancePaper.Size = new System.Drawing.Size(1536, 1066);
             // 
             // panelForm
             // 
@@ -1685,17 +1819,19 @@
             this.panelForm.Controls.Add(this.labelControl5);
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelForm.Location = new System.Drawing.Point(0, 0);
+            this.panelForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1574, 548);
+            this.panelForm.Size = new System.Drawing.Size(1536, 674);
             this.panelForm.TabIndex = 0;
             // 
             // labelControl26
             // 
             this.labelControl26.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Location = new System.Drawing.Point(1220, 348);
+            this.labelControl26.Location = new System.Drawing.Point(1423, 428);
+            this.labelControl26.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl26.Name = "labelControl26";
-            this.labelControl26.Size = new System.Drawing.Size(180, 37);
+            this.labelControl26.Size = new System.Drawing.Size(227, 46);
             this.labelControl26.TabIndex = 2;
             this.labelControl26.Text = "NOT CLEARED";
             // 
@@ -1703,9 +1839,10 @@
             // 
             this.labelControl25.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl25.Appearance.Options.UseFont = true;
-            this.labelControl25.Location = new System.Drawing.Point(704, 348);
+            this.labelControl25.Location = new System.Drawing.Point(821, 428);
+            this.labelControl25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(180, 37);
+            this.labelControl25.Size = new System.Drawing.Size(227, 46);
             this.labelControl25.TabIndex = 1;
             this.labelControl25.Text = "NOT CLEARED";
             // 
@@ -1713,9 +1850,10 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(203, 348);
+            this.labelControl5.Location = new System.Drawing.Point(237, 428);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(180, 37);
+            this.labelControl5.Size = new System.Drawing.Size(227, 46);
             this.labelControl5.TabIndex = 0;
             this.labelControl5.Text = "NOT CLEARED";
             // 
@@ -1784,29 +1922,14 @@
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // gridMyClearance
-            // 
-            this.gridMyClearance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridMyClearance.Location = new System.Drawing.Point(2, 29);
-            this.gridMyClearance.MainView = this.gridView1;
-            this.gridMyClearance.Name = "gridMyClearance";
-            this.gridMyClearance.Size = new System.Drawing.Size(1570, 297);
-            this.gridMyClearance.TabIndex = 0;
-            this.gridMyClearance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridMyClearance;
-            this.gridView1.Name = "gridView1";
-            // 
             // StudentPortal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1942, 1102);
             this.Controls.Add(this.splitContainerControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "StudentPortal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1898,6 +2021,8 @@
             this.pageMyClearance.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).EndInit();
             this.gcRecords.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).EndInit();
             this.pnlClearanceCopy.ResumeLayout(false);
             this.pnlClearanceCopy.PerformLayout();
@@ -1909,8 +2034,6 @@
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

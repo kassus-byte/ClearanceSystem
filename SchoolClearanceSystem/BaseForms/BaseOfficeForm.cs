@@ -7,11 +7,15 @@ using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
+
     /// <summary>
     /// OOP CONCEPT: POLYMORPHISM & FORM INHERITANCE (Base Blueprint Architecture)
     /// This abstract base controller handles corporate layout styling, session identity parsing, 
     /// and dynamic data-binding workflows for all department desks (SSG, Treasurer, Tech Office).
     /// </summary>
+
+    //
+
     public partial class BaseOfficeForm : XtraForm
     {
         // OOP CONCEPT: ENCAPSULATION

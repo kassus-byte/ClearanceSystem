@@ -314,5 +314,10 @@ namespace SchoolClearanceSystem
         }
 
         #endregion
+
+        private void pbOverallProgress_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

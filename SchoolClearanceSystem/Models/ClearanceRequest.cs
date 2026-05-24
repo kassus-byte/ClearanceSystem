@@ -2,8 +2,12 @@
 
 namespace SchoolClearanceSystem
 {
-    public class ClearanceRequest : User
+    public class ClearanceRequest 
     {
+
+        //User = using user class as a custom data type
+        //holds a complete User (studeent) objects
+        public User Student { get; set; }
         public string Status { get; set; }
         public string Remarks { get; set; }
         public string Semester { get; set; }
@@ -11,15 +15,15 @@ namespace SchoolClearanceSystem
         public string DateSubmitted { get; set; }
 
      
-        public ClearanceRequest() : base()
+        public ClearanceRequest() 
         {
         }
 
       
-        public ClearanceRequest(string userId, string fullName, string program, string year, string status, string remarks,
-            string semester, string acedemicYear, string dateSubmitted, string attachmentPath = null)
-            : base(userId, fullName, program, year)
+        public ClearanceRequest(User student, string status, string remarks, string semester, string acedemicYear, string dateSubmitted)
+             
         {
+            Student = student;
             Status = status;
             Remarks = remarks;
             Semester = semester;
