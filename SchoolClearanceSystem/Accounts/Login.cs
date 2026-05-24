@@ -1,9 +1,11 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
+using SchoolClearanceSystem.Dashboard;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
-using SchoolClearanceSystem.Dashboard; 
+using System;
+using System.Windows.Forms;
+
 namespace SchoolClearanceSystem
 {
     public partial class Login : DevExpress.XtraEditors.XtraForm
@@ -13,8 +15,36 @@ namespace SchoolClearanceSystem
         public Login()
         {
             InitializeComponent();
+
+            // Hide password on startup
+            txtPassword.Properties.UseSystemPasswordChar = true;
+
+            // Set initial label text on startup
+            chkShowPassword.Properties.Caption = "Show Password";
+
+            // Wire CheckEdit event to change both password visibility and the label text
+            chkShowPassword.CheckedChanged += (s, e) =>
+            {
+                // 1. Toggle password visibility
+                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
+
+                // 2. Dynamically change the text based on checked state
+                if (chkShowPassword.Checked)
+                {
+                    chkShowPassword.Properties.Caption = "Hide Password";
+                }
+                else
+                {
+                    chkShowPassword.Properties.Caption = "Show Password";
+                }
+
+                // Keep focus and put cursor at the end of the text
+                txtPassword.Focus();
+                txtPassword.SelectionStart = txtPassword.Text.Length;
+            };
         }
 
+        // ── Login button ─────────────────────────────────────────────────
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string id = txtUserID.Text.Trim();
@@ -22,55 +52,67 @@ namespace SchoolClearanceSystem
 
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
-                XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (_userRepo.ValidateLogin(id, pass))
+            // Since ValidateLogin returns a User instance or null, we can do a straightforward type assignment
+            var loggedInUser = _userRepo.ValidateLogin(id, pass);
+
+            if (loggedInUser != null)
             {
                 Session.CurrentUser = _userRepo.GetUserDetails(id);
                 var user = Session.CurrentUser;
 
-                if (user != null)
+                if (user == null) return;
+
+                Form nextForm = null;
+
+                // FIXED: Changed "Technical" case to match "Technical Office" string value stored in database
+                switch (user.Role)
                 {
-                    Form nextForm = null;
-
-                    if (user.Role == "Admin")
-                    {
+                    case "Admin":
                         nextForm = new AdminDashboard();
-                    }
-                    else if (user.Role == "Treasurer")
-                    {
+                        break;
+                    case "Treasurer":
                         nextForm = new TreasurerDashboard();
-                    }
-                    else if (user.Role == "Technical")
-                    {
+                        break;
+                    case "Technical Office":
                         nextForm = new TechnicalOffice();
-                    }
-                    else if (user.Role == "Student")
-                    {
+                        break;
+                    case "SSG":
+                        nextForm = new SSGOffice();
+                        break;
+                    case "Student":
                         nextForm = new StudentPortal();
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Your role is not recognized. Contact Admin.", "Access Denied");
+                        break;
+                    default:
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Invalid User Role detected.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-                    }
+                }
 
-                    if (nextForm != null)
-                    {
-                        nextForm.FormClosed += (s, args) => this.Close();
-                        nextForm.Show();
-                        this.Hide();
-                    }
+                if (nextForm != null)
+                {
+                    nextForm.Show();
+                    this.Hide();
                 }
             }
             else
             {
-                XtraMessageBox.Show("Invalid UserID or Password.", "Login Failed",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Invalid User ID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // ── Register link ─────────────────────────────────────────────────
+        private void panelControl1_Paint(object sender, PaintEventArgs e) { }
+
+        private void lnkRegister_Click(object sender, EventArgs e)
+        {
+            Registration reg = new Registration();
+            reg.FormClosed += (s, args) => this.Show();
+            reg.Show();
+            this.Hide();
         }
     }
 }

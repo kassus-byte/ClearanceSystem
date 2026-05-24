@@ -118,6 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pnlClearanceForm.ContentImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        gg==
+</value>
+  </data>
   <data name="panelControl13.ContentImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABkQAAAIxCAIAAACTtEP9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -330,7 +366,7 @@
 </value>
   </data>
   <assembly alias="DevExpress.Data.v23.2" name="DevExpress.Data.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="editorButtonImageOptions1.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions9.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -345,7 +381,7 @@
         Cjwvc3ZnPgs=
 </value>
   </data>
-  <data name="editorButtonImageOptions2.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions10.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -360,7 +396,7 @@
         Pg0KPC9zdmc+Cw==
 </value>
   </data>
-  <data name="editorButtonImageOptions3.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions11.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -375,7 +411,7 @@
         eHQ+DQo8L3N2Zz4L
 </value>
   </data>
-  <data name="editorButtonImageOptions4.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions12.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -390,7 +426,7 @@
         L3N2Zz4L
 </value>
   </data>
-  <data name="editorButtonImageOptions5.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions13.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -405,7 +441,7 @@
         Cjwvc3ZnPgs=
 </value>
   </data>
-  <data name="editorButtonImageOptions6.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions14.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -420,7 +456,7 @@
         Pg0KPC9zdmc+Cw==
 </value>
   </data>
-  <data name="editorButtonImageOptions7.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions15.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -435,7 +471,7 @@
         eHQ+DQo8L3N2Zz4L
 </value>
   </data>
-  <data name="editorButtonImageOptions8.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions16.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v23.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIzLjIsIFZlcnNpb249MjMuMi4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl

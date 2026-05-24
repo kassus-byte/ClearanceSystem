@@ -292,7 +292,7 @@
             "Student",
             "Treasurer",
             "Technical Office",
-            "Dean",
+            "SSG",
             "Admin"});
             this.cbRole.Location = new System.Drawing.Point(30, 340);
             this.cbRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);

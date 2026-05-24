@@ -4,17 +4,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using SchoolClearanceSystem.Models;
 
 namespace SchoolClearanceSystem.Repository
 {
-    public class ClearanceRepository: BaseRepository
+    /// <summary>
+    /// OOP CONCEPT: INHERITANCE (Code Reusability)
+    /// 'ClearanceRepository' inherits directly from 'BaseRepository'. 
+    /// This means it automatically inherits the 'dbManager' instance variable without needing to 
+    /// re-instantiate it, strictly following the DRY (Don't Repeat Yourself) principle.
+    /// 
+    /// OOP CONCEPT: SINGLE RESPONSIBILITY PRINCIPLE (SRP)
+    /// While your 'UserRepository' handles account profiles and identity tracking, this class is 
+    /// solely dedicated to processing operational data workflows (Clearance Requests states).
+    /// </summary>
+    public class ClearanceRepository : BaseRepository
     {
-        public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear)
+        /// <summary>
+        /// NEW METHOD: Verifies if a student record exists matching specific term criteria constraints.
+        /// Prevents duplicate request transactions for the exact same Year and Semester.
+        /// </summary>
+        public bool HasExistingRequest(string studentId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear) 
-                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay)";
+                // Queries the tracking table checking for overlapping record instances
+                string sql = @"SELECT COUNT(1) 
+                               FROM ClearanceRequests 
+                               WHERE StudentID = @id AND Semester = @sem AND AcademicYear = @ay";
+
+                int recordCount = db.ExecuteScalar<int>(sql, new
+                {
+                    id = studentId,
+                    sem = semester,
+                    ay = academicYear
+                });
+
+                return recordCount > 0;
+            }
+        }
+
+        /// <summary>
+        /// HOW IT WORKS & CONNECTS TO DATABASE MANAGER:
+        /// 1. Taps into 'dbManager.GetConnection()' to acquire a live, open database connection channel.
+        /// 2. Defines a clean structural INSERT query string mapping data parameters safely including file paths.
+        /// 3. OOP CONCEPT: POLYMORPHISM / DATA ENCAPSULATION (Anonymous Types)
+        ///    'new { id = studentId, dept ... }' creates an anonymous object on the fly. 
+        ///    Dapper reads this dynamic structure to pass parameters safely to the SQL statement,
+        ///    completely eliminating SQL Injection threats.
+        /// </summary>
+        public bool SubmitClearanceRequest(string studentId, string dept, string semester, string acadYear, string filePath)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                // Added FilePath into the SQL columns and parameters list
+                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
+                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
                 return db.Execute(sql, new
                 {
@@ -22,12 +67,46 @@ namespace SchoolClearanceSystem.Repository
                     dept,
                     date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     sem = semester,
-                    ay = acadYear
+                    ay = acadYear,
+                    path = filePath // Maps directly to your TEXT column!
                 }) > 0;
             }
         }
 
-        public bool UpdateRequestStatus(string studentId, string department, string newStatus, string remarks)
+        /// <summary>
+        /// NEW METHOD: Fetches and populates incoming student data records specific to an administrative office profile.
+        /// Performs a relational JOIN structure to map clear student profiles over to the DevExpress GridControl dashboard view.
+        /// </summary>
+        public IEnumerable<dynamic> GetRequestsForOffice(string officeDept)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT 
+                                c.StudentID AS UserID, 
+                                u.FullName AS FullName, 
+                                u.Program AS Program, 
+                                u.Year AS Year, 
+                                c.Semester AS Semester,
+                                c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
+                                c.Department AS Office,  
+                                '' AS Action,            -- Keeps the ACTION column completely empty for now
+                                c.Remarks AS Remarks,
+                                c.FilePath AS FilePath
+                               FROM ClearanceRequests c
+                               INNER JOIN Users u ON c.StudentID = u.UserID
+                               WHERE c.Department = @dept AND c.Status = 'Pending'";
+
+                return db.Query(sql, new { dept = officeDept }).ToList();
+            }
+        }
+
+        /// <summary>
+        /// HOW IT WORKS (Update Pipeline):
+        /// 1. Triggered exclusively when an Office Staff user (Treasurer, Technical, SSG) clicks Approve/Reject.
+        /// 2. Binds the dynamic variables parsed from the UI into a secure query map context.
+        /// 3. Updates persistent records matching specific compound conditions (StudentID + Department).
+        /// </summary>
+        public bool UpdateRequestStatus(string studentId, string department, string newStatus, string remarks = "")
         {
             using (var db = dbManager.GetConnection())
             {
@@ -35,14 +114,49 @@ namespace SchoolClearanceSystem.Repository
                                SET Status = @status, Remarks = @remarks, DateProcessed = @date 
                                WHERE StudentID = @id AND Department = @dept";
 
-                return db.Execute(sql, new
+                var parameters = new
                 {
                     status = newStatus,
-                    remarks,
+                    remarks = remarks,
                     date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     id = studentId,
                     dept = department
-                }) > 0;
+                };
+
+                try
+                {
+                    // 1. Attempt the standard update transaction query
+                    return db.Execute(sql, parameters) > 0;
+                }
+                catch (Microsoft.Data.Sqlite.SqliteException ex) when (ex.Message.Contains("no such column: DateProcessed"))
+                {
+                    // 2. OOP Concept: Fault-Tolerance & Self-Healing
+                    // The database column is missing. Let's create it dynamically on the fly!
+                    string alterSql = "ALTER TABLE ClearanceRequests ADD COLUMN DateProcessed TEXT;";
+                    db.Execute(alterSql);
+
+                    // 3. Re-execute the original transaction query now that the schema is fixed
+                    return db.Execute(sql, parameters) > 0;
+                }
+                catch (Exception)
+                {
+                    // Catch any other unexpected system errors (e.g., connection losses) safely
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// NEW DEPENDENCY MANAGEMENT ENGINE METHOD:
+        /// Drops all dependent records matching a specific target user constraint key from the transactional tracking sheet.
+        /// Prevents SQLite Foreign Key verification faults during profile deletion workflows.
+        /// </summary>
+        public bool DeleteRequestsByStudent(string studentId)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = "DELETE FROM ClearanceRequests WHERE StudentID = @id";
+                return db.Execute(sql, new { id = studentId }) >= 0;
             }
         }
     }
