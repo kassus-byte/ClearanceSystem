@@ -117,6 +117,100 @@ namespace SchoolClearanceSystem.Repository
                 return db.Query(sql, new { id = userId, semester = semester, academicYear = academicYear }).ToList();
             }
         }
+
+        // Add this inside UserRepository.cs
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: GetUserCount
+        //
+        // CALLED BY: AdminDashboard.cs → LoadDashboardStats()
+        //
+        // PURPOSE:
+        //   Returns the total number of users matching a role filter.
+        //   Used to populate the 3 stat cards on the Admin dashboard.
+        //
+        // PARAMETERS:
+        //   role → "Student"  = count only students
+        //          "Staff"    = count all non-student accounts
+        //          "All"      = count every user in the system
+        //
+        // RETURNS:
+        //   int → the count of matching rows
+        // ───────────────────────────────────────────────────────────────
+        public int GetUserCount(string role)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql;
+
+                if (role == "Student")
+                    sql = "SELECT COUNT(*) FROM Users WHERE Role = 'Student'";
+                else if (role == "Staff")
+                    sql = "SELECT COUNT(*) FROM Users WHERE Role != 'Student'";
+                else
+                    sql = "SELECT COUNT(*) FROM Users";
+
+                return db.ExecuteScalar<int>(sql);
+            }
+        }
+
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: GetNewRegistrationsThisWeek
+        //
+        // CALLED BY: AdminDashboard.cs → LoadDashboardStats()
+        //
+        // PURPOSE:
+        //   Counts how many student accounts were created in the last 7 days.
+        //   Drives the "NEW REGISTRATIONS / This week" stat card.
+        //
+        // RETURNS:
+        //   int → number of students registered within the past 7 days
+        // ───────────────────────────────────────────────────────────────
+        public int GetNewRegistrationsThisWeek()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                // DateCreated is stored as "yyyy-MM-dd HH:mm:ss"
+                // We compare against 7 days ago using SQLite's date()
+                string sql = @"SELECT COUNT(*) FROM Users 
+                       WHERE Role = 'Student' 
+                       AND DateCreated >= date('now', '-7 days')";
+
+                return db.ExecuteScalar<int>(sql);
+            }
+        }
+
+        public IEnumerable<User> GetUsersRegisteredThisWeek()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT * FROM Users 
+                       WHERE DateCreated >= date('now', '-7 days')
+                       ORDER BY DateCreated DESC";
+                return db.Query<User>(sql).ToList();
+            }
+        }
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: GetAllUsers
+        //
+        // CALLED BY: AdminDashboard.cs → LoadDashboardStats()
+        //
+        // PURPOSE:
+        //   Returns every user in the system regardless of role.
+        //   Used to populate the Registered Accounts grid on the
+        //   Admin Dashboard page.
+        //
+        // RETURNS:
+        //   IEnumerable<User> → all rows from Users table
+        //   ordered by Role first, then FullName alphabetically
+        // ───────────────────────────────────────────────────────────────
+        public IEnumerable<User> GetAllUsers()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = "SELECT * FROM Users ORDER BY Role, FullName";
+                return db.Query<User>(sql).ToList();
+            }
+        }
         // called by StudentPortal (UpdateDashboard)
         public int GetClearedCount(string userId, string semester, string academicYear)
         {

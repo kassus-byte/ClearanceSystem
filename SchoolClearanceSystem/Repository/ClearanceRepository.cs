@@ -159,5 +159,63 @@ namespace SchoolClearanceSystem.Repository
                 return db.Execute(sql, new { id = studentId }) >= 0;
             }
         }
+
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: GetStatusCountForOffice
+        //
+        // CALLED BY: BaseOfficeForm.cs → LoadDashboardStats()
+        //
+        // PURPOSE:
+        //   Counts how many clearance rows match a specific status
+        //   for a given office department.
+        //   Used to populate CLEARED / PENDING / ON HOLD stat cards.
+        //
+        // PARAMETERS:
+        //   officeDept → "SSG", "Treasurer", or "Technical"
+        //   status     → "Approved", "Pending", or "On Hold"
+        //
+        // RETURNS:
+        //   int → count of matching rows
+        // ───────────────────────────────────────────────────────────────
+        public int GetStatusCountForOffice(string officeDept, string status)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT COUNT(*) 
+                       FROM ClearanceRequests 
+                       WHERE Department = @dept 
+                         AND Status = @status";
+
+                return db.ExecuteScalar<int>(sql, new { dept = officeDept, status = status });
+            }
+        }
+
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: GetTotalStudentsForOffice
+        //
+        // CALLED BY: BaseOfficeForm.cs → LoadDashboardStats()
+        //
+        // PURPOSE:
+        //   Counts the total unique students who have ever submitted
+        //   a clearance request to this office.
+        //   Used for the progress bar label: "X out of Y students cleared"
+        //
+        // PARAMETERS:
+        //   officeDept → "SSG", "Treasurer", or "Technical"
+        //
+        // RETURNS:
+        //   int → total distinct students with a row for this office
+        // ───────────────────────────────────────────────────────────────
+        public int GetTotalStudentsForOffice(string officeDept)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT COUNT(DISTINCT StudentID) 
+                       FROM ClearanceRequests 
+                       WHERE Department = @dept";
+
+                return db.ExecuteScalar<int>(sql, new { dept = officeDept });
+            }
+        }
     }
 }

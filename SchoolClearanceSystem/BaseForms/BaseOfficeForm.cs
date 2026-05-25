@@ -35,27 +35,16 @@ namespace SchoolClearanceSystem
         /// </summary>
         protected override void OnLoad(EventArgs e)
         {
-            // 1. DESIGNER GUARD: Prevents the Visual Studio Form Designer from executing database query 
-            // logic during UI design workflows, completely resolving type initialization runtime failure exceptions.
-            if (this.DesignMode)
-            {
-                base.OnLoad(e);
-                return;
-            }
+            if (this.DesignMode) { base.OnLoad(e); return; }
 
-            // 2. Wire up the functional filter state routines safely at runtime execution pass
             btnAllFilter.Click += (s, ev) => SetStatusFilter("All");
             btnPendingFilter.Click += (s, ev) => SetStatusFilter("Pending");
             btnApprovedFilter.Click += (s, ev) => SetStatusFilter("Approved");
             btnOnHoldFilter.Click += (s, ev) => SetStatusFilter("On Hold");
 
-            // 3. Populate session tracking parameters and update top window string titles
             SetupIdentity();
-
-            // 4. Hydrate presentation components now that 'OfficeName' is guaranteed to be fully assigned
             LoadPendingClearanceRequests();
-
-            // 5. Commit control handoff safely back to the parent component stack
+            LoadDashboardStats(); // ← ADD THIS
             base.OnLoad(e);
         }
 
@@ -79,7 +68,8 @@ namespace SchoolClearanceSystem
         private void sbOfficeDashboard_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
-            LoadPendingClearanceRequests(); // Refresh the table tracking view when returning home
+            LoadPendingClearanceRequests();
+            LoadDashboardStats(); // ← ADD THIS
         }
 
         private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e)
@@ -185,39 +175,61 @@ namespace SchoolClearanceSystem
 
         private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
+            // STEP 1: Get the active GridView — exit if somehow null
             var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
             if (view == null) return;
 
+            // STEP 2: Get the focused row as a dynamic object — exit if no row is selected
             dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
             if (selectedRequest == null) return;
 
             string studentId = selectedRequest.UserID?.ToString();
             string targetOffice = this.OfficeName;
             string targetStatus = string.Empty;
+            string finalRemarks = string.Empty;
 
+            // STEP 3: Determine which button was clicked via its Tag property
             string buttonTag = e.Button.Tag?.ToString();
             switch (buttonTag)
             {
-                case "btnApprove": targetStatus = "Approved"; break;
-                case "btnOnHold": targetStatus = "On Hold"; break;
-                default: return;
+                case "btnApprove":
+                    targetStatus = "Approved";
+                    finalRemarks = $"Approved by {targetOffice} Office";
+                    break;
+
+                case "btnOnHold":
+                    targetStatus = "On Hold";
+                    finalRemarks = $"On Hold by {targetOffice} Office";
+                    break;
+
+                default:
+                    return;
             }
 
-            ClearanceRepository repo = new ClearanceRepository();
-            string defaultRemarks = $"Processed by {targetOffice} Office";
+            // STEP 4: Confirm before executing — prevents accidental clicks
+            string confirmMessage = $"Set this student's clearance to '{targetStatus}'?";
+            if (XtraMessageBox.Show(confirmMessage, "Confirm Action",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
 
-            bool isSuccess = repo.UpdateRequestStatus(studentId, targetOffice, targetStatus, defaultRemarks);
+            // STEP 5: Execute the status update via repository
+            ClearanceRepository repo = new ClearanceRepository();
+            bool isSuccess = repo.UpdateRequestStatus(studentId, targetOffice, targetStatus, finalRemarks);
 
             if (isSuccess)
             {
                 XtraMessageBox.Show($"Clearance status updated to '{targetStatus}' successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // OOP REFACTOR: Keep tracking layout consistent by updating memory properties directly!
+                // STEP 6: Update the in-memory row directly so the grid reflects
+                // the change immediately without a full reload
                 selectedRequest.Status = targetStatus;
-                selectedRequest.Remarks = defaultRemarks;
-
+                selectedRequest.Remarks = finalRemarks;
                 view.RefreshRow(view.FocusedRowHandle);
+
+                // STEP 7: Refresh the dashboard stat cards so CLEARED/PENDING/ON HOLD
+                // numbers update live right after this action
+                LoadDashboardStats();
             }
             else
             {
@@ -273,6 +285,64 @@ namespace SchoolClearanceSystem
                 XtraMessageBox.Show($"File System Sync Error: Unable to extract file tracking structure. {ex.Message}",
                     "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: LoadDashboardStats
+        //
+        // CALLED BY: OnLoad() and sbOfficeDashboard_Click()
+        //
+        // PURPOSE:
+        //   Reads live counts from ClearanceRepository and updates
+        //   the 3 stat card number labels + progress bar text
+        //   on the office Dashboard page.
+        //
+        // USES:
+        //   this.OfficeName → set by each child form (SSG/Treasurer/Technical)
+        //   so each office only sees counts for their own department
+        //
+        // LABELS UPDATED:
+        //   lblStatCleared  → count of Approved rows for this office
+        //   lblStatPending  → count of Pending rows for this office
+        //   lblStatOnHold   → count of On Hold rows for this office
+        //   labelControl6   → "X out of Y students cleared" progress text
+        //   progressBarControl1 → fills proportionally (cleared / total)
+        // ───────────────────────────────────────────────────────────────
+        protected void LoadDashboardStats()
+        {
+            try
+            {
+                ClearanceRepository repo = new ClearanceRepository();
+
+                // Get counts per status for this office only
+                int cleared = repo.GetStatusCountForOffice(this.OfficeName, "Approved");
+                int pending = repo.GetStatusCountForOffice(this.OfficeName, "Pending");
+                int onHold = repo.GetStatusCountForOffice(this.OfficeName, "On Hold");
+                int total = repo.GetTotalStudentsForOffice(this.OfficeName);
+
+                // Update the stat card number labels
+                lblStatCleared.Text = cleared.ToString();
+                lblStatPending.Text = pending.ToString();
+                lblStatOnHold.Text = onHold.ToString();
+
+                // Update progress bar text and fill level
+                labelControl6.Text = $"{cleared} out of {total} students cleared";
+
+                if (total > 0)
+                    progressBarControl1.Position = (cleared * 100) / total;
+                else
+                    progressBarControl1.Position = 0;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Could not load dashboard stats: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void labelControl21_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

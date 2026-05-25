@@ -56,5 +56,28 @@ namespace SchoolClearanceSystem.Repository
                                                         LIMIT 1").FirstOrDefault();
             }
         }
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: CloseActivePeriod
+        //
+        // CALLED BY: AdminDashboard.cs → btnClosePeriod_Click
+        //
+        // PURPOSE:
+        //   Sets ALL periods to IsActive = 0.
+        //   This closes the clearance system without opening a new period.
+        //   Students will see "No active period" and cannot submit.
+        //
+        // RETURNS:
+        //   true  → at least one period was deactivated
+        //   false → nothing was active to begin with
+        // ───────────────────────────────────────────────────────────────
+        public bool CloseActivePeriod()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = "UPDATE ClearancePeriods SET IsActive = 0 WHERE IsActive = 1";
+                return db.Execute(sql) > 0;
+            }
+        }
+
     }
 }
