@@ -19,6 +19,12 @@ namespace SchoolClearanceSystem.Dashboard
         public AdminDashboard()
         {
             InitializeComponent();
+
+            // ── Combo box restrictions ────────────────────────────────────
+            // Semester and School Year must be chosen from the list — no free typing
+            comboSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            comboSchoolYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+
             RefreshData();
 
             // Wire grid mouse events (deselects row when clicking empty space)
@@ -136,9 +142,12 @@ namespace SchoolClearanceSystem.Dashboard
             }
         }
 
+        // ── Clearance Period List ─────────────────────────────────────────────────────
+        // Populates the clearancePeriodList GridControl with all saved periods.
+        // Projects Semester, AcademicYear, and a human-readable Status label.
+        // Called by RefreshData() so the list stays in sync after every action.
         private void LoadCurrentSystemSettings()
         {
-            // Clearance periods grid — shows all saved periods as a list
             clearancePeriodList.DataSource = _sysRepo.GetAllPeriods().Select(p => new
             {
                 Semester = p.Semester,
@@ -178,22 +187,7 @@ namespace SchoolClearanceSystem.Dashboard
                 Notify("Target document path null or corrupt.", "File Error", MessageBoxIcon.Error);
         }
 
-        // ── Clearance Period History ───────────────────────────────────────────────────
-        //private void LoadCurrentSystemSettings()
-        //{
-        //    listBoxAdminHistory.DataSource = _sysRepo.GetAllPeriods()
-        //        .Select(p => new ClearanceHistoryViewModel
-        //        {
-        //            PeriodName = $"ℹ️  {p.AcademicYear} {p.Semester}",
-        //            StatusText = p.IsActive == 1 ? "Clearance Processing Active" : "Clearance Done"
-        //        }).ToList();
-        //}
-
-        private void OnHistoryContextClicked(object sender, DevExpress.Utils.ContextItemClickEventArgs e)
-        {
-            if (e.Item.Name == "View" && e.DataItem is ClearanceHistoryViewModel ctx)
-                Notify($"Context loaded: {ctx.PeriodName}", "Pipeline Engine Active", MessageBoxIcon.Information);
-        }
+     
 
         // ── Clearance Period Management ───────────────────────────────────────────────
         private void btnSaveSettings_Click(object sender, EventArgs e)
@@ -244,7 +238,5 @@ namespace SchoolClearanceSystem.Dashboard
 
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
-
-
     }
 }

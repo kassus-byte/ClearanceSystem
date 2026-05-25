@@ -135,7 +135,6 @@
     <Compile Include="Dashboard\SSGOffice.Designer.cs">
       <DependentUpon>SSGOffice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ClearanceHistoryViewModel.cs" />
     <Compile Include="Models\ClearanceRequest.cs" />
     <Compile Include="Dashboard\AdminDashboard.cs">
       <SubType>Form</SubType>

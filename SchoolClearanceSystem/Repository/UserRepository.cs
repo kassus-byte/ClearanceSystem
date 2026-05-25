@@ -91,7 +91,7 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 // Delete dependent clearance records first (FK constraint)
-                db.Execute("DELETE FROM ClearanceRequests WHERE StudentID = @id", new { id = userId });
+                db.Execute("DELETE FROM ClearanceRequests WHERE UserID = @id", new { id = userId });
                 return db.Execute("DELETE FROM Users WHERE UserID = @id", new { id = userId }) > 0;
             }
         }
@@ -108,7 +108,7 @@ namespace SchoolClearanceSystem.Repository
                                 Status,
                                 Remarks
                                FROM ClearanceRequests
-                               WHERE StudentID    = @id
+                               WHERE UserID    = @id
                                  AND Semester     = @semester
                                  AND AcademicYear = @academicYear";
 
@@ -174,7 +174,7 @@ namespace SchoolClearanceSystem.Repository
             {
                 string sql = @"SELECT COUNT(*)
                                FROM ClearanceRequests
-                               WHERE StudentID    = @id
+                               WHERE UserID    = @id
                                  AND Status       = 'Approved'
                                  AND Semester     = @semester
                                  AND AcademicYear = @academicYear";

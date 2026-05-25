@@ -32,6 +32,31 @@ namespace SchoolClearanceSystem
                 txtPassword.Focus();
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
+
+            // ── Input Restrictions ────────────────────────────────────────
+            // Name fields: letters, spaces, hyphens, and apostrophes only (no digits)
+            txtLastName.KeyPress += RestrictToLettersOnly;
+            txtFirstName.KeyPress += RestrictToLettersOnly;
+            txtMiddleName.KeyPress += RestrictToLettersOnly;
+
+            // Combo boxes: read-only — must pick from list, cannot free-type
+            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        // Allows letters (any language), spaces, hyphens, and apostrophes.
+        // Blocks digits and every other symbol.
+        private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsLetter(e.KeyChar) &&
+                e.KeyChar != ' ' &&
+                e.KeyChar != '-' &&
+                e.KeyChar != '\'')
+            {
+                e.Handled = true; // swallow the keystroke
+            }
         }
 
         private void UserInfoForm_Load(object sender, EventArgs e)
@@ -48,8 +73,6 @@ namespace SchoolClearanceSystem
             cbRole.Enabled = !IsEdit;
 
             // Pre-fill fields from model
-            // In Edit mode: split FullName back into parts if the new columns
-            // are empty (handles legacy records that only have FullName stored)
             txtUserID.Text = _selectedUser.UserID;
             txtLastName.Text = _selectedUser.LastName ?? string.Empty;
             txtFirstName.Text = _selectedUser.FirstName ?? string.Empty;
@@ -70,7 +93,7 @@ namespace SchoolClearanceSystem
 
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
 
-            cbProgram.DropDownStyle = cbYear.DropDownStyle = isStudent ? ComboBoxStyle.DropDownList : ComboBoxStyle.DropDown;
+            // Both combos stay DropDownList — only enable/disable them per role
             cbProgram.Enabled = cbYear.Enabled = isStudent;
             cbProgram.BackColor = cbYear.BackColor = isStudent ? Color.White : Color.LightGray;
 
@@ -81,7 +104,6 @@ namespace SchoolClearanceSystem
         private void btnSave_Click_1(object sender, EventArgs e)
         {
             // ── Validation ───────────────────────────────────────────
-            // Last name and first name are required; middle name is optional
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtFirstName.Text) ||
@@ -106,8 +128,6 @@ namespace SchoolClearanceSystem
             // ── Capture Form State → Model ────────────────────────────
             if (!IsEdit) _selectedUser.UserID = txtUserID.Text.Trim();
 
-            // Store the three name parts — FullName is computed automatically
-            // from these in the User model, no need to set it manually
             _selectedUser.LastName = txtLastName.Text.Trim();
             _selectedUser.FirstName = txtFirstName.Text.Trim();
             _selectedUser.MiddleName = txtMiddleName.Text.Trim();

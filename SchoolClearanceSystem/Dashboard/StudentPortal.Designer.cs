@@ -730,7 +730,7 @@
             this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn1.Caption = "Department";
+            this.gridColumn1.Caption = "Office";
             this.gridColumn1.FieldName = "Department";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;

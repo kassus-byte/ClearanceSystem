@@ -26,15 +26,37 @@ namespace SchoolClearanceSystem
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
 
+            // ── Combo box restrictions ────────────────────────────────
+            // Program and Year must be selected from the list — no free typing
             cmbProgram.Properties.Items.Clear();
             cmbProgram.Properties.Items.AddRange(new object[] { "BSIT" });
             cmbProgram.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            cmbYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+
+            // ── Name field restrictions ───────────────────────────────
+            // Letters, spaces, hyphens, and apostrophes only — no digits
+            txtLastName.KeyPress += RestrictToLettersOnly;
+            txtFirstName.KeyPress += RestrictToLettersOnly;
+            txtMiddleName.KeyPress += RestrictToLettersOnly;
+        }
+
+        // Allows letters (any language), spaces, hyphens, and apostrophes.
+        // Blocks digits and every other symbol.
+        private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsLetter(e.KeyChar) &&
+                e.KeyChar != ' ' &&
+                e.KeyChar != '-' &&
+                e.KeyChar != '\'')
+            {
+                e.Handled = true;
+            }
         }
 
         // ── Register button ───────────────────────────────────────────────
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
-            // Last name and first name are required — middle name is optional
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtFirstName.Text) ||
@@ -52,14 +74,12 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // Build the User object using the three name fields
-            // FullName is computed automatically from these in the User model
             User newUser = new User
             {
                 UserID = txtUserID.Text.Trim(),
                 LastName = txtLastName.Text.Trim(),
                 FirstName = txtFirstName.Text.Trim(),
-                MiddleName = txtMiddleName.Text.Trim(), // optional — empty string if blank
+                MiddleName = txtMiddleName.Text.Trim(),
                 Program = cmbProgram.Text,
                 Year = cmbYear.Text,
                 Role = "Student",
