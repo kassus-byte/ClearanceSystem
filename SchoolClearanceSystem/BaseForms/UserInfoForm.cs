@@ -22,7 +22,6 @@ namespace SchoolClearanceSystem
             _mode = mode;
             _selectedUser = user ?? new User();
 
-            // Toggle password visibility
             txtPassword.Properties.UseSystemPasswordChar = true;
             chkShowPassword.Properties.Caption = "Show Password";
             chkShowPassword.CheckedChanged += (s, e) =>
@@ -33,20 +32,15 @@ namespace SchoolClearanceSystem
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
 
-            // ── Input Restrictions ────────────────────────────────────────
-            // Name fields: letters, spaces, hyphens, and apostrophes only (no digits)
             txtLastName.KeyPress += RestrictToLettersOnly;
             txtFirstName.KeyPress += RestrictToLettersOnly;
             txtMiddleName.KeyPress += RestrictToLettersOnly;
 
-            // Combo boxes: read-only — must pick from list, cannot free-type
             cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
             cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        // Allows letters (any language), spaces, hyphens, and apostrophes.
-        // Blocks digits and every other symbol.
         private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) &&
@@ -55,7 +49,7 @@ namespace SchoolClearanceSystem
                 e.KeyChar != '-' &&
                 e.KeyChar != '\'')
             {
-                e.Handled = true; // swallow the keystroke
+                e.Handled = true; 
             }
         }
 
@@ -65,14 +59,14 @@ namespace SchoolClearanceSystem
             cbProgram.Items.Clear();
             cbProgram.Items.Add("BSIT");
 
-            // Polymorphic UI — Register vs Edit mode
+           
             this.Text = IsEdit ? "Edit Account Information" : "Register New Account";
             lblTitle.Text = IsEdit ? "Edit Information" : "Register Account";
             btnSave.Text = IsEdit ? "Update Changes" : "Save Account";
             txtUserID.ReadOnly = IsEdit;
             cbRole.Enabled = !IsEdit;
 
-            // Pre-fill fields from model
+           
             txtUserID.Text = _selectedUser.UserID;
             txtLastName.Text = _selectedUser.LastName ?? string.Empty;
             txtFirstName.Text = _selectedUser.FirstName ?? string.Empty;
@@ -93,7 +87,6 @@ namespace SchoolClearanceSystem
 
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
 
-            // Both combos stay DropDownList — only enable/disable them per role
             cbProgram.Enabled = cbYear.Enabled = isStudent;
             cbProgram.BackColor = cbYear.BackColor = isStudent ? Color.White : Color.LightGray;
 
@@ -103,7 +96,7 @@ namespace SchoolClearanceSystem
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            // ── Validation ───────────────────────────────────────────
+            
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtFirstName.Text) ||
@@ -125,7 +118,7 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // ── Capture Form State → Model ────────────────────────────
+           
             if (!IsEdit) _selectedUser.UserID = txtUserID.Text.Trim();
 
             _selectedUser.LastName = txtLastName.Text.Trim();
@@ -137,9 +130,8 @@ namespace SchoolClearanceSystem
             _selectedUser.Year = cbYear.Text;
 
             if (!IsEdit || !string.IsNullOrWhiteSpace(txtPassword.Text))
-                _selectedUser.Password = txtPassword.Text.Trim();
+                _selectedUser.Password = Helpers.PasswordHelper.Hash(txtPassword.Text.Trim());
 
-            // ── Execute Business Pipeline ─────────────────────────────
             if (!IsEdit)
             {
                 if (_userRepo.AddUser(_selectedUser))

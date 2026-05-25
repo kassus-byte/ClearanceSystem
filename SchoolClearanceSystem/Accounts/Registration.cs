@@ -1,47 +1,36 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Windows.Forms;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
+using System;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
     public partial class Registration : DevExpress.XtraEditors.XtraForm
     {
-        private readonly UserRepository _userRepo = new UserRepository();
+        private readonly UserRepository _userRepo;
 
-        public Registration()
+        public Registration(UserRepository userRepo = null)
         {
-            SQLitePCL.Batteries.Init();
             InitializeComponent();
+            _userRepo = userRepo ?? new UserRepository();
+            ConfigurePasswordToggle();
+        }
 
-            // Password visibility toggle
-            txtPassword.Properties.UseSystemPasswordChar = true;
-            chkShowPassword.Properties.Caption = "Show Password";
+        private void ConfigurePasswordToggle()
+        {
             chkShowPassword.CheckedChanged += (s, e) =>
             {
                 txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
                 chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
                 txtPassword.Focus();
-                txtPassword.SelectionStart = txtPassword.Text.Length;
             };
 
-            // ── Combo box restrictions ────────────────────────────────
-            // Program and Year must be selected from the list — no free typing
-            cmbProgram.Properties.Items.Clear();
-            cmbProgram.Properties.Items.AddRange(new object[] { "BSIT" });
-            cmbProgram.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            cmbYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-
-            // ── Name field restrictions ───────────────────────────────
-            // Letters, spaces, hyphens, and apostrophes only — no digits
             txtLastName.KeyPress += RestrictToLettersOnly;
             txtFirstName.KeyPress += RestrictToLettersOnly;
             txtMiddleName.KeyPress += RestrictToLettersOnly;
         }
 
-        // Allows letters (any language), spaces, hyphens, and apostrophes.
-        // Blocks digits and every other symbol.
         private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) &&
@@ -54,7 +43,6 @@ namespace SchoolClearanceSystem
             }
         }
 
-        // ── Register button ───────────────────────────────────────────────
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
@@ -83,7 +71,7 @@ namespace SchoolClearanceSystem
                 Program = cmbProgram.Text,
                 Year = cmbYear.Text,
                 Role = "Student",
-                Password = txtPassword.Text.Trim(),
+                Password = txtPassword.Text
             };
 
             if (_userRepo.AddUser(newUser))
@@ -100,7 +88,6 @@ namespace SchoolClearanceSystem
             }
         }
 
-        // ── Clear all fields ──────────────────────────────────────────────
         private void ClearFields()
         {
             txtUserID.Text = string.Empty;
@@ -112,7 +99,6 @@ namespace SchoolClearanceSystem
             cmbYear.EditValue = null;
         }
 
-        // ── Navigate to Login ─────────────────────────────────────────────
         private void lblctrLogin_Click(object sender, EventArgs e)
         {
             Login loginForm = new Login();
@@ -120,8 +106,5 @@ namespace SchoolClearanceSystem
             loginForm.Show();
             this.Hide();
         }
-
-        private void labelControl8_Click(object sender, EventArgs e) { }
-        private void labelControl7_Click(object sender, EventArgs e) { }
     }
 }

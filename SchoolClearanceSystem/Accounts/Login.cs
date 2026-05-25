@@ -16,19 +16,13 @@ namespace SchoolClearanceSystem
         {
             InitializeComponent();
 
-            // Hide password on startup
-            txtPassword.Properties.UseSystemPasswordChar = true;
-
-            // Set initial label text on startup
             chkShowPassword.Properties.Caption = "Show Password";
 
-            // Wire CheckEdit event to change both password visibility and the label text
             chkShowPassword.CheckedChanged += (s, e) =>
             {
-                // 1. Toggle password visibility
                 txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
 
-                // 2. Dynamically change the text based on checked state
+               
                 if (chkShowPassword.Checked)
                 {
                     chkShowPassword.Properties.Caption = "Hide Password";
@@ -38,13 +32,13 @@ namespace SchoolClearanceSystem
                     chkShowPassword.Properties.Caption = "Show Password";
                 }
 
-                // Keep focus and put cursor at the end of the text
+              
                 txtPassword.Focus();
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
         }
 
-        // ── Login button ─────────────────────────────────────────────────
+       
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string id = txtUserID.Text.Trim();
@@ -57,7 +51,6 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            // Since ValidateLogin returns a User instance or null, we can do a straightforward type assignment
             var loggedInUser = _userRepo.ValidateLogin(id, pass);
 
             if (loggedInUser != null)
@@ -69,7 +62,6 @@ namespace SchoolClearanceSystem
 
                 Form nextForm = null;
 
-                // FIXED: Changed "Technical" case to match "Technical Office" string value stored in database
                 switch (user.Role)
                 {
                     case "Admin":
@@ -104,7 +96,6 @@ namespace SchoolClearanceSystem
             }
         }
 
-        // ── Register link ─────────────────────────────────────────────────
         private void panelControl1_Paint(object sender, PaintEventArgs e) { }
 
         private void lnkRegister_Click(object sender, EventArgs e)

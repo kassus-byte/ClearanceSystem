@@ -15,12 +15,14 @@ namespace SchoolClearanceSystem
 {
     public partial class StudentPortal : XtraForm
     {
-        // OOP CONCEPT: ENCAPSULATION
         private string ssgUploadedFilePath = string.Empty;
         private string treasurerUploadedFilePath = string.Empty;
         private string currentSemester = "Not Set";
         private string currentAcademicYear = "Not Set";
 
+        private const int TotalOffices = 3;
+
+        
         private readonly SystemRepository _sysRepo = new SystemRepository();
         private readonly UserRepository _userRepo = new UserRepository();
 
@@ -35,11 +37,11 @@ namespace SchoolClearanceSystem
             gridControlOfficeStatus.MainView = gridView2;
             gridView2.RowCellStyle += ApplyStatusRowStyles;
 
-            // OOP CONCEPT: POLYMORPHISM (Dynamic casting interfaces across different Grid Controls)
+           
             if (gridMyRequest.MainView is GridView gvTimeline) gvTimeline.RowCellStyle += ApplyStatusRowStyles;
             if (gridMyClearance.MainView is GridView gvHistory) gvHistory.RowCellStyle += ApplyStatusRowStyles;
 
-            // Wire UI Interactions
+           
             btnUploadSSGRequirement.Click += btnUploadSSGRequirement_Click;
             btnViewSSGPhoto.Click += btnViewSSGRequirement_Click;
             btnUploadTreasurerRequirement.Click += btnUploadTreasurerRequirement_Click;
@@ -48,6 +50,7 @@ namespace SchoolClearanceSystem
             LoadActiveClearancePeriod();
             UpdateDashboard();
             LoadUserSessionContext();
+            tileView1.FocusedRowChanged += tileView1_FocusedRowChanged;
         }
 
         private void LoadUserSessionContext()
@@ -82,7 +85,7 @@ namespace SchoolClearanceSystem
             txtSemester.Text = currentSemester;
             txtCurrentSchoolYear.Text = currentAcademicYear;
 
-            // Abstracting visual control formatting setups
+           
             ConfigureReadOnlyTextBox(txtSemester);
             ConfigureReadOnlyTextBox(txtCurrentSchoolYear);
         }
@@ -99,16 +102,16 @@ namespace SchoolClearanceSystem
             if (Session.CurrentUser == null) return;
 
             int cleared = _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear);
-            int percentage = (cleared * 100) / 3;
+            int percentage = (cleared * 100) / TotalOffices;
 
-            lblOfficeCleared.Text = "Offices Cleared: " + cleared + "/3";
+            lblOfficeCleared.Text = $"Offices Cleared: {cleared}/{TotalOffices}";
             lblPercentage.Text = percentage + "%";
             pbOverallProgress.Position = percentage;
 
-            bool isFullyCleared = (cleared == 3);
+            bool isFullyCleared = (cleared == TotalOffices);
             lblStatus.Text = isFullyCleared ? "Cleared" : "In Progress";
             lblStatus.ForeColor = isFullyCleared ? Color.ForestGreen : lblStatus.ForeColor;
-            lblProgress.Text = isFullyCleared ? "All 3 offices cleared! Your clearance is complete." : cleared + " out of 3 offices cleared";
+            lblProgress.Text = isFullyCleared ? "All 3 offices cleared! Your clearance is complete." : $"{cleared} out of 3 offices cleared";
 
             btnSubmitRequest.Enabled = !isFullyCleared;
             btnUploadSSGRequirement.Enabled = !isFullyCleared;
@@ -137,7 +140,7 @@ namespace SchoolClearanceSystem
             }
         }
 
-        // OOP CONCEPT: ABSTRACTION (Polymorphic style configuration engine based on key value dictionaries)
+     
         private void ApplyStatusRowStyles(object sender, RowCellStyleEventArgs e)
         {
             if (e.Column.FieldName != "Status" || e.CellValue == null) return;
@@ -169,7 +172,7 @@ namespace SchoolClearanceSystem
 
         private void gridView2_RowCellStyle(object sender, RowCellStyleEventArgs e) => ApplyStatusRowStyles(sender, e);
 
-        // OOP CONCEPT: ABSTRACTION (Encapsulating structural Win32/I/O file processes from core logic)
+       
         #region File Management Abstraction Engine
 
         private string ExecuteFileSelection()
@@ -216,7 +219,7 @@ namespace SchoolClearanceSystem
 
         private void sbRequestClearance_Click_1(object sender, EventArgs e)
         {
-            if (Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == 3)
+            if (Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == TotalOffices)
             {
                 XtraMessageBox.Show("You are already completely cleared for this period! Action blocked.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -240,14 +243,22 @@ namespace SchoolClearanceSystem
 
         private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
-            bool alreadyCleared = Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == 3;
+            bool alreadyCleared = Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == TotalOffices;
             BindGridData(pageMyRequest, gridMyRequest, alreadyCleared);
         }
 
         private void sbMyClearance_Click_1(object sender, EventArgs e)
         {
-            bool notClearedYet = Session.CurrentUser == null || _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) != 3;
+            bool notClearedYet = Session.CurrentUser == null || _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) != TotalOffices;
             BindGridData(pageMyClearance, gridMyClearance, notClearedYet);
+
+            var user = Session.CurrentUser;
+            if (user == null) return;
+
+            labelControl17.Text = $"{currentSemester}, Academic Year {currentAcademicYear}";
+            labelControl18.Text = $"{user.FullName} · {user.UserID}";
+            labelControl19.Text = $"{user.Program} — College of Computer Studies";
+            labelControl20.Text = $"Issued: {DateTime.Now:MMM d, yyyy}";
         }
 
         private void btnUploadSSGRequirement_Click(object sender, EventArgs e) => ssgUploadedFilePath = ExecuteFileSelection();
@@ -263,6 +274,25 @@ namespace SchoolClearanceSystem
                 new Login().Show();
                 this.Close();
             }
+        }
+
+        private void tileView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            int handle = tileView1.FocusedRowHandle;
+            if (handle < 0) return;
+
+            string semester = tileView1.GetRowCellValue(handle, "Semester")?.ToString();
+            string year = tileView1.GetRowCellValue(handle, "AcademicYear")?.ToString();
+
+            if (string.IsNullOrEmpty(semester) || string.IsNullOrEmpty(year)) return;
+
+            var user = Session.CurrentUser;
+            if (user == null) return;
+
+            labelControl17.Text = $"{semester}, Academic Year {year}";
+            labelControl18.Text = $"{user.FullName} · {user.UserID}";
+            labelControl19.Text = $"{user.Program} — College of Computer Studies";
+            labelControl20.Text = $"Issued: {DateTime.Now:MMM d, yyyy}";
         }
 
         private void btnSubmitRequest_Click_1(object sender, EventArgs e)
