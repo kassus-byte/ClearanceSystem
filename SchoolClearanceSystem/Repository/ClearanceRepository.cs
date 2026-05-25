@@ -57,9 +57,9 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                // Added FilePath into the SQL columns and parameters list
+                // Omit Remarks and DateProcessed so they default to NULL in the database until an Admin updates them
                 string sql = @"INSERT INTO ClearanceRequests (UserID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
-                               VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
+                       VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
                 return db.Execute(sql, new
                 {
@@ -68,7 +68,7 @@ namespace SchoolClearanceSystem.Repository
                     date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     sem = semester,
                     ay = acadYear,
-                    path = filePath // Maps directly to your TEXT column!
+                    path = filePath
                 }) > 0;
             }
         }

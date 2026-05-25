@@ -22,7 +22,6 @@ namespace SchoolClearanceSystem
 
         private const int TotalOffices = 3;
 
-        
         private readonly SystemRepository _sysRepo = new SystemRepository();
         private readonly UserRepository _userRepo = new UserRepository();
 
@@ -37,11 +36,9 @@ namespace SchoolClearanceSystem
             gridControlOfficeStatus.MainView = gridView2;
             gridView2.RowCellStyle += ApplyStatusRowStyles;
 
-           
             if (gridMyRequest.MainView is GridView gvTimeline) gvTimeline.RowCellStyle += ApplyStatusRowStyles;
             if (gridMyClearance.MainView is GridView gvHistory) gvHistory.RowCellStyle += ApplyStatusRowStyles;
 
-           
             btnUploadSSGRequirement.Click += btnUploadSSGRequirement_Click;
             btnViewSSGPhoto.Click += btnViewSSGRequirement_Click;
             btnUploadTreasurerRequirement.Click += btnUploadTreasurerRequirement_Click;
@@ -85,7 +82,6 @@ namespace SchoolClearanceSystem
             txtSemester.Text = currentSemester;
             txtCurrentSchoolYear.Text = currentAcademicYear;
 
-           
             ConfigureReadOnlyTextBox(txtSemester);
             ConfigureReadOnlyTextBox(txtCurrentSchoolYear);
         }
@@ -140,7 +136,6 @@ namespace SchoolClearanceSystem
             }
         }
 
-     
         private void ApplyStatusRowStyles(object sender, RowCellStyleEventArgs e)
         {
             if (e.Column.FieldName != "Status" || e.CellValue == null) return;
@@ -172,7 +167,6 @@ namespace SchoolClearanceSystem
 
         private void gridView2_RowCellStyle(object sender, RowCellStyleEventArgs e) => ApplyStatusRowStyles(sender, e);
 
-       
         #region File Management Abstraction Engine
 
         private string ExecuteFileSelection()
@@ -243,14 +237,17 @@ namespace SchoolClearanceSystem
 
         private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
-            bool alreadyCleared = Session.CurrentUser != null && _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) == TotalOffices;
-            BindGridData(pageMyRequest, gridMyRequest, alreadyCleared);
+            // FIXED: "My Requests" tab should always list pending applications. Never pass true to forceNull here.
+            BindGridData(pageMyRequest, gridMyRequest, forceNull: false);
         }
 
         private void sbMyClearance_Click_1(object sender, EventArgs e)
         {
+            // FIXED: Clearance Slip printable context should remain completely hidden/null until count equals 3.
             bool notClearedYet = Session.CurrentUser == null || _userRepo.GetClearedCount(Session.CurrentUser.UserID, currentSemester, currentAcademicYear) != TotalOffices;
             BindGridData(pageMyClearance, gridMyClearance, notClearedYet);
+
+            if (notClearedYet) return;
 
             var user = Session.CurrentUser;
             if (user == null) return;
