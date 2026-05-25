@@ -50,7 +50,7 @@ namespace SchoolClearanceSystem.Dashboard
         {
             gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
             gcOffice.DataSource = _userRepo.GetUsersByRole("Staff");
-            //LoadCurrentSystemSettings();
+            LoadCurrentSystemSettings();
             LoadDashboardStats();
         }
 
@@ -134,6 +134,17 @@ namespace SchoolClearanceSystem.Dashboard
                 Notify("Account successfully deleted.", "Deleted", MessageBoxIcon.Information);
                 RefreshData();
             }
+        }
+
+        private void LoadCurrentSystemSettings()
+        {
+            // Clearance periods grid — shows all saved periods as a list
+            clearancePeriodList.DataSource = _sysRepo.GetAllPeriods().Select(p => new
+            {
+                Semester = p.Semester,
+                AcademicYear = p.AcademicYear,
+                Status = p.IsActive == 1 ? "ACTIVE" : "Closed"
+            }).ToList();
         }
 
         // ── Dashboard Stats ───────────────────────────────────────────────────────────
@@ -234,6 +245,6 @@ namespace SchoolClearanceSystem.Dashboard
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
 
-       
+
     }
 }

@@ -97,6 +97,7 @@
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             this.Semester = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.AcademicYear = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -193,7 +194,7 @@
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.pageClearanceSystem = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.clearancePeriodList = new DevExpress.XtraGrid.GridControl();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.btnClosePeriod = new DevExpress.XtraEditors.SimpleButton();
             this.pnlClearanceForm = new DevExpress.XtraEditors.PanelControl();
@@ -206,6 +207,7 @@
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
+            this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -268,7 +270,7 @@
             this.pageClearanceSystem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clearancePeriodList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
@@ -281,6 +283,7 @@
             // Semester
             // 
             this.Semester.Caption = "Semester";
+            this.Semester.FieldName = "Semester";
             this.Semester.Name = "Semester";
             this.Semester.Visible = true;
             this.Semester.VisibleIndex = 0;
@@ -288,6 +291,7 @@
             // AcademicYear
             // 
             this.AcademicYear.Caption = "Academic Year";
+            this.AcademicYear.FieldName = "AcademicYear";
             this.AcademicYear.Name = "AcademicYear";
             this.AcademicYear.Visible = true;
             this.AcademicYear.VisibleIndex = 1;
@@ -1327,6 +1331,7 @@
             // 
             // pageClearanceSystem
             // 
+            this.pageClearanceSystem.Caption = "pageClearanceSystem";
             this.pageClearanceSystem.Controls.Add(this.panelControl5);
             this.pageClearanceSystem.Controls.Add(this.btnClosePeriod);
             this.pageClearanceSystem.Controls.Add(this.pnlClearanceForm);
@@ -1339,7 +1344,7 @@
             this.panelControl5.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panelControl5.Appearance.Options.UseBackColor = true;
             this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl5.Controls.Add(this.gridControl2);
+            this.panelControl5.Controls.Add(this.clearancePeriodList);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 341);
             this.panelControl5.Name = "panelControl5";
@@ -1347,23 +1352,24 @@
             this.panelControl5.Size = new System.Drawing.Size(1606, 487);
             this.panelControl5.TabIndex = 13;
             // 
-            // gridControl2
+            // clearancePeriodList
             // 
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(20, 20);
-            this.gridControl2.MainView = this.tileView1;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1566, 447);
-            this.gridControl2.TabIndex = 0;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.clearancePeriodList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearancePeriodList.Location = new System.Drawing.Point(20, 20);
+            this.clearancePeriodList.MainView = this.tileView1;
+            this.clearancePeriodList.Name = "clearancePeriodList";
+            this.clearancePeriodList.Size = new System.Drawing.Size(1566, 447);
+            this.clearancePeriodList.TabIndex = 0;
+            this.clearancePeriodList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
             // 
             // tileView1
             // 
             this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Semester,
-            this.AcademicYear});
-            this.tileView1.GridControl = this.gridControl2;
+            this.AcademicYear,
+            this.tileViewColumn1});
+            this.tileView1.GridControl = this.clearancePeriodList;
             this.tileView1.Name = "tileView1";
             this.tileView1.OptionsTiles.GroupTextPadding = new System.Windows.Forms.Padding(12, 8, 12, 8);
             this.tileView1.OptionsTiles.IndentBetweenGroups = 0;
@@ -1385,13 +1391,21 @@
             tileViewItemElement1.Text = "Semester";
             tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement2.Column = this.AcademicYear;
-            tileViewItemElement2.ColumnIndex = 2;
+            tileViewItemElement2.ColumnIndex = 1;
             tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
             tileViewItemElement2.Text = "AcademicYear";
             tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.Column = this.tileViewColumn1;
+            tileViewItemElement3.ColumnIndex = 2;
+            tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement3.Name = "Status";
+            tileViewItemElement3.Text = "tileViewColumn1";
+            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             this.tileView1.TileTemplate.Add(tileViewItemElement1);
             this.tileView1.TileTemplate.Add(tileViewItemElement2);
+            this.tileView1.TileTemplate.Add(tileViewItemElement3);
             // 
             // btnClosePeriod
             // 
@@ -1547,6 +1561,14 @@
             this.txtHeaderRC.TabIndex = 1;
             this.txtHeaderRC.Text = "Clearance Settings";
             // 
+            // tileViewColumn1
+            // 
+            this.tileViewColumn1.Caption = "Status";
+            this.tileViewColumn1.FieldName = "Status";
+            this.tileViewColumn1.Name = "tileViewColumn1";
+            this.tileViewColumn1.Visible = true;
+            this.tileViewColumn1.VisibleIndex = 2;
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1628,7 +1650,7 @@
             this.pageClearanceSystem.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clearancePeriodList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
@@ -1749,9 +1771,10 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit5;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit6;
         private DevExpress.XtraEditors.PanelControl panelControl5;
-        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.GridControl clearancePeriodList;
         private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
         private DevExpress.XtraGrid.Columns.TileViewColumn Semester;
         private DevExpress.XtraGrid.Columns.TileViewColumn AcademicYear;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn1;
     }
 }
