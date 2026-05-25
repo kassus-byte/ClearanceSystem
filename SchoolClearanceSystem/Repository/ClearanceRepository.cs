@@ -82,19 +82,21 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT 
-                                c.StudentID AS UserID, 
-                                u.FullName AS FullName, 
-                                u.Program AS Program, 
-                                u.Year AS Year, 
-                                c.Semester AS Semester,
-                                c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
-                                c.Department AS Office,  
-                                '' AS Action,            -- Keeps the ACTION column completely empty for now
-                                c.Remarks AS Remarks,
-                                c.FilePath AS FilePath
-                               FROM ClearanceRequests c
-                               INNER JOIN Users u ON c.StudentID = u.UserID
-                               WHERE c.Department = @dept AND c.Status = 'Pending'";
+                        c.StudentID AS UserID,
+                        (u.LastName || ', ' || u.FirstName || 
+                            CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
+                                 THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+                        u.Program  AS Program,
+                        u.Year     AS Year,
+                        c.Semester AS Semester,
+                        c.Status   AS Status,
+                        c.Department AS Office,
+                        ''         AS Action,
+                        c.Remarks  AS Remarks,
+                        c.FilePath AS FilePath
+                       FROM ClearanceRequests c
+                       INNER JOIN Users u ON c.StudentID = u.UserID
+                       WHERE c.Department = @dept AND c.Status = 'Pending'";
 
                 return db.Query(sql, new { dept = officeDept }).ToList();
             }

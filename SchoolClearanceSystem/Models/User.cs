@@ -15,7 +15,12 @@ namespace SchoolClearanceSystem.Models
         public string LastName { get; set; }   // ← NEW
         public string FirstName { get; set; }   // ← NEW
         public string MiddleName { get; set; }   // ← NEW
-        public string FullName { get; set; }
+                                                 // ADD this instead:
+        public string FullName => string.IsNullOrWhiteSpace(LastName) && string.IsNullOrWhiteSpace(FirstName)
+            ? "Unknown"
+            : string.IsNullOrWhiteSpace(MiddleName)
+                ? $"{LastName}, {FirstName}"
+                : $"{LastName}, {FirstName} {MiddleName}";
         public string Program { get; set; }
         public string Year { get; set; }
         public string Role { get; set; }
