@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseOfficeForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -91,12 +91,12 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeClearanceRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.txtSearch = new DevExpress.XtraEditors.SearchControl();
             this.btnOnHoldFilter = new DevExpress.XtraEditors.SimpleButton();
             this.btnApprovedFilter = new DevExpress.XtraEditors.SimpleButton();
             this.btnPendingFilter = new DevExpress.XtraEditors.SimpleButton();
             this.btnAllFilter = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
-            this.txtSearch = new DevExpress.XtraEditors.SearchControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl15 = new DevExpress.XtraEditors.PanelControl();
@@ -227,17 +227,23 @@
             this.accordionControlElement1,
             this.accordionControlSeparator1,
             this.accordionControlElement4});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 165);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 196);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.Size = new System.Drawing.Size(317, 915);
+            this.accordionControl1.Size = new System.Drawing.Size(317, 884);
             this.accordionControl1.TabIndex = 2;
             // 
             // accordionControlElement1
             // 
-            this.accordionControlElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.accordionControlElement1.Appearance.Disabled.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionControlElement1.Appearance.Disabled.Options.UseFont = true;
+            this.accordionControlElement1.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionControlElement1.Appearance.Hovered.Options.UseFont = true;
+            this.accordionControlElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement1.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionControlElement1.Appearance.Pressed.Options.UseFont = true;
             this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.sbOfficeDashboard,
             this.sbOfficeClearanceRequest,
@@ -249,63 +255,65 @@
             // sbOfficeDashboard
             // 
             this.sbOfficeDashboard.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbOfficeDashboard.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeDashboard.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeDashboard.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeDashboard.Appearance.Hovered.Options.UseBackColor = true;
             this.sbOfficeDashboard.Appearance.Hovered.Options.UseFont = true;
             this.sbOfficeDashboard.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbOfficeDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeDashboard.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeDashboard.Appearance.Normal.Options.UseFont = true;
             this.sbOfficeDashboard.Appearance.Normal.Options.UseForeColor = true;
             this.sbOfficeDashboard.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbOfficeDashboard.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeDashboard.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeDashboard.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeDashboard.Appearance.Pressed.Options.UseBackColor = true;
             this.sbOfficeDashboard.Appearance.Pressed.Options.UseFont = true;
             this.sbOfficeDashboard.Appearance.Pressed.Options.UseForeColor = true;
+            this.sbOfficeDashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbOfficeDashboard.ImageOptions.SvgImage")));
+            this.sbOfficeDashboard.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbOfficeDashboard.Name = "sbOfficeDashboard";
             this.sbOfficeDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbOfficeDashboard.Text = "Dashboard";
+            this.sbOfficeDashboard.Text = "    Dashboard";
             this.sbOfficeDashboard.Click += new System.EventHandler(this.sbOfficeDashboard_Click);
             // 
             // sbOfficeClearanceRequest
             // 
             this.sbOfficeClearanceRequest.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbOfficeClearanceRequest.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeClearanceRequest.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeClearanceRequest.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeClearanceRequest.Appearance.Hovered.Options.UseBackColor = true;
             this.sbOfficeClearanceRequest.Appearance.Hovered.Options.UseFont = true;
             this.sbOfficeClearanceRequest.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbOfficeClearanceRequest.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeClearanceRequest.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeClearanceRequest.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeClearanceRequest.Appearance.Normal.Options.UseFont = true;
             this.sbOfficeClearanceRequest.Appearance.Normal.Options.UseForeColor = true;
             this.sbOfficeClearanceRequest.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbOfficeClearanceRequest.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeClearanceRequest.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeClearanceRequest.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeClearanceRequest.Appearance.Pressed.Options.UseBackColor = true;
             this.sbOfficeClearanceRequest.Appearance.Pressed.Options.UseFont = true;
             this.sbOfficeClearanceRequest.Appearance.Pressed.Options.UseForeColor = true;
             this.sbOfficeClearanceRequest.Name = "sbOfficeClearanceRequest";
             this.sbOfficeClearanceRequest.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbOfficeClearanceRequest.Text = "Clearanace Request";
+            this.sbOfficeClearanceRequest.Text = "Clearance Request";
             this.sbOfficeClearanceRequest.Click += new System.EventHandler(this.sbOfficeClearanceRequest_Click_1);
             // 
             // sbOfficeRequirements
             // 
             this.sbOfficeRequirements.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbOfficeRequirements.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeRequirements.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeRequirements.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeRequirements.Appearance.Hovered.Options.UseBackColor = true;
             this.sbOfficeRequirements.Appearance.Hovered.Options.UseFont = true;
             this.sbOfficeRequirements.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbOfficeRequirements.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeRequirements.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeRequirements.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeRequirements.Appearance.Normal.Options.UseFont = true;
             this.sbOfficeRequirements.Appearance.Normal.Options.UseForeColor = true;
             this.sbOfficeRequirements.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbOfficeRequirements.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeRequirements.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeRequirements.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeRequirements.Appearance.Pressed.Options.UseBackColor = true;
             this.sbOfficeRequirements.Appearance.Pressed.Options.UseFont = true;
@@ -321,10 +329,14 @@
             // 
             // accordionControlElement4
             // 
-            this.accordionControlElement4.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.accordionControlElement4.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionControlElement4.Appearance.Hovered.Options.UseFont = true;
+            this.accordionControlElement4.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.accordionControlElement4.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.accordionControlElement4.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement4.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement4.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionControlElement4.Appearance.Pressed.Options.UseFont = true;
             this.accordionControlElement4.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.sbOfficeReports});
             this.accordionControlElement4.Expanded = true;
@@ -334,17 +346,17 @@
             // sbOfficeReports
             // 
             this.sbOfficeReports.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbOfficeReports.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeReports.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeReports.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeReports.Appearance.Hovered.Options.UseBackColor = true;
             this.sbOfficeReports.Appearance.Hovered.Options.UseFont = true;
             this.sbOfficeReports.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbOfficeReports.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeReports.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeReports.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeReports.Appearance.Normal.Options.UseFont = true;
             this.sbOfficeReports.Appearance.Normal.Options.UseForeColor = true;
             this.sbOfficeReports.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbOfficeReports.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeReports.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeReports.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbOfficeReports.Appearance.Pressed.Options.UseBackColor = true;
             this.sbOfficeReports.Appearance.Pressed.Options.UseFont = true;
@@ -422,9 +434,9 @@
             this.panelControl3.Controls.Add(this.lblRole);
             this.panelControl3.Controls.Add(this.lblFullName);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(0, 80);
+            this.panelControl3.Location = new System.Drawing.Point(0, 96);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(300, 85);
+            this.panelControl3.Size = new System.Drawing.Size(300, 100);
             this.panelControl3.TabIndex = 1;
             // 
             // lblRole
@@ -433,7 +445,7 @@
             this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblRole.Appearance.Options.UseFont = true;
             this.lblRole.Appearance.Options.UseForeColor = true;
-            this.lblRole.Location = new System.Drawing.Point(94, 40);
+            this.lblRole.Location = new System.Drawing.Point(96, 52);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(46, 13);
             this.lblRole.TabIndex = 5;
@@ -445,7 +457,7 @@
             this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblFullName.Appearance.Options.UseFont = true;
             this.lblFullName.Appearance.Options.UseForeColor = true;
-            this.lblFullName.Location = new System.Drawing.Point(94, 17);
+            this.lblFullName.Location = new System.Drawing.Point(96, 29);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(97, 17);
             this.lblFullName.TabIndex = 1;
@@ -460,7 +472,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(300, 80);
+            this.panelControl1.Size = new System.Drawing.Size(300, 96);
             this.panelControl1.TabIndex = 0;
             // 
             // panelControl2
@@ -473,7 +485,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(300, 80);
+            this.panelControl2.Size = new System.Drawing.Size(300, 96);
             this.panelControl2.TabIndex = 1;
             // 
             // labelControl2
@@ -482,7 +494,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(33, 39);
+            this.labelControl2.Location = new System.Drawing.Point(35, 46);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(158, 17);
             this.labelControl2.TabIndex = 3;
@@ -494,7 +506,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(33, 12);
+            this.labelControl1.Location = new System.Drawing.Point(35, 19);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(218, 21);
             this.labelControl1.TabIndex = 2;
@@ -747,7 +759,6 @@
             this.lblStatPending.Size = new System.Drawing.Size(16, 37);
             this.lblStatPending.TabIndex = 4;
             this.lblStatPending.Text = "0";
-            this.lblStatPending.Click += new System.EventHandler(this.labelControl21_Click);
             // 
             // labelControl8
             // 
@@ -863,6 +874,21 @@
             this.pageOfficeClearanceRequest.Name = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Size = new System.Drawing.Size(1604, 1080);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.EditValue = "Search by Name, ID, or Course..";
+            this.txtSearch.Location = new System.Drawing.Point(27, 123);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtSearch.Properties.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Properties.Appearance.Options.UseFont = true;
+            this.txtSearch.Properties.Appearance.Options.UseForeColor = true;
+            this.txtSearch.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Repository.ClearButton(),
+            new DevExpress.XtraEditors.Repository.SearchButton()});
+            this.txtSearch.Size = new System.Drawing.Size(1380, 32);
+            this.txtSearch.TabIndex = 4;
+            // 
             // btnOnHoldFilter
             // 
             this.btnOnHoldFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
@@ -924,21 +950,6 @@
             this.btnSearch.Size = new System.Drawing.Size(120, 32);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.EditValue = "Search by Name, ID, or Course..";
-            this.txtSearch.Location = new System.Drawing.Point(27, 123);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txtSearch.Properties.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Properties.Appearance.Options.UseFont = true;
-            this.txtSearch.Properties.Appearance.Options.UseForeColor = true;
-            this.txtSearch.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Repository.ClearButton(),
-            new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.txtSearch.Size = new System.Drawing.Size(1380, 32);
-            this.txtSearch.TabIndex = 4;
             // 
             // labelControl11
             // 
@@ -1058,9 +1069,9 @@
             // btnProof
             // 
             this.btnProof.AutoHeight = false;
-            editorButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions4.SvgImage")));
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
             this.btnProof.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnProof.Name = "btnProof";
             this.btnProof.Tag = "btnView";
             this.btnProof.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1086,11 +1097,11 @@
             // btnAction
             // 
             this.btnAction.AutoHeight = false;
-            editorButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions5.SvgImage")));
-            editorButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions6.SvgImage")));
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
             this.btnAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnAction.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAction.ContextImageOptions.SvgImage")));
             this.btnAction.Name = "btnAction";
             this.btnAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;

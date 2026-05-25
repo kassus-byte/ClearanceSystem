@@ -393,7 +393,7 @@
             this.sbMyClearance});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Text = "Main";
+            this.accordionControlElement1.Text = "MAIN";
             // 
             // sbDashboard
             // 
@@ -646,6 +646,7 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
+            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -1426,6 +1427,7 @@
             // 
             // pageMyRequest
             // 
+            this.pageMyRequest.Caption = "pageMyRequest";
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl7);
@@ -1881,6 +1883,7 @@
             // 
             // pageClearancePaper
             // 
+            this.pageClearancePaper.Caption = "pageClearancePaper";
             this.pageClearancePaper.Controls.Add(this.panelForm);
             this.pageClearancePaper.Name = "pageClearancePaper";
             this.pageClearancePaper.Size = new System.Drawing.Size(1574, 1050);

@@ -340,9 +340,6 @@ namespace SchoolClearanceSystem
             }
         }
 
-        private void labelControl21_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
