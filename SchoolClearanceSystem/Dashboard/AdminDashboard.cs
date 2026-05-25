@@ -28,7 +28,7 @@ namespace SchoolClearanceSystem.Dashboard
             // Reset both grid selections when switching between Students/Office tabs
             tabPane1.SelectedPageChanged += (s, e) => ResetViews(gvStudents, gvOffice);
 
-            listBoxAdminHistory.ContextButtonClick += OnHistoryContextClicked;
+            //listBoxAdminHistory.ContextButtonClick += OnHistoryContextClicked;
         }
 
         // ── Navigation ────────────────────────────────────────────────────────────────
@@ -50,7 +50,7 @@ namespace SchoolClearanceSystem.Dashboard
         {
             gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
             gcOffice.DataSource = _userRepo.GetUsersByRole("Staff");
-            LoadCurrentSystemSettings();
+            //LoadCurrentSystemSettings();
             LoadDashboardStats();
         }
 
@@ -168,15 +168,15 @@ namespace SchoolClearanceSystem.Dashboard
         }
 
         // ── Clearance Period History ───────────────────────────────────────────────────
-        private void LoadCurrentSystemSettings()
-        {
-            listBoxAdminHistory.DataSource = _sysRepo.GetAllPeriods()
-                .Select(p => new ClearanceHistoryViewModel
-                {
-                    PeriodName = $"ℹ️  {p.AcademicYear} {p.Semester}",
-                    StatusText = p.IsActive == 1 ? "Clearance Processing Active" : "Clearance Done"
-                }).ToList();
-        }
+        //private void LoadCurrentSystemSettings()
+        //{
+        //    listBoxAdminHistory.DataSource = _sysRepo.GetAllPeriods()
+        //        .Select(p => new ClearanceHistoryViewModel
+        //        {
+        //            PeriodName = $"ℹ️  {p.AcademicYear} {p.Semester}",
+        //            StatusText = p.IsActive == 1 ? "Clearance Processing Active" : "Clearance Done"
+        //        }).ToList();
+        //}
 
         private void OnHistoryContextClicked(object sender, DevExpress.Utils.ContextItemClickEventArgs e)
         {
@@ -233,5 +233,7 @@ namespace SchoolClearanceSystem.Dashboard
 
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
+
+       
     }
 }
