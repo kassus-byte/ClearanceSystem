@@ -2,7 +2,6 @@
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -23,15 +22,41 @@ namespace SchoolClearanceSystem
             _mode = mode;
             _selectedUser = user ?? new User();
 
-            // Encapsulated Anonymous Toggle Action
+            // Toggle password visibility
             txtPassword.Properties.UseSystemPasswordChar = true;
             chkShowPassword.Properties.Caption = "Show Password";
-            chkShowPassword.CheckedChanged += (s, e) => {
+            chkShowPassword.CheckedChanged += (s, e) =>
+            {
                 txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
                 chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
                 txtPassword.Focus();
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
+
+            // ── Input Restrictions ────────────────────────────────────────
+            // Name fields: letters, spaces, hyphens, and apostrophes only (no digits)
+            txtLastName.KeyPress += RestrictToLettersOnly;
+            txtFirstName.KeyPress += RestrictToLettersOnly;
+            txtMiddleName.KeyPress += RestrictToLettersOnly;
+
+            // Combo boxes: read-only — must pick from list, cannot free-type
+            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        // Allows letters (any language), spaces, hyphens, and apostrophes.
+        // Blocks digits and every other symbol.
+        private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsLetter(e.KeyChar) &&
+                e.KeyChar != ' ' &&
+                e.KeyChar != '-' &&
+                e.KeyChar != '\'')
+            {
+                e.Handled = true; // swallow the keystroke
+            }
         }
 
         private void UserInfoForm_Load(object sender, EventArgs e)
@@ -40,16 +65,18 @@ namespace SchoolClearanceSystem
             cbProgram.Items.Clear();
             cbProgram.Items.Add("BSIT");
 
-            // Polymorphic UI Structuring Engine
+            // Polymorphic UI — Register vs Edit mode
             this.Text = IsEdit ? "Edit Account Information" : "Register New Account";
             lblTitle.Text = IsEdit ? "Edit Information" : "Register Account";
             btnSave.Text = IsEdit ? "Update Changes" : "Save Account";
             txtUserID.ReadOnly = IsEdit;
             cbRole.Enabled = !IsEdit;
 
-            // Direct Model-to-View Property Extraction
+            // Pre-fill fields from model
             txtUserID.Text = _selectedUser.UserID;
-            txtFullName.Text = _selectedUser.FullName;
+            txtLastName.Text = _selectedUser.LastName ?? string.Empty;
+            txtFirstName.Text = _selectedUser.FirstName ?? string.Empty;
+            txtMiddleName.Text = _selectedUser.MiddleName ?? string.Empty;
             cbRole.Text = _selectedUser.Role;
             cbProgram.Text = _selectedUser.Program?.Trim();
             cbYear.Text = _selectedUser.Year?.Trim();
@@ -64,10 +91,9 @@ namespace SchoolClearanceSystem
         {
             if (string.IsNullOrWhiteSpace(cbRole.Text)) return;
 
-            // FIX: Evaluate against the active combo box selection text dynamically, not the underlying model state snapshot
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
 
-            cbProgram.DropDownStyle = cbYear.DropDownStyle = isStudent ? ComboBoxStyle.DropDownList : ComboBoxStyle.DropDown;
+            // Both combos stay DropDownList — only enable/disable them per role
             cbProgram.Enabled = cbYear.Enabled = isStudent;
             cbProgram.BackColor = cbYear.BackColor = isStudent ? Color.White : Color.LightGray;
 
@@ -77,31 +103,53 @@ namespace SchoolClearanceSystem
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUserID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(cbRole.Text) || (!IsEdit && string.IsNullOrWhiteSpace(txtPassword.Text)))
+            // ── Validation ───────────────────────────────────────────
+            if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                string.IsNullOrWhiteSpace(txtLastName.Text) ||
+                string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                string.IsNullOrWhiteSpace(cbRole.Text) ||
+                (!IsEdit && string.IsNullOrWhiteSpace(txtPassword.Text)))
             {
-                XtraMessageBox.Show($"Please fill in ID, Name, Role, and {(IsEdit ? "" : "Password.")}", "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show(
+                    $"Please fill in ID, Last Name, First Name, Role{(IsEdit ? "." : ", and Password.")}",
+                    "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase) && (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" || string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A"))
+            if (cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase) &&
+               (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" ||
+                string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A"))
             {
-                XtraMessageBox.Show("Student requires a valid Program and Year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Student requires a valid Program and Year.",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Capture Form State to Model State
+            // ── Capture Form State → Model ────────────────────────────
             if (!IsEdit) _selectedUser.UserID = txtUserID.Text.Trim();
-            _selectedUser.FullName = txtFullName.Text.Trim();
+
+            _selectedUser.LastName = txtLastName.Text.Trim();
+            _selectedUser.FirstName = txtFirstName.Text.Trim();
+            _selectedUser.MiddleName = txtMiddleName.Text.Trim();
+
             _selectedUser.Role = cbRole.Text;
             _selectedUser.Program = cbProgram.Text;
             _selectedUser.Year = cbYear.Text;
-            if (!IsEdit || !string.IsNullOrWhiteSpace(txtPassword.Text)) _selectedUser.Password = txtPassword.Text.Trim();
 
-            // Execute Business Pipeline
+            if (!IsEdit || !string.IsNullOrWhiteSpace(txtPassword.Text))
+                _selectedUser.Password = txtPassword.Text.Trim();
+
+            // ── Execute Business Pipeline ─────────────────────────────
             if (!IsEdit)
             {
-                if (_userRepo.AddUser(_selectedUser)) CloseWithResult(DialogResult.OK, "Registration Successful!");
-                else { XtraMessageBox.Show($"User ID '{_selectedUser.UserID}' is taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtUserID.Focus(); }
+                if (_userRepo.AddUser(_selectedUser))
+                    CloseWithResult(DialogResult.OK, "Registration Successful!");
+                else
+                {
+                    XtraMessageBox.Show($"User ID '{_selectedUser.UserID}' is taken.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtUserID.Focus();
+                }
             }
             else if (_userRepo.EditUser(_selectedUser))
             {
@@ -116,6 +164,15 @@ namespace SchoolClearanceSystem
             Close();
         }
 
-        private void btnCancel_Click_1(object sender, EventArgs e) { this.DialogResult = DialogResult.Cancel; Close(); }
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void txtFullName_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

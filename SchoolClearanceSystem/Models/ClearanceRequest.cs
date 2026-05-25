@@ -6,7 +6,7 @@ namespace SchoolClearanceSystem.Models
     {
         // Unique tracking keys
         public int RequestId { get; set; }
-        public string StudentID { get; set; } // Composition link to the User's UserID
+        public string UserID { get; set; } // Composition link to the User's UserID
 
         // Transactional properties
         public string Status { get; set; }

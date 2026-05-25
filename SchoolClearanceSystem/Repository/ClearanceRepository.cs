@@ -31,7 +31,7 @@ namespace SchoolClearanceSystem.Repository
                 // Queries the tracking table checking for overlapping record instances
                 string sql = @"SELECT COUNT(1) 
                                FROM ClearanceRequests 
-                               WHERE StudentID = @id AND Semester = @sem AND AcademicYear = @ay";
+                               WHERE UserID = @id AND Semester = @sem AND AcademicYear = @ay";
 
                 int recordCount = db.ExecuteScalar<int>(sql, new
                 {
@@ -58,7 +58,7 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 // Added FilePath into the SQL columns and parameters list
-                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
+                string sql = @"INSERT INTO ClearanceRequests (UserID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
                                VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
                 return db.Execute(sql, new
@@ -82,19 +82,21 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT 
-                                c.StudentID AS UserID, 
-                                u.FullName AS FullName, 
-                                u.Program AS Program, 
-                                u.Year AS Year, 
-                                c.Semester AS Semester,
-                                c.Status AS Status,      -- Maps 'Pending' safely into your STATUS column!
-                                c.Department AS Office,  
-                                '' AS Action,            -- Keeps the ACTION column completely empty for now
-                                c.Remarks AS Remarks,
-                                c.FilePath AS FilePath
-                               FROM ClearanceRequests c
-                               INNER JOIN Users u ON c.StudentID = u.UserID
-                               WHERE c.Department = @dept AND c.Status = 'Pending'";
+                        c.UserID AS UserID,
+                        (u.LastName || ', ' || u.FirstName || 
+                            CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
+                                 THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+                        u.Program  AS Program,
+                        u.Year     AS Year,
+                        c.Semester AS Semester,
+                        c.Status   AS Status,
+                        c.Department AS Office,
+                        ''         AS Action,
+                        c.Remarks  AS Remarks,
+                        c.FilePath AS FilePath
+                       FROM ClearanceRequests c
+                       INNER JOIN Users u ON c.UserID = u.UserID
+                       WHERE c.Department = @dept AND c.Status = 'Pending'";
 
                 return db.Query(sql, new { dept = officeDept }).ToList();
             }
@@ -104,7 +106,7 @@ namespace SchoolClearanceSystem.Repository
         /// HOW IT WORKS (Update Pipeline):
         /// 1. Triggered exclusively when an Office Staff user (Treasurer, Technical, SSG) clicks Approve/Reject.
         /// 2. Binds the dynamic variables parsed from the UI into a secure query map context.
-        /// 3. Updates persistent records matching specific compound conditions (StudentID + Department).
+        /// 3. Updates persistent records matching specific compound conditions (UserID + Department).
         /// </summary>
         public bool UpdateRequestStatus(string studentId, string department, string newStatus, string remarks = "")
         {
@@ -112,7 +114,7 @@ namespace SchoolClearanceSystem.Repository
             {
                 string sql = @"UPDATE ClearanceRequests 
                                SET Status = @status, Remarks = @remarks, DateProcessed = @date 
-                               WHERE StudentID = @id AND Department = @dept";
+                               WHERE UserID = @id AND Department = @dept";
 
                 var parameters = new
                 {
@@ -155,8 +157,66 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = "DELETE FROM ClearanceRequests WHERE StudentID = @id";
+                string sql = "DELETE FROM ClearanceRequests WHERE UserID = @id";
                 return db.Execute(sql, new { id = studentId }) >= 0;
+            }
+        }
+
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: GetStatusCountForOffice
+        //
+        // CALLED BY: BaseOfficeForm.cs → LoadDashboardStats()
+        //
+        // PURPOSE:
+        //   Counts how many clearance rows match a specific status
+        //   for a given office department.
+        //   Used to populate CLEARED / PENDING / ON HOLD stat cards.
+        //
+        // PARAMETERS:
+        //   officeDept → "SSG", "Treasurer", or "Technical"
+        //   status     → "Approved", "Pending", or "On Hold"
+        //
+        // RETURNS:
+        //   int → count of matching rows
+        // ───────────────────────────────────────────────────────────────
+        public int GetStatusCountForOffice(string officeDept, string status)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT COUNT(*) 
+                       FROM ClearanceRequests 
+                       WHERE Department = @dept 
+                         AND Status = @status";
+
+                return db.ExecuteScalar<int>(sql, new { dept = officeDept, status = status });
+            }
+        }
+
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: GetTotalStudentsForOffice
+        //
+        // CALLED BY: BaseOfficeForm.cs → LoadDashboardStats()
+        //
+        // PURPOSE:
+        //   Counts the total unique students who have ever submitted
+        //   a clearance request to this office.
+        //   Used for the progress bar label: "X out of Y students cleared"
+        //
+        // PARAMETERS:
+        //   officeDept → "SSG", "Treasurer", or "Technical"
+        //
+        // RETURNS:
+        //   int → total distinct students with a row for this office
+        // ───────────────────────────────────────────────────────────────
+        public int GetTotalStudentsForOffice(string officeDept)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT COUNT(DISTINCT UserID) 
+                       FROM ClearanceRequests 
+                       WHERE Department = @dept";
+
+                return db.ExecuteScalar<int>(sql, new { dept = officeDept });
             }
         }
     }
