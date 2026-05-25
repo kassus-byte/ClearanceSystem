@@ -22,7 +22,7 @@ namespace SchoolClearanceSystem
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StudentPortal());
+            Application.Run(new BaseOfficeForm());
         }
     }
 }

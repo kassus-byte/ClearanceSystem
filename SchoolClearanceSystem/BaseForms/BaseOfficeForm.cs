@@ -77,10 +77,7 @@ namespace SchoolClearanceSystem
             naviframeOffices.SelectedPage = pageOfficeClearanceRequest;
         }
 
-        private void sbOfficeRequirements_Click_1(object sender, EventArgs e)
-        {
-            naviframeOffices.SelectedPage = pageOfficeRequirements;
-        }
+       
 
         private void sbOfficeReports_Click_1(object sender, EventArgs e)
         {

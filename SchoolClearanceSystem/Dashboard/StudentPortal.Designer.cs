@@ -825,6 +825,7 @@
             // 
             this.pbOverallProgress.Location = new System.Drawing.Point(25, 43);
             this.pbOverallProgress.Name = "pbOverallProgress";
+            this.pbOverallProgress.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.pbOverallProgress.Size = new System.Drawing.Size(1508, 29);
             this.pbOverallProgress.TabIndex = 0;
             // 
