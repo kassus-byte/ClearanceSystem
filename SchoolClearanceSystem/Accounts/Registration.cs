@@ -12,9 +12,6 @@ namespace SchoolClearanceSystem
     {
         private readonly UserRepository _userRepo = new UserRepository();
 
-     
-        private string uploadedImagePath = string.Empty;
-
         public Registration()
         {
             SQLitePCL.Batteries.Init();
@@ -36,37 +33,14 @@ namespace SchoolClearanceSystem
             cmbProgram.Properties.Items.Clear();
             cmbProgram.Properties.Items.AddRange(new object[] { "BSIT" });
             cmbProgram.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-
-           
-            btnViewPhoto.Enabled = false;
         }
 
-        // ── Upload photo ─────────────────────────────────────────────────
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
-            using (XtraOpenFileDialog ofd = new XtraOpenFileDialog())
-            {
-                ofd.Title = "Select Student Photo";
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    uploadedImagePath = ofd.FileName; 
-                    btnViewPhoto.Enabled = true;     // Enable the view button!
-
-                    XtraMessageBox.Show("Photo attached successfully! Click 'View Photo' to double check it.",
-                        "Photo Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
-
-      
        
         // ── Register button ──────────────────────────────────────────────
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
-                string.IsNullOrWhiteSpace(txtFullName.Text) ||
+                string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 XtraMessageBox.Show("Fields cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -79,23 +53,15 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-          
-            if (string.IsNullOrWhiteSpace(uploadedImagePath) || !File.Exists(uploadedImagePath))
-            {
-                XtraMessageBox.Show("Please select a valid photo file before registering.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             User newUser = new User
             {
                 UserID = txtUserID.Text.Trim(),
-                FullName = txtFullName.Text.Trim(),
+                FullName = txtLastName.Text.Trim(),
                 Program = cmbProgram.Text,
                 Year = cmbYear.Text,
                 Role = "Student",
                 Password = txtPassword.Text.Trim(),
-                UploadPath = uploadedImagePath 
+              
             };
 
             if (_userRepo.AddUser(newUser))
@@ -115,10 +81,8 @@ namespace SchoolClearanceSystem
         private void ClearFields()
         {
             txtUserID.Text = "";
-            txtFullName.Text = "";
+            txtLastName.Text = "";
             txtPassword.Text = "";
-            uploadedImagePath = "";
-            btnViewPhoto.Enabled = false;
             cmbProgram.EditValue = null;
             cmbYear.EditValue = null;
         }
@@ -131,54 +95,12 @@ namespace SchoolClearanceSystem
             this.Hide();
         }
 
-        private void labelControl4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUserID_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnViewPhoto_Click_1(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(uploadedImagePath) || !File.Exists(uploadedImagePath))
-            {
-                XtraMessageBox.Show("No valid photo file found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Create a temporary fluid popup form on the fly
-            using (Form imagePopup = new Form())
-            {
-                PictureBox pb = new PictureBox();
-                pb.Image = Image.FromFile(uploadedImagePath);
-                pb.SizeMode = PictureBoxSizeMode.Zoom; // Maintains original photo aspect ratio
-                pb.Dock = DockStyle.Fill;
-
-                // Configure window styles
-                imagePopup.Text = "Review Uploaded ID Photo";
-                imagePopup.Size = new Size(500, 500); // Adjustable default size
-                imagePopup.StartPosition = FormStartPosition.CenterScreen; // Centers perfectly on monitor
-                imagePopup.FormBorderStyle = FormBorderStyle.SizableToolWindow; // Clean close window frame
-
-                imagePopup.Controls.Add(pb);
-                imagePopup.ShowDialog(); // Opens window as a modal block context
-            }
-        }
-
-        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        private void labelControl8_Click(object sender, EventArgs e)
         {
 
         }
 
         private void labelControl7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl5_Click(object sender, EventArgs e)
         {
 
         }
