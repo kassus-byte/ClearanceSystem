@@ -10,8 +10,7 @@ namespace SchoolClearanceSystem.Repository
 {
     public class UserRepository : BaseRepository
     {
-
-        // called by Login.cs
+        // ── Called by Login.cs ────────────────────────────────────────
         public User ValidateLogin(string userId, string password)
         {
             using (var db = dbManager.GetConnection())
@@ -20,7 +19,8 @@ namespace SchoolClearanceSystem.Repository
                 return db.QueryFirstOrDefault<User>(sql, new { id = userId, pass = password });
             }
         }
-        // called by Login.cs
+
+        // ── Called by Login.cs ────────────────────────────────────────
         public User GetUserDetails(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -30,202 +30,157 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        // called by Registration.cs
+        // ── Called by Registration.cs and UserInfoForm (Register mode) ─
         public bool AddUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
-                // for duplicate UserID
+                // Guard: block duplicate UserID before inserting
                 string checkSql = "SELECT COUNT(1) FROM Users WHERE UserID = @UserID";
                 int exists = db.ExecuteScalar<int>(checkSql, new { UserID = user.UserID });
+                if (exists > 0) return false;
 
-                if (exists > 0)
-                {
-                    return false;
-                }
-
-                string sql = @"INSERT INTO Users (UserID, Password, FullName, Program, Year, Role, UploadPath, DateCreated) 
-                               VALUES (@UserID, @Password, @FullName, @Program, @Year, @Role, @UploadPath, @DateCreated)";
+                string sql = @"INSERT INTO Users 
+                               (UserID, Password, LastName, FirstName, MiddleName, 
+                                Program, Year, Role, DateCreated)
+                               VALUES 
+                               (@UserID, @Password, @LastName, @FirstName, @MiddleName, 
+                                @Program, @Year, @Role, @DateCreated)";
 
                 if (string.IsNullOrEmpty(user.DateCreated))
-                {
                     user.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                }
 
                 return db.Execute(sql, user) > 0;
             }
         }
-        // called by UserInfoForm (EditMode)
+
+        // ── Called by UserInfoForm (Edit mode) ────────────────────────
         public bool EditUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"UPDATE Users 
-                               SET Password = @Password, FullName = @FullName, Program = @Program, Year = @Year, Role = @Role, UploadPath = @UploadPath 
+                               SET Password    = @Password,
+                                   LastName    = @LastName,
+                                   FirstName   = @FirstName,
+                                   MiddleName  = @MiddleName,
+                                   Program     = @Program,
+                                   Year        = @Year,
+                                   Role        = @Role,
+                                   UploadPath  = @UploadPath
                                WHERE UserID = @UserID";
                 return db.Execute(sql, user) > 0;
             }
         }
-        // called by AdminDashboard.cs (RefreshData)
+
+        // ── Called by AdminDashboard.cs → RefreshData() ───────────────
         public IEnumerable<User> GetUsersByRole(string role, bool statusFlag = true)
         {
             using (var db = dbManager.GetConnection())
             {
-                if (role == "Student")
-                {
-                    string sql = "SELECT * FROM Users WHERE Role = 'Student'";
-                    return db.Query<User>(sql).ToList();
-                }
-                else
-                {
-                    string sql = "SELECT * FROM Users WHERE Role != 'Student'";
-                    return db.Query<User>(sql).ToList();
-                }
+                string sql = role == "Student"
+                    ? "SELECT * FROM Users WHERE Role = 'Student'"
+                    : "SELECT * FROM Users WHERE Role != 'Student'";
+                return db.Query<User>(sql).ToList();
             }
         }
-        // called by AdminDashboard.cs
+
+        // ── Called by AdminDashboard.cs ───────────────────────────────
         public bool DeleteUser(string userId)
         {
             using (var db = dbManager.GetConnection())
             {
-                // 1. Clear out all dependent clearance request records linked to this student first
-                string deleteRequestsSql = "DELETE FROM ClearanceRequests WHERE StudentID = @id;";
-                db.Execute(deleteRequestsSql, new { id = userId });
-
-                // 2. Now that the dependencies are gone, safely delete the user record
-                string deleteUserSql = "DELETE FROM Users WHERE UserID = @id;";
-                return db.Execute(deleteUserSql, new { id = userId }) > 0;
+                // Delete dependent clearance records first (FK constraint)
+                db.Execute("DELETE FROM ClearanceRequests WHERE StudentID = @id", new { id = userId });
+                return db.Execute("DELETE FROM Users WHERE UserID = @id", new { id = userId }) > 0;
             }
         }
-        
-        // called by StudentPortal.cs
+
+        // ── Called by StudentPortal.cs ────────────────────────────────
         public IEnumerable<dynamic> GetStudentStatus(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT 
                                 Department AS Office,
-                                Department AS OfficeName, 
-                                Department AS Department, 
-                                Status, 
-                                Remarks 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id 
-                                 AND Semester = @semester 
+                                Department AS OfficeName,
+                                Department AS Department,
+                                Status,
+                                Remarks
+                               FROM ClearanceRequests
+                               WHERE StudentID    = @id
+                                 AND Semester     = @semester
                                  AND AcademicYear = @academicYear";
 
-                return db.Query(sql, new { id = userId, semester = semester, academicYear = academicYear }).ToList();
+                return db.Query(sql, new { id = userId, semester, academicYear }).ToList();
             }
         }
 
-        // Add this inside UserRepository.cs
-        // ───────────────────────────────────────────────────────────────
-        // METHOD: GetUserCount
-        //
-        // CALLED BY: AdminDashboard.cs → LoadDashboardStats()
-        //
-        // PURPOSE:
-        //   Returns the total number of users matching a role filter.
-        //   Used to populate the 3 stat cards on the Admin dashboard.
-        //
-        // PARAMETERS:
-        //   role → "Student"  = count only students
-        //          "Staff"    = count all non-student accounts
-        //          "All"      = count every user in the system
-        //
-        // RETURNS:
-        //   int → the count of matching rows
-        // ───────────────────────────────────────────────────────────────
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // role: "Student" = students only, "Staff" = non-students, "All" = everyone
         public int GetUserCount(string role)
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql;
-
-                if (role == "Student")
-                    sql = "SELECT COUNT(*) FROM Users WHERE Role = 'Student'";
-                else if (role == "Staff")
-                    sql = "SELECT COUNT(*) FROM Users WHERE Role != 'Student'";
-                else
-                    sql = "SELECT COUNT(*) FROM Users";
-
+                string sql = role == "Student" ? "SELECT COUNT(*) FROM Users WHERE Role = 'Student'"
+                           : role == "Staff" ? "SELECT COUNT(*) FROM Users WHERE Role != 'Student'"
+                                               : "SELECT COUNT(*) FROM Users";
                 return db.ExecuteScalar<int>(sql);
             }
         }
 
-        // ───────────────────────────────────────────────────────────────
-        // METHOD: GetNewRegistrationsThisWeek
-        //
-        // CALLED BY: AdminDashboard.cs → LoadDashboardStats()
-        //
-        // PURPOSE:
-        //   Counts how many student accounts were created in the last 7 days.
-        //   Drives the "NEW REGISTRATIONS / This week" stat card.
-        //
-        // RETURNS:
-        //   int → number of students registered within the past 7 days
-        // ───────────────────────────────────────────────────────────────
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // Counts ALL new accounts this week (students + staff)
+        // FIX: removed Role = 'Student' filter so office accounts are counted too
         public int GetNewRegistrationsThisWeek()
         {
             using (var db = dbManager.GetConnection())
             {
-                // DateCreated is stored as "yyyy-MM-dd HH:mm:ss"
-                // We compare against 7 days ago using SQLite's date()
-                string sql = @"SELECT COUNT(*) FROM Users 
-                       WHERE Role = 'Student' 
-                       AND DateCreated >= date('now', '-7 days')";
-
+                string sql = @"SELECT COUNT(*) FROM Users
+                               WHERE DateCreated >= date('now', '-7 days')";
                 return db.ExecuteScalar<int>(sql);
             }
         }
 
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // Populates the Registered Accounts grid — all users added this week
         public IEnumerable<User> GetUsersRegisteredThisWeek()
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT * FROM Users 
-                       WHERE DateCreated >= date('now', '-7 days')
-                       ORDER BY DateCreated DESC";
+                string sql = @"SELECT * FROM Users
+                               WHERE DateCreated >= date('now', '-7 days')
+                               ORDER BY DateCreated DESC";
                 return db.Query<User>(sql).ToList();
             }
         }
-        // ───────────────────────────────────────────────────────────────
-        // METHOD: GetAllUsers
-        //
-        // CALLED BY: AdminDashboard.cs → LoadDashboardStats()
-        //
-        // PURPOSE:
-        //   Returns every user in the system regardless of role.
-        //   Used to populate the Registered Accounts grid on the
-        //   Admin Dashboard page.
-        //
-        // RETURNS:
-        //   IEnumerable<User> → all rows from Users table
-        //   ordered by Role first, then FullName alphabetically
-        // ───────────────────────────────────────────────────────────────
+
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // FIX: ORDER BY LastName, FirstName instead of FullName
+        // FullName is no longer a DB column — it is computed in the User model
         public IEnumerable<User> GetAllUsers()
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = "SELECT * FROM Users ORDER BY Role, FullName";
+                string sql = "SELECT * FROM Users ORDER BY Role, LastName, FirstName";
                 return db.Query<User>(sql).ToList();
             }
         }
-        // called by StudentPortal (UpdateDashboard)
+
+        // ── Called by StudentPortal.cs → UpdateDashboard() ───────────
         public int GetClearedCount(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT COUNT(*) 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id 
-                                 AND Status = 'Approved'
-                                 AND Semester = @semester 
+                string sql = @"SELECT COUNT(*)
+                               FROM ClearanceRequests
+                               WHERE StudentID    = @id
+                                 AND Status       = 'Approved'
+                                 AND Semester     = @semester
                                  AND AcademicYear = @academicYear";
 
-                return db.ExecuteScalar<int>(sql, new { id = userId, semester = semester, academicYear = academicYear });
+                return db.ExecuteScalar<int>(sql, new { id = userId, semester, academicYear });
             }
         }
-
     }
-}   
+}

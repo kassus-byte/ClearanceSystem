@@ -12,7 +12,15 @@ namespace SchoolClearanceSystem.Models
         // --- DATABASE PROPERTIES ---
         // These match your SQLite columns exactly. Dapper uses these to auto-fill the object.
         public string UserID { get; set; }
-        public string FullName { get; set; }
+        public string LastName { get; set; }   // ← NEW
+        public string FirstName { get; set; }   // ← NEW
+        public string MiddleName { get; set; }   // ← NEW
+                                                 // ADD this instead:
+        public string FullName => string.IsNullOrWhiteSpace(LastName) && string.IsNullOrWhiteSpace(FirstName)
+            ? "Unknown"
+            : string.IsNullOrWhiteSpace(MiddleName)
+                ? $"{LastName}, {FirstName}"
+                : $"{LastName}, {FirstName} {MiddleName}";
         public string Program { get; set; }
         public string Year { get; set; }
         public string Role { get; set; }
