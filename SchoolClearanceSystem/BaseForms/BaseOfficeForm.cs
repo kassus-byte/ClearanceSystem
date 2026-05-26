@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Repository;
 using System;
 using System.Windows.Forms;
@@ -66,7 +67,7 @@ namespace SchoolClearanceSystem
             }
             catch (Exception ex)
             {
-                Notify($"Could not load office requests: {ex.Message}", "Data Error", MessageBoxIcon.Error);
+                UIHelper.ShowError($"Could not load office requests: {ex.Message}", "Data Error");
             }
         }
 
@@ -87,7 +88,7 @@ namespace SchoolClearanceSystem
             }
             catch (Exception ex)
             {
-                Notify($"Could not load dashboard stats: {ex.Message}", "Error", MessageBoxIcon.Error);
+                UIHelper.ShowError($"Could not load dashboard stats: {ex.Message}");
             }
         }
 
@@ -129,12 +130,12 @@ namespace SchoolClearanceSystem
 
             if (!TryResolveAction(tag, out string status, out string remarks)) return;
 
-            if (Confirm($"Set this student's clearance to '{status}'?", "Confirm Action") != DialogResult.Yes) return;
+            if (UIHelper.ShowConfirmation($"Set this student's clearance to '{status}'?", "Confirm Action") != DialogResult.Yes) return;
 
             bool ok = _repo.UpdateRequestStatus(studentId, OfficeName, status, remarks);
             if (ok)
             {
-                Notify($"Clearance status updated to '{status}' successfully!", "Success", MessageBoxIcon.Information);
+                UIHelper.ShowSuccess($"Clearance status updated to '{status}' successfully!");
                 selected.Status = status;
                 selected.Remarks = remarks;
                 view.RefreshRow(view.FocusedRowHandle);
@@ -142,7 +143,7 @@ namespace SchoolClearanceSystem
             }
             else
             {
-                Notify("Database update failed. Check connection.", "Error", MessageBoxIcon.Error);
+                UIHelper.ShowError("Database update failed. Check connection.");
             }
         }
 
@@ -178,17 +179,10 @@ namespace SchoolClearanceSystem
         // ── Logout ────────────────────────────────────────────────────
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
-            if (Confirm("Are you sure you want to logout?", "Logout") != DialogResult.Yes) return;
+            if (UIHelper.ShowConfirmation("Are you sure you want to logout?", "Logout") != DialogResult.Yes) return;
             Session.CurrentUser = null;
             new Login().Show();
             this.Close();
         }
-
-        // ── Helpers ───────────────────────────────────────────────────
-        private void Notify(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Information) =>
-            XtraMessageBox.Show(text, title, MessageBoxButtons.OK, icon);
-
-        private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
-            XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
     }
 }

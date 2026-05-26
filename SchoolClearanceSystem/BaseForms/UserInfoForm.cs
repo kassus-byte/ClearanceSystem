@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
@@ -24,37 +25,14 @@ namespace SchoolClearanceSystem
             _selectedUser = user ?? new User();
 
             txtPassword.Properties.UseSystemPasswordChar = true;
-            ConfigurePasswordToggle();
-            AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
+
+            // Delegate shared setup to UIHelper — no local duplicates needed
+            UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
+            UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
 
             cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
             cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
-
-        // ── Setup ─────────────────────────────────────────────────────
-        private void ConfigurePasswordToggle()
-        {
-            chkShowPassword.Properties.Caption = "Show Password";
-            chkShowPassword.CheckedChanged += (s, e) =>
-            {
-                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
-                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
-                txtPassword.Focus();
-                txtPassword.SelectionStart = txtPassword.Text.Length;
-            };
-        }
-
-        private void AttachNameRestrictions(params DevExpress.XtraEditors.TextEdit[] fields)
-        {
-            foreach (var f in fields) f.KeyPress += RestrictToLettersOnly;
-        }
-
-        private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
-                e.KeyChar != ' ' && e.KeyChar != '-' && e.KeyChar != '\'')
-                e.Handled = true;
         }
 
         // ── Load ──────────────────────────────────────────────────────
@@ -132,9 +110,9 @@ namespace SchoolClearanceSystem
                 string.IsNullOrWhiteSpace(cbRole.Text) ||
                 (!IsEdit && string.IsNullOrWhiteSpace(txtPassword.Text)))
             {
-                XtraMessageBox.Show(
+                UIHelper.ShowWarning(
                     $"Please fill in ID, Last Name, First Name, Role{(IsEdit ? "." : ", and Password.")}",
-                    "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "Required Fields");
                 return false;
             }
 
@@ -145,8 +123,7 @@ namespace SchoolClearanceSystem
 
             if (studentNeedsProgram)
             {
-                XtraMessageBox.Show("Student requires a valid Program and Year.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UIHelper.ShowWarning("Student requires a valid Program and Year.", "Validation Error");
                 return false;
             }
 
@@ -174,8 +151,7 @@ namespace SchoolClearanceSystem
                 CloseWithResult(DialogResult.OK, "Registration Successful!");
             else
             {
-                XtraMessageBox.Show($"User ID '{_selectedUser.UserID}' is taken.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UIHelper.ShowError($"User ID '{_selectedUser.UserID}' is taken.", "Error");
                 txtUserID.Focus();
             }
         }
@@ -188,7 +164,7 @@ namespace SchoolClearanceSystem
 
         private void CloseWithResult(DialogResult result, string message)
         {
-            XtraMessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UIHelper.ShowSuccess(message);
             this.DialogResult = result;
             Close();
         }

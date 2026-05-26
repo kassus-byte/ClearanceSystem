@@ -122,14 +122,11 @@ namespace SchoolClearanceSystem.Helpers
         /// <summary>
         /// Resets a button to its default enabled state.
         /// </summary>
-        public static void ResetButton(
-            SimpleButton button,
-            string defaultText = "Submit Request")
+        public static void ResetButton(SimpleButton button, string defaultText = "Submit Request")
         {
             button.Text = defaultText;
             button.Enabled = true;
-            button.Appearance.BackColor = SystemColors.Control;
-            button.Appearance.ForeColor = SystemColors.ControlText;
+            button.Appearance.Reset();  // fully restores whatever the Designer set
         }
 
         // ── Status Label Updates ───────────────────────────────────────
@@ -195,14 +192,7 @@ namespace SchoolClearanceSystem.Helpers
             return !string.IsNullOrEmpty(ssgFilePath) && !string.IsNullOrEmpty(treasurerFilePath);
         }
 
-        /// <summary>
-        /// Validates that semester and academic year are set.
-        /// </summary>
-        public static bool ValidatePeriodIsSet(string semester, string academicYear)
-        {
-            return !string.IsNullOrEmpty(semester) && semester != "Not Set" &&
-                   !string.IsNullOrEmpty(academicYear) && academicYear != "Not Set";
-        }
+   
 
         // ── User Validation ────────────────────────────────────────────
 
@@ -254,6 +244,50 @@ namespace SchoolClearanceSystem.Helpers
         public static DialogResult ShowConfirmation(string message, string title = "Confirm")
         {
             return XtraMessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+
+        // ── Password Toggle ────────────────────────────────────────────
+
+        /// <summary>
+        /// Wires a show/hide password toggle checkbox to a password TextEdit.
+        /// Handles label caption swap ("Show Password" / "Hide Password") and cursor repositioning.
+        /// </summary>
+        public static void ConfigurePasswordToggle(
+            DevExpress.XtraEditors.CheckEdit chkShowPassword,
+            TextEdit txtPassword,
+            string initialCaption = "Show Password")
+        {
+            chkShowPassword.Properties.Caption = initialCaption;
+
+            chkShowPassword.CheckedChanged += (s, e) =>
+            {
+                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
+                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
+                txtPassword.Focus();
+                txtPassword.SelectionStart = txtPassword.Text.Length;
+            };
+        }
+
+        // ── Name Field Restrictions ────────────────────────────────────
+
+        /// <summary>
+        /// Restricts one or more TextEdit fields to letters, spaces, hyphens, and apostrophes only.
+        /// Attach this to name fields (Last Name, First Name, Middle Name) to prevent numeric/symbol input.
+        /// </summary>
+        public static void AttachNameRestrictions(params TextEdit[] fields)
+        {
+            foreach (var field in fields)
+                field.KeyPress += RestrictToLettersOnly;
+        }
+
+        /// <summary>
+        /// KeyPress handler that blocks any character that is not a letter, space, hyphen, or apostrophe.
+        /// </summary>
+        public static void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
+                e.KeyChar != ' ' && e.KeyChar != '-' && e.KeyChar != '\'')
+                e.Handled = true;
         }
     }
 }

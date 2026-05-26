@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
@@ -15,37 +16,10 @@ namespace SchoolClearanceSystem
         {
             InitializeComponent();
             _userRepo = userRepo ?? new UserRepository();
-            ConfigurePasswordToggle();
 
-            // Restrict name fields to letters, spaces, hyphens, and apostrophes only
-            AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
-        }
-
-        // ── Setup ─────────────────────────────────────────────────────
-        private void ConfigurePasswordToggle()
-        {
-            // Toggles password masking and updates the checkbox label on every check change
-            chkShowPassword.CheckedChanged += (s, e) =>
-            {
-                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
-                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
-                txtPassword.Focus();
-            };
-        }
-
-        // Loops through each field and hooks the same key filter to all of them
-        private void AttachNameRestrictions(params DevExpress.XtraEditors.TextEdit[] fields)
-        {
-            foreach (var field in fields)
-                field.KeyPress += RestrictToLettersOnly;
-        }
-
-        // Blocks any key that isn't a letter, space, hyphen, or apostrophe
-        private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
-                e.KeyChar != ' ' && e.KeyChar != '-' && e.KeyChar != '\'')
-                e.Handled = true;
+            // Delegate password toggle and name restrictions to UIHelper
+            UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
+            UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
         }
 
         // ── Register ──────────────────────────────────────────────────
@@ -59,14 +33,13 @@ namespace SchoolClearanceSystem
             if (_userRepo.AddUser(newUser))
             {
                 // Registration succeeded — clear the form for the next entry
-                XtraMessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UIHelper.ShowSuccess("Registration Successful!");
                 ClearFields();
             }
             else
             {
                 // AddUser returns false when the UserID already exists in the database
-                XtraMessageBox.Show($"User ID '{newUser.UserID}' is already taken. Choose another.",
-                    "Duplicate User ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UIHelper.ShowError($"User ID '{newUser.UserID}' is already taken. Choose another.", "Duplicate User ID");
                 txtUserID.Focus();
             }
         }
@@ -79,15 +52,13 @@ namespace SchoolClearanceSystem
                 string.IsNullOrWhiteSpace(txtFirstName.Text) ||
                 string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                XtraMessageBox.Show("User ID, Last Name, First Name, and Password are required.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UIHelper.ShowWarning("User ID, Last Name, First Name, and Password are required.", "Validation Error");
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(cmbProgram.Text) || string.IsNullOrWhiteSpace(cmbYear.Text))
             {
-                XtraMessageBox.Show("Please select a Program and Year.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UIHelper.ShowWarning("Please select a Program and Year.", "Validation Error");
                 return false;
             }
 

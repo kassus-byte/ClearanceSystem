@@ -46,7 +46,7 @@
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             this.Semester = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.AcademicYear = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.View = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.Completed = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -270,13 +270,13 @@
             this.AcademicYear.Visible = true;
             this.AcademicYear.VisibleIndex = 1;
             // 
-            // View
+            // Completed
             // 
-            this.View.Caption = "Status";
-            this.View.ColumnEdit = this.repositoryItemButtonEdit1;
-            this.View.Name = "View";
-            this.View.Visible = true;
-            this.View.VisibleIndex = 2;
+            this.Completed.Caption = "Completed";
+            this.Completed.FieldName = "Completed";
+            this.Completed.Name = "Completed";
+            this.Completed.Visible = true;
+            this.Completed.VisibleIndex = 2;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -495,7 +495,7 @@
             this.sbMyClearance.Name = "sbMyClearance";
             this.sbMyClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyClearance.Text = "   My Clearance";
-            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click_1);
+            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click);
             // 
             // pnlUser
             // 
@@ -660,6 +660,7 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
+            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -1688,6 +1689,7 @@
             // 
             // pageMyClearance
             // 
+            this.pageMyClearance.Caption = "pageMyClearance";
             this.pageMyClearance.Controls.Add(this.gcRecords);
             this.pageMyClearance.Controls.Add(this.pnlClearanceCopy);
             this.pageMyClearance.Controls.Add(this.panelControl5);
@@ -1728,7 +1730,7 @@
             this.tileViewMyClearance.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Semester,
             this.AcademicYear,
-            this.View});
+            this.Completed});
             this.tileViewMyClearance.GridControl = this.gridMyClearance;
             this.tileViewMyClearance.Name = "tileViewMyClearance";
             this.tileViewMyClearance.OptionsTiles.GroupTextPadding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -1756,11 +1758,11 @@
             tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
             tileViewItemElement2.Text = "AcademicYear";
             tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.Column = this.View;
+            tileViewItemElement3.Column = this.Completed;
             tileViewItemElement3.ColumnIndex = 2;
             tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement3.Text = "View";
+            tileViewItemElement3.Text = "Completed";
             tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement1);
             this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement2);
@@ -2255,7 +2257,7 @@
         private DevExpress.XtraGrid.Views.Tile.TileView tileViewMyClearance;
         private DevExpress.XtraGrid.Columns.TileViewColumn Semester;
         private DevExpress.XtraGrid.Columns.TileViewColumn AcademicYear;
-        private DevExpress.XtraGrid.Columns.TileViewColumn View;
+        private DevExpress.XtraGrid.Columns.TileViewColumn Completed;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraEditors.PanelControl panelControl11;
     }

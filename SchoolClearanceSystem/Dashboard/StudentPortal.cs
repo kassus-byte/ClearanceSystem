@@ -83,17 +83,18 @@ namespace SchoolClearanceSystem
                 }
                 else
                 {
-                    UIHelper.ShowWarning(
-                        "No active clearance period has been opened by the Administrator.",
-                        "System Notice");
+                    // Reset so submission is blocked
+                    _semester = "Not Set";
+                    _academicYear = "Not Set";
                 }
             }
             catch (Exception ex)
             {
                 UIHelper.ShowError($"Database connection error: {ex.Message}", "Connection Error");
+                _semester = "Not Set";
+                _academicYear = "Not Set";
             }
 
-            // Show the loaded period values and lock the fields so students can't edit them
             UIHelper.SetPeriodFields(txtSemester, txtCurrentSchoolYear, _semester, _academicYear);
         }
 
@@ -101,6 +102,15 @@ namespace SchoolClearanceSystem
         private void UpdateDashboard()
         {
             if (!UIHelper.ValidateUserLoggedIn(Session.CurrentUser)) return;
+
+            // If no active period, lock everything down and stop
+            if (_semester == "Not Set" || _academicYear == "Not Set")
+            {
+                UIHelper.SetActionButtonsAvailability(false, btnSubmitRequest, btnUploadSSGRequirement, btnUploadTreasurerRequirement);
+                UIHelper.DisableButtonAsCompleted(btnSubmitRequest, "No Active Period");
+                gridControlOfficeStatus.DataSource = null;
+                return;
+            }
 
             // Count how many offices have approved this student
             int cleared = _userRepo.GetClearedCount(Session.CurrentUser.UserID, _semester, _academicYear);
@@ -135,7 +145,6 @@ namespace SchoolClearanceSystem
                 UIHelper.ShowError($"Could not load office status data: {ex.Message}");
             }
         }
-
         // ── Row Styling ───────────────────────────────────────────────
         // Colors each row's Status cell based on its value
         private void ApplyStatusRowStyles(object sender, RowCellStyleEventArgs e)
@@ -171,7 +180,8 @@ namespace SchoolClearanceSystem
         private void sbDashboard_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageDashboard;
-            UpdateDashboard(); // Refresh stats every time the dashboard tab is visited
+            LoadActiveClearancePeriod(); // re-check active period on every dashboard visit
+            UpdateDashboard();
         }
 
         private void sbRequestClearance_Click_1(object sender, EventArgs e)
@@ -189,40 +199,18 @@ namespace SchoolClearanceSystem
         }
 
         // Loads the student's submitted request statuses into the My Request grid
-        private void sbMyRequest_Click_1(object sender, EventArgs e) =>
-            BindGridData(pageMyRequest, gridMyRequest, forceNull: false);
-
-        private void sbMyClearance_Click_1(object sender, EventArgs e)
+        private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
-            // Only show the clearance slip if all 3 offices have approved
-            bool notCleared = !UIHelper.ValidateUserLoggedIn(Session.CurrentUser) ||
-                !UIHelper.ValidateFullyClearedStatus(
-                    _userRepo.GetClearedCount(Session.CurrentUser.UserID, _semester, _academicYear),
-                    TotalOffices);
+            naviframeStudent.SelectedPage = pageMyRequest;
 
-            BindGridData(pageMyClearance, gridMyClearance, notCleared);
-
-            // Clear the slip if student isn't cleared yet
-            if (notCleared || !UIHelper.ValidateUserLoggedIn(Session.CurrentUser))
+            if (Session.CurrentUser == null)
             {
-                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
-                return;
-            }
-        }
-
-        // Navigates to a page and binds clearance status data to the target grid
-        // forceNull = true clears the grid (used when student isn't cleared yet)
-        private void BindGridData(NavigationPage page, DevExpress.XtraGrid.GridControl grid, bool forceNull)
-        {
-            naviframeStudent.SelectedPage = page;
-
-            if (!UIHelper.ValidateUserLoggedIn(Session.CurrentUser) || forceNull)
-            {
-                grid.DataSource = null;
+                gridMyRequest.DataSource = null;
                 return;
             }
 
-            grid.DataSource = _userRepo
+            // Shows the 3 office rows with individual statuses
+            gridMyRequest.DataSource = _userRepo
                 .GetStudentStatus(Session.CurrentUser.UserID, _semester, _academicYear)
                 .Select(d => new ClearanceStatus
                 {
@@ -231,6 +219,7 @@ namespace SchoolClearanceSystem
                     Remarks = d.Remarks?.ToString()
                 }).ToList();
         }
+      
 
         // Updates the clearance slip preview when the student clicks a different period tile
         private void tileViewMyClearance_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -266,9 +255,18 @@ namespace SchoolClearanceSystem
         {
             if (!UIHelper.ValidateUserLoggedIn(Session.CurrentUser)) return;
 
-            // Disable button and show wait cursor during DB operations
+            // Re-check period is still active before allowing submission
+            if (_semester == "Not Set" || _academicYear == "Not Set")
+            {
+                UIHelper.ShowWarning(
+                    "No active clearance period. Please wait for the Administrator to open one.",
+                    "Period Closed");
+                return;
+            }
+
             btnSubmitRequest.Enabled = false;
             this.Cursor = Cursors.WaitCursor;
+            // ... rest unchanged
 
             try
             {
@@ -325,5 +323,46 @@ namespace SchoolClearanceSystem
             new Login().Show();
             this.Close();
         }
+
+
+
+        private void sbMyClearance_Click(object sender, EventArgs e)
+        {
+            naviframeStudent.SelectedPage = pageMyClearance;
+
+            if (Session.CurrentUser == null)
+            {
+                gridMyClearance.DataSource = null;
+                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
+                return;
+            }
+
+            gridMyClearance.DataSource = _userRepo
+                .GetStudentClearancePeriods(Session.CurrentUser.UserID)
+                .Select(p => new
+                {
+                    p.Semester,
+                    p.AcademicYear,
+                    Completed = "Completed"
+                }).ToList();
+
+            // Auto-select first row so slip populates immediately without needing a click
+            if (tileViewMyClearance.RowCount > 0)
+            {
+                tileViewMyClearance.FocusedRowHandle = 0;
+
+                string sem = tileViewMyClearance.GetRowCellValue(0, "Semester")?.ToString();
+                string year = tileViewMyClearance.GetRowCellValue(0, "AcademicYear")?.ToString();
+
+                UIHelper.PopulateClearanceSlip(
+                    lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued,
+                    Session.CurrentUser, sem, year);
+            }
+            else
+            {
+                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
+            }
+        }
     }
-}
+    }
+
