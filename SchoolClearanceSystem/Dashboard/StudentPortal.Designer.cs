@@ -96,7 +96,7 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.pnlWelcome = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
+            this.lblWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pageRequestClearance = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelUpload3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl36 = new DevExpress.XtraEditors.LabelControl();
@@ -149,13 +149,13 @@
             this.pageMyClearance = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gcRecords = new DevExpress.XtraEditors.GroupControl();
             this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
-            this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
+            this.tileViewMyClearance = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.pnlClearanceCopy = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.lblDateIssued = new DevExpress.XtraEditors.LabelControl();
+            this.lblProgramDepartment = new DevExpress.XtraEditors.LabelControl();
+            this.lblNameID = new DevExpress.XtraEditors.LabelControl();
+            this.lblSemYear = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
@@ -245,7 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).BeginInit();
             this.gcRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewMyClearance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).BeginInit();
             this.pnlClearanceCopy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -1011,7 +1011,7 @@
             this.pnlWelcome.Appearance.Options.UseBackColor = true;
             this.pnlWelcome.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlWelcome.Controls.Add(this.labelControl3);
-            this.pnlWelcome.Controls.Add(this.txtWelcome);
+            this.pnlWelcome.Controls.Add(this.lblWelcome);
             this.pnlWelcome.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlWelcome.Location = new System.Drawing.Point(0, 0);
             this.pnlWelcome.Name = "pnlWelcome";
@@ -1030,17 +1030,17 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Here\'s your clearance overview for this semester.";
             // 
-            // txtWelcome
+            // lblWelcome
             // 
-            this.txtWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.txtWelcome.Appearance.Options.UseFont = true;
-            this.txtWelcome.Appearance.Options.UseForeColor = true;
-            this.txtWelcome.Location = new System.Drawing.Point(20, 8);
-            this.txtWelcome.Name = "txtWelcome";
-            this.txtWelcome.Size = new System.Drawing.Size(264, 37);
-            this.txtWelcome.TabIndex = 0;
-            this.txtWelcome.Text = "Welcome, Charlotte!";
+            this.lblWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblWelcome.Appearance.Options.UseFont = true;
+            this.lblWelcome.Appearance.Options.UseForeColor = true;
+            this.lblWelcome.Location = new System.Drawing.Point(20, 8);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(264, 37);
+            this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.Text = "Welcome, Charlotte!";
             // 
             // pageRequestClearance
             // 
@@ -1714,37 +1714,37 @@
             // 
             this.gridMyClearance.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridMyClearance.Location = new System.Drawing.Point(2, 29);
-            this.gridMyClearance.MainView = this.tileView1;
+            this.gridMyClearance.MainView = this.tileViewMyClearance;
             this.gridMyClearance.Name = "gridMyClearance";
             this.gridMyClearance.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
             this.gridMyClearance.Size = new System.Drawing.Size(1570, 297);
             this.gridMyClearance.TabIndex = 0;
             this.gridMyClearance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.tileView1});
+            this.tileViewMyClearance});
             // 
-            // tileView1
+            // tileViewMyClearance
             // 
-            this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.tileViewMyClearance.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Semester,
             this.AcademicYear,
             this.View});
-            this.tileView1.GridControl = this.gridMyClearance;
-            this.tileView1.Name = "tileView1";
-            this.tileView1.OptionsTiles.GroupTextPadding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            this.tileView1.OptionsTiles.IndentBetweenGroups = 0;
-            this.tileView1.OptionsTiles.IndentBetweenItems = 0;
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(248, 70);
-            this.tileView1.OptionsTiles.LayoutMode = DevExpress.XtraGrid.Views.Tile.TileViewLayoutMode.List;
-            this.tileView1.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tileView1.OptionsTiles.Padding = new System.Windows.Forms.Padding(0);
-            this.tileView1.OptionsTiles.RowCount = 0;
-            this.tileView1.TileColumns.Add(tableColumnDefinition1);
-            this.tileView1.TileColumns.Add(tableColumnDefinition2);
-            this.tileView1.TileColumns.Add(tableColumnDefinition3);
-            this.tileView1.TileRows.Add(tableRowDefinition1);
-            this.tileView1.TileRows.Add(tableRowDefinition2);
-            this.tileView1.TileRows.Add(tableRowDefinition3);
+            this.tileViewMyClearance.GridControl = this.gridMyClearance;
+            this.tileViewMyClearance.Name = "tileViewMyClearance";
+            this.tileViewMyClearance.OptionsTiles.GroupTextPadding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            this.tileViewMyClearance.OptionsTiles.IndentBetweenGroups = 0;
+            this.tileViewMyClearance.OptionsTiles.IndentBetweenItems = 0;
+            this.tileViewMyClearance.OptionsTiles.ItemSize = new System.Drawing.Size(248, 70);
+            this.tileViewMyClearance.OptionsTiles.LayoutMode = DevExpress.XtraGrid.Views.Tile.TileViewLayoutMode.List;
+            this.tileViewMyClearance.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileViewMyClearance.OptionsTiles.Padding = new System.Windows.Forms.Padding(0);
+            this.tileViewMyClearance.OptionsTiles.RowCount = 0;
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition1);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition2);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition3);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition1);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition2);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition3);
             tileViewItemElement1.Column = this.Semester;
             tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
@@ -1762,9 +1762,9 @@
             tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
             tileViewItemElement3.Text = "View";
             tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tileView1.TileTemplate.Add(tileViewItemElement1);
-            this.tileView1.TileTemplate.Add(tileViewItemElement2);
-            this.tileView1.TileTemplate.Add(tileViewItemElement3);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement1);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement2);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement3);
             // 
             // pnlClearanceCopy
             // 
@@ -1772,10 +1772,10 @@
             this.pnlClearanceCopy.Appearance.Options.UseBackColor = true;
             this.pnlClearanceCopy.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlClearanceCopy.Controls.Add(this.simpleButton1);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl20);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl19);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl18);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl17);
+            this.pnlClearanceCopy.Controls.Add(this.lblDateIssued);
+            this.pnlClearanceCopy.Controls.Add(this.lblProgramDepartment);
+            this.pnlClearanceCopy.Controls.Add(this.lblNameID);
+            this.pnlClearanceCopy.Controls.Add(this.lblSemYear);
             this.pnlClearanceCopy.Controls.Add(this.labelControl16);
             this.pnlClearanceCopy.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlClearanceCopy.Location = new System.Drawing.Point(0, 87);
@@ -1799,53 +1799,53 @@
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "Download PDF";
             // 
-            // labelControl20
+            // lblDateIssued
             // 
-            this.labelControl20.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl20.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl20.Appearance.Options.UseFont = true;
-            this.labelControl20.Appearance.Options.UseForeColor = true;
-            this.labelControl20.Location = new System.Drawing.Point(797, 209);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(116, 17);
-            this.labelControl20.TabIndex = 4;
-            this.labelControl20.Text = "Issued: Dec 3, 2025 ";
+            this.lblDateIssued.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateIssued.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblDateIssued.Appearance.Options.UseFont = true;
+            this.lblDateIssued.Appearance.Options.UseForeColor = true;
+            this.lblDateIssued.Location = new System.Drawing.Point(797, 209);
+            this.lblDateIssued.Name = "lblDateIssued";
+            this.lblDateIssued.Size = new System.Drawing.Size(116, 17);
+            this.lblDateIssued.TabIndex = 4;
+            this.lblDateIssued.Text = "Issued: Dec 3, 2025 ";
             // 
-            // labelControl19
+            // lblProgramDepartment
             // 
-            this.labelControl19.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl19.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl19.Appearance.Options.UseFont = true;
-            this.labelControl19.Appearance.Options.UseForeColor = true;
-            this.labelControl19.Location = new System.Drawing.Point(749, 186);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(213, 17);
-            this.labelControl19.TabIndex = 3;
-            this.labelControl19.Text = "BSIT — College of Computer Studies";
+            this.lblProgramDepartment.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgramDepartment.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblProgramDepartment.Appearance.Options.UseFont = true;
+            this.lblProgramDepartment.Appearance.Options.UseForeColor = true;
+            this.lblProgramDepartment.Location = new System.Drawing.Point(749, 186);
+            this.lblProgramDepartment.Name = "lblProgramDepartment";
+            this.lblProgramDepartment.Size = new System.Drawing.Size(213, 17);
+            this.lblProgramDepartment.TabIndex = 3;
+            this.lblProgramDepartment.Text = "BSIT — College of Computer Studies";
             // 
-            // labelControl18
+            // lblNameID
             // 
-            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl18.Appearance.Options.UseFont = true;
-            this.labelControl18.Appearance.Options.UseForeColor = true;
-            this.labelControl18.Location = new System.Drawing.Point(749, 163);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(206, 17);
-            this.labelControl18.TabIndex = 2;
-            this.labelControl18.Text = "Charlotte P. Forrosuelo · 2014-1234";
+            this.lblNameID.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameID.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblNameID.Appearance.Options.UseFont = true;
+            this.lblNameID.Appearance.Options.UseForeColor = true;
+            this.lblNameID.Location = new System.Drawing.Point(749, 163);
+            this.lblNameID.Name = "lblNameID";
+            this.lblNameID.Size = new System.Drawing.Size(206, 17);
+            this.lblNameID.TabIndex = 2;
+            this.lblNameID.Text = "Charlotte P. Forrosuelo · 2014-1234";
             // 
-            // labelControl17
+            // lblSemYear
             // 
-            this.labelControl17.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl17.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl17.Appearance.Options.UseFont = true;
-            this.labelControl17.Appearance.Options.UseForeColor = true;
-            this.labelControl17.Location = new System.Drawing.Point(736, 46);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(240, 17);
-            this.labelControl17.TabIndex = 1;
-            this.labelControl17.Text = "2nd Semester, Academic Year 2024–2025";
+            this.lblSemYear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSemYear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblSemYear.Appearance.Options.UseFont = true;
+            this.lblSemYear.Appearance.Options.UseForeColor = true;
+            this.lblSemYear.Location = new System.Drawing.Point(736, 46);
+            this.lblSemYear.Name = "lblSemYear";
+            this.lblSemYear.Size = new System.Drawing.Size(240, 17);
+            this.lblSemYear.TabIndex = 1;
+            this.lblSemYear.Text = "2nd Semester, Academic Year 2024–2025";
             // 
             // labelControl16
             // 
@@ -2112,7 +2112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).EndInit();
             this.gcRecords.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewMyClearance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).EndInit();
             this.pnlClearanceCopy.ResumeLayout(false);
             this.pnlClearanceCopy.PerformLayout();
@@ -2154,7 +2154,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraEditors.PanelControl pnlWelcome;
-        private DevExpress.XtraEditors.LabelControl txtWelcome;
+        private DevExpress.XtraEditors.LabelControl lblWelcome;
         private DevExpress.XtraEditors.PanelControl pnlStatusCards;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.PanelControl pnlCard1;
@@ -2187,12 +2187,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.GroupControl gcRecords;
-        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.LabelControl lblSemYear;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.LabelControl labelControl20;
-        private DevExpress.XtraEditors.LabelControl labelControl19;
-        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl lblDateIssued;
+        private DevExpress.XtraEditors.LabelControl lblProgramDepartment;
+        private DevExpress.XtraEditors.LabelControl lblNameID;
         private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl23;
@@ -2252,7 +2252,7 @@
         private DevExpress.XtraEditors.TextEdit txtSemester;
         private DevExpress.XtraEditors.TextEdit txtCurrentSchoolYear;
         private DevExpress.XtraGrid.GridControl gridMyClearance;
-        private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileViewMyClearance;
         private DevExpress.XtraGrid.Columns.TileViewColumn Semester;
         private DevExpress.XtraGrid.Columns.TileViewColumn AcademicYear;
         private DevExpress.XtraGrid.Columns.TileViewColumn View;

@@ -1,29 +1,27 @@
 ﻿using DevExpress.XtraEditors;
-using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
-using System.Data;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
     public partial class BaseOfficeForm : XtraForm
     {
-        
-        private string currentStatusFilter = "All";
+        private string _statusFilter = "All";
         public string OfficeName { get; set; } = "Unknown Office";
+
+        // Single shared repo instance — no need to create a new one per method call
+        private readonly ClearanceRepository _repo = new ClearanceRepository();
 
         public BaseOfficeForm()
         {
             InitializeComponent();
-
-           
-            txtSearch.TextChanged += TxtSearch_TextChanged;
+            txtSearch.TextChanged += (s, e) => ApplyUnifiedFilter();
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            if (this.DesignMode) { base.OnLoad(e); return; }
+            if (DesignMode) { base.OnLoad(e); return; }
 
             btnAllFilter.Click += (s, ev) => SetStatusFilter("All");
             btnPendingFilter.Click += (s, ev) => SetStatusFilter("Pending");
@@ -32,231 +30,43 @@ namespace SchoolClearanceSystem
 
             SetupIdentity();
             LoadPendingClearanceRequests();
-            LoadDashboardStats(); 
+            LoadDashboardStats();
             base.OnLoad(e);
         }
 
+        // ── Identity ──────────────────────────────────────────────────
         private void SetupIdentity()
         {
-            if (Session.CurrentUser != null)
-            {
-                lblFullName.Text = Session.CurrentUser.FullName;
-                lblRole.Text = Session.CurrentUser.Role;
-
-                
-                this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
-            }
+            if (Session.CurrentUser == null) return;
+            lblFullName.Text = Session.CurrentUser.FullName;
+            lblRole.Text = Session.CurrentUser.Role;
+            this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
         }
 
-        #region Navigation Control Flow Routine Managers
-
+        // ── Navigation ────────────────────────────────────────────────
         private void sbOfficeDashboard_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
             LoadPendingClearanceRequests();
-            LoadDashboardStats(); 
+            LoadDashboardStats();
         }
 
-        private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e)
-        {
+        private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e) =>
             naviframeOffices.SelectedPage = pageOfficeClearanceRequest;
-        }
 
-       
-
-        private void sbOfficeReports_Click_1(object sender, EventArgs e)
-        {
+        private void sbOfficeReports_Click_1(object sender, EventArgs e) =>
             naviframeOffices.SelectedPage = pageOfficeReports;
-        }
 
-        #endregion
-
-        #region Database Processing and Presentation Binding Pipeline
-
+        // ── Data Loading ──────────────────────────────────────────────
         protected void LoadPendingClearanceRequests()
         {
             try
             {
-                ClearanceRepository repo = new ClearanceRepository();
-
-             
-                var pendingDataList = repo.GetRequestsForOffice(this.OfficeName);
-
-               
-                gcBaseOfficeForm.DataSource = pendingDataList;
+                gcBaseOfficeForm.DataSource = _repo.GetRequestsForOffice(OfficeName);
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Could not bind office requests table rows: {ex.Message}",
-                    "Data Retrieval Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        #endregion
-
-        private void btnLogout_Click_1(object sender, EventArgs e)
-        {
-            DialogResult result = XtraMessageBox.Show(
-                "Are you sure you want to logout?", "Logout",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                Session.CurrentUser = null;
-                Login login = new Login();
-                login.Show();
-                this.Hide();
-                this.Close();
-            }
-        }
-
-        private void ApplyUnifiedFilter()
-        {
-            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
-
-            string filterCriteria = string.Empty;
-
-          
-            if (currentStatusFilter != "All")
-            {
-                filterCriteria = $"[Status] = '{currentStatusFilter}'";
-            }
-
-            
-            string searchText = txtSearch.Text.Trim().Replace("'", "''");
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                string searchCriteria = $"([UserID] LIKE '%{searchText}%' OR [FullName] LIKE '%{searchText}%' OR [Program] LIKE '%{searchText}%')";
-
-                if (string.IsNullOrEmpty(filterCriteria))
-                    filterCriteria = searchCriteria;
-                else
-                    filterCriteria += $" AND {searchCriteria}";
-            }
-
-           
-            view.ActiveFilterString = filterCriteria;
-        }
-
-        private void SetStatusFilter(string status)
-        {
-            currentStatusFilter = status;
-            ApplyUnifiedFilter();
-        }
-
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
-            ApplyUnifiedFilter();
-        }
-
-        private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            
-            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
-
-           
-            dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
-            if (selectedRequest == null) return;
-
-            string studentId = selectedRequest.UserID?.ToString();
-            string targetOffice = this.OfficeName;
-            string targetStatus = string.Empty;
-            string finalRemarks = string.Empty;
-
-          
-            string buttonTag = e.Button.Tag?.ToString();
-            switch (buttonTag)
-            {
-                case "btnApprove":
-                    targetStatus = "Approved";
-                    finalRemarks = $"Approved by {targetOffice} Office";
-                    break;
-
-                case "btnOnHold":
-                    targetStatus = "On Hold";
-                    finalRemarks = $"On Hold by {targetOffice} Office";
-                    break;
-
-                default:
-                    return;
-            }
-
-           
-            string confirmMessage = $"Set this student's clearance to '{targetStatus}'?";
-            if (XtraMessageBox.Show(confirmMessage, "Confirm Action",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-                return;
-
-          
-            ClearanceRepository repo = new ClearanceRepository();
-            bool isSuccess = repo.UpdateRequestStatus(studentId, targetOffice, targetStatus, finalRemarks);
-
-            if (isSuccess)
-            {
-                XtraMessageBox.Show($"Clearance status updated to '{targetStatus}' successfully!",
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                selectedRequest.Status = targetStatus;
-                selectedRequest.Remarks = finalRemarks;
-                view.RefreshRow(view.FocusedRowHandle);
-
-              
-                LoadDashboardStats();
-            }
-            else
-            {
-                XtraMessageBox.Show("Database update execution rejected. Check connection states.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void OpenTargetFile(string targetPath)
-        {
-            if (string.IsNullOrEmpty(targetPath) || !System.IO.File.Exists(targetPath))
-            {
-                XtraMessageBox.Show("No file uploaded yet, or the file no longer exists.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo(targetPath)
-                {
-                    UseShellExecute = true
-                };
-                System.Diagnostics.Process.Start(startInfo);
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"Could not open the file: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnProof_Click(object sender, EventArgs e)
-        {
-           
-            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
-
-      
-            dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
-            if (selectedRequest == null) return;
-
-            try
-            {
-                string proofPath = selectedRequest.Proof?.ToString();
-
-              
-                OpenTargetFile(proofPath);
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"File System Sync Error: Unable to extract file tracking structure. {ex.Message}",
-                    "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify($"Could not load office requests: {ex.Message}", "Data Error", MessageBoxIcon.Error);
             }
         }
 
@@ -264,34 +74,121 @@ namespace SchoolClearanceSystem
         {
             try
             {
-                ClearanceRepository repo = new ClearanceRepository();
+                int cleared = _repo.GetStatusCountForOffice(OfficeName, "Approved");
+                int pending = _repo.GetStatusCountForOffice(OfficeName, "Pending");
+                int onHold = _repo.GetStatusCountForOffice(OfficeName, "On Hold");
+                int total = _repo.GetTotalStudentsForOffice(OfficeName);
 
-                
-                int cleared = repo.GetStatusCountForOffice(this.OfficeName, "Approved");
-                int pending = repo.GetStatusCountForOffice(this.OfficeName, "Pending");
-                int onHold = repo.GetStatusCountForOffice(this.OfficeName, "On Hold");
-                int total = repo.GetTotalStudentsForOffice(this.OfficeName);
-
-                
                 lblStatCleared.Text = cleared.ToString();
                 lblStatPending.Text = pending.ToString();
                 lblStatOnHold.Text = onHold.ToString();
-
-              
-                labelControl6.Text = $"{cleared} out of {total} students cleared";
-
-                if (total > 0)
-                    progressBarControl1.Position = (cleared * 100) / total;
-                else
-                    progressBarControl1.Position = 0;
+                lblProgressSummary.Text = $"{cleared} out of {total} students cleared";
+                pbClearanceProgress.Position = total > 0 ? (cleared * 100) / total : 0;
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Could not load dashboard stats: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify($"Could not load dashboard stats: {ex.Message}", "Error", MessageBoxIcon.Error);
             }
         }
 
-      
+        // ── Filtering ─────────────────────────────────────────────────
+        private void SetStatusFilter(string status)
+        {
+            _statusFilter = status;
+            ApplyUnifiedFilter();
+        }
+
+        private void ApplyUnifiedFilter()
+        {
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+            string filter = _statusFilter != "All" ? $"[Status] = '{_statusFilter}'" : string.Empty;
+
+            string search = txtSearch.Text.Trim().Replace("'", "''");
+            if (!string.IsNullOrEmpty(search))
+            {
+                string searchPart = $"([UserID] LIKE '%{search}%' OR [FullName] LIKE '%{search}%' OR [Program] LIKE '%{search}%')";
+                filter = string.IsNullOrEmpty(filter) ? searchPart : $"{filter} AND {searchPart}";
+            }
+
+            view.ActiveFilterString = filter;
+        }
+
+        // ── Actions ───────────────────────────────────────────────────
+        private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+            dynamic selected = view.GetRow(view.FocusedRowHandle);
+            if (selected == null) return;
+
+            string studentId = selected.UserID?.ToString();
+            string tag = e.Button.Tag?.ToString();
+
+            if (!TryResolveAction(tag, out string status, out string remarks)) return;
+
+            if (Confirm($"Set this student's clearance to '{status}'?", "Confirm Action") != DialogResult.Yes) return;
+
+            bool ok = _repo.UpdateRequestStatus(studentId, OfficeName, status, remarks);
+            if (ok)
+            {
+                Notify($"Clearance status updated to '{status}' successfully!", "Success", MessageBoxIcon.Information);
+                selected.Status = status;
+                selected.Remarks = remarks;
+                view.RefreshRow(view.FocusedRowHandle);
+                LoadDashboardStats();
+            }
+            else
+            {
+                Notify("Database update failed. Check connection.", "Error", MessageBoxIcon.Error);
+            }
+        }
+
+        private bool TryResolveAction(string tag, out string status, out string remarks)
+        {
+            switch (tag)
+            {
+                case "btnApprove":
+                    status = "Approved";
+                    remarks = $"Approved by {OfficeName} Office";
+                    return true;
+                case "btnOnHold":
+                    status = "On Hold";
+                    remarks = $"On Hold by {OfficeName} Office";
+                    return true;
+                default:
+                    status = remarks = string.Empty;
+                    return false;
+            }
+        }
+
+        private void btnProof_Click(object sender, EventArgs e)
+        {
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view == null) return;
+
+            dynamic selected = view.GetRow(view.FocusedRowHandle);
+            if (selected == null) return;
+
+            DocumentService.ViewDocument(selected.Proof?.ToString());
+        }
+
+        // ── Logout ────────────────────────────────────────────────────
+        private void btnLogout_Click_1(object sender, EventArgs e)
+        {
+            if (Confirm("Are you sure you want to logout?", "Logout") != DialogResult.Yes) return;
+            Session.CurrentUser = null;
+            new Login().Show();
+            this.Close();
+        }
+
+        // ── Helpers ───────────────────────────────────────────────────
+        private void Notify(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Information) =>
+            XtraMessageBox.Show(text, title, MessageBoxButtons.OK, icon);
+
+        private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
+            XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
     }
 }

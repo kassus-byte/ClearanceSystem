@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseOfficeForm));
-            DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -57,6 +55,8 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -80,7 +80,7 @@
             this.panelControl11 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gcRecentRequests = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -93,8 +93,8 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl10 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
+            this.lblProgressSummary = new DevExpress.XtraEditors.LabelControl();
+            this.pbClearanceProgress = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
@@ -159,6 +159,8 @@
             this.panelControl19 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -180,15 +182,13 @@
             this.pageOfficeDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl11)).BeginInit();
             this.panelControl11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcRecentRequests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).BeginInit();
             this.panelControl9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).BeginInit();
             this.panelControl10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClearanceProgress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
@@ -226,6 +226,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).BeginInit();
             this.panelControl19.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemButtonEdit1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemButtonEdit1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.Image")));
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // repositoryItemButtonEdit2
+            // 
+            this.repositoryItemButtonEdit2.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
+            this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // accordionControl1
             // 
@@ -536,7 +557,6 @@
             // 
             // pageOfficeDashboard
             // 
-            this.pageOfficeDashboard.Caption = "pageOfficeDashboard";
             this.pageOfficeDashboard.Controls.Add(this.panelControl11);
             this.pageOfficeDashboard.Controls.Add(this.panelControl9);
             this.pageOfficeDashboard.Controls.Add(this.panelControl5);
@@ -553,7 +573,7 @@
             this.panelControl11.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl11.ContentImage")));
             this.panelControl11.Controls.Add(this.simpleButton1);
             this.panelControl11.Controls.Add(this.labelControl4);
-            this.panelControl11.Controls.Add(this.gridControl1);
+            this.panelControl11.Controls.Add(this.gcRecentRequests);
             this.panelControl11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl11.Location = new System.Drawing.Point(0, 376);
             this.panelControl11.Name = "panelControl11";
@@ -591,15 +611,15 @@
             this.labelControl4.TabIndex = 1;
             this.labelControl4.Text = "Recent Clearance Requests";
             // 
-            // gridControl1
+            // gcRecentRequests
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControl1.Location = new System.Drawing.Point(60, 60);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1484, 478);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gcRecentRequests.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcRecentRequests.Location = new System.Drawing.Point(60, 60);
+            this.gcRecentRequests.MainView = this.gridView1;
+            this.gcRecentRequests.Name = "gcRecentRequests";
+            this.gcRecentRequests.Size = new System.Drawing.Size(1484, 478);
+            this.gcRecentRequests.TabIndex = 0;
+            this.gcRecentRequests.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
@@ -614,7 +634,7 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9});
-            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GridControl = this.gcRecentRequests;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
@@ -746,14 +766,7 @@
             this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn6.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn6.Caption = "Proof";
-            repositoryItemButtonEdit1.Appearance.Options.UseTextOptions = true;
-            repositoryItemButtonEdit1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            repositoryItemButtonEdit1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            repositoryItemButtonEdit1.AutoHeight = false;
-            repositoryItemButtonEdit1.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
-            repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.gridColumn6.ColumnEdit = repositoryItemButtonEdit1;
+            this.gridColumn6.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn6.ImageOptions.Alignment = System.Drawing.StringAlignment.Center;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
@@ -799,15 +812,7 @@
             this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn8.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn8.Caption = "Actions";
-            repositoryItemButtonEdit2.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
-            repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
-            repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.gridColumn8.ColumnEdit = repositoryItemButtonEdit2;
+            this.gridColumn8.ColumnEdit = this.repositoryItemButtonEdit2;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
@@ -852,8 +857,8 @@
             // 
             this.panelControl10.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl10.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl10.ContentImage")));
-            this.panelControl10.Controls.Add(this.labelControl6);
-            this.panelControl10.Controls.Add(this.progressBarControl1);
+            this.panelControl10.Controls.Add(this.lblProgressSummary);
+            this.panelControl10.Controls.Add(this.pbClearanceProgress);
             this.panelControl10.Controls.Add(this.labelControl5);
             this.panelControl10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl10.Location = new System.Drawing.Point(10, 10);
@@ -861,25 +866,25 @@
             this.panelControl10.Size = new System.Drawing.Size(1584, 120);
             this.panelControl10.TabIndex = 0;
             // 
-            // labelControl6
+            // lblProgressSummary
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(50, 89);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(171, 17);
-            this.labelControl6.TabIndex = 3;
-            this.labelControl6.Text = "0 out of 200 students cleared";
+            this.lblProgressSummary.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgressSummary.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblProgressSummary.Appearance.Options.UseFont = true;
+            this.lblProgressSummary.Appearance.Options.UseForeColor = true;
+            this.lblProgressSummary.Location = new System.Drawing.Point(50, 89);
+            this.lblProgressSummary.Name = "lblProgressSummary";
+            this.lblProgressSummary.Size = new System.Drawing.Size(171, 17);
+            this.lblProgressSummary.TabIndex = 3;
+            this.lblProgressSummary.Text = "0 out of 200 students cleared";
             // 
-            // progressBarControl1
+            // pbClearanceProgress
             // 
-            this.progressBarControl1.Location = new System.Drawing.Point(50, 54);
-            this.progressBarControl1.Name = "progressBarControl1";
-            this.progressBarControl1.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.progressBarControl1.Size = new System.Drawing.Size(1484, 29);
-            this.progressBarControl1.TabIndex = 1;
+            this.pbClearanceProgress.Location = new System.Drawing.Point(50, 54);
+            this.pbClearanceProgress.Name = "pbClearanceProgress";
+            this.pbClearanceProgress.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.pbClearanceProgress.Size = new System.Drawing.Size(1484, 29);
+            this.pbClearanceProgress.TabIndex = 1;
             // 
             // labelControl5
             // 
@@ -1079,7 +1084,6 @@
             // 
             // pageOfficeClearanceRequest
             // 
-            this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Controls.Add(this.txtSearch);
             this.pageOfficeClearanceRequest.Controls.Add(this.btnOnHoldFilter);
             this.pageOfficeClearanceRequest.Controls.Add(this.btnApprovedFilter);
@@ -1520,7 +1524,6 @@
             // 
             // pageOfficeReports
             // 
-            this.pageOfficeReports.Caption = "pageOfficeReports";
             this.pageOfficeReports.Controls.Add(this.panelControl20);
             this.pageOfficeReports.Controls.Add(this.panelControl19);
             this.pageOfficeReports.Name = "pageOfficeReports";
@@ -1763,6 +1766,8 @@
             this.Name = "BaseOfficeForm";
             this.Text = "BaseClearanceForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
@@ -1787,16 +1792,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl11)).EndInit();
             this.panelControl11.ResumeLayout(false);
             this.panelControl11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcRecentRequests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).EndInit();
             this.panelControl9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).EndInit();
             this.panelControl10.ResumeLayout(false);
             this.panelControl10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClearanceProgress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
@@ -1874,13 +1877,13 @@
         private DevExpress.XtraEditors.PanelControl panelControl8;
         private DevExpress.XtraEditors.PanelControl pnlSpace2;
         private DevExpress.XtraEditors.PanelControl panelControl11;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gcRecentRequests;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.PanelControl panelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
+        private DevExpress.XtraEditors.ProgressBarControl pbClearanceProgress;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl lblProgressSummary;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl7;
@@ -1949,5 +1952,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
         private DevExpress.XtraEditors.PanelControl panelControl16;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
     }
 }
