@@ -356,7 +356,7 @@ namespace SchoolClearanceSystem
                     DevExpress.XtraEditors.XtraMessageBox.Show("Active session expired. Please log in again.", "Authentication Warning");
                     return;
                 }
-
+    
                 var currentStudent = _userRepo.GetUsersByRole("Student")
                     ?.FirstOrDefault(u => u.UserID?.ToString() == currentUserId);
 
