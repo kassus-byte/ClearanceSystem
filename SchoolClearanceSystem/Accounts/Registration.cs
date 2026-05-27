@@ -50,9 +50,10 @@ namespace SchoolClearanceSystem
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                string.IsNullOrWhiteSpace(txtMiddleName.Text) ||
                 string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                UIHelper.ShowWarning("User ID, Last Name, First Name, and Password are required.", "Validation Error");
+                UIHelper.ShowWarning("User ID, Last Name, First Name, Middle Initial, and Password are required.", "Validation Error");
                 return false;
             }
 

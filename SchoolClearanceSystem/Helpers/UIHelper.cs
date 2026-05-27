@@ -161,7 +161,7 @@ namespace SchoolClearanceSystem.Helpers
         {
             int percentage = (clearedCount * 100) / totalOffices;
 
-            lblOfficeCleared.Text = $"Offices Cleared: {clearedCount}/{totalOffices}";
+            lblOfficeCleared.Text = $"{clearedCount}/{totalOffices}";
             lblPercentage.Text = percentage + "%";
             pbOverallProgress.Position = percentage;
         }

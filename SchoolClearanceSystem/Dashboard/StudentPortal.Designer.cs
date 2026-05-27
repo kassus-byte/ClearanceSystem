@@ -123,6 +123,8 @@
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtSchoolYear = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
@@ -141,8 +143,6 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
@@ -228,6 +228,8 @@
             this.pnlClearanceForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentSchoolYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemester.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
+            this.panelControl12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             this.pageMyRequest.SuspendLayout();
@@ -237,8 +239,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
-            this.panelControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             this.pageMyClearance.SuspendLayout();
@@ -660,7 +660,6 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
-            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -840,6 +839,11 @@
             this.pbOverallProgress.Location = new System.Drawing.Point(25, 43);
             this.pbOverallProgress.Name = "pbOverallProgress";
             this.pbOverallProgress.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.pbOverallProgress.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pbOverallProgress.Properties.EndColor = System.Drawing.Color.ForestGreen;
+            this.pbOverallProgress.Properties.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.pbOverallProgress.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.pbOverallProgress.Properties.StartColor = System.Drawing.Color.DarkOrange;
             this.pbOverallProgress.Size = new System.Drawing.Size(1508, 29);
             this.pbOverallProgress.TabIndex = 0;
             // 
@@ -1047,11 +1051,11 @@
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
-            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
             this.pageRequestClearance.Controls.Add(this.pnlClearanceForm);
+            this.pageRequestClearance.Controls.Add(this.panelControl12);
             this.pageRequestClearance.Controls.Add(this.panelControl3);
             this.pageRequestClearance.Controls.Add(this.labelControl12);
             this.pageRequestClearance.Controls.Add(this.btnSubmitRequest);
@@ -1067,7 +1071,7 @@
             this.panelUpload3.Controls.Add(this.labelControl31);
             this.panelUpload3.Controls.Add(this.pictureEdit3);
             this.panelUpload3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload3.Location = new System.Drawing.Point(0, 676);
+            this.panelUpload3.Location = new System.Drawing.Point(0, 726);
             this.panelUpload3.Name = "panelUpload3";
             this.panelUpload3.Size = new System.Drawing.Size(1574, 131);
             this.panelUpload3.TabIndex = 14;
@@ -1133,7 +1137,7 @@
             this.panelUpload2.Controls.Add(this.pictureEdit2);
             this.panelUpload2.Controls.Add(this.labelControl28);
             this.panelUpload2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload2.Location = new System.Drawing.Point(0, 488);
+            this.panelUpload2.Location = new System.Drawing.Point(0, 538);
             this.panelUpload2.Name = "panelUpload2";
             this.panelUpload2.Padding = new System.Windows.Forms.Padding(11, 75, 0, 0);
             this.panelUpload2.Size = new System.Drawing.Size(1574, 188);
@@ -1226,7 +1230,7 @@
             this.panelrequirements.Controls.Add(this.labelControl27);
             this.panelrequirements.Controls.Add(this.labelControl11);
             this.panelrequirements.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelrequirements.Location = new System.Drawing.Point(0, 300);
+            this.panelrequirements.Location = new System.Drawing.Point(0, 350);
             this.panelrequirements.Name = "panelrequirements";
             this.panelrequirements.Padding = new System.Windows.Forms.Padding(14, 75, 21, 0);
             this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
@@ -1318,7 +1322,7 @@
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
             this.pnlClearanceForm.Controls.Add(this.txtSchoolYear);
             this.pnlClearanceForm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 87);
+            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 137);
             this.pnlClearanceForm.Name = "pnlClearanceForm";
             this.pnlClearanceForm.Padding = new System.Windows.Forms.Padding(10);
             this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
@@ -1377,6 +1381,31 @@
             this.txtSchoolYear.Size = new System.Drawing.Size(89, 17);
             this.txtSchoolYear.TabIndex = 4;
             this.txtSchoolYear.Text = "Academic Year";
+            // 
+            // panelControl12
+            // 
+            this.panelControl12.Appearance.BackColor = System.Drawing.Color.Linen;
+            this.panelControl12.Appearance.Options.UseBackColor = true;
+            this.panelControl12.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl12.Controls.Add(this.labelControl10);
+            this.panelControl12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl12.Location = new System.Drawing.Point(0, 87);
+            this.panelControl12.Name = "panelControl12";
+            this.panelControl12.Size = new System.Drawing.Size(1574, 50);
+            this.panelControl12.TabIndex = 15;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(27, 18);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(732, 17);
+            this.labelControl10.TabIndex = 1;
+            this.labelControl10.Text = "Requirements are approved by offices only. You can submit proof of compliance, bu" +
+    "t only the office can mark you as cleared.";
             // 
             // panelControl3
             // 
@@ -1442,20 +1471,23 @@
             // 
             // pageMyRequest
             // 
-            this.pageMyRequest.Caption = "pageMyRequest";
+            this.pageMyRequest.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pageMyRequest.Appearance.Options.UseBackColor = true;
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
-            this.pageMyRequest.Controls.Add(this.panelControl7);
             this.pageMyRequest.Controls.Add(this.panelControl6);
             this.pageMyRequest.Name = "pageMyRequest";
             this.pageMyRequest.Size = new System.Drawing.Size(1574, 1050);
             // 
             // panelControl9
             // 
+            this.panelControl9.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl9.Appearance.Options.UseBackColor = true;
+            this.panelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl9.Controls.Add(this.gridMyRequest);
             this.panelControl9.Controls.Add(this.labelControl24);
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl9.Location = new System.Drawing.Point(0, 199);
+            this.panelControl9.Location = new System.Drawing.Point(0, 149);
             this.panelControl9.Name = "panelControl9";
             this.panelControl9.Padding = new System.Windows.Forms.Padding(20, 70, 20, 10);
             this.panelControl9.Size = new System.Drawing.Size(1574, 627);
@@ -1464,10 +1496,10 @@
             // gridMyRequest
             // 
             this.gridMyRequest.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridMyRequest.Location = new System.Drawing.Point(22, 72);
+            this.gridMyRequest.Location = new System.Drawing.Point(20, 70);
             this.gridMyRequest.MainView = this.gridView3;
             this.gridMyRequest.Name = "gridMyRequest";
-            this.gridMyRequest.Size = new System.Drawing.Size(1530, 421);
+            this.gridMyRequest.Size = new System.Drawing.Size(1534, 421);
             this.gridMyRequest.TabIndex = 5;
             this.gridMyRequest.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1555,7 +1587,7 @@
             this.labelControl24.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl24.Appearance.Options.UseFont = true;
             this.labelControl24.Appearance.Options.UseForeColor = true;
-            this.labelControl24.Location = new System.Drawing.Point(27, 30);
+            this.labelControl24.Location = new System.Drawing.Point(25, 28);
             this.labelControl24.Name = "labelControl24";
             this.labelControl24.Size = new System.Drawing.Size(106, 21);
             this.labelControl24.TabIndex = 4;
@@ -1571,7 +1603,7 @@
             this.panelControl8.Controls.Add(this.simpleButton3);
             this.panelControl8.Controls.Add(this.simpleButton2);
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl8.Location = new System.Drawing.Point(0, 137);
+            this.panelControl8.Location = new System.Drawing.Point(0, 87);
             this.panelControl8.Name = "panelControl8";
             this.panelControl8.Size = new System.Drawing.Size(1574, 62);
             this.panelControl8.TabIndex = 2;
@@ -1623,31 +1655,6 @@
             this.simpleButton2.Size = new System.Drawing.Size(125, 33);
             this.simpleButton2.TabIndex = 0;
             this.simpleButton2.Text = "All";
-            // 
-            // panelControl7
-            // 
-            this.panelControl7.Appearance.BackColor = System.Drawing.Color.Linen;
-            this.panelControl7.Appearance.Options.UseBackColor = true;
-            this.panelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl7.Controls.Add(this.labelControl23);
-            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl7.Location = new System.Drawing.Point(0, 87);
-            this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1574, 50);
-            this.panelControl7.TabIndex = 1;
-            // 
-            // labelControl23
-            // 
-            this.labelControl23.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl23.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
-            this.labelControl23.Appearance.Options.UseFont = true;
-            this.labelControl23.Appearance.Options.UseForeColor = true;
-            this.labelControl23.Location = new System.Drawing.Point(27, 18);
-            this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(732, 17);
-            this.labelControl23.TabIndex = 1;
-            this.labelControl23.Text = "Requirements are approved by offices only. You can submit proof of compliance, bu" +
-    "t only the office can mark you as cleared.";
             // 
             // panelControl6
             // 
@@ -2093,6 +2100,9 @@
             this.pnlClearanceForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentSchoolYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemester.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
+            this.panelControl12.ResumeLayout(false);
+            this.panelControl12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -2104,9 +2114,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
-            this.panelControl7.ResumeLayout(false);
-            this.panelControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
@@ -2196,8 +2203,6 @@
         private DevExpress.XtraEditors.LabelControl lblProgramDepartment;
         private DevExpress.XtraEditors.LabelControl lblNameID;
         private DevExpress.XtraEditors.PanelControl panelControl6;
-        private DevExpress.XtraEditors.PanelControl panelControl7;
-        private DevExpress.XtraEditors.LabelControl labelControl23;
         private DevExpress.XtraEditors.LabelControl labelControl22;
         private DevExpress.XtraEditors.LabelControl labelControl21;
         private DevExpress.XtraEditors.PanelControl panelControl8;
@@ -2260,6 +2265,8 @@
         private DevExpress.XtraGrid.Columns.TileViewColumn Completed;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraEditors.PanelControl panelControl11;
+        private DevExpress.XtraEditors.PanelControl panelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }
 

@@ -96,7 +96,7 @@ namespace SchoolClearanceSystem.Repository
                         c.FilePath AS FilePath
                        FROM ClearanceRequests c
                        INNER JOIN Users u ON c.UserID = u.UserID
-                       WHERE c.Department = @dept AND c.Status = 'Pending'";
+                       WHERE c.Department = @dept";
 
                 return db.Query(sql, new { dept = officeDept }).ToList();
             }
@@ -183,7 +183,7 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT COUNT(*) 
+                string sql = @"SELECT COUNT(DISTINCT UserID) 
                        FROM ClearanceRequests 
                        WHERE Department = @dept 
                          AND Status = @status";

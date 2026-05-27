@@ -2,27 +2,48 @@
 using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Repository;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
+
 namespace SchoolClearanceSystem
+
 {
+
     public partial class BaseOfficeForm : XtraForm
     {
+
         private string _statusFilter = "All";
         public string OfficeName { get; set; } = "Unknown Office";
 
         // Single shared repo instance — no need to create a new one per method call
+
         private readonly ClearanceRepository _repo = new ClearanceRepository();
 
         public BaseOfficeForm()
         {
+
             InitializeComponent();
+
+            txtSearch.EditValue = null;
+            txtSearch.Properties.NullValuePrompt = "Search by Name, ID, or Course..";
+            txtSearch.Properties.NullValuePromptShowForEmptyValue = true;
             txtSearch.TextChanged += (s, e) => ApplyUnifiedFilter();
+
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            if (DesignMode) { base.OnLoad(e); return; }
+            base.OnLoad(e);
+            if (DesignMode) return;
+
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view != null)
+            {
+
+                view.OptionsFind.HighlightFindResults = true;
+                view.OptionsFind.AllowFindPanel = false;
+            }
 
             btnAllFilter.Click += (s, ev) => SetStatusFilter("All");
             btnPendingFilter.Click += (s, ev) => SetStatusFilter("Pending");
@@ -32,7 +53,7 @@ namespace SchoolClearanceSystem
             SetupIdentity();
             LoadPendingClearanceRequests();
             LoadDashboardStats();
-            base.OnLoad(e);
+
         }
 
         // ── Identity ──────────────────────────────────────────────────
@@ -42,6 +63,7 @@ namespace SchoolClearanceSystem
             lblFullName.Text = Session.CurrentUser.FullName;
             lblRole.Text = Session.CurrentUser.Role;
             this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
+
         }
 
         // ── Navigation ────────────────────────────────────────────────
@@ -50,6 +72,7 @@ namespace SchoolClearanceSystem
             naviframeOffices.SelectedPage = pageOfficeDashboard;
             LoadPendingClearanceRequests();
             LoadDashboardStats();
+
         }
 
         private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e) =>
@@ -58,12 +81,18 @@ namespace SchoolClearanceSystem
         private void sbOfficeReports_Click_1(object sender, EventArgs e) =>
             naviframeOffices.SelectedPage = pageOfficeReports;
 
+        private void btnExpandRequest_Click_1(object sender, EventArgs e)
+        {
+            naviframeOffices.SelectedPage = pageOfficeClearanceRequest;
+        }
+
         // ── Data Loading ──────────────────────────────────────────────
         protected void LoadPendingClearanceRequests()
         {
             try
             {
-                gcBaseOfficeForm.DataSource = _repo.GetRequestsForOffice(OfficeName);
+                var data = _repo.GetRequestsForOffice(OfficeName);
+                gcBaseOfficeForm.DataSource = data;
             }
             catch (Exception ex)
             {
@@ -84,12 +113,14 @@ namespace SchoolClearanceSystem
                 lblStatPending.Text = pending.ToString();
                 lblStatOnHold.Text = onHold.ToString();
                 lblProgressSummary.Text = $"{cleared} out of {total} students cleared";
-                pbClearanceProgress.Position = total > 0 ? (cleared * 100) / total : 0;
+                pbClearanceProgress.Position = total > 0 ? Math.Min((cleared * 100) / total, 100) : 0;
+
             }
             catch (Exception ex)
             {
                 UIHelper.ShowError($"Could not load dashboard stats: {ex.Message}");
             }
+
         }
 
         // ── Filtering ─────────────────────────────────────────────────
@@ -101,19 +132,27 @@ namespace SchoolClearanceSystem
 
         private void ApplyUnifiedFilter()
         {
-            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
-
-            string filter = _statusFilter != "All" ? $"[Status] = '{_statusFilter}'" : string.Empty;
-
-            string search = txtSearch.Text.Trim().Replace("'", "''");
-            if (!string.IsNullOrEmpty(search))
+            try
             {
-                string searchPart = $"([UserID] LIKE '%{search}%' OR [FullName] LIKE '%{search}%' OR [Program] LIKE '%{search}%')";
-                filter = string.IsNullOrEmpty(filter) ? searchPart : $"{filter} AND {searchPart}";
-            }
+                var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+                if (view == null) return;
 
-            view.ActiveFilterString = filter;
+                var data = _repo.GetRequestsForOffice(OfficeName);
+                string search = txtSearch.Text.Trim();
+
+                var statusFiltered = data.Where(r =>
+                {
+                    return _statusFilter == "All" ||
+                           (r.Status?.ToString().Trim().Equals(_statusFilter, StringComparison.OrdinalIgnoreCase) == true);
+                }).ToList();
+
+                gcBaseOfficeForm.DataSource = statusFiltered;
+                view.ApplyFindFilter(search);
+            }
+            catch (Exception ex)
+            {
+                UIHelper.ShowError($"Could not apply filter: {ex.Message}");
+            }
         }
 
         // ── Actions ───────────────────────────────────────────────────
@@ -129,22 +168,21 @@ namespace SchoolClearanceSystem
             string tag = e.Button.Tag?.ToString();
 
             if (!TryResolveAction(tag, out string status, out string remarks)) return;
-
             if (UIHelper.ShowConfirmation($"Set this student's clearance to '{status}'?", "Confirm Action") != DialogResult.Yes) return;
 
             bool ok = _repo.UpdateRequestStatus(studentId, OfficeName, status, remarks);
             if (ok)
             {
                 UIHelper.ShowSuccess($"Clearance status updated to '{status}' successfully!");
-                selected.Status = status;
-                selected.Remarks = remarks;
-                view.RefreshRow(view.FocusedRowHandle);
+
+                ApplyUnifiedFilter();
                 LoadDashboardStats();
             }
             else
             {
                 UIHelper.ShowError("Database update failed. Check connection.");
             }
+
         }
 
         private bool TryResolveAction(string tag, out string status, out string remarks)
@@ -155,10 +193,12 @@ namespace SchoolClearanceSystem
                     status = "Approved";
                     remarks = $"Approved by {OfficeName} Office";
                     return true;
+
                 case "btnOnHold":
                     status = "On Hold";
-                    remarks = $"On Hold by {OfficeName} Office";
+                    remarks = $"Please visit the {OfficeName} Office to resolve your clearance hold";
                     return true;
+
                 default:
                     status = remarks = string.Empty;
                     return false;
@@ -173,7 +213,7 @@ namespace SchoolClearanceSystem
             dynamic selected = view.GetRow(view.FocusedRowHandle);
             if (selected == null) return;
 
-            DocumentService.ViewDocument(selected.Proof?.ToString());
+            DocumentService.ViewDocument(selected.FilePath?.ToString());
         }
 
         // ── Logout ────────────────────────────────────────────────────

@@ -156,8 +156,9 @@ namespace SchoolClearanceSystem
                 case "approved":
                     SetRowStyle(e, Color.ForestGreen, FontStyle.Bold); break;
                 case "pending":
-                    SetRowStyle(e, Color.DarkOrange, FontStyle.Regular); break;
+                    SetRowStyle(e, Color.DarkRed, FontStyle.Bold); break;
                 case "on hold":
+                    SetRowStyle(e, Color.DarkOrange, FontStyle.Bold); break;
                 case "declined":
                 case "rejected":
                     SetRowStyle(e, Color.Crimson, FontStyle.Bold); break;
