@@ -103,13 +103,14 @@ namespace SchoolClearanceSystem.Repository
         }
 
         // ── Called by AdminDashboard.cs → RefreshData() ───────────────
+        // ── Called by AdminDashboard.cs → RefreshData() ───────────────
         public IEnumerable<User> GetUsersByRole(string role, bool statusFlag = true)
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = role == "Student"
-                    ? "SELECT * FROM Users WHERE Role = 'Student'"
-                    : "SELECT * FROM Users WHERE Role != 'Student'";
+                    ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY DateCreated DESC"
+                    : "SELECT * FROM Users WHERE Role != 'Student' ORDER BY DateCreated DESC";
                 return db.Query<User>(sql).ToList();
             }
         }
