@@ -22,10 +22,10 @@ namespace SchoolClearanceSystem.Dashboard
             comboSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             comboAcademicYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
-            
-
             gcStudents.MouseDown += (s, e) => EvaluateHitInfo(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
+            txtSearch.TextChanged += (s, e) => ApplyUnifiedFilter();
+
 
             RefreshData();
         }
@@ -37,10 +37,33 @@ namespace SchoolClearanceSystem.Dashboard
 
             SetupIdentity();
         }
-      
 
-// ── Navigation ────────────────────────────────────────────────
-private void NavigateTo(NavigationPage page, bool reload = false)
+        // ── Search ────────────────────────────────────────────────────
+        private void ApplyUnifiedFilter()
+        {
+            try
+            {
+                var view = ActiveView;
+                if (view == null) return;
+
+                string search = txtSearch.Text.Trim();
+                view.ApplyFindFilter(search);
+            }
+            catch (Exception ex)
+            {
+                Notify($"Could not apply filter: {ex.Message}", "Filter Error", MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e) => ApplyUnifiedFilter();
+
+
+
+
+
+
+        // ── Navigation ────────────────────────────────────────────────
+        private void NavigateTo(NavigationPage page, bool reload = false)
         {
             mainNavigationFrame.SelectedPage = page;
             if (reload) RefreshData();
@@ -139,10 +162,38 @@ private void NavigateTo(NavigationPage page, bool reload = false)
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!TryGetFocusedData(ActiveView, out User user)) return;
+            var view = ActiveView;
 
-            if (Confirm($"Permanently remove account: {user.FullName} ({user.UserID})?", "Confirm Deletion") == DialogResult.Yes)
-                ProcessUserDeletion(user.UserID);
+            // Collect all selected rows
+            var selectedUsers = view.GetSelectedRows()
+                .Select(h => view.GetRow(h) as User)
+                .Where(u => u != null)
+                .ToList();
+
+            if (!selectedUsers.Any())
+            {
+                Notify("Please select at least one account to delete.", "No Selection", MessageBoxIcon.Warning);
+                return;
+            }
+
+            string names = string.Join("\n", selectedUsers.Select(u => $"• {u.FullName} ({u.UserID})"));
+
+            if (Confirm($"Permanently delete {selectedUsers.Count} account(s)?\n\n{names}", "Confirm Deletion") != DialogResult.Yes)
+                return;
+
+            foreach (var user in selectedUsers)
+            {
+                try
+                {
+                    ProcessUserDeletion(user.UserID);
+                }
+                catch (Exception ex)
+                {
+                    Notify($"Failed to delete {user.FullName}: {ex.Message}", "Error", MessageBoxIcon.Error);
+                }
+            }
+
+            RefreshData();
         }
 
         private void ProcessUserDeletion(string userId)
@@ -276,30 +327,7 @@ private void NavigateTo(NavigationPage page, bool reload = false)
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
 
-        // ── Search ───────────────────────────────────────────────────
 
-        private void searchAccount_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string searchText = searchAccount.Text.Trim().ToLower();
-
-            ApplyGridFilter(gvStudents, searchText);
-            ApplyGridFilter(gvOffice, searchText);
-        }
-        private void ApplyGridFilter(GridView view, string searchText)
-        {
-            if (string.IsNullOrEmpty(searchText))
-            {
-                view.ActiveFilterString = string.Empty;
-                return;
-            }
-
-            view.ActiveFilterString =
-                $"(Lower([UserID]) Like '%{searchText}%') OR " +
-                $"(Lower([FullName]) Like '%{searchText}%') OR " +
-                $"(Lower([Program]) Like '%{searchText}%') OR " +
-                $"(Lower([Year]) Like '%{searchText}%') OR " +
-                $"(Lower([Role]) Like '%{searchText}%') OR " +
-                $"(Lower([Year]) Like '%{searchText}%')";
-        }
     }
 }
+
