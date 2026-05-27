@@ -28,7 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentPortal));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            this.Semester = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.AcademicYear = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.Completed = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
@@ -40,6 +59,7 @@
             this.sbMyRequest = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbMyClearance = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.pnlUser = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl11 = new DevExpress.XtraEditors.PanelControl();
             this.lblRole = new DevExpress.XtraEditors.LabelControl();
             this.lblYear = new DevExpress.XtraEditors.LabelControl();
             this.lblProgram = new DevExpress.XtraEditors.LabelControl();
@@ -76,7 +96,7 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.pnlWelcome = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
+            this.lblWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pageRequestClearance = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelUpload3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl36 = new DevExpress.XtraEditors.LabelControl();
@@ -103,6 +123,8 @@
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtSchoolYear = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
@@ -121,19 +143,19 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.pageMyClearance = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gcRecords = new DevExpress.XtraEditors.GroupControl();
+            this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
+            this.tileViewMyClearance = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.pnlClearanceCopy = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.lblDateIssued = new DevExpress.XtraEditors.LabelControl();
+            this.lblProgramDepartment = new DevExpress.XtraEditors.LabelControl();
+            this.lblNameID = new DevExpress.XtraEditors.LabelControl();
+            this.lblSemYear = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
@@ -150,8 +172,7 @@
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -164,6 +185,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlUser)).BeginInit();
             this.pnlUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.naviframeStudent)).BeginInit();
@@ -206,6 +228,8 @@
             this.pnlClearanceForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentSchoolYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemester.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
+            this.panelControl12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             this.pageMyRequest.SuspendLayout();
@@ -215,13 +239,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
-            this.panelControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             this.pageMyClearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).BeginInit();
             this.gcRecords.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewMyClearance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).BeginInit();
             this.pnlClearanceCopy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -230,9 +254,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelForm)).BeginInit();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Semester
+            // 
+            this.Semester.Caption = "Semester";
+            this.Semester.Name = "Semester";
+            this.Semester.Visible = true;
+            this.Semester.VisibleIndex = 0;
+            // 
+            // AcademicYear
+            // 
+            this.AcademicYear.Caption = "Academic Year";
+            this.AcademicYear.Name = "AcademicYear";
+            this.AcademicYear.Visible = true;
+            this.AcademicYear.VisibleIndex = 1;
+            // 
+            // Completed
+            // 
+            this.Completed.Caption = "Completed";
+            this.Completed.FieldName = "Completed";
+            this.Completed.Name = "Completed";
+            this.Completed.Visible = true;
+            this.Completed.VisibleIndex = 2;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit1.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.SvgImage")));
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
             // repositoryItemTextEdit1
             // 
@@ -284,19 +337,19 @@
             // btnLogout
             // 
             this.btnLogout.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnLogout.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnLogout.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogout.Appearance.Options.UseBackColor = true;
             this.btnLogout.Appearance.Options.UseFont = true;
             this.btnLogout.Appearance.Options.UseForeColor = true;
             this.btnLogout.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnLogout.AppearanceHovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearanceHovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnLogout.AppearanceHovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogout.AppearanceHovered.Options.UseBackColor = true;
             this.btnLogout.AppearanceHovered.Options.UseFont = true;
             this.btnLogout.AppearanceHovered.Options.UseForeColor = true;
             this.btnLogout.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.btnLogout.AppearancePressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.AppearancePressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnLogout.AppearancePressed.Options.UseBackColor = true;
             this.btnLogout.AppearancePressed.Options.UseFont = true;
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -320,17 +373,21 @@
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
             this.accordionControl1.ItemHeight = 2;
-            this.accordionControl1.Location = new System.Drawing.Point(0, 165);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 196);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.Size = new System.Drawing.Size(325, 915);
+            this.accordionControl1.Size = new System.Drawing.Size(325, 884);
             this.accordionControl1.TabIndex = 2;
             // 
             // accordionControlElement1
             // 
+            this.accordionControlElement1.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionControlElement1.Appearance.Hovered.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.accordionControlElement1.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.accordionControlElement1.Appearance.Normal.Options.UseFont = true;
             this.accordionControlElement1.Appearance.Normal.Options.UseForeColor = true;
+            this.accordionControlElement1.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionControlElement1.Appearance.Pressed.Options.UseFont = true;
             this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.sbDashboard,
             this.sbRequestClearance,
@@ -338,22 +395,22 @@
             this.sbMyClearance});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Text = "Main";
+            this.accordionControlElement1.Text = "MAIN";
             // 
             // sbDashboard
             // 
             this.sbDashboard.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbDashboard.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbDashboard.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbDashboard.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbDashboard.Appearance.Hovered.Options.UseBackColor = true;
             this.sbDashboard.Appearance.Hovered.Options.UseFont = true;
             this.sbDashboard.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbDashboard.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbDashboard.Appearance.Normal.Options.UseFont = true;
             this.sbDashboard.Appearance.Normal.Options.UseForeColor = true;
             this.sbDashboard.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbDashboard.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbDashboard.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbDashboard.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbDashboard.Appearance.Pressed.Options.UseBackColor = true;
             this.sbDashboard.Appearance.Pressed.Options.UseFont = true;
@@ -368,17 +425,17 @@
             // sbRequestClearance
             // 
             this.sbRequestClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbRequestClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbRequestClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbRequestClearance.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbRequestClearance.Appearance.Hovered.Options.UseBackColor = true;
             this.sbRequestClearance.Appearance.Hovered.Options.UseFont = true;
             this.sbRequestClearance.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbRequestClearance.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbRequestClearance.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbRequestClearance.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbRequestClearance.Appearance.Normal.Options.UseFont = true;
             this.sbRequestClearance.Appearance.Normal.Options.UseForeColor = true;
             this.sbRequestClearance.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbRequestClearance.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbRequestClearance.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbRequestClearance.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbRequestClearance.Appearance.Pressed.Options.UseBackColor = true;
             this.sbRequestClearance.Appearance.Pressed.Options.UseFont = true;
@@ -393,17 +450,17 @@
             // sbMyRequest
             // 
             this.sbMyRequest.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbMyRequest.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbMyRequest.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbMyRequest.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyRequest.Appearance.Hovered.Options.UseBackColor = true;
             this.sbMyRequest.Appearance.Hovered.Options.UseFont = true;
             this.sbMyRequest.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbMyRequest.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbMyRequest.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbMyRequest.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyRequest.Appearance.Normal.Options.UseFont = true;
             this.sbMyRequest.Appearance.Normal.Options.UseForeColor = true;
             this.sbMyRequest.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbMyRequest.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbMyRequest.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbMyRequest.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyRequest.Appearance.Pressed.Options.UseBackColor = true;
             this.sbMyRequest.Appearance.Pressed.Options.UseFont = true;
@@ -418,17 +475,17 @@
             // sbMyClearance
             // 
             this.sbMyClearance.Appearance.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.sbMyClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbMyClearance.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbMyClearance.Appearance.Hovered.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyClearance.Appearance.Hovered.Options.UseBackColor = true;
             this.sbMyClearance.Appearance.Hovered.Options.UseFont = true;
             this.sbMyClearance.Appearance.Hovered.Options.UseForeColor = true;
-            this.sbMyClearance.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbMyClearance.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbMyClearance.Appearance.Normal.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyClearance.Appearance.Normal.Options.UseFont = true;
             this.sbMyClearance.Appearance.Normal.Options.UseForeColor = true;
             this.sbMyClearance.Appearance.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(158)))), ((int)(((byte)(117)))));
-            this.sbMyClearance.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.sbMyClearance.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbMyClearance.Appearance.Pressed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.sbMyClearance.Appearance.Pressed.Options.UseBackColor = true;
             this.sbMyClearance.Appearance.Pressed.Options.UseFont = true;
@@ -438,7 +495,7 @@
             this.sbMyClearance.Name = "sbMyClearance";
             this.sbMyClearance.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.sbMyClearance.Text = "   My Clearance";
-            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click_1);
+            this.sbMyClearance.Click += new System.EventHandler(this.sbMyClearance_Click);
             // 
             // pnlUser
             // 
@@ -447,18 +504,30 @@
             this.pnlUser.Appearance.Options.UseBackColor = true;
             this.pnlUser.Appearance.Options.UseBorderColor = true;
             this.pnlUser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlUser.Controls.Add(this.panelControl11);
             this.pnlUser.Controls.Add(this.lblRole);
             this.pnlUser.Controls.Add(this.lblYear);
             this.pnlUser.Controls.Add(this.lblProgram);
             this.pnlUser.Controls.Add(this.lblUserID);
             this.pnlUser.Controls.Add(this.lblFullName);
             this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlUser.Location = new System.Drawing.Point(0, 80);
+            this.pnlUser.Location = new System.Drawing.Point(0, 96);
             this.pnlUser.LookAndFeel.SkinMaskColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.pnlUser.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(300, 85);
+            this.pnlUser.Size = new System.Drawing.Size(300, 100);
             this.pnlUser.TabIndex = 1;
+            // 
+            // panelControl11
+            // 
+            this.panelControl11.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.panelControl11.Appearance.Options.UseBackColor = true;
+            this.panelControl11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl11.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl11.ContentImage")));
+            this.panelControl11.Location = new System.Drawing.Point(21, 16);
+            this.panelControl11.Name = "panelControl11";
+            this.panelControl11.Size = new System.Drawing.Size(69, 69);
+            this.panelControl11.TabIndex = 4;
             // 
             // lblRole
             // 
@@ -466,7 +535,7 @@
             this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblRole.Appearance.Options.UseFont = true;
             this.lblRole.Appearance.Options.UseForeColor = true;
-            this.lblRole.Location = new System.Drawing.Point(83, 64);
+            this.lblRole.Location = new System.Drawing.Point(96, 68);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(39, 13);
             this.lblRole.TabIndex = 4;
@@ -478,7 +547,7 @@
             this.lblYear.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblYear.Appearance.Options.UseFont = true;
             this.lblYear.Appearance.Options.UseForeColor = true;
-            this.lblYear.Location = new System.Drawing.Point(196, 45);
+            this.lblYear.Location = new System.Drawing.Point(209, 49);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(6, 13);
             this.lblYear.TabIndex = 3;
@@ -490,7 +559,7 @@
             this.lblProgram.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblProgram.Appearance.Options.UseFont = true;
             this.lblProgram.Appearance.Options.UseForeColor = true;
-            this.lblProgram.Location = new System.Drawing.Point(168, 45);
+            this.lblProgram.Location = new System.Drawing.Point(181, 49);
             this.lblProgram.Name = "lblProgram";
             this.lblProgram.Size = new System.Drawing.Size(22, 13);
             this.lblProgram.TabIndex = 2;
@@ -502,7 +571,7 @@
             this.lblUserID.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserID.Appearance.Options.UseFont = true;
             this.lblUserID.Appearance.Options.UseForeColor = true;
-            this.lblUserID.Location = new System.Drawing.Point(83, 45);
+            this.lblUserID.Location = new System.Drawing.Point(96, 49);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(52, 13);
             this.lblUserID.TabIndex = 1;
@@ -514,7 +583,7 @@
             this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblFullName.Appearance.Options.UseFont = true;
             this.lblFullName.Appearance.Options.UseForeColor = true;
-            this.lblFullName.Location = new System.Drawing.Point(83, 22);
+            this.lblFullName.Location = new System.Drawing.Point(96, 26);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(140, 17);
             this.lblFullName.TabIndex = 0;
@@ -538,7 +607,7 @@
             this.pnlHeader.LookAndFeel.SkinMaskColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.pnlHeader.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(300, 80);
+            this.pnlHeader.Size = new System.Drawing.Size(300, 96);
             this.pnlHeader.TabIndex = 0;
             // 
             // labelControl2
@@ -547,7 +616,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(23, 39);
+            this.labelControl2.Location = new System.Drawing.Point(57, 48);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(158, 17);
             this.labelControl2.TabIndex = 2;
@@ -559,7 +628,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(23, 14);
+            this.labelControl1.Location = new System.Drawing.Point(57, 23);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(218, 21);
             this.labelControl1.TabIndex = 1;
@@ -627,6 +696,10 @@
             // gridControlOfficeStatus
             // 
             this.gridControlOfficeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlOfficeStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            gridLevelNode1.RelationName = "Level1";
+            this.gridControlOfficeStatus.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.gridControlOfficeStatus.Location = new System.Drawing.Point(2, 29);
             this.gridControlOfficeStatus.MainView = this.gridView2;
             this.gridControlOfficeStatus.Name = "gridControlOfficeStatus";
@@ -637,6 +710,13 @@
             // 
             // gridView2
             // 
+            this.gridView2.Appearance.ColumnFilterButton.Options.UseFont = true;
+            this.gridView2.Appearance.GroupPanel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridView2.Appearance.GroupPanel.Options.UseFont = true;
+            this.gridView2.Appearance.GroupRow.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridView2.Appearance.GroupRow.Options.UseFont = true;
+            this.gridView2.Appearance.HeaderPanel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridView2.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
@@ -649,7 +729,21 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "Department";
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn1.AppearanceCell.Options.UseFont = true;
+            this.gridColumn1.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn1.Caption = "Office";
             this.gridColumn1.FieldName = "Department";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
@@ -658,6 +752,20 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn2.AppearanceCell.Options.UseFont = true;
+            this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn2.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn2.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn2.Caption = "Status";
             this.gridColumn2.FieldName = "Status";
             this.gridColumn2.Name = "gridColumn2";
@@ -667,6 +775,20 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn3.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn3.AppearanceCell.Options.UseFont = true;
+            this.gridColumn3.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn3.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn3.Caption = "Remarks";
             this.gridColumn3.FieldName = "Remarks";
             this.gridColumn3.Name = "gridColumn3";
@@ -716,6 +838,12 @@
             // 
             this.pbOverallProgress.Location = new System.Drawing.Point(25, 43);
             this.pbOverallProgress.Name = "pbOverallProgress";
+            this.pbOverallProgress.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.pbOverallProgress.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pbOverallProgress.Properties.EndColor = System.Drawing.Color.ForestGreen;
+            this.pbOverallProgress.Properties.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.pbOverallProgress.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.pbOverallProgress.Properties.StartColor = System.Drawing.Color.DarkOrange;
             this.pbOverallProgress.Size = new System.Drawing.Size(1508, 29);
             this.pbOverallProgress.TabIndex = 0;
             // 
@@ -888,7 +1016,7 @@
             this.pnlWelcome.Appearance.Options.UseBackColor = true;
             this.pnlWelcome.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlWelcome.Controls.Add(this.labelControl3);
-            this.pnlWelcome.Controls.Add(this.txtWelcome);
+            this.pnlWelcome.Controls.Add(this.lblWelcome);
             this.pnlWelcome.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlWelcome.Location = new System.Drawing.Point(0, 0);
             this.pnlWelcome.Name = "pnlWelcome";
@@ -907,27 +1035,27 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Here\'s your clearance overview for this semester.";
             // 
-            // txtWelcome
+            // lblWelcome
             // 
-            this.txtWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.txtWelcome.Appearance.Options.UseFont = true;
-            this.txtWelcome.Appearance.Options.UseForeColor = true;
-            this.txtWelcome.Location = new System.Drawing.Point(20, 8);
-            this.txtWelcome.Name = "txtWelcome";
-            this.txtWelcome.Size = new System.Drawing.Size(264, 37);
-            this.txtWelcome.TabIndex = 0;
-            this.txtWelcome.Text = "Welcome, Charlotte!";
+            this.lblWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblWelcome.Appearance.Options.UseFont = true;
+            this.lblWelcome.Appearance.Options.UseForeColor = true;
+            this.lblWelcome.Location = new System.Drawing.Point(20, 8);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(264, 37);
+            this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.Text = "Welcome, Charlotte!";
             // 
             // pageRequestClearance
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
-            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
             this.pageRequestClearance.Controls.Add(this.pnlClearanceForm);
+            this.pageRequestClearance.Controls.Add(this.panelControl12);
             this.pageRequestClearance.Controls.Add(this.panelControl3);
             this.pageRequestClearance.Controls.Add(this.labelControl12);
             this.pageRequestClearance.Controls.Add(this.btnSubmitRequest);
@@ -943,7 +1071,7 @@
             this.panelUpload3.Controls.Add(this.labelControl31);
             this.panelUpload3.Controls.Add(this.pictureEdit3);
             this.panelUpload3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload3.Location = new System.Drawing.Point(0, 676);
+            this.panelUpload3.Location = new System.Drawing.Point(0, 726);
             this.panelUpload3.Name = "panelUpload3";
             this.panelUpload3.Size = new System.Drawing.Size(1574, 131);
             this.panelUpload3.TabIndex = 14;
@@ -958,7 +1086,7 @@
             this.labelControl36.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelControl36.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl36.ImageOptions.SvgImage")));
             this.labelControl36.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
-            this.labelControl36.Location = new System.Drawing.Point(41, 80);
+            this.labelControl36.Location = new System.Drawing.Point(39, 85);
             this.labelControl36.Name = "labelControl36";
             this.labelControl36.Size = new System.Drawing.Size(183, 27);
             this.labelControl36.TabIndex = 7;
@@ -1009,7 +1137,7 @@
             this.panelUpload2.Controls.Add(this.pictureEdit2);
             this.panelUpload2.Controls.Add(this.labelControl28);
             this.panelUpload2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUpload2.Location = new System.Drawing.Point(0, 488);
+            this.panelUpload2.Location = new System.Drawing.Point(0, 538);
             this.panelUpload2.Name = "panelUpload2";
             this.panelUpload2.Padding = new System.Windows.Forms.Padding(11, 75, 0, 0);
             this.panelUpload2.Size = new System.Drawing.Size(1574, 188);
@@ -1017,7 +1145,7 @@
             // 
             // labelControl32
             // 
-            this.labelControl32.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl32.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
             this.labelControl32.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl32.Appearance.Options.UseFont = true;
             this.labelControl32.Appearance.Options.UseForeColor = true;
@@ -1027,7 +1155,7 @@
             this.labelControl32.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl32.Location = new System.Drawing.Point(41, 78);
             this.labelControl32.Name = "labelControl32";
-            this.labelControl32.Size = new System.Drawing.Size(354, 27);
+            this.labelControl32.Size = new System.Drawing.Size(309, 27);
             this.labelControl32.TabIndex = 6;
             this.labelControl32.Text = "Answer the evaluation form and submit a screenshot.";
             // 
@@ -1045,7 +1173,7 @@
             // 
             // btnViewSSGPhoto
             // 
-            this.btnViewSSGPhoto.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.btnViewSSGPhoto.Appearance.BackColor = System.Drawing.Color.SteelBlue;
             this.btnViewSSGPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnViewSSGPhoto.Appearance.Options.UseBackColor = true;
             this.btnViewSSGPhoto.Appearance.Options.UseFont = true;
@@ -1102,7 +1230,7 @@
             this.panelrequirements.Controls.Add(this.labelControl27);
             this.panelrequirements.Controls.Add(this.labelControl11);
             this.panelrequirements.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelrequirements.Location = new System.Drawing.Point(0, 300);
+            this.panelrequirements.Location = new System.Drawing.Point(0, 350);
             this.panelrequirements.Name = "panelrequirements";
             this.panelrequirements.Padding = new System.Windows.Forms.Padding(14, 75, 21, 0);
             this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
@@ -1110,7 +1238,7 @@
             // 
             // btnViewTreasurerPhoto
             // 
-            this.btnViewTreasurerPhoto.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.btnViewTreasurerPhoto.Appearance.BackColor = System.Drawing.Color.SteelBlue;
             this.btnViewTreasurerPhoto.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnViewTreasurerPhoto.Appearance.Options.UseBackColor = true;
             this.btnViewTreasurerPhoto.Appearance.Options.UseFont = true;
@@ -1134,7 +1262,7 @@
             // 
             // labelControl30
             // 
-            this.labelControl30.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl30.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
             this.labelControl30.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl30.Appearance.Options.UseFont = true;
             this.labelControl30.Appearance.Options.UseForeColor = true;
@@ -1144,7 +1272,7 @@
             this.labelControl30.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl30.Location = new System.Drawing.Point(39, 79);
             this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(385, 27);
+            this.labelControl30.Size = new System.Drawing.Size(338, 27);
             this.labelControl30.TabIndex = 5;
             this.labelControl30.Text = " Pay your balance and upload your official receipt as proof.";
             // 
@@ -1194,7 +1322,7 @@
             this.pnlClearanceForm.Controls.Add(this.labelControl9);
             this.pnlClearanceForm.Controls.Add(this.txtSchoolYear);
             this.pnlClearanceForm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 87);
+            this.pnlClearanceForm.Location = new System.Drawing.Point(0, 137);
             this.pnlClearanceForm.Name = "pnlClearanceForm";
             this.pnlClearanceForm.Padding = new System.Windows.Forms.Padding(10);
             this.pnlClearanceForm.Size = new System.Drawing.Size(1574, 213);
@@ -1204,14 +1332,18 @@
             // 
             this.txtCurrentSchoolYear.Location = new System.Drawing.Point(797, 107);
             this.txtCurrentSchoolYear.Name = "txtCurrentSchoolYear";
-            this.txtCurrentSchoolYear.Size = new System.Drawing.Size(721, 28);
+            this.txtCurrentSchoolYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtCurrentSchoolYear.Properties.Appearance.Options.UseFont = true;
+            this.txtCurrentSchoolYear.Size = new System.Drawing.Size(721, 30);
             this.txtCurrentSchoolYear.TabIndex = 9;
             // 
             // txtSemester
             // 
             this.txtSemester.Location = new System.Drawing.Point(30, 109);
             this.txtSemester.Name = "txtSemester";
-            this.txtSemester.Size = new System.Drawing.Size(721, 28);
+            this.txtSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSemester.Properties.Appearance.Options.UseFont = true;
+            this.txtSemester.Size = new System.Drawing.Size(721, 30);
             this.txtSemester.TabIndex = 8;
             // 
             // labelControl13
@@ -1246,9 +1378,34 @@
             this.txtSchoolYear.Appearance.Options.UseForeColor = true;
             this.txtSchoolYear.Location = new System.Drawing.Point(797, 84);
             this.txtSchoolYear.Name = "txtSchoolYear";
-            this.txtSchoolYear.Size = new System.Drawing.Size(71, 17);
+            this.txtSchoolYear.Size = new System.Drawing.Size(89, 17);
             this.txtSchoolYear.TabIndex = 4;
-            this.txtSchoolYear.Text = "School Year";
+            this.txtSchoolYear.Text = "Academic Year";
+            // 
+            // panelControl12
+            // 
+            this.panelControl12.Appearance.BackColor = System.Drawing.Color.Linen;
+            this.panelControl12.Appearance.Options.UseBackColor = true;
+            this.panelControl12.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl12.Controls.Add(this.labelControl10);
+            this.panelControl12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl12.Location = new System.Drawing.Point(0, 87);
+            this.panelControl12.Name = "panelControl12";
+            this.panelControl12.Size = new System.Drawing.Size(1574, 50);
+            this.panelControl12.TabIndex = 15;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(27, 18);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(732, 17);
+            this.labelControl10.TabIndex = 1;
+            this.labelControl10.Text = "Requirements are approved by offices only. You can submit proof of compliance, bu" +
+    "t only the office can mark you as cleared.";
             // 
             // panelControl3
             // 
@@ -1314,20 +1471,23 @@
             // 
             // pageMyRequest
             // 
-            this.pageMyRequest.Caption = "pageMyRequest";
+            this.pageMyRequest.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pageMyRequest.Appearance.Options.UseBackColor = true;
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
-            this.pageMyRequest.Controls.Add(this.panelControl7);
             this.pageMyRequest.Controls.Add(this.panelControl6);
             this.pageMyRequest.Name = "pageMyRequest";
             this.pageMyRequest.Size = new System.Drawing.Size(1574, 1050);
             // 
             // panelControl9
             // 
+            this.panelControl9.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl9.Appearance.Options.UseBackColor = true;
+            this.panelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl9.Controls.Add(this.gridMyRequest);
             this.panelControl9.Controls.Add(this.labelControl24);
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl9.Location = new System.Drawing.Point(0, 199);
+            this.panelControl9.Location = new System.Drawing.Point(0, 149);
             this.panelControl9.Name = "panelControl9";
             this.panelControl9.Padding = new System.Windows.Forms.Padding(20, 70, 20, 10);
             this.panelControl9.Size = new System.Drawing.Size(1574, 627);
@@ -1336,10 +1496,10 @@
             // gridMyRequest
             // 
             this.gridMyRequest.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridMyRequest.Location = new System.Drawing.Point(22, 72);
+            this.gridMyRequest.Location = new System.Drawing.Point(20, 70);
             this.gridMyRequest.MainView = this.gridView3;
             this.gridMyRequest.Name = "gridMyRequest";
-            this.gridMyRequest.Size = new System.Drawing.Size(1530, 373);
+            this.gridMyRequest.Size = new System.Drawing.Size(1534, 421);
             this.gridMyRequest.TabIndex = 5;
             this.gridMyRequest.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1352,9 +1512,25 @@
             this.Remarks});
             this.gridView3.GridControl = this.gridMyRequest;
             this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridView3.OptionsView.ShowIndicator = false;
             // 
             // Office
             // 
+            this.Office.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Office.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.Office.AppearanceCell.Options.UseFont = true;
+            this.Office.AppearanceCell.Options.UseForeColor = true;
+            this.Office.AppearanceCell.Options.UseTextOptions = true;
+            this.Office.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Office.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.Office.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Office.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Office.AppearanceHeader.Options.UseFont = true;
+            this.Office.AppearanceHeader.Options.UseForeColor = true;
+            this.Office.AppearanceHeader.Options.UseTextOptions = true;
+            this.Office.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Office.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.Office.Caption = "Office";
             this.Office.FieldName = "Office";
             this.Office.Name = "Office";
@@ -1363,6 +1539,20 @@
             // 
             // Status
             // 
+            this.Status.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Status.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.Status.AppearanceCell.Options.UseFont = true;
+            this.Status.AppearanceCell.Options.UseForeColor = true;
+            this.Status.AppearanceCell.Options.UseTextOptions = true;
+            this.Status.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Status.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.Status.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Status.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Status.AppearanceHeader.Options.UseFont = true;
+            this.Status.AppearanceHeader.Options.UseForeColor = true;
+            this.Status.AppearanceHeader.Options.UseTextOptions = true;
+            this.Status.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Status.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.Status.Caption = "Status";
             this.Status.FieldName = "Status";
             this.Status.Name = "Status";
@@ -1371,6 +1561,20 @@
             // 
             // Remarks
             // 
+            this.Remarks.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Remarks.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.Remarks.AppearanceCell.Options.UseFont = true;
+            this.Remarks.AppearanceCell.Options.UseForeColor = true;
+            this.Remarks.AppearanceCell.Options.UseTextOptions = true;
+            this.Remarks.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Remarks.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.Remarks.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Remarks.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Remarks.AppearanceHeader.Options.UseFont = true;
+            this.Remarks.AppearanceHeader.Options.UseForeColor = true;
+            this.Remarks.AppearanceHeader.Options.UseTextOptions = true;
+            this.Remarks.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Remarks.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.Remarks.Caption = "Remarks";
             this.Remarks.FieldName = "Remarks";
             this.Remarks.Name = "Remarks";
@@ -1383,7 +1587,7 @@
             this.labelControl24.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl24.Appearance.Options.UseFont = true;
             this.labelControl24.Appearance.Options.UseForeColor = true;
-            this.labelControl24.Location = new System.Drawing.Point(27, 30);
+            this.labelControl24.Location = new System.Drawing.Point(25, 28);
             this.labelControl24.Name = "labelControl24";
             this.labelControl24.Size = new System.Drawing.Size(106, 21);
             this.labelControl24.TabIndex = 4;
@@ -1399,7 +1603,7 @@
             this.panelControl8.Controls.Add(this.simpleButton3);
             this.panelControl8.Controls.Add(this.simpleButton2);
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl8.Location = new System.Drawing.Point(0, 137);
+            this.panelControl8.Location = new System.Drawing.Point(0, 87);
             this.panelControl8.Name = "panelControl8";
             this.panelControl8.Size = new System.Drawing.Size(1574, 62);
             this.panelControl8.TabIndex = 2;
@@ -1452,31 +1656,6 @@
             this.simpleButton2.TabIndex = 0;
             this.simpleButton2.Text = "All";
             // 
-            // panelControl7
-            // 
-            this.panelControl7.Appearance.BackColor = System.Drawing.Color.Linen;
-            this.panelControl7.Appearance.Options.UseBackColor = true;
-            this.panelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl7.Controls.Add(this.labelControl23);
-            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl7.Location = new System.Drawing.Point(0, 87);
-            this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1574, 50);
-            this.panelControl7.TabIndex = 1;
-            // 
-            // labelControl23
-            // 
-            this.labelControl23.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl23.Appearance.ForeColor = System.Drawing.Color.SandyBrown;
-            this.labelControl23.Appearance.Options.UseFont = true;
-            this.labelControl23.Appearance.Options.UseForeColor = true;
-            this.labelControl23.Location = new System.Drawing.Point(27, 18);
-            this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(732, 17);
-            this.labelControl23.TabIndex = 1;
-            this.labelControl23.Text = "Requirements are approved by offices only. You can submit proof of compliance, bu" +
-    "t only the office can mark you as cleared.";
-            // 
             // panelControl6
             // 
             this.panelControl6.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -1517,6 +1696,7 @@
             // 
             // pageMyClearance
             // 
+            this.pageMyClearance.Caption = "pageMyClearance";
             this.pageMyClearance.Controls.Add(this.gcRecords);
             this.pageMyClearance.Controls.Add(this.pnlClearanceCopy);
             this.pageMyClearance.Controls.Add(this.panelControl5);
@@ -1539,16 +1719,72 @@
             this.gcRecords.TabIndex = 2;
             this.gcRecords.Text = "Clearance Records";
             // 
+            // gridMyClearance
+            // 
+            this.gridMyClearance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridMyClearance.Location = new System.Drawing.Point(2, 29);
+            this.gridMyClearance.MainView = this.tileViewMyClearance;
+            this.gridMyClearance.Name = "gridMyClearance";
+            this.gridMyClearance.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit1});
+            this.gridMyClearance.Size = new System.Drawing.Size(1570, 297);
+            this.gridMyClearance.TabIndex = 0;
+            this.gridMyClearance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.tileViewMyClearance});
+            // 
+            // tileViewMyClearance
+            // 
+            this.tileViewMyClearance.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Semester,
+            this.AcademicYear,
+            this.Completed});
+            this.tileViewMyClearance.GridControl = this.gridMyClearance;
+            this.tileViewMyClearance.Name = "tileViewMyClearance";
+            this.tileViewMyClearance.OptionsTiles.GroupTextPadding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            this.tileViewMyClearance.OptionsTiles.IndentBetweenGroups = 0;
+            this.tileViewMyClearance.OptionsTiles.IndentBetweenItems = 0;
+            this.tileViewMyClearance.OptionsTiles.ItemSize = new System.Drawing.Size(248, 70);
+            this.tileViewMyClearance.OptionsTiles.LayoutMode = DevExpress.XtraGrid.Views.Tile.TileViewLayoutMode.List;
+            this.tileViewMyClearance.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileViewMyClearance.OptionsTiles.Padding = new System.Windows.Forms.Padding(0);
+            this.tileViewMyClearance.OptionsTiles.RowCount = 0;
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition1);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition2);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition3);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition1);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition2);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition3);
+            tileViewItemElement1.Column = this.Semester;
+            tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement1.Text = "Semester";
+            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement2.Column = this.AcademicYear;
+            tileViewItemElement2.ColumnIndex = 1;
+            tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement2.Text = "AcademicYear";
+            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.Column = this.Completed;
+            tileViewItemElement3.ColumnIndex = 2;
+            tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement3.Text = "Completed";
+            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement1);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement2);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement3);
+            // 
             // pnlClearanceCopy
             // 
             this.pnlClearanceCopy.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
             this.pnlClearanceCopy.Appearance.Options.UseBackColor = true;
             this.pnlClearanceCopy.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlClearanceCopy.Controls.Add(this.simpleButton1);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl20);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl19);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl18);
-            this.pnlClearanceCopy.Controls.Add(this.labelControl17);
+            this.pnlClearanceCopy.Controls.Add(this.lblDateIssued);
+            this.pnlClearanceCopy.Controls.Add(this.lblProgramDepartment);
+            this.pnlClearanceCopy.Controls.Add(this.lblNameID);
+            this.pnlClearanceCopy.Controls.Add(this.lblSemYear);
             this.pnlClearanceCopy.Controls.Add(this.labelControl16);
             this.pnlClearanceCopy.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlClearanceCopy.Location = new System.Drawing.Point(0, 87);
@@ -1572,53 +1808,53 @@
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "Download PDF";
             // 
-            // labelControl20
+            // lblDateIssued
             // 
-            this.labelControl20.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl20.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl20.Appearance.Options.UseFont = true;
-            this.labelControl20.Appearance.Options.UseForeColor = true;
-            this.labelControl20.Location = new System.Drawing.Point(797, 209);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(116, 17);
-            this.labelControl20.TabIndex = 4;
-            this.labelControl20.Text = "Issued: Dec 3, 2025 ";
+            this.lblDateIssued.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateIssued.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblDateIssued.Appearance.Options.UseFont = true;
+            this.lblDateIssued.Appearance.Options.UseForeColor = true;
+            this.lblDateIssued.Location = new System.Drawing.Point(797, 209);
+            this.lblDateIssued.Name = "lblDateIssued";
+            this.lblDateIssued.Size = new System.Drawing.Size(116, 17);
+            this.lblDateIssued.TabIndex = 4;
+            this.lblDateIssued.Text = "Issued: Dec 3, 2025 ";
             // 
-            // labelControl19
+            // lblProgramDepartment
             // 
-            this.labelControl19.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl19.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl19.Appearance.Options.UseFont = true;
-            this.labelControl19.Appearance.Options.UseForeColor = true;
-            this.labelControl19.Location = new System.Drawing.Point(749, 186);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(213, 17);
-            this.labelControl19.TabIndex = 3;
-            this.labelControl19.Text = "BSIT — College of Computer Studies";
+            this.lblProgramDepartment.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgramDepartment.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblProgramDepartment.Appearance.Options.UseFont = true;
+            this.lblProgramDepartment.Appearance.Options.UseForeColor = true;
+            this.lblProgramDepartment.Location = new System.Drawing.Point(749, 186);
+            this.lblProgramDepartment.Name = "lblProgramDepartment";
+            this.lblProgramDepartment.Size = new System.Drawing.Size(213, 17);
+            this.lblProgramDepartment.TabIndex = 3;
+            this.lblProgramDepartment.Text = "BSIT — College of Computer Studies";
             // 
-            // labelControl18
+            // lblNameID
             // 
-            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl18.Appearance.Options.UseFont = true;
-            this.labelControl18.Appearance.Options.UseForeColor = true;
-            this.labelControl18.Location = new System.Drawing.Point(749, 163);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(206, 17);
-            this.labelControl18.TabIndex = 2;
-            this.labelControl18.Text = "Charlotte P. Forrosuelo · 2014-1234";
+            this.lblNameID.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameID.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblNameID.Appearance.Options.UseFont = true;
+            this.lblNameID.Appearance.Options.UseForeColor = true;
+            this.lblNameID.Location = new System.Drawing.Point(749, 163);
+            this.lblNameID.Name = "lblNameID";
+            this.lblNameID.Size = new System.Drawing.Size(206, 17);
+            this.lblNameID.TabIndex = 2;
+            this.lblNameID.Text = "Charlotte P. Forrosuelo · 2014-1234";
             // 
-            // labelControl17
+            // lblSemYear
             // 
-            this.labelControl17.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl17.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl17.Appearance.Options.UseFont = true;
-            this.labelControl17.Appearance.Options.UseForeColor = true;
-            this.labelControl17.Location = new System.Drawing.Point(736, 46);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(240, 17);
-            this.labelControl17.TabIndex = 1;
-            this.labelControl17.Text = "2nd Semester, Academic Year 2024–2025";
+            this.lblSemYear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSemYear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.lblSemYear.Appearance.Options.UseFont = true;
+            this.lblSemYear.Appearance.Options.UseForeColor = true;
+            this.lblSemYear.Location = new System.Drawing.Point(736, 46);
+            this.lblSemYear.Name = "lblSemYear";
+            this.lblSemYear.Size = new System.Drawing.Size(240, 17);
+            this.lblSemYear.TabIndex = 1;
+            this.lblSemYear.Text = "2nd Semester, Academic Year 2024–2025";
             // 
             // labelControl16
             // 
@@ -1784,22 +2020,6 @@
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // gridMyClearance
-            // 
-            this.gridMyClearance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridMyClearance.Location = new System.Drawing.Point(2, 29);
-            this.gridMyClearance.MainView = this.gridView1;
-            this.gridMyClearance.Name = "gridMyClearance";
-            this.gridMyClearance.Size = new System.Drawing.Size(1570, 297);
-            this.gridMyClearance.TabIndex = 0;
-            this.gridMyClearance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridMyClearance;
-            this.gridView1.Name = "gridView1";
-            // 
             // StudentPortal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1812,6 +2032,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Clearance Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
@@ -1825,6 +2046,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlUser)).EndInit();
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
@@ -1878,6 +2100,9 @@
             this.pnlClearanceForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCurrentSchoolYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSemester.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
+            this.panelControl12.ResumeLayout(false);
+            this.panelControl12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -1889,15 +2114,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
-            this.panelControl7.ResumeLayout(false);
-            this.panelControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
             this.pageMyClearance.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcRecords)).EndInit();
             this.gcRecords.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileViewMyClearance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceCopy)).EndInit();
             this.pnlClearanceCopy.ResumeLayout(false);
             this.pnlClearanceCopy.PerformLayout();
@@ -1909,8 +2133,6 @@
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMyClearance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1941,7 +2163,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraEditors.PanelControl pnlWelcome;
-        private DevExpress.XtraEditors.LabelControl txtWelcome;
+        private DevExpress.XtraEditors.LabelControl lblWelcome;
         private DevExpress.XtraEditors.PanelControl pnlStatusCards;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.PanelControl pnlCard1;
@@ -1974,15 +2196,13 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.GroupControl gcRecords;
-        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.LabelControl lblSemYear;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.LabelControl labelControl20;
-        private DevExpress.XtraEditors.LabelControl labelControl19;
-        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl lblDateIssued;
+        private DevExpress.XtraEditors.LabelControl lblProgramDepartment;
+        private DevExpress.XtraEditors.LabelControl lblNameID;
         private DevExpress.XtraEditors.PanelControl panelControl6;
-        private DevExpress.XtraEditors.PanelControl panelControl7;
-        private DevExpress.XtraEditors.LabelControl labelControl23;
         private DevExpress.XtraEditors.LabelControl labelControl22;
         private DevExpress.XtraEditors.LabelControl labelControl21;
         private DevExpress.XtraEditors.PanelControl panelControl8;
@@ -2039,7 +2259,14 @@
         private DevExpress.XtraEditors.TextEdit txtSemester;
         private DevExpress.XtraEditors.TextEdit txtCurrentSchoolYear;
         private DevExpress.XtraGrid.GridControl gridMyClearance;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileViewMyClearance;
+        private DevExpress.XtraGrid.Columns.TileViewColumn Semester;
+        private DevExpress.XtraGrid.Columns.TileViewColumn AcademicYear;
+        private DevExpress.XtraGrid.Columns.TileViewColumn Completed;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraEditors.PanelControl panelControl11;
+        private DevExpress.XtraEditors.PanelControl panelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }
 

@@ -92,10 +92,18 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var conn = dbManager.GetConnection())
             {
+                // Block duplicate: same Semester + AcademicYear cannot exist more than once
+                string checkSql = @"SELECT COUNT(1) FROM ClearancePeriods 
+                            WHERE Semester = @sem AND AcademicYear = @ay";
+                int exists = conn.ExecuteScalar<int>(checkSql, new { sem = semester, ay = academicYear });
+
+                if (exists > 0) return false;
+
+                // Deactivate all existing periods, then insert the new active one
                 conn.Execute("UPDATE ClearancePeriods SET IsActive = 0");
 
                 string sql = @"INSERT INTO ClearancePeriods (Semester, AcademicYear, IsActive) 
-                               VALUES (@sem, @ay, 1);";
+                       VALUES (@sem, @ay, 1);";
 
                 return conn.Execute(sql, new { sem = semester, ay = academicYear }) > 0;
             }
@@ -127,5 +135,38 @@ namespace SchoolClearanceSystem.Repository
                                                         LIMIT 1").FirstOrDefault();
             }
         }
+        // ───────────────────────────────────────────────────────────────
+        // METHOD: CloseActivePeriod
+        //
+        // CALLED BY: AdminDashboard.cs → btnClosePeriod_Click
+        //
+        // PURPOSE:
+        //   Sets ALL periods to IsActive = 0.
+        //   This closes the clearance system without opening a new period.
+        //   Students will see "No active period" and cannot submit.
+        //
+        // RETURNS:
+        //   true  → at least one period was deactivated
+        //   false → nothing was active to begin with
+        // ───────────────────────────────────────────────────────────────
+        public bool CloseActivePeriod()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = "UPDATE ClearancePeriods SET IsActive = 0 WHERE IsActive = 1";
+                return db.Execute(sql) > 0;
+            }
+        }
+
+        public bool DeletePeriod(string semester, string academicYear)
+        {
+            using (var conn = dbManager.GetConnection())
+            {
+                string sql = @"DELETE FROM ClearancePeriods 
+                       WHERE Semester = @sem AND AcademicYear = @ay AND IsActive = 0";
+                return conn.Execute(sql, new { sem = semester, ay = academicYear }) > 0;
+            }
+        }
+
     }
 }

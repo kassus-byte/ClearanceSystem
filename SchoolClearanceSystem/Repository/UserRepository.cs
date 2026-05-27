@@ -5,20 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Helpers; // add this at the top
 
 namespace SchoolClearanceSystem.Repository
 {
     public class UserRepository : BaseRepository
     {
+        // ── Called by Login.cs ────────────────────────────────────────
         public User ValidateLogin(string userId, string password)
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = "SELECT * FROM Users WHERE UserID = @id AND Password = @pass";
-                return db.QueryFirstOrDefault<User>(sql, new { id = userId, pass = password });
+                string sql = "SELECT * FROM Users WHERE UserID = @id";
+                var user = db.QueryFirstOrDefault<User>(sql, new { id = userId });
+
+                if (user == null) return null;
+
+                bool valid = user.Password.StartsWith("$2")
+                    ? Helpers.PasswordHelper.Verify(password, user.Password)
+                    : user.Password == password; // handles your existing plain-text accounts
+
+                return valid ? user : null;
             }
         }
-
+        // ── Called by Login.cs ────────────────────────────────────────
         public User GetUserDetails(string userId)
         {
             using (var db = dbManager.GetConnection())
@@ -28,181 +38,174 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
+        // ── Called by Registration.cs and UserInfoForm (Register mode) ─
+       
         public bool AddUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
-                // DETENSIVE OOP CHECK: Guard clause against duplicate identity keys before running the command
                 string checkSql = "SELECT COUNT(1) FROM Users WHERE UserID = @UserID";
                 int exists = db.ExecuteScalar<int>(checkSql, new { UserID = user.UserID });
+                if (exists > 0) return false;
 
-                if (exists > 0)
-                {
-                    // Gracefully drops execution out of the pipeline without throwing a crash exception.
-                    // This naturally routes control right back to your custom form's friendly alert box.
-                    return false;
-                }
+                // Hash before storing — plain text never reaches the database
+                user.Password = PasswordHelper.Hash(user.Password);
 
-                string sql = @"INSERT INTO Users (UserID, Password, FullName, Program, Year, Role, UploadPath, DateCreated) 
-                               VALUES (@UserID, @Password, @FullName, @Program, @Year, @Role, @UploadPath, @DateCreated)";
+                string sql = @"INSERT INTO Users 
+                       (UserID, Password, LastName, FirstName, MiddleName, 
+                        Program, Year, Role, DateCreated)
+                       VALUES 
+                       (@UserID, @Password, @LastName, @FirstName, @MiddleName, 
+                        @Program, @Year, @Role, @DateCreated)";
 
                 if (string.IsNullOrEmpty(user.DateCreated))
-                {
                     user.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                }
 
                 return db.Execute(sql, user) > 0;
             }
         }
-
+        // ── Called by UserInfoForm (Edit mode) ────────────────────────
         public bool EditUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"UPDATE Users 
-                               SET Password = @Password, FullName = @FullName, Program = @Program, Year = @Year, Role = @Role, UploadPath = @UploadPath 
-                               WHERE UserID = @UserID";
+               SET Password    = @Password,
+                   LastName    = @LastName,
+                   FirstName   = @FirstName,
+                   MiddleName  = @MiddleName,
+                   Program     = @Program,
+                   Year        = @Year,
+                   Role        = @Role
+               WHERE UserID = @UserID";
                 return db.Execute(sql, user) > 0;
             }
         }
 
+        // ── Called by AdminDashboard.cs → RefreshData() ───────────────
         public IEnumerable<User> GetUsersByRole(string role, bool statusFlag = true)
         {
             using (var db = dbManager.GetConnection())
             {
-                if (role == "Student")
-                {
-                    string sql = "SELECT * FROM Users WHERE Role = 'Student'";
-                    return db.Query<User>(sql).ToList();
-                }
-                else
-                {
-                    string sql = "SELECT * FROM Users WHERE Role != 'Student'";
-                    return db.Query<User>(sql).ToList();
-                }
+                string sql = role == "Student"
+                    ? "SELECT * FROM Users WHERE Role = 'Student'"
+                    : "SELECT * FROM Users WHERE Role != 'Student'";
+                return db.Query<User>(sql).ToList();
             }
         }
 
+        // ── Called by AdminDashboard.cs ───────────────────────────────
         public bool DeleteUser(string userId)
         {
             using (var db = dbManager.GetConnection())
             {
-                // 1. Clear out all dependent clearance request records linked to this student first
-                string deleteRequestsSql = "DELETE FROM ClearanceRequests WHERE StudentID = @id;";
-                db.Execute(deleteRequestsSql, new { id = userId });
-
-                // 2. Now that the dependencies are gone, safely delete the user record
-                string deleteUserSql = "DELETE FROM Users WHERE UserID = @id;";
-                return db.Execute(deleteUserSql, new { id = userId }) > 0;
+                // Delete dependent clearance records first (FK constraint)
+                db.Execute("DELETE FROM ClearanceRequests WHERE UserID = @id", new { id = userId });
+                return db.Execute("DELETE FROM Users WHERE UserID = @id", new { id = userId }) > 0;
             }
         }
 
-        public IEnumerable<dynamic> GetStudentStatus(string userId)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT 
-                                Department AS Office,
-                                Department AS OfficeName, 
-                                Department AS Department, 
-                                Status, 
-                                Remarks 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id";
-
-                return db.Query(sql, new { id = userId }).ToList();
-            }
-        }
-
+        // ── Called by StudentPortal.cs ────────────────────────────────
         public IEnumerable<dynamic> GetStudentStatus(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT 
                                 Department AS Office,
-                                Department AS OfficeName, 
-                                Department AS Department, 
-                                Status, 
-                                Remarks 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id 
-                                 AND Semester = @semester 
+                                Department AS OfficeName,
+                                Department AS Department,
+                                Status,
+                                Remarks
+                               FROM ClearanceRequests
+                               WHERE UserID    = @id
+                                 AND Semester     = @semester
                                  AND AcademicYear = @academicYear";
 
-                return db.Query(sql, new { id = userId, semester = semester, academicYear = academicYear }).ToList();
+                return db.Query(sql, new { id = userId, semester, academicYear }).ToList();
             }
         }
 
-        public int GetClearedCount(string userId)
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // role: "Student" = students only, "Staff" = non-students, "All" = everyone
+        public int GetUserCount(string role)
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT COUNT(*) 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id AND Status = 'Approved'";
-
-                return db.ExecuteScalar<int>(sql, new { id = userId });
+                string sql = role == "Student" ? "SELECT COUNT(*) FROM Users WHERE Role = 'Student'"
+                           : role == "Staff" ? "SELECT COUNT(*) FROM Users WHERE Role != 'Student'"
+                                               : "SELECT COUNT(*) FROM Users";
+                return db.ExecuteScalar<int>(sql);
             }
         }
 
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // Counts ALL new accounts this week (students + staff)
+        // FIX: removed Role = 'Student' filter so office accounts are counted too
+        public int GetNewRegistrationsThisWeek()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT COUNT(*) FROM Users
+                               WHERE DateCreated >= date('now', '-7 days')";
+                return db.ExecuteScalar<int>(sql);
+            }
+        }
+
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // Populates the Registered Accounts grid — all users added this week
+        public IEnumerable<User> GetUsersRegisteredThisWeek()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT * FROM Users
+                               WHERE DateCreated >= date('now', '-7 days')
+                               ORDER BY DateCreated DESC";
+                return db.Query<User>(sql).ToList();
+            }
+        }
+
+        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+        // FIX: ORDER BY LastName, FirstName instead of FullName
+        // FullName is no longer a DB column — it is computed in the User model
+        public IEnumerable<User> GetAllUsers()
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = "SELECT * FROM Users ORDER BY Role, LastName, FirstName";
+                return db.Query<User>(sql).ToList();
+            }
+        }
+
+        // Gets distinct clearance periods a student has submitted requests for
+        public IEnumerable<ClearanceRecord> GetStudentClearancePeriods(string userId)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"
+            SELECT DISTINCT Semester, AcademicYear, 'Completed' AS Status
+            FROM ClearanceRequests
+            WHERE UserID = @id
+            GROUP BY Semester, AcademicYear
+            HAVING COUNT(CASE WHEN Status = 'Approved' THEN 1 END) = COUNT(*)
+            ORDER BY AcademicYear DESC, Semester DESC";
+
+                return db.Query<ClearanceRecord>(sql, new { id = userId }).ToList();
+            }
+        }
+        // ── Called by StudentPortal.cs → UpdateDashboard() ───────────
         public int GetClearedCount(string userId, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT COUNT(*) 
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id 
-                                 AND Status = 'Approved'
-                                 AND Semester = @semester 
+                string sql = @"SELECT COUNT(*)
+                               FROM ClearanceRequests
+                               WHERE UserID    = @id
+                                 AND Status       = 'Approved'
+                                 AND Semester     = @semester
                                  AND AcademicYear = @academicYear";
 
-                return db.ExecuteScalar<int>(sql, new { id = userId, semester = semester, academicYear = academicYear });
-            }
-        }
-
-        public IEnumerable<ClearanceHistoryViewModel> GetStudentClearanceHistory(string userId, string currentSem, string currentYear)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT 
-                                AcademicYear, 
-                                Semester,
-                                SUM(CASE WHEN Status = 'Approved' THEN 1 ELSE 0 END) as ApprovedCount
-                               FROM ClearanceRequests 
-                               WHERE StudentID = @id
-                               GROUP BY AcademicYear, Semester
-                               ORDER BY AcademicYear DESC, Semester DESC";
-
-                var rawList = db.Query(sql, new { id = userId }).ToList();
-                var processedList = new List<ClearanceHistoryViewModel>();
-
-                foreach (var record in rawList)
-                {
-                    string year = record.AcademicYear?.ToString();
-                    string sem = record.Semester?.ToString();
-                    int approvedCount = record.ApprovedCount != null ? Convert.ToInt32(record.ApprovedCount) : 0;
-                    string calculatedStatus = "Incomplete";
-
-                    if (year == currentYear && sem == currentSem)
-                    {
-                        calculatedStatus = "Clearance Processing Active";
-                    }
-                    else if (approvedCount >= 3)
-                    {
-                        calculatedStatus = "Clearance Done";
-                    }
-
-                    processedList.Add(new ClearanceHistoryViewModel
-                    {
-                        AcademicYear = year,
-                        Semester = sem,
-                        PeriodName = $"{year} {sem}",
-                        StatusText = calculatedStatus
-                    });
-                }
-
-                return processedList;
+                return db.ExecuteScalar<int>(sql, new { id = userId, semester, academicYear });
             }
         }
     }
-}   
+}

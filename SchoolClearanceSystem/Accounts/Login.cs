@@ -1,118 +1,109 @@
 ﻿using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
 using SchoolClearanceSystem.Dashboard;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
-    public partial class Login : DevExpress.XtraEditors.XtraForm
+    public partial class Login : XtraForm
     {
+        // Handles all user account queries (validate, fetch details)
         private readonly UserRepository _userRepo = new UserRepository();
+
+        // Maps each role string to the Form that should open — no switch needed
+        private readonly Dictionary<string, Func<Form>> _roleForms;
 
         public Login()
         {
             InitializeComponent();
+            ConfigurePasswordToggle();
 
-            // Hide password on startup
-            txtPassword.Properties.UseSystemPasswordChar = true;
+            // Each role key points to a lambda that creates the correct dashboard
+            _roleForms = new Dictionary<string, Func<Form>>
+            {
+                { "Admin",            () => new AdminDashboard()    },
+                { "Treasurer",        () => new TreasurerDashboard() },
+                { "Technical Office", () => new TechnicalOffice()   },
+                { "SSG",              () => new SSGOffice()          },
+                { "Student",          () => new StudentPortal()      },
+            };
+        }
 
-            // Set initial label text on startup
+        // ── Password Toggle ───────────────────────────────────────────
+        private void ConfigurePasswordToggle()
+        {
             chkShowPassword.Properties.Caption = "Show Password";
 
-            // Wire CheckEdit event to change both password visibility and the label text
+            // Toggles password masking and updates the checkbox label on every check change
             chkShowPassword.CheckedChanged += (s, e) =>
             {
-                // 1. Toggle password visibility
                 txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
+                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
 
-                // 2. Dynamically change the text based on checked state
-                if (chkShowPassword.Checked)
-                {
-                    chkShowPassword.Properties.Caption = "Hide Password";
-                }
-                else
-                {
-                    chkShowPassword.Properties.Caption = "Show Password";
-                }
-
-                // Keep focus and put cursor at the end of the text
+                // Keep cursor at end of text after toggle
                 txtPassword.Focus();
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
         }
 
-        // ── Login button ─────────────────────────────────────────────────
+        // ── Login ─────────────────────────────────────────────────────
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string id = txtUserID.Text.Trim();
             string pass = txtPassword.Text;
 
+            // Block empty submissions before hitting the database
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Please enter both ID and Password.", "Validation Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notify("Please enter both ID and Password.", "Validation Error", MessageBoxIcon.Warning);
                 return;
             }
 
-            // Since ValidateLogin returns a User instance or null, we can do a straightforward type assignment
+            // Check credentials against the database (BCrypt verified inside)
             var loggedInUser = _userRepo.ValidateLogin(id, pass);
-
-            if (loggedInUser != null)
+            if (loggedInUser == null)
             {
-                Session.CurrentUser = _userRepo.GetUserDetails(id);
-                var user = Session.CurrentUser;
-
-                if (user == null) return;
-
-                Form nextForm = null;
-
-                // FIXED: Changed "Technical" case to match "Technical Office" string value stored in database
-                switch (user.Role)
-                {
-                    case "Admin":
-                        nextForm = new AdminDashboard();
-                        break;
-                    case "Treasurer":
-                        nextForm = new TreasurerDashboard();
-                        break;
-                    case "Technical Office":
-                        nextForm = new TechnicalOffice();
-                        break;
-                    case "SSG":
-                        nextForm = new SSGOffice();
-                        break;
-                    case "Student":
-                        nextForm = new StudentPortal();
-                        break;
-                    default:
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Invalid User Role detected.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                }
-
-                if (nextForm != null)
-                {
-                    nextForm.Show();
-                    this.Hide();
-                }
+                Notify("Invalid User ID or Password.", "Login Failed", MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            // Store full user details in the global session for use across all forms
+            Session.CurrentUser = _userRepo.GetUserDetails(id);
+            var user = Session.CurrentUser;
+            if (user == null) return;
+
+            // Look up which form to open based on the user's role
+            if (!_roleForms.TryGetValue(user.Role, out var createForm))
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Invalid User ID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notify("Invalid User Role detected.", "Access Denied", MessageBoxIcon.Error);
+                return;
             }
+
+            // Open the role-appropriate dashboard and hide the login form
+            var nextForm = createForm();
+            nextForm.Show();
+            this.Hide();
         }
 
-        // ── Register link ─────────────────────────────────────────────────
-        private void panelControl1_Paint(object sender, PaintEventArgs e) { }
-
+        // ── Register Link ─────────────────────────────────────────────
         private void lnkRegister_Click(object sender, EventArgs e)
         {
-            Registration reg = new Registration();
+            var reg = new Registration();
+
+            // Bring login back when registration window closes
             reg.FormClosed += (s, args) => this.Show();
             reg.Show();
             this.Hide();
         }
+
+        private void panelControl1_Paint(object sender, System.Drawing.Graphics e) { }
+
+        // ── Helper ────────────────────────────────────────────────────
+        // Shorthand for showing a message box — keeps other methods clean
+        private void Notify(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Information) =>
+            XtraMessageBox.Show(text, title, MessageBoxButtons.OK, icon);
     }
 }

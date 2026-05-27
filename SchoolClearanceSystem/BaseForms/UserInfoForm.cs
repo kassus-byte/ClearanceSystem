@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraEditors;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -15,6 +15,7 @@ namespace SchoolClearanceSystem
         private readonly FormMode _mode;
         private readonly User _selectedUser;
         private readonly UserRepository _userRepo = new UserRepository();
+
         private bool IsEdit => _mode == FormMode.Edit;
 
         public UserInfoForm(FormMode mode, User user = null)
@@ -23,99 +24,157 @@ namespace SchoolClearanceSystem
             _mode = mode;
             _selectedUser = user ?? new User();
 
-            // Encapsulated Anonymous Toggle Action
             txtPassword.Properties.UseSystemPasswordChar = true;
-            chkShowPassword.Properties.Caption = "Show Password";
-            chkShowPassword.CheckedChanged += (s, e) => {
-                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
-                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
-                txtPassword.Focus();
-                txtPassword.SelectionStart = txtPassword.Text.Length;
-            };
+
+            // Delegate shared setup to UIHelper — no local duplicates needed
+            UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
+            UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
+
+            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+        // ── Load ──────────────────────────────────────────────────────
         private void UserInfoForm_Load(object sender, EventArgs e)
         {
             cbRole.SelectedIndexChanged -= ToggleFieldsBasedOnRole;
+
             cbProgram.Items.Clear();
             cbProgram.Items.Add("BSIT");
 
-            // Polymorphic UI Structuring Engine
             this.Text = IsEdit ? "Edit Account Information" : "Register New Account";
             lblTitle.Text = IsEdit ? "Edit Information" : "Register Account";
             btnSave.Text = IsEdit ? "Update Changes" : "Save Account";
             txtUserID.ReadOnly = IsEdit;
             cbRole.Enabled = !IsEdit;
 
-            // Direct Model-to-View Property Extraction
-            txtUserID.Text = _selectedUser.UserID;
-            txtFullName.Text = _selectedUser.FullName;
-            cbRole.Text = _selectedUser.Role;
-            cbProgram.Text = _selectedUser.Program?.Trim();
-            cbYear.Text = _selectedUser.Year?.Trim();
-            txtPassword.Text = IsEdit ? string.Empty : _selectedUser.Password;
-            txtDateCreated.Text = IsEdit ? $"Generated on {DateTime.Now.ToShortDateString()}" : "Automatically Generated";
+            PopulateFields();
 
             cbRole.SelectedIndexChanged += ToggleFieldsBasedOnRole;
             ToggleFieldsBasedOnRole(null, null);
         }
 
+        private void PopulateFields()
+        {
+            txtUserID.Text = _selectedUser.UserID;
+            txtLastName.Text = _selectedUser.LastName ?? string.Empty;
+            txtFirstName.Text = _selectedUser.FirstName ?? string.Empty;
+            txtMiddleName.Text = _selectedUser.MiddleName ?? string.Empty;
+            cbRole.Text = _selectedUser.Role;
+            cbProgram.Text = _selectedUser.Program?.Trim();
+            cbYear.Text = _selectedUser.Year?.Trim();
+            txtPassword.Text = IsEdit ? string.Empty : _selectedUser.Password;
+            txtDateCreated.Text = IsEdit
+                ? $"Generated on {DateTime.Now.ToShortDateString()}"
+                : "Automatically Generated";
+        }
+
+        // ── Role Toggle ───────────────────────────────────────────────
         private void ToggleFieldsBasedOnRole(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(cbRole.Text)) return;
 
-            // FIX: Evaluate against the active combo box selection text dynamically, not the underlying model state snapshot
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
-
-            cbProgram.DropDownStyle = cbYear.DropDownStyle = isStudent ? ComboBoxStyle.DropDownList : ComboBoxStyle.DropDown;
             cbProgram.Enabled = cbYear.Enabled = isStudent;
-            cbProgram.BackColor = cbYear.BackColor = isStudent ? Color.White : Color.LightGray;
 
-            cbProgram.Text = isStudent && cbProgram.Text == "N/A" ? "" : (!isStudent ? "N/A" : cbProgram.Text);
-            cbYear.Text = isStudent && cbYear.Text == "N/A" ? "" : (!isStudent ? "N/A" : cbYear.Text);
+            var bg = isStudent ? Color.White : Color.LightGray;
+            cbProgram.BackColor = cbYear.BackColor = bg;
+
+            if (!isStudent)
+            {
+                cbProgram.Text = cbYear.Text = "N/A";
+            }
+            else if (cbProgram.Text == "N/A") cbProgram.Text = string.Empty;
+            else if (cbYear.Text == "N/A") cbYear.Text = string.Empty;
         }
 
+        // ── Save ──────────────────────────────────────────────────────
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUserID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(cbRole.Text) || (!IsEdit && string.IsNullOrWhiteSpace(txtPassword.Text)))
+            if (!ValidateFields()) return;
+
+            ApplyFormDataToUser();
+
+            if (!IsEdit)
+                SaveNewUser();
+            else
+                UpdateExistingUser();
+        }
+
+        private bool ValidateFields()
+        {
+            if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                string.IsNullOrWhiteSpace(txtLastName.Text) ||
+                string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                string.IsNullOrWhiteSpace(cbRole.Text) ||
+                (!IsEdit && string.IsNullOrWhiteSpace(txtPassword.Text)))
             {
-                XtraMessageBox.Show($"Please fill in ID, Name, Role, and {(IsEdit ? "" : "Password.")}", "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                UIHelper.ShowWarning(
+                    $"Please fill in ID, Last Name, First Name, Role{(IsEdit ? "." : ", and Password.")}",
+                    "Required Fields");
+                return false;
             }
 
-            if (cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase) && (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" || string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A"))
+            bool studentNeedsProgram =
+                cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase) &&
+                (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" ||
+                 string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A");
+
+            if (studentNeedsProgram)
             {
-                XtraMessageBox.Show("Student requires a valid Program and Year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                UIHelper.ShowWarning("Student requires a valid Program and Year.", "Validation Error");
+                return false;
             }
 
-            // Capture Form State to Model State
+            return true;
+        }
+
+        private void ApplyFormDataToUser()
+        {
             if (!IsEdit) _selectedUser.UserID = txtUserID.Text.Trim();
-            _selectedUser.FullName = txtFullName.Text.Trim();
+
+            _selectedUser.LastName = txtLastName.Text.Trim();
+            _selectedUser.FirstName = txtFirstName.Text.Trim();
+            _selectedUser.MiddleName = txtMiddleName.Text.Trim();
             _selectedUser.Role = cbRole.Text;
             _selectedUser.Program = cbProgram.Text;
             _selectedUser.Year = cbYear.Text;
-            if (!IsEdit || !string.IsNullOrWhiteSpace(txtPassword.Text)) _selectedUser.Password = txtPassword.Text.Trim();
 
-            // Execute Business Pipeline
-            if (!IsEdit)
+            if (!IsEdit || !string.IsNullOrWhiteSpace(txtPassword.Text))
+                _selectedUser.Password = Helpers.PasswordHelper.Hash(txtPassword.Text.Trim());
+        }
+
+        private void SaveNewUser()
+        {
+            if (_userRepo.AddUser(_selectedUser))
+                CloseWithResult(DialogResult.OK, "Registration Successful!");
+            else
             {
-                if (_userRepo.AddUser(_selectedUser)) CloseWithResult(DialogResult.OK, "Registration Successful!");
-                else { XtraMessageBox.Show($"User ID '{_selectedUser.UserID}' is taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtUserID.Focus(); }
-            }
-            else if (_userRepo.EditUser(_selectedUser))
-            {
-                CloseWithResult(DialogResult.OK, "Account updated!");
+                UIHelper.ShowError($"User ID '{_selectedUser.UserID}' is taken.", "Error");
+                txtUserID.Focus();
             }
         }
 
-        private void CloseWithResult(DialogResult res, string msg)
+        private void UpdateExistingUser()
         {
-            XtraMessageBox.Show(msg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = res;
+            if (_userRepo.EditUser(_selectedUser))
+                CloseWithResult(DialogResult.OK, "Account updated!");
+        }
+
+        private void CloseWithResult(DialogResult result, string message)
+        {
+            UIHelper.ShowSuccess(message);
+            this.DialogResult = result;
             Close();
         }
 
-        private void btnCancel_Click_1(object sender, EventArgs e) { this.DialogResult = DialogResult.Cancel; Close(); }
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void txtFullName_EditValueChanged(object sender, EventArgs e) { }
     }
 }

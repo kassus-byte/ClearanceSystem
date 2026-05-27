@@ -1,186 +1,101 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
+using System;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
-    public partial class Registration : DevExpress.XtraEditors.XtraForm
+    public partial class Registration : XtraForm
     {
-        private readonly UserRepository _userRepo = new UserRepository();
+        // Allows injecting a mock repo for testing; defaults to a real one
+        private readonly UserRepository _userRepo;
 
-     
-        private string uploadedImagePath = string.Empty;
-
-        public Registration()
+        public Registration(UserRepository userRepo = null)
         {
-            SQLitePCL.Batteries.Init();
             InitializeComponent();
+            _userRepo = userRepo ?? new UserRepository();
 
-          
-            txtPassword.Properties.UseSystemPasswordChar = true;
-            chkShowPassword.Properties.Caption = "Show Password";
-
-            chkShowPassword.CheckedChanged += (s, e) =>
-            {
-                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
-                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
-                txtPassword.Focus();
-                txtPassword.SelectionStart = txtPassword.Text.Length;
-            };
-
-            
-            cmbProgram.Properties.Items.Clear();
-            cmbProgram.Properties.Items.AddRange(new object[] { "BSIT" });
-            cmbProgram.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-
-           
-            btnViewPhoto.Enabled = false;
+            // Delegate password toggle and name restrictions to UIHelper
+            UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
+            UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
         }
 
-        // ── Upload photo ─────────────────────────────────────────────────
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
-            using (XtraOpenFileDialog ofd = new XtraOpenFileDialog())
-            {
-                ofd.Title = "Select Student Photo";
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    uploadedImagePath = ofd.FileName; 
-                    btnViewPhoto.Enabled = true;     // Enable the view button!
-
-                    XtraMessageBox.Show("Photo attached successfully! Click 'View Photo' to double check it.",
-                        "Photo Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
-
-      
-       
-        // ── Register button ──────────────────────────────────────────────
+        // ── Register ──────────────────────────────────────────────────
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
-                string.IsNullOrWhiteSpace(txtFullName.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                XtraMessageBox.Show("Fields cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (!ValidateRequiredFields()) return;
 
-            if (string.IsNullOrWhiteSpace(cmbProgram.Text) || string.IsNullOrWhiteSpace(cmbYear.Text))
-            {
-                XtraMessageBox.Show("Please select a Program and Year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-          
-            if (string.IsNullOrWhiteSpace(uploadedImagePath) || !File.Exists(uploadedImagePath))
-            {
-                XtraMessageBox.Show("Please select a valid photo file before registering.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            User newUser = new User
-            {
-                UserID = txtUserID.Text.Trim(),
-                FullName = txtFullName.Text.Trim(),
-                Program = cmbProgram.Text,
-                Year = cmbYear.Text,
-                Role = "Student",
-                Password = txtPassword.Text.Trim(),
-                UploadPath = uploadedImagePath 
-            };
+            // Build a User object from the form fields and attempt to save it
+            var newUser = BuildUserFromForm();
 
             if (_userRepo.AddUser(newUser))
             {
-                XtraMessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Registration succeeded — clear the form for the next entry
+                UIHelper.ShowSuccess("Registration Successful!");
                 ClearFields();
             }
             else
             {
-                XtraMessageBox.Show("User ID '" + newUser.UserID + "' is already taken. Choose another.",
-                    "Duplicate User ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // AddUser returns false when the UserID already exists in the database
+                UIHelper.ShowError($"User ID '{newUser.UserID}' is already taken. Choose another.", "Duplicate User ID");
                 txtUserID.Focus();
             }
         }
 
-        // ── Clear all fields ─────────────────────────────────────────────
-        private void ClearFields()
+        // Returns false and shows a message if any required field is empty
+        private bool ValidateRequiredFields()
         {
-            txtUserID.Text = "";
-            txtFullName.Text = "";
-            txtPassword.Text = "";
-            uploadedImagePath = "";
-            btnViewPhoto.Enabled = false;
-            cmbProgram.EditValue = null;
-            cmbYear.EditValue = null;
+            if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                string.IsNullOrWhiteSpace(txtLastName.Text) ||
+                string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                string.IsNullOrWhiteSpace(txtMiddleName.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                UIHelper.ShowWarning("User ID, Last Name, First Name, Middle Initial, and Password are required.", "Validation Error");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(cmbProgram.Text) || string.IsNullOrWhiteSpace(cmbYear.Text))
+            {
+                UIHelper.ShowWarning("Please select a Program and Year.", "Validation Error");
+                return false;
+            }
+
+            return true;
         }
 
+        // Collects all form field values into a new User object — role is always Student here
+        private User BuildUserFromForm() => new User
+        {
+            UserID = txtUserID.Text.Trim(),
+            LastName = txtLastName.Text.Trim(),
+            FirstName = txtFirstName.Text.Trim(),
+            MiddleName = txtMiddleName.Text.Trim(),
+            Program = cmbProgram.Text,
+            Year = cmbYear.Text,
+            Role = "Student",
+            Password = txtPassword.Text
+        };
+
+        // Resets all input fields back to empty after a successful registration
+        private void ClearFields()
+        {
+            txtUserID.Text = txtLastName.Text = txtFirstName.Text =
+            txtMiddleName.Text = txtPassword.Text = string.Empty;
+            cmbProgram.EditValue = cmbYear.EditValue = null;
+        }
+
+        // ── Navigate to Login ─────────────────────────────────────────
         private void lblctrLogin_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login();
+            var loginForm = new Login();
+
+            // Close registration when the login form is closed
             loginForm.FormClosed += (s, args) => this.Close();
             loginForm.Show();
             this.Hide();
-        }
-
-        private void labelControl4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUserID_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnViewPhoto_Click_1(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(uploadedImagePath) || !File.Exists(uploadedImagePath))
-            {
-                XtraMessageBox.Show("No valid photo file found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Create a temporary fluid popup form on the fly
-            using (Form imagePopup = new Form())
-            {
-                PictureBox pb = new PictureBox();
-                pb.Image = Image.FromFile(uploadedImagePath);
-                pb.SizeMode = PictureBoxSizeMode.Zoom; // Maintains original photo aspect ratio
-                pb.Dock = DockStyle.Fill;
-
-                // Configure window styles
-                imagePopup.Text = "Review Uploaded ID Photo";
-                imagePopup.Size = new Size(500, 500); // Adjustable default size
-                imagePopup.StartPosition = FormStartPosition.CenterScreen; // Centers perfectly on monitor
-                imagePopup.FormBorderStyle = FormBorderStyle.SizableToolWindow; // Clean close window frame
-
-                imagePopup.Controls.Add(pb);
-                imagePopup.ShowDialog(); // Opens window as a modal block context
-            }
-        }
-
-        private void panelControl1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void labelControl7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
