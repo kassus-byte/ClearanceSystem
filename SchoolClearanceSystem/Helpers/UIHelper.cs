@@ -54,6 +54,9 @@ namespace SchoolClearanceSystem.Helpers
             lblDateIssued.Text = string.Empty;
         }
 
+        // Overload for LabelControl (used in BaseOfficeForm dashboard)
+        
+
         // ── User Session Labels ────────────────────────────────────────
 
         /// <summary>
@@ -80,6 +83,7 @@ namespace SchoolClearanceSystem.Helpers
         /// <summary>
         /// Populates and locks period fields to indicate they are read-only.
         /// </summary>
+        // For StudentPortal — TextEdit controls
         public static void SetPeriodFields(
             TextEdit txtSemester,
             TextEdit txtCurrentSchoolYear,
@@ -89,6 +93,19 @@ namespace SchoolClearanceSystem.Helpers
             txtSemester.Text = semester;
             txtCurrentSchoolYear.Text = academicYear;
             ConfigureReadOnly(txtSemester, txtCurrentSchoolYear);
+        }
+
+        // For BaseOfficeForm — LabelControl
+        public static void SetPeriodFields(
+            LabelControl lblSemester,
+            LabelControl lblAcademicYear,
+            string semester,
+            string academicYear)
+        {
+            lblSemester.Text = string.IsNullOrEmpty(semester) || semester == "Not Set"
+                ? "Not Set" : semester;
+            lblAcademicYear.Text = string.IsNullOrEmpty(academicYear) || academicYear == "Not Set"
+                ? "Not Set" : academicYear;
         }
 
         /// <summary>

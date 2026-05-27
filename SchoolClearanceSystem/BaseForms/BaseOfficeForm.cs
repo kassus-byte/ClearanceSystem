@@ -23,6 +23,7 @@ namespace SchoolClearanceSystem
         // Single shared repo instance — no need to create a new one per method call
 
         private readonly ClearanceRepository _repo = new ClearanceRepository();
+        private readonly SystemRepository _sysRepo = new SystemRepository();
 
         public BaseOfficeForm()
         {
@@ -55,9 +56,41 @@ namespace SchoolClearanceSystem
             btnOnHoldFilter.Click += (s, ev) => SetStatusFilter("On Hold");
 
             SetupIdentity();
+            LoadActivePeriod();
             LoadPendingClearanceRequests();
             LoadDashboardStats();
 
+            cmbArchiveSemester.SelectedIndexChanged += cmbArchiveSemester_SelectedIndexChanged;
+            cmbArchiveYear.SelectedIndexChanged += cmbArchiveYear_SelectedIndexChanged;
+
+        }
+
+        private string _semester = "Not Set";
+        private string _academicYear = "Not Set";
+
+        private void LoadActivePeriod()
+        {
+            try
+            {
+                var active = _sysRepo.GetActivePeriodSettings();
+                if (active != null)
+                {
+                    _semester = active.Semester ?? "Not Set";
+                    _academicYear = active.AcademicYear ?? "Not Set";
+                }
+                else
+                {
+                    _semester = "Not Set";
+                    _academicYear = "Not Set";
+                }
+            }
+            catch
+            {
+                _semester = "Not Set";
+                _academicYear = "Not Set";
+            }
+
+            UIHelper.SetPeriodFields(lblSemester, lblAcademicYear, _semester, _academicYear);
         }
 
         // ── Identity ──────────────────────────────────────────────────
@@ -75,6 +108,7 @@ namespace SchoolClearanceSystem
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
             LoadPendingClearanceRequests();
+            LoadActivePeriod();
             LoadDashboardStats();
 
         }
@@ -95,7 +129,7 @@ namespace SchoolClearanceSystem
         {
             try
             {
-                var data = _repo.GetRequestsForOffice(OfficeName);
+                var data = _repo.GetRequestsForOffice(OfficeName, _semester, _academicYear);
                 gcBaseOfficeForm.DataSource = data;
             }
             catch (Exception ex)
@@ -108,10 +142,10 @@ namespace SchoolClearanceSystem
         {
             try
             {
-                int cleared = _repo.GetStatusCountForOffice(OfficeName, "Approved");
-                int pending = _repo.GetStatusCountForOffice(OfficeName, "Pending");
-                int onHold = _repo.GetStatusCountForOffice(OfficeName, "On Hold");
-                int total = _repo.GetTotalStudentsForOffice(OfficeName);
+                int cleared = _repo.GetStatusCountForOffice(OfficeName, "Approved", _semester, _academicYear);
+                int pending = _repo.GetStatusCountForOffice(OfficeName, "Pending", _semester, _academicYear);
+                int onHold = _repo.GetStatusCountForOffice(OfficeName, "On Hold", _semester, _academicYear);
+                int total = _repo.GetTotalStudentsForOffice(OfficeName, _semester, _academicYear);
 
                 lblStatCleared.Text = cleared.ToString();
                 lblStatPending.Text = pending.ToString();
@@ -119,8 +153,9 @@ namespace SchoolClearanceSystem
                 lblProgressSummary.Text = $"{cleared} out of {total} students cleared";
                 pbClearanceProgress.Position = total > 0 ? Math.Min((cleared * 100) / total, 100) : 0;
 
-                // ── Recent Requests (this week, top 10) ───────────────────────
-                gcRecentRequests.DataSource = _repo.GetRecentRequestsForOffice(OfficeName, 10).ToList();
+                gcRecentRequests.DataSource = _repo
+    .GetRecentRequestsForOffice(OfficeName, 10, _semester, _academicYear)
+    .ToList();
             }
             catch (Exception ex)
             {
@@ -141,14 +176,13 @@ namespace SchoolClearanceSystem
                 var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
                 if (view == null) return;
 
-                var data = _repo.GetRequestsForOffice(OfficeName);
+                var data = _repo.GetRequestsForOffice(OfficeName, _semester, _academicYear);
                 string search = txtSearch.Text.Trim();
 
                 var statusFiltered = data.Where(r =>
-                {
-                    return _statusFilter == "All" ||
-                           (r.Status?.ToString().Trim().Equals(_statusFilter, StringComparison.OrdinalIgnoreCase) == true);
-                }).ToList();
+                    _statusFilter == "All" ||
+                    (r.Status?.ToString().Trim().Equals(_statusFilter, StringComparison.OrdinalIgnoreCase) == true)
+                ).ToList();
 
                 gcBaseOfficeForm.DataSource = statusFiltered;
                 view.ApplyFindFilter(search);
@@ -158,7 +192,6 @@ namespace SchoolClearanceSystem
                 UIHelper.ShowError($"Could not apply filter: {ex.Message}");
             }
         }
-
         // ── Actions ───────────────────────────────────────────────────
         private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -286,6 +319,56 @@ namespace SchoolClearanceSystem
             "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void sbOfficeArchives_Click(object sender, EventArgs e)
+        {
+            naviframeOffices.SelectedPage = pageOfficeArchive;
+            LoadArchiveFilters();
+        }
+
+        private void LoadArchiveFilters()
+        {
+            var periods =  _sysRepo.GetAllPeriods().ToList();
+
+            // Populate Semester combo — distinct values
+            var semesters = periods.Select(p => p.Semester).Distinct().ToList();
+            semesters.Insert(0, "All");
+            cmbArchiveSemester.Properties.Items.Clear();
+            cmbArchiveSemester.Properties.Items.AddRange(semesters);
+            cmbArchiveSemester.SelectedIndex = 0;
+
+            // Populate Academic Year combo — distinct values, newest first
+            var years = periods.Select(p => p.AcademicYear).Distinct()
+                               .OrderByDescending(y => y).ToList();
+            years.Insert(0, "All");
+            cmbArchiveYear.Properties.Items.Clear();
+            cmbArchiveYear.Properties.Items.AddRange(years);
+            cmbArchiveYear.SelectedIndex = 0;
+        }
+
+        private void LoadArchiveGrid()
+        {
+            try
+            {
+                string sem = cmbArchiveSemester.Text == "All" ? "" : cmbArchiveSemester.Text;
+                string year = cmbArchiveYear.Text == "All" ? "" : cmbArchiveYear.Text;
+
+                // If both are "All", load everything; otherwise filter
+                var data = _repo.GetArchivedRequests(sem, year, OfficeName).ToList();
+                gcOfficeArchive.DataSource = data;
+            }
+            catch (Exception ex)
+            {
+                UIHelper.ShowError($"Could not load archive: {ex.Message}");
+            }
+        }
+
+        // Auto-filter when combo changes
+        private void cmbArchiveSemester_SelectedIndexChanged(object sender, EventArgs e) => LoadArchiveGrid();
+        private void cmbArchiveYear_SelectedIndexChanged(object sender, EventArgs e) => LoadArchiveGrid();
+
+        // Manual button trigger
+        private void btnViewRecord_Click(object sender, EventArgs e) => LoadArchiveGrid();
     }
 }
     

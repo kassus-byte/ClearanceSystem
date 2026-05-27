@@ -224,11 +224,15 @@ namespace SchoolClearanceSystem.Repository
                 return db.ExecuteScalar<int>(sql, new { dept = officeDept });
             }
         }
-        public IEnumerable<dynamic> GetRecentRequestsForOffice(string officeDept, int limit = 10)
+        public IEnumerable<dynamic> GetRecentRequestsForOffice(string officeDept, int limit = 10,
+     string semester = "", string academicYear = "")
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT 
+                string periodFilter = (!string.IsNullOrEmpty(semester) && !string.IsNullOrEmpty(academicYear))
+                    ? "AND c.Semester = @semester AND c.AcademicYear = @academicYear" : "";
+
+                string sql = $@"SELECT 
                 c.UserID   AS UserID,
                 (u.LastName || ', ' || u.FirstName || 
                     CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
@@ -241,10 +245,102 @@ namespace SchoolClearanceSystem.Repository
                FROM ClearanceRequests c
                INNER JOIN Users u ON c.UserID = u.UserID
                WHERE c.Department = @dept
+               {periodFilter}
                ORDER BY c.rowid DESC
                LIMIT @limit";
 
-                return db.Query(sql, new { dept = officeDept, limit }).ToList();
+                return db.Query(sql, new { dept = officeDept, limit, semester, academicYear }).ToList();
+            }
+        }
+
+        public IEnumerable<dynamic> GetRequestsForOffice(string officeDept, string semester = "", string academicYear = "")
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string periodFilter = (!string.IsNullOrEmpty(semester) && !string.IsNullOrEmpty(academicYear))
+                    ? "AND c.Semester = @semester AND c.AcademicYear = @academicYear" : "";
+
+                string sql = $@"SELECT 
+                c.UserID AS UserID,
+                (u.LastName || ', ' || u.FirstName || 
+                    CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
+                         THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+                u.Program  AS Program,
+                u.Year     AS Year,
+                c.Semester AS Semester,
+                c.Status   AS Status,
+                c.Department AS Office,
+                ''         AS Action,
+                c.Remarks  AS Remarks,
+                c.FilePath AS FilePath
+               FROM ClearanceRequests c
+               INNER JOIN Users u ON c.UserID = u.UserID
+               WHERE c.Department = @dept
+               {periodFilter}";
+
+                return db.Query(sql, new { dept = officeDept, semester, academicYear }).ToList();
+            }
+        }
+
+        public int GetStatusCountForOffice(string officeDept, string status, string semester = "", string academicYear = "")
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string periodFilter = (!string.IsNullOrEmpty(semester) && !string.IsNullOrEmpty(academicYear))
+                    ? "AND Semester = @semester AND AcademicYear = @academicYear" : "";
+
+                string sql = $@"SELECT COUNT(*) FROM ClearanceRequests
+                        WHERE Department = @dept 
+                          AND Status = @status
+                          {periodFilter}";
+
+                return db.ExecuteScalar<int>(sql, new { dept = officeDept, status, semester, academicYear });
+            }
+        }
+
+        public int GetTotalStudentsForOffice(string officeDept, string semester = "", string academicYear = "")
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string periodFilter = (!string.IsNullOrEmpty(semester) && !string.IsNullOrEmpty(academicYear))
+                    ? "AND Semester = @semester AND AcademicYear = @academicYear" : "";
+
+                string sql = $@"SELECT COUNT(DISTINCT UserID) FROM ClearanceRequests
+                        WHERE Department = @dept
+                        {periodFilter}";
+
+                return db.ExecuteScalar<int>(sql, new { dept = officeDept, semester, academicYear });
+            }
+        }
+
+        public IEnumerable<dynamic> GetArchivedRequests(string semester, string academicYear, string officeName)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string deptFilter = string.IsNullOrEmpty(officeName) || officeName == "All"
+                    ? "" : "AND c.Department = @dept";
+
+                string sql = $@"SELECT
+                c.UserID        AS UserID,
+                (u.LastName || ', ' || u.FirstName ||
+                    CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != ''
+                         THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+                u.Program       AS Program,
+                u.Year          AS Year,
+                c.Semester      AS Semester,
+                c.AcademicYear  AS AcademicYear,
+                c.Department    AS Office,
+                c.Status        AS Status,
+                c.Remarks       AS Remarks,
+                c.DateProcessed AS DateProcessed
+               FROM ClearanceRequests c
+               INNER JOIN Users u ON c.UserID = u.UserID
+               WHERE c.Semester     = @semester
+                 AND c.AcademicYear = @academicYear
+                 {deptFilter}
+               ORDER BY u.LastName ASC";
+
+                return db.Query(sql, new { semester, academicYear, dept = officeName }).ToList();
             }
         }
 
