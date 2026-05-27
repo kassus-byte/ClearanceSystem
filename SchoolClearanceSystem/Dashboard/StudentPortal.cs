@@ -387,10 +387,8 @@ namespace SchoolClearanceSystem
                     return;
                 }
 
-                var currentStudent = _userRepo.GetUsersByRole("Student")
-                    ?.FirstOrDefault(u => u.UserID?.ToString() == currentUserId);
-
-                var period = _sysRepo.GetAllPeriods()?.FirstOrDefault(p => p.IsActive == 1);
+                var currentStudent = _userRepo.GetUsersByRole("Student")?
+                    .FirstOrDefault(u => u.UserID.ToString() == currentUserId);
 
                 if (currentStudent == null)
                 {
@@ -398,15 +396,46 @@ namespace SchoolClearanceSystem
                     return;
                 }
 
-                string semText = period != null ? period.Semester : "N/A";
-                string syText = period != null ? period.AcademicYear : "N/A";
+                // Get the TileView instance from your GridControl
+                var tileView = gridMyClearance.MainView as DevExpress.XtraGrid.Views.Tile.TileView;
 
+                if (tileView == null)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Grid layout configuration error.", "Error");
+                    return;
+                }
+
+                if (tileView.RowCount == 0)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("No clearance records available to download.", "Information");
+                    return;
+                }
+
+                // Fallback: Use the focused row index, or default to the first available row (index 0) if focus isn't registered
+                int rowHandle = tileView.FocusedRowHandle >= 0 ? tileView.FocusedRowHandle : 0;
+
+                // Extract the underlying data object bound to that specific row 
+                dynamic selectedRow = tileView.GetRow(rowHandle);
+
+                if (selectedRow == null)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Could not read selected row records.", "Execution Error");
+                    return;
+                }
+
+                // Extract values using dynamic model properties to bypass visual layout naming dependencies
+                // NOTE: If your Model properties are named differently (e.g., SchoolYear instead of AcademicYear), change them here.
+                string semText = selectedRow.Semester?.ToString() ?? "N/A";
+                string syText = selectedRow.AcademicYear?.ToString() ?? "N/A";
+
+                // Query the database records using the accurate semester and year filters retrieved
                 var statuses = _userRepo.GetStudentStatus(currentUserId, semText, syText).ToList();
 
                 string tech = statuses.FirstOrDefault(r => r.Office == "Technical")?.Status ?? "NOT CLEARED";
                 string ssg = statuses.FirstOrDefault(r => r.Office == "SSG")?.Status ?? "NOT CLEARED";
                 string tres = statuses.FirstOrDefault(r => r.Office == "Treasurer")?.Status ?? "NOT CLEARED";
 
+                // Generate and pass data properties directly down to the XtraReport handler
                 var report = new StudentClearanceSlip();
 
                 var studentDataSource = new System.Collections.Generic.List<SchoolClearanceSystem.Models.User> { currentStudent };
@@ -415,13 +444,12 @@ namespace SchoolClearanceSystem
                 ReportPrintTool printTool = new ReportPrintTool(report);
                 printTool.ShowPreviewDialog();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show($"Could not construct clearance document layout:{ex.Message}", "Report Engine Error");
+                DevExpress.XtraEditors.XtraMessageBox.Show($"Could not construct clearance document layout: {ex.Message}", "Report Engine Error");
             }
         }
 
-        
     }
     }
 

@@ -234,7 +234,7 @@ namespace SchoolClearanceSystem
 
         }
 
-        private void simpleButton7_Click(object sender, EventArgs e)
+        private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             try
             {
@@ -259,7 +259,8 @@ namespace SchoolClearanceSystem
                 // 3. Manual Binding (Mapping data columns to your report table cells)
                 myReport.cellReportID.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_id]"));
                 myReport.cellReportName.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_name]"));
-                myReport.cellReportStatus.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[status]"));
+                myReport.cellReportProgram.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[program]"));
+                myReport.cellReportYearLevel.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[year]"));
 
                 // 4. Generate the document structure in the background
                 myReport.CreateDocument();

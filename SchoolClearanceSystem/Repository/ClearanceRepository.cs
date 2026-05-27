@@ -228,6 +228,8 @@ namespace SchoolClearanceSystem.Repository
             string sql = @"SELECT 
                     c.UserID AS student_id,
                     (u.LastName || ', ' || u.FirstName) AS student_name,
+                    u. Program AS program,
+                    u. Year AS year,
                     c.Status AS status
                    FROM ClearanceRequests c
                    INNER JOIN Users u ON c.UserID = u.UserID
