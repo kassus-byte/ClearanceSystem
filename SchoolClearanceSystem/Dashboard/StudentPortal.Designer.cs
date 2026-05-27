@@ -151,7 +151,7 @@
             this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.pnlClearanceCopy = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDownloadClearance = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
@@ -1688,6 +1688,7 @@
             // 
             // pageMyClearance
             // 
+            this.pageMyClearance.Caption = "pageMyClearance";
             this.pageMyClearance.Controls.Add(this.gcRecords);
             this.pageMyClearance.Controls.Add(this.pnlClearanceCopy);
             this.pageMyClearance.Controls.Add(this.panelControl5);
@@ -1771,7 +1772,7 @@
             this.pnlClearanceCopy.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
             this.pnlClearanceCopy.Appearance.Options.UseBackColor = true;
             this.pnlClearanceCopy.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlClearanceCopy.Controls.Add(this.simpleButton1);
+            this.pnlClearanceCopy.Controls.Add(this.btnDownloadClearance);
             this.pnlClearanceCopy.Controls.Add(this.labelControl20);
             this.pnlClearanceCopy.Controls.Add(this.labelControl19);
             this.pnlClearanceCopy.Controls.Add(this.labelControl18);
@@ -1783,21 +1784,22 @@
             this.pnlClearanceCopy.Size = new System.Drawing.Size(1574, 311);
             this.pnlClearanceCopy.TabIndex = 1;
             // 
-            // simpleButton1
+            // btnDownloadClearance
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.AppearancePressed.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.simpleButton1.AppearancePressed.Options.UseBackColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(780, 244);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(149, 39);
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "Download PDF";
+            this.btnDownloadClearance.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnDownloadClearance.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDownloadClearance.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnDownloadClearance.Appearance.Options.UseBackColor = true;
+            this.btnDownloadClearance.Appearance.Options.UseFont = true;
+            this.btnDownloadClearance.Appearance.Options.UseForeColor = true;
+            this.btnDownloadClearance.AppearancePressed.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnDownloadClearance.AppearancePressed.Options.UseBackColor = true;
+            this.btnDownloadClearance.Location = new System.Drawing.Point(780, 244);
+            this.btnDownloadClearance.Name = "btnDownloadClearance";
+            this.btnDownloadClearance.Size = new System.Drawing.Size(149, 39);
+            this.btnDownloadClearance.TabIndex = 5;
+            this.btnDownloadClearance.Text = "Download PDF";
+            this.btnDownloadClearance.Click += new System.EventHandler(this.btnDownloadClearance_Click);
             // 
             // labelControl20
             // 
@@ -2189,7 +2191,7 @@
         private DevExpress.XtraEditors.GroupControl gcRecords;
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.LabelControl labelControl16;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnDownloadClearance;
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraEditors.LabelControl labelControl19;
         private DevExpress.XtraEditors.LabelControl labelControl18;
