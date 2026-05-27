@@ -8,6 +8,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
 
 namespace SchoolClearanceSystem
 {
@@ -362,6 +363,52 @@ namespace SchoolClearanceSystem
             else
             {
                 UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
+            }
+        }
+
+        private void btnDownloadClearance_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string currentUserId = Session.CurrentUser?.UserID?.ToString();
+
+                if (string.IsNullOrEmpty(currentUserId))
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Active session expired. Please log in again.", "Authentication Warning");
+                    return;
+                }
+
+                var currentStudent = _userRepo.GetUsersByRole("Student")
+                    ?.FirstOrDefault(u => u.UserID?.ToString() == currentUserId);
+
+                var period = _sysRepo.GetAllPeriods()?.FirstOrDefault(p => p.IsActive == 1);
+
+                if (currentStudent == null)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Could not verify account.", "Execution Error");
+                    return;
+                }
+
+                string semText = period != null ? period.Semester : "N/A";
+                string syText = period != null ? period.AcademicYear : "N/A";
+
+                var statuses = _userRepo.GetStudentStatus(currentUserId, semText, syText).ToList();
+
+                string tech = statuses.FirstOrDefault(r => r.Office == "Technical")?.Status ?? "NOT CLEARED";
+                string ssg = statuses.FirstOrDefault(r => r.Office == "SSG")?.Status ?? "NOT CLEARED";
+                string tres = statuses.FirstOrDefault(r => r.Office == "Treasurer")?.Status ?? "NOT CLEARED";
+
+                var report = new StudentClearanceSlip();
+
+                var studentDataSource = new System.Collections.Generic.List<SchoolClearanceSystem.Models.User> { currentStudent };
+                report.InitData(studentDataSource, tech, ssg, tres, semText, syText);
+
+                ReportPrintTool printTool = new ReportPrintTool(report);
+                printTool.ShowPreviewDialog();
+            }
+            catch(Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show($"Could not construct clearance document layout:{ex.Message}", "Report Engine Error");
             }
         }
     }

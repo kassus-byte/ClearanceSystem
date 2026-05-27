@@ -1,7 +1,10 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Repository;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -224,5 +227,49 @@ namespace SchoolClearanceSystem
             new Login().Show();
             this.Close();
         }
+
+        private void labelControl17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            // 1. Instantiate your report layout
+            OfficeReport myReport = new OfficeReport();
+
+            // 2. Fetch data from your database using your UI element filters
+            string selectedSemester = cmbSemester.Text;
+            string selectedYear = txtAcademicYear.Text;
+            string selectedStatus = cmbStatus.Text;
+
+            // TODO: Connect this to your actual database fetching method
+            var studentClearanceData = GetClearanceDataFromDatabase(selectedSemester, selectedYear, selectedStatus);
+            myReport.DataSource = studentClearanceData;
+
+            // 3. Manual Binding (Mapping data columns to your report table cells)
+            myReport.xrTableCell1.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_id]"));
+            myReport.xrTableCell2.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_name]"));
+            myReport.xrTableCell3.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[status]"));
+
+            // 4. Generate the document structure in the background
+            myReport.CreateDocument();
+
+            // 5. Define where to save the temporary PDF file
+            // This saves it to the user's Documents folder with a unique filename
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string pdfFilePath = Path.Combine(documentsPath, $"Clearance_Report_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+
+            // 6. Export the report to PDF silently
+            myReport.ExportToPdf(pdfFilePath);
+
+            // 7. Open the PDF immediately using the system's default PDF viewer (like Adobe or Chrome)
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = pdfFilePath,
+                UseShellExecute = true // Ensures it opens the external application
+            });
+        }
+    }
     }
 }

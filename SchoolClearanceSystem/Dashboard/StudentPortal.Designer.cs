@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentPortal));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
@@ -151,7 +151,7 @@
             this.gridMyClearance = new DevExpress.XtraGrid.GridControl();
             this.tileViewMyClearance = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.pnlClearanceCopy = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDownloadClearance = new DevExpress.XtraEditors.SimpleButton();
             this.lblDateIssued = new DevExpress.XtraEditors.LabelControl();
             this.lblProgramDepartment = new DevExpress.XtraEditors.LabelControl();
             this.lblNameID = new DevExpress.XtraEditors.LabelControl();
@@ -281,9 +281,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions3.SvgImage")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.SvgImage")));
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
@@ -1051,6 +1051,7 @@
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
+            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
@@ -1473,6 +1474,7 @@
             // 
             this.pageMyRequest.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageMyRequest.Appearance.Options.UseBackColor = true;
+            this.pageMyRequest.Caption = "pageMyRequest";
             this.pageMyRequest.Controls.Add(this.panelControl9);
             this.pageMyRequest.Controls.Add(this.panelControl8);
             this.pageMyRequest.Controls.Add(this.panelControl6);
@@ -1780,7 +1782,7 @@
             this.pnlClearanceCopy.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
             this.pnlClearanceCopy.Appearance.Options.UseBackColor = true;
             this.pnlClearanceCopy.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pnlClearanceCopy.Controls.Add(this.simpleButton1);
+            this.pnlClearanceCopy.Controls.Add(this.btnDownloadClearance);
             this.pnlClearanceCopy.Controls.Add(this.lblDateIssued);
             this.pnlClearanceCopy.Controls.Add(this.lblProgramDepartment);
             this.pnlClearanceCopy.Controls.Add(this.lblNameID);
@@ -1792,21 +1794,22 @@
             this.pnlClearanceCopy.Size = new System.Drawing.Size(1574, 311);
             this.pnlClearanceCopy.TabIndex = 1;
             // 
-            // simpleButton1
+            // btnDownloadClearance
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.AppearancePressed.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.simpleButton1.AppearancePressed.Options.UseBackColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(780, 244);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(149, 39);
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "Download PDF";
+            this.btnDownloadClearance.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnDownloadClearance.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDownloadClearance.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnDownloadClearance.Appearance.Options.UseBackColor = true;
+            this.btnDownloadClearance.Appearance.Options.UseFont = true;
+            this.btnDownloadClearance.Appearance.Options.UseForeColor = true;
+            this.btnDownloadClearance.AppearancePressed.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnDownloadClearance.AppearancePressed.Options.UseBackColor = true;
+            this.btnDownloadClearance.Location = new System.Drawing.Point(780, 244);
+            this.btnDownloadClearance.Name = "btnDownloadClearance";
+            this.btnDownloadClearance.Size = new System.Drawing.Size(149, 39);
+            this.btnDownloadClearance.TabIndex = 5;
+            this.btnDownloadClearance.Text = "Download PDF";
+            this.btnDownloadClearance.Click += new System.EventHandler(this.btnDownloadClearance_Click);
             // 
             // lblDateIssued
             // 
@@ -2198,7 +2201,7 @@
         private DevExpress.XtraEditors.GroupControl gcRecords;
         private DevExpress.XtraEditors.LabelControl lblSemYear;
         private DevExpress.XtraEditors.LabelControl labelControl16;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnDownloadClearance;
         private DevExpress.XtraEditors.LabelControl lblDateIssued;
         private DevExpress.XtraEditors.LabelControl lblProgramDepartment;
         private DevExpress.XtraEditors.LabelControl lblNameID;
