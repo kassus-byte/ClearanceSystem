@@ -98,6 +98,8 @@
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             this.Semester = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.AcademicYear = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -177,6 +179,7 @@
             this.DateCreated = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.gcOffice = new DevExpress.XtraGrid.GridControl();
             this.gvOffice = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -186,6 +189,7 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemButtonEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl14 = new DevExpress.XtraEditors.PanelControl();
             this.btnRegisterAccount = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditInfo = new DevExpress.XtraEditors.SimpleButton();
@@ -209,8 +213,6 @@
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -264,11 +266,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             this.tabNavigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcOffice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOffice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).BeginInit();
             this.panelControl14.SuspendLayout();
             this.pageClearanceSystem.SuspendLayout();
@@ -282,8 +286,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // Semester
@@ -657,6 +659,7 @@
             // 
             // pageDashboard
             // 
+            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl13);
             this.pageDashboard.Controls.Add(this.panelControl6);
             this.pageDashboard.Controls.Add(this.paneltoggle);
@@ -1216,6 +1219,7 @@
             // 
             // pageAccountManagement
             // 
+            this.pageAccountManagement.Caption = "pageAccountManagement";
             this.pageAccountManagement.Controls.Add(this.tabPane1);
             this.pageAccountManagement.Controls.Add(this.panelControl14);
             this.pageAccountManagement.Name = "pageAccountManagement";
@@ -1427,6 +1431,11 @@
             this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
             this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
+            // gridView4
+            // 
+            this.gridView4.GridControl = this.gcStudents;
+            this.gridView4.Name = "gridView4";
+            // 
             // tabNavigationPage2
             // 
             this.tabNavigationPage2.Caption = "Offices/Admins";
@@ -1512,6 +1521,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "On Hold", -1, true, true, false, editorButtonImageOptions12, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject45, serializableAppearanceObject46, serializableAppearanceObject47, serializableAppearanceObject48, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit4.Name = "repositoryItemButtonEdit4";
             this.repositoryItemButtonEdit4.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // gridView3
+            // 
+            this.gridView3.GridControl = this.gcOffice;
+            this.gridView3.Name = "gridView3";
             // 
             // panelControl14
             // 
@@ -1668,7 +1682,7 @@
             this.tileView1.OptionsTiles.IndentBetweenGroups = 0;
             this.tileView1.OptionsTiles.IndentBetweenItems = 0;
             this.tileView1.OptionsTiles.ItemPadding = new System.Windows.Forms.Padding(8);
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(245, 52);
+            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(691, 189);
             this.tileView1.OptionsTiles.LayoutMode = DevExpress.XtraGrid.Views.Tile.TileViewLayoutMode.List;
             this.tileView1.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tileView1.OptionsTiles.Padding = new System.Windows.Forms.Padding(19);
@@ -1679,17 +1693,23 @@
             this.tileView1.TileRows.Add(tableRowDefinition1);
             this.tileView1.TileRows.Add(tableRowDefinition2);
             this.tileView1.TileRows.Add(tableRowDefinition3);
+            tileViewItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
             tileViewItemElement1.Column = this.Semester;
             tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
             tileViewItemElement1.Text = "Semester";
             tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement2.Appearance.Normal.Options.UseFont = true;
             tileViewItemElement2.Column = this.AcademicYear;
             tileViewItemElement2.ColumnIndex = 1;
             tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
             tileViewItemElement2.Text = "AcademicYear";
             tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement3.Appearance.Normal.Options.UseFont = true;
             tileViewItemElement3.Column = this.tileViewColumn1;
             tileViewItemElement3.ColumnIndex = 2;
             tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
@@ -1697,9 +1717,24 @@
             tileViewItemElement3.Name = "Status";
             tileViewItemElement3.Text = "tileViewColumn1";
             tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement4.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement4.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement4.Text = "SEMESTER";
+            tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement5.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement5.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement5.ColumnIndex = 1;
+            tileViewItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement5.Text = "ACADEMIC YEAR";
+            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
             this.tileView1.TileTemplate.Add(tileViewItemElement1);
             this.tileView1.TileTemplate.Add(tileViewItemElement2);
             this.tileView1.TileTemplate.Add(tileViewItemElement3);
+            this.tileView1.TileTemplate.Add(tileViewItemElement4);
+            this.tileView1.TileTemplate.Add(tileViewItemElement5);
             // 
             // btnClosePeriod
             // 
@@ -1857,16 +1892,6 @@
             this.txtHeaderRC.TabIndex = 1;
             this.txtHeaderRC.Text = "Clearance Settings";
             // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.gcOffice;
-            this.gridView3.Name = "gridView3";
-            // 
-            // gridView4
-            // 
-            this.gridView4.GridControl = this.gcStudents;
-            this.gridView4.Name = "gridView4";
-            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1938,11 +1963,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvStudents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             this.tabNavigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcOffice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOffice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl14)).EndInit();
             this.panelControl14.ResumeLayout(false);
             this.panelControl14.PerformLayout();
@@ -1960,8 +1987,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             this.ResumeLayout(false);
 
         }

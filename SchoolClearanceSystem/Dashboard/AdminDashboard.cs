@@ -22,12 +22,21 @@ namespace SchoolClearanceSystem.Dashboard
             comboSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             comboAcademicYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
-            // Deselect row when clicking empty grid area
             gcStudents.MouseDown += (s, e) => EvaluateHitInfo(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
 
             RefreshData();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (DesignMode) return;
+
+            SetupIdentity();
+        }
+
+        
 
         // ── Navigation ────────────────────────────────────────────────
         private void NavigateTo(NavigationPage page, bool reload = false)
@@ -49,6 +58,14 @@ namespace SchoolClearanceSystem.Dashboard
             LoadDashboardStats();
         }
 
+        // ── Identity ──────────────────────────────────────────────────
+        private void SetupIdentity()
+        {
+            if (Session.CurrentUser == null) return;
+            lblFullName.Text = Session.CurrentUser.FullName;
+            lblRole.Text = Session.CurrentUser.Role;
+            this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
+        }
         private void LoadCurrentSystemSettings()
         {
             clearancePeriodList.DataSource = _sysRepo.GetAllPeriods()
