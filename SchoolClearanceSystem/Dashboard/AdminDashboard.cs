@@ -24,6 +24,7 @@ namespace SchoolClearanceSystem.Dashboard
 
             gcStudents.MouseDown += (s, e) => EvaluateHitInfo(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
+           
 
             RefreshData();
         }
@@ -36,7 +37,10 @@ namespace SchoolClearanceSystem.Dashboard
             SetupIdentity();
         }
 
-        
+      
+
+
+
 
         // ── Navigation ────────────────────────────────────────────────
         private void NavigateTo(NavigationPage page, bool reload = false)
@@ -138,10 +142,38 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!TryGetFocusedData(ActiveView, out User user)) return;
+            var view = ActiveView;
 
-            if (Confirm($"Permanently remove account: {user.FullName} ({user.UserID})?", "Confirm Deletion") == DialogResult.Yes)
-                ProcessUserDeletion(user.UserID);
+            // Collect all selected rows
+            var selectedUsers = view.GetSelectedRows()
+                .Select(h => view.GetRow(h) as User)
+                .Where(u => u != null)
+                .ToList();
+
+            if (!selectedUsers.Any())
+            {
+                Notify("Please select at least one account to delete.", "No Selection", MessageBoxIcon.Warning);
+                return;
+            }
+
+            string names = string.Join("\n", selectedUsers.Select(u => $"• {u.FullName} ({u.UserID})"));
+
+            if (Confirm($"Permanently delete {selectedUsers.Count} account(s)?\n\n{names}", "Confirm Deletion") != DialogResult.Yes)
+                return;
+
+            foreach (var user in selectedUsers)
+            {
+                try
+                {
+                    ProcessUserDeletion(user.UserID);
+                }
+                catch (Exception ex)
+                {
+                    Notify($"Failed to delete {user.FullName}: {ex.Message}", "Error", MessageBoxIcon.Error);
+                }
+            }
+
+            RefreshData();
         }
 
         private void ProcessUserDeletion(string userId)
