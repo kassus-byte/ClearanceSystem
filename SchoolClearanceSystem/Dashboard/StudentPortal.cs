@@ -348,7 +348,9 @@ namespace SchoolClearanceSystem
                     Completed = "Completed"
                 }).ToList();
 
-            // Auto-select first row so slip populates immediately without needing a click
+            // Force the grid to refresh its rows before trying to read them
+            tileViewMyClearance.RefreshData();  // ← ADD THIS
+
             if (tileViewMyClearance.RowCount > 0)
             {
                 tileViewMyClearance.FocusedRowHandle = 0;
@@ -356,9 +358,16 @@ namespace SchoolClearanceSystem
                 string sem = tileViewMyClearance.GetRowCellValue(0, "Semester")?.ToString();
                 string year = tileViewMyClearance.GetRowCellValue(0, "AcademicYear")?.ToString();
 
-                UIHelper.PopulateClearanceSlip(
-                    lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued,
-                    Session.CurrentUser, sem, year);
+                if (!string.IsNullOrEmpty(sem) && !string.IsNullOrEmpty(year))  // ← ADD NULL CHECK
+                {
+                    UIHelper.PopulateClearanceSlip(
+                        lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued,
+                        Session.CurrentUser, sem, year);
+                }
+                else
+                {
+                    UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
+                }
             }
             else
             {
@@ -411,6 +420,8 @@ namespace SchoolClearanceSystem
                 DevExpress.XtraEditors.XtraMessageBox.Show($"Could not construct clearance document layout:{ex.Message}", "Report Engine Error");
             }
         }
+
+        
     }
     }
 

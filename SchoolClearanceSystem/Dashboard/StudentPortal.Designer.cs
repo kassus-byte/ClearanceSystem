@@ -252,6 +252,7 @@
             // Semester
             // 
             this.Semester.Caption = "Semester";
+            this.Semester.FieldName = "Semester";
             this.Semester.Name = "Semester";
             this.Semester.Visible = true;
             this.Semester.VisibleIndex = 0;
@@ -259,6 +260,7 @@
             // AcademicYear
             // 
             this.AcademicYear.Caption = "Academic Year";
+            this.AcademicYear.FieldName = "AcademicYear";
             this.AcademicYear.Name = "AcademicYear";
             this.AcademicYear.Visible = true;
             this.AcademicYear.VisibleIndex = 1;
@@ -653,7 +655,6 @@
             // 
             this.pageDashboard.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageDashboard.Appearance.Options.UseBackColor = true;
-            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl2);
             this.pageDashboard.Controls.Add(this.panelControl1);
             this.pageDashboard.Controls.Add(this.pnlStatusCards);
@@ -1584,9 +1585,9 @@
             this.labelControl24.Appearance.Options.UseForeColor = true;
             this.labelControl24.Location = new System.Drawing.Point(25, 28);
             this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(106, 21);
+            this.labelControl24.Size = new System.Drawing.Size(107, 21);
             this.labelControl24.TabIndex = 4;
-            this.labelControl24.Text = "Requirements";
+            this.labelControl24.Text = "Status Update";
             // 
             // panelControl6
             // 
