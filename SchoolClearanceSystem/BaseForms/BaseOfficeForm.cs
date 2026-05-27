@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using System.Data;
 using DevExpress.XtraReports.UI;
 using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Repository;
@@ -235,41 +236,56 @@ namespace SchoolClearanceSystem
 
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-            // 1. Instantiate your report layout
-            OfficeReport myReport = new OfficeReport();db
-
-            // 2. Fetch data from your database using your UI element filters
-            string selectedSemester = cmbSemester.Text;
-            string selectedYear = txtAcademicYear.Text;
-            string selectedStatus = cmbStatus.Text;
-
-            // TODO: Connect this to your actual database fetching method
-            var studentClearanceData = GetClearanceDataFromDatabase(selectedSemester, selectedYear, selectedStatus);
-            myReport.DataSource = studentClearanceData;
-
-            // 3. Manual Binding (Mapping data columns to your report table cells)
-            myReport.xrTableCell1.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_id]"));
-            myReport.xrTableCell2.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_name]"));
-            myReport.xrTableCell3.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[status]"));
-
-            // 4. Generate the document structure in the background
-            myReport.CreateDocument();
-
-            // 5. Define where to save the temporary PDF file
-            // This saves it to the user's Documents folder with a unique filename
-            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string pdfFilePath = Path.Combine(documentsPath, $"Clearance_Report_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
-
-            // 6. Export the report to PDF silently
-            myReport.ExportToPdf(pdfFilePath);
-
-            // 7. Open the PDF immediately using the system's default PDF viewer (like Adobe or Chrome)
-            Process.Start(new ProcessStartInfo
+            try
             {
-                FileName = pdfFilePath,
-                UseShellExecute = true // Ensures it opens the external application
-            });
+
+                // 1. Instantiate your report layout
+                OfficeReport myReport = new OfficeReport();
+
+
+                // 2. Fetch data from your database using your UI element filters
+                string selectedSemester = cmbSemester.Text;
+                string selectedYear = txtAcademicYear.Text;
+                string selectedStatus = cmbStatus.Text;
+
+                DataTable reportData = _repo.GetClearanceReportData(selectedSemester, selectedYear, selectedStatus, OfficeName);
+                myReport.DataSource = reportData;
+
+                myReport.lblReportYear.Text = selectedYear;
+                myReport.lblReportSem.Text = selectedSemester;
+                myReport.lblReportStatus.Text = selectedStatus;
+
+
+                // 3. Manual Binding (Mapping data columns to your report table cells)
+                myReport.cellReportID.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_id]"));
+                myReport.cellReportName.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[student_name]"));
+                myReport.cellReportStatus.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[status]"));
+
+                // 4. Generate the document structure in the background
+                myReport.CreateDocument();
+
+                // 5. Define where to save the temporary PDF file
+                // This saves it to the user's Documents folder with a unique filename
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string pdfFilePath = Path.Combine(documentsPath, $"Clearance_Report_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+
+                // 6. Export the report to PDF silently
+                myReport.ExportToPdf(pdfFilePath);
+
+                // 7. Open the PDF immediately using the system's default PDF viewer (like Adobe or Chrome)
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = pdfFilePath,
+                    UseShellExecute = true // Ensures it opens the external application
+                });
+            }
+            catch (Exception ex)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show($"Failed to generate office clearance report: {ex.Message}",
+            "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         }
     }
-    }
-}
+    

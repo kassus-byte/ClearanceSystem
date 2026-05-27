@@ -141,7 +141,7 @@
             this.pageOfficeReports = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl21 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.cmbAcademicYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtAcademicYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
@@ -208,7 +208,7 @@
             this.pageOfficeReports.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl21)).BeginInit();
             this.panelControl21.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbAcademicYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAcademicYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).BeginInit();
@@ -1542,7 +1542,7 @@
             this.panelControl21.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl21.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl21.ContentImage")));
             this.panelControl21.Controls.Add(this.labelControl6);
-            this.panelControl21.Controls.Add(this.cmbAcademicYear);
+            this.panelControl21.Controls.Add(this.txtAcademicYear);
             this.panelControl21.Controls.Add(this.simpleButton7);
             this.panelControl21.Controls.Add(this.labelControl17);
             this.panelControl21.Controls.Add(this.labelControl16);
@@ -1567,19 +1567,19 @@
             this.labelControl6.TabIndex = 9;
             this.labelControl6.Text = "Academic Year";
             // 
-            // cmbAcademicYear
+            // txtAcademicYear
             // 
-            this.cmbAcademicYear.Location = new System.Drawing.Point(819, 111);
-            this.cmbAcademicYear.Name = "cmbAcademicYear";
-            this.cmbAcademicYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cmbAcademicYear.Properties.Appearance.Options.UseFont = true;
-            this.cmbAcademicYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtAcademicYear.Location = new System.Drawing.Point(819, 111);
+            this.txtAcademicYear.Name = "txtAcademicYear";
+            this.txtAcademicYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtAcademicYear.Properties.Appearance.Options.UseFont = true;
+            this.txtAcademicYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbAcademicYear.Properties.Items.AddRange(new object[] {
+            this.txtAcademicYear.Properties.Items.AddRange(new object[] {
             "2025-2026",
             "2026-2027"});
-            this.cmbAcademicYear.Size = new System.Drawing.Size(735, 32);
-            this.cmbAcademicYear.TabIndex = 8;
+            this.txtAcademicYear.Size = new System.Drawing.Size(735, 32);
+            this.txtAcademicYear.TabIndex = 8;
             // 
             // simpleButton7
             // 
@@ -1784,7 +1784,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl21)).EndInit();
             this.panelControl21.ResumeLayout(false);
             this.panelControl21.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbAcademicYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAcademicYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSemester.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).EndInit();
@@ -1890,7 +1890,7 @@
         private DevExpress.XtraEditors.ComboBoxEdit cmbSemester;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbAcademicYear;
+        private DevExpress.XtraEditors.ComboBoxEdit txtAcademicYear;
         private DevExpress.XtraEditors.LabelControl labelControl17;
     }
 }

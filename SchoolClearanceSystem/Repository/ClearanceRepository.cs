@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Dapper;
+using SchoolClearanceSystem.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dapper;
-using SchoolClearanceSystem.Models;
 
 namespace SchoolClearanceSystem.Repository
 {
@@ -219,5 +220,30 @@ namespace SchoolClearanceSystem.Repository
                 return db.ExecuteScalar<int>(sql, new { dept = officeDept });
             }
         }
+
+        public DataTable GetClearanceReportData(string semester, string academicYear, string status, string officeName)
+        {
+            // Tap into your existing DatabaseManager instance
+            // (Assuming dbManager is defined in your BaseRepository)
+            string sql = @"SELECT 
+                    c.UserID AS student_id,
+                    (u.LastName || ', ' || u.FirstName) AS student_name,
+                    c.Status AS status
+                   FROM ClearanceRequests c
+                   INNER JOIN Users u ON c.UserID = u.UserID
+                   WHERE c.Semester = @sem 
+                     AND c.AcademicYear = @ay 
+                     AND c.Status = @status
+                     AND c. Department = @office";
+
+
+
+            // Build the dynamic parameters object for Dapper
+            var parameters = new { sem = semester, ay = academicYear, status = status, office = officeName};
+
+            // Execute through your DatabaseManager's GetDataTable helper
+            return dbManager.GetDataTable(sql, parameters);
+        }
+
     }
 }
