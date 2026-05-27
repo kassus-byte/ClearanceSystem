@@ -108,8 +108,8 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 string sql = role == "Student"
-                    ? "SELECT * FROM Users WHERE Role = 'Student'"
-                    : "SELECT * FROM Users WHERE Role != 'Student'";
+                    ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY DateCreated DESC"
+                    : "SELECT * FROM Users WHERE Role != 'Student' ORDER BY DateCreated DESC";
                 return db.Query<User>(sql).ToList();
             }
         }
@@ -167,14 +167,14 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
         public IEnumerable<User> GetUsersRegisteredThisWeek()
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT * FROM Users
-                               WHERE DateCreated >= date('now', '-7 days')
-                               ORDER BY DateCreated DESC";
+                       WHERE DateCreated >= date('now', '-7 days')
+                       ORDER BY DateCreated DESC
+                       LIMIT 3";
                 return db.Query<User>(sql).ToList();
             }
         }

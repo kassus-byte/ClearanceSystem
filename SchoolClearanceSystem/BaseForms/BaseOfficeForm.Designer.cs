@@ -1118,7 +1118,6 @@
             new DevExpress.XtraEditors.Repository.SearchButton()});
             this.txtSearch.Size = new System.Drawing.Size(1380, 32);
             this.txtSearch.TabIndex = 4;
-           
             // 
             // btnOnHoldFilter
             // 
@@ -1181,6 +1180,7 @@
             this.btnSearch.Size = new System.Drawing.Size(120, 32);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
+           
             // 
             // labelControl11
             // 

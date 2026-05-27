@@ -24,7 +24,8 @@ namespace SchoolClearanceSystem.Dashboard
 
             gcStudents.MouseDown += (s, e) => EvaluateHitInfo(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
-           
+            txtSearch.TextChanged += (s, e) => ApplyUnifiedFilter();
+
 
             RefreshData();
         }
@@ -37,7 +38,26 @@ namespace SchoolClearanceSystem.Dashboard
             SetupIdentity();
         }
 
-      
+        // ── Search ────────────────────────────────────────────────────
+        private void ApplyUnifiedFilter()
+        {
+            try
+            {
+                var view = ActiveView;
+                if (view == null) return;
+
+                string search = txtSearch.Text.Trim();
+                view.ApplyFindFilter(search);
+            }
+            catch (Exception ex)
+            {
+                Notify($"Could not apply filter: {ex.Message}", "Filter Error", MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e) => ApplyUnifiedFilter();
+
+
 
 
 
@@ -306,5 +326,7 @@ namespace SchoolClearanceSystem.Dashboard
 
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
+
+       
     }
 }
