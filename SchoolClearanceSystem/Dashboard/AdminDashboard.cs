@@ -22,6 +22,8 @@ namespace SchoolClearanceSystem.Dashboard
             comboSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             comboAcademicYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
+            
+
             gcStudents.MouseDown += (s, e) => EvaluateHitInfo(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
 
@@ -35,11 +37,10 @@ namespace SchoolClearanceSystem.Dashboard
 
             SetupIdentity();
         }
+      
 
-        
-
-        // ── Navigation ────────────────────────────────────────────────
-        private void NavigateTo(NavigationPage page, bool reload = false)
+// ── Navigation ────────────────────────────────────────────────
+private void NavigateTo(NavigationPage page, bool reload = false)
         {
             mainNavigationFrame.SelectedPage = page;
             if (reload) RefreshData();
@@ -274,5 +275,31 @@ namespace SchoolClearanceSystem.Dashboard
 
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
+
+        // ── Search ───────────────────────────────────────────────────
+
+        private void searchAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string searchText = searchAccount.Text.Trim().ToLower();
+
+            ApplyGridFilter(gvStudents, searchText);
+            ApplyGridFilter(gvOffice, searchText);
+        }
+        private void ApplyGridFilter(GridView view, string searchText)
+        {
+            if (string.IsNullOrEmpty(searchText))
+            {
+                view.ActiveFilterString = string.Empty;
+                return;
+            }
+
+            view.ActiveFilterString =
+                $"(Lower([UserID]) Like '%{searchText}%') OR " +
+                $"(Lower([FullName]) Like '%{searchText}%') OR " +
+                $"(Lower([Program]) Like '%{searchText}%') OR " +
+                $"(Lower([Year]) Like '%{searchText}%') OR " +
+                $"(Lower([Role]) Like '%{searchText}%') OR " +
+                $"(Lower([Year]) Like '%{searchText}%')";
+        }
     }
 }

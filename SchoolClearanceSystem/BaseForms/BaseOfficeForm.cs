@@ -285,7 +285,6 @@ namespace SchoolClearanceSystem
             "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        }
     }
+}
     
