@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SchoolClearanceSystem.Repository
+﻿namespace SchoolClearanceSystem.Repository
 {
     public abstract class BaseRepository
     {
@@ -15,3 +9,4 @@ namespace SchoolClearanceSystem.Repository
         protected readonly DatabaseManager dbManager = new DatabaseManager();
     }
 }
+    

@@ -1,4 +1,5 @@
-﻿using BCryptNet = BCrypt.Net.BCrypt;  
+﻿using BCryptNet = BCrypt.Net.BCrypt;
+
 namespace SchoolClearanceSystem.Helpers
 {
     public static class PasswordHelper

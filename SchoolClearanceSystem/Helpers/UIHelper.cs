@@ -1,31 +1,19 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SchoolClearanceSystem.Models;
 
 namespace SchoolClearanceSystem.Helpers
 {
-    /// <summary>
-    /// UIHelper provides reusable methods for form validation, UI population, and styling.
-    /// Centralizes repetitive UI operations to reduce code duplication across forms.
-    /// Works with DevExpress controls (LabelControl, TextEdit, SimpleButton, etc.)
-    /// </summary>
     public static class UIHelper
     {
-        // ── Clearance Slip Population ──────────────────────────────────
+        // ── Clearance Slip ─────────────────────────────────────────────
 
-        /// <summary>
-        /// Populates clearance slip labels with student and period information.
-        /// </summary>
         public static void PopulateClearanceSlip(
-            LabelControl lblSemYear,
-            LabelControl lblNameID,
-            LabelControl lblProgramDepartment,
-            LabelControl lblDateIssued,
-            User currentUser,
-            string semester,
-            string academicYear)
+            LabelControl lblSemYear, LabelControl lblNameID,
+            LabelControl lblProgramDepartment, LabelControl lblDateIssued,
+            User currentUser, string semester, string academicYear)
         {
             if (currentUser == null)
             {
@@ -39,14 +27,9 @@ namespace SchoolClearanceSystem.Helpers
             lblDateIssued.Text = $"Issued: {DateTime.Now:MMM d, yyyy}";
         }
 
-        /// <summary>
-        /// Clears all clearance slip labels.
-        /// </summary>
         public static void ClearClearanceSlip(
-            LabelControl lblSemYear,
-            LabelControl lblNameID,
-            LabelControl lblProgramDepartment,
-            LabelControl lblDateIssued)
+            LabelControl lblSemYear, LabelControl lblNameID,
+            LabelControl lblProgramDepartment, LabelControl lblDateIssued)
         {
             lblSemYear.Text = string.Empty;
             lblNameID.Text = string.Empty;
@@ -54,21 +37,11 @@ namespace SchoolClearanceSystem.Helpers
             lblDateIssued.Text = string.Empty;
         }
 
-        // Overload for LabelControl (used in BaseOfficeForm dashboard)
-        
+        // ── User Session ───────────────────────────────────────────────
 
-        // ── User Session Labels ────────────────────────────────────────
-
-        /// <summary>
-        /// Populates sidebar user info labels from the current session.
-        /// All parameters should be LabelControl (not TextEdit).
-        /// </summary>
         public static void PopulateUserSessionContext(
-            LabelControl lblWelcome,
-            LabelControl lblFullName,
-            LabelControl lblUserID,
-            LabelControl lblProgram,
-            User currentUser)
+            LabelControl lblWelcome, LabelControl lblFullName,
+            LabelControl lblUserID, LabelControl lblProgram, User currentUser)
         {
             if (currentUser == null) return;
 
@@ -78,39 +51,25 @@ namespace SchoolClearanceSystem.Helpers
             lblProgram.Text = currentUser.Program ?? "N/A";
         }
 
-        // ── Period/Semester Validation & Population ────────────────────
+        // ── Period Fields ──────────────────────────────────────────────
 
-        /// <summary>
-        /// Populates and locks period fields to indicate they are read-only.
-        /// </summary>
-        // For StudentPortal — TextEdit controls
         public static void SetPeriodFields(
-            TextEdit txtSemester,
-            TextEdit txtCurrentSchoolYear,
-            string semester,
-            string academicYear)
+            TextEdit txtSemester, TextEdit txtCurrentSchoolYear,
+            string semester, string academicYear)
         {
             txtSemester.Text = semester;
             txtCurrentSchoolYear.Text = academicYear;
             ConfigureReadOnly(txtSemester, txtCurrentSchoolYear);
         }
 
-        // For BaseOfficeForm — LabelControl
         public static void SetPeriodFields(
-            LabelControl lblSemester,
-            LabelControl lblAcademicYear,
-            string semester,
-            string academicYear)
+            LabelControl lblSemester, LabelControl lblAcademicYear,
+            string semester, string academicYear)
         {
-            lblSemester.Text = string.IsNullOrEmpty(semester) || semester == "Not Set"
-                ? "Not Set" : semester;
-            lblAcademicYear.Text = string.IsNullOrEmpty(academicYear) || academicYear == "Not Set"
-                ? "Not Set" : academicYear;
+            lblSemester.Text = string.IsNullOrEmpty(semester) || semester == "Not Set" ? "Not Set" : semester;
+            lblAcademicYear.Text = string.IsNullOrEmpty(academicYear) || academicYear == "Not Set" ? "Not Set" : academicYear;
         }
 
-        /// <summary>
-        /// Makes text boxes read-only with gray appearance.
-        /// </summary>
         public static void ConfigureReadOnly(params TextEdit[] boxes)
         {
             foreach (var box in boxes)
@@ -121,14 +80,9 @@ namespace SchoolClearanceSystem.Helpers
             }
         }
 
-        // ── Button Styling ─────────────────────────────────────────────
+        // ── Buttons ────────────────────────────────────────────────────
 
-        /// <summary>
-        /// Disables and grays out a button with a completion message.
-        /// </summary>
-        public static void DisableButtonAsCompleted(
-            SimpleButton button,
-            string completionText = "Clearance Fully Approved")
+        public static void DisableButtonAsCompleted(SimpleButton button, string completionText = "Clearance Fully Approved")
         {
             button.Text = completionText;
             button.Enabled = false;
@@ -136,29 +90,20 @@ namespace SchoolClearanceSystem.Helpers
             button.Appearance.ForeColor = Color.DimGray;
         }
 
-        /// <summary>
-        /// Resets a button to its default enabled state.
-        /// </summary>
         public static void ResetButton(SimpleButton button, string defaultText = "Submit Request")
         {
             button.Text = defaultText;
             button.Enabled = true;
-            button.Appearance.Reset();  // fully restores whatever the Designer set
+            button.Appearance.Reset();
         }
 
-        // ── Status Label Updates ───────────────────────────────────────
+        // ── Status Labels ──────────────────────────────────────────────
 
-        /// <summary>
-        /// Updates dashboard status labels based on clearance progress.
-        /// </summary>
         public static void UpdateClearanceStatus(
-            LabelControl lblStatus,
-            LabelControl lblProgress,
-            int clearedCount,
-            int totalOffices)
+            LabelControl lblStatus, LabelControl lblProgress,
+            int clearedCount, int totalOffices)
         {
             bool fullyCleared = clearedCount == totalOffices;
-
             lblStatus.Text = fullyCleared ? "Cleared" : "In Progress";
             lblStatus.ForeColor = fullyCleared ? Color.ForestGreen : SystemColors.ControlText;
             lblProgress.Text = fullyCleared
@@ -166,113 +111,57 @@ namespace SchoolClearanceSystem.Helpers
                 : $"{clearedCount} out of {totalOffices} offices cleared";
         }
 
-        /// <summary>
-        /// Updates dashboard progress indicators.
-        /// </summary>
         public static void UpdateProgressIndicators(
-            LabelControl lblOfficeCleared,
-            LabelControl lblPercentage,
-            ProgressBarControl pbOverallProgress,
-            int clearedCount,
-            int totalOffices)
+            LabelControl lblOfficeCleared, LabelControl lblPercentage,
+            ProgressBarControl pbOverallProgress, int clearedCount, int totalOffices)
         {
             int percentage = (clearedCount * 100) / totalOffices;
-
             lblOfficeCleared.Text = $"{clearedCount}/{totalOffices}";
             lblPercentage.Text = percentage + "%";
             pbOverallProgress.Position = percentage;
         }
 
-        // ── Action Button Availability ─────────────────────────────────
+        // ── Action Buttons ─────────────────────────────────────────────
 
-        /// <summary>
-        /// Sets action button availability based on clearance status.
-        /// </summary>
         public static void SetActionButtonsAvailability(
-            bool canAct,
-            SimpleButton btnSubmitRequest,
-            SimpleButton btnUploadSSG,
-            SimpleButton btnUploadTreasurer)
+            bool canAct, SimpleButton btnSubmitRequest,
+            SimpleButton btnUploadSSG, SimpleButton btnUploadTreasurer)
         {
             btnSubmitRequest.Enabled = canAct;
             btnUploadSSG.Enabled = canAct;
             btnUploadTreasurer.Enabled = canAct;
         }
 
-        // ── Validation Helpers ─────────────────────────────────────────
+        // ── Validation ─────────────────────────────────────────────────
 
-        /// <summary>
-        /// Validates that both required file paths are populated.
-        /// </summary>
         public static bool ValidateRequiredFiles(string ssgFilePath, string treasurerFilePath)
-        {
-            return !string.IsNullOrEmpty(ssgFilePath) && !string.IsNullOrEmpty(treasurerFilePath);
-        }
+            => !string.IsNullOrEmpty(ssgFilePath) && !string.IsNullOrEmpty(treasurerFilePath);
 
-   
-
-        // ── User Validation ────────────────────────────────────────────
-
-        /// <summary>
-        /// Validates that a user is logged in.
-        /// </summary>
         public static bool ValidateUserLoggedIn(User currentUser)
-        {
-            return currentUser != null;
-        }
+            => currentUser != null;
 
-        /// <summary>
-        /// Validates that student is fully cleared.
-        /// </summary>
         public static bool ValidateFullyClearedStatus(int clearedCount, int totalOffices)
-        {
-            return clearedCount == totalOffices;
-        }
+            => clearedCount == totalOffices;
 
         // ── Message Boxes ──────────────────────────────────────────────
 
-        /// <summary>
-        /// Shows a success message box.
-        /// </summary>
         public static void ShowSuccess(string message, string title = "Success")
-        {
-            XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+            => XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        /// <summary>
-        /// Shows a warning message box.
-        /// </summary>
         public static void ShowWarning(string message, string title = "Warning")
-        {
-            XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
+            => XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-        /// <summary>
-        /// Shows an error message box.
-        /// </summary>
         public static void ShowError(string message, string title = "Error")
-        {
-            XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+            => XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        /// <summary>
-        /// Shows a confirmation dialog.
-        /// </summary>
         public static DialogResult ShowConfirmation(string message, string title = "Confirm")
-        {
-            return XtraMessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        }
+            => XtraMessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
         // ── Password Toggle ────────────────────────────────────────────
 
-        /// <summary>
-        /// Wires a show/hide password toggle checkbox to a password TextEdit.
-        /// Handles label caption swap ("Show Password" / "Hide Password") and cursor repositioning.
-        /// </summary>
         public static void ConfigurePasswordToggle(
             DevExpress.XtraEditors.CheckEdit chkShowPassword,
-            TextEdit txtPassword,
-            string initialCaption = "Show Password")
+            TextEdit txtPassword, string initialCaption = "Show Password")
         {
             chkShowPassword.Properties.Caption = initialCaption;
 
@@ -287,19 +176,12 @@ namespace SchoolClearanceSystem.Helpers
 
         // ── Name Field Restrictions ────────────────────────────────────
 
-        /// <summary>
-        /// Restricts one or more TextEdit fields to letters, spaces, hyphens, and apostrophes only.
-        /// Attach this to name fields (Last Name, First Name, Middle Name) to prevent numeric/symbol input.
-        /// </summary>
         public static void AttachNameRestrictions(params TextEdit[] fields)
         {
             foreach (var field in fields)
                 field.KeyPress += RestrictToLettersOnly;
         }
 
-        /// <summary>
-        /// KeyPress handler that blocks any character that is not a letter, space, hyphen, or apostrophe.
-        /// </summary>
         public static void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) &&
