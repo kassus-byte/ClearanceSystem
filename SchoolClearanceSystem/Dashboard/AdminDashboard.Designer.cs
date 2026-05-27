@@ -209,6 +209,8 @@
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -280,6 +282,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboSemester.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // Semester
@@ -653,7 +657,6 @@
             // 
             // pageDashboard
             // 
-            this.pageDashboard.Caption = "pageDashboard";
             this.pageDashboard.Controls.Add(this.panelControl13);
             this.pageDashboard.Controls.Add(this.panelControl6);
             this.pageDashboard.Controls.Add(this.paneltoggle);
@@ -1062,9 +1065,9 @@
             this.labelControl4.Appearance.Options.UseForeColor = true;
             this.labelControl4.Location = new System.Drawing.Point(42, 22);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(115, 17);
+            this.labelControl4.Size = new System.Drawing.Size(195, 17);
             this.labelControl4.TabIndex = 1;
-            this.labelControl4.Text = "OFFICE ACCOUNTS";
+            this.labelControl4.Text = "OFFICE AND ADMIN ACCOUNTS";
             // 
             // pnlSpace1
             // 
@@ -1213,7 +1216,6 @@
             // 
             // pageAccountManagement
             // 
-            this.pageAccountManagement.Caption = "pageAccountManagement";
             this.pageAccountManagement.Controls.Add(this.tabPane1);
             this.pageAccountManagement.Controls.Add(this.panelControl14);
             this.pageAccountManagement.Name = "pageAccountManagement";
@@ -1255,7 +1257,8 @@
             this.gcStudents.Size = new System.Drawing.Size(1586, 429);
             this.gcStudents.TabIndex = 2;
             this.gcStudents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvStudents});
+            this.gvStudents,
+            this.gridView4});
             // 
             // gvStudents
             // 
@@ -1426,7 +1429,7 @@
             // 
             // tabNavigationPage2
             // 
-            this.tabNavigationPage2.Caption = "Offices";
+            this.tabNavigationPage2.Caption = "Offices/Admins";
             this.tabNavigationPage2.Controls.Add(this.gcOffice);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
             this.tabNavigationPage2.Size = new System.Drawing.Size(1586, 429);
@@ -1443,7 +1446,8 @@
             this.gcOffice.Size = new System.Drawing.Size(1586, 429);
             this.gcOffice.TabIndex = 3;
             this.gcOffice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvOffice});
+            this.gvOffice,
+            this.gridView3});
             // 
             // gvOffice
             // 
@@ -1853,6 +1857,16 @@
             this.txtHeaderRC.TabIndex = 1;
             this.txtHeaderRC.Text = "Clearance Settings";
             // 
+            // gridView3
+            // 
+            this.gridView3.GridControl = this.gcOffice;
+            this.gridView3.Name = "gridView3";
+            // 
+            // gridView4
+            // 
+            this.gridView4.GridControl = this.gcStudents;
+            this.gridView4.Name = "gridView4";
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1946,6 +1960,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1981,32 +1997,11 @@
         private DevExpress.XtraEditors.LabelControl lblFullName;
         private DevExpress.XtraEditors.LabelControl lblRole;
         private DevExpress.XtraEditors.PanelControl panelControl14;
-        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
-        private DevExpress.XtraGrid.GridControl gcStudents;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvStudents;
         private DevExpress.XtraEditors.SimpleButton btnDelete;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
-        private DevExpress.XtraGrid.Columns.GridColumn UserID;
-        private DevExpress.XtraGrid.Columns.GridColumn FullName;
-        private DevExpress.XtraGrid.Columns.GridColumn Program;
-        private DevExpress.XtraGrid.Columns.GridColumn Year;
-        private DevExpress.XtraGrid.Columns.GridColumn DateCreated;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraEditors.SimpleButton btnRegisterAccount;
         private DevExpress.XtraEditors.SimpleButton btnEditInfo;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
-        private DevExpress.XtraGrid.Columns.GridColumn Role;
-        private DevExpress.XtraGrid.GridControl gcOffice;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvOffice;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit4;
         private DevExpress.XtraEditors.PanelControl panelControl15;
         private DevExpress.XtraEditors.SimpleButton btnLogout;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -2063,5 +2058,28 @@
         private DevExpress.XtraEditors.PanelControl panelControl16;
         private DevExpress.XtraEditors.SimpleButton btnDeleteSettings;
         private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
+        private DevExpress.XtraGrid.GridControl gcStudents;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvStudents;
+        private DevExpress.XtraGrid.Columns.GridColumn UserID;
+        private DevExpress.XtraGrid.Columns.GridColumn FullName;
+        private DevExpress.XtraGrid.Columns.GridColumn Program;
+        private DevExpress.XtraGrid.Columns.GridColumn Year;
+        private DevExpress.XtraGrid.Columns.GridColumn Role;
+        private DevExpress.XtraGrid.Columns.GridColumn DateCreated;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
+        private DevExpress.XtraGrid.GridControl gcOffice;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvOffice;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
     }
 }
