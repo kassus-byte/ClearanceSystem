@@ -1002,9 +1002,9 @@
             this.labelControl5.Appearance.Options.UseForeColor = true;
             this.labelControl5.Location = new System.Drawing.Point(45, 22);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(191, 17);
+            this.labelControl5.Size = new System.Drawing.Size(131, 17);
             this.labelControl5.TabIndex = 2;
-            this.labelControl5.Text = "NEW STUDENT REGISTRATIONS";
+            this.labelControl5.Text = "NEW REGISTRATIONS";
             // 
             // pnlSpace2
             // 
@@ -1234,7 +1234,7 @@
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
             this.tabPane1.Size = new System.Drawing.Size(1586, 470);
             this.tabPane1.TabIndex = 1;
-            this.tabPane1.Text = " Students";
+            this.tabPane1.Text = "Offices/Admins";
             // 
             // tabNavigationPage1
             // 
