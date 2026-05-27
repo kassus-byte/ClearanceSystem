@@ -119,14 +119,14 @@ namespace SchoolClearanceSystem
                 lblProgressSummary.Text = $"{cleared} out of {total} students cleared";
                 pbClearanceProgress.Position = total > 0 ? Math.Min((cleared * 100) / total, 100) : 0;
 
+                // ── Recent Requests (this week, top 10) ───────────────────────
+                gcRecentRequests.DataSource = _repo.GetRecentRequestsForOffice(OfficeName, 10).ToList();
             }
             catch (Exception ex)
             {
                 UIHelper.ShowError($"Could not load dashboard stats: {ex.Message}");
             }
-
         }
-
         // ── Filtering ─────────────────────────────────────────────────
         private void SetStatusFilter(string status)
         {

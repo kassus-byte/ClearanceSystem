@@ -168,17 +168,20 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        // ── Called by AdminDashboard.cs → LoadDashboardStats() ────────
+       
+
         public IEnumerable<User> GetUsersRegisteredThisWeek()
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT * FROM Users
-                               WHERE DateCreated >= date('now', '-7 days')
-                               ORDER BY DateCreated DESC";
+                       ORDER BY DateCreated DESC
+                       LIMIT 10";
                 return db.Query<User>(sql).ToList();
             }
         }
+
+      
 
         // ── Called by AdminDashboard.cs ───────────────────────────────
         // FIX: ORDER BY needs to handle the computed FullName property

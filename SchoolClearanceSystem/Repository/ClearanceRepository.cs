@@ -224,6 +224,29 @@ namespace SchoolClearanceSystem.Repository
                 return db.ExecuteScalar<int>(sql, new { dept = officeDept });
             }
         }
+        public IEnumerable<dynamic> GetRecentRequestsForOffice(string officeDept, int limit = 10)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"SELECT 
+                c.UserID   AS UserID,
+                (u.LastName || ', ' || u.FirstName || 
+                    CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
+                         THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+                u.Program  AS Program,
+                u.Year     AS Year,
+                c.Semester AS Semester,
+                c.Status   AS Status,
+                c.Remarks  AS Remarks
+               FROM ClearanceRequests c
+               INNER JOIN Users u ON c.UserID = u.UserID
+               WHERE c.Department = @dept
+               ORDER BY c.rowid DESC
+               LIMIT @limit";
+
+                return db.Query(sql, new { dept = officeDept, limit }).ToList();
+            }
+        }
 
         public DataTable GetClearanceReportData(string semester, string academicYear, string status, string officeName)
         {
