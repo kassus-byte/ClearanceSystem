@@ -164,7 +164,6 @@ namespace SchoolClearanceSystem.Dashboard
         {
             var view = ActiveView;
 
-            // Collect all selected rows
             var selectedUsers = view.GetSelectedRows()
                 .Select(h => view.GetRow(h) as User)
                 .Where(u => u != null)
@@ -181,50 +180,55 @@ namespace SchoolClearanceSystem.Dashboard
             if (Confirm($"Permanently delete {selectedUsers.Count} account(s)?\n\n{names}", "Confirm Deletion") != DialogResult.Yes)
                 return;
 
+            int successCount = 0;
+            var failures = new System.Collections.Generic.List<string>();
+
             foreach (var user in selectedUsers)
             {
                 try
                 {
-                    ProcessUserDeletion(user.UserID);
+                    if (ProcessUserDeletion(user))
+                        successCount++;
                 }
                 catch (Exception ex)
                 {
-                    Notify($"Failed to delete {user.FullName}: {ex.Message}", "Error", MessageBoxIcon.Error);
+                    failures.Add($"{user.FullName}: {ex.Message}");
                 }
             }
+
+            // Single summary notification
+            if (successCount > 0 && !failures.Any())
+                Notify($"{successCount} account(s) deleted successfully.", "Deleted", MessageBoxIcon.Information);
+            else if (successCount > 0 && failures.Any())
+                Notify($"{successCount} account(s) deleted.\n\nFailed:\n{string.Join("\n", failures)}", "Partial Success", MessageBoxIcon.Warning);
+            else
+                Notify($"No accounts were deleted.\n\nErrors:\n{string.Join("\n", failures)}", "Deletion Failed", MessageBoxIcon.Error);
 
             RefreshData();
         }
 
-        private void ProcessUserDeletion(string userId)
+        // Returns true if deletion succeeded
+        private bool ProcessUserDeletion(User user)
         {
             try
             {
-                DeleteUser(userId, forceClearRecords: false);
+                return DeleteUser(user.UserID, forceClearRecords: false);
             }
             catch (Exception ex) when (ex.Message.Contains("FOREIGN KEY") || ex.Message.Contains("19"))
             {
-                if (Confirm("This student has active records. Force deletion will purge all related records. Proceed?",
+                if (Confirm($"'{user.FullName}' has active records. Force deletion will purge all related records. Proceed?",
                     "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
-                    DeleteUser(userId, forceClearRecords: true);
-            }
-            catch (Exception ex)
-            {
-                Notify($"Error: {ex.Message}", "Deletion Failed", MessageBoxIcon.Error);
+                    return DeleteUser(user.UserID, forceClearRecords: true);
+
+                return false;
             }
         }
 
-        private void DeleteUser(string userId, bool forceClearRecords)
+        private bool DeleteUser(string userId, bool forceClearRecords)
         {
             if (forceClearRecords) _clearanceRepo.DeleteRequestsByStudent(userId);
-
-            if (_userRepo.DeleteUser(userId))
-            {
-                Notify("Account successfully deleted.", "Deleted", MessageBoxIcon.Information);
-                RefreshData();
-            }
+            return _userRepo.DeleteUser(userId);
         }
-
         // ── Document View ─────────────────────────────────────────────
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -330,4 +334,5 @@ namespace SchoolClearanceSystem.Dashboard
 
     }
 }
+
 

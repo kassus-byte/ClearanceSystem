@@ -2,18 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Dapper;
 
 namespace SchoolClearanceSystem
 {
-    
     public class DatabaseManager
     {
-        private readonly string connectionString = $"Data Source={AppDomain.CurrentDomain.BaseDirectory}ClearanceSystem.db";
+        // Dynamically finds your main project directory by removing the \bin\ folder structure from the path
+        private static readonly string projectFolder = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "\\bin\\" }, StringSplitOptions.None)[0];
 
-      
+        // Combines the safe root folder with your database filename
+        private readonly string connectionString = $"Data Source={Path.Combine(projectFolder, "ClearanceSystem.db")}";
+
         public IDbConnection GetConnection()
         {
             var conn = new SqliteConnection(connectionString);
