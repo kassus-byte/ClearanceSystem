@@ -1,127 +1,101 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Windows.Forms;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
+using System;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem
 {
-    public partial class Registration : DevExpress.XtraEditors.XtraForm
+    public partial class Registration : XtraForm
     {
-        private readonly UserRepository _userRepo = new UserRepository();
+        // Allows injecting a mock repo for testing; defaults to a real one
+        private readonly UserRepository _userRepo;
 
-        public Registration()
+        public Registration(UserRepository userRepo = null)
         {
-            SQLitePCL.Batteries.Init();
             InitializeComponent();
+            _userRepo = userRepo ?? new UserRepository();
 
-            // Password visibility toggle
-            txtPassword.Properties.UseSystemPasswordChar = true;
-            chkShowPassword.Properties.Caption = "Show Password";
-            chkShowPassword.CheckedChanged += (s, e) =>
-            {
-                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
-                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
-                txtPassword.Focus();
-                txtPassword.SelectionStart = txtPassword.Text.Length;
-            };
-
-            // ── Combo box restrictions ────────────────────────────────
-            // Program and Year must be selected from the list — no free typing
-            cmbProgram.Properties.Items.Clear();
-            cmbProgram.Properties.Items.AddRange(new object[] { "BSIT" });
-            cmbProgram.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            cmbYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-
-            // ── Name field restrictions ───────────────────────────────
-            // Letters, spaces, hyphens, and apostrophes only — no digits
-            txtLastName.KeyPress += RestrictToLettersOnly;
-            txtFirstName.KeyPress += RestrictToLettersOnly;
-            txtMiddleName.KeyPress += RestrictToLettersOnly;
+            // Delegate password toggle and name restrictions to UIHelper
+            UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
+            UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
         }
 
-        // Allows letters (any language), spaces, hyphens, and apostrophes.
-        // Blocks digits and every other symbol.
-        private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) &&
-                !char.IsLetter(e.KeyChar) &&
-                e.KeyChar != ' ' &&
-                e.KeyChar != '-' &&
-                e.KeyChar != '\'')
-            {
-                e.Handled = true;
-            }
-        }
-
-        // ── Register button ───────────────────────────────────────────────
+        // ── Register ──────────────────────────────────────────────────
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
-                string.IsNullOrWhiteSpace(txtLastName.Text) ||
-                string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                XtraMessageBox.Show("User ID, Last Name, First Name, and Password are required.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (!ValidateRequiredFields()) return;
 
-            if (string.IsNullOrWhiteSpace(cmbProgram.Text) || string.IsNullOrWhiteSpace(cmbYear.Text))
-            {
-                XtraMessageBox.Show("Please select a Program and Year.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            User newUser = new User
-            {
-                UserID = txtUserID.Text.Trim(),
-                LastName = txtLastName.Text.Trim(),
-                FirstName = txtFirstName.Text.Trim(),
-                MiddleName = txtMiddleName.Text.Trim(),
-                Program = cmbProgram.Text,
-                Year = cmbYear.Text,
-                Role = "Student",
-                Password = txtPassword.Text.Trim(),
-            };
+            // Build a User object from the form fields and attempt to save it
+            var newUser = BuildUserFromForm();
 
             if (_userRepo.AddUser(newUser))
             {
-                XtraMessageBox.Show("Registration Successful!", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Registration succeeded — clear the form for the next entry
+                UIHelper.ShowSuccess("Registration Successful!");
                 ClearFields();
             }
             else
             {
-                XtraMessageBox.Show($"User ID '{newUser.UserID}' is already taken. Choose another.",
-                    "Duplicate User ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // AddUser returns false when the UserID already exists in the database
+                UIHelper.ShowError($"User ID '{newUser.UserID}' is already taken. Choose another.", "Duplicate User ID");
                 txtUserID.Focus();
             }
         }
 
-        // ── Clear all fields ──────────────────────────────────────────────
-        private void ClearFields()
+        // Returns false and shows a message if any required field is empty
+        private bool ValidateRequiredFields()
         {
-            txtUserID.Text = string.Empty;
-            txtLastName.Text = string.Empty;
-            txtFirstName.Text = string.Empty;
-            txtMiddleName.Text = string.Empty;
-            txtPassword.Text = string.Empty;
-            cmbProgram.EditValue = null;
-            cmbYear.EditValue = null;
+            if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
+                string.IsNullOrWhiteSpace(txtLastName.Text) ||
+                string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                string.IsNullOrWhiteSpace(txtMiddleName.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                UIHelper.ShowWarning("User ID, Last Name, First Name, Middle Initial, and Password are required.", "Validation Error");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(cmbProgram.Text) || string.IsNullOrWhiteSpace(cmbYear.Text))
+            {
+                UIHelper.ShowWarning("Please select a Program and Year.", "Validation Error");
+                return false;
+            }
+
+            return true;
         }
 
-        // ── Navigate to Login ─────────────────────────────────────────────
+        // Collects all form field values into a new User object — role is always Student here
+        private User BuildUserFromForm() => new User
+        {
+            UserID = txtUserID.Text.Trim(),
+            LastName = txtLastName.Text.Trim(),
+            FirstName = txtFirstName.Text.Trim(),
+            MiddleName = txtMiddleName.Text.Trim(),
+            Program = cmbProgram.Text,
+            Year = cmbYear.Text,
+            Role = "Student",
+            Password = txtPassword.Text
+        };
+
+        // Resets all input fields back to empty after a successful registration
+        private void ClearFields()
+        {
+            txtUserID.Text = txtLastName.Text = txtFirstName.Text =
+            txtMiddleName.Text = txtPassword.Text = string.Empty;
+            cmbProgram.EditValue = cmbYear.EditValue = null;
+        }
+
+        // ── Navigate to Login ─────────────────────────────────────────
         private void lblctrLogin_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login();
+            var loginForm = new Login();
+
+            // Close registration when the login form is closed
             loginForm.FormClosed += (s, args) => this.Close();
             loginForm.Show();
             this.Hide();
         }
-
-        private void labelControl8_Click(object sender, EventArgs e) { }
-        private void labelControl7_Click(object sender, EventArgs e) { }
     }
 }

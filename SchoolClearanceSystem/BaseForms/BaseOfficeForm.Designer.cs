@@ -29,32 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseOfficeForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions8 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject29 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject30 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject31 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject32 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions9 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject33 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject34 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject35 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject36 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions10 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject37 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject38 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject39 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject40 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.sbOfficeDashboard = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -66,6 +68,7 @@
             this.panelControl17 = new DevExpress.XtraEditors.PanelControl();
             this.btnLogout = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl16 = new DevExpress.XtraEditors.PanelControl();
             this.lblRole = new DevExpress.XtraEditors.LabelControl();
             this.lblFullName = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -75,9 +78,9 @@
             this.naviframeOffices = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.pageOfficeDashboard = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl11 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnExpandRequest = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gcRecentRequests = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -85,15 +88,13 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl10 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
+            this.lblProgressSummary = new DevExpress.XtraEditors.LabelControl();
+            this.pbClearanceProgress = new DevExpress.XtraEditors.ProgressBarControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
@@ -138,27 +139,22 @@
             this.panelControl13 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl12 = new DevExpress.XtraEditors.PanelControl();
             this.pageOfficeReports = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.panelControl20 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl22 = new DevExpress.XtraEditors.PanelControl();
-            this.tileControl1 = new DevExpress.XtraEditors.TileControl();
-            this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
-            this.tileGroup5 = new DevExpress.XtraEditors.TileGroup();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl21 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl19 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl16 = new DevExpress.XtraEditors.PanelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -170,6 +166,7 @@
             this.panelControl17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -179,15 +176,13 @@
             this.pageOfficeDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl11)).BeginInit();
             this.panelControl11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcRecentRequests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).BeginInit();
             this.panelControl9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).BeginInit();
             this.panelControl10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClearanceProgress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
@@ -213,19 +208,36 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).BeginInit();
             this.pageOfficeReports.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl20)).BeginInit();
-            this.panelControl20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl22)).BeginInit();
-            this.panelControl22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl21)).BeginInit();
             this.panelControl21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).BeginInit();
             this.panelControl19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).BeginInit();
             this.SuspendLayout();
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemButtonEdit1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemButtonEdit1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.Image")));
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // repositoryItemButtonEdit2
+            // 
+            this.repositoryItemButtonEdit2.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
+            this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // accordionControl1
             // 
@@ -431,6 +443,17 @@
             this.panelControl3.Size = new System.Drawing.Size(300, 100);
             this.panelControl3.TabIndex = 1;
             // 
+            // panelControl16
+            // 
+            this.panelControl16.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.panelControl16.Appearance.Options.UseBackColor = true;
+            this.panelControl16.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl16.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl16.ContentImage")));
+            this.panelControl16.Location = new System.Drawing.Point(21, 15);
+            this.panelControl16.Name = "panelControl16";
+            this.panelControl16.Size = new System.Drawing.Size(69, 69);
+            this.panelControl16.TabIndex = 5;
+            // 
             // lblRole
             // 
             this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
@@ -525,6 +548,7 @@
             // 
             // pageOfficeDashboard
             // 
+            this.pageOfficeDashboard.Caption = "pageOfficeDashboard";
             this.pageOfficeDashboard.Controls.Add(this.panelControl11);
             this.pageOfficeDashboard.Controls.Add(this.panelControl9);
             this.pageOfficeDashboard.Controls.Add(this.panelControl5);
@@ -539,9 +563,9 @@
             this.panelControl11.Appearance.Options.UseBorderColor = true;
             this.panelControl11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl11.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl11.ContentImage")));
-            this.panelControl11.Controls.Add(this.simpleButton1);
+            this.panelControl11.Controls.Add(this.btnExpandRequest);
             this.panelControl11.Controls.Add(this.labelControl4);
-            this.panelControl11.Controls.Add(this.gridControl1);
+            this.panelControl11.Controls.Add(this.gcRecentRequests);
             this.panelControl11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl11.Location = new System.Drawing.Point(0, 376);
             this.panelControl11.Name = "panelControl11";
@@ -549,23 +573,24 @@
             this.panelControl11.Size = new System.Drawing.Size(1604, 636);
             this.panelControl11.TabIndex = 6;
             // 
-            // simpleButton1
+            // btnExpandRequest
             // 
-            this.simpleButton1.Appearance.BorderColor = System.Drawing.Color.Green;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseBorderColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.simpleButton1.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 15);
-            this.simpleButton1.Location = new System.Drawing.Point(63, 557);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(195, 36);
-            this.simpleButton1.TabIndex = 2;
-            this.simpleButton1.Text = "View All Requests";
+            this.btnExpandRequest.Appearance.BorderColor = System.Drawing.Color.Green;
+            this.btnExpandRequest.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpandRequest.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnExpandRequest.Appearance.Options.UseBackColor = true;
+            this.btnExpandRequest.Appearance.Options.UseBorderColor = true;
+            this.btnExpandRequest.Appearance.Options.UseFont = true;
+            this.btnExpandRequest.Appearance.Options.UseForeColor = true;
+            this.btnExpandRequest.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
+            this.btnExpandRequest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExpandRequest.ImageOptions.SvgImage")));
+            this.btnExpandRequest.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 15);
+            this.btnExpandRequest.Location = new System.Drawing.Point(63, 557);
+            this.btnExpandRequest.Name = "btnExpandRequest";
+            this.btnExpandRequest.Size = new System.Drawing.Size(195, 36);
+            this.btnExpandRequest.TabIndex = 2;
+            this.btnExpandRequest.Text = "View All Requests";
+            this.btnExpandRequest.Click += new System.EventHandler(this.btnExpandRequest_Click_1);
             // 
             // labelControl4
             // 
@@ -579,18 +604,15 @@
             this.labelControl4.TabIndex = 1;
             this.labelControl4.Text = "Recent Clearance Requests";
             // 
-            // gridControl1
+            // gcRecentRequests
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControl1.Location = new System.Drawing.Point(60, 60);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit1,
-            this.repositoryItemButtonEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(1484, 478);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gcRecentRequests.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcRecentRequests.Location = new System.Drawing.Point(60, 60);
+            this.gcRecentRequests.MainView = this.gridView1;
+            this.gcRecentRequests.Name = "gcRecentRequests";
+            this.gcRecentRequests.Size = new System.Drawing.Size(1484, 478);
+            this.gcRecentRequests.TabIndex = 0;
+            this.gcRecentRequests.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
@@ -605,7 +627,7 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9});
-            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GridControl = this.gcRecentRequests;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
@@ -627,6 +649,7 @@
             this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn1.Caption = "User ID";
+            this.gridColumn1.FieldName = "UserID";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -649,6 +672,7 @@
             this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn2.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn2.Caption = "Name";
+            this.gridColumn2.FieldName = "FullName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -671,6 +695,7 @@
             this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn3.Caption = "Program";
+            this.gridColumn3.FieldName = "Program";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -693,6 +718,7 @@
             this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn4.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn4.Caption = "Year";
+            this.gridColumn4.FieldName = "Year";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
@@ -715,6 +741,7 @@
             this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn5.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn5.Caption = "Semester";
+            this.gridColumn5.FieldName = "Semester";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
@@ -738,21 +765,12 @@
             this.gridColumn6.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn6.Caption = "Proof";
             this.gridColumn6.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.gridColumn6.FieldName = "Proof";
             this.gridColumn6.ImageOptions.Alignment = System.Drawing.StringAlignment.Center;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 86;
-            // 
-            // repositoryItemButtonEdit1
-            // 
-            this.repositoryItemButtonEdit1.Appearance.Options.UseTextOptions = true;
-            this.repositoryItemButtonEdit1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.repositoryItemButtonEdit1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.repositoryItemButtonEdit1.AutoHeight = false;
-            this.repositoryItemButtonEdit1.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.Image")));
-            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
-            this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // gridColumn7
             // 
@@ -771,6 +789,7 @@
             this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn7.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn7.Caption = "Status";
+            this.gridColumn7.FieldName = "Status";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
@@ -794,21 +813,11 @@
             this.gridColumn8.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn8.Caption = "Actions";
             this.gridColumn8.ColumnEdit = this.repositoryItemButtonEdit2;
+            this.gridColumn8.FieldName = "Actions";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 118;
-            // 
-            // repositoryItemButtonEdit2
-            // 
-            this.repositoryItemButtonEdit2.AutoHeight = false;
-            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
-            editorButtonImageOptions7.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions7.Image")));
-            this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
-            this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // gridColumn9
             // 
@@ -827,6 +836,7 @@
             this.gridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn9.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn9.Caption = "Remarks";
+            this.gridColumn9.FieldName = "Remarks";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
@@ -849,8 +859,8 @@
             // 
             this.panelControl10.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl10.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl10.ContentImage")));
-            this.panelControl10.Controls.Add(this.labelControl6);
-            this.panelControl10.Controls.Add(this.progressBarControl1);
+            this.panelControl10.Controls.Add(this.lblProgressSummary);
+            this.panelControl10.Controls.Add(this.pbClearanceProgress);
             this.panelControl10.Controls.Add(this.labelControl5);
             this.panelControl10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl10.Location = new System.Drawing.Point(10, 10);
@@ -858,25 +868,30 @@
             this.panelControl10.Size = new System.Drawing.Size(1584, 120);
             this.panelControl10.TabIndex = 0;
             // 
-            // labelControl6
+            // lblProgressSummary
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(50, 89);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(171, 17);
-            this.labelControl6.TabIndex = 3;
-            this.labelControl6.Text = "0 out of 200 students cleared";
+            this.lblProgressSummary.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgressSummary.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblProgressSummary.Appearance.Options.UseFont = true;
+            this.lblProgressSummary.Appearance.Options.UseForeColor = true;
+            this.lblProgressSummary.Location = new System.Drawing.Point(50, 89);
+            this.lblProgressSummary.Name = "lblProgressSummary";
+            this.lblProgressSummary.Size = new System.Drawing.Size(171, 17);
+            this.lblProgressSummary.TabIndex = 3;
+            this.lblProgressSummary.Text = "0 out of 200 students cleared";
             // 
-            // progressBarControl1
+            // pbClearanceProgress
             // 
-            this.progressBarControl1.Location = new System.Drawing.Point(50, 54);
-            this.progressBarControl1.Name = "progressBarControl1";
-            this.progressBarControl1.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.progressBarControl1.Size = new System.Drawing.Size(1484, 29);
-            this.progressBarControl1.TabIndex = 1;
+            this.pbClearanceProgress.Location = new System.Drawing.Point(50, 54);
+            this.pbClearanceProgress.Name = "pbClearanceProgress";
+            this.pbClearanceProgress.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pbClearanceProgress.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.pbClearanceProgress.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pbClearanceProgress.Properties.LookAndFeel.SkinName = "WXI";
+            this.pbClearanceProgress.Properties.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+            this.pbClearanceProgress.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.pbClearanceProgress.Size = new System.Drawing.Size(1484, 29);
+            this.pbClearanceProgress.TabIndex = 1;
             // 
             // labelControl5
             // 
@@ -1076,6 +1091,7 @@
             // 
             // pageOfficeClearanceRequest
             // 
+            this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
             this.pageOfficeClearanceRequest.Controls.Add(this.txtSearch);
             this.pageOfficeClearanceRequest.Controls.Add(this.btnOnHoldFilter);
             this.pageOfficeClearanceRequest.Controls.Add(this.btnApprovedFilter);
@@ -1209,9 +1225,9 @@
             // gcBaseOfficeForm
             // 
             this.gcBaseOfficeForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.gcBaseOfficeForm.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gcBaseOfficeForm.Location = new System.Drawing.Point(55, 55);
             this.gcBaseOfficeForm.MainView = this.gvBaseOfficeForm;
             this.gcBaseOfficeForm.Name = "gcBaseOfficeForm";
@@ -1238,6 +1254,7 @@
             this.Remarks});
             this.gvBaseOfficeForm.GridControl = this.gcBaseOfficeForm;
             this.gvBaseOfficeForm.Name = "gvBaseOfficeForm";
+            this.gvBaseOfficeForm.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gvBaseOfficeForm.OptionsView.ShowGroupPanel = false;
             this.gvBaseOfficeForm.OptionsView.ShowIndicator = false;
             // 
@@ -1282,7 +1299,7 @@
             this.FullName.AppearanceHeader.Options.UseTextOptions = true;
             this.FullName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.FullName.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.FullName.Caption = "Name";
+            this.FullName.Caption = "Full Name";
             this.FullName.FieldName = "FullName";
             this.FullName.Name = "FullName";
             this.FullName.Visible = true;
@@ -1384,9 +1401,9 @@
             // btnProof
             // 
             this.btnProof.AutoHeight = false;
-            editorButtonImageOptions8.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions8.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.btnProof.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnProof.Name = "btnProof";
             this.btnProof.Tag = "btnView";
             this.btnProof.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1440,11 +1457,11 @@
             // btnAction
             // 
             this.btnAction.AutoHeight = false;
-            editorButtonImageOptions9.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions9.Image")));
-            editorButtonImageOptions10.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions10.Image")));
+            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
             this.btnAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions9, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject33, serializableAppearanceObject34, serializableAppearanceObject35, serializableAppearanceObject36, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions10, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject37, serializableAppearanceObject38, serializableAppearanceObject39, serializableAppearanceObject40, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnAction.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAction.ContextImageOptions.SvgImage")));
             this.btnAction.Name = "btnAction";
             this.btnAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1467,7 +1484,6 @@
             this.Remarks.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Remarks.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.Remarks.Caption = "Remarks";
-            this.Remarks.ColumnEdit = this.repositoryItemCheckedComboBoxEdit1;
             this.Remarks.FieldName = "Remarks";
             this.Remarks.Name = "Remarks";
             this.Remarks.Visible = true;
@@ -1516,77 +1532,13 @@
             // 
             // pageOfficeReports
             // 
-            this.pageOfficeReports.Controls.Add(this.panelControl20);
+            this.pageOfficeReports.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pageOfficeReports.Appearance.Options.UseBackColor = true;
+            this.pageOfficeReports.Caption = "pageOfficeReports";
+            this.pageOfficeReports.Controls.Add(this.panelControl21);
             this.pageOfficeReports.Controls.Add(this.panelControl19);
             this.pageOfficeReports.Name = "pageOfficeReports";
             this.pageOfficeReports.Size = new System.Drawing.Size(1604, 1080);
-            // 
-            // panelControl20
-            // 
-            this.panelControl20.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelControl20.Appearance.Options.UseBackColor = true;
-            this.panelControl20.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl20.Controls.Add(this.panelControl22);
-            this.panelControl20.Controls.Add(this.panelControl21);
-            this.panelControl20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl20.Location = new System.Drawing.Point(0, 100);
-            this.panelControl20.Name = "panelControl20";
-            this.panelControl20.Size = new System.Drawing.Size(1604, 454);
-            this.panelControl20.TabIndex = 1;
-            // 
-            // panelControl22
-            // 
-            this.panelControl22.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelControl22.Appearance.Options.UseBackColor = true;
-            this.panelControl22.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl22.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl22.ContentImage")));
-            this.panelControl22.Controls.Add(this.tileControl1);
-            this.panelControl22.Controls.Add(this.labelControl15);
-            this.panelControl22.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl22.Location = new System.Drawing.Point(802, 0);
-            this.panelControl22.Name = "panelControl22";
-            this.panelControl22.Size = new System.Drawing.Size(802, 454);
-            this.panelControl22.TabIndex = 1;
-            // 
-            // tileControl1
-            // 
-            this.tileControl1.Groups.Add(this.tileGroup2);
-            this.tileControl1.Groups.Add(this.tileGroup3);
-            this.tileControl1.Groups.Add(this.tileGroup4);
-            this.tileControl1.Groups.Add(this.tileGroup5);
-            this.tileControl1.Location = new System.Drawing.Point(48, 95);
-            this.tileControl1.Name = "tileControl1";
-            this.tileControl1.Size = new System.Drawing.Size(714, 300);
-            this.tileControl1.TabIndex = 2;
-            this.tileControl1.Text = "tileControl1";
-            // 
-            // tileGroup2
-            // 
-            this.tileGroup2.Name = "tileGroup2";
-            // 
-            // tileGroup3
-            // 
-            this.tileGroup3.Name = "tileGroup3";
-            // 
-            // tileGroup4
-            // 
-            this.tileGroup4.Name = "tileGroup4";
-            // 
-            // tileGroup5
-            // 
-            this.tileGroup5.Name = "tileGroup5";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Appearance.Options.UseForeColor = true;
-            this.labelControl15.Location = new System.Drawing.Point(48, 42);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(145, 21);
-            this.labelControl15.TabIndex = 1;
-            this.labelControl15.Text = "Summary Statistics";
             // 
             // panelControl21
             // 
@@ -1594,19 +1546,44 @@
             this.panelControl21.Appearance.Options.UseBackColor = true;
             this.panelControl21.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl21.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl21.ContentImage")));
+            this.panelControl21.Controls.Add(this.labelControl6);
+            this.panelControl21.Controls.Add(this.comboBoxEdit4);
             this.panelControl21.Controls.Add(this.simpleButton7);
+            this.panelControl21.Controls.Add(this.labelControl17);
             this.panelControl21.Controls.Add(this.comboBoxEdit3);
+            this.panelControl21.Controls.Add(this.labelControl18);
+            this.panelControl21.Controls.Add(this.labelControl16);
             this.panelControl21.Controls.Add(this.comboBoxEdit2);
             this.panelControl21.Controls.Add(this.comboBoxEdit1);
-            this.panelControl21.Controls.Add(this.labelControl18);
-            this.panelControl21.Controls.Add(this.labelControl17);
-            this.panelControl21.Controls.Add(this.labelControl16);
             this.panelControl21.Controls.Add(this.labelControl14);
-            this.panelControl21.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl21.Location = new System.Drawing.Point(0, 0);
+            this.panelControl21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl21.Location = new System.Drawing.Point(0, 100);
             this.panelControl21.Name = "panelControl21";
-            this.panelControl21.Size = new System.Drawing.Size(802, 454);
+            this.panelControl21.Size = new System.Drawing.Size(1604, 353);
             this.panelControl21.TabIndex = 0;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Location = new System.Drawing.Point(819, 88);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(90, 17);
+            this.labelControl6.TabIndex = 9;
+            this.labelControl6.Text = "Academic Year";
+            // 
+            // comboBoxEdit4
+            // 
+            this.comboBoxEdit4.Location = new System.Drawing.Point(819, 111);
+            this.comboBoxEdit4.Name = "comboBoxEdit4";
+            this.comboBoxEdit4.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.comboBoxEdit4.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit4.Size = new System.Drawing.Size(735, 32);
+            this.comboBoxEdit4.TabIndex = 8;
             // 
             // simpleButton7
             // 
@@ -1624,56 +1601,11 @@
             this.simpleButton7.AppearancePressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.simpleButton7.AppearancePressed.Options.UseBackColor = true;
             this.simpleButton7.AppearancePressed.Options.UseFont = true;
-            this.simpleButton7.Location = new System.Drawing.Point(45, 359);
+            this.simpleButton7.Location = new System.Drawing.Point(47, 273);
             this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(711, 36);
+            this.simpleButton7.Size = new System.Drawing.Size(1507, 36);
             this.simpleButton7.TabIndex = 7;
             this.simpleButton7.Text = "Generate Report";
-            // 
-            // comboBoxEdit3
-            // 
-            this.comboBoxEdit3.Location = new System.Drawing.Point(45, 282);
-            this.comboBoxEdit3.Name = "comboBoxEdit3";
-            this.comboBoxEdit3.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboBoxEdit3.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit3.Size = new System.Drawing.Size(711, 32);
-            this.comboBoxEdit3.TabIndex = 6;
-            // 
-            // comboBoxEdit2
-            // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(45, 199);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboBoxEdit2.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(711, 32);
-            this.comboBoxEdit2.TabIndex = 5;
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(45, 118);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(711, 32);
-            this.comboBoxEdit1.TabIndex = 4;
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl18.Appearance.Options.UseFont = true;
-            this.labelControl18.Appearance.Options.UseForeColor = true;
-            this.labelControl18.Location = new System.Drawing.Point(45, 259);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(44, 17);
-            this.labelControl18.TabIndex = 3;
-            this.labelControl18.Text = "Format";
             // 
             // labelControl17
             // 
@@ -1681,11 +1613,34 @@
             this.labelControl17.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl17.Appearance.Options.UseFont = true;
             this.labelControl17.Appearance.Options.UseForeColor = true;
-            this.labelControl17.Location = new System.Drawing.Point(45, 176);
+            this.labelControl17.Location = new System.Drawing.Point(47, 168);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(75, 17);
             this.labelControl17.TabIndex = 2;
             this.labelControl17.Text = "Report Type";
+            // 
+            // comboBoxEdit3
+            // 
+            this.comboBoxEdit3.Location = new System.Drawing.Point(819, 191);
+            this.comboBoxEdit3.Name = "comboBoxEdit3";
+            this.comboBoxEdit3.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.comboBoxEdit3.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit3.Size = new System.Drawing.Size(735, 32);
+            this.comboBoxEdit3.TabIndex = 6;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl18.Appearance.Options.UseFont = true;
+            this.labelControl18.Appearance.Options.UseForeColor = true;
+            this.labelControl18.Location = new System.Drawing.Point(819, 168);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(44, 17);
+            this.labelControl18.TabIndex = 3;
+            this.labelControl18.Text = "Format";
             // 
             // labelControl16
             // 
@@ -1693,11 +1648,33 @@
             this.labelControl16.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl16.Appearance.Options.UseFont = true;
             this.labelControl16.Appearance.Options.UseForeColor = true;
-            this.labelControl16.Location = new System.Drawing.Point(45, 95);
+            this.labelControl16.Location = new System.Drawing.Point(47, 88);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(56, 17);
             this.labelControl16.TabIndex = 1;
             this.labelControl16.Text = "Semester";
+            // 
+            // comboBoxEdit2
+            // 
+            this.comboBoxEdit2.Location = new System.Drawing.Point(47, 191);
+            this.comboBoxEdit2.Name = "comboBoxEdit2";
+            this.comboBoxEdit2.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.comboBoxEdit2.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit2.Size = new System.Drawing.Size(735, 32);
+            this.comboBoxEdit2.TabIndex = 5;
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(47, 111);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(735, 32);
+            this.comboBoxEdit1.TabIndex = 4;
             // 
             // labelControl14
             // 
@@ -1705,7 +1682,7 @@
             this.labelControl14.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl14.Appearance.Options.UseFont = true;
             this.labelControl14.Appearance.Options.UseForeColor = true;
-            this.labelControl14.Location = new System.Drawing.Point(45, 39);
+            this.labelControl14.Location = new System.Drawing.Point(47, 25);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(124, 21);
             this.labelControl14.TabIndex = 0;
@@ -1748,17 +1725,6 @@
             this.labelControl19.TabIndex = 2;
             this.labelControl19.Text = "Reports";
             // 
-            // panelControl16
-            // 
-            this.panelControl16.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.panelControl16.Appearance.Options.UseBackColor = true;
-            this.panelControl16.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl16.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl16.ContentImage")));
-            this.panelControl16.Location = new System.Drawing.Point(21, 15);
-            this.panelControl16.Name = "panelControl16";
-            this.panelControl16.Size = new System.Drawing.Size(69, 69);
-            this.panelControl16.TabIndex = 5;
-            // 
             // BaseOfficeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1769,6 +1735,8 @@
             this.Name = "BaseOfficeForm";
             this.Text = "BaseClearanceForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
@@ -1781,6 +1749,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -1792,16 +1761,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl11)).EndInit();
             this.panelControl11.ResumeLayout(false);
             this.panelControl11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcRecentRequests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).EndInit();
             this.panelControl9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl10)).EndInit();
             this.panelControl10.ResumeLayout(false);
             this.panelControl10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClearanceProgress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
@@ -1832,21 +1799,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl12)).EndInit();
             this.pageOfficeReports.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl20)).EndInit();
-            this.panelControl20.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl22)).EndInit();
-            this.panelControl22.ResumeLayout(false);
-            this.panelControl22.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl21)).EndInit();
             this.panelControl21.ResumeLayout(false);
             this.panelControl21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).EndInit();
             this.panelControl19.ResumeLayout(false);
             this.panelControl19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1880,17 +1842,17 @@
         private DevExpress.XtraEditors.PanelControl panelControl8;
         private DevExpress.XtraEditors.PanelControl pnlSpace2;
         private DevExpress.XtraEditors.PanelControl panelControl11;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gcRecentRequests;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.PanelControl panelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
+        private DevExpress.XtraEditors.ProgressBarControl pbClearanceProgress;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl lblProgressSummary;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnExpandRequest;
         private DevExpress.XtraBars.Navigation.NavigationPage pageOfficeReports;
         private DevExpress.XtraEditors.PanelControl panelControl15;
         private DevExpress.XtraEditors.PanelControl panelControl14;
@@ -1906,24 +1868,7 @@
         private DevExpress.XtraEditors.SimpleButton btnOnHoldFilter;
         private DevExpress.XtraGrid.GridControl gcBaseOfficeForm;
         private DevExpress.XtraGrid.Views.Grid.GridView gvBaseOfficeForm;
-        private DevExpress.XtraEditors.PanelControl panelControl20;
         private DevExpress.XtraEditors.PanelControl panelControl19;
-        private DevExpress.XtraEditors.PanelControl panelControl22;
-        private DevExpress.XtraEditors.PanelControl panelControl21;
-        private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.LabelControl labelControl16;
-        private DevExpress.XtraEditors.LabelControl labelControl14;
-        private DevExpress.XtraEditors.TileControl tileControl1;
-        private DevExpress.XtraEditors.TileGroup tileGroup2;
-        private DevExpress.XtraEditors.TileGroup tileGroup3;
-        private DevExpress.XtraEditors.TileGroup tileGroup4;
-        private DevExpress.XtraEditors.TileGroup tileGroup5;
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraEditors.LabelControl labelControl19;
         private DevExpress.XtraEditors.LabelControl lblFullName;
@@ -1954,8 +1899,19 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
+        private DevExpress.XtraEditors.PanelControl panelControl16;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
-        private DevExpress.XtraEditors.PanelControl panelControl16;
+        private DevExpress.XtraEditors.PanelControl panelControl21;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit4;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
     }
 }

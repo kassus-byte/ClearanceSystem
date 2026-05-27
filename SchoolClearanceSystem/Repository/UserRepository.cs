@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Helpers; // add this at the top
 
 namespace SchoolClearanceSystem.Repository
 {
@@ -15,11 +16,18 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = "SELECT * FROM Users WHERE UserID = @id AND Password = @pass";
-                return db.QueryFirstOrDefault<User>(sql, new { id = userId, pass = password });
+                string sql = "SELECT * FROM Users WHERE UserID = @id";
+                var user = db.QueryFirstOrDefault<User>(sql, new { id = userId });
+
+                if (user == null) return null;
+
+                bool valid = user.Password.StartsWith("$2")
+                    ? Helpers.PasswordHelper.Verify(password, user.Password)
+                    : user.Password == password; // handles your existing plain-text accounts
+
+                return valid ? user : null;
             }
         }
-
         // ── Called by Login.cs ────────────────────────────────────────
         public User GetUserDetails(string userId)
         {
@@ -31,21 +39,24 @@ namespace SchoolClearanceSystem.Repository
         }
 
         // ── Called by Registration.cs and UserInfoForm (Register mode) ─
+       
         public bool AddUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
-                // Guard: block duplicate UserID before inserting
                 string checkSql = "SELECT COUNT(1) FROM Users WHERE UserID = @UserID";
                 int exists = db.ExecuteScalar<int>(checkSql, new { UserID = user.UserID });
                 if (exists > 0) return false;
 
+                // Hash before storing — plain text never reaches the database
+                user.Password = PasswordHelper.Hash(user.Password);
+
                 string sql = @"INSERT INTO Users 
-                               (UserID, Password, LastName, FirstName, MiddleName, 
-                                Program, Year, Role, DateCreated)
-                               VALUES 
-                               (@UserID, @Password, @LastName, @FirstName, @MiddleName, 
-                                @Program, @Year, @Role, @DateCreated)";
+                       (UserID, Password, LastName, FirstName, MiddleName, 
+                        Program, Year, Role, DateCreated)
+                       VALUES 
+                       (@UserID, @Password, @LastName, @FirstName, @MiddleName, 
+                        @Program, @Year, @Role, @DateCreated)";
 
                 if (string.IsNullOrEmpty(user.DateCreated))
                     user.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -53,22 +64,20 @@ namespace SchoolClearanceSystem.Repository
                 return db.Execute(sql, user) > 0;
             }
         }
-
         // ── Called by UserInfoForm (Edit mode) ────────────────────────
         public bool EditUser(User user)
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"UPDATE Users 
-                               SET Password    = @Password,
-                                   LastName    = @LastName,
-                                   FirstName   = @FirstName,
-                                   MiddleName  = @MiddleName,
-                                   Program     = @Program,
-                                   Year        = @Year,
-                                   Role        = @Role,
-                                   UploadPath  = @UploadPath
-                               WHERE UserID = @UserID";
+               SET Password    = @Password,
+                   LastName    = @LastName,
+                   FirstName   = @FirstName,
+                   MiddleName  = @MiddleName,
+                   Program     = @Program,
+                   Year        = @Year,
+                   Role        = @Role
+               WHERE UserID = @UserID";
                 return db.Execute(sql, user) > 0;
             }
         }
@@ -167,6 +176,22 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
+        // Gets distinct clearance periods a student has submitted requests for
+        public IEnumerable<ClearanceRecord> GetStudentClearancePeriods(string userId)
+        {
+            using (var db = dbManager.GetConnection())
+            {
+                string sql = @"
+            SELECT DISTINCT Semester, AcademicYear, 'Completed' AS Status
+            FROM ClearanceRequests
+            WHERE UserID = @id
+            GROUP BY Semester, AcademicYear
+            HAVING COUNT(CASE WHEN Status = 'Approved' THEN 1 END) = COUNT(*)
+            ORDER BY AcademicYear DESC, Semester DESC";
+
+                return db.Query<ClearanceRecord>(sql, new { id = userId }).ToList();
+            }
+        }
         // ── Called by StudentPortal.cs → UpdateDashboard() ───────────
         public int GetClearedCount(string userId, string semester, string academicYear)
         {

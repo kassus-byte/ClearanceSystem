@@ -1,17 +1,16 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraBars.Navigation;
+﻿using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace SchoolClearanceSystem.Dashboard
 {
     public partial class AdminDashboard : XtraForm
     {
-        // ── Repositories (Encapsulation — all DB access hidden behind these) ─────────
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly SystemRepository _sysRepo = new SystemRepository();
         private readonly ClearanceRepository _clearanceRepo = new ClearanceRepository();
@@ -20,25 +19,17 @@ namespace SchoolClearanceSystem.Dashboard
         {
             InitializeComponent();
 
-            // ── Combo box restrictions ────────────────────────────────────
-            // Semester and School Year must be chosen from the list — no free typing
             comboSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            comboSchoolYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            comboAcademicYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 
-            RefreshData();
-
-            // Wire grid mouse events (deselects row when clicking empty space)
+            // Deselect row when clicking empty grid area
             gcStudents.MouseDown += (s, e) => EvaluateHitInfo(gvStudents, e.Location);
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
 
-            // Reset both grid selections when switching between Students/Office tabs
-            tabPane1.SelectedPageChanged += (s, e) => ResetViews(gvStudents, gvOffice);
-
-            //listBoxAdminHistory.ContextButtonClick += OnHistoryContextClicked;
+            RefreshData();
         }
 
-        // ── Navigation ────────────────────────────────────────────────────────────────
-        // Abstraction: one method handles all page switching + optional reload
+        // ── Navigation ────────────────────────────────────────────────
         private void NavigateTo(NavigationPage page, bool reload = false)
         {
             mainNavigationFrame.SelectedPage = page;
@@ -49,9 +40,7 @@ namespace SchoolClearanceSystem.Dashboard
         private void btnAccountManagement_Click_1(object sender, EventArgs e) => NavigateTo(pageAccountManagement, true);
         private void btnClearanceSystem_Click(object sender, EventArgs e) => NavigateTo(pageClearanceSystem, true);
 
-        // ── Core Reload ───────────────────────────────────────────────────────────────
-        // Single method that refreshes every section of the dashboard at once.
-        // Called on load, and after every create/edit/delete/period change.
+        // ── Data ──────────────────────────────────────────────────────
         private void RefreshData()
         {
             gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
@@ -60,17 +49,43 @@ namespace SchoolClearanceSystem.Dashboard
             LoadDashboardStats();
         }
 
-        // ── Grid Helpers ──────────────────────────────────────────────────────────────
-        // Computed property (Abstraction): returns the currently active grid view
-        // based on which tab the admin is on — no need to check this manually elsewhere
-        private GridView ActiveView => tabPane1.SelectedPage.Caption == "Students" ? gvStudents : gvOffice;
+        private void LoadCurrentSystemSettings()
+        {
+            clearancePeriodList.DataSource = _sysRepo.GetAllPeriods()
+                .Select(p => new
+                {
+                    p.Semester,
+                    p.AcademicYear,
+                    Status = p.IsActive == 1 ? "ACTIVE" : "Closed"
+                }).ToList();
+        }
+        private void LoadDashboardStats()
+        {
+            lblOfficeCleared.Text = _userRepo.GetUserCount("Student").ToString();
+            lblStatOfficeCount.Text = _userRepo.GetUserCount("Staff").ToString();
+            lblStatNewRegCount.Text = _userRepo.GetNewRegistrationsThisWeek().ToString();
+            lblStatTotalCount.Text = _userRepo.GetUserCount("All").ToString();
+            gcRegisteredThisWeek.DataSource = _userRepo.GetUsersRegisteredThisWeek();
+
+            var period = _sysRepo.GetAllPeriods().FirstOrDefault(p => p.IsActive == 1);
+            bool isOpen = period != null;
+
+            lblClearanceStatus.Text = isOpen ? "Clearance System is OPEN" : "Clearance System is CLOSED";
+            lblActivePeriodInfo.Text = isOpen
+                ? $"Current period: {period.Semester} — {period.AcademicYear}"
+                : "No active clearance period. Set one in Clearance System settings.";
+        }
+
+        // ── Grid Helpers ──────────────────────────────────────────────
+        private GridView ActiveView =>
+            tabPane1.SelectedPage.Caption == "Students" ? gvStudents : gvOffice;
 
         private void EvaluateHitInfo(GridView view, System.Drawing.Point pt)
         {
-            if (!view.CalcHitInfo(pt).InRow) ResetViews(gvStudents, gvOffice);
+            if (!view.CalcHitInfo(pt).InRow)
+                ResetViews(gvStudents, gvOffice);
         }
 
-        // Polymorphism: accepts any number of GridView arguments via params
         private void ResetViews(params GridView[] views)
         {
             foreach (var v in views)
@@ -80,23 +95,21 @@ namespace SchoolClearanceSystem.Dashboard
             }
         }
 
-        // Generics (Abstraction): one method safely reads any focused grid row as any type
         private bool TryGetFocusedData<T>(GridView view, out T entity) where T : class
         {
             entity = view.FocusedRowHandle >= 0 ? view.GetFocusedRow() as T : null;
             return entity != null;
         }
 
-        // ── Account CRUD ──────────────────────────────────────────────────────────────
-        // Abstraction: both Register and Edit flow through one method,
-        // FormMode enum decides which behavior UserInfoForm uses
+        // ── Account CRUD ──────────────────────────────────────────────
         private void OpenUserLifecycleForm(FormMode mode, User entity = null)
         {
             using (var frm = new UserInfoForm(mode, entity) { StartPosition = FormStartPosition.CenterParent })
                 if (frm.ShowDialog(this) == DialogResult.OK) RefreshData();
         }
 
-        private void btnRegisterAccount_Click(object sender, EventArgs e) => OpenUserLifecycleForm(FormMode.Register);
+        private void btnRegisterAccount_Click(object sender, EventArgs e) =>
+            OpenUserLifecycleForm(FormMode.Register);
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
@@ -109,92 +122,66 @@ namespace SchoolClearanceSystem.Dashboard
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!TryGetFocusedData(ActiveView, out User user)) return;
+
             if (Confirm($"Permanently remove account: {user.FullName} ({user.UserID})?", "Confirm Deletion") == DialogResult.Yes)
-                ProcessUserPurgePipeline(user.UserID);
+                ProcessUserDeletion(user.UserID);
         }
 
-        // Handles FK constraint errors gracefully — offers force delete if needed
-        private void ProcessUserPurgePipeline(string userId)
+        private void ProcessUserDeletion(string userId)
         {
             try
             {
-                ExecutePurge(userId, false);
+                DeleteUser(userId, forceClearRecords: false);
             }
             catch (Exception ex) when (ex.Message.Contains("FOREIGN KEY") || ex.Message.Contains("19"))
             {
-                if (Confirm("This student has active records. Force deletion will purge all tracking files. Proceed?",
+                if (Confirm("This student has active records. Force deletion will purge all related records. Proceed?",
                     "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
-                    ExecutePurge(userId, true);
+                    DeleteUser(userId, forceClearRecords: true);
             }
             catch (Exception ex)
             {
-                Notify($"Execution Error: {ex.Message}", "Pipeline Failure", MessageBoxIcon.Error);
+                Notify($"Error: {ex.Message}", "Deletion Failed", MessageBoxIcon.Error);
             }
         }
 
-        private void ExecutePurge(string uid, bool forcePurgeDependency)
+        private void DeleteUser(string userId, bool forceClearRecords)
         {
-            if (forcePurgeDependency) _clearanceRepo.DeleteRequestsByStudent(uid);
-            if (_userRepo.DeleteUser(uid))
+            if (forceClearRecords) _clearanceRepo.DeleteRequestsByStudent(userId);
+
+            if (_userRepo.DeleteUser(userId))
             {
                 Notify("Account successfully deleted.", "Deleted", MessageBoxIcon.Information);
                 RefreshData();
             }
         }
 
-        // ── Clearance Period List ─────────────────────────────────────────────────────
-        // Populates the clearancePeriodList GridControl with all saved periods.
-        // Projects Semester, AcademicYear, and a human-readable Status label.
-        // Called by RefreshData() so the list stays in sync after every action.
-        private void LoadCurrentSystemSettings()
-        {
-            clearancePeriodList.DataSource = _sysRepo.GetAllPeriods().Select(p => new
-            {
-                Semester = p.Semester,
-                AcademicYear = p.AcademicYear,
-                Status = p.IsActive == 1 ? "ACTIVE" : "Closed"
-            }).ToList();
-        }
-
-        // ── Dashboard Stats ───────────────────────────────────────────────────────────
-        // Updates all 4 stat cards, the registered accounts grid,
-        // and the clearance period banner in one pass.
-        private void LoadDashboardStats()
-        {
-            lblOfficeCleared.Text = _userRepo.GetUserCount("Student").ToString();
-            labelControl15.Text = _userRepo.GetUserCount("Staff").ToString();
-            labelControl16.Text = _userRepo.GetNewRegistrationsThisWeek().ToString();
-            labelControl17.Text = _userRepo.GetUserCount("All").ToString();
-
-            gridControl1.DataSource = _userRepo.GetUsersRegisteredThisWeek();
-
-            // Banner: OPEN if an active period exists, CLOSED if not
-            var period = _sysRepo.GetAllPeriods().FirstOrDefault(p => p.IsActive == 1);
-            bool isOpen = period != null;
-
-            lblClearanceStatus.Text = isOpen ? "Clearance System is OPEN" : "Clearance System is CLOSED";
-            labelControl19.Text = isOpen
-                ? $"Current period: {period.Semester} — {period.AcademicYear}"
-                : "No active clearance period. Set one in Clearance System settings.";
-        }
-
-        // ── Document Viewer ───────────────────────────────────────────────────────────
+        // ── Document View ─────────────────────────────────────────────
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (TryGetFocusedData(gvStudents, out User student) && !string.IsNullOrEmpty(student.UploadPath))
                 DocumentService.ViewDocument(student.UploadPath);
             else
-                Notify("Target document path null or corrupt.", "File Error", MessageBoxIcon.Error);
+                Notify("Target document path is null or corrupt.", "File Error", MessageBoxIcon.Error);
         }
 
-     
-
-        // ── Clearance Period Management ───────────────────────────────────────────────
+        // ── Clearance Period ──────────────────────────────────────────
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(comboSemester.Text) && !string.IsNullOrEmpty(comboSchoolYear.Text)
-                && _sysRepo.CreateNewPeriod(comboSemester.Text, comboSchoolYear.Text))
-                RefreshData();
+            if (string.IsNullOrEmpty(comboSemester.Text) || string.IsNullOrEmpty(comboAcademicYear.Text))
+            {
+                Notify("Please select both a Semester and a School Year.", "Required Fields", MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!_sysRepo.CreateNewPeriod(comboSemester.Text, comboAcademicYear.Text))
+            {
+                Notify($"{comboSemester.Text} — {comboAcademicYear.Text} already exists.\n\nDelete it first before creating a new period.",
+                    "Duplicate Period", MessageBoxIcon.Warning);
+                return;
+            }
+
+            RefreshData();
         }
 
         private void btnClosePeriod_Click(object sender, EventArgs e)
@@ -206,10 +193,10 @@ namespace SchoolClearanceSystem.Dashboard
                 return;
             }
 
-            string message = $"Close the current period?\n\n{period.Semester} — {period.AcademicYear}\n\n" +
-                              "Students will no longer be able to submit clearance requests.";
+            string msg = $"Close the current period?\n\n{period.Semester} — {period.AcademicYear}\n\n" +
+                          "Students will no longer be able to submit clearance requests.";
 
-            if (Confirm(message, "Confirm Close Period", MessageBoxIcon.Warning) != DialogResult.Yes) return;
+            if (Confirm(msg, "Confirm Close Period", MessageBoxIcon.Warning) != DialogResult.Yes) return;
 
             if (_sysRepo.CloseActivePeriod())
             {
@@ -222,7 +209,41 @@ namespace SchoolClearanceSystem.Dashboard
             }
         }
 
-        // ── Logout ────────────────────────────────────────────────────────────────────
+        private void btnDeleteSettings_Click(object sender, EventArgs e)
+        {
+            int handle = tileView1.FocusedRowHandle;
+            if (handle < 0)
+            {
+                Notify("Please select a period from the list first.", "No Selection", MessageBoxIcon.Warning);
+                return;
+            }
+
+            string semester = tileView1.GetRowCellValue(handle, "Semester")?.ToString();
+            string year = tileView1.GetRowCellValue(handle, "AcademicYear")?.ToString();
+            string status = tileView1.GetRowCellValue(handle, "Status")?.ToString();
+
+            if (status == "ACTIVE")
+            {
+                Notify("Cannot delete an active clearance period.\n\nClose it first before deleting.",
+                    "Period Still Active", MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (Confirm($"Delete period: {semester} — {year}?\n\nThis cannot be undone.",
+                "Confirm Delete", MessageBoxIcon.Warning) != DialogResult.Yes) return;
+
+            if (_sysRepo.DeletePeriod(semester, year))
+            {
+                Notify("Period deleted successfully.", "Deleted", MessageBoxIcon.Information);
+                RefreshData();
+            }
+            else
+            {
+                Notify("Failed to delete the period. Please try again.", "Error", MessageBoxIcon.Error);
+            }
+        }
+
+        // ── Logout ────────────────────────────────────────────────────
         private void btnLogout_Click(object sender, EventArgs e)
         {
             if (Confirm("Are you sure you want to log out?", "Logout") != DialogResult.Yes) return;
@@ -230,9 +251,7 @@ namespace SchoolClearanceSystem.Dashboard
             Hide();
         }
 
-        // ── Message Wrappers (Abstraction) ────────────────────────────────────────────
-        // Encapsulates XtraMessageBox calls so the rest of the class stays clean.
-        // Every alert and confirmation goes through these two methods.
+        // ── Helpers ───────────────────────────────────────────────────
         private void Notify(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Asterisk) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.OK, icon);
 

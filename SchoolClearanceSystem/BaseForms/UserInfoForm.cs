@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using System;
@@ -14,6 +15,7 @@ namespace SchoolClearanceSystem
         private readonly FormMode _mode;
         private readonly User _selectedUser;
         private readonly UserRepository _userRepo = new UserRepository();
+
         private bool IsEdit => _mode == FormMode.Edit;
 
         public UserInfoForm(FormMode mode, User user = null)
@@ -22,57 +24,39 @@ namespace SchoolClearanceSystem
             _mode = mode;
             _selectedUser = user ?? new User();
 
-            // Toggle password visibility
             txtPassword.Properties.UseSystemPasswordChar = true;
-            chkShowPassword.Properties.Caption = "Show Password";
-            chkShowPassword.CheckedChanged += (s, e) =>
-            {
-                txtPassword.Properties.UseSystemPasswordChar = !chkShowPassword.Checked;
-                chkShowPassword.Properties.Caption = chkShowPassword.Checked ? "Hide Password" : "Show Password";
-                txtPassword.Focus();
-                txtPassword.SelectionStart = txtPassword.Text.Length;
-            };
 
-            // ── Input Restrictions ────────────────────────────────────────
-            // Name fields: letters, spaces, hyphens, and apostrophes only (no digits)
-            txtLastName.KeyPress += RestrictToLettersOnly;
-            txtFirstName.KeyPress += RestrictToLettersOnly;
-            txtMiddleName.KeyPress += RestrictToLettersOnly;
+            // Delegate shared setup to UIHelper — no local duplicates needed
+            UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
+            UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
 
-            // Combo boxes: read-only — must pick from list, cannot free-type
             cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
             cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        // Allows letters (any language), spaces, hyphens, and apostrophes.
-        // Blocks digits and every other symbol.
-        private void RestrictToLettersOnly(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) &&
-                !char.IsLetter(e.KeyChar) &&
-                e.KeyChar != ' ' &&
-                e.KeyChar != '-' &&
-                e.KeyChar != '\'')
-            {
-                e.Handled = true; // swallow the keystroke
-            }
-        }
-
+        // ── Load ──────────────────────────────────────────────────────
         private void UserInfoForm_Load(object sender, EventArgs e)
         {
             cbRole.SelectedIndexChanged -= ToggleFieldsBasedOnRole;
+
             cbProgram.Items.Clear();
             cbProgram.Items.Add("BSIT");
 
-            // Polymorphic UI — Register vs Edit mode
             this.Text = IsEdit ? "Edit Account Information" : "Register New Account";
             lblTitle.Text = IsEdit ? "Edit Information" : "Register Account";
             btnSave.Text = IsEdit ? "Update Changes" : "Save Account";
             txtUserID.ReadOnly = IsEdit;
             cbRole.Enabled = !IsEdit;
 
-            // Pre-fill fields from model
+            PopulateFields();
+
+            cbRole.SelectedIndexChanged += ToggleFieldsBasedOnRole;
+            ToggleFieldsBasedOnRole(null, null);
+        }
+
+        private void PopulateFields()
+        {
             txtUserID.Text = _selectedUser.UserID;
             txtLastName.Text = _selectedUser.LastName ?? string.Empty;
             txtFirstName.Text = _selectedUser.FirstName ?? string.Empty;
@@ -81,86 +65,107 @@ namespace SchoolClearanceSystem
             cbProgram.Text = _selectedUser.Program?.Trim();
             cbYear.Text = _selectedUser.Year?.Trim();
             txtPassword.Text = IsEdit ? string.Empty : _selectedUser.Password;
-            txtDateCreated.Text = IsEdit ? $"Generated on {DateTime.Now.ToShortDateString()}" : "Automatically Generated";
-
-            cbRole.SelectedIndexChanged += ToggleFieldsBasedOnRole;
-            ToggleFieldsBasedOnRole(null, null);
+            txtDateCreated.Text = IsEdit
+                ? $"Generated on {DateTime.Now.ToShortDateString()}"
+                : "Automatically Generated";
         }
 
+        // ── Role Toggle ───────────────────────────────────────────────
         private void ToggleFieldsBasedOnRole(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(cbRole.Text)) return;
 
             bool isStudent = cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase);
-
-            // Both combos stay DropDownList — only enable/disable them per role
             cbProgram.Enabled = cbYear.Enabled = isStudent;
-            cbProgram.BackColor = cbYear.BackColor = isStudent ? Color.White : Color.LightGray;
 
-            cbProgram.Text = isStudent && cbProgram.Text == "N/A" ? "" : (!isStudent ? "N/A" : cbProgram.Text);
-            cbYear.Text = isStudent && cbYear.Text == "N/A" ? "" : (!isStudent ? "N/A" : cbYear.Text);
+            var bg = isStudent ? Color.White : Color.LightGray;
+            cbProgram.BackColor = cbYear.BackColor = bg;
+
+            if (!isStudent)
+            {
+                cbProgram.Text = cbYear.Text = "N/A";
+            }
+            else if (cbProgram.Text == "N/A") cbProgram.Text = string.Empty;
+            else if (cbYear.Text == "N/A") cbYear.Text = string.Empty;
         }
 
+        // ── Save ──────────────────────────────────────────────────────
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            // ── Validation ───────────────────────────────────────────
+            if (!ValidateFields()) return;
+
+            ApplyFormDataToUser();
+
+            if (!IsEdit)
+                SaveNewUser();
+            else
+                UpdateExistingUser();
+        }
+
+        private bool ValidateFields()
+        {
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtFirstName.Text) ||
                 string.IsNullOrWhiteSpace(cbRole.Text) ||
                 (!IsEdit && string.IsNullOrWhiteSpace(txtPassword.Text)))
             {
-                XtraMessageBox.Show(
+                UIHelper.ShowWarning(
                     $"Please fill in ID, Last Name, First Name, Role{(IsEdit ? "." : ", and Password.")}",
-                    "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                    "Required Fields");
+                return false;
             }
 
-            if (cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase) &&
-               (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" ||
-                string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A"))
+            bool studentNeedsProgram =
+                cbRole.Text.Equals("Student", StringComparison.OrdinalIgnoreCase) &&
+                (string.IsNullOrWhiteSpace(cbProgram.Text) || cbProgram.Text == "N/A" ||
+                 string.IsNullOrWhiteSpace(cbYear.Text) || cbYear.Text == "N/A");
+
+            if (studentNeedsProgram)
             {
-                XtraMessageBox.Show("Student requires a valid Program and Year.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                UIHelper.ShowWarning("Student requires a valid Program and Year.", "Validation Error");
+                return false;
             }
 
-            // ── Capture Form State → Model ────────────────────────────
+            return true;
+        }
+
+        private void ApplyFormDataToUser()
+        {
             if (!IsEdit) _selectedUser.UserID = txtUserID.Text.Trim();
 
             _selectedUser.LastName = txtLastName.Text.Trim();
             _selectedUser.FirstName = txtFirstName.Text.Trim();
             _selectedUser.MiddleName = txtMiddleName.Text.Trim();
-
             _selectedUser.Role = cbRole.Text;
             _selectedUser.Program = cbProgram.Text;
             _selectedUser.Year = cbYear.Text;
 
             if (!IsEdit || !string.IsNullOrWhiteSpace(txtPassword.Text))
-                _selectedUser.Password = txtPassword.Text.Trim();
+                _selectedUser.Password = Helpers.PasswordHelper.Hash(txtPassword.Text.Trim());
+        }
 
-            // ── Execute Business Pipeline ─────────────────────────────
-            if (!IsEdit)
+        private void SaveNewUser()
+        {
+            if (_userRepo.AddUser(_selectedUser))
+                CloseWithResult(DialogResult.OK, "Registration Successful!");
+            else
             {
-                if (_userRepo.AddUser(_selectedUser))
-                    CloseWithResult(DialogResult.OK, "Registration Successful!");
-                else
-                {
-                    XtraMessageBox.Show($"User ID '{_selectedUser.UserID}' is taken.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtUserID.Focus();
-                }
-            }
-            else if (_userRepo.EditUser(_selectedUser))
-            {
-                CloseWithResult(DialogResult.OK, "Account updated!");
+                UIHelper.ShowError($"User ID '{_selectedUser.UserID}' is taken.", "Error");
+                txtUserID.Focus();
             }
         }
 
-        private void CloseWithResult(DialogResult res, string msg)
+        private void UpdateExistingUser()
         {
-            XtraMessageBox.Show(msg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = res;
+            if (_userRepo.EditUser(_selectedUser))
+                CloseWithResult(DialogResult.OK, "Account updated!");
+        }
+
+        private void CloseWithResult(DialogResult result, string message)
+        {
+            UIHelper.ShowSuccess(message);
+            this.DialogResult = result;
             Close();
         }
 
@@ -170,9 +175,6 @@ namespace SchoolClearanceSystem
             Close();
         }
 
-        private void txtFullName_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void txtFullName_EditValueChanged(object sender, EventArgs e) { }
     }
 }

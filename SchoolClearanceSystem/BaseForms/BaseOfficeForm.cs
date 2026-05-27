@@ -1,41 +1,49 @@
 ﻿using DevExpress.XtraEditors;
-using SchoolClearanceSystem.Models;
+using SchoolClearanceSystem.Helpers;
 using SchoolClearanceSystem.Repository;
 using System;
-using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
+
 namespace SchoolClearanceSystem
+
 {
-    /// <summary>
-    /// OOP CONCEPT: POLYMORPHISM & FORM INHERITANCE (Base Blueprint Architecture)
-    /// This abstract base controller handles corporate layout styling, session identity parsing, 
-    /// and dynamic data-binding workflows for all department desks (SSG, Treasurer, Tech Office).
-    /// </summary>
+
     public partial class BaseOfficeForm : XtraForm
     {
-        // OOP CONCEPT: ENCAPSULATION
-        // Mapped runtime state container used as the primary lookup parameter for data filtering.
-        // Inheriting child forms assign their department code to this property inside their constructors.
-        private string currentStatusFilter = "All";
+
+        private string _statusFilter = "All";
         public string OfficeName { get; set; } = "Unknown Office";
+
+        // Single shared repo instance — no need to create a new one per method call
+
+        private readonly ClearanceRepository _repo = new ClearanceRepository();
 
         public BaseOfficeForm()
         {
+
             InitializeComponent();
 
-            // Wire text change queries immediately upon constructor registration
-            txtSearch.TextChanged += TxtSearch_TextChanged;
+            txtSearch.EditValue = null;
+            txtSearch.Properties.NullValuePrompt = "Search by Name, ID, or Course..";
+            txtSearch.Properties.NullValuePromptShowForEmptyValue = true;
+            txtSearch.TextChanged += (s, e) => ApplyUnifiedFilter();
+
         }
 
-        /// <summary>
-        /// LIFECYCLE SAFE REFACTOR: Replacing the 'this.Load' event subscription with a native 
-        /// OnLoad override. This prevents race conditions where the database executes before 
-        /// the child forms finish injecting their initialization strings.
-        /// </summary>
         protected override void OnLoad(EventArgs e)
         {
-            if (this.DesignMode) { base.OnLoad(e); return; }
+            base.OnLoad(e);
+            if (DesignMode) return;
+
+            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view != null)
+            {
+
+                view.OptionsFind.HighlightFindResults = true;
+                view.OptionsFind.AllowFindPanel = false;
+            }
 
             btnAllFilter.Click += (s, ev) => SetStatusFilter("All");
             btnPendingFilter.Click += (s, ev) => SetStatusFilter("Pending");
@@ -44,299 +52,177 @@ namespace SchoolClearanceSystem
 
             SetupIdentity();
             LoadPendingClearanceRequests();
-            LoadDashboardStats(); // ← ADD THIS
-            base.OnLoad(e);
+            LoadDashboardStats();
+
         }
 
-        /// <summary>
-        /// Reads operational session tokens to configure contextual branding labels at runtime.
-        /// </summary>
+        // ── Identity ──────────────────────────────────────────────────
         private void SetupIdentity()
         {
-            if (Session.CurrentUser != null)
-            {
-                lblFullName.Text = Session.CurrentUser.FullName;
-                lblRole.Text = Session.CurrentUser.Role;
+            if (Session.CurrentUser == null) return;
+            lblFullName.Text = Session.CurrentUser.FullName;
+            lblRole.Text = Session.CurrentUser.Role;
+            this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
 
-                // Dynamic UI window caption mutation
-                this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
-            }
         }
 
-        #region Navigation Control Flow Routine Managers
-
+        // ── Navigation ────────────────────────────────────────────────
         private void sbOfficeDashboard_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
             LoadPendingClearanceRequests();
-            LoadDashboardStats(); // ← ADD THIS
+            LoadDashboardStats();
+
         }
 
-        private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e)
+        private void sbOfficeClearanceRequest_Click_1(object sender, EventArgs e) =>
+            naviframeOffices.SelectedPage = pageOfficeClearanceRequest;
+
+        private void sbOfficeReports_Click_1(object sender, EventArgs e) =>
+            naviframeOffices.SelectedPage = pageOfficeReports;
+
+        private void btnExpandRequest_Click_1(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeClearanceRequest;
         }
 
-       
-
-        private void sbOfficeReports_Click_1(object sender, EventArgs e)
-        {
-            naviframeOffices.SelectedPage = pageOfficeReports;
-        }
-
-        #endregion
-
-        #region Database Processing and Presentation Binding Pipeline
-
-        /// <summary>
-        /// HOW IT WORKS (Data Hydration Engine):
-        /// Pulls collections from ClearanceRepository filtered by the active office context,
-        /// then binds the memory structures directly into the DevExpress GridControl layout engine.
-        /// </summary>
+        // ── Data Loading ──────────────────────────────────────────────
         protected void LoadPendingClearanceRequests()
         {
             try
             {
-                ClearanceRepository repo = new ClearanceRepository();
-
-                // Fetch data items matching our workspace identity parameter context
-                var pendingDataList = repo.GetRequestsForOffice(this.OfficeName);
-
-                // Assign data items directly to your layout table grid container
-                gcBaseOfficeForm.DataSource = pendingDataList;
+                var data = _repo.GetRequestsForOffice(OfficeName);
+                gcBaseOfficeForm.DataSource = data;
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Could not bind office requests table rows: {ex.Message}",
-                    "Data Retrieval Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UIHelper.ShowError($"Could not load office requests: {ex.Message}", "Data Error");
             }
         }
 
-        #endregion
-
-        private void btnLogout_Click_1(object sender, EventArgs e)
+        protected void LoadDashboardStats()
         {
-            DialogResult result = XtraMessageBox.Show(
-                "Are you sure you want to logout?", "Logout",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                Session.CurrentUser = null;
-                Login login = new Login();
-                login.Show();
-                this.Hide();
-                this.Close();
+                int cleared = _repo.GetStatusCountForOffice(OfficeName, "Approved");
+                int pending = _repo.GetStatusCountForOffice(OfficeName, "Pending");
+                int onHold = _repo.GetStatusCountForOffice(OfficeName, "On Hold");
+                int total = _repo.GetTotalStudentsForOffice(OfficeName);
+
+                lblStatCleared.Text = cleared.ToString();
+                lblStatPending.Text = pending.ToString();
+                lblStatOnHold.Text = onHold.ToString();
+                lblProgressSummary.Text = $"{cleared} out of {total} students cleared";
+                pbClearanceProgress.Position = total > 0 ? Math.Min((cleared * 100) / total, 100) : 0;
+
             }
+            catch (Exception ex)
+            {
+                UIHelper.ShowError($"Could not load dashboard stats: {ex.Message}");
+            }
+
+        }
+
+        // ── Filtering ─────────────────────────────────────────────────
+        private void SetStatusFilter(string status)
+        {
+            _statusFilter = status;
+            ApplyUnifiedFilter();
         }
 
         private void ApplyUnifiedFilter()
         {
-            var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
-
-            string filterCriteria = string.Empty;
-
-            // 1. Evaluate Row Status Criteria
-            if (currentStatusFilter != "All")
+            try
             {
-                filterCriteria = $"[Status] = '{currentStatusFilter}'";
-            }
+                var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+                if (view == null) return;
 
-            // 2. Evaluate Search Wildcard Values across structural layout indices
-            string searchText = txtSearch.Text.Trim().Replace("'", "''");
-            if (!string.IsNullOrEmpty(searchText))
+                var data = _repo.GetRequestsForOffice(OfficeName);
+                string search = txtSearch.Text.Trim();
+
+                var statusFiltered = data.Where(r =>
+                {
+                    return _statusFilter == "All" ||
+                           (r.Status?.ToString().Trim().Equals(_statusFilter, StringComparison.OrdinalIgnoreCase) == true);
+                }).ToList();
+
+                gcBaseOfficeForm.DataSource = statusFiltered;
+                view.ApplyFindFilter(search);
+            }
+            catch (Exception ex)
             {
-                string searchCriteria = $"([UserID] LIKE '%{searchText}%' OR [FullName] LIKE '%{searchText}%' OR [Program] LIKE '%{searchText}%')";
-
-                if (string.IsNullOrEmpty(filterCriteria))
-                    filterCriteria = searchCriteria;
-                else
-                    filterCriteria += $" AND {searchCriteria}";
+                UIHelper.ShowError($"Could not apply filter: {ex.Message}");
             }
-
-            // 3. Post Filter Strings directly into the active layout engine
-            view.ActiveFilterString = filterCriteria;
         }
 
-        private void SetStatusFilter(string status)
-        {
-            currentStatusFilter = status;
-            ApplyUnifiedFilter();
-        }
-
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
-            ApplyUnifiedFilter();
-        }
-
+        // ── Actions ───────────────────────────────────────────────────
         private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            // STEP 1: Get the active GridView — exit if somehow null
             var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
             if (view == null) return;
 
-            // STEP 2: Get the focused row as a dynamic object — exit if no row is selected
-            dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
-            if (selectedRequest == null) return;
+            dynamic selected = view.GetRow(view.FocusedRowHandle);
+            if (selected == null) return;
 
-            string studentId = selectedRequest.UserID?.ToString();
-            string targetOffice = this.OfficeName;
-            string targetStatus = string.Empty;
-            string finalRemarks = string.Empty;
+            string studentId = selected.UserID?.ToString();
+            string tag = e.Button.Tag?.ToString();
 
-            // STEP 3: Determine which button was clicked via its Tag property
-            string buttonTag = e.Button.Tag?.ToString();
-            switch (buttonTag)
+            if (!TryResolveAction(tag, out string status, out string remarks)) return;
+            if (UIHelper.ShowConfirmation($"Set this student's clearance to '{status}'?", "Confirm Action") != DialogResult.Yes) return;
+
+            bool ok = _repo.UpdateRequestStatus(studentId, OfficeName, status, remarks);
+            if (ok)
             {
-                case "btnApprove":
-                    targetStatus = "Approved";
-                    finalRemarks = $"Approved by {targetOffice} Office";
-                    break;
+                UIHelper.ShowSuccess($"Clearance status updated to '{status}' successfully!");
 
-                case "btnOnHold":
-                    targetStatus = "On Hold";
-                    finalRemarks = $"On Hold by {targetOffice} Office";
-                    break;
-
-                default:
-                    return;
-            }
-
-            // STEP 4: Confirm before executing — prevents accidental clicks
-            string confirmMessage = $"Set this student's clearance to '{targetStatus}'?";
-            if (XtraMessageBox.Show(confirmMessage, "Confirm Action",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-                return;
-
-            // STEP 5: Execute the status update via repository
-            ClearanceRepository repo = new ClearanceRepository();
-            bool isSuccess = repo.UpdateRequestStatus(studentId, targetOffice, targetStatus, finalRemarks);
-
-            if (isSuccess)
-            {
-                XtraMessageBox.Show($"Clearance status updated to '{targetStatus}' successfully!",
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // STEP 6: Update the in-memory row directly so the grid reflects
-                // the change immediately without a full reload
-                selectedRequest.Status = targetStatus;
-                selectedRequest.Remarks = finalRemarks;
-                view.RefreshRow(view.FocusedRowHandle);
-
-                // STEP 7: Refresh the dashboard stat cards so CLEARED/PENDING/ON HOLD
-                // numbers update live right after this action
+                ApplyUnifiedFilter();
                 LoadDashboardStats();
             }
             else
             {
-                XtraMessageBox.Show("Database update execution rejected. Check connection states.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UIHelper.ShowError("Database update failed. Check connection.");
             }
+
         }
 
-        private void OpenTargetFile(string targetPath)
+        private bool TryResolveAction(string tag, out string status, out string remarks)
         {
-            if (string.IsNullOrEmpty(targetPath) || !System.IO.File.Exists(targetPath))
+            switch (tag)
             {
-                XtraMessageBox.Show("No file uploaded yet, or the file no longer exists.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                case "btnApprove":
+                    status = "Approved";
+                    remarks = $"Approved by {OfficeName} Office";
+                    return true;
 
-            try
-            {
-                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo(targetPath)
-                {
-                    UseShellExecute = true
-                };
-                System.Diagnostics.Process.Start(startInfo);
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"Could not open the file: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case "btnOnHold":
+                    status = "On Hold";
+                    remarks = $"Please visit the {OfficeName} Office to resolve your clearance hold";
+                    return true;
+
+                default:
+                    status = remarks = string.Empty;
+                    return false;
             }
         }
 
         private void btnProof_Click(object sender, EventArgs e)
         {
-            // 1. Safe Interface Cast: Extract the current active DevExpress GridView view context
             var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
             if (view == null) return;
 
-            // 2. Focused Row Access: Capture the dynamic backend data model for the highlighted row
-            dynamic selectedRequest = view.GetRow(view.FocusedRowHandle);
-            if (selectedRequest == null) return;
+            dynamic selected = view.GetRow(view.FocusedRowHandle);
+            if (selected == null) return;
 
-            try
-            {
-                // 3. Dynamic Property Extraction: Read the string holding the raw file path
-                string proofPath = selectedRequest.Proof?.ToString();
-
-                // 4. Encapsulation / Delegation: Route the file location to your existing OS execution helper
-                OpenTargetFile(proofPath);
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"File System Sync Error: Unable to extract file tracking structure. {ex.Message}",
-                    "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            DocumentService.ViewDocument(selected.FilePath?.ToString());
         }
 
-        // ───────────────────────────────────────────────────────────────
-        // METHOD: LoadDashboardStats
-        //
-        // CALLED BY: OnLoad() and sbOfficeDashboard_Click()
-        //
-        // PURPOSE:
-        //   Reads live counts from ClearanceRepository and updates
-        //   the 3 stat card number labels + progress bar text
-        //   on the office Dashboard page.
-        //
-        // USES:
-        //   this.OfficeName → set by each child form (SSG/Treasurer/Technical)
-        //   so each office only sees counts for their own department
-        //
-        // LABELS UPDATED:
-        //   lblStatCleared  → count of Approved rows for this office
-        //   lblStatPending  → count of Pending rows for this office
-        //   lblStatOnHold   → count of On Hold rows for this office
-        //   labelControl6   → "X out of Y students cleared" progress text
-        //   progressBarControl1 → fills proportionally (cleared / total)
-        // ───────────────────────────────────────────────────────────────
-        protected void LoadDashboardStats()
+        // ── Logout ────────────────────────────────────────────────────
+        private void btnLogout_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                ClearanceRepository repo = new ClearanceRepository();
-
-                // Get counts per status for this office only
-                int cleared = repo.GetStatusCountForOffice(this.OfficeName, "Approved");
-                int pending = repo.GetStatusCountForOffice(this.OfficeName, "Pending");
-                int onHold = repo.GetStatusCountForOffice(this.OfficeName, "On Hold");
-                int total = repo.GetTotalStudentsForOffice(this.OfficeName);
-
-                // Update the stat card number labels
-                lblStatCleared.Text = cleared.ToString();
-                lblStatPending.Text = pending.ToString();
-                lblStatOnHold.Text = onHold.ToString();
-
-                // Update progress bar text and fill level
-                labelControl6.Text = $"{cleared} out of {total} students cleared";
-
-                if (total > 0)
-                    progressBarControl1.Position = (cleared * 100) / total;
-                else
-                    progressBarControl1.Position = 0;
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"Could not load dashboard stats: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            if (UIHelper.ShowConfirmation("Are you sure you want to logout?", "Logout") != DialogResult.Yes) return;
+            Session.CurrentUser = null;
+            new Login().Show();
+            this.Close();
         }
-
-      
     }
 }

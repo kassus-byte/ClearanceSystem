@@ -41,15 +41,15 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.txtMiddleName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.txtFirstName = new DevExpress.XtraEditors.TextEdit();
             this.chkShowPassword = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.lblctrLogin = new DevExpress.XtraEditors.SimpleButton();
-            this.txtFirstName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.txtMiddleName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProgram.Properties)).BeginInit();
@@ -57,9 +57,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMiddleName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUserID
@@ -136,6 +136,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbProgram.Properties.Items.AddRange(new object[] {
             "BSIT"});
+            this.cmbProgram.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbProgram.Size = new System.Drawing.Size(342, 40);
             this.cmbProgram.TabIndex = 10;
             // 
@@ -152,6 +153,7 @@
             "3rd Year",
             "4th Year",
             "Irregular"});
+            this.cmbYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbYear.Size = new System.Drawing.Size(342, 40);
             this.cmbYear.TabIndex = 11;
             // 
@@ -166,7 +168,7 @@
             this.labelControl7.Size = new System.Drawing.Size(31, 20);
             this.labelControl7.TabIndex = 12;
             this.labelControl7.Text = "Year";
-            this.labelControl7.Click += new System.EventHandler(this.labelControl7_Click);
+            
             // 
             // labelControl8
             // 
@@ -179,7 +181,7 @@
             this.labelControl8.Size = new System.Drawing.Size(67, 20);
             this.labelControl8.TabIndex = 13;
             this.labelControl8.Text = "Password";
-            this.labelControl8.Click += new System.EventHandler(this.labelControl8_Click);
+           
             // 
             // txtPassword
             // 
@@ -219,6 +221,46 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1920, 1080);
             this.panelControl1.TabIndex = 18;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(1574, 373);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(27, 20);
+            this.labelControl10.TabIndex = 47;
+            this.labelControl10.Text = "M. I";
+            // 
+            // txtMiddleName
+            // 
+            this.txtMiddleName.Location = new System.Drawing.Point(1574, 399);
+            this.txtMiddleName.Name = "txtMiddleName";
+            this.txtMiddleName.Properties.AutoHeight = false;
+            this.txtMiddleName.Size = new System.Drawing.Size(80, 40);
+            this.txtMiddleName.TabIndex = 46;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
+            this.labelControl9.Location = new System.Drawing.Point(1312, 373);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(77, 20);
+            this.labelControl9.TabIndex = 45;
+            this.labelControl9.Text = "First Name";
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(1312, 399);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Properties.AutoHeight = false;
+            this.txtFirstName.Size = new System.Drawing.Size(242, 40);
+            this.txtFirstName.TabIndex = 44;
             // 
             // chkShowPassword
             // 
@@ -278,46 +320,6 @@
             this.lblctrLogin.Text = "GO BACK TO LOGIN";
             this.lblctrLogin.Click += new System.EventHandler(this.lblctrLogin_Click);
             // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Location = new System.Drawing.Point(1312, 399);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Properties.AutoHeight = false;
-            this.txtFirstName.Size = new System.Drawing.Size(242, 40);
-            this.txtFirstName.TabIndex = 44;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(1312, 373);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(77, 20);
-            this.labelControl9.TabIndex = 45;
-            this.labelControl9.Text = "First Name";
-            // 
-            // txtMiddleName
-            // 
-            this.txtMiddleName.Location = new System.Drawing.Point(1574, 399);
-            this.txtMiddleName.Name = "txtMiddleName";
-            this.txtMiddleName.Properties.AutoHeight = false;
-            this.txtMiddleName.Size = new System.Drawing.Size(80, 40);
-            this.txtMiddleName.TabIndex = 46;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(1574, 373);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(27, 20);
-            this.labelControl10.TabIndex = 47;
-            this.labelControl10.Text = "M. I";
-            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,9 +338,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMiddleName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
