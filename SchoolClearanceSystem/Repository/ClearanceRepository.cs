@@ -69,17 +69,18 @@ namespace SchoolClearanceSystem.Repository
                     ? "AND c.Semester = @semester AND c.AcademicYear = @academicYear" : "";
 
                 string sql = $@"SELECT 
-                    c.UserID AS UserID,
-                    (u.LastName || ', ' || u.FirstName || 
-                        CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
-                             THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
-                    u.Program AS Program, u.Year AS Year,
-                    c.Semester AS Semester, c.Status AS Status,
-                    c.Department AS Office, '' AS Action,
-                    c.Remarks AS Remarks, c.FilePath AS FilePath
-                FROM ClearanceRequests c
-                INNER JOIN Users u ON c.UserID = u.UserID
-                WHERE c.Department = @dept {periodFilter}";
+            c.UserID AS UserID,
+            (u.LastName || ', ' || u.FirstName || 
+                CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
+                     THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+            u.Program AS Program, u.Year AS Year,
+            c.Semester AS Semester, c.AcademicYear AS AcademicYear,
+            c.Status AS Status,
+            c.Department AS Office, '' AS Action,
+            c.Remarks AS Remarks, c.FilePath AS FilePath
+        FROM ClearanceRequests c
+        INNER JOIN Users u ON c.UserID = u.UserID
+        WHERE c.Department = @dept {periodFilter}";
 
                 return db.Query(sql, new { dept = officeDept, semester, academicYear }).ToList();
             }

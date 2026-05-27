@@ -80,21 +80,15 @@ namespace SchoolClearanceSystem.Helpers
             }
         }
 
-        // ── Buttons ────────────────────────────────────────────────────
+        // ── Action Buttons ─────────────────────────────────────────────
 
-        public static void DisableButtonAsCompleted(SimpleButton button, string completionText = "Clearance Fully Approved")
+        public static void SetActionButtonsAvailability(
+            bool canAct, SimpleButton btnSubmitRequest,
+            SimpleButton btnUploadSSG, SimpleButton btnUploadTreasurer)
         {
-            button.Text = completionText;
-            button.Enabled = false;
-            button.Appearance.BackColor = Color.LightGray;
-            button.Appearance.ForeColor = Color.DimGray;
-        }
-
-        public static void ResetButton(SimpleButton button, string defaultText = "Submit Request")
-        {
-            button.Text = defaultText;
-            button.Enabled = true;
-            button.Appearance.Reset();
+            btnSubmitRequest.Enabled = canAct;
+            btnUploadSSG.Enabled = canAct;
+            btnUploadTreasurer.Enabled = canAct;
         }
 
         // ── Status Labels ──────────────────────────────────────────────
@@ -119,17 +113,6 @@ namespace SchoolClearanceSystem.Helpers
             lblOfficeCleared.Text = $"{clearedCount}/{totalOffices}";
             lblPercentage.Text = percentage + "%";
             pbOverallProgress.Position = percentage;
-        }
-
-        // ── Action Buttons ─────────────────────────────────────────────
-
-        public static void SetActionButtonsAvailability(
-            bool canAct, SimpleButton btnSubmitRequest,
-            SimpleButton btnUploadSSG, SimpleButton btnUploadTreasurer)
-        {
-            btnSubmitRequest.Enabled = canAct;
-            btnUploadSSG.Enabled = canAct;
-            btnUploadTreasurer.Enabled = canAct;
         }
 
         // ── Validation ─────────────────────────────────────────────────

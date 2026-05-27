@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseOfficeForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions8 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject29 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject30 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject31 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject32 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions9 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject33 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject34 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject35 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject36 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions10 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject37 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject38 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject39 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject40 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
@@ -108,6 +108,10 @@
             this.lblStatCleared = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.lblSemester = new DevExpress.XtraEditors.LabelControl();
+            this.lblAcademicYear = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeClearanceRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
@@ -127,6 +131,7 @@
             this.Program = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Year = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Semester = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Proof = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnProof = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -151,6 +156,8 @@
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeArchive = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.gcOfficeArchive = new DevExpress.XtraGrid.GridControl();
             this.gvOfficeArchive = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -165,12 +172,6 @@
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmbArchiveYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbArchiveSemester = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.lblAcademicYear = new DevExpress.XtraEditors.LabelControl();
-            this.lblSemester = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -253,11 +254,11 @@
             // repositoryItemButtonEdit2
             // 
             this.repositoryItemButtonEdit2.AutoHeight = false;
-            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
-            editorButtonImageOptions7.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions7.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
             this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -1055,6 +1056,54 @@
             this.panelControl4.Size = new System.Drawing.Size(1604, 87);
             this.panelControl4.TabIndex = 0;
             // 
+            // lblSemester
+            // 
+            this.lblSemester.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSemester.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblSemester.Appearance.Options.UseFont = true;
+            this.lblSemester.Appearance.Options.UseForeColor = true;
+            this.lblSemester.Location = new System.Drawing.Point(1224, 46);
+            this.lblSemester.Name = "lblSemester";
+            this.lblSemester.Size = new System.Drawing.Size(16, 17);
+            this.lblSemester.TabIndex = 8;
+            this.lblSemester.Text = "1st";
+            // 
+            // lblAcademicYear
+            // 
+            this.lblAcademicYear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcademicYear.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblAcademicYear.Appearance.Options.UseFont = true;
+            this.lblAcademicYear.Appearance.Options.UseForeColor = true;
+            this.lblAcademicYear.Location = new System.Drawing.Point(1257, 22);
+            this.lblAcademicYear.Name = "lblAcademicYear";
+            this.lblAcademicYear.Size = new System.Drawing.Size(61, 17);
+            this.lblAcademicYear.TabIndex = 7;
+            this.lblAcademicYear.Text = "2025-2027";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl18.Appearance.Options.UseFont = true;
+            this.labelControl18.Appearance.Options.UseForeColor = true;
+            this.labelControl18.Location = new System.Drawing.Point(1159, 46);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(59, 17);
+            this.labelControl18.TabIndex = 6;
+            this.labelControl18.Text = "Semester:";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl15.Appearance.Options.UseFont = true;
+            this.labelControl15.Appearance.Options.UseForeColor = true;
+            this.labelControl15.Location = new System.Drawing.Point(1159, 23);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(92, 17);
+            this.labelControl15.TabIndex = 5;
+            this.labelControl15.Text = "Academic Year:";
+            // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1215,9 +1264,9 @@
             // gcBaseOfficeForm
             // 
             this.gcBaseOfficeForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.gcBaseOfficeForm.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gcBaseOfficeForm.Location = new System.Drawing.Point(55, 55);
             this.gcBaseOfficeForm.MainView = this.gvBaseOfficeForm;
             this.gcBaseOfficeForm.Name = "gcBaseOfficeForm";
@@ -1238,6 +1287,7 @@
             this.Program,
             this.Year,
             this.Semester,
+            this.gridColumn18,
             this.Proof,
             this.Status,
             this.Actions,
@@ -1251,7 +1301,7 @@
             // UserID
             // 
             this.UserID.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserID.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.UserID.AppearanceCell.ForeColor = System.Drawing.Color.Black;
             this.UserID.AppearanceCell.Options.UseFont = true;
             this.UserID.AppearanceCell.Options.UseForeColor = true;
             this.UserID.AppearanceCell.Options.UseTextOptions = true;
@@ -1271,7 +1321,7 @@
             this.UserID.OptionsColumn.AllowMove = false;
             this.UserID.Visible = true;
             this.UserID.VisibleIndex = 0;
-            this.UserID.Width = 162;
+            this.UserID.Width = 157;
             // 
             // FullName
             // 
@@ -1294,7 +1344,7 @@
             this.FullName.Name = "FullName";
             this.FullName.Visible = true;
             this.FullName.VisibleIndex = 1;
-            this.FullName.Width = 230;
+            this.FullName.Width = 223;
             // 
             // Program
             // 
@@ -1317,7 +1367,7 @@
             this.Program.Name = "Program";
             this.Program.Visible = true;
             this.Program.VisibleIndex = 2;
-            this.Program.Width = 193;
+            this.Program.Width = 187;
             // 
             // Year
             // 
@@ -1340,7 +1390,7 @@
             this.Year.Name = "Year";
             this.Year.Visible = true;
             this.Year.VisibleIndex = 3;
-            this.Year.Width = 148;
+            this.Year.Width = 143;
             // 
             // Semester
             // 
@@ -1363,7 +1413,20 @@
             this.Semester.Name = "Semester";
             this.Semester.Visible = true;
             this.Semester.VisibleIndex = 4;
-            this.Semester.Width = 114;
+            this.Semester.Width = 110;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn18.AppearanceCell.Options.UseFont = true;
+            this.gridColumn18.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn18.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn18.Caption = "Academic Year";
+            this.gridColumn18.FieldName = "AcademicYear";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 5;
+            this.gridColumn18.Width = 119;
             // 
             // Proof
             // 
@@ -1385,15 +1448,15 @@
             this.Proof.ColumnEdit = this.btnProof;
             this.Proof.Name = "Proof";
             this.Proof.Visible = true;
-            this.Proof.VisibleIndex = 5;
-            this.Proof.Width = 95;
+            this.Proof.VisibleIndex = 6;
+            this.Proof.Width = 83;
             // 
             // btnProof
             // 
             this.btnProof.AutoHeight = false;
-            editorButtonImageOptions8.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions8.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.btnProof.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnProof.Name = "btnProof";
             this.btnProof.Tag = "btnView";
             this.btnProof.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1419,8 +1482,8 @@
             this.Status.FieldName = "Status";
             this.Status.Name = "Status";
             this.Status.Visible = true;
-            this.Status.VisibleIndex = 6;
-            this.Status.Width = 167;
+            this.Status.VisibleIndex = 7;
+            this.Status.Width = 148;
             // 
             // Actions
             // 
@@ -1441,17 +1504,17 @@
             this.Actions.FieldName = "Action";
             this.Actions.Name = "Actions";
             this.Actions.Visible = true;
-            this.Actions.VisibleIndex = 7;
-            this.Actions.Width = 130;
+            this.Actions.VisibleIndex = 8;
+            this.Actions.Width = 115;
             // 
             // btnAction
             // 
             this.btnAction.AutoHeight = false;
-            editorButtonImageOptions9.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions9.Image")));
-            editorButtonImageOptions10.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions10.Image")));
+            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
             this.btnAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions9, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject33, serializableAppearanceObject34, serializableAppearanceObject35, serializableAppearanceObject36, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions10, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject37, serializableAppearanceObject38, serializableAppearanceObject39, serializableAppearanceObject40, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnAction.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAction.ContextImageOptions.SvgImage")));
             this.btnAction.Name = "btnAction";
             this.btnAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1477,8 +1540,8 @@
             this.Remarks.FieldName = "Remarks";
             this.Remarks.Name = "Remarks";
             this.Remarks.Visible = true;
-            this.Remarks.VisibleIndex = 8;
-            this.Remarks.Width = 223;
+            this.Remarks.VisibleIndex = 9;
+            this.Remarks.Width = 207;
             // 
             // repositoryItemCheckedComboBoxEdit1
             // 
@@ -1704,6 +1767,7 @@
             // 
             // pageOfficeArchive
             // 
+            this.pageOfficeArchive.Caption = "pageOfficeArchive";
             this.pageOfficeArchive.Controls.Add(this.labelControl13);
             this.pageOfficeArchive.Controls.Add(this.labelControl12);
             this.pageOfficeArchive.Controls.Add(this.gcOfficeArchive);
@@ -1711,6 +1775,30 @@
             this.pageOfficeArchive.Controls.Add(this.cmbArchiveSemester);
             this.pageOfficeArchive.Name = "pageOfficeArchive";
             this.pageOfficeArchive.Size = new System.Drawing.Size(1604, 1080);
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Appearance.Options.UseForeColor = true;
+            this.labelControl13.Location = new System.Drawing.Point(120, 290);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(113, 21);
+            this.labelControl13.TabIndex = 11;
+            this.labelControl13.Text = "Academic Year";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(120, 159);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(70, 21);
+            this.labelControl12.TabIndex = 10;
+            this.labelControl12.Text = "Semester";
             // 
             // gcOfficeArchive
             // 
@@ -1848,78 +1936,6 @@
             "On Hold"});
             this.cmbArchiveSemester.Size = new System.Drawing.Size(735, 32);
             this.cmbArchiveSemester.TabIndex = 6;
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(120, 159);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(70, 21);
-            this.labelControl12.TabIndex = 10;
-            this.labelControl12.Text = "Semester";
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.Location = new System.Drawing.Point(120, 290);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(113, 21);
-            this.labelControl13.TabIndex = 11;
-            this.labelControl13.Text = "Academic Year";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Appearance.Options.UseForeColor = true;
-            this.labelControl15.Location = new System.Drawing.Point(1159, 23);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(92, 17);
-            this.labelControl15.TabIndex = 5;
-            this.labelControl15.Text = "Academic Year:";
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl18.Appearance.Options.UseFont = true;
-            this.labelControl18.Appearance.Options.UseForeColor = true;
-            this.labelControl18.Location = new System.Drawing.Point(1159, 46);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(59, 17);
-            this.labelControl18.TabIndex = 6;
-            this.labelControl18.Text = "Semester:";
-            // 
-            // lblAcademicYear
-            // 
-            this.lblAcademicYear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcademicYear.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.lblAcademicYear.Appearance.Options.UseFont = true;
-            this.lblAcademicYear.Appearance.Options.UseForeColor = true;
-            this.lblAcademicYear.Location = new System.Drawing.Point(1257, 22);
-            this.lblAcademicYear.Name = "lblAcademicYear";
-            this.lblAcademicYear.Size = new System.Drawing.Size(61, 17);
-            this.lblAcademicYear.TabIndex = 7;
-            this.lblAcademicYear.Text = "2025-2027";
-            // 
-            // lblSemester
-            // 
-            this.lblSemester.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSemester.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.lblSemester.Appearance.Options.UseFont = true;
-            this.lblSemester.Appearance.Options.UseForeColor = true;
-            this.lblSemester.Location = new System.Drawing.Point(1224, 46);
-            this.lblSemester.Name = "lblSemester";
-            this.lblSemester.Size = new System.Drawing.Size(16, 17);
-            this.lblSemester.TabIndex = 8;
-            this.lblSemester.Text = "1st";
             // 
             // BaseOfficeForm
             // 
@@ -2132,5 +2148,6 @@
         private DevExpress.XtraEditors.LabelControl lblAcademicYear;
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
     }
 }
