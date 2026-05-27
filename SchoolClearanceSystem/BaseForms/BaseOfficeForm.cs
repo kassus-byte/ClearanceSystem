@@ -236,7 +236,7 @@ namespace SchoolClearanceSystem
         private void simpleButton7_Click(object sender, EventArgs e)
         {
             // 1. Instantiate your report layout
-            OfficeReport myReport = new OfficeReport();
+            OfficeReport myReport = new OfficeReport();db
 
             // 2. Fetch data from your database using your UI element filters
             string selectedSemester = cmbSemester.Text;
