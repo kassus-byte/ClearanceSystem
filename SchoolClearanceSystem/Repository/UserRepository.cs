@@ -117,7 +117,7 @@ namespace SchoolClearanceSystem.Repository
                                 Status,
                                 Remarks
                                FROM ClearanceRequests
-                               WHERE UserID    = @id
+                               WHERE StudentID    = @id
                                  AND Semester     = @semester
                                  AND AcademicYear = @academicYear";
 
@@ -184,7 +184,7 @@ namespace SchoolClearanceSystem.Repository
                 string sql = @"
             SELECT DISTINCT Semester, AcademicYear, 'Completed' AS Status
             FROM ClearanceRequests
-            WHERE UserID = @id
+            WHERE StudentID = @id
             GROUP BY Semester, AcademicYear
             HAVING COUNT(CASE WHEN Status = 'Approved' THEN 1 END) = COUNT(*)
             ORDER BY AcademicYear DESC, Semester DESC";
@@ -199,7 +199,7 @@ namespace SchoolClearanceSystem.Repository
             {
                 string sql = @"SELECT COUNT(*)
                                FROM ClearanceRequests
-                               WHERE UserID    = @id
+                               WHERE StudentID    = @id
                                  AND Status       = 'Approved'
                                  AND Semester     = @semester
                                  AND AcademicYear = @academicYear";

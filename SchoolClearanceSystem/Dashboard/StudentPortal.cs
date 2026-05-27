@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using SchoolClearanceSystem.Helpers;
@@ -25,6 +26,7 @@ namespace SchoolClearanceSystem
         private const int TotalOffices = 3;
 
         private readonly SystemRepository _sysRepo = new SystemRepository();
+        private readonly ClearanceRepository _clearanceRepo = new ClearanceRepository();
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly ClearanceRepository _clearanceRepo = new ClearanceRepository();
 
@@ -338,30 +340,57 @@ namespace SchoolClearanceSystem
                 return;
             }
 
-            gridMyClearance.DataSource = _userRepo
-                .GetStudentClearancePeriods(Session.CurrentUser.UserID)
-                .Select(p => new
+        #endregion
+
+        private void btnDownloadClearance_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Fetch current logged-in context safely
+                string currentUserId = Session.CurrentUser?.UserID?.ToString();
+
+                if (string.IsNullOrEmpty(currentUserId))
                 {
-                    p.Semester,
-                    p.AcademicYear,
-                    Completed = "Completed"
-                }).ToList();
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Active session expired. Please log in again.", "Authentication Warning");
+                    return;
+                }
+    
+                var currentStudent = _userRepo.GetUsersByRole("Student")
+                    ?.FirstOrDefault(u => u.UserID?.ToString() == currentUserId);
 
-            // Auto-select first row so slip populates immediately without needing a click
-            if (tileViewMyClearance.RowCount > 0)
-            {
-                tileViewMyClearance.FocusedRowHandle = 0;
+                var period = _sysRepo.GetAllPeriods()?.FirstOrDefault(p => p.IsActive == 1);
 
-                string sem = tileViewMyClearance.GetRowCellValue(0, "Semester")?.ToString();
-                string year = tileViewMyClearance.GetRowCellValue(0, "AcademicYear")?.ToString();
+                if (currentStudent == null)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Could not verify active student profile data.", "Execution Error");
+                    return;
+                }
 
-                UIHelper.PopulateClearanceSlip(
-                    lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued,
-                    Session.CurrentUser, sem, year);
+                string semText = period != null ? period.Semester : "N/A";
+                string syText = period != null ? period.AcademicYear : "N/A";
+
+                var statuses = _userRepo.GetStudentStatus(currentUserId, semText, syText).ToList();
+
+                // Extract individual values using matching string constraints
+                string tech = statuses.FirstOrDefault(r => r.Office == "Technical")?.Status ?? "NOT CLEARED";
+                string ssg = statuses.FirstOrDefault(r => r.Office == "SSG")?.Status ?? "NOT CLEARED";
+                string tres = statuses.FirstOrDefault(r => r.Office == "Treasurer")?.Status ?? "NOT CLEARED";
+
+
+
+                // 3. Initialize and bind data onto the report container
+                var report = new rptStudentClearanceSlip();
+
+                var studentDataSource = new System.Collections.Generic.List<SchoolClearanceSystem.Models.User> { currentStudent };
+                report.InitData(studentDataSource, tech, ssg, tres, semText, syText);
+
+                // 4. Fire up the DevExpress engine container frame
+                ReportPrintTool printTool = new ReportPrintTool(report);
+                printTool.ShowPreviewDialog();
             }
-            else
+            catch (Exception ex)
             {
-                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
+                DevExpress.XtraEditors.XtraMessageBox.Show($"Could not construct clearance document layout: {ex.Message}", "Report Engine Error");
             }
         }
     }

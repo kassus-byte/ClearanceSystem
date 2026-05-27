@@ -31,7 +31,7 @@ namespace SchoolClearanceSystem.Repository
                 // Queries the tracking table checking for overlapping record instances
                 string sql = @"SELECT COUNT(1) 
                                FROM ClearanceRequests 
-                               WHERE UserID = @id AND Semester = @sem AND AcademicYear = @ay";
+                               WHERE StudentID = @id AND Semester = @sem AND AcademicYear = @ay";
 
                 int recordCount = db.ExecuteScalar<int>(sql, new
                 {
@@ -58,7 +58,7 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 // Omit Remarks and DateProcessed so they default to NULL in the database until an Admin updates them
-                string sql = @"INSERT INTO ClearanceRequests (UserID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
+                string sql = @"INSERT INTO ClearanceRequests (StudentID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
                        VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
                 return db.Execute(sql, new
@@ -82,7 +82,7 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT 
-                        c.UserID AS UserID,
+                        c.StudentID AS UserID,
                         (u.LastName || ', ' || u.FirstName || 
                             CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
                                  THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
@@ -114,7 +114,7 @@ namespace SchoolClearanceSystem.Repository
             {
                 string sql = @"UPDATE ClearanceRequests 
                                SET Status = @status, Remarks = @remarks, DateProcessed = @date 
-                               WHERE UserID = @id AND Department = @dept";
+                               WHERE StudentID = @id AND Department = @dept";
 
                 var parameters = new
                 {
@@ -157,7 +157,7 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = "DELETE FROM ClearanceRequests WHERE UserID = @id";
+                string sql = "DELETE FROM ClearanceRequests WHERE StudentID = @id";
                 return db.Execute(sql, new { id = studentId }) >= 0;
             }
         }
@@ -212,7 +212,7 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT COUNT(DISTINCT UserID) 
+                string sql = @"SELECT COUNT(DISTINCT StudentID) 
                        FROM ClearanceRequests 
                        WHERE Department = @dept";
 
