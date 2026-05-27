@@ -76,7 +76,7 @@ namespace SchoolClearanceSystem
             Program = cmbProgram.Text,
             Year = cmbYear.Text,
             Role = "Student",
-            Password = txtPassword.Text
+            Password = Helpers.PasswordHelper.Hash(txtPassword.Text)
         };
 
         // Resets all input fields back to empty after a successful registration
