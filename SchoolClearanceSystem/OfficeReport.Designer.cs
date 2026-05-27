@@ -55,6 +55,8 @@
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -76,16 +78,18 @@
             this.Detail.HeightF = 425F;
             this.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount;
             this.Detail.Name = "Detail";
+            this.Detail.StylePriority.UseTextAlignment = false;
+            this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrTable2
             // 
             this.xrTable2.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(37.66666F, 10.00001F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(9.999969F, 10.00001F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(744.3333F, 25F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(781.9999F, 25F);
             this.xrTable2.StylePriority.UseFont = false;
             // 
             // xrTableRow2
@@ -93,7 +97,8 @@
             this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.cellReportID,
             this.cellReportName,
-            this.cellReportStatus});
+            this.cellReportStatus,
+            this.xrTableCell2});
             this.xrTableRow2.Name = "xrTableRow2";
             this.xrTableRow2.Weight = 1D;
             // 
@@ -102,25 +107,25 @@
             this.cellReportID.Multiline = true;
             this.cellReportID.Name = "cellReportID";
             this.cellReportID.Text = "cellReportID";
-            this.cellReportID.Weight = 1.9167024142520113D;
+            this.cellReportID.Weight = 2.0087161736464765D;
             // 
             // cellReportName
             // 
             this.cellReportName.Multiline = true;
             this.cellReportName.Name = "cellReportName";
             this.cellReportName.Text = "cellReportName";
-            this.cellReportName.Weight = 4.50185801262967D;
+            this.cellReportName.Weight = 3.3587337533113382D;
             // 
             // cellReportStatus
             // 
-            this.cellReportStatus.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellReportStatus.ForeColor = System.Drawing.Color.ForestGreen;
+            this.cellReportStatus.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F);
+            this.cellReportStatus.ForeColor = System.Drawing.Color.Black;
             this.cellReportStatus.Multiline = true;
             this.cellReportStatus.Name = "cellReportStatus";
             this.cellReportStatus.StylePriority.UseFont = false;
             this.cellReportStatus.StylePriority.UseForeColor = false;
-            this.cellReportStatus.Text = "cellReportStatus";
-            this.cellReportStatus.Weight = 2.2784107728475447D;
+            this.cellReportStatus.Text = "program";
+            this.cellReportStatus.Weight = 1.9488318751253777D;
             // 
             // ReportHeader
             // 
@@ -140,8 +145,8 @@
             // 
             // lblReportStatus
             // 
-            this.lblReportStatus.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
-            this.lblReportStatus.LocationFloat = new DevExpress.Utils.PointFloat(605.6247F, 161.7917F);
+            this.lblReportStatus.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblReportStatus.LocationFloat = new DevExpress.Utils.PointFloat(658.0416F, 161.7917F);
             this.lblReportStatus.Multiline = true;
             this.lblReportStatus.Name = "lblReportStatus";
             this.lblReportStatus.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -149,12 +154,12 @@
             this.lblReportStatus.StylePriority.UseFont = false;
             this.lblReportStatus.StylePriority.UseTextAlignment = false;
             this.lblReportStatus.Text = "Status:";
-            this.lblReportStatus.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lblReportStatus.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // lblReportSem
             // 
-            this.lblReportSem.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
-            this.lblReportSem.LocationFloat = new DevExpress.Utils.PointFloat(311.8747F, 161.7917F);
+            this.lblReportSem.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblReportSem.LocationFloat = new DevExpress.Utils.PointFloat(338.958F, 161.7917F);
             this.lblReportSem.Multiline = true;
             this.lblReportSem.Name = "lblReportSem";
             this.lblReportSem.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -162,11 +167,11 @@
             this.lblReportSem.StylePriority.UseFont = false;
             this.lblReportSem.StylePriority.UseTextAlignment = false;
             this.lblReportSem.Text = "Semester:";
-            this.lblReportSem.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lblReportSem.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // lblReportYear
             // 
-            this.lblReportYear.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
+            this.lblReportYear.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblReportYear.LocationFloat = new DevExpress.Utils.PointFloat(37.66666F, 161.7917F);
             this.lblReportYear.Multiline = true;
             this.lblReportYear.Name = "lblReportYear";
@@ -175,7 +180,7 @@
             this.lblReportYear.StylePriority.UseFont = false;
             this.lblReportYear.StylePriority.UseTextAlignment = false;
             this.lblReportYear.Text = "Academic Year: ";
-            this.lblReportYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lblReportYear.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel1
             // 
@@ -228,12 +233,12 @@
             // xrTable1
             // 
             this.xrTable1.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(37.6667F, 38.54167F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 38.54167F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(744.3333F, 25F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(792.0001F, 25F);
             this.xrTable1.StylePriority.UseFont = false;
             // 
             // xrTableRow1
@@ -241,7 +246,8 @@
             this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.cellHeaderID,
             this.cellHeaderName,
-            this.cellHeaderStatus});
+            this.cellHeaderStatus,
+            this.xrTableCell1});
             this.xrTableRow1.Name = "xrTableRow1";
             this.xrTableRow1.Weight = 1D;
             // 
@@ -255,8 +261,10 @@
             this.cellHeaderID.StylePriority.UseBackColor = false;
             this.cellHeaderID.StylePriority.UseFont = false;
             this.cellHeaderID.StylePriority.UseForeColor = false;
+            this.cellHeaderID.StylePriority.UseTextAlignment = false;
             this.cellHeaderID.Text = "Student ID";
-            this.cellHeaderID.Weight = 1.640416394356917D;
+            this.cellHeaderID.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.cellHeaderID.Weight = 1.8191667329697772D;
             // 
             // cellHeaderName
             // 
@@ -268,8 +276,10 @@
             this.cellHeaderName.StylePriority.UseBackColor = false;
             this.cellHeaderName.StylePriority.UseFont = false;
             this.cellHeaderName.StylePriority.UseForeColor = false;
+            this.cellHeaderName.StylePriority.UseTextAlignment = false;
             this.cellHeaderName.Text = "Full Name";
-            this.cellHeaderName.Weight = 3.8529324204432975D;
+            this.cellHeaderName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.cellHeaderName.Weight = 2.8745845783758956D;
             // 
             // cellHeaderStatus
             // 
@@ -281,12 +291,14 @@
             this.cellHeaderStatus.StylePriority.UseBackColor = false;
             this.cellHeaderStatus.StylePriority.UseFont = false;
             this.cellHeaderStatus.StylePriority.UseForeColor = false;
-            this.cellHeaderStatus.Text = "Status";
-            this.cellHeaderStatus.Weight = 1.9499848626391543D;
+            this.cellHeaderStatus.StylePriority.UseTextAlignment = false;
+            this.cellHeaderStatus.Text = "Program";
+            this.cellHeaderStatus.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.cellHeaderStatus.Weight = 1.6679154531399569D;
             // 
             // xrLabel4
             // 
-            this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(37.66666F, 138.7917F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
@@ -295,12 +307,12 @@
             this.xrLabel4.StylePriority.UseFont = false;
             this.xrLabel4.StylePriority.UseTextAlignment = false;
             this.xrLabel4.Text = "Academic Year: ";
-            this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel5
             // 
-            this.xrLabel5.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(311.8747F, 138.7917F);
+            this.xrLabel5.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(338.958F, 138.7917F);
             this.xrLabel5.Multiline = true;
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -308,12 +320,12 @@
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.StylePriority.UseTextAlignment = false;
             this.xrLabel5.Text = "Semester:";
-            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel6
             // 
-            this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(605.6247F, 138.7917F);
+            this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(658.0416F, 138.7917F);
             this.xrLabel6.Multiline = true;
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -321,7 +333,33 @@
             this.xrLabel6.StylePriority.UseFont = false;
             this.xrLabel6.StylePriority.UseTextAlignment = false;
             this.xrLabel6.Text = "Status:";
-            this.xrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrTableCell1
+            // 
+            this.xrTableCell1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.xrTableCell1.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F);
+            this.xrTableCell1.ForeColor = System.Drawing.Color.White;
+            this.xrTableCell1.Multiline = true;
+            this.xrTableCell1.Name = "xrTableCell1";
+            this.xrTableCell1.StylePriority.UseBackColor = false;
+            this.xrTableCell1.StylePriority.UseFont = false;
+            this.xrTableCell1.StylePriority.UseForeColor = false;
+            this.xrTableCell1.StylePriority.UseTextAlignment = false;
+            this.xrTableCell1.Text = "Year Level";
+            this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.xrTableCell1.Weight = 1.5583347575641586D;
+            // 
+            // xrTableCell2
+            // 
+            this.xrTableCell2.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F);
+            this.xrTableCell2.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell2.Multiline = true;
+            this.xrTableCell2.Name = "xrTableCell2";
+            this.xrTableCell2.StylePriority.UseFont = false;
+            this.xrTableCell2.StylePriority.UseForeColor = false;
+            this.xrTableCell2.Text = "year level";
+            this.xrTableCell2.Weight = 1.8207944377846905D;
             // 
             // OfficeReport
             // 
@@ -369,5 +407,7 @@
         public DevExpress.XtraReports.UI.XRLabel xrLabel4;
         public DevExpress.XtraReports.UI.XRLabel xrLabel5;
         public DevExpress.XtraReports.UI.XRLabel xrLabel6;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell2;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell1;
     }
 }
