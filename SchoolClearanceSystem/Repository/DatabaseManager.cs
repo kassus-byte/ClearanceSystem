@@ -11,11 +11,8 @@ namespace SchoolClearanceSystem
 {
     public class DatabaseManager
     {
-        // Dynamically finds your main project directory by removing the \bin\ folder structure from the path
-        private static readonly string projectFolder = AppDomain.CurrentDomain.BaseDirectory.Split(new string[] { "\\bin\\" }, StringSplitOptions.None)[0];
-
-        // Combines the safe root folder with your database filename
-        private readonly string connectionString = $"Data Source={Path.Combine(projectFolder, "ClearanceSystem.db")}";
+        private readonly string connectionString =
+     $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ClearanceSystem.db")}";
 
         public IDbConnection GetConnection()
         {
