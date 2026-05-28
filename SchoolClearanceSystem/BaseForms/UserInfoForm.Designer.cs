@@ -49,10 +49,10 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtMiddleName = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.cbRole = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cbYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cbProgram = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbRole = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
@@ -64,9 +64,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMiddleName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProgram.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtLastName
@@ -311,6 +311,56 @@
             this.panelControl1.Size = new System.Drawing.Size(1071, 475);
             this.panelControl1.TabIndex = 49;
             // 
+            // cbProgram
+            // 
+            this.cbProgram.Location = new System.Drawing.Point(525, 248);
+            this.cbProgram.Name = "cbProgram";
+            this.cbProgram.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbProgram.Properties.Appearance.Options.UseFont = true;
+            this.cbProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbProgram.Properties.Items.AddRange(new object[] {
+            "BSIT"});
+            this.cbProgram.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbProgram.Size = new System.Drawing.Size(513, 34);
+            this.cbProgram.TabIndex = 53;
+            // 
+            // cbYear
+            // 
+            this.cbYear.Location = new System.Drawing.Point(34, 248);
+            this.cbYear.Name = "cbYear";
+            this.cbYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbYear.Properties.Appearance.Options.UseFont = true;
+            this.cbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbYear.Properties.Items.AddRange(new object[] {
+            "1st Year",
+            "2nd Year",
+            "3rd Year",
+            "4th Year",
+            "Irregular"});
+            this.cbYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbYear.Size = new System.Drawing.Size(464, 34);
+            this.cbYear.TabIndex = 52;
+            // 
+            // cbRole
+            // 
+            this.cbRole.Location = new System.Drawing.Point(34, 164);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbRole.Properties.Appearance.Options.UseFont = true;
+            this.cbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbRole.Properties.Items.AddRange(new object[] {
+            "Student",
+            "Admin",
+            "SSG",
+            "Technical",
+            "Treasurer"});
+            this.cbRole.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbRole.Size = new System.Drawing.Size(464, 34);
+            this.cbRole.TabIndex = 51;
+            // 
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
@@ -322,39 +372,6 @@
             this.labelControl9.Size = new System.Drawing.Size(78, 21);
             this.labelControl9.TabIndex = 50;
             this.labelControl9.Text = "First Name";
-            // 
-            // cbRole
-            // 
-            this.cbRole.Location = new System.Drawing.Point(34, 164);
-            this.cbRole.Name = "cbRole";
-            this.cbRole.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cbRole.Properties.Appearance.Options.UseFont = true;
-            this.cbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbRole.Size = new System.Drawing.Size(464, 34);
-            this.cbRole.TabIndex = 51;
-            // 
-            // cbYear
-            // 
-            this.cbYear.Location = new System.Drawing.Point(34, 248);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cbYear.Properties.Appearance.Options.UseFont = true;
-            this.cbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbYear.Size = new System.Drawing.Size(464, 34);
-            this.cbYear.TabIndex = 52;
-            // 
-            // cbProgram
-            // 
-            this.cbProgram.Location = new System.Drawing.Point(525, 248);
-            this.cbProgram.Name = "cbProgram";
-            this.cbProgram.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cbProgram.Properties.Appearance.Options.UseFont = true;
-            this.cbProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbProgram.Size = new System.Drawing.Size(513, 34);
-            this.cbProgram.TabIndex = 53;
             // 
             // UserInfoForm
             // 
@@ -382,9 +399,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProgram.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

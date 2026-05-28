@@ -13,7 +13,8 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                var user = db.QueryFirstOrDefault<User>("SELECT * FROM Users WHERE UserID = @id", new { id = userId });
+                // Only allow active users to log into the application
+                var user = db.QueryFirstOrDefault<User>("SELECT * FROM Users WHERE UserID = @id AND IsActive = 1", new { id = userId });
                 if (user == null) return null;
 
                 bool valid = user.Password.StartsWith("$2")
@@ -40,8 +41,17 @@ namespace SchoolClearanceSystem.Repository
                 if (string.IsNullOrEmpty(user.DateCreated))
                     user.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-                string sql = @"INSERT INTO Users (UserID, Password, LastName, FirstName, MiddleName, Program, Year, Role, DateCreated)
-                               VALUES (@UserID, @Password, @LastName, @FirstName, @MiddleName, @Program, @Year, @Role, @DateCreated)";
+                // Get the active period year if one is open
+                string activeYear = null;
+                var activePeriod = db.QueryFirstOrDefault(@"SELECT AcademicYear FROM ClearancePeriods WHERE IsActive = 1 LIMIT 1");
+                if (activePeriod != null)
+                {
+                    activeYear = activePeriod.AcademicYear;
+                }
+
+                // Explicitly insert IsActive as 1 (True) and stamp the tracking field to prevent early promotion
+                string sql = @"INSERT INTO Users (UserID, Password, LastName, FirstName, MiddleName, Program, Year, Role, DateCreated, IsActive, CurrentPeriodPromotionYear)
+                               VALUES (@UserID, @Password, @LastName, @FirstName, @MiddleName, @Program, @Year, @Role, @DateCreated, 1, @PromoYear)";
 
                 return db.Execute(sql, new
                 {
@@ -53,7 +63,8 @@ namespace SchoolClearanceSystem.Repository
                     user.Program,
                     user.Year,
                     user.Role,
-                    user.DateCreated
+                    user.DateCreated,
+                    PromoYear = activeYear
                 }) > 0;
             }
         }
@@ -85,9 +96,10 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
+                // UI FIX: Added IsActive = 1 filter so non-attending/graduated students don't show on dashboard grids
                 string sql = role == "Student"
-                    ? "SELECT * FROM Users WHERE Role = 'Student' ORDER BY DateCreated DESC"
-                    : "SELECT * FROM Users WHERE Role != 'Student' ORDER BY DateCreated DESC";
+                    ? "SELECT * FROM Users WHERE Role = 'Student' AND IsActive = 1 ORDER BY DateCreated DESC"
+                    : "SELECT * FROM Users WHERE Role != 'Student' AND IsActive = 1 ORDER BY DateCreated DESC";
                 return db.Query<User>(sql).ToList();
             }
         }
@@ -118,9 +130,10 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = role == "Student" ? "SELECT COUNT(*) FROM Users WHERE Role = 'Student'"
-                           : role == "Staff" ? "SELECT COUNT(*) FROM Users WHERE Role != 'Student'"
-                                               : "SELECT COUNT(*) FROM Users";
+                // STATS FIX: Only tally active student populations for standard counts
+                string sql = role == "Student" ? "SELECT COUNT(*) FROM Users WHERE Role = 'Student' AND IsActive = 1"
+                           : role == "Staff" ? "SELECT COUNT(*) FROM Users WHERE Role != 'Student' AND IsActive = 1"
+                                               : "SELECT COUNT(*) FROM Users WHERE IsActive = 1";
                 return db.ExecuteScalar<int>(sql);
             }
         }
@@ -128,7 +141,7 @@ namespace SchoolClearanceSystem.Repository
         public int GetNewRegistrationsThisWeek()
         {
             using (var db = dbManager.GetConnection())
-                return db.ExecuteScalar<int>("SELECT COUNT(*) FROM Users WHERE DateCreated >= date('now', '-7 days')");
+                return db.ExecuteScalar<int>("SELECT COUNT(*) FROM Users WHERE DateCreated >= date('now', '-7 days') AND IsActive = 1");
         }
 
         public IEnumerable<User> GetUsersRegisteredThisWeek()
@@ -136,8 +149,9 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT * FROM Users
-                       ORDER BY DateCreated DESC
-                       LIMIT 5";
+                               WHERE IsActive = 1
+                               ORDER BY DateCreated DESC
+                               LIMIT 5";
                 return db.Query<User>(sql).ToList();
             }
         }
@@ -145,13 +159,15 @@ namespace SchoolClearanceSystem.Repository
         public IEnumerable<User> GetAllUsers()
         {
             using (var db = dbManager.GetConnection())
-                return db.Query<User>("SELECT * FROM Users ORDER BY Role, LastName, FirstName").ToList();
+                return db.Query<User>("SELECT * FROM Users WHERE IsActive = 1 ORDER BY Role, LastName, FirstName").ToList();
         }
 
         public IEnumerable<ClearanceRecord> GetStudentClearancePeriods(string userId)
         {
             using (var db = dbManager.GetConnection())
             {
+                // Keep history working normally. Even if a student is no longer active, 
+                // archives remain fully intact for records requests.
                 string sql = @"SELECT DISTINCT Semester, AcademicYear, 'Completed' AS Status
                                FROM ClearanceRequests
                                WHERE UserID = @id

@@ -26,7 +26,6 @@ namespace SchoolClearanceSystem.Dashboard
             gcOffice.MouseDown += (s, e) => EvaluateHitInfo(gvOffice, e.Location);
             txtSearch.TextChanged += (s, e) => ApplyUnifiedFilter();
 
-
             RefreshData();
         }
 
@@ -57,11 +56,6 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void btnSearch_Click_1(object sender, EventArgs e) => ApplyUnifiedFilter();
 
-
-
-
-
-
         // ── Navigation ────────────────────────────────────────────────
         private void NavigateTo(NavigationPage page, bool reload = false)
         {
@@ -76,6 +70,14 @@ namespace SchoolClearanceSystem.Dashboard
         // ── Data ──────────────────────────────────────────────────────
         private void RefreshData()
         {
+            // Evaluates the active clearance window context
+            var activePeriod = _sysRepo.GetActivePeriodSettings();
+            if (activePeriod != null && activePeriod.Semester.Trim().Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
+            {
+                // Promotes any newly registered students who haven't been processed yet for this year
+                _sysRepo.ForceExecutePromotion(activePeriod.AcademicYear);
+            }
+
             gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
             gcOffice.DataSource = _userRepo.GetUsersByRole("Staff");
             LoadCurrentSystemSettings();
@@ -90,6 +92,7 @@ namespace SchoolClearanceSystem.Dashboard
             lblRole.Text = Session.CurrentUser.Role;
             this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
         }
+
         private void LoadCurrentSystemSettings()
         {
             clearancePeriodList.DataSource = _sysRepo.GetAllPeriods()
@@ -100,6 +103,7 @@ namespace SchoolClearanceSystem.Dashboard
                     Status = p.IsActive == 1 ? "ACTIVE" : "Closed"
                 }).ToList();
         }
+
         private void LoadDashboardStats()
         {
             lblOfficeCleared.Text = _userRepo.GetUserCount("Student").ToString();
@@ -119,7 +123,7 @@ namespace SchoolClearanceSystem.Dashboard
 
         // ── Grid Helpers ──────────────────────────────────────────────
         private GridView ActiveView =>
-            tabPane1.SelectedPage.Caption == "Students" ? gvStudents : gvOffice;
+            tabPane1.SelectedPage?.Caption == "Students" ? gvStudents : gvOffice;
 
         private void EvaluateHitInfo(GridView view, System.Drawing.Point pt)
         {
@@ -196,7 +200,6 @@ namespace SchoolClearanceSystem.Dashboard
                 }
             }
 
-            // Single summary notification
             if (successCount > 0 && !failures.Any())
                 Notify($"{successCount} account(s) deleted successfully.", "Deleted", MessageBoxIcon.Information);
             else if (successCount > 0 && failures.Any())
@@ -207,7 +210,6 @@ namespace SchoolClearanceSystem.Dashboard
             RefreshData();
         }
 
-        // Returns true if deletion succeeded
         private bool ProcessUserDeletion(User user)
         {
             try
@@ -229,6 +231,7 @@ namespace SchoolClearanceSystem.Dashboard
             if (forceClearRecords) _clearanceRepo.DeleteRequestsByStudent(userId);
             return _userRepo.DeleteUser(userId);
         }
+
         // ── Document View ─────────────────────────────────────────────
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -241,15 +244,28 @@ namespace SchoolClearanceSystem.Dashboard
         // ── Clearance Period ──────────────────────────────────────────
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(comboSemester.Text) || string.IsNullOrEmpty(comboAcademicYear.Text))
+            string targetSem = comboSemester.Text.Trim();
+            string targetYear = comboAcademicYear.Text.Trim();
+
+            if (string.IsNullOrEmpty(targetSem) || string.IsNullOrEmpty(targetYear))
             {
                 Notify("Please select both a Semester and a School Year.", "Required Fields", MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!_sysRepo.CreateNewPeriod(comboSemester.Text, comboAcademicYear.Text))
+            string confirmMsg = $"Are you sure you want to open clearance period settings for {targetSem} ({targetYear})?";
+
+            if (targetSem.Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
             {
-                Notify($"{comboSemester.Text} — {comboAcademicYear.Text} already exists.\n\nDelete it first before creating a new period.",
+                confirmMsg += "\n\n⚠️ SYSTEM PROMOTION NOTICE:\nBecause this is the 1st Semester, continuing student classifications (1st, 2nd, 3rd Year) will automatically advance.";
+            }
+
+            if (Confirm(confirmMsg, "Confirm Clearance Configuration Opening", MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            if (!_sysRepo.CreateNewPeriod(targetSem, targetYear))
+            {
+                Notify($"{targetSem} — {targetYear} already exists.\n\nDelete it first before creating a new period.",
                     "Duplicate Period", MessageBoxIcon.Warning);
                 return;
             }
@@ -267,7 +283,7 @@ namespace SchoolClearanceSystem.Dashboard
             }
 
             string msg = $"Close the current period?\n\n{period.Semester} — {period.AcademicYear}\n\n" +
-                          "Students will no longer be able to submit clearance requests.";
+                         "Students will no longer be able to submit clearance requests.";
 
             if (Confirm(msg, "Confirm Close Period", MessageBoxIcon.Warning) != DialogResult.Yes) return;
 
@@ -330,9 +346,5 @@ namespace SchoolClearanceSystem.Dashboard
 
         private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
-
-
     }
 }
-
-
