@@ -155,8 +155,6 @@ namespace SchoolClearanceSystem.Helpers
             return XtraMessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
-        // ── Password Toggle ────────────────────────────────────────────
-
         public static void ConfigurePasswordToggle(
             CheckEdit chkShowPassword, TextEdit txtPassword, string initialCaption = "Show Password")
         {
@@ -170,8 +168,6 @@ namespace SchoolClearanceSystem.Helpers
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
         }
-
-        // ── Name Field Restrictions ────────────────────────────────────
 
         public static void AttachNameRestrictions(params TextEdit[] fields)
         {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInfoForm));
             this.txtLastName = new DevExpress.XtraEditors.TextEdit();
             this.txtUserID = new DevExpress.XtraEditors.TextEdit();
@@ -53,6 +54,7 @@
             this.cbYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cbRole = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
@@ -67,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtLastName
@@ -77,7 +80,6 @@
             this.txtLastName.Properties.Appearance.Options.UseFont = true;
             this.txtLastName.Size = new System.Drawing.Size(513, 34);
             this.txtLastName.TabIndex = 25;
-           
             // 
             // txtUserID
             // 
@@ -225,6 +227,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
+            this.txtPassword.Properties.UseSystemPasswordChar = true;
             this.txtPassword.Size = new System.Drawing.Size(513, 34);
             this.txtPassword.TabIndex = 37;
             // 
@@ -402,6 +405,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbProgram.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -431,5 +435,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit cbProgram;
         private DevExpress.XtraEditors.ComboBoxEdit cbYear;
         private DevExpress.XtraEditors.ComboBoxEdit cbRole;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

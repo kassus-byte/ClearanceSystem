@@ -23,8 +23,6 @@ namespace SchoolClearanceSystem
             _mode = mode;
             _selectedUser = user ?? new User();
 
-            txtPassword.Properties.UseSystemPasswordChar = true;
-
             UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
             UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
         }

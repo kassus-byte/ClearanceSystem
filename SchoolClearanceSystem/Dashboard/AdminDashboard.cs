@@ -13,7 +13,6 @@ namespace SchoolClearanceSystem.Dashboard
 {
     public partial class AdminDashboard : XtraForm
     {
-        // Encapsulation: Grouping related services tightly together
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly SystemRepository _sysRepo = new SystemRepository();
         private readonly ClearanceRepository _clearanceRepo = new ClearanceRepository();
@@ -62,7 +61,7 @@ namespace SchoolClearanceSystem.Dashboard
         private void btnAccountManagement_Click_1(object sender, EventArgs e) => NavigateTo(pageAccountManagement, true);
         private void btnClearanceSystem_Click(object sender, EventArgs e) => NavigateTo(pageClearanceSystem, true);
 
-        // ── DRY / Polymorphism: Centralized Period Action Executor ─────────────────
+     
         private void ExecutePeriodAction(string successMsg, Func<bool> repoAction)
         {
             if (repoAction())
@@ -198,7 +197,6 @@ namespace SchoolClearanceSystem.Dashboard
                 UIHelper.Notify("Target document path is null or corrupt.", "File Error", MessageBoxIcon.Error);
         }
 
-        // ── Clearance Period Configuration Management ───────────────────────────────────
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
             string targetSem = comboSemester.Text.Trim(), targetYear = comboAcademicYear.Text.Trim();
