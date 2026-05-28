@@ -1708,7 +1708,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtAcademicYear.Properties.Items.AddRange(new object[] {
             "2025-2026",
-            "2026-2027"});
+            "2026-2027",
+            "2027-2028",
+            "2029-2030"});
             this.txtAcademicYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtAcademicYear.Size = new System.Drawing.Size(735, 34);
             this.txtAcademicYear.TabIndex = 8;
@@ -2145,6 +2147,7 @@
             "Pending",
             "Approved",
             "On Hold"});
+            this.cmbArchiveSemester.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbArchiveSemester.Size = new System.Drawing.Size(735, 34);
             this.cmbArchiveSemester.TabIndex = 6;
             // 
@@ -2160,6 +2163,7 @@
             "Pending",
             "Approved",
             "On Hold"});
+            this.cmbArchiveYear.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbArchiveYear.Size = new System.Drawing.Size(735, 34);
             this.cmbArchiveYear.TabIndex = 7;
             // 
