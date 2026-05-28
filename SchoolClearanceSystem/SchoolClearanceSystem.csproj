@@ -272,9 +272,6 @@
       <DependentUpon>StudentClearanceSlip.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="ClearanceSystem.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Dashboard\App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
