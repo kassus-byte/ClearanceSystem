@@ -170,7 +170,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public IEnumerable<dynamic> GetRecentRequestsForOffice(string officeDept, int limit = 10,
+        public IEnumerable<dynamic> GetRecentRequestsForOffice(string officeDept, int limit = 5,
             string semester = "", string academicYear = "")
         {
             using (var db = dbManager.GetConnection())

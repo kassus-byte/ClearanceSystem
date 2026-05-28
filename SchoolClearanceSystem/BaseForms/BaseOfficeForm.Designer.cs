@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseOfficeForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions8 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject29 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject30 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject31 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject32 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions9 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject33 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject34 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject35 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject36 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions10 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject37 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject38 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject39 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject40 = new DevExpress.Utils.SerializableAppearanceObject();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
@@ -74,8 +74,8 @@
             this.lblFullName = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl25 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.naviframeOffices = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.pageOfficeDashboard = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl11 = new DevExpress.XtraEditors.PanelControl();
@@ -108,12 +108,14 @@
             this.lblStatCleared = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.lblSemester = new DevExpress.XtraEditors.LabelControl();
-            this.lblAcademicYear = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtWelcome = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl23 = new DevExpress.XtraEditors.PanelControl();
+            this.lblSemester = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl24 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.lblAcademicYear = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeClearanceRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.txtSearch = new DevExpress.XtraEditors.SearchControl();
             this.btnOnHoldFilter = new DevExpress.XtraEditors.SimpleButton();
@@ -156,8 +158,7 @@
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.pageOfficeArchive = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl22 = new DevExpress.XtraEditors.PanelControl();
             this.gcOfficeArchive = new DevExpress.XtraGrid.GridControl();
             this.gvOfficeArchive = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -170,8 +171,14 @@
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cmbArchiveYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.panelControl20 = new DevExpress.XtraEditors.PanelControl();
             this.cmbArchiveSemester = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbArchiveYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl18 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -190,6 +197,7 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.naviframeOffices)).BeginInit();
             this.naviframeOffices.SuspendLayout();
             this.pageOfficeDashboard.SuspendLayout();
@@ -214,6 +222,10 @@
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl23)).BeginInit();
+            this.panelControl23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl24)).BeginInit();
+            this.panelControl24.SuspendLayout();
             this.pageOfficeClearanceRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
@@ -235,10 +247,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl19)).BeginInit();
             this.panelControl19.SuspendLayout();
             this.pageOfficeArchive.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl22)).BeginInit();
+            this.panelControl22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcOfficeArchive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOfficeArchive)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbArchiveYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl20)).BeginInit();
+            this.panelControl20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbArchiveSemester.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbArchiveYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl18)).BeginInit();
+            this.panelControl18.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemButtonEdit1
@@ -254,11 +272,11 @@
             // repositoryItemButtonEdit2
             // 
             this.repositoryItemButtonEdit2.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
+            editorButtonImageOptions7.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions7.Image")));
             this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "approve", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "on hold", -1, true, true, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
             this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -370,13 +388,19 @@
             // 
             // sbOfficeArchives
             // 
+            this.sbOfficeArchives.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeArchives.Appearance.Hovered.Options.UseFont = true;
             this.sbOfficeArchives.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.sbOfficeArchives.Appearance.Normal.ForeColor = System.Drawing.Color.White;
             this.sbOfficeArchives.Appearance.Normal.Options.UseFont = true;
             this.sbOfficeArchives.Appearance.Normal.Options.UseForeColor = true;
+            this.sbOfficeArchives.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.sbOfficeArchives.Appearance.Pressed.Options.UseFont = true;
+            this.sbOfficeArchives.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("sbOfficeArchives.ImageOptions.SvgImage")));
+            this.sbOfficeArchives.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 28);
             this.sbOfficeArchives.Name = "sbOfficeArchives";
             this.sbOfficeArchives.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.sbOfficeArchives.Text = "Records";
+            this.sbOfficeArchives.Text = "    Records";
             this.sbOfficeArchives.Click += new System.EventHandler(this.sbOfficeArchives_Click);
             // 
             // sbOfficeReports
@@ -491,25 +515,25 @@
             // 
             // lblRole
             // 
-            this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblRole.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.lblRole.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblRole.Appearance.Options.UseFont = true;
             this.lblRole.Appearance.Options.UseForeColor = true;
             this.lblRole.Location = new System.Drawing.Point(96, 52);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(46, 13);
+            this.lblRole.Size = new System.Drawing.Size(54, 17);
             this.lblRole.TabIndex = 5;
             this.lblRole.Text = "Registrar";
             // 
             // lblFullName
             // 
-            this.lblFullName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lblFullName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblFullName.Appearance.Options.UseFont = true;
             this.lblFullName.Appearance.Options.UseForeColor = true;
             this.lblFullName.Location = new System.Drawing.Point(96, 29);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(97, 17);
+            this.lblFullName.Size = new System.Drawing.Size(113, 21);
             this.lblFullName.TabIndex = 1;
             this.lblFullName.Text = "Anne Hathaway";
             // 
@@ -530,13 +554,24 @@
             this.panelControl2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.panelControl2.Appearance.Options.UseBackColor = true;
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.panelControl25);
             this.panelControl2.Controls.Add(this.labelControl2);
-            this.panelControl2.Controls.Add(this.labelControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(300, 96);
             this.panelControl2.TabIndex = 1;
+            // 
+            // panelControl25
+            // 
+            this.panelControl25.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.panelControl25.Appearance.Options.UseBackColor = true;
+            this.panelControl25.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl25.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl25.ContentImage")));
+            this.panelControl25.Location = new System.Drawing.Point(9, 19);
+            this.panelControl25.Name = "panelControl25";
+            this.panelControl25.Size = new System.Drawing.Size(200, 40);
+            this.panelControl25.TabIndex = 4;
             // 
             // labelControl2
             // 
@@ -544,23 +579,11 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(35, 46);
+            this.labelControl2.Location = new System.Drawing.Point(35, 62);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(158, 17);
+            this.labelControl2.Size = new System.Drawing.Size(185, 17);
             this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "Student Clearance System";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(35, 19);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(218, 21);
-            this.labelControl1.TabIndex = 2;
-            this.labelControl1.Text = "College of Computer Studies";
+            this.labelControl2.Text = "CCS Student Clearance System";
             // 
             // naviframeOffices
             // 
@@ -585,7 +608,6 @@
             // 
             // pageOfficeDashboard
             // 
-            this.pageOfficeDashboard.Caption = "pageOfficeDashboard";
             this.pageOfficeDashboard.Controls.Add(this.panelControl11);
             this.pageOfficeDashboard.Controls.Add(this.panelControl9);
             this.pageOfficeDashboard.Controls.Add(this.panelControl5);
@@ -665,19 +687,20 @@
             this.gridView1.GridControl = this.gcRecentRequests;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn1.AppearanceCell.Options.UseFont = true;
             this.gridColumn1.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn1.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
@@ -693,14 +716,14 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn2.AppearanceCell.Options.UseFont = true;
             this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn2.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
@@ -716,14 +739,14 @@
             // 
             // gridColumn3
             // 
-            this.gridColumn3.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn3.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridColumn3.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn3.AppearanceCell.Options.UseFont = true;
             this.gridColumn3.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn3.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
@@ -739,14 +762,14 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridColumn4.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn4.AppearanceCell.Options.UseFont = true;
             this.gridColumn4.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn4.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.AppearanceHeader.Options.UseForeColor = true;
@@ -762,14 +785,14 @@
             // 
             // gridColumn5
             // 
-            this.gridColumn5.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn5.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridColumn5.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn5.AppearanceCell.Options.UseFont = true;
             this.gridColumn5.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn5.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn5.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn5.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gridColumn5.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
@@ -785,14 +808,14 @@
             // 
             // gridColumn7
             // 
-            this.gridColumn7.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn7.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridColumn7.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn7.AppearanceCell.Options.UseFont = true;
             this.gridColumn7.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn7.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn7.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gridColumn7.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn7.AppearanceHeader.Options.UseFont = true;
             this.gridColumn7.AppearanceHeader.Options.UseForeColor = true;
@@ -808,14 +831,14 @@
             // 
             // gridColumn9
             // 
-            this.gridColumn9.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn9.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridColumn9.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn9.AppearanceCell.Options.UseFont = true;
             this.gridColumn9.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn9.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn9.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn9.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.gridColumn9.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.AppearanceHeader.Options.UseForeColor = true;
@@ -935,13 +958,13 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Goldenrod;
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Appearance.Options.UseForeColor = true;
             this.labelControl9.Location = new System.Drawing.Point(57, 28);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(59, 17);
+            this.labelControl9.Size = new System.Drawing.Size(73, 21);
             this.labelControl9.TabIndex = 5;
             this.labelControl9.Text = "ON HOLD";
             // 
@@ -982,13 +1005,13 @@
             // 
             // labelControl8
             // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Chocolate;
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
             this.labelControl8.Location = new System.Drawing.Point(57, 28);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(57, 17);
+            this.labelControl8.Size = new System.Drawing.Size(73, 21);
             this.labelControl8.TabIndex = 4;
             this.labelControl8.Text = "PENDING";
             // 
@@ -1029,13 +1052,13 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.OliveDrab;
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Appearance.Options.UseForeColor = true;
             this.labelControl7.Location = new System.Drawing.Point(50, 28);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(54, 17);
+            this.labelControl7.Size = new System.Drawing.Size(69, 21);
             this.labelControl7.TabIndex = 3;
             this.labelControl7.Text = "CLEARED";
             // 
@@ -1044,65 +1067,15 @@
             this.panelControl4.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panelControl4.Appearance.Options.UseBackColor = true;
             this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl4.Controls.Add(this.lblSemester);
-            this.panelControl4.Controls.Add(this.lblAcademicYear);
-            this.panelControl4.Controls.Add(this.labelControl18);
-            this.panelControl4.Controls.Add(this.labelControl15);
             this.panelControl4.Controls.Add(this.labelControl3);
             this.panelControl4.Controls.Add(this.txtWelcome);
+            this.panelControl4.Controls.Add(this.panelControl23);
+            this.panelControl4.Controls.Add(this.panelControl24);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(1604, 87);
             this.panelControl4.TabIndex = 0;
-            // 
-            // lblSemester
-            // 
-            this.lblSemester.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSemester.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.lblSemester.Appearance.Options.UseFont = true;
-            this.lblSemester.Appearance.Options.UseForeColor = true;
-            this.lblSemester.Location = new System.Drawing.Point(1224, 46);
-            this.lblSemester.Name = "lblSemester";
-            this.lblSemester.Size = new System.Drawing.Size(16, 17);
-            this.lblSemester.TabIndex = 8;
-            this.lblSemester.Text = "1st";
-            // 
-            // lblAcademicYear
-            // 
-            this.lblAcademicYear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcademicYear.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.lblAcademicYear.Appearance.Options.UseFont = true;
-            this.lblAcademicYear.Appearance.Options.UseForeColor = true;
-            this.lblAcademicYear.Location = new System.Drawing.Point(1257, 22);
-            this.lblAcademicYear.Name = "lblAcademicYear";
-            this.lblAcademicYear.Size = new System.Drawing.Size(61, 17);
-            this.lblAcademicYear.TabIndex = 7;
-            this.lblAcademicYear.Text = "2025-2027";
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl18.Appearance.Options.UseFont = true;
-            this.labelControl18.Appearance.Options.UseForeColor = true;
-            this.labelControl18.Location = new System.Drawing.Point(1159, 46);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(59, 17);
-            this.labelControl18.TabIndex = 6;
-            this.labelControl18.Text = "Semester:";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Appearance.Options.UseForeColor = true;
-            this.labelControl15.Location = new System.Drawing.Point(1159, 23);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(92, 17);
-            this.labelControl15.TabIndex = 5;
-            this.labelControl15.Text = "Academic Year:";
             // 
             // labelControl3
             // 
@@ -1128,6 +1101,80 @@
             this.txtWelcome.TabIndex = 1;
             this.txtWelcome.Text = "Registrar Dashboard";
             // 
+            // panelControl23
+            // 
+            this.panelControl23.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl23.Appearance.Options.UseBackColor = true;
+            this.panelControl23.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl23.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl23.ContentImage")));
+            this.panelControl23.Controls.Add(this.lblSemester);
+            this.panelControl23.Controls.Add(this.labelControl18);
+            this.panelControl23.Location = new System.Drawing.Point(1118, 32);
+            this.panelControl23.Name = "panelControl23";
+            this.panelControl23.Size = new System.Drawing.Size(200, 40);
+            this.panelControl23.TabIndex = 9;
+            // 
+            // lblSemester
+            // 
+            this.lblSemester.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSemester.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblSemester.Appearance.Options.UseFont = true;
+            this.lblSemester.Appearance.Options.UseForeColor = true;
+            this.lblSemester.Location = new System.Drawing.Point(131, 9);
+            this.lblSemester.Name = "lblSemester";
+            this.lblSemester.Size = new System.Drawing.Size(19, 21);
+            this.lblSemester.TabIndex = 8;
+            this.lblSemester.Text = "1st";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl18.Appearance.Options.UseFont = true;
+            this.labelControl18.Appearance.Options.UseForeColor = true;
+            this.labelControl18.Location = new System.Drawing.Point(46, 9);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(73, 21);
+            this.labelControl18.TabIndex = 6;
+            this.labelControl18.Text = "Semester:";
+            // 
+            // panelControl24
+            // 
+            this.panelControl24.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl24.Appearance.Options.UseBackColor = true;
+            this.panelControl24.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl24.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl24.ContentImage")));
+            this.panelControl24.Controls.Add(this.labelControl15);
+            this.panelControl24.Controls.Add(this.lblAcademicYear);
+            this.panelControl24.Location = new System.Drawing.Point(1324, 32);
+            this.panelControl24.Name = "panelControl24";
+            this.panelControl24.Size = new System.Drawing.Size(242, 40);
+            this.panelControl24.TabIndex = 10;
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl15.Appearance.Options.UseFont = true;
+            this.labelControl15.Appearance.Options.UseForeColor = true;
+            this.labelControl15.Location = new System.Drawing.Point(20, 9);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(112, 21);
+            this.labelControl15.TabIndex = 5;
+            this.labelControl15.Text = "Academic Year:";
+            // 
+            // lblAcademicYear
+            // 
+            this.lblAcademicYear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblAcademicYear.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblAcademicYear.Appearance.Options.UseFont = true;
+            this.lblAcademicYear.Appearance.Options.UseForeColor = true;
+            this.lblAcademicYear.Location = new System.Drawing.Point(139, 9);
+            this.lblAcademicYear.Name = "lblAcademicYear";
+            this.lblAcademicYear.Size = new System.Drawing.Size(78, 21);
+            this.lblAcademicYear.TabIndex = 7;
+            this.lblAcademicYear.Text = "2025-2027";
+            // 
             // pageOfficeClearanceRequest
             // 
             this.pageOfficeClearanceRequest.Caption = "pageOfficeClearanceRequest";
@@ -1151,20 +1198,20 @@
             this.txtSearch.EditValue = "Search by Name, ID, or Course..";
             this.txtSearch.Location = new System.Drawing.Point(27, 123);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtSearch.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtSearch.Properties.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.txtSearch.Properties.Appearance.Options.UseFont = true;
             this.txtSearch.Properties.Appearance.Options.UseForeColor = true;
             this.txtSearch.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.txtSearch.Size = new System.Drawing.Size(1380, 32);
+            this.txtSearch.Size = new System.Drawing.Size(1380, 34);
             this.txtSearch.TabIndex = 4;
             // 
             // btnOnHoldFilter
             // 
             this.btnOnHoldFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnOnHoldFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnOnHoldFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnOnHoldFilter.Appearance.Options.UseBackColor = true;
             this.btnOnHoldFilter.Appearance.Options.UseFont = true;
             this.btnOnHoldFilter.Location = new System.Drawing.Point(486, 193);
@@ -1176,7 +1223,7 @@
             // btnApprovedFilter
             // 
             this.btnApprovedFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnApprovedFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnApprovedFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnApprovedFilter.Appearance.Options.UseBackColor = true;
             this.btnApprovedFilter.Appearance.Options.UseFont = true;
             this.btnApprovedFilter.Location = new System.Drawing.Point(332, 193);
@@ -1188,7 +1235,7 @@
             // btnPendingFilter
             // 
             this.btnPendingFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnPendingFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnPendingFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnPendingFilter.Appearance.Options.UseBackColor = true;
             this.btnPendingFilter.Appearance.Options.UseFont = true;
             this.btnPendingFilter.Location = new System.Drawing.Point(179, 193);
@@ -1200,7 +1247,7 @@
             // btnAllFilter
             // 
             this.btnAllFilter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnAllFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnAllFilter.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnAllFilter.Appearance.Options.UseBackColor = true;
             this.btnAllFilter.Appearance.Options.UseFont = true;
             this.btnAllFilter.Location = new System.Drawing.Point(27, 193);
@@ -1255,26 +1302,26 @@
             this.panelControl15.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl15.ContentImage")));
             this.panelControl15.Controls.Add(this.gcBaseOfficeForm);
             this.panelControl15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl15.Location = new System.Drawing.Point(0, 238);
+            this.panelControl15.Location = new System.Drawing.Point(0, 245);
             this.panelControl15.Name = "panelControl15";
-            this.panelControl15.Padding = new System.Windows.Forms.Padding(55);
+            this.panelControl15.Padding = new System.Windows.Forms.Padding(50, 55, 50, 55);
             this.panelControl15.Size = new System.Drawing.Size(1604, 785);
             this.panelControl15.TabIndex = 3;
             // 
             // gcBaseOfficeForm
             // 
             this.gcBaseOfficeForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gcBaseOfficeForm.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
-            this.gcBaseOfficeForm.Location = new System.Drawing.Point(55, 55);
+            gridLevelNode2});
+            this.gcBaseOfficeForm.Location = new System.Drawing.Point(50, 55);
             this.gcBaseOfficeForm.MainView = this.gvBaseOfficeForm;
             this.gcBaseOfficeForm.Name = "gcBaseOfficeForm";
             this.gcBaseOfficeForm.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.btnAction,
             this.btnProof,
             this.repositoryItemCheckedComboBoxEdit1});
-            this.gcBaseOfficeForm.Size = new System.Drawing.Size(1494, 675);
+            this.gcBaseOfficeForm.Size = new System.Drawing.Size(1504, 675);
             this.gcBaseOfficeForm.TabIndex = 0;
             this.gcBaseOfficeForm.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvBaseOfficeForm});
@@ -1294,20 +1341,21 @@
             this.Remarks});
             this.gvBaseOfficeForm.GridControl = this.gcBaseOfficeForm;
             this.gvBaseOfficeForm.Name = "gvBaseOfficeForm";
+            this.gvBaseOfficeForm.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gvBaseOfficeForm.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gvBaseOfficeForm.OptionsView.ShowGroupPanel = false;
             this.gvBaseOfficeForm.OptionsView.ShowIndicator = false;
             // 
             // UserID
             // 
-            this.UserID.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserID.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.UserID.AppearanceCell.ForeColor = System.Drawing.Color.Black;
             this.UserID.AppearanceCell.Options.UseFont = true;
             this.UserID.AppearanceCell.Options.UseForeColor = true;
             this.UserID.AppearanceCell.Options.UseTextOptions = true;
             this.UserID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.UserID.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.UserID.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserID.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.UserID.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.UserID.AppearanceHeader.Options.UseFont = true;
             this.UserID.AppearanceHeader.Options.UseForeColor = true;
@@ -1325,14 +1373,14 @@
             // 
             // FullName
             // 
-            this.FullName.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.FullName.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.FullName.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.FullName.AppearanceCell.Options.UseFont = true;
             this.FullName.AppearanceCell.Options.UseForeColor = true;
             this.FullName.AppearanceCell.Options.UseTextOptions = true;
             this.FullName.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.FullName.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.FullName.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.FullName.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.FullName.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FullName.AppearanceHeader.Options.UseFont = true;
             this.FullName.AppearanceHeader.Options.UseForeColor = true;
@@ -1348,14 +1396,14 @@
             // 
             // Program
             // 
-            this.Program.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Program.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Program.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.Program.AppearanceCell.Options.UseFont = true;
             this.Program.AppearanceCell.Options.UseForeColor = true;
             this.Program.AppearanceCell.Options.UseTextOptions = true;
             this.Program.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Program.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Program.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Program.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Program.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Program.AppearanceHeader.Options.UseFont = true;
             this.Program.AppearanceHeader.Options.UseForeColor = true;
@@ -1371,14 +1419,14 @@
             // 
             // Year
             // 
-            this.Year.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Year.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Year.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.Year.AppearanceCell.Options.UseFont = true;
             this.Year.AppearanceCell.Options.UseForeColor = true;
             this.Year.AppearanceCell.Options.UseTextOptions = true;
             this.Year.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Year.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Year.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Year.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Year.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Year.AppearanceHeader.Options.UseFont = true;
             this.Year.AppearanceHeader.Options.UseForeColor = true;
@@ -1394,14 +1442,14 @@
             // 
             // Semester
             // 
-            this.Semester.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Semester.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Semester.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.Semester.AppearanceCell.Options.UseFont = true;
             this.Semester.AppearanceCell.Options.UseForeColor = true;
             this.Semester.AppearanceCell.Options.UseTextOptions = true;
             this.Semester.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Semester.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Semester.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Semester.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Semester.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Semester.AppearanceHeader.Options.UseFont = true;
             this.Semester.AppearanceHeader.Options.UseForeColor = true;
@@ -1417,27 +1465,37 @@
             // 
             // gridColumn18
             // 
-            this.gridColumn18.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridColumn18.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn18.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.gridColumn18.AppearanceCell.Options.UseFont = true;
-            this.gridColumn18.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gridColumn18.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn18.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn18.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn18.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn18.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn18.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.gridColumn18.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn18.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn18.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn18.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn18.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn18.Caption = "Academic Year";
             this.gridColumn18.FieldName = "AcademicYear";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 5;
-            this.gridColumn18.Width = 119;
+            this.gridColumn18.Width = 150;
             // 
             // Proof
             // 
-            this.Proof.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Proof.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Proof.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.Proof.AppearanceCell.Options.UseFont = true;
             this.Proof.AppearanceCell.Options.UseForeColor = true;
             this.Proof.AppearanceCell.Options.UseTextOptions = true;
             this.Proof.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Proof.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Proof.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Proof.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Proof.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Proof.AppearanceHeader.Options.UseFont = true;
             this.Proof.AppearanceHeader.Options.UseForeColor = true;
@@ -1449,14 +1507,14 @@
             this.Proof.Name = "Proof";
             this.Proof.Visible = true;
             this.Proof.VisibleIndex = 6;
-            this.Proof.Width = 83;
+            this.Proof.Width = 78;
             // 
             // btnProof
             // 
             this.btnProof.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            editorButtonImageOptions8.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions8.Image")));
             this.btnProof.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnProof.Name = "btnProof";
             this.btnProof.Tag = "btnView";
             this.btnProof.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1464,14 +1522,14 @@
             // 
             // Status
             // 
-            this.Status.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Status.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Status.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.Status.AppearanceCell.Options.UseFont = true;
             this.Status.AppearanceCell.Options.UseForeColor = true;
             this.Status.AppearanceCell.Options.UseTextOptions = true;
             this.Status.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Status.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Status.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Status.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Status.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Status.AppearanceHeader.Options.UseFont = true;
             this.Status.AppearanceHeader.Options.UseForeColor = true;
@@ -1483,16 +1541,16 @@
             this.Status.Name = "Status";
             this.Status.Visible = true;
             this.Status.VisibleIndex = 7;
-            this.Status.Width = 148;
+            this.Status.Width = 139;
             // 
             // Actions
             // 
-            this.Actions.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Actions.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Actions.AppearanceCell.Options.UseFont = true;
             this.Actions.AppearanceCell.Options.UseTextOptions = true;
             this.Actions.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Actions.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Actions.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Actions.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Actions.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Actions.AppearanceHeader.Options.UseFont = true;
             this.Actions.AppearanceHeader.Options.UseForeColor = true;
@@ -1505,16 +1563,16 @@
             this.Actions.Name = "Actions";
             this.Actions.Visible = true;
             this.Actions.VisibleIndex = 8;
-            this.Actions.Width = 115;
+            this.Actions.Width = 108;
             // 
             // btnAction
             // 
             this.btnAction.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
-            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
+            editorButtonImageOptions9.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions9.Image")));
+            editorButtonImageOptions10.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions10.Image")));
             this.btnAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions9, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject33, serializableAppearanceObject34, serializableAppearanceObject35, serializableAppearanceObject36, "", "btnApprove", null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions10, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject37, serializableAppearanceObject38, serializableAppearanceObject39, serializableAppearanceObject40, "", "btnOnHold", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnAction.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAction.ContextImageOptions.SvgImage")));
             this.btnAction.Name = "btnAction";
             this.btnAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1522,14 +1580,14 @@
             // 
             // Remarks
             // 
-            this.Remarks.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Remarks.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.Remarks.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
             this.Remarks.AppearanceCell.Options.UseFont = true;
             this.Remarks.AppearanceCell.Options.UseForeColor = true;
             this.Remarks.AppearanceCell.Options.UseTextOptions = true;
             this.Remarks.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Remarks.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.Remarks.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Remarks.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.Remarks.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Remarks.AppearanceHeader.Options.UseFont = true;
             this.Remarks.AppearanceHeader.Options.UseForeColor = true;
@@ -1541,7 +1599,7 @@
             this.Remarks.Name = "Remarks";
             this.Remarks.Visible = true;
             this.Remarks.VisibleIndex = 9;
-            this.Remarks.Width = 207;
+            this.Remarks.Width = 197;
             // 
             // repositoryItemCheckedComboBoxEdit1
             // 
@@ -1558,7 +1616,7 @@
             this.panelControl14.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl14.Location = new System.Drawing.Point(0, 180);
             this.panelControl14.Name = "panelControl14";
-            this.panelControl14.Size = new System.Drawing.Size(1604, 58);
+            this.panelControl14.Size = new System.Drawing.Size(1604, 65);
             this.panelControl14.TabIndex = 2;
             // 
             // panelControl13
@@ -1615,13 +1673,13 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Appearance.Options.UseForeColor = true;
             this.labelControl6.Location = new System.Drawing.Point(819, 88);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(90, 17);
+            this.labelControl6.Size = new System.Drawing.Size(103, 20);
             this.labelControl6.TabIndex = 9;
             this.labelControl6.Text = "Academic Year";
             // 
@@ -1629,14 +1687,14 @@
             // 
             this.txtAcademicYear.Location = new System.Drawing.Point(819, 111);
             this.txtAcademicYear.Name = "txtAcademicYear";
-            this.txtAcademicYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtAcademicYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtAcademicYear.Properties.Appearance.Options.UseFont = true;
             this.txtAcademicYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtAcademicYear.Properties.Items.AddRange(new object[] {
             "2025-2026",
             "2026-2027"});
-            this.txtAcademicYear.Size = new System.Drawing.Size(735, 32);
+            this.txtAcademicYear.Size = new System.Drawing.Size(735, 34);
             this.txtAcademicYear.TabIndex = 8;
             // 
             // btnGenerateReport
@@ -1664,26 +1722,26 @@
             // 
             // labelControl17
             // 
-            this.labelControl17.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl17.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.labelControl17.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl17.Appearance.Options.UseFont = true;
             this.labelControl17.Appearance.Options.UseForeColor = true;
             this.labelControl17.Location = new System.Drawing.Point(47, 168);
             this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(38, 17);
+            this.labelControl17.Size = new System.Drawing.Size(44, 20);
             this.labelControl17.TabIndex = 2;
             this.labelControl17.Text = "Status";
             this.labelControl17.Click += new System.EventHandler(this.labelControl17_Click);
             // 
             // labelControl16
             // 
-            this.labelControl16.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl16.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.labelControl16.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl16.Appearance.Options.UseFont = true;
             this.labelControl16.Appearance.Options.UseForeColor = true;
             this.labelControl16.Location = new System.Drawing.Point(47, 88);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(56, 17);
+            this.labelControl16.Size = new System.Drawing.Size(65, 20);
             this.labelControl16.TabIndex = 1;
             this.labelControl16.Text = "Semester";
             // 
@@ -1691,7 +1749,7 @@
             // 
             this.cmbStatus.Location = new System.Drawing.Point(47, 191);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbStatus.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cmbStatus.Properties.Appearance.Options.UseFont = true;
             this.cmbStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1699,21 +1757,21 @@
             "Pending",
             "Approved",
             "On Hold"});
-            this.cmbStatus.Size = new System.Drawing.Size(735, 32);
+            this.cmbStatus.Size = new System.Drawing.Size(1507, 34);
             this.cmbStatus.TabIndex = 5;
             // 
             // cmbSemester
             // 
             this.cmbSemester.Location = new System.Drawing.Point(47, 111);
             this.cmbSemester.Name = "cmbSemester";
-            this.cmbSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cmbSemester.Properties.Appearance.Options.UseFont = true;
             this.cmbSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbSemester.Properties.Items.AddRange(new object[] {
             "1st Semester",
             "2nd Semester"});
-            this.cmbSemester.Size = new System.Drawing.Size(735, 32);
+            this.cmbSemester.Size = new System.Drawing.Size(735, 34);
             this.cmbSemester.TabIndex = 4;
             // 
             // labelControl14
@@ -1722,7 +1780,7 @@
             this.labelControl14.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl14.Appearance.Options.UseFont = true;
             this.labelControl14.Appearance.Options.UseForeColor = true;
-            this.labelControl14.Location = new System.Drawing.Point(47, 25);
+            this.labelControl14.Location = new System.Drawing.Point(47, 34);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(124, 21);
             this.labelControl14.TabIndex = 0;
@@ -1767,45 +1825,36 @@
             // 
             // pageOfficeArchive
             // 
+            this.pageOfficeArchive.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pageOfficeArchive.Appearance.Options.UseBackColor = true;
             this.pageOfficeArchive.Caption = "pageOfficeArchive";
-            this.pageOfficeArchive.Controls.Add(this.labelControl13);
-            this.pageOfficeArchive.Controls.Add(this.labelControl12);
-            this.pageOfficeArchive.Controls.Add(this.gcOfficeArchive);
-            this.pageOfficeArchive.Controls.Add(this.cmbArchiveYear);
-            this.pageOfficeArchive.Controls.Add(this.cmbArchiveSemester);
+            this.pageOfficeArchive.Controls.Add(this.panelControl22);
+            this.pageOfficeArchive.Controls.Add(this.panelControl20);
+            this.pageOfficeArchive.Controls.Add(this.panelControl18);
             this.pageOfficeArchive.Name = "pageOfficeArchive";
             this.pageOfficeArchive.Size = new System.Drawing.Size(1604, 1080);
             // 
-            // labelControl13
+            // panelControl22
             // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.Location = new System.Drawing.Point(120, 290);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(113, 21);
-            this.labelControl13.TabIndex = 11;
-            this.labelControl13.Text = "Academic Year";
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(120, 159);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(70, 21);
-            this.labelControl12.TabIndex = 10;
-            this.labelControl12.Text = "Semester";
+            this.panelControl22.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl22.Appearance.Options.UseBackColor = true;
+            this.panelControl22.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl22.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl22.ContentImage")));
+            this.panelControl22.Controls.Add(this.gcOfficeArchive);
+            this.panelControl22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl22.Location = new System.Drawing.Point(0, 240);
+            this.panelControl22.Name = "panelControl22";
+            this.panelControl22.Padding = new System.Windows.Forms.Padding(30);
+            this.panelControl22.Size = new System.Drawing.Size(1604, 504);
+            this.panelControl22.TabIndex = 14;
             // 
             // gcOfficeArchive
             // 
-            this.gcOfficeArchive.Location = new System.Drawing.Point(39, 463);
+            this.gcOfficeArchive.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcOfficeArchive.Location = new System.Drawing.Point(30, 30);
             this.gcOfficeArchive.MainView = this.gvOfficeArchive;
             this.gcOfficeArchive.Name = "gcOfficeArchive";
-            this.gcOfficeArchive.Size = new System.Drawing.Size(1039, 377);
+            this.gcOfficeArchive.Size = new System.Drawing.Size(1544, 444);
             this.gcOfficeArchive.TabIndex = 9;
             this.gcOfficeArchive.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvOfficeArchive});
@@ -1826,9 +1875,26 @@
             this.gvOfficeArchive.GridControl = this.gcOfficeArchive;
             this.gvOfficeArchive.Name = "gvOfficeArchive";
             this.gvOfficeArchive.OptionsBehavior.Editable = false;
+            this.gvOfficeArchive.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
+            this.gvOfficeArchive.OptionsView.ShowGroupPanel = false;
+            this.gvOfficeArchive.OptionsView.ShowIndicator = false;
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn6.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn6.AppearanceCell.Options.UseFont = true;
+            this.gridColumn6.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn6.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn6.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn6.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn6.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn6.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn6.Caption = "User ID";
             this.gridColumn6.FieldName = "UserID";
             this.gridColumn6.Name = "gridColumn6";
@@ -1837,6 +1903,20 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn8.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn8.AppearanceCell.Options.UseFont = true;
+            this.gridColumn8.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn8.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn8.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn8.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn8.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn8.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn8.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn8.Caption = "Full Name";
             this.gridColumn8.FieldName = "FullName";
             this.gridColumn8.Name = "gridColumn8";
@@ -1845,6 +1925,20 @@
             // 
             // gridColumn10
             // 
+            this.gridColumn10.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn10.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn10.AppearanceCell.Options.UseFont = true;
+            this.gridColumn10.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn10.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn10.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn10.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn10.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn10.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn10.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn10.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn10.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn10.Caption = "Program";
             this.gridColumn10.FieldName = "Program";
             this.gridColumn10.Name = "gridColumn10";
@@ -1853,6 +1947,20 @@
             // 
             // gridColumn11
             // 
+            this.gridColumn11.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn11.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn11.AppearanceCell.Options.UseFont = true;
+            this.gridColumn11.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn11.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn11.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn11.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn11.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn11.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn11.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn11.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn11.Caption = "Year";
             this.gridColumn11.FieldName = "Year";
             this.gridColumn11.Name = "gridColumn11";
@@ -1861,6 +1969,20 @@
             // 
             // gridColumn12
             // 
+            this.gridColumn12.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn12.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn12.AppearanceCell.Options.UseFont = true;
+            this.gridColumn12.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn12.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn12.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn12.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn12.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn12.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn12.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn12.Caption = "Semester";
             this.gridColumn12.FieldName = "Semester";
             this.gridColumn12.Name = "gridColumn12";
@@ -1869,6 +1991,20 @@
             // 
             // gridColumn13
             // 
+            this.gridColumn13.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn13.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn13.AppearanceCell.Options.UseFont = true;
+            this.gridColumn13.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn13.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn13.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn13.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn13.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn13.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn13.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn13.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn13.Caption = "Academic Year";
             this.gridColumn13.FieldName = "AcademicYear";
             this.gridColumn13.Name = "gridColumn13";
@@ -1877,6 +2013,20 @@
             // 
             // gridColumn14
             // 
+            this.gridColumn14.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn14.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn14.AppearanceCell.Options.UseFont = true;
+            this.gridColumn14.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn14.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn14.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn14.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn14.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn14.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn14.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn14.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn14.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn14.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn14.Caption = "Office";
             this.gridColumn14.FieldName = "Office";
             this.gridColumn14.Name = "gridColumn14";
@@ -1885,6 +2035,20 @@
             // 
             // gridColumn15
             // 
+            this.gridColumn15.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn15.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn15.AppearanceCell.Options.UseFont = true;
+            this.gridColumn15.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn15.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn15.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn15.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn15.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn15.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn15.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn15.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn15.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn15.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn15.Caption = "Status";
             this.gridColumn15.FieldName = "Status";
             this.gridColumn15.Name = "gridColumn15";
@@ -1893,6 +2057,20 @@
             // 
             // gridColumn16
             // 
+            this.gridColumn16.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn16.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn16.AppearanceCell.Options.UseFont = true;
+            this.gridColumn16.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn16.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn16.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn16.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn16.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn16.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn16.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn16.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn16.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn16.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn16.Caption = "Remarks";
             this.gridColumn16.FieldName = "Remarks";
             this.gridColumn16.Name = "gridColumn16";
@@ -1901,32 +2079,47 @@
             // 
             // gridColumn17
             // 
+            this.gridColumn17.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.gridColumn17.AppearanceCell.ForeColor = System.Drawing.Color.Gray;
+            this.gridColumn17.AppearanceCell.Options.UseFont = true;
+            this.gridColumn17.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn17.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn17.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn17.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn17.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.gridColumn17.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridColumn17.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn17.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn17.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn17.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.gridColumn17.Caption = "Date Processed";
             this.gridColumn17.FieldName = "DateProcessed";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 9;
             // 
-            // cmbArchiveYear
+            // panelControl20
             // 
-            this.cmbArchiveYear.Location = new System.Drawing.Point(120, 317);
-            this.cmbArchiveYear.Name = "cmbArchiveYear";
-            this.cmbArchiveYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.cmbArchiveYear.Properties.Appearance.Options.UseFont = true;
-            this.cmbArchiveYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbArchiveYear.Properties.Items.AddRange(new object[] {
-            "Pending",
-            "Approved",
-            "On Hold"});
-            this.cmbArchiveYear.Size = new System.Drawing.Size(735, 32);
-            this.cmbArchiveYear.TabIndex = 7;
+            this.panelControl20.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl20.Appearance.Options.UseBackColor = true;
+            this.panelControl20.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl20.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl20.ContentImage")));
+            this.panelControl20.Controls.Add(this.cmbArchiveSemester);
+            this.panelControl20.Controls.Add(this.cmbArchiveYear);
+            this.panelControl20.Controls.Add(this.labelControl13);
+            this.panelControl20.Controls.Add(this.labelControl12);
+            this.panelControl20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl20.Location = new System.Drawing.Point(0, 100);
+            this.panelControl20.Name = "panelControl20";
+            this.panelControl20.Size = new System.Drawing.Size(1604, 140);
+            this.panelControl20.TabIndex = 13;
             // 
             // cmbArchiveSemester
             // 
-            this.cmbArchiveSemester.Location = new System.Drawing.Point(120, 189);
+            this.cmbArchiveSemester.Location = new System.Drawing.Point(61, 69);
             this.cmbArchiveSemester.Name = "cmbArchiveSemester";
-            this.cmbArchiveSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmbArchiveSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cmbArchiveSemester.Properties.Appearance.Options.UseFont = true;
             this.cmbArchiveSemester.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1934,8 +2127,84 @@
             "Pending",
             "Approved",
             "On Hold"});
-            this.cmbArchiveSemester.Size = new System.Drawing.Size(735, 32);
+            this.cmbArchiveSemester.Size = new System.Drawing.Size(735, 34);
             this.cmbArchiveSemester.TabIndex = 6;
+            // 
+            // cmbArchiveYear
+            // 
+            this.cmbArchiveYear.Location = new System.Drawing.Point(840, 69);
+            this.cmbArchiveYear.Name = "cmbArchiveYear";
+            this.cmbArchiveYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cmbArchiveYear.Properties.Appearance.Options.UseFont = true;
+            this.cmbArchiveYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbArchiveYear.Properties.Items.AddRange(new object[] {
+            "Pending",
+            "Approved",
+            "On Hold"});
+            this.cmbArchiveYear.Size = new System.Drawing.Size(735, 34);
+            this.cmbArchiveYear.TabIndex = 7;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Appearance.Options.UseForeColor = true;
+            this.labelControl13.Location = new System.Drawing.Point(840, 42);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(113, 21);
+            this.labelControl13.TabIndex = 11;
+            this.labelControl13.Text = "Academic Year";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(61, 39);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(70, 21);
+            this.labelControl12.TabIndex = 10;
+            this.labelControl12.Text = "Semester";
+            // 
+            // panelControl18
+            // 
+            this.panelControl18.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelControl18.Appearance.Options.UseBackColor = true;
+            this.panelControl18.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl18.Controls.Add(this.labelControl22);
+            this.panelControl18.Controls.Add(this.labelControl21);
+            this.panelControl18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl18.Location = new System.Drawing.Point(0, 0);
+            this.panelControl18.Name = "panelControl18";
+            this.panelControl18.Size = new System.Drawing.Size(1604, 100);
+            this.panelControl18.TabIndex = 12;
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl22.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl22.Appearance.Options.UseFont = true;
+            this.labelControl22.Appearance.Options.UseForeColor = true;
+            this.labelControl22.Location = new System.Drawing.Point(49, 62);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(192, 17);
+            this.labelControl22.TabIndex = 4;
+            this.labelControl22.Text = "View previous clearance periods.";
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl21.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.labelControl21.Appearance.Options.UseFont = true;
+            this.labelControl21.Appearance.Options.UseForeColor = true;
+            this.labelControl21.Location = new System.Drawing.Point(49, 19);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(103, 37);
+            this.labelControl21.TabIndex = 3;
+            this.labelControl21.Text = "Records";
             // 
             // BaseOfficeForm
             // 
@@ -1967,6 +2236,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.naviframeOffices)).EndInit();
             this.naviframeOffices.ResumeLayout(false);
             this.pageOfficeDashboard.ResumeLayout(false);
@@ -1997,6 +2267,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl23)).EndInit();
+            this.panelControl23.ResumeLayout(false);
+            this.panelControl23.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl24)).EndInit();
+            this.panelControl24.ResumeLayout(false);
+            this.panelControl24.PerformLayout();
             this.pageOfficeClearanceRequest.ResumeLayout(false);
             this.pageOfficeClearanceRequest.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
@@ -2021,11 +2297,18 @@
             this.panelControl19.ResumeLayout(false);
             this.panelControl19.PerformLayout();
             this.pageOfficeArchive.ResumeLayout(false);
-            this.pageOfficeArchive.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl22)).EndInit();
+            this.panelControl22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcOfficeArchive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOfficeArchive)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbArchiveYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl20)).EndInit();
+            this.panelControl20.ResumeLayout(false);
+            this.panelControl20.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbArchiveSemester.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbArchiveYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl18)).EndInit();
+            this.panelControl18.ResumeLayout(false);
+            this.panelControl18.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2044,7 +2327,6 @@
         private DevExpress.XtraBars.Navigation.NavigationPage pageOfficeDashboard;
         private DevExpress.XtraBars.Navigation.NavigationPage pageOfficeClearanceRequest;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbOfficeClearanceRequest;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
         private DevExpress.XtraBars.Navigation.AccordionControlElement sbOfficeReports;
@@ -2149,5 +2431,13 @@
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraEditors.PanelControl panelControl18;
+        private DevExpress.XtraEditors.PanelControl panelControl20;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.PanelControl panelControl22;
+        private DevExpress.XtraEditors.PanelControl panelControl23;
+        private DevExpress.XtraEditors.PanelControl panelControl24;
+        private DevExpress.XtraEditors.PanelControl panelControl25;
     }
 }

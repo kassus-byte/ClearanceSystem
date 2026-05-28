@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInfoForm));
-            this.cbYear = new System.Windows.Forms.ComboBox();
             this.txtLastName = new DevExpress.XtraEditors.TextEdit();
-            this.cbProgram = new System.Windows.Forms.ComboBox();
             this.txtUserID = new DevExpress.XtraEditors.TextEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -44,7 +42,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtDateCreated = new DevExpress.XtraEditors.TextEdit();
             this.lbl = new DevExpress.XtraEditors.LabelControl();
-            this.cbRole = new System.Windows.Forms.ComboBox();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.chkShowPassword = new DevExpress.XtraEditors.CheckEdit();
@@ -53,6 +50,9 @@
             this.txtMiddleName = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.cbRole = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbProgram = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl15)).BeginInit();
@@ -64,51 +64,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMiddleName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbProgram.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cbYear
-            // 
-            this.cbYear.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Items.AddRange(new object[] {
-            "1st Year",
-            "2nd Year",
-            "3rd Year",
-            "4th Year",
-            "Irregular"});
-            this.cbYear.Location = new System.Drawing.Point(33, 249);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(464, 23);
-            this.cbYear.TabIndex = 26;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(550, 197);
+            this.txtLastName.Location = new System.Drawing.Point(525, 81);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtLastName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtLastName.Properties.Appearance.Options.UseFont = true;
-            this.txtLastName.Size = new System.Drawing.Size(202, 30);
+            this.txtLastName.Size = new System.Drawing.Size(513, 34);
             this.txtLastName.TabIndex = 25;
             this.txtLastName.EditValueChanged += new System.EventHandler(this.txtFullName_EditValueChanged);
             // 
-            // cbProgram
-            // 
-            this.cbProgram.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.cbProgram.FormattingEnabled = true;
-            this.cbProgram.Items.AddRange(new object[] {
-            "BSIT"});
-            this.cbProgram.Location = new System.Drawing.Point(550, 276);
-            this.cbProgram.Name = "cbProgram";
-            this.cbProgram.Size = new System.Drawing.Size(499, 23);
-            this.cbProgram.TabIndex = 24;
-            // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(33, 103);
+            this.txtUserID.Location = new System.Drawing.Point(34, 81);
             this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtUserID.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtUserID.Properties.Appearance.Options.UseFont = true;
-            this.txtUserID.Size = new System.Drawing.Size(464, 30);
+            this.txtUserID.Size = new System.Drawing.Size(464, 34);
             this.txtUserID.TabIndex = 23;
             // 
             // btnSave
@@ -139,49 +116,49 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(33, 226);
+            this.labelControl7.Location = new System.Drawing.Point(34, 221);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(27, 17);
+            this.labelControl7.Size = new System.Drawing.Size(32, 21);
             this.labelControl7.TabIndex = 19;
             this.labelControl7.Text = "Year";
             // 
             // labelControl5
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(538, 159);
+            this.labelControl5.Location = new System.Drawing.Point(525, 221);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(53, 17);
+            this.labelControl5.Size = new System.Drawing.Size(63, 21);
             this.labelControl5.TabIndex = 17;
             this.labelControl5.Text = "Program";
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(538, 80);
+            this.labelControl4.Location = new System.Drawing.Point(525, 58);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(64, 17);
+            this.labelControl4.Size = new System.Drawing.Size(76, 21);
             this.labelControl4.TabIndex = 16;
             this.labelControl4.Text = "Last Name";
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(33, 80);
+            this.labelControl3.Location = new System.Drawing.Point(34, 58);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(44, 17);
+            this.labelControl3.Size = new System.Drawing.Size(53, 21);
             this.labelControl3.TabIndex = 15;
             this.labelControl3.Text = "User ID";
             // 
@@ -211,76 +188,61 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(33, 294);
+            this.labelControl1.Location = new System.Drawing.Point(34, 290);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(79, 17);
+            this.labelControl1.Size = new System.Drawing.Size(96, 21);
             this.labelControl1.TabIndex = 32;
             this.labelControl1.Text = "Date Created";
             // 
             // txtDateCreated
             // 
-            this.txtDateCreated.Location = new System.Drawing.Point(33, 317);
+            this.txtDateCreated.Location = new System.Drawing.Point(34, 313);
             this.txtDateCreated.Name = "txtDateCreated";
-            this.txtDateCreated.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtDateCreated.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtDateCreated.Properties.Appearance.Options.UseFont = true;
-            this.txtDateCreated.Size = new System.Drawing.Size(464, 30);
+            this.txtDateCreated.Size = new System.Drawing.Size(464, 34);
             this.txtDateCreated.TabIndex = 33;
             // 
             // lbl
             // 
-            this.lbl.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lbl.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.lbl.Appearance.Options.UseFont = true;
             this.lbl.Appearance.Options.UseForeColor = true;
-            this.lbl.Location = new System.Drawing.Point(33, 159);
+            this.lbl.Location = new System.Drawing.Point(34, 137);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(26, 17);
+            this.lbl.Size = new System.Drawing.Size(33, 21);
             this.lbl.TabIndex = 34;
             this.lbl.Text = "Role";
             // 
-            // cbRole
-            // 
-            this.cbRole.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.cbRole.FormattingEnabled = true;
-            this.cbRole.Items.AddRange(new object[] {
-            "Student",
-            "Treasurer",
-            "Technical Office",
-            "SSG",
-            "Admin"});
-            this.cbRole.Location = new System.Drawing.Point(33, 182);
-            this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(464, 23);
-            this.cbRole.TabIndex = 35;
-            // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(550, 339);
+            this.txtPassword.Location = new System.Drawing.Point(525, 313);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
-            this.txtPassword.Size = new System.Drawing.Size(499, 30);
+            this.txtPassword.Size = new System.Drawing.Size(513, 34);
             this.txtPassword.TabIndex = 37;
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(538, 222);
+            this.labelControl2.Location = new System.Drawing.Point(525, 293);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(58, 17);
+            this.labelControl2.Size = new System.Drawing.Size(69, 21);
             this.labelControl2.TabIndex = 36;
             this.labelControl2.Text = "Password";
             // 
             // chkShowPassword
             // 
-            this.chkShowPassword.Location = new System.Drawing.Point(538, 280);
+            this.chkShowPassword.Location = new System.Drawing.Point(525, 351);
             this.chkShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkShowPassword.Name = "chkShowPassword";
             this.chkShowPassword.Properties.Caption = "Show Password";
@@ -289,32 +251,32 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(758, 197);
+            this.txtFirstName.Location = new System.Drawing.Point(525, 164);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtFirstName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtFirstName.Properties.Appearance.Options.UseFont = true;
-            this.txtFirstName.Size = new System.Drawing.Size(224, 30);
+            this.txtFirstName.Size = new System.Drawing.Size(446, 34);
             this.txtFirstName.TabIndex = 45;
             // 
             // labelControl8
             // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
-            this.labelControl8.Location = new System.Drawing.Point(976, 80);
+            this.labelControl8.Location = new System.Drawing.Point(977, 141);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(23, 17);
+            this.labelControl8.Size = new System.Drawing.Size(28, 21);
             this.labelControl8.TabIndex = 47;
             this.labelControl8.Text = "M. I";
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.Location = new System.Drawing.Point(976, 103);
+            this.txtMiddleName.Location = new System.Drawing.Point(977, 164);
             this.txtMiddleName.Name = "txtMiddleName";
-            this.txtMiddleName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtMiddleName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtMiddleName.Properties.Appearance.Options.UseFont = true;
-            this.txtMiddleName.Size = new System.Drawing.Size(61, 30);
+            this.txtMiddleName.Size = new System.Drawing.Size(61, 34);
             this.txtMiddleName.TabIndex = 48;
             // 
             // panelControl1
@@ -323,9 +285,15 @@
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl1.ContentImage")));
+            this.panelControl1.Controls.Add(this.cbProgram);
+            this.panelControl1.Controls.Add(this.cbYear);
+            this.panelControl1.Controls.Add(this.cbRole);
+            this.panelControl1.Controls.Add(this.txtPassword);
+            this.panelControl1.Controls.Add(this.txtFirstName);
             this.panelControl1.Controls.Add(this.labelControl9);
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.txtMiddleName);
+            this.panelControl1.Controls.Add(this.txtLastName);
             this.panelControl1.Controls.Add(this.chkShowPassword);
             this.panelControl1.Controls.Add(this.btnCancel);
             this.panelControl1.Controls.Add(this.btnSave);
@@ -333,12 +301,10 @@
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.txtUserID);
             this.panelControl1.Controls.Add(this.lbl);
-            this.panelControl1.Controls.Add(this.cbRole);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.txtDateCreated);
-            this.panelControl1.Controls.Add(this.cbYear);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Location = new System.Drawing.Point(12, 94);
             this.panelControl1.Name = "panelControl1";
@@ -347,26 +313,57 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(746, 80);
+            this.labelControl9.Location = new System.Drawing.Point(525, 141);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(66, 17);
+            this.labelControl9.Size = new System.Drawing.Size(78, 21);
             this.labelControl9.TabIndex = 50;
             this.labelControl9.Text = "First Name";
             // 
+            // cbRole
+            // 
+            this.cbRole.Location = new System.Drawing.Point(34, 164);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbRole.Properties.Appearance.Options.UseFont = true;
+            this.cbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbRole.Size = new System.Drawing.Size(464, 34);
+            this.cbRole.TabIndex = 51;
+            // 
+            // cbYear
+            // 
+            this.cbYear.Location = new System.Drawing.Point(34, 248);
+            this.cbYear.Name = "cbYear";
+            this.cbYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbYear.Properties.Appearance.Options.UseFont = true;
+            this.cbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbYear.Size = new System.Drawing.Size(464, 34);
+            this.cbYear.TabIndex = 52;
+            // 
+            // cbProgram
+            // 
+            this.cbProgram.Location = new System.Drawing.Point(525, 248);
+            this.cbProgram.Name = "cbProgram";
+            this.cbProgram.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbProgram.Properties.Appearance.Options.UseFont = true;
+            this.cbProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbProgram.Size = new System.Drawing.Size(513, 34);
+            this.cbProgram.TabIndex = 53;
+            // 
             // UserInfoForm
             // 
+            this.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 603);
-            this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.panelControl15);
-            this.Controls.Add(this.txtLastName);
-            this.Controls.Add(this.cbProgram);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserInfoForm";
@@ -385,14 +382,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbProgram.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbYear;
         private DevExpress.XtraEditors.TextEdit txtLastName;
-        private System.Windows.Forms.ComboBox cbProgram;
         private DevExpress.XtraEditors.TextEdit txtUserID;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
@@ -405,7 +403,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtDateCreated;
         private DevExpress.XtraEditors.LabelControl lbl;
-        private System.Windows.Forms.ComboBox cbRole;
         private DevExpress.XtraEditors.TextEdit txtPassword;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.CheckEdit chkShowPassword;
@@ -414,5 +411,8 @@
         private DevExpress.XtraEditors.TextEdit txtMiddleName;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.ComboBoxEdit cbProgram;
+        private DevExpress.XtraEditors.ComboBoxEdit cbYear;
+        private DevExpress.XtraEditors.ComboBoxEdit cbRole;
     }
 }
