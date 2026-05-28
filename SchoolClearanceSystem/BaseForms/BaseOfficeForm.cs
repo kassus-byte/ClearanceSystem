@@ -84,12 +84,30 @@ namespace SchoolClearanceSystem
         }
 
         // ── Identity ──────────────────────────────────────────────────
+        // ── Identity ──────────────────────────────────────────────────
         private void SetupIdentity()
         {
             if (Session.CurrentUser == null) return;
+
             lblFullName.Text = Session.CurrentUser.FullName;
             lblRole.Text = Session.CurrentUser.Role;
             this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
+
+            // Change the main header text dynamically depending on the current office/role
+            // Note: If your control name in the designer is 'lblWelcome' or 'txtWelcome', 
+            // change the variable name below to match it exactly.
+            if (!string.IsNullOrEmpty(OfficeName) && OfficeName != "Unknown Office")
+            {
+                txtWelcome.Text = $"{OfficeName} Dashboard";
+            }
+            else if (!string.IsNullOrEmpty(Session.CurrentUser.Role))
+            {
+                txtWelcome.Text = $"{Session.CurrentUser.Role} Dashboard";
+            }
+            else
+            {
+                txtWelcome.Text = "Office Dashboard";
+            }
         }
 
         // ── Navigation ────────────────────────────────────────────────

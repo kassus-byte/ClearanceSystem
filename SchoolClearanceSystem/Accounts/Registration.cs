@@ -9,7 +9,7 @@ namespace SchoolClearanceSystem
 {
     public partial class Registration : XtraForm
     {
-        // Allows injecting a mock repo for testing; defaults to a real one
+        // OOP CONCEPT: DEPENDENCY INJECTION (Allows looser coupling for testing mocks)
         private readonly UserRepository _userRepo;
 
         public Registration(UserRepository userRepo = null)
@@ -17,7 +17,6 @@ namespace SchoolClearanceSystem
             InitializeComponent();
             _userRepo = userRepo ?? new UserRepository();
 
-            // Delegate password toggle and name restrictions to UIHelper
             UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
             UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
         }
@@ -27,24 +26,21 @@ namespace SchoolClearanceSystem
         {
             if (!ValidateRequiredFields()) return;
 
-            // Build a User object from the form fields and attempt to save it
+            // OOP CONCEPT: OBJECT INITIALIZATION / ENCAPSULATION
             var newUser = BuildUserFromForm();
 
             if (_userRepo.AddUser(newUser))
             {
-                // Registration succeeded — clear the form for the next entry
                 UIHelper.ShowSuccess("Registration Successful!");
                 ClearFields();
             }
             else
             {
-                // AddUser returns false when the UserID already exists in the database
                 UIHelper.ShowError($"User ID '{newUser.UserID}' is already taken. Choose another.", "Duplicate User ID");
                 txtUserID.Focus();
             }
         }
 
-        // Returns false and shows a message if any required field is empty
         private bool ValidateRequiredFields()
         {
             if (string.IsNullOrWhiteSpace(txtUserID.Text) ||
@@ -66,7 +62,6 @@ namespace SchoolClearanceSystem
             return true;
         }
 
-        // Collects all form field values into a new User object — role is always Student here
         private User BuildUserFromForm() => new User
         {
             UserID = txtUserID.Text.Trim(),
@@ -79,7 +74,6 @@ namespace SchoolClearanceSystem
             Password = Helpers.PasswordHelper.Hash(txtPassword.Text)
         };
 
-        // Resets all input fields back to empty after a successful registration
         private void ClearFields()
         {
             txtUserID.Text = txtLastName.Text = txtFirstName.Text =
@@ -91,8 +85,6 @@ namespace SchoolClearanceSystem
         private void lblctrLogin_Click(object sender, EventArgs e)
         {
             var loginForm = new Login();
-
-            // Close registration when the login form is closed
             loginForm.FormClosed += (s, args) => this.Close();
             loginForm.Show();
             this.Hide();

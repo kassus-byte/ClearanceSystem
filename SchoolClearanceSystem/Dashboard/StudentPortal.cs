@@ -1,14 +1,16 @@
 ﻿using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Tile;
+using DevExpress.XtraReports.UI;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
 using SchoolClearanceSystem.Helpers;
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using DevExpress.XtraReports.UI;
 
 namespace SchoolClearanceSystem
 {
@@ -16,10 +18,8 @@ namespace SchoolClearanceSystem
     {
         private string _ssgFilePath = string.Empty;
         private string _treasurerFilePath = string.Empty;
-
         private string _semester = "Not Set";
         private string _academicYear = "Not Set";
-
         private const int TotalOffices = 3;
 
         private readonly SystemRepository _sysRepo = new SystemRepository();
@@ -41,52 +41,9 @@ namespace SchoolClearanceSystem
             if (gridMyRequest.MainView is GridView gvReq) gvReq.RowCellStyle += ApplyStatusRowStyles;
             if (gridMyClearance.MainView is GridView gvHistory) gvHistory.RowCellStyle += ApplyStatusRowStyles;
 
-            // ── SSG File Management ──────────────────────────────────────
-            txtSSGFilePath.Properties.ReadOnly = true;
-            txtSSGFilePath.Cursor = Cursors.Hand;
-
-            btnUploadSSGRequirement.Click += (s, e) =>
-            {
-                _ssgFilePath = DocumentService.UploadDocument("Upload SSG Requirement");
-                if (!string.IsNullOrEmpty(_ssgFilePath))
-                {
-                    txtSSGFilePath.Text = _ssgFilePath;
-                }
-            };
-
-
-
-            txtSSGFilePath.Click += (s, e) =>
-            {
-                if (!string.IsNullOrEmpty(_ssgFilePath))
-                {
-                    DocumentService.ViewDocument(_ssgFilePath);
-                }
-            };
-
-            // ── Treasurer File Management ────────────────────────────────
-            txtTreasurerFilePath.Properties.ReadOnly = true;
-            txtTreasurerFilePath.Cursor = Cursors.Hand;
-
-            btnUploadTreasurerRequirement.Click += (s, e) =>
-            {
-                _treasurerFilePath = DocumentService.UploadDocument("Upload Treasurer Requirement");
-                if (!string.IsNullOrEmpty(_treasurerFilePath))
-                {
-                    txtTreasurerFilePath.Text = _treasurerFilePath;
-                }
-            };
-
-
-
-            txtTreasurerFilePath.Click += (s, e) =>
-            {
-                if (!string.IsNullOrEmpty(_treasurerFilePath))
-                {
-                    DocumentService.ViewDocument(_treasurerFilePath);
-                }
-            };
-            // ────────────────────────────────────────────────────────────
+            // OOP REUSE: Functional binding pattern compatible with C# 7.3
+            ConfigureFileField(txtSSGFilePath, btnUploadSSGRequirement, "Upload SSG Requirement", path => _ssgFilePath = path, () => _ssgFilePath);
+            ConfigureFileField(txtTreasurerFilePath, btnUploadTreasurerRequirement, "Upload Treasurer Requirement", path => _treasurerFilePath = path, () => _treasurerFilePath);
 
             tileViewMyClearance.FocusedRowChanged += tileViewMyClearance_FocusedRowChanged;
 
@@ -95,40 +52,39 @@ namespace SchoolClearanceSystem
             LoadUserSessionContext();
         }
 
-        private void LoadUserSessionContext()
+        // Helper pattern wraps duplicate document click/upload handlers 
+        private void ConfigureFileField(TextEdit textEdit, SimpleButton uploadBtn, string prompt, Action<string> pathSetter, Func<string> pathGetter)
         {
-            UIHelper.PopulateUserSessionContext(
-                lblWelcome,
-                lblFullName,
-                lblUserID,
-                lblProgram,
-                lblYear,
-                Session.CurrentUser);
+            textEdit.Properties.ReadOnly = true;
+            textEdit.Cursor = Cursors.Hand;
+            uploadBtn.Click += (s, e) =>
+            {
+                string path = DocumentService.UploadDocument(prompt);
+                if (!string.IsNullOrEmpty(path))
+                {
+                    pathSetter(path);
+                    textEdit.Text = path;
+                }
+            };
+            textEdit.Click += (s, e) => { if (!string.IsNullOrEmpty(pathGetter())) DocumentService.ViewDocument(pathGetter()); };
         }
+
+        private void LoadUserSessionContext() =>
+            UIHelper.PopulateUserSessionContext(lblWelcome, lblFullName, lblUserID, lblProgram, lblYear, Session.CurrentUser);
 
         private void LoadActiveClearancePeriod()
         {
             try
             {
                 var active = _sysRepo.GetAllPeriods().FirstOrDefault(p => p.IsActive == 1);
-                if (active != null)
-                {
-                    _semester = active.Semester ?? "Not Set";
-                    _academicYear = active.AcademicYear ?? "Not Set";
-                }
-                else
-                {
-                    _semester = "Not Set";
-                    _academicYear = "Not Set";
-                }
+                _semester = active != null ? active.Semester ?? "Not Set" : "Not Set";
+                _academicYear = active != null ? active.AcademicYear ?? "Not Set" : "Not Set";
             }
             catch (Exception ex)
             {
                 UIHelper.ShowError($"Database connection error: {ex.Message}", "Connection Error");
-                _semester = "Not Set";
-                _academicYear = "Not Set";
+                _semester = _academicYear = "Not Set";
             }
-
             UIHelper.SetPeriodFields(txtSemester, txtCurrentSchoolYear, _semester, _academicYear);
         }
 
@@ -139,10 +95,7 @@ namespace SchoolClearanceSystem
 
             if (_semester == "Not Set" || _academicYear == "Not Set")
             {
-                btnSubmitRequest.Enabled = false;
-                btnSubmitRequest.Text = "No Active Period";
-                btnUploadSSGRequirement.Enabled = false;
-                btnUploadTreasurerRequirement.Enabled = false;
+                ToggleSubmissionState(false, "No Active Period");
                 gridControlOfficeStatus.DataSource = null;
                 return;
             }
@@ -152,27 +105,13 @@ namespace SchoolClearanceSystem
 
             UIHelper.UpdateProgressIndicators(lblOfficeCleared, lblPercentage, pbOverallProgress, cleared, TotalOffices);
             UIHelper.UpdateClearanceStatus(lblStatus, lblProgress, cleared, TotalOffices);
+            ToggleSubmissionState(!fullyCleared, fullyCleared ? "Clearance Fully Approved" : "Submit Request");
 
-            if (fullyCleared)
-            {
-                btnSubmitRequest.Enabled = false;
-                btnSubmitRequest.Text = "Clearance Fully Approved";
-                btnUploadSSGRequirement.Enabled = false;
-                btnUploadTreasurerRequirement.Enabled = false;
-                _ssgFilePath = _treasurerFilePath = string.Empty;
-            }
-            else
-            {
-                btnSubmitRequest.Enabled = true;
-                btnSubmitRequest.Text = "Submit Request";
-                btnUploadSSGRequirement.Enabled = true;
-                btnUploadTreasurerRequirement.Enabled = true;
-            }
+            if (fullyCleared) _ssgFilePath = _treasurerFilePath = string.Empty;
 
             try
             {
-                gridControlOfficeStatus.DataSource = _userRepo
-                    .GetStudentStatus(Session.CurrentUser.UserID, _semester, _academicYear).ToList();
+                gridControlOfficeStatus.DataSource = _userRepo.GetStudentStatus(Session.CurrentUser.UserID, _semester, _academicYear).ToList();
             }
             catch (Exception ex)
             {
@@ -180,35 +119,41 @@ namespace SchoolClearanceSystem
             }
         }
 
+        private void ToggleSubmissionState(bool enabled, string buttonText)
+        {
+            btnSubmitRequest.Enabled = btnUploadSSGRequirement.Enabled = btnUploadTreasurerRequirement.Enabled = enabled;
+            btnSubmitRequest.Text = buttonText;
+        }
+
         // ── Row Styling ───────────────────────────────────────────────
         private void ApplyStatusRowStyles(object sender, RowCellStyleEventArgs e)
         {
             if (e.Column.FieldName != "Status" || e.CellValue == null) return;
 
+            Color color;
+            FontStyle style;
+
+            // Reverted back to classic C# 7.3 traditional switch statement block
             switch (e.CellValue.ToString().Trim().ToLower())
             {
                 case "approved":
-                    SetRowStyle(e, Color.ForestGreen, FontStyle.Bold); break;
+                    color = Color.ForestGreen; style = FontStyle.Bold; break;
                 case "pending":
-                    SetRowStyle(e, Color.DarkRed, FontStyle.Bold); break;
+                    color = Color.DarkRed; style = FontStyle.Bold; break;
                 case "on hold":
-                    SetRowStyle(e, Color.DarkOrange, FontStyle.Bold); break;
+                    color = Color.DarkOrange; style = FontStyle.Bold; break;
                 case "declined":
                 case "rejected":
-                    SetRowStyle(e, Color.Crimson, FontStyle.Bold); break;
+                    color = Color.Crimson; style = FontStyle.Bold; break;
                 default:
-                    SetRowStyle(e, Color.Gray, FontStyle.Regular); break;
+                    color = Color.Gray; style = FontStyle.Regular; break;
             }
-        }
 
-        private void SetRowStyle(RowCellStyleEventArgs e, Color color, FontStyle style)
-        {
             e.Appearance.ForeColor = color;
             e.Appearance.Font = new Font(e.Appearance.Font, style);
         }
 
-        private void gridView2_RowCellStyle(object sender, RowCellStyleEventArgs e) =>
-            ApplyStatusRowStyles(sender, e);
+        private void gridView2_RowCellStyle(object sender, RowCellStyleEventArgs e) => ApplyStatusRowStyles(sender, e);
 
         // ── Navigation ────────────────────────────────────────────────
         private void sbDashboard_Click_1(object sender, EventArgs e)
@@ -221,9 +166,7 @@ namespace SchoolClearanceSystem
         private void sbRequestClearance_Click_1(object sender, EventArgs e)
         {
             if (UIHelper.ValidateUserLoggedIn(Session.CurrentUser) &&
-                UIHelper.ValidateFullyClearedStatus(
-                    _userRepo.GetClearedCount(Session.CurrentUser.UserID, _semester, _academicYear),
-                    TotalOffices))
+                UIHelper.ValidateFullyClearedStatus(_userRepo.GetClearedCount(Session.CurrentUser.UserID, _semester, _academicYear), TotalOffices))
             {
                 UIHelper.ShowWarning("You are already fully cleared for this period.", "Access Denied");
                 return;
@@ -234,48 +177,22 @@ namespace SchoolClearanceSystem
         private void sbMyRequest_Click_1(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyRequest;
-
-            if (Session.CurrentUser == null)
-            {
-                gridMyRequest.DataSource = null;
-                return;
-            }
-
-            gridMyRequest.DataSource = _userRepo
-                .GetStudentStatus(Session.CurrentUser.UserID, _semester, _academicYear)
-                .Select(d => new ClearanceStatus
-                {
-                    Office = d.Office?.ToString(),
-                    Status = d.Status?.ToString(),
-                    Remarks = d.Remarks?.ToString()
-                }).ToList();
+            gridMyRequest.DataSource = Session.CurrentUser == null ? null : _userRepo.GetStudentStatus(Session.CurrentUser.UserID, _semester, _academicYear)
+                .Select(d => new ClearanceStatus { Office = d.Office?.ToString(), Status = d.Status?.ToString(), Remarks = d.Remarks?.ToString() }).ToList();
         }
 
         private void tileViewMyClearance_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             int handle = tileViewMyClearance.FocusedRowHandle;
-            if (handle < 0)
-            {
-                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
-                return;
-            }
+            if (handle < 0 || Session.CurrentUser == null) { UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued); return; }
 
             string sem = tileViewMyClearance.GetRowCellValue(handle, "Semester")?.ToString();
             string year = tileViewMyClearance.GetRowCellValue(handle, "AcademicYear")?.ToString();
+
             if (string.IsNullOrEmpty(sem) || string.IsNullOrEmpty(year))
-            {
                 UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
-                return;
-            }
-
-            if (!UIHelper.ValidateUserLoggedIn(Session.CurrentUser))
-            {
-                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
-                return;
-            }
-
-            UIHelper.PopulateClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued,
-                Session.CurrentUser, sem, year);
+            else
+                UIHelper.PopulateClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued, Session.CurrentUser, sem, year);
         }
 
         // ── Submit Request ────────────────────────────────────────────
@@ -285,19 +202,14 @@ namespace SchoolClearanceSystem
 
             if (_semester == "Not Set" || _academicYear == "Not Set")
             {
-                UIHelper.ShowWarning(
-                    "No active clearance period. Please wait for the Administrator to open one.",
-                    "Period Closed");
+                UIHelper.ShowWarning("No active clearance period. Please wait for the Administrator to open one.", "Period Closed");
                 return;
             }
 
             string studentId = Session.CurrentUser.UserID;
-
             if (_userRepo.GetStudentStatus(studentId, _semester, _academicYear)?.Any() == true)
             {
-                UIHelper.ShowWarning(
-                    "You have already filed a clearance request for this term.",
-                    "Duplicate Submission");
+                UIHelper.ShowWarning("You have already filed a clearance request for this term.", "Duplicate Submission");
                 return;
             }
 
@@ -312,13 +224,12 @@ namespace SchoolClearanceSystem
 
             try
             {
-                bool ok =
-                    _clearanceRepo.SubmitClearanceRequest(studentId, "SSG", _semester, _academicYear, _ssgFilePath) &&
+                if (_clearanceRepo.SubmitClearanceRequest(studentId, "SSG", _semester, _academicYear, _ssgFilePath) &&
                     _clearanceRepo.SubmitClearanceRequest(studentId, "Treasurer", _semester, _academicYear, _treasurerFilePath) &&
-                    _clearanceRepo.SubmitClearanceRequest(studentId, "Technical", _semester, _academicYear, string.Empty);
-
-                if (ok)
+                    _clearanceRepo.SubmitClearanceRequest(studentId, "Technical", _semester, _academicYear, string.Empty))
+                {
                     UIHelper.ShowSuccess("Clearance request submitted successfully!");
+                }
             }
             catch (Exception ex)
             {
@@ -335,9 +246,7 @@ namespace SchoolClearanceSystem
         // ── Logout ────────────────────────────────────────────────────
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            if (UIHelper.ShowConfirmation("Are you sure you want to log out?", "Logout") != DialogResult.Yes)
-                return;
-
+            if (UIHelper.ShowConfirmation("Are you sure you want to log out?", "Logout") != DialogResult.Yes) return;
             Session.CurrentUser = null;
             new Login().Show();
             this.Close();
@@ -346,115 +255,54 @@ namespace SchoolClearanceSystem
         private void sbMyClearance_Click(object sender, EventArgs e)
         {
             naviframeStudent.SelectedPage = pageMyClearance;
+            if (Session.CurrentUser == null) { gridMyClearance.DataSource = null; UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued); return; }
 
-            if (Session.CurrentUser == null)
-            {
-                gridMyClearance.DataSource = null;
-                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
-                return;
-            }
-
-            gridMyClearance.DataSource = _userRepo
-                .GetStudentClearancePeriods(Session.CurrentUser.UserID)
-                .Select(p => new
-                {
-                    p.Semester,
-                    p.AcademicYear,
-                    Completed = "Completed"
-                }).ToList();
-
+            gridMyClearance.DataSource = _userRepo.GetStudentClearancePeriods(Session.CurrentUser.UserID).Select(p => new { p.Semester, p.AcademicYear, Completed = "Completed" }).ToList();
             tileViewMyClearance.RefreshData();
 
             if (tileViewMyClearance.RowCount > 0)
             {
                 tileViewMyClearance.FocusedRowHandle = 0;
-
                 string sem = tileViewMyClearance.GetRowCellValue(0, "Semester")?.ToString();
                 string year = tileViewMyClearance.GetRowCellValue(0, "AcademicYear")?.ToString();
 
                 if (!string.IsNullOrEmpty(sem) && !string.IsNullOrEmpty(year))
-                {
-                    UIHelper.PopulateClearanceSlip(
-                        lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued,
-                        Session.CurrentUser, sem, year);
-                }
+                    UIHelper.PopulateClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued, Session.CurrentUser, sem, year);
                 else
-                {
                     UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
-                }
             }
-            else
-            {
-                UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
-            }
+            else UIHelper.ClearClearanceSlip(lblSemYear, lblNameID, lblProgramDepartment, lblDateIssued);
         }
 
         private void btnDownloadClearance_Click(object sender, EventArgs e)
         {
             try
             {
-                string currentUserId = Session.CurrentUser?.UserID?.ToString();
+                string currentUserId = Session.CurrentUser != null ? Session.CurrentUser.UserID?.ToString() : null;
+                if (string.IsNullOrEmpty(currentUserId)) { UIHelper.ShowWarning("Active session expired. Please log in again.", "Authentication Warning"); return; }
 
-                if (string.IsNullOrEmpty(currentUserId))
-                {
-                    UIHelper.ShowWarning("Active session expired. Please log in again.", "Authentication Warning");
-                    return;
-                }
+                var currentStudent = _userRepo.GetUsersByRole("Student")?.FirstOrDefault(u => u.UserID.ToString() == currentUserId);
+                var tileView = gridMyClearance.MainView as TileView;
 
-                var currentStudent = _userRepo.GetUsersByRole("Student")?
-                    .FirstOrDefault(u => u.UserID.ToString() == currentUserId);
+                if (currentStudent == null || tileView == null) { UIHelper.ShowError(tileView == null ? "Grid layout configuration error." : "Could not verify account.", "Error"); return; }
+                if (tileView.RowCount == 0) { UIHelper.ShowWarning("No clearance records available to download.", "Information"); return; }
 
-                if (currentStudent == null)
-                {
-                    UIHelper.ShowError("Could not verify account.", "Execution Error");
-                    return;
-                }
-
-                var tileView = gridMyClearance.MainView as DevExpress.XtraGrid.Views.Tile.TileView;
-
-                if (tileView == null)
-                {
-                    UIHelper.ShowError("Grid layout configuration error.", "Error");
-                    return;
-                }
-
-                if (tileView.RowCount == 0)
-                {
-                    UIHelper.ShowWarning("No clearance records available to download.", "Information");
-                    return;
-                }
-
-                int rowHandle = tileView.FocusedRowHandle >= 0 ? tileView.FocusedRowHandle : 0;
-                dynamic selectedRow = tileView.GetRow(rowHandle);
-
-                if (selectedRow == null)
-                {
-                    UIHelper.ShowError("Could not read selected row records.", "Execution Error");
-                    return;
-                }
+                dynamic selectedRow = tileView.GetRow(tileView.FocusedRowHandle >= 0 ? tileView.FocusedRowHandle : 0);
+                if (selectedRow == null) { UIHelper.ShowError("Could not read selected row records.", "Execution Error"); return; }
 
                 string semText = selectedRow.Semester?.ToString() ?? "N/A";
                 string syText = selectedRow.AcademicYear?.ToString() ?? "N/A";
-
                 var statuses = _userRepo.GetStudentStatus(currentUserId, semText, syText).ToList();
 
-                string tech = statuses.FirstOrDefault(r => r.Office == "Technical")?.Status ?? "NOT CLEARED";
-                string ssg = statuses.FirstOrDefault(r => r.Office == "SSG")?.Status ?? "NOT CLEARED";
-                string tres = statuses.FirstOrDefault(r => r.Office == "Treasurer")?.Status ?? "NOT CLEARED";
-
                 var report = new StudentClearanceSlip();
-                var studentDataSource = new System.Collections.Generic.List<SchoolClearanceSystem.Models.User> { currentStudent };
-                report.InitData(studentDataSource, tech, ssg, tres, semText, syText);
+                report.InitData(new List<User> { currentStudent },
+                    statuses.FirstOrDefault(r => r.Office == "Technical") != null ? statuses.FirstOrDefault(r => r.Office == "Technical").Status : "NOT CLEARED",
+                    statuses.FirstOrDefault(r => r.Office == "SSG") != null ? statuses.FirstOrDefault(r => r.Office == "SSG").Status : "NOT CLEARED",
+                    statuses.FirstOrDefault(r => r.Office == "Treasurer") != null ? statuses.FirstOrDefault(r => r.Office == "Treasurer").Status : "NOT CLEARED", semText, syText);
 
-                ReportPrintTool printTool = new ReportPrintTool(report);
-                printTool.ShowPreviewDialog();
+                new ReportPrintTool(report).ShowPreviewDialog();
             }
-            catch (Exception ex)
-            {
-                UIHelper.ShowError($"Could not construct clearance document layout: {ex.Message}", "Report Engine Error");
-            }
+            catch (Exception ex) { UIHelper.ShowError($"Could not construct clearance document layout: {ex.Message}", "Report Engine Error"); }
         }
-
-
     }
 }
