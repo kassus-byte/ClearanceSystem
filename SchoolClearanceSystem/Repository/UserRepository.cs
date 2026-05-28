@@ -117,7 +117,8 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"SELECT Office, Status, Remarks
+                string sql = @"SELECT Department AS Office, Department AS OfficeName,
+                                      Department AS Department, Status, Remarks
                                FROM ClearanceRequests
                                WHERE UserID = @id AND Semester = @semester AND AcademicYear = @academicYear";
 

@@ -14,9 +14,6 @@ namespace SchoolClearanceSystem
     public partial class BaseOfficeForm : XtraForm
     {
         private string _statusFilter = "All";
-        private string _semester = "Not Set";
-        private string _academicYear = "Not Set";
-
         public string OfficeName { get; set; } = "Unknown Office";
 
         private readonly ClearanceRepository _repo = new ClearanceRepository();
@@ -58,38 +55,67 @@ namespace SchoolClearanceSystem
             cmbArchiveYear.SelectedIndexChanged += cmbArchiveYear_SelectedIndexChanged;
         }
 
-        // ── Identity ──────────────────────────────────────────────────
-        private void SetupIdentity()
-        {
-            if (Session.CurrentUser == null) return;
-            lblFullName.Text = Session.CurrentUser.FullName;
-            lblRole.Text = Session.CurrentUser.Role;
-            this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
-        }
+        private string _semester = "Not Set";
+        private string _academicYear = "Not Set";
 
-        // ── Period ────────────────────────────────────────────────────
         private void LoadActivePeriod()
         {
             try
             {
                 var active = _sysRepo.GetActivePeriodSettings();
-                _semester = active?.Semester ?? "Not Set";
-                _academicYear = active?.AcademicYear ?? "Not Set";
+                if (active != null)
+                {
+                    _semester = active.Semester ?? "Not Set";
+                    _academicYear = active.AcademicYear ?? "Not Set";
+                }
+                else
+                {
+                    _semester = "Not Set";
+                    _academicYear = "Not Set";
+                }
             }
             catch
             {
-                _semester = _academicYear = "Not Set";
+                _semester = "Not Set";
+                _academicYear = "Not Set";
             }
 
             UIHelper.SetPeriodFields(lblSemester, lblAcademicYear, _semester, _academicYear);
+        }
+
+        // ── Identity ──────────────────────────────────────────────────
+        // ── Identity ──────────────────────────────────────────────────
+        private void SetupIdentity()
+        {
+            if (Session.CurrentUser == null) return;
+
+            lblFullName.Text = Session.CurrentUser.FullName;
+            lblRole.Text = Session.CurrentUser.Role;
+            this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
+
+            // Change the main header text dynamically depending on the current office/role
+            // Note: If your control name in the designer is 'lblWelcome' or 'txtWelcome', 
+            // change the variable name below to match it exactly.
+            if (!string.IsNullOrEmpty(OfficeName) && OfficeName != "Unknown Office")
+            {
+                txtWelcome.Text = $"{OfficeName} Dashboard";
+            }
+            else if (!string.IsNullOrEmpty(Session.CurrentUser.Role))
+            {
+                txtWelcome.Text = $"{Session.CurrentUser.Role} Dashboard";
+            }
+            else
+            {
+                txtWelcome.Text = "Office Dashboard";
+            }
         }
 
         // ── Navigation ────────────────────────────────────────────────
         private void sbOfficeDashboard_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
-            LoadActivePeriod();
             LoadPendingClearanceRequests();
+            LoadActivePeriod();
             LoadDashboardStats();
         }
 
@@ -99,17 +125,16 @@ namespace SchoolClearanceSystem
         private void sbOfficeReports_Click_1(object sender, EventArgs e) =>
             naviframeOffices.SelectedPage = pageOfficeReports;
 
-        private void btnExpandRequest_Click_1(object sender, EventArgs e) =>
+        private void btnExpandRequest_Click_1(object sender, EventArgs e)
+        {
             naviframeOffices.SelectedPage = pageOfficeClearanceRequest;
+        }
 
         // ── Data Loading ──────────────────────────────────────────────
         protected void LoadPendingClearanceRequests()
         {
             try
             {
-                // SQL already delivers the correct order:
-                //   Pending   → top,    newest DateSubmitted first
-                //   Non-pending → bottom, most recently processed last
                 var data = _repo.GetRequestsForOffice(OfficeName, _semester, _academicYear);
                 gcBaseOfficeForm.DataSource = data;
             }
@@ -158,30 +183,15 @@ namespace SchoolClearanceSystem
                 var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
                 if (view == null) return;
 
-                // Re-fetch from DB so DateSubmitted / DateProcessed values are always current,
-                // then apply the same sort rule the SQL uses:
-                //   Pending   → top,    newest DateSubmitted first  (DESC)
-                //   Non-pending → bottom, most recently processed last (DESC)
                 var data = _repo.GetRequestsForOffice(OfficeName, _semester, _academicYear);
                 string search = txtSearch.Text.Trim();
 
-                var filtered = data
-                    .Where(r =>
-                        _statusFilter == "All" ||
-                        r.Status?.ToString().Trim().Equals(_statusFilter, StringComparison.OrdinalIgnoreCase) == true)
-                    .OrderBy(r => r.Status?.ToString().Trim().Equals("Pending", StringComparison.OrdinalIgnoreCase) == true ? 0 : 1)
-                    .ThenByDescending(r =>
-                    {
-                        bool isPending = r.Status?.ToString().Trim().Equals("Pending", StringComparison.OrdinalIgnoreCase) == true;
-                        // Use DateSubmitted for Pending rows, DateProcessed for actioned rows
-                        string raw = isPending
-                            ? r.DateSubmitted?.ToString()
-                            : r.DateProcessed?.ToString();
-                        return DateTime.TryParse(raw, out DateTime dt) ? dt : DateTime.MinValue;
-                    })
-                    .ToList();
+                var statusFiltered = data.Where(r =>
+                    _statusFilter == "All" ||
+                    (r.Status?.ToString().Trim().Equals(_statusFilter, StringComparison.OrdinalIgnoreCase) == true)
+                ).ToList();
 
-                gcBaseOfficeForm.DataSource = filtered;
+                gcBaseOfficeForm.DataSource = statusFiltered;
                 view.ApplyFindFilter(search);
             }
             catch (Exception ex)
@@ -209,8 +219,6 @@ namespace SchoolClearanceSystem
             if (ok)
             {
                 UIHelper.ShowSuccess($"Clearance status updated to '{status}' successfully!");
-                // Re-apply filter — the row will naturally sink to the bottom because
-                // DateProcessed is now set and ApplyUnifiedFilter re-sorts
                 ApplyUnifiedFilter();
                 LoadDashboardStats();
             }
@@ -260,9 +268,10 @@ namespace SchoolClearanceSystem
             this.Close();
         }
 
-        private void labelControl17_Click(object sender, EventArgs e) { }
+        private void labelControl17_Click(object sender, EventArgs e)
+        {
+        }
 
-        // ── Report ────────────────────────────────────────────────────
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             try
@@ -287,22 +296,25 @@ namespace SchoolClearanceSystem
 
                 myReport.CreateDocument();
 
-                string pdfFilePath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                    $"Clearance_Report_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string pdfFilePath = Path.Combine(documentsPath, $"Clearance_Report_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
 
                 myReport.ExportToPdf(pdfFilePath);
-                Process.Start(new ProcessStartInfo { FileName = pdfFilePath, UseShellExecute = true });
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = pdfFilePath,
+                    UseShellExecute = true
+                });
             }
             catch (Exception ex)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show(
-                    $"Failed to generate office clearance report: {ex.Message}",
+                DevExpress.XtraEditors.XtraMessageBox.Show($"Failed to generate office clearance report: {ex.Message}",
                     "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ── Archive ───────────────────────────────────────────────────
+        // ── Archive Management ────────────────────────────────────────
         private void sbOfficeArchives_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeArchive;
@@ -313,11 +325,13 @@ namespace SchoolClearanceSystem
         {
             var periods = _sysRepo.GetAllPeriods().ToList();
 
+            // Populate Semester combo box (Strictly genuine distinct data)
             var semesters = periods.Select(p => p.Semester).Distinct().ToList();
             cmbArchiveSemester.Properties.Items.Clear();
             cmbArchiveSemester.Properties.Items.AddRange(semesters);
             cmbArchiveSemester.SelectedIndex = semesters.Count > 0 ? 0 : -1;
 
+            // Populate Academic Year combo box (Strictly genuine distinct data, newest first)
             var years = periods.Select(p => p.AcademicYear).Distinct().OrderByDescending(y => y).ToList();
             cmbArchiveYear.Properties.Items.Clear();
             cmbArchiveYear.Properties.Items.AddRange(years);
@@ -331,13 +345,16 @@ namespace SchoolClearanceSystem
                 string sem = cmbArchiveSemester.Text.Trim();
                 string year = cmbArchiveYear.Text.Trim();
 
+                // Stop execution if either criteria parameter is empty or unselected
                 if (string.IsNullOrEmpty(sem) || string.IsNullOrEmpty(year))
                 {
                     gcOfficeArchive.DataSource = null;
                     return;
                 }
 
-                gcOfficeArchive.DataSource = _repo.GetArchivedRequests(sem, year, OfficeName).ToList();
+                // Query the database strictly searching for the specific selected sem and year combination
+                var data = _repo.GetArchivedRequests(sem, year, OfficeName).ToList();
+                gcOfficeArchive.DataSource = data;
             }
             catch (Exception ex)
             {
@@ -345,8 +362,11 @@ namespace SchoolClearanceSystem
             }
         }
 
+        // Auto-filter grid immediately when selection changes
         private void cmbArchiveSemester_SelectedIndexChanged(object sender, EventArgs e) => LoadArchiveGrid();
         private void cmbArchiveYear_SelectedIndexChanged(object sender, EventArgs e) => LoadArchiveGrid();
+
+        // Manual button execution trigger
         private void btnViewRecord_Click(object sender, EventArgs e) => LoadArchiveGrid();
     }
 }
