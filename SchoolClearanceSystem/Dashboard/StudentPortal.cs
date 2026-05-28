@@ -41,52 +41,10 @@ namespace SchoolClearanceSystem
             if (gridMyRequest.MainView is GridView gvReq) gvReq.RowCellStyle += ApplyStatusRowStyles;
             if (gridMyClearance.MainView is GridView gvHistory) gvHistory.RowCellStyle += ApplyStatusRowStyles;
 
-            // ── SSG File Management ──────────────────────────────────────
-            txtSSGFilePath.Properties.ReadOnly = true;
-            txtSSGFilePath.Cursor = Cursors.Hand;
-
-            btnUploadSSGRequirement.Click += (s, e) =>
-            {
-                _ssgFilePath = DocumentService.UploadDocument("Upload SSG Requirement");
-                if (!string.IsNullOrEmpty(_ssgFilePath))
-                {
-                    txtSSGFilePath.Text = _ssgFilePath;
-                }
-            };
-
-           
-
-            txtSSGFilePath.Click += (s, e) =>
-            {
-                if (!string.IsNullOrEmpty(_ssgFilePath))
-                {
-                    DocumentService.ViewDocument(_ssgFilePath);
-                }
-            };
-
-            // ── Treasurer File Management ────────────────────────────────
-            txtTreasurerFilePath.Properties.ReadOnly = true;
-            txtTreasurerFilePath.Cursor = Cursors.Hand;
-
-            btnUploadTreasurerRequirement.Click += (s, e) =>
-            {
-                _treasurerFilePath = DocumentService.UploadDocument("Upload Treasurer Requirement");
-                if (!string.IsNullOrEmpty(_treasurerFilePath))
-                {
-                    txtTreasurerFilePath.Text = _treasurerFilePath;
-                }
-            };
-
-          
-
-            txtTreasurerFilePath.Click += (s, e) =>
-            {
-                if (!string.IsNullOrEmpty(_treasurerFilePath))
-                {
-                    DocumentService.ViewDocument(_treasurerFilePath);
-                }
-            };
-            // ────────────────────────────────────────────────────────────
+            btnUploadSSGRequirement.Click += (s, e) => _ssgFilePath = DocumentService.UploadDocument("Upload SSG Requirement");
+            btnViewSSGPhoto.Click += (s, e) => DocumentService.ViewDocument(_ssgFilePath);
+            btnUploadTreasurerRequirement.Click += (s, e) => _treasurerFilePath = DocumentService.UploadDocument("Upload Treasurer Requirement");
+            btnViewTreasurerPhoto.Click += (s, e) => DocumentService.ViewDocument(_treasurerFilePath);
 
             tileViewMyClearance.FocusedRowChanged += tileViewMyClearance_FocusedRowChanged;
 
@@ -158,11 +116,7 @@ namespace SchoolClearanceSystem
                 btnSubmitRequest.Text = "Clearance Fully Approved";
                 btnUploadSSGRequirement.Enabled = false;
                 btnUploadTreasurerRequirement.Enabled = false;
-
-                // Clear state variables and text boxes
                 _ssgFilePath = _treasurerFilePath = string.Empty;
-                txtSSGFilePath.Text = string.Empty;
-                txtTreasurerFilePath.Text = string.Empty;
             }
             else
             {
@@ -457,7 +411,5 @@ namespace SchoolClearanceSystem
                 UIHelper.ShowError($"Could not construct clearance document layout: {ex.Message}", "Report Engine Error");
             }
         }
-
-        
     }
 }
