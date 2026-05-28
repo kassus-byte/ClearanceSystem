@@ -83,8 +83,6 @@ namespace SchoolClearanceSystem
             UIHelper.SetPeriodFields(lblSemester, lblAcademicYear, _semester, _academicYear);
         }
 
-        // ── Identity ──────────────────────────────────────────────────
-        // ── Identity ──────────────────────────────────────────────────
         private void SetupIdentity()
         {
             if (Session.CurrentUser == null) return;
@@ -93,9 +91,6 @@ namespace SchoolClearanceSystem
             lblRole.Text = Session.CurrentUser.Role;
             this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
 
-            // Change the main header text dynamically depending on the current office/role
-            // Note: If your control name in the designer is 'lblWelcome' or 'txtWelcome', 
-            // change the variable name below to match it exactly.
             if (!string.IsNullOrEmpty(OfficeName) && OfficeName != "Unknown Office")
             {
                 txtWelcome.Text = $"{OfficeName} Dashboard";
@@ -109,8 +104,6 @@ namespace SchoolClearanceSystem
                 txtWelcome.Text = "Office Dashboard";
             }
         }
-
-        // ── Navigation ────────────────────────────────────────────────
         private void sbOfficeDashboard_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeDashboard;
@@ -129,8 +122,6 @@ namespace SchoolClearanceSystem
         {
             naviframeOffices.SelectedPage = pageOfficeClearanceRequest;
         }
-
-        // ── Data Loading ──────────────────────────────────────────────
         protected void LoadPendingClearanceRequests()
         {
             try
@@ -169,7 +160,6 @@ namespace SchoolClearanceSystem
             }
         }
 
-        // ── Filtering ─────────────────────────────────────────────────
         private void SetStatusFilter(string status)
         {
             _statusFilter = status;
@@ -199,8 +189,6 @@ namespace SchoolClearanceSystem
                 UIHelper.ShowError($"Could not apply filter: {ex.Message}");
             }
         }
-
-        // ── Actions ───────────────────────────────────────────────────
         private void btnAction_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
@@ -247,7 +235,6 @@ namespace SchoolClearanceSystem
                     return false;
             }
         }
-
         private void btnProof_Click(object sender, EventArgs e)
         {
             var view = gcBaseOfficeForm.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
@@ -258,8 +245,6 @@ namespace SchoolClearanceSystem
 
             DocumentService.ViewDocument(selected.FilePath?.ToString());
         }
-
-        // ── Logout ────────────────────────────────────────────────────
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
             if (UIHelper.ShowConfirmation("Are you sure you want to logout?", "Logout") != DialogResult.Yes) return;
@@ -313,8 +298,6 @@ namespace SchoolClearanceSystem
                     "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // ── Archive Management ────────────────────────────────────────
         private void sbOfficeArchives_Click(object sender, EventArgs e)
         {
             naviframeOffices.SelectedPage = pageOfficeArchive;
@@ -345,14 +328,11 @@ namespace SchoolClearanceSystem
                 string sem = cmbArchiveSemester.Text.Trim();
                 string year = cmbArchiveYear.Text.Trim();
 
-                // Stop execution if either criteria parameter is empty or unselected
                 if (string.IsNullOrEmpty(sem) || string.IsNullOrEmpty(year))
                 {
                     gcOfficeArchive.DataSource = null;
                     return;
                 }
-
-                // Query the database strictly searching for the specific selected sem and year combination
                 var data = _repo.GetArchivedRequests(sem, year, OfficeName).ToList();
                 gcOfficeArchive.DataSource = data;
             }
@@ -361,12 +341,8 @@ namespace SchoolClearanceSystem
                 UIHelper.ShowError($"Could not load archive: {ex.Message}");
             }
         }
-
-        // Auto-filter grid immediately when selection changes
         private void cmbArchiveSemester_SelectedIndexChanged(object sender, EventArgs e) => LoadArchiveGrid();
         private void cmbArchiveYear_SelectedIndexChanged(object sender, EventArgs e) => LoadArchiveGrid();
 
-        // Manual button execution trigger
-        private void btnViewRecord_Click(object sender, EventArgs e) => LoadArchiveGrid();
     }
 }

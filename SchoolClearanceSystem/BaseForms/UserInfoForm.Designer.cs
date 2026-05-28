@@ -77,7 +77,7 @@
             this.txtLastName.Properties.Appearance.Options.UseFont = true;
             this.txtLastName.Size = new System.Drawing.Size(513, 34);
             this.txtLastName.TabIndex = 25;
-            this.txtLastName.EditValueChanged += new System.EventHandler(this.txtFullName_EditValueChanged);
+           
             // 
             // txtUserID
             // 

@@ -17,8 +17,6 @@ namespace SchoolClearanceSystem
         {
             InitializeComponent();
             ConfigurePasswordToggle();
-
-            // POLYMORPHISM / ENCAPSULATION: Maps roles cleanly to their UI constructors
             _roleForms = new Dictionary<string, Func<Form>>
             {
                 { "Admin",            () => new AdminDashboard()    },
@@ -28,8 +26,6 @@ namespace SchoolClearanceSystem
                 { "Student",          () => new StudentPortal()      },
             };
         }
-
-        // ── Password Toggle ───────────────────────────────────────────
         private void ConfigurePasswordToggle()
         {
             chkShowPassword.Properties.Caption = "Show Password";
@@ -42,14 +38,11 @@ namespace SchoolClearanceSystem
                 txtPassword.SelectionStart = txtPassword.Text.Length;
             };
         }
-
-        // ── Login ─────────────────────────────────────────────────────
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string id = txtUserID.Text.Trim();
             string pass = txtPassword.Text;
 
-            // Guard Clauses: Early exit pattern to keep execution paths shallow
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(pass))
             {
                 Notify("Please enter both ID and Password.", "Validation Error", MessageBoxIcon.Warning);
@@ -75,8 +68,6 @@ namespace SchoolClearanceSystem
             createForm().Show();
             this.Hide();
         }
-
-        // ── Register Link ─────────────────────────────────────────────
         private void lnkRegister_Click(object sender, EventArgs e)
         {
             var reg = new Registration();
@@ -84,10 +75,6 @@ namespace SchoolClearanceSystem
             reg.Show();
             this.Hide();
         }
-
-        private void panelControl1_Paint(object sender, System.Drawing.Graphics e) { }
-
-        // ── Helpers ───────────────────────────────────────────────────
         private void Notify(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Information) =>
             XtraMessageBox.Show(text, title, MessageBoxButtons.OK, icon);
 

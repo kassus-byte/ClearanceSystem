@@ -9,7 +9,6 @@ using System.Windows.Forms;
 namespace SchoolClearanceSystem
 {
     public enum FormMode { Register, Edit }
-
     public partial class UserInfoForm : XtraForm
     {
         private readonly FormMode _mode;
@@ -26,14 +25,9 @@ namespace SchoolClearanceSystem
 
             txtPassword.Properties.UseSystemPasswordChar = true;
 
-            // Delegate shared setup to UIHelper — no local duplicates needed
             UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
             UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
-
-            
         }
-
-        // ── Load ──────────────────────────────────────────────────────
         private void UserInfoForm_Load(object sender, EventArgs e)
         {
             cbRole.SelectedIndexChanged -= ToggleFieldsBasedOnRole;
@@ -50,7 +44,6 @@ namespace SchoolClearanceSystem
             cbRole.SelectedIndexChanged += ToggleFieldsBasedOnRole;
             ToggleFieldsBasedOnRole(null, null);
         }
-
         private void PopulateFields()
         {
             txtUserID.Text = _selectedUser.UserID;
@@ -66,7 +59,6 @@ namespace SchoolClearanceSystem
                 : "Automatically Generated";
         }
 
-        // ── Role Toggle ───────────────────────────────────────────────
         private void ToggleFieldsBasedOnRole(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(cbRole.Text)) return;
@@ -84,8 +76,6 @@ namespace SchoolClearanceSystem
             else if (cbProgram.Text == "N/A") cbProgram.Text = string.Empty;
             else if (cbYear.Text == "N/A") cbYear.Text = string.Empty;
         }
-
-        // ── Save ──────────────────────────────────────────────────────
         private void btnSave_Click_1(object sender, EventArgs e)
         {
             if (!ValidateFields()) return;
@@ -170,7 +160,5 @@ namespace SchoolClearanceSystem
             this.DialogResult = DialogResult.Cancel;
             Close();
         }
-
-        private void txtFullName_EditValueChanged(object sender, EventArgs e) { }
     }
 }

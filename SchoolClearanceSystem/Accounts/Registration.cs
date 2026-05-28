@@ -9,7 +9,6 @@ namespace SchoolClearanceSystem
 {
     public partial class Registration : XtraForm
     {
-        // OOP CONCEPT: DEPENDENCY INJECTION (Allows looser coupling for testing mocks)
         private readonly UserRepository _userRepo;
 
         public Registration(UserRepository userRepo = null)
@@ -21,12 +20,9 @@ namespace SchoolClearanceSystem
             UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
         }
 
-        // ── Register ──────────────────────────────────────────────────
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
             if (!ValidateRequiredFields()) return;
-
-            // OOP CONCEPT: OBJECT INITIALIZATION / ENCAPSULATION
             var newUser = BuildUserFromForm();
 
             if (_userRepo.AddUser(newUser))
@@ -80,8 +76,6 @@ namespace SchoolClearanceSystem
             txtMiddleName.Text = txtPassword.Text = string.Empty;
             cmbProgram.EditValue = cmbYear.EditValue = null;
         }
-
-        // ── Navigate to Login ─────────────────────────────────────────
         private void lblctrLogin_Click(object sender, EventArgs e)
         {
             var loginForm = new Login();
