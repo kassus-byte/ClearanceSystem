@@ -23,7 +23,7 @@ namespace SchoolClearanceSystem.Repository
         {
             using (var db = dbManager.GetConnection())
             {
-                string sql = @"INSERT INTO ClearanceRequests (UserID, Department, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
+                string sql = @"INSERT INTO ClearanceRequests (UserID, Office, Status, DateSubmitted, Semester, AcademicYear, FilePath) 
                                VALUES (@id, @dept, 'Pending', @date, @sem, @ay, @path)";
 
                 return db.Execute(sql, new
@@ -38,29 +38,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public IEnumerable<dynamic> GetRequestsForOffice(string officeDept)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT 
-                    c.UserID AS UserID,
-                    (u.LastName || ', ' || u.FirstName || 
-                        CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
-                             THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
-                    u.Program AS Program, u.Year AS Year,
-                    c.Semester AS Semester, c.Status AS Status,
-                    c.Department AS Office, '' AS Action,
-                    c.Remarks AS Remarks, c.FilePath AS FilePath,
-                    c.DateProcessed AS DateProcessed
-                FROM ClearanceRequests c
-                INNER JOIN Users u ON c.UserID = u.UserID
-                WHERE c.Department = @dept
-                ORDER BY CASE WHEN c.Status = 'Pending' THEN 0 ELSE 1 END ASC, c.DateProcessed ASC";
-
-                return db.Query(sql, new { dept = officeDept }).ToList();
-            }
-        }
-
+        // Used by BaseOfficeForm — always filter by active period
         public IEnumerable<dynamic> GetRequestsForOffice(string officeDept, string semester = "", string academicYear = "")
         {
             using (var db = dbManager.GetConnection())
@@ -68,19 +46,30 @@ namespace SchoolClearanceSystem.Repository
                 string periodFilter = (!string.IsNullOrEmpty(semester) && !string.IsNullOrEmpty(academicYear))
                     ? "AND c.Semester = @semester AND c.AcademicYear = @academicYear" : "";
 
+                // Sort rule:
+                //   Pending rows   → top,    sorted by DateSubmitted DESC (newest first)
+                //   Non-pending    → bottom, sorted by DateProcessed  DESC (most recently actioned last)
                 string sql = $@"SELECT 
-            c.UserID AS UserID,
-            (u.LastName || ', ' || u.FirstName || 
-                CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
-                     THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
-            u.Program AS Program, u.Year AS Year,
-            c.Semester AS Semester, c.AcademicYear AS AcademicYear,
-            c.Status AS Status,
-            c.Department AS Office, '' AS Action,
-            c.Remarks AS Remarks, c.FilePath AS FilePath
-        FROM ClearanceRequests c
-        INNER JOIN Users u ON c.UserID = u.UserID
-        WHERE c.Department = @dept {periodFilter}";
+                    c.UserID AS UserID,
+                    (u.LastName || ', ' || u.FirstName || 
+                        CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
+                             THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+                    u.Program AS Program, u.Year AS Year,
+                    c.Semester AS Semester, c.AcademicYear AS AcademicYear,
+                    c.Status AS Status,
+                    c.Office AS Office, '' AS Action,
+                    c.Remarks AS Remarks, c.FilePath AS FilePath,
+                    c.DateSubmitted AS DateSubmitted,
+                    c.DateProcessed AS DateProcessed
+                FROM ClearanceRequests c
+                INNER JOIN Users u ON c.UserID = u.UserID
+                WHERE c.Office = @dept {periodFilter}
+                ORDER BY
+                    CASE WHEN c.Status = 'Pending' THEN 0 ELSE 1 END ASC,
+                    CASE WHEN c.Status = 'Pending'
+                         THEN c.DateSubmitted
+                         ELSE c.DateProcessed
+                    END DESC";
 
                 return db.Query(sql, new { dept = officeDept, semester, academicYear }).ToList();
             }
@@ -92,7 +81,7 @@ namespace SchoolClearanceSystem.Repository
             {
                 string sql = @"UPDATE ClearanceRequests 
                                SET Status = @status, Remarks = @remarks, DateProcessed = @date 
-                               WHERE UserID = @id AND Department = @dept";
+                               WHERE UserID = @id AND Office = @dept";
 
                 var parameters = new
                 {
@@ -125,16 +114,6 @@ namespace SchoolClearanceSystem.Repository
                 return db.Execute("DELETE FROM ClearanceRequests WHERE UserID = @id", new { id = studentId }) >= 0;
         }
 
-        public int GetStatusCountForOffice(string officeDept, string status)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                string sql = @"SELECT COUNT(DISTINCT UserID) FROM ClearanceRequests 
-                               WHERE Department = @dept AND Status = @status";
-                return db.ExecuteScalar<int>(sql, new { dept = officeDept, status });
-            }
-        }
-
         public int GetStatusCountForOffice(string officeDept, string status, string semester = "", string academicYear = "")
         {
             using (var db = dbManager.GetConnection())
@@ -143,18 +122,8 @@ namespace SchoolClearanceSystem.Repository
                     ? "AND Semester = @semester AND AcademicYear = @academicYear" : "";
 
                 string sql = $@"SELECT COUNT(*) FROM ClearanceRequests
-                                WHERE Department = @dept AND Status = @status {periodFilter}";
+                                WHERE Office = @dept AND Status = @status {periodFilter}";
                 return db.ExecuteScalar<int>(sql, new { dept = officeDept, status, semester, academicYear });
-            }
-        }
-
-        public int GetTotalStudentsForOffice(string officeDept)
-        {
-            using (var db = dbManager.GetConnection())
-            {
-                return db.ExecuteScalar<int>(
-                    "SELECT COUNT(DISTINCT UserID) FROM ClearanceRequests WHERE Department = @dept",
-                    new { dept = officeDept });
             }
         }
 
@@ -165,7 +134,7 @@ namespace SchoolClearanceSystem.Repository
                 string periodFilter = (!string.IsNullOrEmpty(semester) && !string.IsNullOrEmpty(academicYear))
                     ? "AND Semester = @semester AND AcademicYear = @academicYear" : "";
 
-                string sql = $"SELECT COUNT(DISTINCT UserID) FROM ClearanceRequests WHERE Department = @dept {periodFilter}";
+                string sql = $"SELECT COUNT(DISTINCT UserID) FROM ClearanceRequests WHERE Office = @dept {periodFilter}";
                 return db.ExecuteScalar<int>(sql, new { dept = officeDept, semester, academicYear });
             }
         }
@@ -187,7 +156,7 @@ namespace SchoolClearanceSystem.Repository
                     c.Semester AS Semester, c.Status AS Status, c.Remarks AS Remarks
                 FROM ClearanceRequests c
                 INNER JOIN Users u ON c.UserID = u.UserID
-                WHERE c.Department = @dept {periodFilter}
+                WHERE c.Office = @dept {periodFilter}
                 ORDER BY c.rowid DESC LIMIT @limit";
 
                 return db.Query(sql, new { dept = officeDept, limit, semester, academicYear }).ToList();
@@ -199,7 +168,7 @@ namespace SchoolClearanceSystem.Repository
             using (var db = dbManager.GetConnection())
             {
                 string deptFilter = string.IsNullOrEmpty(officeName) || officeName == "All"
-                    ? "" : "AND c.Department = @dept";
+                    ? "" : "AND c.Office = @dept";
 
                 string sql = $@"SELECT
                     c.UserID AS UserID,
@@ -208,7 +177,7 @@ namespace SchoolClearanceSystem.Repository
                              THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
                     u.Program AS Program, u.Year AS Year,
                     c.Semester AS Semester, c.AcademicYear AS AcademicYear,
-                    c.Department AS Office, c.Status AS Status,
+                    c.Office AS Office, c.Status AS Status,
                     c.Remarks AS Remarks, c.DateProcessed AS DateProcessed
                 FROM ClearanceRequests c
                 INNER JOIN Users u ON c.UserID = u.UserID
@@ -218,6 +187,7 @@ namespace SchoolClearanceSystem.Repository
                 return db.Query(sql, new { semester, academicYear, dept = officeName }).ToList();
             }
         }
+
         public DataTable GetClearanceReportData(string semester, string academicYear, string status, string officeName)
         {
             string sql = @"SELECT 
@@ -230,10 +200,10 @@ namespace SchoolClearanceSystem.Repository
             CAST(c.Status AS TEXT) AS status
            FROM ClearanceRequests c
            INNER JOIN Users u ON c.UserID = u.UserID
-           WHERE c.Semester    = @sem
+           WHERE c.Semester     = @sem
              AND c.AcademicYear = @ay
              AND c.Status       = @status
-             AND c.Department   = @office";
+             AND c.Office       = @office";
 
             var parameters = new { sem = semester, ay = academicYear, status, office = officeName };
             return dbManager.GetDataTable(sql, parameters);
