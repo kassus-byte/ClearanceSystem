@@ -30,9 +30,7 @@ namespace SchoolClearanceSystem
             UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
             UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
 
-            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            
         }
 
         // ── Load ──────────────────────────────────────────────────────
@@ -40,8 +38,6 @@ namespace SchoolClearanceSystem
         {
             cbRole.SelectedIndexChanged -= ToggleFieldsBasedOnRole;
 
-            cbProgram.Items.Clear();
-            cbProgram.Items.Add("BSIT");
 
             this.Text = IsEdit ? "Edit Account Information" : "Register New Account";
             lblTitle.Text = IsEdit ? "Edit Information" : "Register Account";
