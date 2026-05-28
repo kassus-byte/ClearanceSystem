@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentPortal));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition5 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition6 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition7 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition8 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition9 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition10 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition11 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition12 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition5 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition6 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement9 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement10 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement11 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement12 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             this.Semester = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.AcademicYear = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.Completed = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -110,12 +110,14 @@
             this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.panelUpload2 = new DevExpress.XtraEditors.PanelControl();
+            this.txtSSGFilePath = new DevExpress.XtraEditors.TextEdit();
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.btnUploadSSGRequirement = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
             this.panelrequirements = new DevExpress.XtraEditors.PanelControl();
+            this.txtTreasurerFilePath = new DevExpress.XtraEditors.TextEdit();
             this.btnUploadTreasurerRequirement = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
@@ -171,8 +173,8 @@
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.txtTreasurerFilePath = new DevExpress.XtraEditors.TextEdit();
-            this.txtSSGFilePath = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -221,9 +223,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelUpload2)).BeginInit();
             this.panelUpload2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSSGFilePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelrequirements)).BeginInit();
             this.panelrequirements.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTreasurerFilePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).BeginInit();
             this.pnlClearanceForm.SuspendLayout();
@@ -253,8 +257,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelForm)).BeginInit();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTreasurerFilePath.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSSGFilePath.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // Semester
@@ -284,9 +286,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.SvgImage")));
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
@@ -701,9 +703,9 @@
             // 
             this.gridControlOfficeStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlOfficeStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gridControlOfficeStatus.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControlOfficeStatus.Location = new System.Drawing.Point(2, 29);
             this.gridControlOfficeStatus.MainView = this.gridView2;
             this.gridControlOfficeStatus.Name = "gridControlOfficeStatus";
@@ -1056,6 +1058,7 @@
             // 
             this.pageRequestClearance.Appearance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pageRequestClearance.Appearance.Options.UseBackColor = true;
+            this.pageRequestClearance.Caption = "pageRequestClearance";
             this.pageRequestClearance.Controls.Add(this.panelUpload3);
             this.pageRequestClearance.Controls.Add(this.panelUpload2);
             this.pageRequestClearance.Controls.Add(this.panelrequirements);
@@ -1135,6 +1138,7 @@
             // 
             this.panelUpload2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelUpload2.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelUpload2.ContentImage")));
+            this.panelUpload2.Controls.Add(this.labelControl18);
             this.panelUpload2.Controls.Add(this.txtSSGFilePath);
             this.panelUpload2.Controls.Add(this.labelControl32);
             this.panelUpload2.Controls.Add(this.labelControl29);
@@ -1147,6 +1151,13 @@
             this.panelUpload2.Padding = new System.Windows.Forms.Padding(11, 75, 0, 0);
             this.panelUpload2.Size = new System.Drawing.Size(1574, 188);
             this.panelUpload2.TabIndex = 13;
+            // 
+            // txtSSGFilePath
+            // 
+            this.txtSSGFilePath.Location = new System.Drawing.Point(214, 129);
+            this.txtSSGFilePath.Name = "txtSSGFilePath";
+            this.txtSSGFilePath.Size = new System.Drawing.Size(253, 28);
+            this.txtSSGFilePath.TabIndex = 7;
             // 
             // labelControl32
             // 
@@ -1216,6 +1227,7 @@
             this.panelrequirements.Appearance.Options.UseBackColor = true;
             this.panelrequirements.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelrequirements.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelrequirements.ContentImage")));
+            this.panelrequirements.Controls.Add(this.labelControl17);
             this.panelrequirements.Controls.Add(this.txtTreasurerFilePath);
             this.panelrequirements.Controls.Add(this.btnUploadTreasurerRequirement);
             this.panelrequirements.Controls.Add(this.labelControl30);
@@ -1228,6 +1240,13 @@
             this.panelrequirements.Padding = new System.Windows.Forms.Padding(14, 75, 21, 0);
             this.panelrequirements.Size = new System.Drawing.Size(1574, 188);
             this.panelrequirements.TabIndex = 12;
+            // 
+            // txtTreasurerFilePath
+            // 
+            this.txtTreasurerFilePath.Location = new System.Drawing.Point(214, 130);
+            this.txtTreasurerFilePath.Name = "txtTreasurerFilePath";
+            this.txtTreasurerFilePath.Size = new System.Drawing.Size(253, 28);
+            this.txtTreasurerFilePath.TabIndex = 6;
             // 
             // btnUploadTreasurerRequirement
             // 
@@ -1315,6 +1334,7 @@
             this.txtCurrentSchoolYear.Name = "txtCurrentSchoolYear";
             this.txtCurrentSchoolYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCurrentSchoolYear.Properties.Appearance.Options.UseFont = true;
+            this.txtCurrentSchoolYear.Properties.ReadOnly = true;
             this.txtCurrentSchoolYear.Size = new System.Drawing.Size(721, 30);
             this.txtCurrentSchoolYear.TabIndex = 9;
             // 
@@ -1324,6 +1344,7 @@
             this.txtSemester.Name = "txtSemester";
             this.txtSemester.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSemester.Properties.Appearance.Options.UseFont = true;
+            this.txtSemester.Properties.ReadOnly = true;
             this.txtSemester.Size = new System.Drawing.Size(721, 30);
             this.txtSemester.TabIndex = 8;
             // 
@@ -1493,6 +1514,7 @@
             this.Remarks});
             this.gridView3.GridControl = this.gridMyRequest;
             this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
             this.gridView3.OptionsView.ShowGroupPanel = false;
             this.gridView3.OptionsView.ShowIndicator = false;
             // 
@@ -1666,71 +1688,71 @@
             this.tileViewMyClearance.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tileViewMyClearance.OptionsTiles.Padding = new System.Windows.Forms.Padding(0);
             this.tileViewMyClearance.OptionsTiles.RowCount = 0;
-            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition1);
-            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition2);
-            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition3);
-            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition4);
-            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition5);
-            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition6);
-            this.tileViewMyClearance.TileRows.Add(tableRowDefinition1);
-            this.tileViewMyClearance.TileRows.Add(tableRowDefinition2);
-            this.tileViewMyClearance.TileRows.Add(tableRowDefinition3);
-            tileViewItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement1.Column = this.Semester;
-            tileViewItemElement1.ColumnIndex = 1;
-            tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement1.RowIndex = 1;
-            tileViewItemElement1.Text = "Semester";
-            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            tileViewItemElement2.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement2.Column = this.AcademicYear;
-            tileViewItemElement2.ColumnIndex = 3;
-            tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement2.RowIndex = 1;
-            tileViewItemElement2.Text = "AcademicYear";
-            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            tileViewItemElement3.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement3.Column = this.Completed;
-            tileViewItemElement3.ColumnIndex = 5;
-            tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement3.RowIndex = 1;
-            tileViewItemElement3.Text = "Completed";
-            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileViewItemElement4.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement4.RowIndex = 1;
-            tileViewItemElement4.Text = "Semester:";
-            tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement5.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            tileViewItemElement5.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement5.ColumnIndex = 2;
-            tileViewItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement5.RowIndex = 1;
-            tileViewItemElement5.Text = "Academic Year:";
-            tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement6.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            tileViewItemElement6.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement6.ColumnIndex = 4;
-            tileViewItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement6.RowIndex = 1;
-            tileViewItemElement6.Text = "Status:";
-            tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement1);
-            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement2);
-            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement3);
-            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement4);
-            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement5);
-            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement6);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition7);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition8);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition9);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition10);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition11);
+            this.tileViewMyClearance.TileColumns.Add(tableColumnDefinition12);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition4);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition5);
+            this.tileViewMyClearance.TileRows.Add(tableRowDefinition6);
+            tileViewItemElement7.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement7.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement7.Column = this.Semester;
+            tileViewItemElement7.ColumnIndex = 1;
+            tileViewItemElement7.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement7.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement7.RowIndex = 1;
+            tileViewItemElement7.Text = "Semester";
+            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement8.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            tileViewItemElement8.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement8.Column = this.AcademicYear;
+            tileViewItemElement8.ColumnIndex = 3;
+            tileViewItemElement8.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement8.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement8.RowIndex = 1;
+            tileViewItemElement8.Text = "AcademicYear";
+            tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement9.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            tileViewItemElement9.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement9.Column = this.Completed;
+            tileViewItemElement9.ColumnIndex = 5;
+            tileViewItemElement9.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement9.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement9.RowIndex = 1;
+            tileViewItemElement9.Text = "Completed";
+            tileViewItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement10.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement10.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement10.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement10.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement10.RowIndex = 1;
+            tileViewItemElement10.Text = "Semester:";
+            tileViewItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement11.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement11.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement11.ColumnIndex = 2;
+            tileViewItemElement11.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement11.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement11.RowIndex = 1;
+            tileViewItemElement11.Text = "Academic Year:";
+            tileViewItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement12.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement12.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement12.ColumnIndex = 4;
+            tileViewItemElement12.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement12.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement12.RowIndex = 1;
+            tileViewItemElement12.Text = "Status:";
+            tileViewItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement7);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement8);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement9);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement10);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement11);
+            this.tileViewMyClearance.TileTemplate.Add(tileViewItemElement12);
             // 
             // pnlClearanceCopy
             // 
@@ -1978,19 +2000,25 @@
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // txtTreasurerFilePath
+            // labelControl17
             // 
-            this.txtTreasurerFilePath.Location = new System.Drawing.Point(220, 130);
-            this.txtTreasurerFilePath.Name = "txtTreasurerFilePath";
-            this.txtTreasurerFilePath.Size = new System.Drawing.Size(253, 28);
-            this.txtTreasurerFilePath.TabIndex = 6;
+            this.labelControl17.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl17.Appearance.Options.UseFont = true;
+            this.labelControl17.Location = new System.Drawing.Point(178, 138);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(30, 16);
+            this.labelControl17.TabIndex = 7;
+            this.labelControl17.Text = "Path:";
             // 
-            // txtSSGFilePath
+            // labelControl18
             // 
-            this.txtSSGFilePath.Location = new System.Drawing.Point(220, 129);
-            this.txtSSGFilePath.Name = "txtSSGFilePath";
-            this.txtSSGFilePath.Size = new System.Drawing.Size(253, 28);
-            this.txtSSGFilePath.TabIndex = 7;
+            this.labelControl18.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl18.Appearance.Options.UseFont = true;
+            this.labelControl18.Location = new System.Drawing.Point(178, 135);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(30, 16);
+            this.labelControl18.TabIndex = 8;
+            this.labelControl18.Text = "Path:";
             // 
             // StudentPortal
             // 
@@ -2062,10 +2090,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelUpload2)).EndInit();
             this.panelUpload2.ResumeLayout(false);
             this.panelUpload2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSSGFilePath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelrequirements)).EndInit();
             this.panelrequirements.ResumeLayout(false);
             this.panelrequirements.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTreasurerFilePath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlClearanceForm)).EndInit();
             this.pnlClearanceForm.ResumeLayout(false);
@@ -2103,8 +2133,6 @@
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTreasurerFilePath.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSSGFilePath.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2234,6 +2262,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtSSGFilePath;
         private DevExpress.XtraEditors.TextEdit txtTreasurerFilePath;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
     }
 }
 
