@@ -174,6 +174,7 @@
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.pictureEdit4 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -256,6 +257,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelForm)).BeginInit();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // Semester
@@ -899,7 +901,7 @@
             // lblStatus
             // 
             this.lblStatus.Appearance.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblStatus.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblStatus.Appearance.ForeColor = System.Drawing.Color.ForestGreen;
             this.lblStatus.Appearance.Options.UseFont = true;
             this.lblStatus.Appearance.Options.UseForeColor = true;
             this.lblStatus.Location = new System.Drawing.Point(58, 53);
@@ -911,7 +913,7 @@
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Chocolate;
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.OliveDrab;
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
             this.labelControl8.Location = new System.Drawing.Point(53, 24);
@@ -1084,7 +1086,7 @@
             // 
             // labelControl36
             // 
-            this.labelControl36.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl36.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
             this.labelControl36.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl36.Appearance.Options.UseFont = true;
             this.labelControl36.Appearance.Options.UseForeColor = true;
@@ -1094,7 +1096,7 @@
             this.labelControl36.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl36.Location = new System.Drawing.Point(39, 85);
             this.labelControl36.Name = "labelControl36";
-            this.labelControl36.Size = new System.Drawing.Size(183, 27);
+            this.labelControl36.Size = new System.Drawing.Size(185, 27);
             this.labelControl36.TabIndex = 7;
             this.labelControl36.Text = "No requirements needed.";
             // 
@@ -1169,7 +1171,7 @@
             // 
             // labelControl32
             // 
-            this.labelControl32.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl32.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
             this.labelControl32.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl32.Appearance.Options.UseFont = true;
             this.labelControl32.Appearance.Options.UseForeColor = true;
@@ -1179,7 +1181,7 @@
             this.labelControl32.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl32.Location = new System.Drawing.Point(41, 78);
             this.labelControl32.Name = "labelControl32";
-            this.labelControl32.Size = new System.Drawing.Size(309, 27);
+            this.labelControl32.Size = new System.Drawing.Size(360, 27);
             this.labelControl32.TabIndex = 6;
             this.labelControl32.Text = "Answer the evaluation form and submit a screenshot.";
             // 
@@ -1198,7 +1200,7 @@
             // btnUploadSSGRequirement
             // 
             this.btnUploadSSGRequirement.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnUploadSSGRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUploadSSGRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.btnUploadSSGRequirement.Appearance.Options.UseBackColor = true;
             this.btnUploadSSGRequirement.Appearance.Options.UseFont = true;
             this.btnUploadSSGRequirement.Location = new System.Drawing.Point(40, 127);
@@ -1269,7 +1271,7 @@
             // btnUploadTreasurerRequirement
             // 
             this.btnUploadTreasurerRequirement.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnUploadTreasurerRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnUploadTreasurerRequirement.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.btnUploadTreasurerRequirement.Appearance.Options.UseBackColor = true;
             this.btnUploadTreasurerRequirement.Appearance.Options.UseFont = true;
             this.btnUploadTreasurerRequirement.Location = new System.Drawing.Point(41, 128);
@@ -1280,7 +1282,7 @@
             // 
             // labelControl30
             // 
-            this.labelControl30.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl30.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
             this.labelControl30.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl30.Appearance.Options.UseFont = true;
             this.labelControl30.Appearance.Options.UseForeColor = true;
@@ -1290,7 +1292,7 @@
             this.labelControl30.ImageOptions.SvgImageSize = new System.Drawing.Size(23, 23);
             this.labelControl30.Location = new System.Drawing.Point(39, 79);
             this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(338, 27);
+            this.labelControl30.Size = new System.Drawing.Size(397, 27);
             this.labelControl30.TabIndex = 5;
             this.labelControl30.Text = " Pay your balance and upload your official receipt as proof.";
             // 
@@ -1467,12 +1469,12 @@
             // btnSubmitRequest
             // 
             this.btnSubmitRequest.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
-            this.btnSubmitRequest.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSubmitRequest.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnSubmitRequest.Appearance.Options.UseBackColor = true;
             this.btnSubmitRequest.Appearance.Options.UseFont = true;
             this.btnSubmitRequest.Location = new System.Drawing.Point(39, 897);
             this.btnSubmitRequest.Name = "btnSubmitRequest";
-            this.btnSubmitRequest.Size = new System.Drawing.Size(156, 40);
+            this.btnSubmitRequest.Size = new System.Drawing.Size(169, 40);
             this.btnSubmitRequest.TabIndex = 9;
             this.btnSubmitRequest.Text = "Submit Request";
             this.btnSubmitRequest.Click += new System.EventHandler(this.btnSubmitRequest_Click_1);
@@ -1623,10 +1625,9 @@
             this.labelControl22.Appearance.Options.UseForeColor = true;
             this.labelControl22.Location = new System.Drawing.Point(27, 51);
             this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(583, 17);
+            this.labelControl22.Size = new System.Drawing.Size(469, 17);
             this.labelControl22.TabIndex = 3;
-            this.labelControl22.Text = "View what each department requires. Submit your proof — the department will revie" +
-    "w and approve.";
+            this.labelControl22.Text = "View clearance status each department The department will review and approve.";
             // 
             // labelControl21
             // 
@@ -1765,6 +1766,7 @@
             this.pnlClearanceCopy.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
             this.pnlClearanceCopy.Appearance.Options.UseBackColor = true;
             this.pnlClearanceCopy.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlClearanceCopy.Controls.Add(this.pictureEdit4);
             this.pnlClearanceCopy.Controls.Add(this.btnDownloadClearance);
             this.pnlClearanceCopy.Controls.Add(this.lblDateIssued);
             this.pnlClearanceCopy.Controls.Add(this.lblProgramDepartment);
@@ -2006,6 +2008,20 @@
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.Name = "navBarGroup1";
             // 
+            // pictureEdit4
+            // 
+            this.pictureEdit4.EditValue = ((object)(resources.GetObject("pictureEdit4.EditValue")));
+            this.pictureEdit4.Location = new System.Drawing.Point(816, 80);
+            this.pictureEdit4.Name = "pictureEdit4";
+            this.pictureEdit4.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(245)))), ((int)(((byte)(238)))));
+            this.pictureEdit4.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit4.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit4.Properties.PictureAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.pictureEdit4.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit4.Properties.SvgImageSize = new System.Drawing.Size(70, 70);
+            this.pictureEdit4.Size = new System.Drawing.Size(74, 77);
+            this.pictureEdit4.TabIndex = 6;
+            // 
             // StudentPortal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2118,6 +2134,7 @@
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2248,6 +2265,7 @@
         private DevExpress.XtraEditors.TextEdit txtTreasurerFilePath;
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit4;
     }
 }
 

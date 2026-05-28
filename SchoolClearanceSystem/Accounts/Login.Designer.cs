@@ -35,13 +35,13 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.lnkRegister = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.chkShowPassword = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -51,13 +51,13 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(1325, 371);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(52, 20);
+            this.labelControl3.Size = new System.Drawing.Size(55, 21);
             this.labelControl3.TabIndex = 7;
             this.labelControl3.Text = "User ID";
             // 
@@ -66,6 +66,8 @@
             this.txtUserID.EditValue = "";
             this.txtUserID.Location = new System.Drawing.Point(1325, 398);
             this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtUserID.Properties.Appearance.Options.UseFont = true;
             this.txtUserID.Properties.AutoHeight = false;
             this.txtUserID.Size = new System.Drawing.Size(342, 40);
             this.txtUserID.TabIndex = 6;
@@ -74,6 +76,8 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(1325, 506);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Properties.AutoHeight = false;
             this.txtPassword.Properties.UseSystemPasswordChar = true;
             this.txtPassword.Size = new System.Drawing.Size(342, 40);
@@ -81,13 +85,13 @@
             // 
             // labelControl8
             // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
             this.labelControl8.Location = new System.Drawing.Point(1325, 480);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(67, 20);
+            this.labelControl8.Size = new System.Drawing.Size(72, 21);
             this.labelControl8.TabIndex = 14;
             this.labelControl8.Text = "Password";
             // 
@@ -106,6 +110,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.ContentImage = ((System.Drawing.Image)(resources.GetObject("panelControl1.ContentImage")));
             this.panelControl1.Controls.Add(this.btnExit);
             this.panelControl1.Controls.Add(this.labelControl5);
@@ -125,13 +130,26 @@
             this.panelControl1.Size = new System.Drawing.Size(1920, 1080);
             this.panelControl1.TabIndex = 38;
             // 
+            // btnExit
+            // 
+            this.btnExit.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
+            this.btnExit.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Appearance.Options.UseBackColor = true;
+            this.btnExit.Appearance.Options.UseFont = true;
+            this.btnExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExit.ImageOptions.SvgImage")));
+            this.btnExit.Location = new System.Drawing.Point(1856, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(43, 47);
+            this.btnExit.TabIndex = 42;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(1393, 224);
+            this.labelControl5.Location = new System.Drawing.Point(1391, 253);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(195, 17);
             this.labelControl5.TabIndex = 41;
@@ -139,22 +157,22 @@
             // 
             // lnkRegister
             // 
-            this.lnkRegister.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lnkRegister.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lnkRegister.Appearance.Options.UseFont = true;
-            this.lnkRegister.Location = new System.Drawing.Point(1537, 678);
+            this.lnkRegister.Location = new System.Drawing.Point(1485, 678);
             this.lnkRegister.Name = "lnkRegister";
-            this.lnkRegister.Size = new System.Drawing.Size(48, 17);
+            this.lnkRegister.Size = new System.Drawing.Size(57, 21);
             this.lnkRegister.TabIndex = 40;
             this.lnkRegister.Text = "Register";
             this.lnkRegister.Click += new System.EventHandler(this.lnkRegister_Click);
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(1375, 678);
+            this.labelControl4.Location = new System.Drawing.Point(1325, 678);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(135, 17);
+            this.labelControl4.Size = new System.Drawing.Size(154, 20);
             this.labelControl4.TabIndex = 39;
             this.labelControl4.Text = "Don\'t have an account?";
             // 
@@ -186,24 +204,11 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(80)))), ((int)(((byte)(65)))));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(1438, 182);
+            this.labelControl1.Location = new System.Drawing.Point(1441, 202);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(101, 45);
             this.labelControl1.TabIndex = 36;
             this.labelControl1.Text = "LOGIN";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Appearance.BackColor = System.Drawing.Color.White;
-            this.btnExit.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Appearance.Options.UseBackColor = true;
-            this.btnExit.Appearance.Options.UseFont = true;
-            this.btnExit.Location = new System.Drawing.Point(26, 997);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(342, 47);
-            this.btnExit.TabIndex = 42;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // Login
             // 
