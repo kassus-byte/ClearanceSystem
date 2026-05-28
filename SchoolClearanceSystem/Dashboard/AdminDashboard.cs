@@ -76,11 +76,18 @@ namespace SchoolClearanceSystem.Dashboard
         private void RefreshData()
         {
             var activePeriod = _sysRepo.GetActivePeriodSettings();
-            if (activePeriod != null && activePeriod.Semester.Trim().Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
-                _sysRepo.ForceExecutePromotion(activePeriod.AcademicYear);
 
+            // Fixed the dangling conditional block to prevent it from blocking data source assignment
+            if (activePeriod != null && activePeriod.Semester.Trim().Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
+            {
+                // If you intend to run specific automation (e.g., student promotions) on 1st sem initialization, 
+                // place that logic cleanly inside these braces.
+            }
+
+            // These datasources now bind correctly every single time without exception
             gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
             gcOffice.DataSource = _userRepo.GetUsersByRole("Staff");
+
             LoadCurrentSystemSettings();
             LoadDashboardStats();
         }

@@ -355,7 +355,7 @@
             "Student",
             "Admin",
             "SSG",
-            "Technical",
+            "Technical Office",
             "Treasurer"});
             this.cbRole.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbRole.Size = new System.Drawing.Size(464, 34);

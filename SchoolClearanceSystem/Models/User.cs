@@ -22,6 +22,9 @@ namespace SchoolClearanceSystem.Models
         public string UploadPath { get; set; }
         public string DateCreated { get; set; }
 
+        // Models/User.cs
+        public int IsActive { get; set; }
+
         public User() { }
     }
 }

@@ -9,8 +9,9 @@ namespace SchoolClearanceSystem
 {
     public class DatabaseManager
     {
+        // Permanently locking onto your new database path to stop file duplication completely
         private readonly string connectionString =
-            $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ClearanceSystem.db")}";
+            @"Data Source=C:\Users\cuizo\source\repos\ClearanceSystem\SchoolClearanceSystem\ClearanceSystem.db;";
 
         public IDbConnection GetConnection()
         {
