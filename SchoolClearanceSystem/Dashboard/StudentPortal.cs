@@ -158,11 +158,7 @@ namespace SchoolClearanceSystem
                 btnSubmitRequest.Text = "Clearance Fully Approved";
                 btnUploadSSGRequirement.Enabled = false;
                 btnUploadTreasurerRequirement.Enabled = false;
-
-                // Clear state variables and text boxes
                 _ssgFilePath = _treasurerFilePath = string.Empty;
-                txtSSGFilePath.Text = string.Empty;
-                txtTreasurerFilePath.Text = string.Empty;
             }
             else
             {
