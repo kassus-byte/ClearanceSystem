@@ -136,7 +136,6 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.txtSubHeaderRC = new DevExpress.XtraEditors.LabelControl();
             this.txtHeaderRC = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.btnSubmitRequest = new DevExpress.XtraEditors.SimpleButton();
             this.pageMyRequest = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
@@ -1065,7 +1064,6 @@
             this.pageRequestClearance.Controls.Add(this.pnlClearanceForm);
             this.pageRequestClearance.Controls.Add(this.panelControl12);
             this.pageRequestClearance.Controls.Add(this.panelControl3);
-            this.pageRequestClearance.Controls.Add(this.labelControl12);
             this.pageRequestClearance.Controls.Add(this.btnSubmitRequest);
             this.pageRequestClearance.Name = "pageRequestClearance";
             this.pageRequestClearance.Size = new System.Drawing.Size(1574, 1050);
@@ -1465,18 +1463,6 @@
             this.txtHeaderRC.Size = new System.Drawing.Size(236, 37);
             this.txtHeaderRC.TabIndex = 1;
             this.txtHeaderRC.Text = "Request Clearance";
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(220, 909);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(283, 17);
-            this.labelControl12.TabIndex = 10;
-            this.labelControl12.Text = "You will be notified for each department update.";
             // 
             // btnSubmitRequest
             // 
@@ -2082,7 +2068,6 @@
             this.pnlWelcome.ResumeLayout(false);
             this.pnlWelcome.PerformLayout();
             this.pageRequestClearance.ResumeLayout(false);
-            this.pageRequestClearance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelUpload3)).EndInit();
             this.panelUpload3.ResumeLayout(false);
             this.panelUpload3.PerformLayout();
@@ -2188,7 +2173,6 @@
         private DevExpress.XtraEditors.LabelControl txtSchoolYear;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.SimpleButton btnSubmitRequest;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private DevExpress.XtraEditors.PanelControl pnlClearanceCopy;
