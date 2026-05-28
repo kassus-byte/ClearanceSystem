@@ -21,10 +21,10 @@ namespace SchoolClearanceSystem.Helpers
                 return;
             }
 
-            lblSemYear.Text = $"{semester}, Academic Year {academicYear}";
-            lblNameID.Text = $"{currentUser.FullName} · {currentUser.UserID}";
-            lblProgramDepartment.Text = $"{currentUser.Program} — College of Computer Studies";
-            lblDateIssued.Text = $"Issued: {DateTime.Now:MMM d, yyyy}";
+            lblSemYear.Text = string.Format("{0}, Academic Year {1}", semester, academicYear);
+            lblNameID.Text = string.Format("{0} · {1}", currentUser.FullName, currentUser.UserID);
+            lblProgramDepartment.Text = string.Format("{0} — College of Computer Studies", currentUser.Program);
+            lblDateIssued.Text = string.Format("Issued: {0:MMM d, yyyy}", DateTime.Now);
         }
 
         public static void ClearClearanceSlip(
@@ -45,7 +45,7 @@ namespace SchoolClearanceSystem.Helpers
         {
             if (currentUser == null) return;
 
-            lblWelcome.Text = $"Welcome, {currentUser.FullName}!";
+            lblWelcome.Text = "Welcome, " + currentUser.FullName + "!";
             lblFullName.Text = currentUser.FullName;
             lblUserID.Text = currentUser.UserID ?? "0000";
             lblProgram.Text = currentUser.Program ?? "N/A";
@@ -81,17 +81,6 @@ namespace SchoolClearanceSystem.Helpers
             }
         }
 
-        // ── Action Buttons ─────────────────────────────────────────────
-
-        public static void SetActionButtonsAvailability(
-            bool canAct, SimpleButton btnSubmitRequest,
-            SimpleButton btnUploadSSG, SimpleButton btnUploadTreasurer)
-        {
-            btnSubmitRequest.Enabled = canAct;
-            btnUploadSSG.Enabled = canAct;
-            btnUploadTreasurer.Enabled = canAct;
-        }
-
         // ── Status Labels ──────────────────────────────────────────────
 
         public static void UpdateClearanceStatus(
@@ -103,7 +92,7 @@ namespace SchoolClearanceSystem.Helpers
             lblStatus.ForeColor = fullyCleared ? Color.ForestGreen : SystemColors.ControlText;
             lblProgress.Text = fullyCleared
                 ? "All 3 offices cleared! Your clearance is complete."
-                : $"{clearedCount} out of {totalOffices} offices cleared";
+                : clearedCount + " out of " + totalOffices + " offices cleared";
         }
 
         public static void UpdateProgressIndicators(
@@ -111,7 +100,7 @@ namespace SchoolClearanceSystem.Helpers
             ProgressBarControl pbOverallProgress, int clearedCount, int totalOffices)
         {
             int percentage = (clearedCount * 100) / totalOffices;
-            lblOfficeCleared.Text = $"{clearedCount}/{totalOffices}";
+            lblOfficeCleared.Text = clearedCount + "/" + totalOffices;
             lblPercentage.Text = percentage + "%";
             pbOverallProgress.Position = percentage;
         }
@@ -119,33 +108,57 @@ namespace SchoolClearanceSystem.Helpers
         // ── Validation ─────────────────────────────────────────────────
 
         public static bool ValidateRequiredFiles(string ssgFilePath, string treasurerFilePath)
-            => !string.IsNullOrEmpty(ssgFilePath) && !string.IsNullOrEmpty(treasurerFilePath);
+        {
+            return !string.IsNullOrEmpty(ssgFilePath) && !string.IsNullOrEmpty(treasurerFilePath);
+        }
 
         public static bool ValidateUserLoggedIn(User currentUser)
-            => currentUser != null;
+        {
+            return currentUser != null;
+        }
 
         public static bool ValidateFullyClearedStatus(int clearedCount, int totalOffices)
-            => clearedCount == totalOffices;
+        {
+            return clearedCount == totalOffices;
+        }
 
-        // ── Message Boxes ──────────────────────────────────────────────
+        // ── Message Boxes & Dialog wrappers ────────────────────────────
+
+        // ABSTRACTION: Integrated Notify and Confirm overloads into UIHelper cleanly
+        public static void Notify(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Asterisk)
+        {
+            XtraMessageBox.Show(text, title, MessageBoxButtons.OK, icon);
+        }
+
+        public static DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question)
+        {
+            return XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
+        }
 
         public static void ShowSuccess(string message, string title = "Success")
-            => XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        {
+            XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         public static void ShowWarning(string message, string title = "Warning")
-            => XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        {
+            XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
 
         public static void ShowError(string message, string title = "Error")
-            => XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        {
+            XtraMessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         public static DialogResult ShowConfirmation(string message, string title = "Confirm")
-            => XtraMessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        {
+            return XtraMessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
 
         // ── Password Toggle ────────────────────────────────────────────
 
         public static void ConfigurePasswordToggle(
-            DevExpress.XtraEditors.CheckEdit chkShowPassword,
-            TextEdit txtPassword, string initialCaption = "Show Password")
+            CheckEdit chkShowPassword, TextEdit txtPassword, string initialCaption = "Show Password")
         {
             chkShowPassword.Properties.Caption = initialCaption;
 

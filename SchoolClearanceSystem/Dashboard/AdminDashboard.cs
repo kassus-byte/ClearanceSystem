@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using SchoolClearanceSystem.Models;
 using SchoolClearanceSystem.Repository;
+using SchoolClearanceSystem.Helpers; // OOP REUSE: Grants access to globalized UIHelper methods
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -33,27 +34,34 @@ namespace SchoolClearanceSystem.Dashboard
         {
             base.OnLoad(e);
             if (DesignMode) return;
-
             SetupIdentity();
         }
 
-        // ── Search ────────────────────────────────────────────────────
+        // ── Identity ───────────────────────────────────────────────────
+        private void SetupIdentity()
+        {
+            if (Session.CurrentUser == null) return;
+            lblFullName.Text = Session.CurrentUser.FullName;
+            lblRole.Text = Session.CurrentUser.Role;
+            this.Text = Session.CurrentUser.Role + " Dashboard - " + Session.CurrentUser.FullName;
+        }
+
+        // ── Search ─────────────────────────────────────────────────────
         private void ApplyUnifiedFilter()
         {
             try
             {
-                var view = ActiveView;
-                if (view != null) view.ApplyFindFilter(txtSearch.Text.Trim());
+                if (ActiveView != null) ActiveView.ApplyFindFilter(txtSearch.Text.Trim());
             }
             catch (Exception ex)
             {
-                Notify($"Could not apply filter: {ex.Message}", "Filter Error", MessageBoxIcon.Error);
+                UIHelper.Notify("Could not apply filter: " + ex.Message, "Filter Error", MessageBoxIcon.Error);
             }
         }
 
         private void btnSearch_Click_1(object sender, EventArgs e) => ApplyUnifiedFilter();
 
-        // ── Navigation ────────────────────────────────────────────────
+        // ── Navigation ─────────────────────────────────────────────────
         private void NavigateTo(NavigationPage page, bool reload = false)
         {
             mainNavigationFrame.SelectedPage = page;
@@ -64,28 +72,17 @@ namespace SchoolClearanceSystem.Dashboard
         private void btnAccountManagement_Click_1(object sender, EventArgs e) => NavigateTo(pageAccountManagement, true);
         private void btnClearanceSystem_Click(object sender, EventArgs e) => NavigateTo(pageClearanceSystem, true);
 
-        // ── Data ──────────────────────────────────────────────────────
+        // ── Data ───────────────────────────────────────────────────────
         private void RefreshData()
         {
             var activePeriod = _sysRepo.GetActivePeriodSettings();
             if (activePeriod != null && activePeriod.Semester.Trim().Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
-            {
                 _sysRepo.ForceExecutePromotion(activePeriod.AcademicYear);
-            }
 
             gcStudents.DataSource = _userRepo.GetUsersByRole("Student");
             gcOffice.DataSource = _userRepo.GetUsersByRole("Staff");
             LoadCurrentSystemSettings();
             LoadDashboardStats();
-        }
-
-        // ── Identity ──────────────────────────────────────────────────
-        private void SetupIdentity()
-        {
-            if (Session.CurrentUser == null) return;
-            lblFullName.Text = Session.CurrentUser.FullName;
-            lblRole.Text = Session.CurrentUser.Role;
-            this.Text = $"{Session.CurrentUser.Role} Dashboard - {Session.CurrentUser.FullName}";
         }
 
         private void LoadCurrentSystemSettings()
@@ -112,11 +109,11 @@ namespace SchoolClearanceSystem.Dashboard
 
             lblClearanceStatus.Text = isOpen ? "Clearance System is OPEN" : "Clearance System is CLOSED";
             lblActivePeriodInfo.Text = isOpen
-                ? $"Current period: {period.Semester} — {period.AcademicYear}"
+                ? "Current period: " + period.Semester + " — " + period.AcademicYear
                 : "No active clearance period. Set one in Clearance System settings.";
         }
 
-        // ── Grid Helpers ──────────────────────────────────────────────
+        // ── Grid Helpers ───────────────────────────────────────────────
         private GridView ActiveView =>
             tabPane1.SelectedPage != null && tabPane1.SelectedPage.Caption == "Students" ? gvStudents : gvOffice;
 
@@ -141,7 +138,7 @@ namespace SchoolClearanceSystem.Dashboard
             return entity != null;
         }
 
-        // ── Account CRUD ──────────────────────────────────────────────
+        // ── Account CRUD ───────────────────────────────────────────────
         private void OpenUserLifecycleForm(FormMode mode, User entity = null)
         {
             using (var frm = new UserInfoForm(mode, entity) { StartPosition = FormStartPosition.CenterParent })
@@ -156,7 +153,7 @@ namespace SchoolClearanceSystem.Dashboard
             if (TryGetFocusedData(ActiveView, out User user))
                 OpenUserLifecycleForm(FormMode.Edit, user);
             else
-                Notify("Please select an account row from the active view.", "Selection Required", MessageBoxIcon.Warning);
+                UIHelper.Notify("Please select an account row from the active view.", "Selection Required", MessageBoxIcon.Warning);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -169,12 +166,12 @@ namespace SchoolClearanceSystem.Dashboard
 
             if (!selectedUsers.Any())
             {
-                Notify("Please select at least one account to delete.", "No Selection", MessageBoxIcon.Warning);
+                UIHelper.Notify("Please select at least one account to delete.", "No Selection", MessageBoxIcon.Warning);
                 return;
             }
 
             string names = string.Join("\n", selectedUsers.Select(u => "• " + u.FullName + " (" + u.UserID + ")"));
-            if (Confirm("Permanently delete " + selectedUsers.Count + " account(s)?\n\n" + names, "Confirm Deletion") != DialogResult.Yes)
+            if (UIHelper.Confirm("Permanently delete " + selectedUsers.Count + " account(s)?\n\n" + names, "Confirm Deletion") != DialogResult.Yes)
                 return;
 
             int successCount = 0;
@@ -192,11 +189,10 @@ namespace SchoolClearanceSystem.Dashboard
                 }
             }
 
-            // OOP REUSE: Condensed reporting feedback logic using consolidated messaging structures
             if (successCount > 0 && !failures.Any())
-                Notify(successCount + " account(s) deleted successfully.", "Deleted", MessageBoxIcon.Information);
+                UIHelper.Notify(successCount + " account(s) deleted successfully.", "Deleted", MessageBoxIcon.Information);
             else
-                Notify(successCount > 0 ? successCount + " account(s) deleted.\n\nFailed:\n" + string.Join("\n", failures) : "No accounts were deleted.\n\nErrors:\n" + string.Join("\n", failures), successCount > 0 ? "Partial Success" : "Deletion Failed", successCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Error);
+                UIHelper.Notify(successCount > 0 ? successCount + " account(s) deleted.\n\nFailed:\n" + string.Join("\n", failures) : "No accounts were deleted.\n\nErrors:\n" + string.Join("\n", failures), successCount > 0 ? "Partial Success" : "Deletion Failed", successCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Error);
 
             RefreshData();
         }
@@ -209,7 +205,7 @@ namespace SchoolClearanceSystem.Dashboard
             }
             catch (Exception ex) when (ex.Message.Contains("FOREIGN KEY") || ex.Message.Contains("19"))
             {
-                if (Confirm("'" + user.FullName + "' has active records. Force deletion will purge all related records. Proceed?", "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (UIHelper.Confirm("'" + user.FullName + "' has active records. Force deletion will purge all related records. Proceed?", "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
                     return DeleteUser(user.UserID, true);
 
                 return false;
@@ -222,16 +218,16 @@ namespace SchoolClearanceSystem.Dashboard
             return _userRepo.DeleteUser(userId);
         }
 
-        // ── Document View ─────────────────────────────────────────────
+        // ── Document View ──────────────────────────────────────────────
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (TryGetFocusedData(gvStudents, out User student) && !string.IsNullOrEmpty(student.UploadPath))
                 DocumentService.ViewDocument(student.UploadPath);
             else
-                Notify("Target document path is null or corrupt.", "File Error", MessageBoxIcon.Error);
+                UIHelper.Notify("Target document path is null or corrupt.", "File Error", MessageBoxIcon.Error);
         }
 
-        // ── Clearance Period ──────────────────────────────────────────
+        // ── Clearance Period ───────────────────────────────────────────
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
             string targetSem = comboSemester.Text.Trim();
@@ -239,22 +235,20 @@ namespace SchoolClearanceSystem.Dashboard
 
             if (string.IsNullOrEmpty(targetSem) || string.IsNullOrEmpty(targetYear))
             {
-                Notify("Please select both a Semester and a School Year.", "Required Fields", MessageBoxIcon.Warning);
+                UIHelper.Notify("Please select both a Semester and a School Year.", "Required Fields", MessageBoxIcon.Warning);
                 return;
             }
 
             string confirmMsg = "Are you sure you want to open clearance period settings for " + targetSem + " (" + targetYear + ")?";
             if (targetSem.Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
-            {
                 confirmMsg += "\n\n⚠️ SYSTEM PROMOTION NOTICE:\nBecause this is the 1st Semester, continuing student classifications (1st, 2nd, 3rd Year) will automatically advance.";
-            }
 
-            if (Confirm(confirmMsg, "Confirm Clearance Configuration Opening", MessageBoxIcon.Question) != DialogResult.Yes)
+            if (UIHelper.Confirm(confirmMsg, "Confirm Clearance Configuration Opening", MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
             if (!_sysRepo.CreateNewPeriod(targetSem, targetYear))
             {
-                Notify(targetSem + " — " + targetYear + " already exists.\n\nDelete it first before creating a new period.", "Duplicate Period", MessageBoxIcon.Warning);
+                UIHelper.Notify(targetSem + " — " + targetYear + " already exists.\n\nDelete it first before creating a new period.", "Duplicate Period", MessageBoxIcon.Warning);
                 return;
             }
 
@@ -266,21 +260,21 @@ namespace SchoolClearanceSystem.Dashboard
             var period = _sysRepo.GetAllPeriods().FirstOrDefault(p => p.IsActive == 1);
             if (period == null)
             {
-                Notify("There is no active clearance period to close.", "Nothing to Close", MessageBoxIcon.Information);
+                UIHelper.Notify("There is no active clearance period to close.", "Nothing to Close", MessageBoxIcon.Information);
                 return;
             }
 
-            if (Confirm("Close the current period?\n\n" + period.Semester + " — " + period.AcademicYear + "\n\nStudents will no longer be able to submit clearance requests.", "Confirm Close Period", MessageBoxIcon.Warning) != DialogResult.Yes)
-                return;
+            string msg = "Close the current period?\n\n" + period.Semester + " — " + period.AcademicYear + "\n\nStudents will no longer be able to submit clearance requests.";
+            if (UIHelper.Confirm(msg, "Confirm Close Period", MessageBoxIcon.Warning) != DialogResult.Yes) return;
 
             if (_sysRepo.CloseActivePeriod())
             {
-                Notify("Clearance period has been closed successfully.", "Period Closed", MessageBoxIcon.Information);
+                UIHelper.Notify("Clearance period has been closed successfully.", "Period Closed", MessageBoxIcon.Information);
                 RefreshData();
             }
             else
             {
-                Notify("Failed to close the period. Please try again.", "Error", MessageBoxIcon.Error);
+                UIHelper.Notify("Failed to close the period. Please try again.", "Error", MessageBoxIcon.Error);
             }
         }
 
@@ -289,7 +283,7 @@ namespace SchoolClearanceSystem.Dashboard
             int handle = tileView1.FocusedRowHandle;
             if (handle < 0)
             {
-                Notify("Please select a period from the list first.", "No Selection", MessageBoxIcon.Warning);
+                UIHelper.Notify("Please select a period from the list first.", "No Selection", MessageBoxIcon.Warning);
                 return;
             }
 
@@ -298,37 +292,29 @@ namespace SchoolClearanceSystem.Dashboard
 
             if (tileView1.GetRowCellValue(handle, "Status")?.ToString() == "ACTIVE")
             {
-                Notify("Cannot delete an active clearance period.\n\nClose it first before deleting.", "Period Still Active", MessageBoxIcon.Warning);
+                UIHelper.Notify("Cannot delete an active clearance period.\n\nClose it first before deleting.", "Period Still Active", MessageBoxIcon.Warning);
                 return;
             }
 
-            if (Confirm("Delete period: " + semester + " — " + year + "?\n\nThis cannot be undone.", "Confirm Delete", MessageBoxIcon.Warning) != DialogResult.Yes)
-                return;
+            if (UIHelper.Confirm("Delete period: " + semester + " — " + year + "?\n\nThis cannot be undone.", "Confirm Delete", MessageBoxIcon.Warning) != DialogResult.Yes) return;
 
             if (_sysRepo.DeletePeriod(semester, year))
             {
-                Notify("Period deleted successfully.", "Deleted", MessageBoxIcon.Information);
+                UIHelper.Notify("Period deleted successfully.", "Deleted", MessageBoxIcon.Information);
                 RefreshData();
             }
             else
             {
-                Notify("Failed to delete the period. Please try again.", "Error", MessageBoxIcon.Error);
+                UIHelper.Notify("Failed to delete the period. Please try again.", "Error", MessageBoxIcon.Error);
             }
         }
 
-        // ── Logout ────────────────────────────────────────────────────
+        // ── Logout ─────────────────────────────────────────────────────
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            if (Confirm("Are you sure you want to log out?", "Logout") != DialogResult.Yes) return;
+            if (UIHelper.Confirm("Are you sure you want to log out?", "Logout") != DialogResult.Yes) return;
             new Login().Show();
             Hide();
         }
-
-        // ── Helpers ───────────────────────────────────────────────────
-        private void Notify(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Asterisk) =>
-            XtraMessageBox.Show(text, title, MessageBoxButtons.OK, icon);
-
-        private DialogResult Confirm(string text, string title, MessageBoxIcon icon = MessageBoxIcon.Question) =>
-            XtraMessageBox.Show(text, title, MessageBoxButtons.YesNo, icon);
     }
 }
