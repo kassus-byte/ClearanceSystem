@@ -26,19 +26,33 @@ namespace SchoolClearanceSystem
             DataTable dt = new DataTable();
             try
             {
-                using (var db = GetConnection()) // Connection safely closes when code exits this block
+                using (var db = GetConnection())
                 {
-                    // Executes raw query text safely using Dapper parameterization
                     var reader = db.ExecuteReader(sql, parameters);
-                    dt.Load(reader); // Hydrates the empty table structure with structural data records
+
+                    // Pre-define all columns as string to prevent Byte[] type mismatch
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        dt.Columns.Add(reader.GetName(i), typeof(string));
+                    }
+
+                    // Manually load rows instead of dt.Load(reader)
+                    while (reader.Read())
+                    {
+                        var row = dt.NewRow();
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            row[i] = reader.IsDBNull(i) ? string.Empty : reader.GetValue(i).ToString();
+                        }
+                        dt.Rows.Add(row);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                // Catches software anomalies and warns developer/user elegantly
                 MessageBox.Show("Query Error: " + ex.Message, "Database Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return dt; // Returns either populated records or an empty schema skeleton
+            return dt;
         }
     }
 }

@@ -343,30 +343,24 @@ namespace SchoolClearanceSystem.Repository
                 return db.Query(sql, new { semester, academicYear, dept = officeName }).ToList();
             }
         }
-
         public DataTable GetClearanceReportData(string semester, string academicYear, string status, string officeName)
         {
-            // Tap into your existing DatabaseManager instance
-            // (Assuming dbManager is defined in your BaseRepository)
             string sql = @"SELECT 
-                    c.UserID AS student_id,
-                    (u.LastName || ', ' || u.FirstName) AS student_name,
-                    u. Program AS program,
-                    u. Year AS year,
-                    c.Status AS status
-                   FROM ClearanceRequests c
-                   INNER JOIN Users u ON c.UserID = u.UserID
-                   WHERE c.Semester = @sem 
-                     AND c.AcademicYear = @ay 
-                     AND c.Status = @status
-                     AND c. Department = @office";
+            CAST(c.UserID AS TEXT) AS student_id,
+            CAST((u.LastName || ', ' || u.FirstName ||
+                CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != ''
+                     THEN ' ' || u.MiddleName ELSE '' END) AS TEXT) AS student_name,
+            CAST(u.Program AS TEXT) AS program,
+            CAST(u.Year AS TEXT) AS year,
+            CAST(c.Status AS TEXT) AS status
+           FROM ClearanceRequests c
+           INNER JOIN Users u ON c.UserID = u.UserID
+           WHERE c.Semester    = @sem
+             AND c.AcademicYear = @ay
+             AND c.Status       = @status
+             AND c.Department   = @office";
 
-
-
-            // Build the dynamic parameters object for Dapper
-            var parameters = new { sem = semester, ay = academicYear, status = status, office = officeName};
-
-            // Execute through your DatabaseManager's GetDataTable helper
+            var parameters = new { sem = semester, ay = academicYear, status, office = officeName };
             return dbManager.GetDataTable(sql, parameters);
         }
 

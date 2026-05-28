@@ -176,7 +176,7 @@ namespace SchoolClearanceSystem.Repository
             {
                 string sql = @"SELECT * FROM Users
                        ORDER BY DateCreated DESC
-                       LIMIT 10";
+                       LIMIT 5";
                 return db.Query<User>(sql).ToList();
             }
         }
