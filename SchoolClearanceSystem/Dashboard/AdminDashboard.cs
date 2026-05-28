@@ -43,10 +43,7 @@ namespace SchoolClearanceSystem.Dashboard
             try
             {
                 var view = ActiveView;
-                if (view == null) return;
-
-                string search = txtSearch.Text.Trim();
-                view.ApplyFindFilter(search);
+                if (view != null) view.ApplyFindFilter(txtSearch.Text.Trim());
             }
             catch (Exception ex)
             {
@@ -70,11 +67,9 @@ namespace SchoolClearanceSystem.Dashboard
         // ── Data ──────────────────────────────────────────────────────
         private void RefreshData()
         {
-            // Evaluates the active clearance window context
             var activePeriod = _sysRepo.GetActivePeriodSettings();
             if (activePeriod != null && activePeriod.Semester.Trim().Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
             {
-                // Promotes any newly registered students who haven't been processed yet for this year
                 _sysRepo.ForceExecutePromotion(activePeriod.AcademicYear);
             }
 
@@ -123,7 +118,7 @@ namespace SchoolClearanceSystem.Dashboard
 
         // ── Grid Helpers ──────────────────────────────────────────────
         private GridView ActiveView =>
-            tabPane1.SelectedPage?.Caption == "Students" ? gvStudents : gvOffice;
+            tabPane1.SelectedPage != null && tabPane1.SelectedPage.Caption == "Students" ? gvStudents : gvOffice;
 
         private void EvaluateHitInfo(GridView view, System.Drawing.Point pt)
         {
@@ -167,7 +162,6 @@ namespace SchoolClearanceSystem.Dashboard
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var view = ActiveView;
-
             var selectedUsers = view.GetSelectedRows()
                 .Select(h => view.GetRow(h) as User)
                 .Where(u => u != null)
@@ -179,9 +173,8 @@ namespace SchoolClearanceSystem.Dashboard
                 return;
             }
 
-            string names = string.Join("\n", selectedUsers.Select(u => $"• {u.FullName} ({u.UserID})"));
-
-            if (Confirm($"Permanently delete {selectedUsers.Count} account(s)?\n\n{names}", "Confirm Deletion") != DialogResult.Yes)
+            string names = string.Join("\n", selectedUsers.Select(u => "• " + u.FullName + " (" + u.UserID + ")"));
+            if (Confirm("Permanently delete " + selectedUsers.Count + " account(s)?\n\n" + names, "Confirm Deletion") != DialogResult.Yes)
                 return;
 
             int successCount = 0;
@@ -191,21 +184,19 @@ namespace SchoolClearanceSystem.Dashboard
             {
                 try
                 {
-                    if (ProcessUserDeletion(user))
-                        successCount++;
+                    if (ProcessUserDeletion(user)) successCount++;
                 }
                 catch (Exception ex)
                 {
-                    failures.Add($"{user.FullName}: {ex.Message}");
+                    failures.Add(user.FullName + ": " + ex.Message);
                 }
             }
 
+            // OOP REUSE: Condensed reporting feedback logic using consolidated messaging structures
             if (successCount > 0 && !failures.Any())
-                Notify($"{successCount} account(s) deleted successfully.", "Deleted", MessageBoxIcon.Information);
-            else if (successCount > 0 && failures.Any())
-                Notify($"{successCount} account(s) deleted.\n\nFailed:\n{string.Join("\n", failures)}", "Partial Success", MessageBoxIcon.Warning);
+                Notify(successCount + " account(s) deleted successfully.", "Deleted", MessageBoxIcon.Information);
             else
-                Notify($"No accounts were deleted.\n\nErrors:\n{string.Join("\n", failures)}", "Deletion Failed", MessageBoxIcon.Error);
+                Notify(successCount > 0 ? successCount + " account(s) deleted.\n\nFailed:\n" + string.Join("\n", failures) : "No accounts were deleted.\n\nErrors:\n" + string.Join("\n", failures), successCount > 0 ? "Partial Success" : "Deletion Failed", successCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Error);
 
             RefreshData();
         }
@@ -214,13 +205,12 @@ namespace SchoolClearanceSystem.Dashboard
         {
             try
             {
-                return DeleteUser(user.UserID, forceClearRecords: false);
+                return DeleteUser(user.UserID, false);
             }
             catch (Exception ex) when (ex.Message.Contains("FOREIGN KEY") || ex.Message.Contains("19"))
             {
-                if (Confirm($"'{user.FullName}' has active records. Force deletion will purge all related records. Proceed?",
-                    "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
-                    return DeleteUser(user.UserID, forceClearRecords: true);
+                if (Confirm("'" + user.FullName + "' has active records. Force deletion will purge all related records. Proceed?", "Dependencies Encountered", MessageBoxIcon.Warning) == DialogResult.Yes)
+                    return DeleteUser(user.UserID, true);
 
                 return false;
             }
@@ -253,8 +243,7 @@ namespace SchoolClearanceSystem.Dashboard
                 return;
             }
 
-            string confirmMsg = $"Are you sure you want to open clearance period settings for {targetSem} ({targetYear})?";
-
+            string confirmMsg = "Are you sure you want to open clearance period settings for " + targetSem + " (" + targetYear + ")?";
             if (targetSem.Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
             {
                 confirmMsg += "\n\n⚠️ SYSTEM PROMOTION NOTICE:\nBecause this is the 1st Semester, continuing student classifications (1st, 2nd, 3rd Year) will automatically advance.";
@@ -265,8 +254,7 @@ namespace SchoolClearanceSystem.Dashboard
 
             if (!_sysRepo.CreateNewPeriod(targetSem, targetYear))
             {
-                Notify($"{targetSem} — {targetYear} already exists.\n\nDelete it first before creating a new period.",
-                    "Duplicate Period", MessageBoxIcon.Warning);
+                Notify(targetSem + " — " + targetYear + " already exists.\n\nDelete it first before creating a new period.", "Duplicate Period", MessageBoxIcon.Warning);
                 return;
             }
 
@@ -282,10 +270,8 @@ namespace SchoolClearanceSystem.Dashboard
                 return;
             }
 
-            string msg = $"Close the current period?\n\n{period.Semester} — {period.AcademicYear}\n\n" +
-                         "Students will no longer be able to submit clearance requests.";
-
-            if (Confirm(msg, "Confirm Close Period", MessageBoxIcon.Warning) != DialogResult.Yes) return;
+            if (Confirm("Close the current period?\n\n" + period.Semester + " — " + period.AcademicYear + "\n\nStudents will no longer be able to submit clearance requests.", "Confirm Close Period", MessageBoxIcon.Warning) != DialogResult.Yes)
+                return;
 
             if (_sysRepo.CloseActivePeriod())
             {
@@ -309,17 +295,15 @@ namespace SchoolClearanceSystem.Dashboard
 
             string semester = tileView1.GetRowCellValue(handle, "Semester")?.ToString();
             string year = tileView1.GetRowCellValue(handle, "AcademicYear")?.ToString();
-            string status = tileView1.GetRowCellValue(handle, "Status")?.ToString();
 
-            if (status == "ACTIVE")
+            if (tileView1.GetRowCellValue(handle, "Status")?.ToString() == "ACTIVE")
             {
-                Notify("Cannot delete an active clearance period.\n\nClose it first before deleting.",
-                    "Period Still Active", MessageBoxIcon.Warning);
+                Notify("Cannot delete an active clearance period.\n\nClose it first before deleting.", "Period Still Active", MessageBoxIcon.Warning);
                 return;
             }
 
-            if (Confirm($"Delete period: {semester} — {year}?\n\nThis cannot be undone.",
-                "Confirm Delete", MessageBoxIcon.Warning) != DialogResult.Yes) return;
+            if (Confirm("Delete period: " + semester + " — " + year + "?\n\nThis cannot be undone.", "Confirm Delete", MessageBoxIcon.Warning) != DialogResult.Yes)
+                return;
 
             if (_sysRepo.DeletePeriod(semester, year))
             {
