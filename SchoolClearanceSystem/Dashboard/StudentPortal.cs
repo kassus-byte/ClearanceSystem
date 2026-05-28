@@ -102,6 +102,7 @@ namespace SchoolClearanceSystem
                 lblFullName,
                 lblUserID,
                 lblProgram,
+                lblYear,
                 Session.CurrentUser);
         }
 

@@ -41,7 +41,7 @@ namespace SchoolClearanceSystem.Helpers
 
         public static void PopulateUserSessionContext(
             LabelControl lblWelcome, LabelControl lblFullName,
-            LabelControl lblUserID, LabelControl lblProgram, User currentUser)
+            LabelControl lblUserID, LabelControl lblProgram, LabelControl lblYear, User currentUser)
         {
             if (currentUser == null) return;
 
@@ -49,6 +49,7 @@ namespace SchoolClearanceSystem.Helpers
             lblFullName.Text = currentUser.FullName;
             lblUserID.Text = currentUser.UserID ?? "0000";
             lblProgram.Text = currentUser.Program ?? "N/A";
+            lblYear.Text = currentUser.Year ?? "N/A";
         }
 
         // ── Period Fields ──────────────────────────────────────────────
