@@ -30,7 +30,7 @@ namespace SchoolClearanceSystem
             UIHelper.ConfigurePasswordToggle(chkShowPassword, txtPassword);
             UIHelper.AttachNameRestrictions(txtLastName, txtFirstName, txtMiddleName);
 
-            
+
         }
 
         // ── Load ──────────────────────────────────────────────────────
@@ -38,7 +38,7 @@ namespace SchoolClearanceSystem
         {
             cbRole.SelectedIndexChanged -= ToggleFieldsBasedOnRole;
 
-           
+
 
             this.Text = IsEdit ? "Edit Account Information" : "Register New Account";
             lblTitle.Text = IsEdit ? "Edit Information" : "Register Account";

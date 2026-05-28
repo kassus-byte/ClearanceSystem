@@ -54,7 +54,7 @@ namespace SchoolClearanceSystem
                 }
             };
 
-           
+
 
             txtSSGFilePath.Click += (s, e) =>
             {
@@ -77,7 +77,7 @@ namespace SchoolClearanceSystem
                 }
             };
 
-          
+
 
             txtTreasurerFilePath.Click += (s, e) =>
             {
@@ -458,6 +458,6 @@ namespace SchoolClearanceSystem
             }
         }
 
-        
+
     }
 }
