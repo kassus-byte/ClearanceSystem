@@ -134,7 +134,12 @@ namespace SchoolClearanceSystem.Repository
         public IEnumerable<User> GetUsersRegisteredThisWeek()
         {
             using (var db = dbManager.GetConnection())
-                return db.Query<User>("SELECT * FROM Users ORDER BY DateCreated DESC LIMIT 10").ToList();
+            {
+                string sql = @"SELECT * FROM Users
+                       ORDER BY DateCreated DESC
+                       LIMIT 5";
+                return db.Query<User>(sql).ToList();
+            }
         }
 
         public IEnumerable<User> GetAllUsers()
