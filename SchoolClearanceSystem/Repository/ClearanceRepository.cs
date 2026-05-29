@@ -61,7 +61,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public IEnumerable<dynamic> GetRequestsForOffice(string officeDept, string semester = "", string academicYear = "")
+        public IEnumerable<ClearanceRequest> GetRequestsForOffice(string officeDept, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
@@ -69,20 +69,20 @@ namespace SchoolClearanceSystem.Repository
                     ? "AND c.Semester = @semester AND c.AcademicYear = @academicYear" : "";
 
                 string sql = $@"SELECT 
-            c.UserID AS UserID,
-            (u.LastName || ', ' || u.FirstName || 
-                CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
-                     THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
-            u.Program AS Program, u.Year AS Year,
-            c.Semester AS Semester, c.AcademicYear AS AcademicYear,
-            c.Status AS Status,
-            c.Department AS Office, '' AS Action,
-            c.Remarks AS Remarks, c.FilePath AS FilePath
-        FROM ClearanceRequests c
-        INNER JOIN Users u ON c.UserID = u.UserID
-        WHERE c.Department = @dept {periodFilter}";
+                    c.UserID AS UserID,
+                    (u.LastName || ', ' || u.FirstName || 
+                        CASE WHEN u.MiddleName IS NOT NULL AND u.MiddleName != '' 
+                             THEN ' ' || u.MiddleName ELSE '' END) AS FullName,
+                    u.Program AS Program, u.Year AS Year,
+                    c.Semester AS Semester, c.AcademicYear AS AcademicYear,
+                    c.Status AS Status,
+                    c.Department AS Office, '' AS Action,
+                    c.Remarks AS Remarks, c.FilePath AS FilePath
+                FROM ClearanceRequests c
+                INNER JOIN Users u ON c.UserID = u.UserID
+                WHERE c.Department = @dept {periodFilter}";
 
-                return db.Query(sql, new { dept = officeDept, semester, academicYear }).ToList();
+                return db.Query<ClearanceRequest>(sql, new { dept = officeDept, semester, academicYear }).ToList();
             }
         }
 
@@ -135,7 +135,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public int GetStatusCountForOffice(string officeDept, string status, string semester = "", string academicYear = "")
+        public int GetStatusCountForOffice(string officeDept, string status, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
@@ -158,7 +158,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public int GetTotalStudentsForOffice(string officeDept, string semester = "", string academicYear = "")
+        public int GetTotalStudentsForOffice(string officeDept, string semester, string academicYear)
         {
             using (var db = dbManager.GetConnection())
             {
@@ -170,7 +170,7 @@ namespace SchoolClearanceSystem.Repository
             }
         }
 
-        public IEnumerable<dynamic> GetRecentRequestsForOffice(string officeDept, int limit = 5,
+        public IEnumerable<ClearanceRequest> GetRecentRequestsForOffice(string officeDept, int limit = 12,
             string semester = "", string academicYear = "")
         {
             using (var db = dbManager.GetConnection())
@@ -190,7 +190,7 @@ namespace SchoolClearanceSystem.Repository
                 WHERE c.Department = @dept {periodFilter}
                 ORDER BY c.rowid DESC LIMIT @limit";
 
-                return db.Query(sql, new { dept = officeDept, limit, semester, academicYear }).ToList();
+                return db.Query<ClearanceRequest>(sql, new { dept = officeDept, limit, semester, academicYear }).ToList();
             }
         }
 
@@ -218,6 +218,7 @@ namespace SchoolClearanceSystem.Repository
                 return db.Query(sql, new { semester, academicYear, dept = officeName }).ToList();
             }
         }
+
         public DataTable GetClearanceReportData(string semester, string academicYear, string status, string officeName)
         {
             string sql = @"SELECT 

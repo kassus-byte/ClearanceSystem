@@ -308,17 +308,15 @@ namespace SchoolClearanceSystem
         {
             var periods = _sysRepo.GetAllPeriods().ToList();
 
-            // Populate Semester combo box (Strictly genuine distinct data)
             var semesters = periods.Select(p => p.Semester).Distinct().ToList();
             cmbArchiveSemester.Properties.Items.Clear();
             cmbArchiveSemester.Properties.Items.AddRange(semesters);
-            cmbArchiveSemester.SelectedIndex = semesters.Count > 0 ? 0 : -1;
+            cmbArchiveSemester.SelectedIndex = -1; // changed from 0
 
-            // Populate Academic Year combo box (Strictly genuine distinct data, newest first)
             var years = periods.Select(p => p.AcademicYear).Distinct().OrderByDescending(y => y).ToList();
             cmbArchiveYear.Properties.Items.Clear();
             cmbArchiveYear.Properties.Items.AddRange(years);
-            cmbArchiveYear.SelectedIndex = years.Count > 0 ? 0 : -1;
+            cmbArchiveYear.SelectedIndex = -1; // changed from 0
         }
 
         private void LoadArchiveGrid()
