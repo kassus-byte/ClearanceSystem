@@ -19,7 +19,6 @@ namespace SchoolClearanceSystem.Models
         public string Year { get; set; }
         public string Role { get; set; }
         public string Password { get; set; }
-        public string UploadPath { get; set; }
         public string DateCreated { get; set; }
 
         // Models/User.cs

@@ -66,6 +66,8 @@
             // 
             this.txtUserID.Location = new System.Drawing.Point(1312, 245);
             this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserID.Properties.Appearance.Options.UseFont = true;
             this.txtUserID.Properties.AutoHeight = false;
             this.txtUserID.Size = new System.Drawing.Size(342, 40);
             this.txtUserID.TabIndex = 0;
@@ -74,6 +76,8 @@
             // 
             this.txtLastName.Location = new System.Drawing.Point(1312, 319);
             this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.txtLastName.Properties.Appearance.Options.UseFont = true;
             this.txtLastName.Properties.AutoHeight = false;
             this.txtLastName.Size = new System.Drawing.Size(342, 40);
             this.txtLastName.TabIndex = 1;
@@ -131,6 +135,8 @@
             // 
             this.cmbProgram.Location = new System.Drawing.Point(1312, 484);
             this.cmbProgram.Name = "cmbProgram";
+            this.cmbProgram.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.cmbProgram.Properties.Appearance.Options.UseFont = true;
             this.cmbProgram.Properties.AutoHeight = false;
             this.cmbProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -144,6 +150,8 @@
             // 
             this.cmbYear.Location = new System.Drawing.Point(1312, 570);
             this.cmbYear.Name = "cmbYear";
+            this.cmbYear.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.cmbYear.Properties.Appearance.Options.UseFont = true;
             this.cmbYear.Properties.AutoHeight = false;
             this.cmbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -168,7 +176,6 @@
             this.labelControl7.Size = new System.Drawing.Size(31, 20);
             this.labelControl7.TabIndex = 12;
             this.labelControl7.Text = "Year";
-            
             // 
             // labelControl8
             // 
@@ -181,12 +188,13 @@
             this.labelControl8.Size = new System.Drawing.Size(67, 20);
             this.labelControl8.TabIndex = 13;
             this.labelControl8.Text = "Password";
-           
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(1312, 642);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Properties.AutoHeight = false;
             this.txtPassword.Properties.UseSystemPasswordChar = true;
             this.txtPassword.Size = new System.Drawing.Size(342, 40);
@@ -258,6 +266,8 @@
             // 
             this.txtFirstName.Location = new System.Drawing.Point(1312, 399);
             this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.txtFirstName.Properties.Appearance.Options.UseFont = true;
             this.txtFirstName.Properties.AutoHeight = false;
             this.txtFirstName.Size = new System.Drawing.Size(242, 40);
             this.txtFirstName.TabIndex = 44;
@@ -277,7 +287,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(1392, 178);
+            this.labelControl5.Location = new System.Drawing.Point(1392, 181);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(208, 17);
             this.labelControl5.TabIndex = 42;

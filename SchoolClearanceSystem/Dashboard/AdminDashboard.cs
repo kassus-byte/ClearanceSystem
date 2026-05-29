@@ -99,7 +99,7 @@ namespace SchoolClearanceSystem.Dashboard
             lblStatOfficeCount.Text = _userRepo.GetUserCount("Staff").ToString();
             lblStatNewRegCount.Text = _userRepo.GetNewRegistrationsThisWeek().ToString();
             lblStatTotalCount.Text = _userRepo.GetUserCount("All").ToString();
-            gcRegisteredThisWeek.DataSource = _userRepo.GetUsersRegisteredThisWeek();
+            gcRegisteredThisWeek.DataSource = _userRepo.GetRecentUsers();
 
             var period = _sysRepo.GetAllPeriods().FirstOrDefault(p => p.IsActive == 1);
             bool isOpen = period != null;
@@ -187,14 +187,6 @@ namespace SchoolClearanceSystem.Dashboard
                 }
                 return false;
             }
-        }
-
-        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (TryGetFocusedData(gvStudents, out User student) && !string.IsNullOrEmpty(student.UploadPath))
-                DocumentService.ViewDocument(student.UploadPath);
-            else
-                UIHelper.Notify("Target document path is null or corrupt.", "File Error", MessageBoxIcon.Error);
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)

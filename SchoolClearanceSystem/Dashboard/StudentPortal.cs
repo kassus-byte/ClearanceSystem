@@ -304,5 +304,10 @@ namespace SchoolClearanceSystem
             }
             catch (Exception ex) { UIHelper.ShowError($"Could not construct clearance document layout: {ex.Message}", "Report Engine Error"); }
         }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

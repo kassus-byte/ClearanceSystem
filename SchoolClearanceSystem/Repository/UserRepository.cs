@@ -139,14 +139,14 @@ namespace SchoolClearanceSystem.Repository
                     "SELECT COUNT(*) FROM Users WHERE DateCreated >= date('now', '-7 days') AND IsActive = 1");
         }
 
-        public IEnumerable<User> GetUsersRegisteredThisWeek()
+        public IEnumerable<User> GetRecentUsers()
         {
             using (var db = dbManager.GetConnection())
             {
                 string sql = @"SELECT * FROM Users
                                WHERE IsActive = 1
                                ORDER BY DateCreated DESC
-                               LIMIT 5";
+                               LIMIT 12";
                 return db.Query<User>(sql).ToList();
             }
         }

@@ -154,6 +154,7 @@
     </Compile>
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Models\ClearancePeriodItem.cs" />
     <Compile Include="Models\ClearanceRecord.cs" />
     <Compile Include="Models\ClearanceRequest.cs" />
     <Compile Include="Dashboard\AdminDashboard.cs">
