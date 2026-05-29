@@ -199,7 +199,8 @@ namespace SchoolClearanceSystem.Dashboard
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
-            string targetSem = comboSemester.Text.Trim(), targetYear = comboAcademicYear.Text.Trim();
+            string targetSem = comboSemester.Text.Trim();
+            string targetYear = comboAcademicYear.Text.Trim();
 
             if (string.IsNullOrEmpty(targetSem) || string.IsNullOrEmpty(targetYear))
             {
@@ -207,11 +208,10 @@ namespace SchoolClearanceSystem.Dashboard
                 return;
             }
 
-            string confirmMsg = $"Are you sure you want to open clearance period settings for {targetSem} ({targetYear})?";
-            if (targetSem.Equals("1st Semester", StringComparison.OrdinalIgnoreCase))
-                confirmMsg += "\n\n⚠️ SYSTEM PROMOTION NOTICE:\nBecause this is the 1st Semester, continuing student classifications (1st, 2nd, 3rd Year) will automatically advance.";
+            // Simplified confirmation message
+            string confirmMsg = $"Are you sure you want to open the clearance period for {targetSem} ({targetYear})?";
 
-            if (UIHelper.Confirm(confirmMsg, "Confirm Clearance Configuration Opening", MessageBoxIcon.Question) == DialogResult.Yes)
+            if (UIHelper.Confirm(confirmMsg, "Confirm System Opening", MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (!_sysRepo.CreateNewPeriod(targetSem, targetYear))
                     UIHelper.Notify($"{targetSem} — {targetYear} already exists.\n\nDelete it first before creating a new period.", "Duplicate Period", MessageBoxIcon.Warning);
@@ -233,7 +233,7 @@ namespace SchoolClearanceSystem.Dashboard
                 ExecutePeriodAction("Clearance period has been closed successfully.", () => _sysRepo.CloseActivePeriod());
         }
 
-        private void btnDeleteSettings_Click(object sender, EventArgs e)
+        private void btnDeleteSettings_Click(object sender, EventArgs e)    
         {
             int handle = tileView1.FocusedRowHandle;
             if (handle < 0)

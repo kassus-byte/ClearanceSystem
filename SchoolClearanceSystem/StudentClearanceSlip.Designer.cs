@@ -58,11 +58,12 @@
             // 
             // TopMargin
             // 
+            this.TopMargin.HeightF = 63.54167F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 381.25F;
+            this.BottomMargin.HeightF = 36.76471F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // Detail
@@ -80,24 +81,24 @@
             this.cellYearLevel,
             this.cellStudentID,
             this.cellFullName});
-            this.Detail.HeightF = 256.25F;
+            this.Detail.HeightF = 190.6861F;
             this.Detail.Name = "Detail";
             // 
             // xrLabel8
             // 
             this.xrLabel8.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(586.0415F, 32.49998F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(560F, 33.54165F);
             this.xrLabel8.Multiline = true;
             this.xrLabel8.Name = "xrLabel8";
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel8.SizeF = new System.Drawing.SizeF(89.58331F, 23F);
+            this.xrLabel8.SizeF = new System.Drawing.SizeF(75F, 23F);
             this.xrLabel8.StylePriority.UseFont = false;
             this.xrLabel8.Text = "Year Level:";
             // 
             // xrLabel7
             // 
             this.xrLabel7.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(397.4998F, 32.49998F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(371.4583F, 33.54165F);
             this.xrLabel7.Multiline = true;
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -108,7 +109,7 @@
             // xrLabel5
             // 
             this.xrLabel5.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(68.74987F, 32.49998F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(42.70837F, 33.54165F);
             this.xrLabel5.Multiline = true;
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -119,7 +120,7 @@
             // xrLabel6
             // 
             this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F);
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(589.1665F, 162.4583F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(563.125F, 163.4999F);
             this.xrLabel6.Multiline = true;
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -133,19 +134,21 @@
             // 
             this.cellStatusTreasurer.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellStatusTreasurer.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellStatusTreasurer.LocationFloat = new DevExpress.Utils.PointFloat(641.2499F, 139.4583F);
+            this.cellStatusTreasurer.LocationFloat = new DevExpress.Utils.PointFloat(615.2083F, 140.5F);
             this.cellStatusTreasurer.Multiline = true;
             this.cellStatusTreasurer.Name = "cellStatusTreasurer";
             this.cellStatusTreasurer.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.cellStatusTreasurer.SizeF = new System.Drawing.SizeF(116.6666F, 23F);
             this.cellStatusTreasurer.StylePriority.UseBorders = false;
             this.cellStatusTreasurer.StylePriority.UseFont = false;
+            this.cellStatusTreasurer.StylePriority.UseTextAlignment = false;
             this.cellStatusTreasurer.Text = "NOT CLEARED";
+            this.cellStatusTreasurer.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel4
             // 
             this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F);
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(323.5415F, 162.4583F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(297.5F, 163.4999F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -159,32 +162,36 @@
             // 
             this.cellStatusSSG.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellStatusSSG.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellStatusSSG.LocationFloat = new DevExpress.Utils.PointFloat(375.6248F, 139.4583F);
+            this.cellStatusSSG.LocationFloat = new DevExpress.Utils.PointFloat(349.5833F, 140.5F);
             this.cellStatusSSG.Multiline = true;
             this.cellStatusSSG.Name = "cellStatusSSG";
             this.cellStatusSSG.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.cellStatusSSG.SizeF = new System.Drawing.SizeF(116.6666F, 23F);
             this.cellStatusSSG.StylePriority.UseBorders = false;
             this.cellStatusSSG.StylePriority.UseFont = false;
+            this.cellStatusSSG.StylePriority.UseTextAlignment = false;
             this.cellStatusSSG.Text = "NOT CLEARED";
+            this.cellStatusSSG.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // cellStatusTechnical
             // 
             this.cellStatusTechnical.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellStatusTechnical.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellStatusTechnical.LocationFloat = new DevExpress.Utils.PointFloat(102.0832F, 139.4583F);
+            this.cellStatusTechnical.LocationFloat = new DevExpress.Utils.PointFloat(76.0417F, 140.5F);
             this.cellStatusTechnical.Multiline = true;
             this.cellStatusTechnical.Name = "cellStatusTechnical";
             this.cellStatusTechnical.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.cellStatusTechnical.SizeF = new System.Drawing.SizeF(116.6666F, 23F);
             this.cellStatusTechnical.StylePriority.UseBorders = false;
             this.cellStatusTechnical.StylePriority.UseFont = false;
+            this.cellStatusTechnical.StylePriority.UseTextAlignment = false;
             this.cellStatusTechnical.Text = "NOT CLEARED";
+            this.cellStatusTechnical.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // lblCellTechnical
             // 
             this.lblCellTechnical.Font = new DevExpress.Drawing.DXFont("Segoe UI", 12F);
-            this.lblCellTechnical.LocationFloat = new DevExpress.Utils.PointFloat(49.99987F, 162.4583F);
+            this.lblCellTechnical.LocationFloat = new DevExpress.Utils.PointFloat(23.95836F, 163.4999F);
             this.lblCellTechnical.Multiline = true;
             this.lblCellTechnical.Name = "lblCellTechnical";
             this.lblCellTechnical.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -198,7 +205,7 @@
             // 
             this.cellYearLevel.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellYearLevel.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellYearLevel.LocationFloat = new DevExpress.Utils.PointFloat(675.6249F, 32.49998F);
+            this.cellYearLevel.LocationFloat = new DevExpress.Utils.PointFloat(635.0001F, 33.54165F);
             this.cellYearLevel.Multiline = true;
             this.cellYearLevel.Name = "cellYearLevel";
             this.cellYearLevel.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -211,7 +218,7 @@
             // 
             this.cellStudentID.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellStudentID.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellStudentID.LocationFloat = new DevExpress.Utils.PointFloat(436.0415F, 32.49998F);
+            this.cellStudentID.LocationFloat = new DevExpress.Utils.PointFloat(410F, 33.54165F);
             this.cellStudentID.Multiline = true;
             this.cellStudentID.Name = "cellStudentID";
             this.cellStudentID.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -224,7 +231,7 @@
             // 
             this.cellFullName.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellFullName.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellFullName.LocationFloat = new DevExpress.Utils.PointFloat(148.9582F, 32.49998F);
+            this.cellFullName.LocationFloat = new DevExpress.Utils.PointFloat(122.9167F, 33.54165F);
             this.cellFullName.Multiline = true;
             this.cellFullName.Name = "cellFullName";
             this.cellFullName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -237,7 +244,7 @@
             // 
             this.cellSem.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellSem.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellSem.LocationFloat = new DevExpress.Utils.PointFloat(624.5831F, 84.04166F);
+            this.cellSem.LocationFloat = new DevExpress.Utils.PointFloat(615.2083F, 69.54168F);
             this.cellSem.Multiline = true;
             this.cellSem.Name = "cellSem";
             this.cellSem.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -265,13 +272,13 @@
             this.xrLabel2,
             this.xrLabel1,
             this.xrPictureBox1});
-            this.ReportHeader.HeightF = 172.9167F;
+            this.ReportHeader.HeightF = 146.1397F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // xrLabel9
             // 
             this.xrLabel9.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(586.0415F, 84.04166F);
+            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(576.6667F, 69.54168F);
             this.xrLabel9.Multiline = true;
             this.xrLabel9.Name = "xrLabel9";
             this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -282,11 +289,11 @@
             // xrLabel10
             // 
             this.xrLabel10.Font = new DevExpress.Drawing.DXFont("Segoe UI", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(586.0415F, 61.04164F);
+            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(576.6667F, 46.54166F);
             this.xrLabel10.Multiline = true;
             this.xrLabel10.Name = "xrLabel10";
             this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel10.SizeF = new System.Drawing.SizeF(112.5001F, 23F);
+            this.xrLabel10.SizeF = new System.Drawing.SizeF(106.2499F, 23F);
             this.xrLabel10.StylePriority.UseFont = false;
             this.xrLabel10.Text = "Academic Year:";
             // 
@@ -294,11 +301,11 @@
             // 
             this.cellSchoolYear.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.cellSchoolYear.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.cellSchoolYear.LocationFloat = new DevExpress.Utils.PointFloat(698.5416F, 61.04164F);
+            this.cellSchoolYear.LocationFloat = new DevExpress.Utils.PointFloat(682.9166F, 46.54166F);
             this.cellSchoolYear.Multiline = true;
             this.cellSchoolYear.Name = "cellSchoolYear";
             this.cellSchoolYear.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.cellSchoolYear.SizeF = new System.Drawing.SizeF(106.2501F, 23.00001F);
+            this.cellSchoolYear.SizeF = new System.Drawing.SizeF(92.70837F, 23.00001F);
             this.cellSchoolYear.StylePriority.UseBorders = false;
             this.cellSchoolYear.StylePriority.UseFont = false;
             this.cellSchoolYear.Text = "________________";
@@ -307,7 +314,7 @@
             // 
             this.xrLabel3.Font = new DevExpress.Drawing.DXFont("Segoe UI", 11F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel3.ForeColor = System.Drawing.Color.DarkGray;
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(122.9167F, 61.04164F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(122.9167F, 69.54168F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -332,7 +339,7 @@
             // xrLabel1
             // 
             this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Segoe UI", 15F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(122.9167F, 24.49999F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(122.9167F, 10.00001F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -348,7 +355,7 @@
             this.Detail,
             this.ReportHeader});
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
-            this.Margins = new DevExpress.Drawing.DXMargins(25F, 0F, 100F, 381.25F);
+            this.Margins = new DevExpress.Drawing.DXMargins(31F, 36F, 63.54167F, 36.76471F);
             this.Version = "23.2";
             xrWatermark1.Id = "Watermark1";
             this.Watermarks.Add(xrWatermark1);
