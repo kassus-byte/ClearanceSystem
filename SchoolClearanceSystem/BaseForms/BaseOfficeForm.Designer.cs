@@ -608,7 +608,6 @@
             // 
             // pageOfficeDashboard
             // 
-            this.pageOfficeDashboard.Caption = "pageOfficeDashboard";
             this.pageOfficeDashboard.Controls.Add(this.panelControl11);
             this.pageOfficeDashboard.Controls.Add(this.panelControl9);
             this.pageOfficeDashboard.Controls.Add(this.panelControl5);
@@ -1707,7 +1706,7 @@
             this.txtAcademicYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtAcademicYear.Properties.Items.AddRange(new object[] {
-            "2024-2026",
+            "2024-2025",
             "2025-2026",
             "2026-2027",
             "2027-2028",
